@@ -567,23 +567,32 @@ requirements:
   VEND-ISS-017:
     questions:
       - id: Q1
-        text: "Are attestation signing keys stored and used within Hardware Security Modules (HSMs) or equivalent secure cryptographic devices?"
+        text: "Are attestation signing keys stored and used exclusively within Hardware Security Modules (HSMs) or equivalent secure cryptographic devices? What HSM vendor(s) do you support?"
         dimension: capability
       - id: Q2
-        text: "What certification level do your cryptographic modules have (FIPS 140-2/3 Level 3, Common Criteria EAL4+)?"
+        text: "What certification level do your cryptographic modules have — FIPS 140-2/3 Level 3, Common Criteria EAL4+ with AVA_VAN.5, or both? Can certificates be provided upon request?"
         dimension: compliance_evidence
       - id: Q3
-        text: "Do you support Bring Your Own Key (BYOK) for organizations that want to manage their own signing keys?"
+        text: "Do you support Bring Your Own Key (BYOK) for organisations that want to manage their own signing keys? What import mechanisms are supported (key wrapping, key ceremony)?"
         dimension: flexibility
       - id: Q4
-        text: "Do you require multi-person approval (quorum/four-eye principle) for sensitive key operations?"
+        text: "Do you require multi-person approval (quorum / four-eye principle) for sensitive key operations (generation, destruction, export)? Is the quorum policy configurable?"
         dimension: security
       - id: Q5
-        text: "Do you offer cloud-hosted HSM or require on-premises HSM deployment?"
+        text: "Do you offer cloud-hosted HSM (AWS CloudHSM, Azure Dedicated HSM, Google Cloud HSM) or require on-premises HSM deployment? Can organisations choose between the two?"
         dimension: operational
       - id: Q6
-        text: "How are HSM backup and disaster recovery handled without exposing keys?"
+        text: "How are HSM backup and disaster recovery handled without exposing key material? Do you support geographic replication of HSM key stores?"
         dimension: operational
+      - id: Q7
+        text: "Per ISSU_35, how do you ensure all unique elements (salts, hashes, revocation indexes, device binding keys, signatures) have negligible collision probability? Do you use a certified CSPRNG?"
+        dimension: compliance_completeness
+      - id: Q8
+        text: "Per ISSU_35b, how do you ensure unique element values and timestamps are discarded after issuance? Is the discarding process auditable and provable?"
+        dimension: privacy
+      - id: Q9
+        text: "Does the HSM log all key usage events (signing operations, access attempts, administrative actions) for audit purposes? How long are HSM audit logs retained?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-ISS-018: Approved Signing Algorithms
@@ -592,23 +601,32 @@ requirements:
   VEND-ISS-018:
     questions:
       - id: Q1
-        text: "Which signing algorithms do you support from the approved list (ECDSA P-256, EdDSA Ed25519, RSA-PSS)?"
+        text: "Which signing algorithms do you support from the approved list — ECDSA P-256, ECDSA P-384, EdDSA Ed25519, RSA-PSS (≥3072-bit)? Are all available for attestation signing?"
         dimension: technical_implementation
       - id: Q2
-        text: "How do you ensure only approved algorithms are used for attestation signing?"
+        text: "How do you ensure only approved algorithms are used for attestation signing — configuration enforcement, HSM policy, or runtime validation?"
         dimension: compliance_monitoring
       - id: Q3
-        text: "Do you support algorithm agility to transition when new algorithms are approved or deprecated?"
+        text: "Do you support algorithm agility to transition when new algorithms are approved or existing ones deprecated? Can old and new algorithms coexist during a transition period (dual-signing)?"
         dimension: lifecycle
       - id: Q4
-        text: "Is Post-Quantum Cryptography (PQC) on your roadmap? Which algorithms are you evaluating?"
+        text: "Is Post-Quantum Cryptography (PQC) on your roadmap? Which NIST PQC algorithms are you evaluating (ML-DSA, SLH-DSA)? Do you plan to support hybrid classical+PQC signatures?"
         dimension: roadmap
       - id: Q5
-        text: "How do you handle cross-format algorithm compatibility (mDoc vs. SD-JWT-VC)?"
+        text: "How do you handle cross-format algorithm compatibility — does the platform ensure the chosen algorithm is valid for both mDoc (ISO 18013-5 baseline: ES256) and SD-JWT-VC (JWS alg identifiers)?"
         dimension: interoperability
       - id: Q6
-        text: "Can your signing service abstract away the underlying HSM specifics (e.g., support both Luna and nCipher via a unified API)?"
+        text: "Can your signing service abstract away the underlying HSM specifics (e.g., support both Luna and nCipher via a unified signing API) to enable vendor portability?"
         dimension: flexibility
+      - id: Q7
+        text: "How do you handle algorithm deprecation — forced migration, grace period with warnings, or blocking of deprecated algorithms after a cutoff date?"
+        dimension: lifecycle
+      - id: Q8
+        text: "Can different attestation types be configured to use different signing algorithms (e.g., ECDSA P-256 for PIDs, EdDSA for low-latency attestations)?"
+        dimension: flexibility
+      - id: Q9
+        text: "Do you validate that the approved hash functions (SHA-256, SHA-384, SHA-512) are correctly paired with their signing algorithms, and reject invalid pairings?"
+        dimension: security
 
   # ============================================================================
   # VEND-ISS-019: Key Rotation Procedures
@@ -617,23 +635,32 @@ requirements:
   VEND-ISS-019:
     questions:
       - id: Q1
-        text: "Do you have documented key rotation procedures?"
+        text: "Do you have documented key rotation procedures? Are these procedures tested regularly (e.g., annual key rotation drill)?"
         dimension: capability
       - id: Q2
-        text: "How do you transition to new signing keys while maintaining validity of previously issued attestations?"
+        text: "How do you transition to new signing keys while maintaining validity of previously issued attestations — do you implement the 4-phase rotation model (pre-rotation, overlap, post-rotation, retirement)?"
         dimension: technical_implementation
       - id: Q3
-        text: "What is the recommended key rotation frequency?"
+        text: "What is the recommended key rotation frequency? Is it configurable per attestation type, or fixed platform-wide?"
         dimension: lifecycle
       - id: Q4
-        text: "How is key rotation communicated to Trusted Lists and verifiers?"
+        text: "How is key rotation coordinated with Trusted List updates — is the new public key published before the new key is used for signing, to ensure verifier readiness?"
         dimension: operational
       - id: Q5
-        text: "What happens to attestations signed with retired keys—do they remain valid until expiry?"
+        text: "What happens to attestations signed with retired keys — do they remain valid and verifiable until their individual expiry, or are they revoked upon key retirement?"
         dimension: lifecycle
       - id: Q6
-        text: "Is key rotation automated or does it require manual intervention?"
+        text: "Is key rotation automated (scheduled) or does it require manual intervention? Can emergency key rotation be triggered for compromise scenarios?"
         dimension: automation
+      - id: Q7
+        text: "Per ISSU_17, how does key rotation interact with device binding — do existing device bindings remain valid after the provider's signing key rotates (since they reference the wallet's key, not the provider's)?"
+        dimension: compliance_completeness
+      - id: Q8
+        text: "How do you handle attestations in flight during key rotation — do you ensure a single issuance session uses one consistent key, not a mix of old and new?"
+        dimension: technical_implementation
+      - id: Q9
+        text: "What is the secure destruction procedure for retired key material? Is destruction logged and auditable?"
+        dimension: security
 
   # ============================================================================
   # VEND-ISS-020: Common Catalogue Registration (TS11)
@@ -642,20 +669,32 @@ requirements:
   VEND-ISS-020:
     questions:
       - id: Q1
-        text: "Do you support registration of attestation types in the Common Catalogue of Attestation Types per TS11?"
+        text: "Do you support registration of attestation types in the Common Catalogue of Attestation Types per Technical Specification 11 (TS11)? Is registration available for both qualified and non-qualified attestation types?"
         dimension: capability
       - id: Q2
-        text: "What information is published to the catalogue for each attestation type?"
+        text: "What information is published to the catalogue for each attestation type — type identifier (URI/OID), supported formats, applicable Rulebook, attribute schema, geographic availability?"
         dimension: technical_implementation
       - id: Q3
-        text: "How do wallets and RPs discover attestation types through the catalogue?"
+        text: "How do wallets and Relying Parties discover attestation types through the catalogue — search by type, by provider, by Member State, or by Rulebook?"
         dimension: interoperability
       - id: Q4
-        text: "How do you handle updates to catalogue entries when attestation types change?"
+        text: "How do you handle updates to catalogue entries when attestation types change (e.g., new schema version, additional format support)? Is the update propagation immediate?"
         dimension: lifecycle
       - id: Q5
-        text: "Is catalogue registration automated as part of attestation type deployment?"
+        text: "Is catalogue registration automated as part of attestation type deployment, or does it require a separate manual registration step?"
         dimension: automation
+      - id: Q6
+        text: "How do you handle catalogue deregistration when an attestation type is decommissioned? Is there a grace period for existing attestations of that type?"
+        dimension: lifecycle
+      - id: Q7
+        text: "Can the organisation preview their catalogue entries before publication to verify completeness and accuracy?"
+        dimension: operational
+      - id: Q8
+        text: "How does the Common Catalogue interact with Provider Information (VEND-ISS-002) — are the two kept in sync automatically, or are they independent registrations?"
+        dimension: interoperability
+      - id: Q9
+        text: "Do you support catalogue entries for attestation types available in multiple Member States, or must separate entries be created per Member State?"
+        dimension: geographic_scope
 
   # ============================================================================
   # VEND-ISS-021: Attestation Schema Documentation
@@ -664,23 +703,32 @@ requirements:
   VEND-ISS-021:
     questions:
       - id: Q1
-        text: "Do you document and publish schemas for each attestation type?"
+        text: "Do you document and publish schemas for each attestation type? Are schemas published in both human-readable and machine-readable formats?"
         dimension: capability
       - id: Q2
-        text: "Do schemas clearly distinguish mandatory vs. optional attributes?"
+        text: "Do schemas clearly distinguish mandatory vs optional vs conditional attributes, per ARB_06's encoding-independent semantic definition requirement?"
         dimension: technical_implementation
       - id: Q3
-        text: "What schema format do you use (JSON Schema, CDDL for mDoc, etc.)?"
+        text: "What schema format do you use — CDDL for mDoc CBOR encoding, JSON Schema for SD-JWT-VC, or both? Do you generate format-specific schemas from a single encoding-independent definition?"
         dimension: interoperability
       - id: Q4
-        text: "How do you handle schema versioning and backwards compatibility?"
+        text: "How do you handle schema versioning and backwards compatibility — can the platform accept attestations issued under previous schema versions, and are deprecated attributes handled gracefully?"
         dimension: lifecycle
       - id: Q5
-        text: "Are schemas published in machine-readable formats for automated validation?"
+        text: "Are schemas published in machine-readable formats at discoverable endpoints for automated validation by wallets and Relying Parties?"
         dimension: automation
       - id: Q6
-        text: "Do schemas include semantic definitions for each attribute?"
+        text: "Do schemas include semantic definitions for each attribute (encoding-independent description per ARB_06), beyond just data type and cardinality?"
         dimension: documentation
+      - id: Q7
+        text: "How do you ensure semantic equivalence between the mDoc (CBOR) and SD-JWT-VC (JSON) encodings of the same attestation type?"
+        dimension: interoperability
+      - id: Q8
+        text: "Do you provide schema validation tooling that organisations can use to verify their attestation data conforms to the published schema before issuance?"
+        dimension: automation
+      - id: Q9
+        text: "How do you manage namespace conventions (e.g., `eu.europa.ec.eudi.pid.1` for PIDs) and ensure they comply with the applicable Rulebook's namespace requirements?"
+        dimension: compliance_completeness
 
   # ============================================================================
   # VEND-ISS-022: Data Minimisation in Attestations
@@ -689,20 +737,32 @@ requirements:
   VEND-ISS-022:
     questions:
       - id: Q1
-        text: "How do you ensure attestations contain only attributes necessary for their intended purpose?"
+        text: "How do you ensure attestations contain only attributes necessary for their intended purpose — do you apply GDPR Article 25 data protection by design principles during attestation type configuration?"
         dimension: privacy
       - id: Q2
-        text: "Do you design attestations to be selective disclosure-friendly?"
+        text: "Do you design attestations to be selective disclosure-friendly — are all attributes individually salted (mDoc MSO) or wrapped with SD-JWT `_sd` directives for per-attribute disclosure?"
         dimension: technical_implementation
       - id: Q3
-        text: "Can the organization configure which attributes are included in custom attestation types?"
+        text: "Can the organisation configure which attributes are included in custom attestation types? Is there a review workflow to prevent unnecessary attribute inclusion?"
         dimension: flexibility
       - id: Q4
-        text: "Do you offer guidance on data minimization during attestation type design?"
+        text: "Do you offer guidance on data minimisation during attestation type design, including which attributes are typically unnecessary for common use cases?"
         dimension: documentation
       - id: Q5
-        text: "How do you handle requests to include unnecessary attributes in attestations?"
+        text: "How do you handle requests to include unnecessary attributes in attestations — is there a compliance gate that flags over-inclusion?"
         dimension: compliance_monitoring
+      - id: Q6
+        text: "Per EDP_09, do you include an embedded disclosure policy by value in the Issuer metadata? How does this policy inform the wallet about mandatory vs optional attributes?"
+        dimension: compliance_completeness
+      - id: Q7
+        text: "Do you support age-over predicates or range proofs that allow the user to prove a property (e.g., 'over 18') without disclosing the underlying attribute (e.g., date of birth)?"
+        dimension: privacy
+      - id: Q8
+        text: "Can the organisation define different attribute sets for different audiences (e.g., a 'minimal PID' with only name and age-over, vs a 'full PID' with all attributes)?"
+        dimension: flexibility
+      - id: Q9
+        text: "How do you audit that attestations issued in production actually conform to data minimisation policies — is there post-issuance compliance monitoring?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-ISS-023: No Tracking Identifiers
@@ -711,20 +771,32 @@ requirements:
   VEND-ISS-023:
     questions:
       - id: Q1
-        text: "How do you ensure attestations do not contain overt or hidden tracking identifiers?"
+        text: "How do you ensure attestations do not contain overt or hidden tracking identifiers — do you perform automated privacy reviews of attestation structures before deployment?"
         dimension: privacy
       - id: Q2
-        text: "Are unique attestation identifiers designed to prevent cross-RP correlation?"
+        text: "Are unique attestation identifiers (revocation indexes, serial numbers) designed to prevent cross-RP correlation per ISSU_35's negligible-collision requirement?"
         dimension: technical_implementation
       - id: Q3
-        text: "Do you conduct privacy reviews of attestation structures to identify potential correlation vectors?"
+        text: "Do you conduct privacy reviews of attestation structures to identify potential correlation vectors (e.g., static identifiers, predictable sequences, timestamps)?"
         dimension: compliance_monitoring
       - id: Q4
-        text: "How do you handle serial numbers or other identifiers required by format specifications?"
+        text: "How do you handle serial numbers or other unique identifiers required by format specifications (mDoc document number, SD-JWT-VC `jti`) — are these randomised per ISSU_35?"
         dimension: technical_implementation
       - id: Q5
-        text: "Can the attestation structure be audited for privacy compliance by independent parties?"
+        text: "Can the attestation structure be audited for privacy compliance by independent parties? Do you support third-party privacy audits of your attestation design?"
         dimension: auditability
+      - id: Q6
+        text: "Per ISSU_35b, do you discard all unique element values and timestamps after issuance to prevent the provider from correlating presentations retrospectively?"
+        dimension: privacy
+      - id: Q7
+        text: "Do you support batch issuance of single-use attestations for high-privacy scenarios where cross-presentation unlinkability is critical?"
+        dimension: capability
+      - id: Q8
+        text: "Are status list indexes assigned in a way that prevents RPs from correlating users by comparing index values across different presentation sessions?"
+        dimension: technical_implementation
+      - id: Q9
+        text: "Do you support or plan to support unlinkable proof mechanisms (e.g., ZKP-based selective disclosure, BBS+ signatures) for advanced anti-tracking scenarios?"
+        dimension: roadmap
 
   # ============================================================================
   # VEND-ISS-024: Cross-Border Recognition

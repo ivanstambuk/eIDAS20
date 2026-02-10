@@ -847,17 +847,51 @@ requirements:
     category: security
     requirement: Protect attestation signing keys in secure cryptographic devices
     explanation: |
-      The private keys used to sign attestations must be stored and used 
-      within secure cryptographic devices (HSMs or equivalent) that prevent 
-      extraction and ensure key integrity.
+      The private keys used to sign attestations must be stored and
+      used within secure cryptographic devices (HSMs or equivalent)
+      that prevent extraction and ensure key integrity.
+
+      **ISSU_35 — Unique element privacy:**
+      A PID Provider or Attestation Provider SHALL ensure that all
+      unique elements in a PID or attestation have a negligible
+      chance of having the same value across all PIDs or
+      attestations issued by that Provider. This includes at least:
+      (a) salt values for hashing every attribute, (b) hash values
+      of all attributes, (c) attestation identifiers or revocation
+      indexes, (d) attestation public keys for device binding, and
+      (e) the Provider signature value. This can be achieved using
+      a cryptographically secure pseudo-random number generator
+      (CSPRNG) for salt, index, and identifier generation.
+
+      **ISSU_35b — Post-issuance discarding:**
+      After issuing a PID, attestation, or WUA, the Provider SHALL
+      discard the values of all unique elements (per ISSU_35) and
+      any timestamps as soon as they are no longer needed. The
+      Provider SHALL NOT communicate these values to any other
+      party inside or outside the EUDI Wallet ecosystem.
+
+      **HSM certification requirements:**
+      For qualified trust services, HSMs must meet at least:
+      - FIPS 140-2/3 Level 3, or
+      - Common Criteria EAL4+ with AVA_VAN.5
+      The HSM must support the approved signing algorithms (per
+      VEND-ISS-018) and protect keys from extraction even under
+      physical attack.
+
+      **Key lifecycle governance:**
+      Sensitive key operations (generation, destruction, backup)
+      should require multi-person approval (quorum / four-eye
+      principle). The HSM should log all key usage events for
+      audit purposes.
     legalBasis:
       regulation: 2014/910
       article: Article 24
       paragraph: "2"
     legalText: |
-      Qualified trust service providers shall use trustworthy systems and 
-      products that are protected against modification and ensure the 
-      technical security and reliability of the processes supported by them.
+      Qualified trust service providers shall use trustworthy
+      systems and products that are protected against modification
+      and ensure the technical security and reliability of the
+      processes supported by them.
     roles:
       - issuer
     productCategories:
@@ -869,19 +903,51 @@ requirements:
       hlr:
         - ISSU_35
         - ISSU_35a
+        - ISSU_35b
     obligation: MUST
   - id: VEND-ISS-018
     category: security
     requirement: Use signing algorithms from the approved list
     explanation: |
-      Attestation signatures must use cryptographic algorithms from the 
-      approved list in Annex of the Integrity Regulation (e.g., ECDSA P-256, 
-      EdDSA Ed25519, RSA-PSS).
+      Attestation signatures must use cryptographic algorithms from
+      the approved list in the Annex of the Integrity Regulation.
+
+      **Approved algorithm families:**
+      The approved list currently includes:
+      - **ECDSA** with P-256 (mandatory for mDoc per ISO 18013-5)
+        and P-384 (optional, higher security margin)
+      - **EdDSA** with Ed25519 (compact signatures, fast
+        verification)
+      - **RSA-PSS** with ≥3072-bit keys (legacy compatibility)
+      Each algorithm must be used with approved hash functions
+      (SHA-256, SHA-384, SHA-512).
+
+      **Cross-format algorithm compatibility:**
+      - **mDoc (ISO 18013-5)**: ECDSA P-256 is the baseline;
+        EdDSA support depends on the MSO profile
+      - **SD-JWT-VC**: supports ES256, ES384, EdDSA, PS256, PS384
+        via standard JWS algorithm identifiers
+      The platform must ensure that the chosen algorithm is valid
+      for both formats when dual-format issuance is required
+      (per ISSU_12/ISSU_12a).
+
+      **Algorithm agility:**
+      The platform should support transitioning between algorithms
+      when the approved list changes. This includes deprecation
+      warnings, phased migration, and dual-signing during
+      transition periods.
+
+      **Post-Quantum Cryptography (PQC):**
+      While not yet mandated, providers should monitor NIST PQC
+      standardisation (ML-DSA, SLH-DSA) and prepare for hybrid
+      signatures (classical + PQC) as recommended by ENISA.
     legalBasis:
       regulation: 2024/2979
       article: Article 8
-      paragraph: ""
-      hlr: Iss_04
+      paragraph: "1"
+    legalText: |
+      Attestation signatures shall use cryptographic algorithms
+      from the approved list published in the Annex.
     roles:
       - issuer
     productCategories:
@@ -895,13 +961,51 @@ requirements:
     category: security
     requirement: Implement key rotation procedures
     explanation: |
-      The platform must support cryptographic key rotation with documented 
-      procedures for transitioning to new signing keys while maintaining 
-      validity of previously issued attestations.
+      The platform must support cryptographic key rotation with
+      documented procedures for transitioning to new signing keys
+      while maintaining validity of previously issued attestations.
+
+      **ISSU_17 — Device binding key lifecycle:**
+      A PID Provider SHALL implement device binding for all PIDs
+      it issues, ensuring the PID is cryptographically bound to
+      the WSCA/WSCD in the Wallet Unit (per WUA_11–WUA_11b in
+      Topic 9). When the provider's signing key rotates, existing
+      device bindings remain valid (they reference the wallet's
+      key, not the provider's key), but the provider's public key
+      published in Trusted Lists must be updated.
+
+      **Key rotation phases:**
+      1. **Pre-rotation**: generate new key pair in HSM, publish
+         new public key to Trusted Lists with a future activation
+         date
+      2. **Overlap period**: both old and new keys are valid for
+         signing. New attestations use the new key. Old
+         attestations remain verifiable with the old key.
+      3. **Post-rotation**: old key is deactivated for signing
+         but its public key remains available for verification
+         until all attestations signed with it expire.
+      4. **Retirement**: old key material is securely destroyed
+         after all attestations signed with it have expired.
+
+      **Trusted List propagation:**
+      Key rotation must be coordinated with Trusted List updates.
+      The new public key must be published before the new key is
+      used for signing, to ensure verifiers can validate new
+      attestations immediately.
+
+      **Attestations in flight:**
+      During rotation, attestations currently being issued must
+      consistently use either the old or the new key (not mix
+      keys within a single issuance session).
     legalBasis:
       regulation: 2014/910
       article: Article 24
-      paragraph: ""
+      paragraph: "2"
+    legalText: |
+      Qualified trust service providers shall use trustworthy
+      systems and products that are protected against modification
+      and ensure the technical security and reliability of the
+      processes supported by them.
     roles:
       - issuer
     productCategories:
@@ -909,36 +1013,111 @@ requirements:
     deadline: "2027-11-21"
     arfReference:
       topic: Topic 10
-      hlr: ISSU_17
+      hlr:
+        - ISSU_17
+        - ISSU_35
     obligation: MUST
   - id: VEND-ISS-020
     category: registration
     requirement: Publish attestation types to the Common Catalogue (TS11)
     explanation: |
-      Attestation types issued by the provider should be registered in the 
-      Common Catalogue of Attestation Types, enabling discoverability by 
-      wallets, relying parties, and users.
+      Attestation types issued by the provider should be registered
+      in the Common Catalogue of Attestation Types (per Technical
+      Specification 11), enabling discoverability by wallets,
+      relying parties, and users.
+
+      **Common Catalogue purpose:**
+      The Common Catalogue is the centralised registry where all
+      available attestation types are published. It allows:
+      - Wallet Units to discover which attestation types their
+        user can request
+      - Relying Parties to discover which attestation types exist
+        and which providers issue them
+      - Users to browse available attestation types across all
+        EU Member States
+
+      **Catalogue entry contents:**
+      Each entry in the Common Catalogue should include:
+      - Attestation type identifier (URI or OID)
+      - Provider identifier and Provider Information reference
+      - Supported formats (mDoc, SD-JWT-VC)
+      - Applicable Attestation Rulebook reference
+      - Attribute schema reference
+      - Geographic availability (Member States)
+
+      **Registration automation:**
+      Registration should be automated as part of the attestation
+      type deployment pipeline. When a new attestation type is
+      configured on the platform, the corresponding catalogue
+      entry should be created or updated automatically.
+
+      **Update lifecycle:**
+      Catalogue entries must be updated when attestation types
+      change (e.g., schema updates, new format support) and
+      removed when attestation types are decommissioned.
     legalBasis:
       regulation: 2024/2981
       article: Article 4
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Attestation types shall be made discoverable through the
+      Common Catalogue of Attestation Types.
     roles:
       - issuer
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
+    arfReference:
+      topic: Topic 12
+      hlr: ARB_06
     obligation: SHOULD
   - id: VEND-ISS-021
     category: registration
     requirement: Document attestation schema including mandatory and optional attributes
     explanation: |
-      Each attestation type must have a published schema defining the 
-      mandatory and optional attributes, data types, and semantic meaning 
-      of each field.
+      Each attestation type must have a published schema defining
+      the mandatory and optional attributes, data types, and
+      semantic meaning of each field.
+
+      **ARB_06 — Encoding-independent semantics:**
+      The Scheme Provider for an Attestation Rulebook SHALL define
+      all attributes that an attestation of that type may contain.
+      This definition SHALL first describe the semantics of each
+      attribute in an encoding-independent manner and SHALL
+      subsequently for each attribute specify an ISO/IEC
+      18013-5-compliant format, an SD-JWT-VC-compliant format,
+      or both (as per ARB_01–ARB_04).
+
+      **Format-specific encoding:**
+      - **mDoc**: attributes encoded in CBOR using the namespace
+        and element identifier conventions specified in the
+        applicable Rulebook (e.g., `eu.europa.ec.eudi.pid.1`)
+      - **SD-JWT-VC**: attributes encoded as JSON claims with
+        selective disclosure markers per SD-JWT specification
+      Both encodings must be semantically equivalent.
+
+      **Schema documentation requirements:**
+      Published schemas should include:
+      - Attribute name and identifier (namespace-qualified)
+      - Data type (string, integer, date, boolean, binary)
+      - Cardinality (mandatory, optional, conditional)
+      - Semantic definition (encoding-independent)
+      - Encoding specification per format
+      - Validation rules and constraints
+
+      **Schema versioning:**
+      Schemas must be versioned. When attributes are added,
+      removed, or modified, a new schema version must be
+      published. The platform should support backwards
+      compatibility by accepting attestations issued under
+      previous schema versions.
     legalBasis:
       regulation: 2024/2981
       article: Article 4
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Attestation Rulebooks shall define the attributes that an
+      attestation of that type may contain.
     roles:
       - issuer
     productCategories:
@@ -949,22 +1128,56 @@ requirements:
       hlr:
         - ARB_03
         - ARB_04
+        - ARB_06
     obligation: MUST
   - id: VEND-ISS-022
     category: usage
     requirement: Apply data minimisation principles to attestation content
     explanation: |
-      Attestations should contain only the attributes necessary for their 
-      intended purpose. Issuers should offer selective disclosure-friendly 
-      attestation designs where possible.
+      Attestations should contain only the attributes necessary for
+      their intended purpose. Issuers should offer selective
+      disclosure-friendly attestation designs where possible.
+
+      **GDPR Article 25 — Data protection by design:**
+      The controller shall implement appropriate technical and
+      organisational measures for ensuring that, by default, only
+      personal data which are necessary for each specific purpose
+      of the processing are processed. This applies to the amount
+      of data collected, the extent of processing, the period of
+      storage, and accessibility.
+
+      **EDP_09 — Embedded disclosure policies:**
+      An Attestation Provider SHALL include an embedded disclosure
+      policy (if any) by value in the Issuer metadata related to
+      the attestation, in compliance with the OpenID4VCI issuance
+      protocol or an extension thereof. This policy enables the
+      wallet to understand which attributes are mandatory vs
+      optional for disclosure.
+
+      **Selective disclosure design:**
+      - **mDoc**: attributes are individually salted and hashed
+        in the MSO, enabling per-attribute selective disclosure
+        natively via IssuerAuth
+      - **SD-JWT-VC**: attributes are wrapped with disclosure
+        directives (SD-JWT `_sd` array), enabling selective
+        disclosure at presentation time
+      The attestation design should maximise the number of
+      attributes that can be selectively disclosed.
+
+      **Minimisation at issuance:**
+      Even within the attestation design, the issuer should
+      consider whether all specified optional attributes are
+      necessary for the attestation type's intended use. Unused
+      optional attributes should not be populated.
     legalBasis:
       regulation: 2016/679
       article: Article 25
       paragraph: "1"
     legalText: |
-      The controller shall implement appropriate technical and organisational 
-      measures for ensuring that, by default, only personal data which are 
-      necessary for each specific purpose of the processing are processed.
+      The controller shall implement appropriate technical and
+      organisational measures for ensuring that, by default, only
+      personal data which are necessary for each specific purpose
+      of the processing are processed.
     roles:
       - issuer
     productCategories:
@@ -978,18 +1191,58 @@ requirements:
     category: usage
     requirement: Do not embed tracking identifiers in attestations
     explanation: |
-      Attestations must not contain hidden or overt tracking identifiers 
-      that could enable correlation of user presentations across different 
-      relying parties.
+      Attestations must not contain hidden or overt tracking
+      identifiers that could enable correlation of user
+      presentations across different relying parties.
+
+      **ISSU_35 — Unique element negligibility:**
+      All unique elements (salt values, hash values, revocation
+      indexes, device binding keys, signatures) must have a
+      negligible chance of having the same value across all
+      attestations issued by the provider. This prevents
+      identifier-based tracking but also means these unique
+      elements must not be re-used across presentations.
+
+      **ISSU_35b — Post-issuance discarding:**
+      The provider must discard unique element values after
+      issuance and must not communicate them to any party.
+      This prevents the provider from correlating presentations
+      by matching unique elements it retained.
+
+      **Cross-RP unlinkability:**
+      The attestation structure must be designed so that two
+      relying parties receiving presentations from the same
+      attestation cannot determine whether they are dealing
+      with the same user, unless the user deliberately
+      discloses identifying attributes.
+
+      **Anti-tracking design principles:**
+      - No persistent identifiers that survive across
+        presentations (e.g., fixed serial numbers)
+      - Batch issuance of single-use attestations for high-
+        privacy scenarios
+      - Support for unlinkable proofs (e.g., ZKP-based
+        selective disclosure if supported by the format)
+      - Status list indexes should not be trivially
+        correlatable across RPs
     legalBasis:
       regulation: 2014/910
       article: Article 5a
-      paragraph: 16(a)
+      paragraph: "16"
+    legalText: |
+      The European Digital Identity Wallet shall not allow
+      providers of electronic attestations of attributes to
+      obtain information about the use of attestations.
     roles:
       - issuer
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
+    arfReference:
+      topic: Topic 10
+      hlr:
+        - ISSU_35
+        - ISSU_35b
     obligation: MUST NOT
   - id: VEND-ISS-024
     category: usage
