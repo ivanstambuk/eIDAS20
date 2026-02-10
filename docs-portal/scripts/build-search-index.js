@@ -209,14 +209,15 @@ function loadTerminology() {
             // e.g., "WSCD", "QEAA" should find the full term
             const aliasesText = term.aliases ? term.aliases.join(' ') : '';
             const termField = term.aliases
-                ? `${term.term} ${term.aliases.join(' ')}`  // "wallet-secure-cryptographic-device WSCD"
+                ? `${term.term} ${term.aliases.join(' ')}`  // "Wallet Unit Attestation WUA"
                 : term.term;
 
             termSections.push({
                 id: `term-${term.id}`,
                 slug: 'terminology',
                 type: 'definition',  // Special type for boosting
-                term: termField,     // Dedicated field for 10x boost - now includes aliases
+                term: termField,     // Original case for display
+                termLower: termField.toLowerCase(),  // Lowercased for case-insensitive exact search
                 docTitle: 'Terminology',
                 section: `Art. ${primarySource.articleNumber}`,
                 sectionTitle: term.term,
@@ -260,7 +261,8 @@ function loadARFHLRs() {
                 id: `arf-${req.hlrId}`,
                 slug: 'arf',
                 type: 'arf-hlr',  // Special type for ARF requirements
-                term: req.hlrId,  // Searchable by HLR ID
+                term: req.hlrId,  // Original case for display
+                termLower: req.hlrId.toLowerCase(),  // Lowercased for case-insensitive exact search
                 docTitle: 'ARF High-Level Requirements',
                 section: `Topic ${req.topicNumber}`,
                 sectionTitle: `${req.hlrId} - ${req.topicTitle}`,
@@ -292,7 +294,8 @@ async function buildIndex() {
             id: 'string',
             slug: 'string',
             type: 'string',
-            term: 'string',        // For terminology - boosted 10x in search
+            term: 'string',        // For terminology - original case for display, boosted 10x in fuzzy search
+            termLower: 'string',   // Lowercased term field for case-insensitive exact search
             docTitle: 'string',
             section: 'string',
             sectionTitle: 'string',

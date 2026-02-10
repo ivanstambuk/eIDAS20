@@ -35,7 +35,8 @@ async function loadSearchIndex() {
                     id: 'string',
                     slug: 'string',
                     type: 'string',
-                    term: 'string',        // For terminology definitions
+                    term: 'string',        // For terminology definitions (original case, for display)
+                    termLower: 'string',   // Lowercased term field for case-insensitive exact search
                     docTitle: 'string',
                     section: 'string',
                     sectionTitle: 'string',
@@ -130,11 +131,14 @@ export function useSearch() {
             });
 
             // Search 2: Exact-match search on terminology aliases
-            // Only searches the `term` field (which contains aliases like "RP")
-            // with exact: true to disable prefix expansion
+            // Searches the `termLower` field (lowercased at build time)
+            // with exact: true to disable prefix expansion.
+            //
+            // Query is lowercased to match the lowercased termLower field.
+            // This ensures case-insensitive matching ("wua" finds "WUA").
             const exactResults = await search(searchDb, {
-                term: searchQuery,
-                properties: ['term'],
+                term: searchQuery.toLowerCase(),
+                properties: ['termLower'],
                 exact: true,
                 limit: 5,
             });
@@ -188,20 +192,25 @@ export function useSearch() {
                     } else if (termName.startsWith(normalizedQuery)) {
                         // Prefix match: "digital" query matches "digital signature" term
                         boostedScore *= PREFIX_MATCH_BOOST;
-                    } else if (hit.isExactAliasMatch && hit.document.type === 'definition') {
-                        // Deterministic alias match via exact search
-                        // e.g., "RP" query → exact match in term field "relying party RP"
-                        boostedScore *= EXACT_MATCH_BOOST;
-                    } else if (hit.document.term) {
-                        // Fallback: check aliases in term field for fuzzy results
-                        const termField = hit.document.term.toLowerCase();
-                        const aliasTokens = termField
-                            .replace(termName, '')
-                            .trim()
-                            .split(/\s+/)
-                            .filter(Boolean);
+                    } else {
+                        // Abbreviation match: check if query matches any alias in the term field
+                        // Case-insensitive: "wua" matches alias "WUA" in "wallet unit attestation WUA"
+                        // This handles BOTH exact search hits (isExactAliasMatch) and fuzzy hits
+                        // that contain abbreviation tokens.
+                        let isAbbreviationMatch = hit.isExactAliasMatch;
 
-                        if (aliasTokens.some(alias => alias === normalizedQuery)) {
+                        if (!isAbbreviationMatch && hit.document.term) {
+                            const termField = hit.document.term.toLowerCase();
+                            const aliasTokens = termField
+                                .replace(termName, '')
+                                .trim()
+                                .split(/\s+/)
+                                .filter(Boolean);
+
+                            isAbbreviationMatch = aliasTokens.some(alias => alias === normalizedQuery);
+                        }
+
+                        if (isAbbreviationMatch) {
                             boostedScore *= EXACT_MATCH_BOOST;
                         }
                     }
