@@ -1,9 +1,9 @@
 {
   "version": "2.0",
-  "generated": "2026-02-10T17:05:09.833Z",
+  "generated": "2026-02-10T17:14:07.200Z",
   "statistics": {
     "totalTerms": 363,
-    "totalDefinitions": 524,
+    "totalDefinitions": 525,
     "sources": {
       "regulations": 252,
       "implementingActs": 143,
@@ -15362,32 +15362,32 @@
       "term": "Strong Customer Authentication",
       "sources": [
         {
-          "definition": "Authentication based on the use of two or more elements categorised as knowledge (something only the user knows), possession (something only the user possesses), and inherence (something the user is) that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SCA. This is the PSD2-specific term for strong authentication in payment services, functionally equivalent to Strong User Authentication (SUA) in eIDAS.",
+          "definition": "Authentication based on the use of two or more elements categorised as knowledge (something only the user knows), possession (something only the user possesses), and inherence (something the user is) that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SCA. This is the PSD2-specific term for strong authentication in payment services, defined in PSD2 Article 4(30) and elaborated in the RTS on SCA (Commission Delegated Regulation (EU) 2018/389). SCA goes beyond basic two-factor authentication by additionally requiring Dynamic Linking (binding the authentication to a specific transaction amount and payee), authentication code generation, and transaction monitoring, as mandated by PSD2 Article 97 and the RTS. While functionally equivalent to Strong User Authentication (SUA) in its core two-factor requirement, SCA applies exclusively to payment services and imposes stricter obligations. The EUDI Wallet bridges the gap between SUA and SCA through dedicated SCA Attestations, specified in Technical Specification 12 (TS12), which are issued by Payment Service Providers into Wallet Units and enable Dynamic Linking via transactional data signing.",
           "documentId": null,
           "documentTitle": "Internal",
           "documentCategory": "internal",
           "documentType": "internal",
           "celex": null,
-          "articleId": "article-PSD2 Article 4(30), Commission Delegated Regulation (EU) 2018/389",
-          "articleNumber": "PSD2 Article 4(30), Commission Delegated Regulation (EU) 2018/389",
+          "articleId": "article-synthesized from PSD2 Article 4(30), RTS 2018/389, and TS12",
+          "articleNumber": "synthesized from PSD2 Article 4(30), RTS 2018/389, and TS12",
           "displayOrder": 5
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-PSD2 Article 4(30), Commission Delegated Regulation (EU) 2018/389",
+      "primaryLinkTarget": "article-synthesized from PSD2 Article 4(30), RTS 2018/389, and TS12",
       "definitionGroups": [
         {
-          "definition": "Authentication based on the use of two or more elements categorised as knowledge (something only the user knows), possession (something only the user possesses), and inherence (something the user is) that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SCA. This is the PSD2-specific term for strong authentication in payment services, functionally equivalent to Strong User Authentication (SUA) in eIDAS.",
+          "definition": "Authentication based on the use of two or more elements categorised as knowledge (something only the user knows), possession (something only the user possesses), and inherence (something the user is) that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SCA. This is the PSD2-specific term for strong authentication in payment services, defined in PSD2 Article 4(30) and elaborated in the RTS on SCA (Commission Delegated Regulation (EU) 2018/389). SCA goes beyond basic two-factor authentication by additionally requiring Dynamic Linking (binding the authentication to a specific transaction amount and payee), authentication code generation, and transaction monitoring, as mandated by PSD2 Article 97 and the RTS. While functionally equivalent to Strong User Authentication (SUA) in its core two-factor requirement, SCA applies exclusively to payment services and imposes stricter obligations. The EUDI Wallet bridges the gap between SUA and SCA through dedicated SCA Attestations, specified in Technical Specification 12 (TS12), which are issued by Payment Service Providers into Wallet Units and enable Dynamic Linking via transactional data signing.",
           "sources": [
             {
-              "definition": "Authentication based on the use of two or more elements categorised as knowledge (something only the user knows), possession (something only the user possesses), and inherence (something the user is) that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SCA. This is the PSD2-specific term for strong authentication in payment services, functionally equivalent to Strong User Authentication (SUA) in eIDAS.",
+              "definition": "Authentication based on the use of two or more elements categorised as knowledge (something only the user knows), possession (something only the user possesses), and inherence (something the user is) that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SCA. This is the PSD2-specific term for strong authentication in payment services, defined in PSD2 Article 4(30) and elaborated in the RTS on SCA (Commission Delegated Regulation (EU) 2018/389). SCA goes beyond basic two-factor authentication by additionally requiring Dynamic Linking (binding the authentication to a specific transaction amount and payee), authentication code generation, and transaction monitoring, as mandated by PSD2 Article 97 and the RTS. While functionally equivalent to Strong User Authentication (SUA) in its core two-factor requirement, SCA applies exclusively to payment services and imposes stricter obligations. The EUDI Wallet bridges the gap between SUA and SCA through dedicated SCA Attestations, specified in Technical Specification 12 (TS12), which are issued by Payment Service Providers into Wallet Units and enable Dynamic Linking via transactional data signing.",
               "documentId": null,
               "documentTitle": "Internal",
               "documentCategory": "internal",
               "documentType": "internal",
               "celex": null,
-              "articleId": "article-PSD2 Article 4(30), Commission Delegated Regulation (EU) 2018/389",
-              "articleNumber": "PSD2 Article 4(30), Commission Delegated Regulation (EU) 2018/389",
+              "articleId": "article-synthesized from PSD2 Article 4(30), RTS 2018/389, and TS12",
+              "articleNumber": "synthesized from PSD2 Article 4(30), RTS 2018/389, and TS12",
               "displayOrder": 5
             }
           ],
@@ -15414,9 +15414,20 @@
           "articleId": "article-3-para-51",
           "articleNumber": "3(51)",
           "displayOrder": 1
+        },
+        {
+          "definition": "Authentication based on the use of at least two authentication factors from different categories of either knowledge (something only the user knows), possession (something only the user possesses), or inherence (something the user is), that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SUA. Defined in eIDAS 2.0 Article 3(51), this is the generic cross-sector term for strong authentication in the European Digital Identity Framework. Article 5f(2) mandates that private relying parties in regulated sectors (banking, transport, energy, health, telecommunications, etc.) must accept the EUDI Wallet where strong user authentication for online identification is required by EU or national law or by contractual obligation. The EUDI Wallet natively satisfies SUA requirements through its LoA High assurance level. For the payment services sector specifically, the PSD2-specific variant Strong Customer Authentication (SCA) applies, which imposes additional requirements such as Dynamic Linking and authentication codes beyond the base SUA two-factor model.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-synthesized from eIDAS 2.0 Article 3(51) and Article 5f(2)",
+          "articleNumber": "synthesized from eIDAS 2.0 Article 3(51) and Article 5f(2)",
+          "displayOrder": 5
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-51",
       "definitionGroups": [
         {
@@ -15435,6 +15446,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "Authentication based on the use of at least two authentication factors from different categories of either knowledge (something only the user knows), possession (something only the user possesses), or inherence (something the user is), that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SUA. Defined in eIDAS 2.0 Article 3(51), this is the generic cross-sector term for strong authentication in the European Digital Identity Framework. Article 5f(2) mandates that private relying parties in regulated sectors (banking, transport, energy, health, telecommunications, etc.) must accept the EUDI Wallet where strong user authentication for online identification is required by EU or national law or by contractual obligation. The EUDI Wallet natively satisfies SUA requirements through its LoA High assurance level. For the payment services sector specifically, the PSD2-specific variant Strong Customer Authentication (SCA) applies, which imposes additional requirements such as Dynamic Linking and authentication codes beyond the base SUA two-factor model.",
+          "sources": [
+            {
+              "definition": "Authentication based on the use of at least two authentication factors from different categories of either knowledge (something only the user knows), possession (something only the user possesses), or inherence (something the user is), that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SUA. Defined in eIDAS 2.0 Article 3(51), this is the generic cross-sector term for strong authentication in the European Digital Identity Framework. Article 5f(2) mandates that private relying parties in regulated sectors (banking, transport, energy, health, telecommunications, etc.) must accept the EUDI Wallet where strong user authentication for online identification is required by EU or national law or by contractual obligation. The EUDI Wallet natively satisfies SUA requirements through its LoA High assurance level. For the payment services sector specifically, the PSD2-specific variant Strong Customer Authentication (SCA) applies, which imposes additional requirements such as Dynamic Linking and authentication codes beyond the base SUA two-factor model.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-synthesized from eIDAS 2.0 Article 3(51) and Article 5f(2)",
+              "articleNumber": "synthesized from eIDAS 2.0 Article 3(51) and Article 5f(2)",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [

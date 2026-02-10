@@ -380,46 +380,21 @@ RP's perimeter. The wallet connects directly to the RP's endpoint.
 
 ## 6. Comparison Matrix
 
-```
-┌──────────────────────┬──────────────────┬──────────────────┬──────────────────┐
-│                      │  Intermediary    │  Direct SaaS     │ Direct Self-     │
-│                      │                  │                  │ Hosted           │
-├──────────────────────┼──────────────────┼──────────────────┼──────────────────┤
-│ Access certificate   │ Vendor's own     │ RP's own         │ RP's own         │
-│ identity             │                  │                  │                  │
-├──────────────────────┼──────────────────┼──────────────────┼──────────────────┤
-│ Wallet display       │ Dual-party       │ Single party     │ Single party     │
-│                      │ (RPI_07)         │ (RP only)        │ (RP only)        │
-├──────────────────────┼──────────────────┼──────────────────┼──────────────────┤
-│ Wallet connects to   │ Vendor's domain  │ Vendor's domain  │ RP's domain      │
-│                      │                  │ (unless proxied) │                  │
-├──────────────────────┼──────────────────┼──────────────────┼──────────────────┤
-│ VP Token data path   │ Vendor receives  │ Vendor receives  │ RP receives      │
-│                      │ → verifies →     │ → forwards to RP │ directly         │
-│                      │ forwards → deletes│                 │                  │
-├──────────────────────┼──────────────────┼──────────────────┼──────────────────┤
-│ Private key custody  │ Vendor (own key) │ Vendor, HSM, or  │ RP (own infra)   │
-│                      │                  │ split-signing    │                  │
-├──────────────────────┼──────────────────┼──────────────────┼──────────────────┤
-│ GDPR role of vendor  │ Own legal basis  │ Data processor   │ Software vendor  │
-│                      │ (Art. 45b)       │ (Art. 28 DPA)    │ (no DPA needed)  │
-├──────────────────────┼──────────────────┼──────────────────┼──────────────────┤
-│ Data retention       │ Zero (immediate  │ Per DPA terms    │ RP's policy      │
-│                      │ deletion RPI_10) │                  │                  │
-├──────────────────────┼──────────────────┼──────────────────┼──────────────────┤
-│ RP registration      │ Vendor registers │ RP registers     │ RP registers     │
-│                      │ for RP (RPI_03)  │ itself           │ itself           │
-├──────────────────────┼──────────────────┼──────────────────┼──────────────────┤
-│ Operational burden   │ Low (vendor)     │ Medium (shared)  │ High (RP)        │
-│ on RP                │                  │                  │                  │
-├──────────────────────┼──────────────────┼──────────────────┼──────────────────┤
-│ Data residency       │ Vendor's juris.  │ Vendor's juris.  │ RP's juris.      │
-│ control              │                  │ (unless proxied) │                  │
-├──────────────────────┼──────────────────┼──────────────────┼──────────────────┤
-│ Vendor examples      │ Hopae Connect    │ Sproof Ident     │ Lissi EUDI       │
-│ (Feb 2026)           │                  │                  │ Wallet Connector │
-└──────────────────────┴──────────────────┴──────────────────┴──────────────────┘
-```
+| Aspect | Intermediary | Direct SaaS | Direct Self-Hosted |
+|---|---|---|---|
+| **Access certificate identity** | Vendor's own | RP's own | RP's own |
+| **Wallet display** | Dual-party (RPI_07) | Single party (RP only) | Single party (RP only) |
+| **Wallet connects to** | Vendor's domain | Vendor's domain (unless proxied) | RP's domain |
+| **VP Token data path** | Vendor receives → verifies → forwards → deletes | Vendor receives → forwards to RP | RP receives directly |
+| **Private key custody** | Vendor (own key) | Vendor, HSM, or split-signing | RP (own infra) |
+| **GDPR role of vendor** | Own legal basis (Art. 45b) | Data processor (Art. 28 DPA) | Software vendor (no DPA needed) |
+| **Data retention** | Zero (immediate deletion RPI_10) | Per DPA terms | RP's policy |
+| **RP registration** | Vendor registers for RP (RPI_03) | RP registers itself | RP registers itself |
+| **Operational burden on RP** | Low (vendor) | Medium (shared) | High (RP) |
+| **Data residency control** | Vendor's juris. | Vendor's juris. (unless proxied) | RP's juris. |
+| **Vendor examples (Feb 2026)** | Hopae Connect | Sproof Ident | Lissi EUDI Wallet Connector |
+
+> **Note:** The Direct SaaS model can optionally be reverse-proxied through the RP's own domain and TLS certificate, changing the wallet-facing endpoint but not the underlying data flow or GDPR implications. See [section 4.3.1](#431-response_uri-whose-domain-does-the-wallet-connect-to) for details.
 
 ---
 
