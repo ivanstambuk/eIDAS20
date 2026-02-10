@@ -10,18 +10,20 @@
 
 ## 1. Executive Summary
 
-ARF v2.8.0 is a **substantial release** that modifies 40% of all HLRs. It integrates 4 Discussion Papers (Topics T, AA, E, R), processes 44 Member State comments, and introduces a new Topic 56. The upgrade impacts **9 `hlr:` field references** in our VCQ configuration (plus 4 documentation/structural issues) and requires careful handling of renumbered, emptied, and newly added requirements.
+ARF v2.8.0 is a **substantial release** that modifies 40% of all HLRs. It integrates 4 Discussion Papers (Topics T, AA, E, R), processes 44 Member State comments, and introduces a new Topic 56. The upgrade impacts **8 newly emptied `hlr:` references** (plus 1 pre-existing empty, 3 relocated, 3 doc-only, 2 structural) in our VCQ configuration and requires careful handling of renumbered, emptied, and newly added requirements.
 
 ### Scale of Changes
 
 | Metric | Count |
 |--------|-------|
-| HLRs in v2.7.3 | 616 |
-| HLRs in v2.8.0 | 648 |
-| **Added** | **+43** |
-| **Removed** | **-11** |
+| HLRs in v2.7.3 | 616 unique Harmonized IDs (617 rows, 1 duplicate) |
+| HLRs in v2.8.0 | 648 unique Harmonized IDs (656 rows, 8 duplicates†) |
+| **Added** | **+43** Harmonized IDs |
+| **Removed** | **-11** Harmonized IDs |
 | **Text changed** | **247** |
 | Notes changed | 122 |
+
+> † 8 Harmonized IDs in v2.8.0 are shared by 2 Old IDs each (e.g., `EW-DM-38-007` maps to both `WURevocation_09` and `WURevocation_17`). The second entry in each pair is Empty — this is an ARF upstream CSV data quality issue. Since `import-arf.js` indexes by Old ID (`byHlrId`), this does not cause collisions. However, the planned `byHarmonizedId` index (Phase 2 step 5) will need a last-write-wins or array strategy for these 8 cases.
 
 ### Key Drivers (from CHANGELOG)
 
@@ -193,7 +195,9 @@ All 11 removed HLRs are from **Topic 38** and were **renumbered** — their cont
 
 ---
 
-## 5. Emptied HLRs (33 total)
+## 5. Emptied HLRs
+
+> **Verified count (pass 3):** 29 HLRs newly emptied in v2.8.0 (had content in v2.7.3). An additional 55 were already empty in v2.7.3. The table below lists the subset most relevant to our VCQ/RCA configuration.
 
 These HLRs had their text replaced with "Empty" — the requirement was withdrawn, consolidated, or deferred.
 
@@ -201,50 +205,66 @@ These HLRs had their text replaced with "Empty" — the requirement was withdraw
 
 | Topic | Count | Emptied HLR Old IDs | Assessment |
 |-------|-------|---------------------|------------|
-| Topic 27 (Registration) | 7 | Reg_13, Reg_14, Reg_15, Reg_16, Reg_18, Reg_19, Reg_24, Reg_29, Reg_31 | Certificate policy requirements restructured; some content moved to new Reg_30, Reg_32, Reg_33 |
-| Topic 9 (WUA) | 5 | WUA_11b, WUA_16, WUA_17, WUA_20, WUA_20a | Content moved to new HLR IDs (WUA_21–25) |
-| Topic 10 (Issuance) | 4 | ISSU_22a, ISSU_22b, ISSU_32, ISSU_33, ISSU_58, ISSU_60 | Metadata/access cert requirements dropped or consolidated |
+| Topic 27 (Registration) | 10 | Reg_12, Reg_13, Reg_14, Reg_15, Reg_16, Reg_18, Reg_19, Reg_24, Reg_29, Reg_31 | Certificate policy requirements restructured; some content moved to new Reg_30, Reg_32, Reg_33. `Reg_12` newly emptied (was cert policy spec). **Note:** `Reg_31` got a new Harmonized ID (`AS-MS-27-038`) with content — Old ID still resolves (see §6 Tier 1b). |
+| Topic 9 (WUA) | 5 | WUA_11b, WUA_16, WUA_17, WUA_20, WUA_20a | Content moved to new HLR IDs (WUA_21–25). **Note:** `WUA_20a` got a new Harmonized ID (`AS-WP-09-026`) with same content (see §6 Tier 1b). |
+| Topic 10 (Issuance) | 7 | ISSU_22a, ISSU_22b, ISSU_32, ISSU_32a, ISSU_33, ISSU_58, ISSU_60 | Metadata/access cert requirements dropped or consolidated. **Note:** `ISSU_32` got a new Harmonized ID (`AS-AP-10-048`) with changed text (see §6 Tier 1b). `ISSU_32a` genuinely emptied. |
 | Topic 28 (Legal Person PID) | 3 | LP_01, LP_02, LP_03 | **Entire topic content deferred** |
 | Topic 12 (Attestation Rulebooks) | 2 | ARB_27, ARB_32 | QEAA/PuB-EAA rulebook and JSON Schema requirements dropped |
 | Topic 38 (Revocation) | 1 | WURevocation_02 | WUA possession requirement dropped |
 | Topic 40 (Installation/Activation) | 1 | WIAM_11 | Content moved to WPSM_04 (Topic 56) |
-| Others | 5 | RPA_02a, ACP_06, DASH_12 (old ID, moved to new), RPRC_02, W2W_18, PAD_06 | Various |
+| Others | 6 | RPA_02a, ACP_06, DASH_12 (old ID, moved to new), RPRC_02, W2W_18, PAD_06 | Various |
 
 ---
 
 ## 6. Direct Impact on VCQ/RCA Configuration
 
-> **Ground-truth verification (2026-02-10):** Every entry below was verified against the actual YAML files using `grep`. The original assessment listed "13 HLR references" but several were overcounted — they appear only in `explanation:` text, not in `arfReference.hlr:` fields. The **actual impact** is:
-> - **9 `hlr:` field references** that need updating (broken lookups, validation failures)
-> - **4 documentation/structural issues** (explanation text, missing `hlr:` field, topic mismatch)
+> **Ground-truth verification (2026-02-10, pass 2):** Every entry below was verified against the **v2.8.0 golden source CSV** at `/tmp/arf_v280/hltr/high-level-requirements.csv`. The original impact assessment confused *Harmonized ID emptying* with *Old ID emptying* — when ARF restructures an HLR, the old Harmonized ID is emptied but the same Old ID gets a **new** Harmonized ID with content. Since `import-arf.js` indexes by Old ID (`byHlrId`), three HLRs that were flagged as "emptied" actually **still resolve to content** via their Old IDs.
+>
+> **Corrected impact (pass 3, 2026-02-10):**
+> - **8 `hlr:` field references** newly emptied in v2.8.0 (will break validation)
+> - **1 `hlr:` field reference** already empty in v2.7.3 (pre-existing bug: `RPA_09`)
+> - **3 `hlr:` field references** with content relocated to new Harmonized IDs (no breakage via `byHlrId`)
+> - **3 documentation-only** mentions (explanation text, won't break validation)
+> - **2 structural issues** (pre-existing bugs: Topic 53↔52 mismatch + `RPA_09` empty reference)
 
-### Tier 1: `hlr:` field impacts (9) — will break validation
+### Tier 1a: Newly emptied `hlr:` references (8) — will break validation after v2.8.0 import
 
-These HLR IDs appear in `arfReference.hlr:` fields and will cause `validate-vcq-arf.js` failures after import.
+These Old IDs had content in v2.7.3 but map to `isEmpty: true` in v2.8.0. After import, VCQ popovers will show "Empty" and `validate-vcq.js` will emit warnings.
 
-#### `vcq/requirements/core.yaml` (3 `hlr:` impacts)
+#### `vcq/requirements/core.yaml` (2 newly emptied)
 
-| HLR | VCQ Requirement | Location | Status | Action |
-|-----|----------------|----------|--------|--------|
-| `RPA_02a` | VEND-CORE-005 (line 259), VEND-CORE-032 (line 1701) | `hlr:` array | **Emptied** | Was: "RP SHALL include access certs by value, not reference." Requirement withdrawn. **Remove from `hlr:` arrays and update explanation text.** |
-| `Reg_15` | VEND-CORE-031 (line 1641) | `hlr:` array | **Emptied** | Was: ACA revocation method via cert policy. Content may be in ETSI standards now. **Remove from `hlr:` array, review if Reg_32 covers.** |
-| `Reg_31` | VEND-CORE-031 (line 1642) | `hlr:` array | **Emptied** | Was: Access cert naming requirement. Content moved to Reg_32 (text modified). **Update reference to Reg_32 (already in array? verify).** |
+| HLR | VCQ Requirement | Location | v2.8.0 Harmonized ID | Action |
+|-----|----------------|----------|---------------------|--------|
+| `RPA_02a` | VEND-CORE-005 (line 259), VEND-CORE-032 (line 1701) | `hlr:` array | `AS-RP-06-001` → Empty | Was: "RP SHALL include access certs by value, not reference." Requirement withdrawn. **Remove from `hlr:` arrays and update explanation text.** |
+| `Reg_15` | VEND-CORE-031 (line 1641) | `hlr:` array | `AS-MS-27-018` → Empty | Was: ACA revocation method via cert policy. Content may be in ETSI standards now. **Remove from `hlr:` array, review if Reg_32 covers.** |
 
-#### `vcq/requirements/issuer.yaml` (5 `hlr:` impacts)
+#### `vcq/requirements/issuer.yaml` (4 truly emptied)
 
-| HLR | VCQ Requirement | Location | Status | Action |
-|-----|----------------|----------|--------|--------|
-| `ISSU_22a` | VEND-ISS-037 (line 2021) | `hlr:` array | **Emptied** | Was: PID Provider metadata signing requirement. **Remove from `hlr:` array.** |
-| `ISSU_22b` | VEND-ISS-037 (line 2022) | `hlr:` array | **Emptied** | Was: Access cert in metadata requirement. **Remove from `hlr:` array.** |
-| `ISSU_32` | VEND-ISS-037 (line 2027) | `hlr:` array | **Emptied** | Was: Attestation Provider access cert in metadata. **Remove from `hlr:` array.** |
-| `Reg_14` | VEND-ISS-029 (line 1534) | `hlr:` array | **Emptied** | Was: CT logging via cert policy. **Remove from `hlr:` array.** |
-| `WUA_20a` | VEND-ISS-031 (line 1658) | `hlr:` array | **Emptied** | Content moved to new AS-WP-09-026 (same Old ID `WUA_20a`, new Harmonized ID). **Update after Harmonized ID migration; if staying on Old IDs, the reference still resolves but points to empty content.** |
+| HLR | VCQ Requirement | Location | v2.8.0 Harmonized ID | Action |
+|-----|----------------|----------|---------------------|--------|
+| `ISSU_22a` | VEND-ISS-037 (line 2021) | `hlr:` array | `AS-AP-10-030` → Empty | Was: PID Provider metadata signing requirement. **Remove from `hlr:` array.** |
+| `ISSU_22b` | VEND-ISS-037 (line 2022) | `hlr:` array | `AS-AP-10-031` → Empty | Was: Access cert in metadata requirement. **Remove from `hlr:` array.** |
+| `ISSU_32a` | VEND-ISS-037 (line 2028) | `hlr:` array | `AS-AP-10-049` → Empty | Was: Deferred issuance requirement (adjacent to `ISSU_32`). **Remove from `hlr:` array.** Note: `ISSU_32` (without `a`) has content → Tier 1b. |
+| `Reg_14` | VEND-ISS-029 (line 1534) | `hlr:` array | `AS-MS-27-017` → Empty | Was: CT logging via cert policy. **Remove from `hlr:` array.** |
 
-#### `vcq/requirements/trust_services.yaml` (1 `hlr:` impact)
+#### `vcq/requirements/trust_services.yaml` (2 truly emptied)
 
-| HLR | VCQ Requirement | Location | Status | Action |
-|-----|----------------|----------|--------|--------|
-| `Reg_13` | (line 923) | `hlr:` array | **Emptied** | Was: CT logging requirement via cert policy. **Remove from `hlr:` array.** |
+| HLR | VCQ Requirement | Location | v2.8.0 Harmonized ID | Action |
+|-----|----------------|----------|---------------------|--------|
+| `Reg_12` | VEND-TSP-017 (line 922) | `hlr:` array | `AS-MS-27-015` → Empty | Was: Certificate Policy specification requirement. **Remove from `hlr:` array; update explanation text (line 878).** |
+| `Reg_13` | VEND-TSP-017 (line 923) | `hlr:` array | `AS-MS-27-016` → Empty | Was: CT logging requirement via cert policy. **Remove from `hlr:` array.** |
+
+### Tier 1b: Content relocated to new Harmonized IDs (3) — no breakage via `byHlrId`
+
+These HLRs had their **old Harmonized IDs emptied**, but the same Old IDs were reassigned to **new Harmonized IDs with content**. Since `import-arf.js` indexes by Old ID (`byHlrId[hlrId]`), the VCQ lookups will resolve correctly to the new content after v2.8.0 import. **No immediate action required**, but review the changed text.
+
+| HLR | VCQ Requirement | Old Harmonized ID (emptied) | New Harmonized ID (has content) | Text change |
+|-----|----------------|----------------------------|-------------------------------|-------------|
+| `Reg_31` | VEND-CORE-031 (line 1642) | `AS-MS-27-037` → Empty | `AS-MS-27-038` | Reworded: was "cert policy SHALL require..." → now "access cert SHALL contain a name..." (similar intent, different framing) |
+| `ISSU_32` | VEND-ISS-037 (line 2027) | `AS-AP-10-047` → Empty | `AS-AP-10-048` | Changed: was "include access cert in metadata" → now "sign Credential Issuer metadata per OpenID4VCI §12.2.3" (substantive change) |
+| `WUA_20a` | VEND-ISS-031 (line 1658) | `AS-WP-09-024` → Empty | `AS-WP-09-026` | Moved: same text "comply with TS3", new Harmonized ID (no content change) |
+
+> **⚠️ Review needed for `ISSU_32`:** The text changed substantively — from "include access cert in metadata" to "sign metadata per OpenID4VCI". The VCQ requirement VEND-ISS-037 may need its explanation text updated to reflect the new ARF requirement text, even though the `hlr:` lookup won't break.
 
 ### Tier 2: Documentation-only impacts (3) — won't break validation
 
@@ -256,11 +276,12 @@ These HLRs appear only in `explanation:` text (not in `arfReference.hlr:` fields
 | `WURevocation_18` | VEND-ISS-041 (lines 2257–2263) | `explanation:` text only | **Renumbered** | Discussed in explanation; VEND-ISS-041's `arfReference` has `topic: Topic 38` but deliberately omits `hlr:`. **Update explanation text; consider adding `hlr:` field after Topic 38 is added to `relevantTopics`.** |
 | `WURevocation_19` | VEND-ISS-041 (lines 2269–2276) | `explanation:` text only | **Renumbered** | Same as above — discussed in explanation only. **Update explanation text.** |
 
-### Tier 3: Structural issues (1) — pre-existing bug
+### Tier 3: Structural issues (2) — pre-existing bugs
 
 | Issue | VCQ Requirement | Location | Description |
 |-------|----------------|----------|-------------|
-| **Topic 53 ↔ 52 mismatch** | VEND-CORE-048 (line 2540), VEND-CORE-049 (line 2590) | `arfReference.topic` | These requirements reference `topic: Topic 53` with `hlr: RPI_01`, but `RPI_01` is actually assigned to **Topic 52** (Relying Party Intermediaries) in the ARF CSV. Topic 53 does not exist in ARF v2.7.3 or v2.8.0. This is a **pre-existing bug** that predates the v2.8.0 upgrade. **Fix: change `topic: Topic 53` → `topic: Topic 52`.** |
+| **Topic 53 ↔ 52 mismatch** | VEND-CORE-048 (line 2540), VEND-CORE-049 (line 2590) | `arfReference.topic` | These requirements reference `topic: Topic 53` with `hlr: RPI_01`, but `RPI_01` is actually assigned to **Topic 52** (Relying Party Intermediaries) in the ARF CSV. Topic 53 exists in ARF as "Zero-Knowledge Proofs" (`ZKP_01`–`ZKP_09`) — an unrelated topic. This is a **pre-existing bug** (topic mismatch, not missing topic). **Fix: change `topic: Topic 53` → `topic: Topic 52`.** |
+| **`RPA_09` already empty** | VEND-CORE-047 (line 2477) | `hlr:` array | `RPA_09` was **already Empty in v2.7.3** — this is a pre-existing VCQ data quality issue, not caused by the v2.8.0 upgrade. The VCQ reference was pointing to an empty HLR before the upgrade. **Remove from `hlr:` array; update explanation text (line 2498).** |
 
 ### ~~`WUA_20` — false positive~~
 
@@ -319,7 +340,8 @@ The original assessment listed `WUA_20` (without `a`) as an issuer.yaml impact. 
 
    Add to `relevantTopics`:
    - `38` — Wallet Unit Revocation (referenced by `issuer.yaml`, restructured in v2.8.0)
-   - `53` — referenced by `core.yaml` but currently excluded from import
+   - `52` — already in `relevantTopics` ✅ (after fixing Topic 53 → 52 mismatch in §6 Tier 3, no change needed)
+   - `53` — Zero-Knowledge Proofs (no VCQ `hlr:` references to ZKP_* yet, but referenced by `core.yaml` `topic:` field — after fixing the mismatch, this becomes optional; add for future coverage if ZKP requirements are planned)
    - `56` — Wallet Provider Support and Maintenance (new in v2.8.0)
 
    Add corresponding entries to `topicAnchors` for all three topics.
@@ -338,7 +360,7 @@ The original assessment listed `WUA_20` (without `a`) as an issuer.yaml impact. 
 
 ### Phase 2: Update VCQ references and migrate to Harmonized IDs
 
-> **Rationale:** This phase combines two related tasks: (a) handling the 9 `hlr:` field references (+ 3 explanation-text mentions) that are emptied/removed in v2.8.0, and (b) migrating all VCQ `arfReference.hlr` values from Old IDs to Harmonized IDs. Doing these together **in one pass** avoids touching the same YAML lines twice.
+> **Rationale:** This phase combines two related tasks: (a) handling the 8 newly emptied `hlr:` references + 1 pre-existing empty reference (+ 3 explanation-text mentions) from v2.8.0, and (b) migrating all VCQ `arfReference.hlr` values from Old IDs to Harmonized IDs. Doing these together **in one pass** avoids touching the same YAML lines twice. Note: 3 additional `hlr:` references (`Reg_31`, `ISSU_32`, `WUA_20a`) had their Harmonized IDs changed but their Old IDs still resolve to content — these require no removal action, only text review (see §6 Tier 1b).
 >
 > **Why Harmonized IDs?** VCQ YAML files currently use Old IDs (e.g., `ISSU_29`, `RPI_01`, `WUA_20a`) in `arfReference.hlr` fields. Old IDs are not stable across ARF versions — when HLRs are renumbered (like Topic 38's `AS-WP` → `EW-DM` restructuring), the Old ID stays but the Harmonized ID changes. Using Harmonized IDs makes references **version-pinned and unambiguous**.
 
@@ -363,46 +385,47 @@ VCQ YAML (arfReference.hlr) → build-vcq.js → vcq-data.json → VendorQuestio
            print(f\"{row['Index']} → {row['Harmonized_ID']}\")
    "
    ```
-2. **Triage the 13 affected references** — for each, decide:
-   - **Emptied but content moved**: update `hlr:` to the *new* HLR's Harmonized ID (e.g., `WUA_20` → Harmonized ID of `WUA_21`)
-   - **Emptied and withdrawn**: remove the `hlr:` line, update `explanation:` to note the withdrawal
-   - **Removed/renumbered**: use the new Harmonized ID (e.g., `WURevocation_18` → `AS-WP-38-018`)
-3. **Migrate ALL remaining `hlr:` values** from Old IDs to Harmonized IDs:
+2. **Handle the 9 empty references** (8 newly emptied + 1 pre-existing; see §6 Tier 1a + Tier 3) — for each:
+   - **Emptied and withdrawn** (e.g., `RPA_02a`, `RPA_09`, `Reg_15`, `Reg_12`, `Reg_13`, `Reg_14`): remove the `hlr:` line, update `explanation:` to note the withdrawal
+   - **Emptied but covered by sibling** (e.g., `ISSU_22a/22b`, `ISSU_32a`): remove from `hlr:` array, verify remaining HLRs in the array still cover the VCQ requirement
+   - Note: `Reg_31`, `ISSU_32`, `WUA_20a` (§6 Tier 1b) need **no `hlr:` removal** — their Old IDs resolve to new content. Review explanation text for `ISSU_32` (text changed substantively).
+3. **Update the 3 explanation-text mentions** (see §6 Tier 2) — update references to `WUA_11b`, `WURevocation_18`, `WURevocation_19` in explanation text
+4. **Migrate ALL remaining `hlr:` values** from Old IDs to Harmonized IDs:
    - `config/vcq/requirements/core.yaml` (28 arfReferences)
-   - `config/vcq/requirements/issuer.yaml` (36 arfReferences)
+   - `config/vcq/requirements/issuer.yaml` (37 arfReferences, incl. 1 topic-only)
    - `config/vcq/requirements/trust_services.yaml` (4 arfReferences)
    - `config/vcq/requirements/intermediary.yaml` (23 arfReferences)
-4. **Update `import-arf.js`** — add a `byHarmonizedId` index alongside `byHlrId`:
+5. **Update `import-arf.js`** — add a `byHarmonizedId` index alongside `byHlrId`:
    ```js
    // Line 247: add parallel index
    byHlrId[hlrId] = requirement;
    byHarmonizedId[raw.Harmonized_ID] = requirement;
    ```
    This ensures both Old IDs (for search, backward compat) and Harmonized IDs (for VCQ lookups) resolve.
-5. **Update `validate-vcq-arf.js`** — change validation lookup to use Harmonized IDs:
+6. **Update `validate-vcq-arf.js`** — change validation lookup to use Harmonized IDs:
    ```js
    // Before:
    const validHlrIds = new Set(arf.requirements.map(r => r.hlrId));
    // After:
    const validHlrIds = new Set(arf.requirements.map(r => r.harmonizedId));
    ```
-6. **Update `validate-vcq.js`** (lines 340-384) — this script **also** validates ARF references against `byHlrId`. Update the lookup to use `byHarmonizedId`:
+7. **Update `validate-vcq.js`** (lines 340-384) — this script **also** validates ARF references against `byHlrId`. Update the lookup to use `byHarmonizedId`:
    ```js
    // Line 340:
    const validHlrIds = new Set(Object.keys(arfData.byHarmonizedId || arfData.byHlrId || {}));
    ```
-7. **Update `exportExcel.js`** (lines 174-196) — the Excel export uses `arfData.byHlrId[id]` to look up specs/notes. After migration, VCQ will pass Harmonized IDs. Update to check both indices:
+8. **Update `exportExcel.js`** (lines 174-196) — the Excel export uses `arfData.byHlrId[id]` to look up specs/notes. After migration, VCQ will pass Harmonized IDs. Update to check both indices:
    ```js
    const hlrData = arfData.byHarmonizedId?.[id] || arfData.byHlrId?.[id];
    ```
-8. **Update search index display** — `build-search-index.js` (line 261-268) uses `req.hlrId` for the search `term` and `sectionTitle`. Show both IDs for discoverability:
+9. **Update search index display** — `build-search-index.js` (line 261-268) uses `req.hlrId` for the search `term` and `sectionTitle`. Show both IDs for discoverability:
    ```js
    term: `${req.hlrId} (${req.harmonizedId})`,
    ```
-9. **Run validation:** `node scripts/validate-vcq-arf.js && npm run validate:vcq` — all references should resolve
-10. **🔒 COMMIT:** `feat: migrate VCQ ARF references to Harmonized IDs and handle v2.8.0 emptied HLRs`
+10. **Run validation:** `node scripts/validate-vcq-arf.js && npm run validate:vcq` — all references should resolve
+11. **🔒 COMMIT:** `feat: migrate VCQ ARF references to Harmonized IDs and handle v2.8.0 emptied HLRs`
 
-**Scope:** 91 `arfReference` entries across 4 YAML files. Only entries with a non-empty `hlr:` field need updating.
+**Scope:** 92 `arfReference` entries across 4 YAML files (28 + 37 + 4 + 23). Only entries with a non-empty `hlr:` field need Harmonized ID migration.
 
 ### Phase 3: Review new HLRs for coverage gaps
 
@@ -440,10 +463,22 @@ https://github.com/.../blob/main/docs/annexes/annex-2/annex-2.02-high-level-requ
      | grep '^#' | head -60
    ```
 2. **Compare with current `topicAnchors`** in `arf-config.yaml` — identify any that changed
-3. **Add new entries:**
-   - Topic 38 (Wallet Unit Revocation) — added in Phase 1, verify anchor
-   - Topic 53 — added in Phase 1, verify anchor
-   - Topic 56 (Wallet Provider Support and Maintenance) — needs new anchor
+
+   > **Pre-computed comparison (v2.8.0 golden source, 2026-02-10):** Of the 17 existing `topicAnchors`, **only Topic 9 changed**. All others are identical.
+   >
+   > | Topic | Status | Detail |
+   > |-------|--------|--------|
+   > | 1, 3, 6, 7, 10, 11, 12, 16, 24, 27, 31, 42, 43, 44, 48, 52 | ✅ Same | Anchors unchanged in v2.8.0 |
+   > | **9** | ❌ **Changed** | Title extended: "Wallet Unit Attestation" → "Wallet Unit Attestation **and Wallet Instance Attestation**" |
+   > | | | Old: `a236-topic-9---wallet-unit-attestation` |
+   > | | | New: `a236-topic-9---wallet-unit-attestation-and-wallet-instance-attestation` |
+   >
+   > **Impact of Topic 9 change:** All WUA_* HLR deep links (20+ links) will 404 if the anchor is not updated.
+
+3. **Add new entries** (verified anchors from v2.8.0 golden source):
+   - Topic 38: `a2322-topic-38---wallet-unit-revocation`
+   - Topic 53: `a2331-topic-53-zero-knowledge-proofs`
+   - Topic 56: `a2334-topic-56---wallet-provider-support-and-maintenance`
 4. **Update `arf-config.yaml`** with corrected anchor slugs
 5. **Pin both `csvUrl` AND `baseUrl` to `v2.8.0` tag** instead of `main`:
    ```yaml
@@ -524,20 +559,22 @@ https://github.com/.../blob/main/docs/annexes/annex-2/annex-2.02-high-level-requ
 | Risk | Severity | Mitigation |
 |------|----------|------------|
 | Local annotations in discussion-topics lost during overwrite | Medium | Diff before overwrite; merge manually |
-| VCQ `hlr:` fields referencing emptied/removed HLRs break validation | High | Phase 2 addresses 9 `hlr:` impacts directly; 3 explanation-text mentions updated in same pass |
+| VCQ `hlr:` fields referencing emptied HLRs break validation | High | Phase 2 addresses 8 newly emptied + 1 pre-existing empty `hlr:` references (§6 Tier 1a + Tier 3); 3 more have content under new Harmonized IDs (§6 Tier 1b, no breakage) |
 | New ETSI requirements (ISSU_67–73) not covered by VCQ | Medium | Phase 3 gap analysis |
 | Topic 56 creates vendor obligations not in VCQ | Low | Only relevant if vendor is Wallet Provider (most are not in VCQ scope) |
 | Legal Person PID (Topic 28) entirely deferred | Low | If we have LP-related requirements, flag as deferred |
-| Deep links 404 after v2.8.0 heading format change | High | Phase 3.5: validate all `topicAnchors` against actual v2.8.0 headings |
+| **Topic 9 anchor changed** — 20+ WUA_* deep links will 404 | **High** | Phase 3.5 step 2: update anchor from `a236-topic-9---wallet-unit-attestation` → `...and-wallet-instance-attestation` |
+| Deep links 404 after v2.8.0 heading format change | High | Phase 3.5: pre-computed comparison shows only Topic 9 anchor changed among existing topics |
 | Old IDs silently point to wrong content after renumbering | Medium | Phase 2: migrate all `arfReference.hlr` to Harmonized IDs |
 | `blob/main` links break when `main` moves to v2.9.0 | Medium | Phase 3.5: pin both `baseUrl` and `csvUrl` to `v2.8.0` tag |
 | Topics 38 + 53 excluded from `relevantTopics` — HLRs silently dropped | High | Phase 1 step 7: add missing topics to `arf-config.yaml` |
 | `import-arf-hlr.js` not run — Requirements Browser shows stale data | Medium | Phase 1 step 8 + Phase 4 step 2: run both ARF import scripts |
 | `csvUrl` race condition — `main` advances mid-upgrade | High | Phase 3.5 step 5: pin `csvUrl` to tag, not `refs/heads/main` |
-| `validate-vcq.js` also validates ARF (not just `validate-vcq-arf.js`) | Medium | Phase 2 step 6: update both validation scripts |
-| Excel export `byHlrId` lookup fails after Harmonized ID migration | Medium | Phase 2 step 7: update `exportExcel.js` to use `byHarmonizedId` fallback |
-| **Pre-existing: Topic 53 ↔ 52 mismatch** in VEND-CORE-048/049 | Medium | Phase 2: fix `topic: Topic 53` → `topic: Topic 52` (RPI_01 belongs to Topic 52). Topic 53 does not exist in ARF. |
-| Impact assessment overcounted (13 → 9+4) due to explanation-text mentions | Low | Corrected in §6 (2026-02-10). Future assessments: grep `hlr:` fields separately from free text. |
+| `validate-vcq.js` also validates ARF (not just `validate-vcq-arf.js`) | Medium | Phase 2 step 7: update both validation scripts |
+| `validate:vcq-arf` not in `validate:ci` — CI gives false green | Medium | Consider adding `validate:vcq-arf` to `validate:ci` pipeline |
+| Excel export `byHlrId` lookup fails after Harmonized ID migration | Medium | Phase 2 step 8: update `exportExcel.js` to use `byHarmonizedId` fallback |
+| **Pre-existing: Topic 53 ↔ 52 mismatch** in VEND-CORE-048/049 | Medium | Phase 2: fix `topic: Topic 53` → `topic: Topic 52` (RPI_01 belongs to Topic 52; Topic 53 is ZKP, unrelated) |
+| Impact assessment overcounted HLR impacts due to Harmonized ID confusion | Low | Corrected in §6 (2026-02-10, pass 2). Root cause: impact assessment compared Harmonized IDs which were emptied, but same Old IDs got new Harmonized IDs with content. |
 
 ---
 
