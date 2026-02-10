@@ -18,8 +18,12 @@ source:
   # Base URL for human-readable links
   baseUrl: "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v2.8.0/docs/annexes/annex-2"
 
-  # Preferred document for deep linking (organized by topic)
+  # Document organized by topic (uses Old IDs like RPI_01)
   byTopicDoc: "annex-2.02-high-level-requirements-by-topic.md"
+
+  # Document organized by category (uses Harmonized IDs like AS-RP-51-001)
+  # This is the preferred deep link target since VCQ uses Harmonized IDs
+  byCategoryDoc: "annex-2.03-high-level-requirements-by-category.md"
 
 # Topics relevant to VCQ and RCA tools
 # Only HLRs from these topics will be imported (set to null to import all)
@@ -99,6 +103,16 @@ topicAnchors:
 
   # Wallet Provider
   56: "a2334-topic-56---wallet-provider-support-and-maintenance"
+
+# Category anchors for annex-2.03 (by-category document)
+# Maps Harmonized ID prefix → GitHub anchor in annex-2.03
+categoryAnchors:
+  AS-WP: "1-wallet-providers"
+  AS-MS: "2-member-states--registrars"
+  AS-AP: "3-attestation--pid-providers"
+  AS-RP: "4-relying-parties"
+  EW-PIO: "5-protocols--interoperability"
+  EW-DM: "6-data-models--attestation-rules"
 
 # Output configuration
 output:

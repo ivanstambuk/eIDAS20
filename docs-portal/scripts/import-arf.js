@@ -162,7 +162,13 @@ function transformMarkdownLinks(text, baseUrl) {
 
 function processRequirements(rawRequirements, config) {
     const { relevantTopics, topicAnchors, settings } = config;
-    const baseUrl = `${config.source.baseUrl}/${config.source.byTopicDoc}`;
+    // Primary deep link target: annex-2.03 (by-category, contains Harmonized IDs)
+    const categoryBaseUrl = config.source.byCategoryDoc
+        ? `${config.source.baseUrl}/${config.source.byCategoryDoc}`
+        : null;
+    // Fallback: annex-2.02 (by-topic, contains Old IDs)
+    const topicBaseUrl = `${config.source.baseUrl}/${config.source.byTopicDoc}`;
+    const categoryAnchors = config.categoryAnchors || {};
 
     const processed = [];
     const byHlrId = {};
@@ -187,27 +193,45 @@ function processRequirements(rawRequirements, config) {
             if (!relevantTopics.includes(topicNumber)) continue;
         }
 
-        // Build deep link with subsection precision if available
-        const subsection = raw.Subsection || null;
-        let anchor = topicAnchors?.[topicNumber] || '';
+        // Build deep link — prefer annex-2.03 (by-category, has Harmonized IDs)
+        // Derive category anchor from the Harmonized ID prefix (e.g., AS-RP-51-001 → "AS-RP")
+        const harmonizedId = raw.Harmonized_ID;
+        let deepLink;
 
-        // If we have a subsection, generate a more precise anchor
-        // GitHub anchor format: lowercase, spaces→hyphens, strips special chars
-        // Important: GitHub does NOT collapse consecutive hyphens (e.g., "B - HLRs" → "b---hlrs")
-        //            and does NOT add a trailing hyphen from <!-- omit --> comments
-        if (subsection) {
-            const subsectionAnchor = subsection
-                .toLowerCase()
-                .replace(/[^\w\s-]/g, '')  // Remove special chars except hyphens
-                .replace(/\s+/g, '-')       // Spaces to hyphens
-                .replace(/^-/, '')          // Remove leading hyphen
-                .replace(/-+$/, '');        // Remove trailing hyphens
-            if (subsectionAnchor) {
-                anchor = subsectionAnchor;
+        if (categoryBaseUrl && harmonizedId) {
+            // Extract prefix: "AS-RP-51-001" → "AS-RP", "EW-PIO-01-014" → "EW-PIO"
+            const parts = harmonizedId.split('-');
+            // Try 3-part prefix first (EW-PIO), then 2-part (AS-RP)
+            const prefix3 = parts.slice(0, 3).join('-');
+            const prefix2 = parts.slice(0, 2).join('-');
+            const categoryAnchor = categoryAnchors[prefix3] || categoryAnchors[prefix2];
+
+            if (categoryAnchor) {
+                deepLink = `${categoryBaseUrl}#${categoryAnchor}`;
             }
         }
 
-        const deepLink = anchor ? `${baseUrl}#${anchor}` : baseUrl;
+        // Fallback to topic-based deep link (annex-2.02) if category anchor not found
+        if (!deepLink) {
+            const subsection = raw.Subsection || null;
+            let anchor = topicAnchors?.[topicNumber] || '';
+
+            if (subsection) {
+                const subsectionAnchor = subsection
+                    .toLowerCase()
+                    .replace(/[^\w\s-]/g, '')
+                    .replace(/\s+/g, '-')
+                    .replace(/^-/, '')
+                    .replace(/-+$/, '');
+                if (subsectionAnchor) {
+                    anchor = subsectionAnchor;
+                }
+            }
+
+            deepLink = anchor ? `${topicBaseUrl}#${anchor}` : topicBaseUrl;
+        }
+
+        const subsection = raw.Subsection || null;
 
         // Process the requirement
         const requirement = {
@@ -223,8 +247,8 @@ function processRequirements(rawRequirements, config) {
             subsection: subsection,
 
             // Content (with markdown links transformed to absolute URLs)
-            specification: transformMarkdownLinks(specification, baseUrl),
-            notes: transformMarkdownLinks(raw.Notes || null, baseUrl),
+            specification: transformMarkdownLinks(specification, topicBaseUrl),
+            notes: transformMarkdownLinks(raw.Notes || null, topicBaseUrl),
 
             // Generated
             isEmpty: isEmpty,
@@ -247,7 +271,6 @@ function processRequirements(rawRequirements, config) {
         byHlrId[hlrId] = requirement;
 
         // Index by Harmonized ID (content-wins: non-empty takes precedence)
-        const harmonizedId = raw.Harmonized_ID;
         if (harmonizedId) {
             if (!byHarmonizedId[harmonizedId] || !requirement.isEmpty) {
                 byHarmonizedId[harmonizedId] = requirement;
@@ -265,7 +288,7 @@ function processRequirements(rawRequirements, config) {
             topicMetadata[topicNumber] = {
                 number: topicNumber,
                 title: raw.Topic_Title,
-                anchor: anchor,
+                anchor: topicAnchors?.[topicNumber] || '',
                 hlrCount: 0
             };
         }

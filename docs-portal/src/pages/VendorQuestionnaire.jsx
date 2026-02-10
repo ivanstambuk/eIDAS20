@@ -700,7 +700,7 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
     // Render a single HLR badge
     const renderHlrBadge = (hlrId, hlrData, isInteractive = false) => {
         const arfUrl = hlrData?.deepLink ||
-            'https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v2.8.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md';
+            'https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v2.8.0/docs/annexes/annex-2/annex-2.03-high-level-requirements-by-category.md';
         const isEmpty = hlrData?.isEmpty;
 
         return (
