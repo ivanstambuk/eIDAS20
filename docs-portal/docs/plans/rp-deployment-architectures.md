@@ -2,8 +2,7 @@
 
 > **Created:** 2026-02-10  
 > **Last updated:** 2026-02-10  
-> **Authors:** Stakeholder analysis session  
-> **Related:** [Implementation Plan](./deployment-architecture-filter.md)
+> **Authors:** Stakeholder analysis session
 
 ---
 
