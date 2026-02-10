@@ -533,7 +533,6 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 | **Current version** | v2.8.0 (DEC-290) |
 | **Pinned to** | `refs/tags/v2.8.0` (released 2026-02-02) |
 | **Location** | `03_arf/` (copy, not submodule) |
-| **Upgrade plan** | `docs-portal/docs/plans/arf-280-upgrade-plan.md` |
 | **Diff script** | `docs-portal/scripts/diff-arf-hlrs.py` |
 
 ### ARF Import Scripts (⚠️ Two Parallel Scripts)

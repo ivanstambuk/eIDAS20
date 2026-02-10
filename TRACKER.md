@@ -8,19 +8,19 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-02-11 00:00 CET |
+| **Last Updated** | 2026-02-11 00:04 CET |
 | **Version** | V4.1.1 |
 | **Portal Stats** | 44 docs, 391K words, 363 terms, 2,384 article links, 487 RCA reqs, 153 VCQ reqs (1,323 clarification Qs), 510 ARF HLRs (v2.8.0, 20 topics) |
-| **Next Action** | **ARF v2.8.0 upgrade** — Phase 0+1 complete, executing Phase 2 (VCQ reference updates + Harmonized ID migration) |
+| **Next Action** | *(No active plan — ready for next task)* |
 
 
 ---
 
-## Active Implementation Plan
+## Completed Plans
 
-| Plan | Status | Path |
-|------|--------|------|
-| **ARF v2.8.0 Upgrade** | 🔄 Phase 1 complete | `docs-portal/docs/plans/arf-280-upgrade-plan.md` |
+| Plan | Status | Reference |
+|------|--------|-----------|
+| ARF v2.8.0 Upgrade | ✅ Complete | DEC-290, DEC-291 |
 | VCQ-ARF Harmonization (DEC-257/263) | ✅ Complete | `.agent/plans/VCQ_ARF_HARMONIZATION_PLAN.md` |
 | RCA↔VCQ Alignment Audit (DEC-281) | ✅ Complete | `.agent/archives/2026-01-29-rca-vcq-audit/` |
 

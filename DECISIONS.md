@@ -2802,8 +2802,8 @@ ARF v2.8.0 was released on 2026-02-02 with substantial changes affecting 40% of 
 | `config/vcq/requirements/*.yaml` | 8 emptied HLR fixes, 2 new requirements |
 | `public/data/arf-hlr-data.json` | Rebuilt with v2.8.0 data |
 
-**Plan Document:** `docs/plans/arf-280-upgrade-plan.md`  
-**Impact Assessment:** `docs/research/arf-280-impact-assessment.md`
+**Plan Document:** *(deleted after completion — all phases ✅, merged to master)*  
+**Impact Assessment:** *(deleted after completion — regenerable from CSV/git history)*
 
 **Related Decisions:**
 - DEC-291: Harmonized ID Migration (companion decision)
