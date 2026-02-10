@@ -166,6 +166,7 @@ function processRequirements(rawRequirements, config) {
 
     const processed = [];
     const byHlrId = {};
+    const byHarmonizedId = {};  // Content-wins: non-empty takes precedence
     const byTopic = {};
     const topicMetadata = {};
 
@@ -191,19 +192,18 @@ function processRequirements(rawRequirements, config) {
         let anchor = topicAnchors?.[topicNumber] || '';
 
         // If we have a subsection, generate a more precise anchor
-        // GitHub anchor format: lowercase, spaces→hyphens, remove special chars
-        // Note: GitHub headers often have trailing spaces (before <!-- omit --> comments)
-        //       which become trailing hyphens in the anchor - we must add one
+        // GitHub anchor format: lowercase, spaces→hyphens, strips special chars
+        // Important: GitHub does NOT collapse consecutive hyphens (e.g., "B - HLRs" → "b---hlrs")
+        //            and does NOT add a trailing hyphen from <!-- omit --> comments
         if (subsection) {
             const subsectionAnchor = subsection
                 .toLowerCase()
                 .replace(/[^\w\s-]/g, '')  // Remove special chars except hyphens
                 .replace(/\s+/g, '-')       // Spaces to hyphens
-                .replace(/-+/g, '-')        // Collapse multiple hyphens
-                .replace(/^-/, '');         // Remove leading hyphen
+                .replace(/^-/, '')          // Remove leading hyphen
+                .replace(/-+$/, '');        // Remove trailing hyphens
             if (subsectionAnchor) {
-                // Add trailing hyphen - GitHub headers have trailing space before <!-- comments
-                anchor = subsectionAnchor + '-';
+                anchor = subsectionAnchor;
             }
         }
 
@@ -243,8 +243,16 @@ function processRequirements(rawRequirements, config) {
 
         processed.push(requirement);
 
-        // Index by HLR ID
+        // Index by HLR ID (Old ID)
         byHlrId[hlrId] = requirement;
+
+        // Index by Harmonized ID (content-wins: non-empty takes precedence)
+        const harmonizedId = raw.Harmonized_ID;
+        if (harmonizedId) {
+            if (!byHarmonizedId[harmonizedId] || !requirement.isEmpty) {
+                byHarmonizedId[harmonizedId] = requirement;
+            }
+        }
 
         // Index by topic
         if (!byTopic[topicNumber]) {
@@ -264,7 +272,7 @@ function processRequirements(rawRequirements, config) {
         topicMetadata[topicNumber].hlrCount++;
     }
 
-    return { processed, byHlrId, byTopic, topicMetadata };
+    return { processed, byHlrId, byHarmonizedId, byTopic, topicMetadata };
 }
 
 // ============================================================================
@@ -302,7 +310,7 @@ async function main() {
         const rawRequirements = parseCSV(csvText);
 
         // Process requirements
-        const { processed, byHlrId, byTopic, topicMetadata } =
+        const { processed, byHlrId, byHarmonizedId, byTopic, topicMetadata } =
             processRequirements(rawRequirements, config);
 
         // Generate stats
@@ -315,6 +323,7 @@ async function main() {
             stats,
             requirements: processed,
             byHlrId,
+            byHarmonizedId,
             byTopic,
             topicMetadata
         };

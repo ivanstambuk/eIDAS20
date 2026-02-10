@@ -48,8 +48,8 @@ requirements:
     arfReference:
       topic: Topic 27
       hlr:
-        - Reg_01
-        - Reg_01a
+        - AS-MS-27-001
+        - AS-MS-27-002
     roles:
       - issuer
     productCategories:
@@ -102,8 +102,8 @@ requirements:
     arfReference:
       topic: Topic 10
       hlr:
-        - ISSU_29
-        - ISSU_12a
+        - AS-AP-10-044
+        - AS-AP-10-014
     roles:
       - issuer
     productCategories:
@@ -148,7 +148,7 @@ requirements:
       any change.
     arfReference:
       topic: Topic 10
-      hlr: ISSU_29
+      hlr: AS-AP-10-044
     roles:
       - issuer
     productCategories:
@@ -210,7 +210,7 @@ requirements:
       register.
     arfReference:
       topic: Topic 42
-      hlr: QTSPAS_02
+      hlr: AS-AP-42-002
     obligation: MUST
   - id: VEND-ISS-005
     category: issuance
@@ -268,8 +268,8 @@ requirements:
     arfReference:
       topic: Topic 10
       hlr:
-        - ISSU_12
-        - ISSU_12a
+        - AS-AP-10-013
+        - AS-AP-10-014
     roles:
       - issuer
     productCategories:
@@ -330,7 +330,7 @@ requirements:
       attestations to the wallet secure cryptographic device.
     arfReference:
       topic: Topic 10
-      hlr: ISSU_01a
+      hlr: AS-AP-10-001
     roles:
       - issuer
     productCategories:
@@ -391,7 +391,7 @@ requirements:
     deadline: "2027-11-21"
     arfReference:
       topic: Topic 10
-      hlr: ISSU_01a
+      hlr: AS-AP-10-001
     obligation: MUST
   - id: VEND-ISS-008
     category: issuance
@@ -400,6 +400,12 @@ requirements:
       The platform should support efficient batch issuance when a
       user requests multiple attestations simultaneously, avoiding
       redundant authentication steps.
+
+      **ISSU_64 — Mandatory batch issuance (ARF v2.8.0):**
+      PID Providers, Attestation Providers, and Wallet Units SHALL
+      support the features of OpenID4VCI enabling the batch
+      issuance of PIDs or attestations. This elevated batch
+      issuance from optional to mandatory in v2.8.0.
 
       **ISSU_03 — W3C Digital Credentials API:**
       Wallet Units, PID Providers, and Attestation Providers SHALL
@@ -442,7 +448,9 @@ requirements:
     deadline: "2027-11-21"
     arfReference:
       topic: Topic 10
-      hlr: ISSU_03
+      hlr:
+        - AS-AP-10-003
+        - AS-AP-10-090
     obligation: SHOULD
   - id: VEND-ISS-009
     category: issuance
@@ -494,7 +502,7 @@ requirements:
     deadline: "2027-11-21"
     arfReference:
       topic: Topic 10
-      hlr: ISSU_05
+      hlr: AS-AP-10-005
     obligation: MUST
   - id: VEND-ISS-010
     category: issuance
@@ -541,7 +549,7 @@ requirements:
       obtain the data for the attributes from authentic sources.
     arfReference:
       topic: Topic 10
-      hlr: ISSU_50
+      hlr: AS-AP-10-074
     roles:
       - issuer
     productCategories:
@@ -593,8 +601,8 @@ requirements:
     arfReference:
       topic: Topic 10
       hlr:
-        - ISSU_50
-        - ISSU_59
+        - AS-AP-10-074
+        - AS-AP-10-085
     obligation: MUST
   - id: VEND-ISS-012
     category: issuance
@@ -603,6 +611,14 @@ requirements:
       The platform must support workflows for renewing attestations
       before expiry and re-issuing attestations when the underlying
       data changes. Users should be notified of upcoming expiry.
+
+      **ISSU_65 — Re-issuance identity binding (ARF v2.8.0):**
+      A PID Provider or Attestation Provider of device-bound
+      attestations SHALL verify that a re-issued PID or
+      device-bound attestation is issued to the **same Wallet Unit**
+      as the existing PID or attestation. This can be achieved by
+      issuing a refresh token during original issuance and
+      requiring it during re-issuance.
 
       **ISSU_05 — Re-issuance triggers:**
       Re-issuance can be triggered by:
@@ -641,8 +657,9 @@ requirements:
     arfReference:
       topic: Topic 10
       hlr:
-        - ISSU_05
-        - ISSU_59
+        - AS-AP-10-005
+        - AS-AP-10-085
+        - AS-AP-10-091
     obligation: MUST
   - id: VEND-ISS-013
     category: revocation
@@ -694,9 +711,9 @@ requirements:
     arfReference:
       topic: Topic 7
       hlr:
-        - VCR_03
-        - VCR_11
-        - VCR_12
+        - AS-AP-07-004
+        - AS-AP-07-017
+        - AS-AP-07-018
     obligation: MUST
   - id: VEND-ISS-014
     category: revocation
@@ -739,8 +756,8 @@ requirements:
     arfReference:
       topic: Topic 7
       hlr:
-        - VCR_03
-        - VCR_09
+        - AS-AP-07-004
+        - AS-AP-07-015
     roles:
       - issuer
     productCategories:
@@ -793,7 +810,7 @@ requirements:
     deadline: "2027-11-21"
     arfReference:
       topic: Topic 7
-      hlr: VCR_09
+      hlr: AS-AP-07-015
     obligation: SHOULD
   - id: VEND-ISS-016
     category: revocation
@@ -841,7 +858,7 @@ requirements:
     deadline: "2027-11-21"
     arfReference:
       topic: Topic 7
-      hlr: VCR_09
+      hlr: AS-AP-07-015
     obligation: SHOULD
   - id: VEND-ISS-017
     category: security
@@ -901,9 +918,9 @@ requirements:
     arfReference:
       topic: Topic 10
       hlr:
-        - ISSU_35
-        - ISSU_35a
-        - ISSU_35b
+        - AS-AP-10-056
+        - AS-AP-10-057
+        - AS-AP-10-058
     obligation: MUST
   - id: VEND-ISS-018
     category: security
@@ -955,7 +972,7 @@ requirements:
     deadline: "2027-11-21"
     arfReference:
       topic: Topic 10
-      hlr: ISSU_35
+      hlr: AS-AP-10-056
     obligation: MUST
   - id: VEND-ISS-019
     category: security
@@ -968,7 +985,7 @@ requirements:
       **ISSU_17 — Device binding key lifecycle:**
       A PID Provider SHALL implement device binding for all PIDs
       it issues, ensuring the PID is cryptographically bound to
-      the WSCA/WSCD in the Wallet Unit (per WUA_11–WUA_11b in
+      the WSCA/WSCD in the Wallet Unit (per WUA_11a/AS-WP-09-015 in
       Topic 9). When the provider's signing key rotates, existing
       device bindings remain valid (they reference the wallet's
       key, not the provider's key), but the provider's public key
@@ -1014,8 +1031,8 @@ requirements:
     arfReference:
       topic: Topic 10
       hlr:
-        - ISSU_17
-        - ISSU_35
+        - AS-AP-10-022
+        - AS-AP-10-056
     obligation: MUST
   - id: VEND-ISS-020
     category: registration
@@ -1069,7 +1086,7 @@ requirements:
     deadline: "2027-11-21"
     arfReference:
       topic: Topic 12
-      hlr: ARB_06
+      hlr: EW-DM-12-007
     obligation: SHOULD
   - id: VEND-ISS-021
     category: registration
@@ -1126,9 +1143,9 @@ requirements:
     arfReference:
       topic: Topic 12
       hlr:
-        - ARB_03
-        - ARB_04
-        - ARB_06
+        - EW-DM-12-004
+        - EW-DM-12-005
+        - EW-DM-12-007
     obligation: MUST
   - id: VEND-ISS-022
     category: usage
@@ -1185,7 +1202,7 @@ requirements:
     deadline: "2027-11-21"
     arfReference:
       topic: Topic 43
-      hlr: EDP_09
+      hlr: EW-PIO-43-001
     obligation: MUST
   - id: VEND-ISS-023
     category: usage
@@ -1241,8 +1258,8 @@ requirements:
     arfReference:
       topic: Topic 10
       hlr:
-        - ISSU_35
-        - ISSU_35b
+        - AS-AP-10-056
+        - AS-AP-10-058
     obligation: MUST NOT
   - id: VEND-ISS-024
     category: usage
@@ -1298,7 +1315,7 @@ requirements:
     deadline: "2027-11-21"
     arfReference:
       topic: Topic 10
-      hlr: ISSU_12
+      hlr: AS-AP-10-013
     obligation: MUST
   - id: VEND-ISS-026
     category: issuance
@@ -1345,12 +1362,12 @@ requirements:
     arfReference:
       topic: Topic 3
       hlr:
-        - PID_01
-        - PID_04
-        - PID_05
-        - PID_08
-        - PID_09
-        - PID_10
+        - EW-DM-03-01
+        - EW-DM-03-04
+        - EW-DM-03-05
+        - EW-DM-03-08
+        - EW-DM-03-09
+        - EW-DM-03-10
     roles:
       - issuer
     productCategories:
@@ -1379,7 +1396,7 @@ requirements:
 
       **ISSU_12d — Revocation chaining constraint:**
       If an Attestation Provider supports revocation chaining
-      for its attestations (per WURevocation_19 in Topic 38),
+      for its attestations (per WURevocation_19/AS-WP-38-019 in Topic 38),
       the expiration date of the attestation SHALL be no later
       than the expiration date of the WUA presented during the
       issuance process. This constrains format-level validity
@@ -1409,9 +1426,9 @@ requirements:
     arfReference:
       topic: Topic 10
       hlr:
-        - ISSU_12
-        - ISSU_12d
-        - ISSU_27
+        - AS-AP-10-013
+        - AS-AP-10-017
+        - AS-AP-10-039
     roles:
       - issuer
     productCategories:
@@ -1468,11 +1485,11 @@ requirements:
     arfReference:
       topic: Topic 7
       hlr:
-        - VCR_02
-        - VCR_03
-        - VCR_03a
-        - VCR_04
-        - VCR_05
+        - AS-AP-07-003
+        - AS-AP-07-004
+        - AS-AP-07-005
+        - AS-AP-07-006
+        - AS-AP-07-007
     roles:
       - issuer
     productCategories:
@@ -1529,9 +1546,7 @@ requirements:
       and update it without undue delay when changes occur.
     arfReference:
       topic: Topic 27
-      hlr:
-        - Reg_08
-        - Reg_14
+      hlr: AS-MS-27-010
     roles:
       - issuer
     productCategories:
@@ -1589,11 +1604,11 @@ requirements:
     arfReference:
       topic: Topic 31
       hlr:
-        - PPNot_02
-        - PPNot_03
-        - PPNot_04
-        - PPNot_07
-        - PuBPNot_03
+        - AS-WP-31-001
+        - AS-MS-31-007
+        - AS-MS-31-008
+        - AS-MS-31-011
+        - AS-MS-31-013
     roles:
       - issuer
     productCategories:
@@ -1654,8 +1669,8 @@ requirements:
     arfReference:
       topic: Topic 9
       hlr:
-        - WUA_11a
-        - WUA_20a
+        - AS-WP-09-015
+        - AS-WP-09-026
     roles:
       - issuer
     productCategories:
@@ -1711,8 +1726,8 @@ requirements:
     arfReference:
       topic: Topic 43
       hlr:
-        - EDP_09
-        - EDP_11
+        - EW-PIO-43-001
+        - AS-AP-43-001
     roles:
       - issuer
     productCategories:
@@ -1765,8 +1780,8 @@ requirements:
     arfReference:
       topic: Topic 44
       hlr:
-        - RPRC_14
-        - RPRC_22
+        - AS-AP-44-002
+        - AS-AP-44-004
     roles:
       - issuer
     productCategories:
@@ -1824,12 +1839,12 @@ requirements:
     arfReference:
       topic: Topic 3
       hlr:
-        - PID_14
-        - PID_17
-        - PID_18
-        - PID_19
-        - PID_20
-        - PID_21
+        - EW-DM-03-14
+        - EW-DM-03-17
+        - EW-DM-03-18
+        - EW-DM-03-19
+        - EW-DM-03-20
+        - EW-DM-03-21
     roles:
       - issuer
     productCategories:
@@ -1887,12 +1902,12 @@ requirements:
     arfReference:
       topic: Topic 3
       hlr:
-        - PID_06
-        - PID_07
-        - PID_11
-        - PID_12
-        - PID_13
-        - PID_16
+        - EW-DM-03-06
+        - EW-DM-03-07
+        - EW-DM-03-11
+        - EW-DM-03-12
+        - EW-DM-03-13
+        - EW-DM-03-16
     roles:
       - issuer
     productCategories:
@@ -1944,8 +1959,7 @@ requirements:
       specifications.
     arfReference:
       topic: Topic 7
-      hlr:
-        - VCR_12a
+      hlr: AS-AP-07-019
     roles:
       - issuer
     productCategories:
@@ -2011,21 +2025,18 @@ requirements:
     arfReference:
       topic: Topic 10
       hlr:
-        - ISSU_06
-        - ISSU_07
-        - ISSU_14
-        - ISSU_15
-        - ISSU_18
-        - ISSU_18a
-        - ISSU_22
-        - ISSU_22a
-        - ISSU_22b
-        - ISSU_25
-        - ISSU_26
-        - ISSU_27b
-        - ISSU_27c
-        - ISSU_32
-        - ISSU_32a
+        - AS-AP-10-006
+        - AS-AP-10-007
+        - AS-AP-10-019
+        - AS-AP-10-020
+        - AS-AP-10-023
+        - AS-AP-10-024
+        - AS-AP-10-029
+        - AS-AP-10-037
+        - AS-AP-10-038
+        - AS-AP-10-041
+        - AS-AP-10-042
+        - AS-AP-10-048
     roles:
       - issuer
     productCategories:
@@ -2254,7 +2265,7 @@ requirements:
       resides. If the Wallet Provider revokes the WUA, the issuer
       must respond according to its cascading revocation obligations.
 
-      **WURevocation_18 — PID Provider mandatory cascading (SHALL):**
+      **WURevocation_18 (AS-WP-38-018) — PID Provider mandatory cascading (SHALL):**
       A PID Provider issuing revocable PIDs SHALL, for each of its
       valid PIDs, regularly verify whether the Wallet Provider
       revoked the Wallet Unit on which that PID is residing, using
@@ -2266,10 +2277,10 @@ requirements:
       CIR 2024/2977, Article 5, 4.(b). The verification mechanism
       is specified in Technical Specification 3 (TS3).
 
-      **WURevocation_19 — Attestation Provider policy (MAY + SHALL):**
+      **WURevocation_19 (AS-WP-38-019) — Attestation Provider policy (MAY + SHALL):**
       An Attestation Provider issuing revocable attestations MAY
       decide to revoke an attestation when the Wallet Unit is
-      revoked, using the same mechanism as WURevocation_18.
+      revoked, using the same mechanism as WURevocation_18/AS-WP-38-018.
       However, the Attestation Provider SHALL publish its policy
       regarding cascading revocation. This published policy allows
       Relying Parties to assess the level of trust they can place
@@ -2297,6 +2308,15 @@ requirements:
       revocation should be minimised. The polling frequency and
       status list cache times determine the effective cascading
       revocation latency.
+
+      **WURevocation_13 (EW-DM-38-014) — Harm assessment (ARF v2.8.0):**
+      Before requesting a Wallet Provider to revoke a Wallet Unit
+      (e.g., when a natural person has died), the PID Provider
+      SHALL ensure that the revocation does not harm the interests
+      of any of the stakeholders. The PID Provider SHALL include a
+      documented policy ensuring this assessment is performed.
+      This is primarily a PID Provider obligation but affects the
+      issuance platform's revocation request workflow.
     legalBasis:
       regulation: 2024/2977
       article: Article 5
@@ -2307,6 +2327,10 @@ requirements:
       associated with that Wallet.
     arfReference:
       topic: Topic 38
+      hlr:
+        - AS-WP-38-018
+        - AS-WP-38-019
+        - EW-DM-38-014
     roles:
       - issuer
     productCategories:
@@ -2322,4 +2346,110 @@ requirements:
       - VEND-ISS-013: Status list publication mechanism
       - VEND-ISS-014: Revocation propagation times
       - VEND-ISS-031: WUA verification at issuance
+    obligation: MUST
+  - id: VEND-ISS-042
+    category: issuance
+    requirement: Comply with applicable ETSI issuance policy (NCP+ or QCP-l+)
+    explanation: |
+      ARF v2.8.0 introduced explicit ETSI certification requirements for
+      all issuer types. The applicable policy depends on the provider type:
+
+      **ISSU_67 — PID Provider policy (NCP+):**
+      A PID Provider SHALL have a policy governing all aspects of PID
+      issuance and management. The policy SHALL comply with at least the
+      extended normalised certificate policy ('NCP+') requirements as
+      specified in ETSI EN 319 411-1, insofar applicable for PIDs.
+
+      **ISSU_69 — QEAA Provider policy (QCP-l+):**
+      A QEAA Provider SHALL have a policy governing all aspects of QEAA
+      issuance and management. The policy SHALL comply with at least the
+      policy for qualified certificates issued to a natural person where
+      the private key and the related certificate reside on a qualified
+      electronic signature or seal creation device (QCP-l+) as specified
+      in ETSI EN 319 411-2, insofar applicable for QEAAs.
+
+      **ISSU_72 — PuB-EAA Provider policy (NCP+):**
+      A PuB-EAA Provider SHALL have a policy governing all aspects of
+      PuB-EAA issuance and management, also complying with NCP+
+      requirements as for PID Providers.
+
+      **Implementation impact:**
+      Vendors building issuance platforms need to ensure their operational
+      practices, key management, and audit trails meet the applicable ETSI
+      policy requirements, which include physical security, personnel
+      vetting, incident response procedures, and regular audits by a
+      conformity assessment body.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 45d
+      paragraph: "1"
+    legalText: |
+      Qualified trust service providers issuing qualified electronic
+      attestations of attributes shall comply with the requirements laid
+      down in this Regulation.
+    arfReference:
+      topic: Topic 10
+      hlr:
+        - AS-AP-10-093
+        - AS-AP-10-095
+        - AS-AP-10-098
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
+    deadline: "2027-11-21"
+    obligation: MUST
+  - id: VEND-ISS-043
+    category: issuance
+    requirement: Ensure signing certificates comply with ETSI TS 119 412-6
+    explanation: |
+      ARF v2.8.0 introduced explicit ETSI certificate profile requirements
+      for all issuer types. The applicable clause of ETSI TS 119 412-6
+      depends on the provider type:
+
+      **ISSU_68 — PID Provider signing certificates:**
+      PID Providers SHALL ensure that the certificates they use for
+      signing PIDs comply with all applicable requirements in
+      ETSI TS 119 412-6, in particular Clause 4.
+
+      **ISSU_70 — QEAA Provider signing certificates:**
+      QEAA Providers SHALL ensure that the certificates they use for
+      signing QEAAs comply with ETSI TS 119 412-6, in particular Clause 7.
+
+      **ISSU_71 — Non-qualified EAA Provider signing certificates:**
+      Providers of non-qualified EAAs SHALL ensure that the certificates
+      they use for signing EAAs comply with ETSI TS 119 412-6, in
+      particular Clause 6.
+
+      **ISSU_73 — PuB-EAA Provider signing certificates:**
+      PuB-EAA Providers SHALL ensure that the certificates they use for
+      signing PuB-EAAs comply with ETSI TS 119 412-6, in particular
+      Clause 8.
+
+      **Implementation impact:**
+      The vendor's certificate provisioning and lifecycle management
+      must produce certificates that conform to the applicable ETSI
+      clause. This includes specific certificate extensions, key usage
+      flags, subject fields, and validity constraints defined in
+      ETSI TS 119 412-6.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 45d
+      paragraph: "1"
+    legalText: |
+      Qualified trust service providers issuing qualified electronic
+      attestations of attributes shall comply with the requirements laid
+      down in this Regulation.
+    arfReference:
+      topic: Topic 10
+      hlr:
+        - AS-AP-10-094
+        - AS-AP-10-096
+        - AS-AP-10-097
+        - AS-AP-10-099
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
+    deadline: "2027-11-21"
     obligation: MUST

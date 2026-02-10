@@ -45,9 +45,9 @@ requirements:
     arfReference:
       topic: Topic 52
       hlr:
-        - RPI_06
-        - RPI_07
-        - RPRC_19a
+        - AS-RP-51-006
+        - AS-RP-51-008
+        - EW-DM-44-018
     legalText: |
       When an intermediary requests attestations from a wallet unit, the wallet 
       unit shall display both the identity of the intermediary and the identity 
@@ -97,7 +97,7 @@ requirements:
       that indicated pursuant to paragraph 2, point (c).
     arfReference:
       topic: Topic 52
-      hlr: RPI_06
+      hlr: AS-RP-51-006
     roles:
       - relying_party
     productCategories:
@@ -144,7 +144,7 @@ requirements:
       that indicated pursuant to paragraph 2, point (c).
     arfReference:
       topic: Topic 52
-      hlr: RPI_06
+      hlr: AS-RP-51-006
     roles:
       - relying_party
     productCategories:
@@ -191,8 +191,8 @@ requirements:
     arfReference:
       topic: Topic 52
       hlr:
-        - RPI_08
-        - RPI_09
+        - AS-RP-51-011
+        - AS-RP-51-012
     roles:
       - relying_party
     productCategories:
@@ -248,7 +248,7 @@ requirements:
       - ISO/IEC TS 18013-7:2024 (remote)
     arfReference:
       topic: Topic 24
-      hlr: ProxId_01a
+      hlr: EW-PIO-24-002
     roles:
       - relying_party
     productCategories:
@@ -301,9 +301,9 @@ requirements:
     arfReference:
       topic: Topic 52
       hlr:
-        - RPI_08
-        - RPI_09
-        - RPI_10
+        - AS-RP-51-011
+        - AS-RP-51-012
+        - AS-RP-51-013
     roles:
       - relying_party
     productCategories:
@@ -355,7 +355,7 @@ requirements:
       for which it is responsible.
     arfReference:
       topic: Topic 1
-      hlr: OIA_12
+      hlr: EW-PIO-01-020
     roles:
       - relying_party
     productCategories:
@@ -407,9 +407,9 @@ requirements:
     arfReference:
       topic: Topic 1
       hlr:
-        - OIA_13
-        - OIA_14
-        - OIA_15
+        - EW-PIO-01-021
+        - EW-PIO-01-022
+        - EW-PIO-01-023
     roles:
       - relying_party
     productCategories:
@@ -449,7 +449,7 @@ requirements:
       Attestation signature.
     arfReference:
       topic: Topic 1
-      hlr: OIA_14
+      hlr: EW-PIO-01-022
     legalBasis:
       regulation: 2014/910
       article: Article 22
@@ -507,8 +507,8 @@ requirements:
     arfReference:
       topic: Topic 1
       hlr:
-        - OIA_12
-        - OIA_13
+        - EW-PIO-01-020
+        - EW-PIO-01-021
     roles:
       - relying_party
     productCategories:
@@ -576,9 +576,9 @@ requirements:
     arfReference:
       topic: Topic 7
       hlr:
-        - VCR_11
-        - VCR_12
-        - VCR_13
+        - AS-AP-07-017
+        - AS-AP-07-018
+        - AS-AP-07-020
     roles:
       - relying_party
     productCategories:
@@ -633,7 +633,7 @@ requirements:
       authenticity of the wallet unit.
     arfReference:
       topic: Topic 52
-      hlr: RPI_09
+      hlr: AS-RP-51-012
     roles:
       - relying_party
     productCategories:
@@ -690,7 +690,7 @@ requirements:
       and electronic attestations of attributes.
     arfReference:
       topic: Topic 52
-      hlr: RPI_09
+      hlr: AS-RP-51-012
     roles:
       - relying_party
     productCategories:
@@ -745,7 +745,7 @@ requirements:
       of the transaction.
     arfReference:
       topic: Topic 52
-      hlr: RPI_08
+      hlr: AS-RP-51-011
     roles:
       - relying_party
     productCategories:
@@ -844,7 +844,7 @@ requirements:
       of the transaction.
     arfReference:
       topic: Topic 52
-      hlr: RPI_08
+      hlr: AS-RP-51-011
     roles:
       - relying_party
     productCategories:
@@ -1046,7 +1046,7 @@ requirements:
       by the no-storage mandate.
     arfReference:
       topic: Topic 52
-      hlr: RPI_10
+      hlr: AS-RP-51-013
     legalBasis:
       regulation: 2014/910
       article: Article 5b
@@ -1111,8 +1111,8 @@ requirements:
     arfReference:
       topic: Topic 52
       hlr:
-        - RPI_05
-        - RPRC_19a
+        - AS-RP-51-005
+        - EW-DM-44-018
     roles:
       - relying_party
     productCategories:
@@ -1180,9 +1180,9 @@ requirements:
     arfReference:
       topic: Topic 3
       hlr:
-        - PID_02
-        - RPRC_20a
-        - ARB_02
+        - EW-DM-03-02
+        - EW-DM-44-020
+        - EW-DM-12-003
     notes: |
       Per ARF RPRC_20a: "Relying Party Instances and Wallet Units SHALL support
       the extension for [ISO/IEC 18013-5] or the extension for [OpenID4VP]..."
@@ -1245,7 +1245,7 @@ requirements:
     deadline: "2027-11-21"
     arfReference:
       topic: Topic 12
-      hlr: ARB_02
+      hlr: EW-DM-12-003
     obligation: MUST
   - id: VEND-INT-025
     deploymentArchitectures: []
@@ -1520,8 +1520,8 @@ requirements:
     arfReference:
       topic: Topic 6
       hlr:
-        - RPA_01
-        - RPI_07
+        - AS-WP-06-001
+        - AS-RP-51-008
     obligation: MUST
   - id: VEND-INT-030
     deploymentArchitectures:
@@ -1585,8 +1585,8 @@ requirements:
     arfReference:
       topic: Topic 48
       hlr:
-        - DATA_DLT_07
-        - DATA_DLT_08
+        - AS-RP-48-005
+        - AS-WP-48-004
     roles:
       - relying_party
     productCategories:
@@ -1696,9 +1696,9 @@ requirements:
     arfReference:
       topic: Topic 52
       hlr:
-        - RPI_06
-        - RPI_03
-        - RPI_07
+        - AS-RP-51-006
+        - AS-RP-51-003
+        - AS-RP-51-008
     legalBasis:
       regulation: 2025/848
       article: Article 8
@@ -1776,8 +1776,8 @@ requirements:
     arfReference:
       topic: Topic 52
       hlr:
-        - RPI_04
-        - RPI_07a
+        - AS-RP-51-004
+        - AS-RP-51-009
     legalBasis:
       regulation: 2025/848
       article: Article 6

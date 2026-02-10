@@ -54,14 +54,18 @@ if (fs.existsSync(ARF_CONFIG)) {
     }
 }
 
-// Build ARF lookup sets
+// Build ARF lookup sets — support both Old IDs (hlrId) and Harmonized IDs
 const validHlrIds = new Set(arf.requirements.map(r => r.hlrId));
+const validHarmonizedIds = new Set(arf.requirements.map(r => r.harmonizedId).filter(Boolean));
 const validTopics = new Set(arf.requirements.map(r => `Topic ${r.topicNumber}`));
 
-// Build HLR to topic mapping for consistency checks
+// Build HLR to topic mapping for consistency checks (both ID formats)
 const hlrToTopic = new Map();
 for (const r of arf.requirements) {
     hlrToTopic.set(r.hlrId, r.topicNumber);
+    if (r.harmonizedId) {
+        hlrToTopic.set(r.harmonizedId, r.topicNumber);
+    }
 }
 
 // ========================================================================
@@ -134,7 +138,10 @@ for (const req of vcq.requirements) {
     const hlrArray = Array.isArray(hlrs) ? hlrs : [hlrs];
 
     for (const hlrId of hlrArray) {
-        if (!validHlrIds.has(hlrId)) {
+        // Check both Old ID and Harmonized ID formats
+        const isValidOldId = validHlrIds.has(hlrId);
+        const isValidHarmonizedId = validHarmonizedIds.has(hlrId);
+        if (!isValidOldId && !isValidHarmonizedId) {
             errors.push({
                 id: req.id,
                 type: 'INVALID_HLR',

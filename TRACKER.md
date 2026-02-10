@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-02-10 20:16 CET |
+| **Last Updated** | 2026-02-10 21:30 CET |
 | **Version** | V4.1.1 |
-| **Portal Stats** | 44 docs, 391K words, 363 terms, 2,384 article links, 487 RCA reqs, 147 VCQ reqs (1,323 clarification Qs), 559 ARF HLRs |
-| **Next Action** | **ARF v2.8.0 upgrade** — execute Phase 0 (branch+tag) then Phase 1 of 7-phase plan in `docs-portal/docs/plans/arf-280-upgrade-plan.md` |
+| **Portal Stats** | 44 docs, 391K words, 363 terms, 2,384 article links, 487 RCA reqs, 147 VCQ reqs (1,323 clarification Qs), 510 ARF HLRs (v2.8.0, 20 topics) |
+| **Next Action** | **ARF v2.8.0 upgrade** — Phase 0+1 complete, executing Phase 2 (VCQ reference updates + Harmonized ID migration) |
 
 
 ---
@@ -20,6 +20,7 @@
 
 | Plan | Status | Path |
 |------|--------|------|
+| **ARF v2.8.0 Upgrade** | 🔄 Phase 1 complete | `docs-portal/docs/plans/arf-280-upgrade-plan.md` |
 | VCQ-ARF Harmonization (DEC-257/263) | ✅ Complete | `.agent/plans/VCQ_ARF_HARMONIZATION_PLAN.md` |
 | RCA↔VCQ Alignment Audit (DEC-281) | ✅ Complete | `.agent/archives/2026-01-29-rca-vcq-audit/` |
 
@@ -37,6 +38,8 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-02-10 21:30 | **Feat: ARF v2.8.0 Upgrade — Phase 0+1** — Created feature branch `feat/arf-280-upgrade` + `pre-arf-280` tag. Imported all v2.8.0 source files from golden clone at `/tmp/arf_v280/`: CSV (656 rows), annexes, main doc, media (figures renumbered 6→7, 7→8, etc., new Fig 6 Wallet Provider statechart), discussion topics (5 files), technical specs (README + TS2). Fixed `arf-config.yaml`: added Topics 38 (Wallet Unit Revocation), 53 (ZKP), 56 (Wallet Provider Support) to `relevantTopics`; updated Topic 9 anchor (`wallet-unit-attestation` → `wallet-unit-attestation-and-wallet-instance-attestation`); added `topicAnchors` for 38/53/56. Re-ran both ARF imports: `import-arf.js` (510 HLRs, 20 topics) + `import-arf-hlr.js` (572 requirements). |
+| 2026-02-10 21:18 | **Retro: ARF v2.8.0 Plan Deep Review** — 4-pass deep-dive retrospective on upgrade plan. Corrected HLR/impact counts (pass 3→4), identified 8 duplicate Harmonized IDs (5 empty tombstones in Topic 38, 3 genuinely different reqs sharing ID), found 19 pre-existing topic label mismatches across 12 VCQ reqs, verified 201 `hlr:` refs resolve to v2.8.0 Old IDs. Implemented 5 retro improvements: (1) GitHub anchor slug snippet, (2) AGENTS.md expanded ARF Data Indices with byHlrId keying docs + content-wins guard code + file locations table, (3) corrected exportExcel.js/VendorQuestionnaire.jsx paths, (4) TERMINOLOGY.md +3 terms (Empty Tombstone, Content-Wins Strategy, Semantic Topic Label), (5) Plan Phase 2 step 5 updated with content-wins guard + row-order explanation. 1 commit: `6c8bba9c`. |
 | 2026-02-10 20:16 | **Refine: ARF v2.8.0 Upgrade Plan** — Deep codebase analysis of upgrade plan found 9 issues (3 critical, 4 medium, 2 low). Critical: Topics 38/53 missing from `relevantTopics` (silently drops HLRs), two parallel ARF import scripts undocumented, `csvUrl` pointing to `main` (race condition). Plan expanded 5→7 phases: added Phase 0 (rollback branch+tag), merged Phase 2+2.5 (avoids double-editing YAML), enhanced Phase 4 (search index, import-arf-hlr.js, Excel export). 13 risk entries (up from 8). Retro: 6 improvements — AGENTS.md Rule 19 (codebase-first plan review), ARF dual-script docs, arf-config.yaml critical config section, byHlrId/byHarmonizedId index pattern, relevantTopics cross-check in validate-vcq-arf.js (catches Topics 38/53 bug), TERMINOLOGY.md Old ID + ID Migration terms. 2 commits: `ee7cc5e0`, `93af4737`. |
 | 2026-02-10 18:30 | **Assessment: ARF v2.8.0 Impact** — Full diff of ARF v2.7.3→v2.8.0: +43 added HLRs, -11 removed, 247 text changed, 33 emptied. 13 VCQ references impacted (3 in core.yaml, 8 in issuer.yaml, 1 in trust_services.yaml). New Topic 56 (Wallet Provider Support & Maintenance). Created 5-phase upgrade plan (`arf-280-upgrade-plan.md`), raw diff report (`arf-280-impact-assessment.md`), reusable `diff-arf-hlrs.py` script. SCA/SUA definitions synthesized. RP deployment comparison matrix converted to markdown table. Retro: AGENTS.md ARF CSV format + version tracking; TERMINOLOGY.md ARF Data Model section (4 terms); source validation in build-terminology.js. |
 | 2026-02-10 13:17 | **Fix: Case-Insensitive Abbreviation Search + Terminology Formatting** — Two fixes: (1) **Search**: Orama's `exact: true` is case-sensitive, so lowercase abbreviation searches ("wua") failed. Added `termLower` field to search index (build-time lowercase copy of `term`); runtime queries `termLower` with `searchQuery.toLowerCase()`. (2) **Terminology display**: "— Internal , Synthesized from" had extra space (CSS `inline-flex` + `gap` splitting text nodes into flex children) and wrong capitalization. Fix: wrapped attribution in single `<span>` to make one flex child; lowercased "Synthesized" → "synthesized". Retro: AGENTS.md CSS-first debugging gotcha + termLower pattern; TERMINOLOGY.md: `termLower`, `Exact Match Boost` terms; ⚠️ code comments in useSearch.js and Terminology.jsx. 2 commits: `5370bfa9`, `c511f098`. |
