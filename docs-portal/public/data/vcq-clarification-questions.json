@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-02-10T05:20:52.786Z",
+  "generatedAt": "2026-02-10T05:23:52.484Z",
   "schemaVersion": 1,
   "stats": {
     "totalRequirements": 146,
     "totalQuestions": 825,
     "byDimension": {
-      "technical_implementation": 107,
+      "technical_implementation": 105,
       "data_handling": 15,
       "auditability": 25,
       "supply_chain": 7,
       "security": 67,
       "capability": 99,
-      "compliance_completeness": 23,
+      "compliance_completeness": 24,
       "lifecycle": 59,
-      "operational": 77,
+      "operational": 78,
       "contract_terms": 3,
       "compliance_evidence": 42,
       "limitations": 5,
@@ -24,7 +24,7 @@
       "sla": 46,
       "interoperability": 42,
       "incident_response": 22,
-      "flexibility": 25,
+      "flexibility": 24,
       "risk_management": 1,
       "physical_security": 1,
       "documentation": 17,
@@ -33,7 +33,7 @@
       "access_control": 1,
       "training": 1,
       "international_transfers": 1,
-      "compliance_monitoring": 20,
+      "compliance_monitoring": 21,
       "user_experience": 17,
       "data_integrity": 1,
       "transparency": 1,
@@ -1901,33 +1901,33 @@
     "VEND-INT-001": [
       {
         "id": "Q1",
-        "text": "How do you communicate both the intermediary's identity and the ultimate Relying Party's identity to the wallet for user display?",
+        "text": "How does the product ensure both identity data sources are present in each presentation request — the intermediary's access certificate (containing the intermediary's name and identifier) and the RPRC_19a extension (containing the intermediated RP's name and identifier)?",
         "dimension": "technical_implementation"
       },
       {
         "id": "Q2",
-        "text": "What data elements are included in the RP identity information (name, logo, registration status, intended use)?",
-        "dimension": "technical_implementation"
+        "text": "What RPRC_19a extension fields does the product populate for the intermediated RP (user-friendly name, unique identifier, Registrar URL, intended use identifier, intended use description)?",
+        "dimension": "compliance_completeness"
       },
       {
         "id": "Q3",
-        "text": "How is the RP identity information kept current when RP details change?",
+        "text": "How is the intermediated RP's identity information kept current when RP registration details change?",
         "dimension": "lifecycle"
       },
       {
         "id": "Q4",
-        "text": "How do you handle cases where the wallet does not display dual identities correctly?",
+        "text": "How does the product handle cases where the wallet rejects the request or warns the user due to mismatched or missing identity data?",
         "dimension": "operational"
       },
       {
         "id": "Q5",
-        "text": "Can the organization customize how their identity is presented to wallet users?",
-        "dimension": "flexibility"
+        "text": "What controls ensure the intermediated RP's identity in the RPRC_19a extension matches their actual registration at the Registrar?",
+        "dimension": "compliance_monitoring"
       },
       {
         "id": "Q6",
-        "text": "How does your solution render the 'on behalf of' relationship in the wallet authorization screen (e.g., utilizing client_metadata vs client_id_scheme)?",
-        "dimension": "technical_implementation"
+        "text": "How does the product handle multi-RP scenarios where the intermediary serves many RPs — how is the correct RP identity selected per request?",
+        "dimension": "operational"
       }
     ],
     "VEND-INT-002": [

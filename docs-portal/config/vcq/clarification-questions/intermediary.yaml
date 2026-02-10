@@ -23,23 +23,23 @@ requirements:
   VEND-INT-001:
     questions:
       - id: Q1
-        text: "How do you communicate both the intermediary's identity and the ultimate Relying Party's identity to the wallet for user display?"
+        text: "How does the product ensure both identity data sources are present in each presentation request — the intermediary's access certificate (containing the intermediary's name and identifier) and the RPRC_19a extension (containing the intermediated RP's name and identifier)?"
         dimension: technical_implementation
       - id: Q2
-        text: "What data elements are included in the RP identity information (name, logo, registration status, intended use)?"
-        dimension: technical_implementation
+        text: "What RPRC_19a extension fields does the product populate for the intermediated RP (user-friendly name, unique identifier, Registrar URL, intended use identifier, intended use description)?"
+        dimension: compliance_completeness
       - id: Q3
-        text: "How is the RP identity information kept current when RP details change?"
+        text: "How is the intermediated RP's identity information kept current when RP registration details change?"
         dimension: lifecycle
       - id: Q4
-        text: "How do you handle cases where the wallet does not display dual identities correctly?"
+        text: "How does the product handle cases where the wallet rejects the request or warns the user due to mismatched or missing identity data?"
         dimension: operational
       - id: Q5
-        text: "Can the organization customize how their identity is presented to wallet users?"
-        dimension: flexibility
+        text: "What controls ensure the intermediated RP's identity in the RPRC_19a extension matches their actual registration at the Registrar?"
+        dimension: compliance_monitoring
       - id: Q6
-        text: "How does your solution render the 'on behalf of' relationship in the wallet authorization screen (e.g., utilizing client_metadata vs client_id_scheme)?"
-        dimension: technical_implementation
+        text: "How does the product handle multi-RP scenarios where the intermediary serves many RPs — how is the correct RP identity selected per request?"
+        dimension: operational
 
   # ============================================================================
   # VEND-INT-002: Request Integrity - No Request Modification
