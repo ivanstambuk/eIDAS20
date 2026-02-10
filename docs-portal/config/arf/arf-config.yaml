@@ -13,10 +13,10 @@ schemaVersion: 1
 # Data source configuration
 source:
   # Machine-readable CSV (semicolon-delimited, UTF-8 with BOM)
-  csvUrl: "https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/refs/heads/main/hltr/high-level-requirements.csv"
+  csvUrl: "https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/refs/tags/v2.8.0/hltr/high-level-requirements.csv"
 
   # Base URL for human-readable links
-  baseUrl: "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2"
+  baseUrl: "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v2.8.0/docs/annexes/annex-2"
 
   # Preferred document for deep linking (organized by topic)
   byTopicDoc: "annex-2.02-high-level-requirements-by-topic.md"

@@ -192,19 +192,18 @@ function processRequirements(rawRequirements, config) {
         let anchor = topicAnchors?.[topicNumber] || '';
 
         // If we have a subsection, generate a more precise anchor
-        // GitHub anchor format: lowercase, spaces→hyphens, remove special chars
-        // Note: GitHub headers often have trailing spaces (before <!-- omit --> comments)
-        //       which become trailing hyphens in the anchor - we must add one
+        // GitHub anchor format: lowercase, spaces→hyphens, strips special chars
+        // Important: GitHub does NOT collapse consecutive hyphens (e.g., "B - HLRs" → "b---hlrs")
+        //            and does NOT add a trailing hyphen from <!-- omit --> comments
         if (subsection) {
             const subsectionAnchor = subsection
                 .toLowerCase()
                 .replace(/[^\w\s-]/g, '')  // Remove special chars except hyphens
                 .replace(/\s+/g, '-')       // Spaces to hyphens
-                .replace(/-+/g, '-')        // Collapse multiple hyphens
-                .replace(/^-/, '');         // Remove leading hyphen
+                .replace(/^-/, '')          // Remove leading hyphen
+                .replace(/-+$/, '');        // Remove trailing hyphens
             if (subsectionAnchor) {
-                // Add trailing hyphen - GitHub headers have trailing space before <!-- comments
-                anchor = subsectionAnchor + '-';
+                anchor = subsectionAnchor;
             }
         }
 

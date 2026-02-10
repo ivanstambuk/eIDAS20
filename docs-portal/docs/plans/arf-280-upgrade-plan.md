@@ -21,7 +21,7 @@
 | **1** | Import v2.8.0 files | ✅ Done | `6b7ff77d` |
 | **2** | Update VCQ references + Harmonized ID migration | ✅ Done | `c0d6463a` |
 | **3** | Review new HLRs for coverage gaps | ✅ Done | `d3c00a45` |
-| **3.5** | Validate deep links + pin URLs | ⬜ Not started | — |
+| **3.5** | Validate deep links + pin URLs | ✅ Done | `adf5b904` |
 | **4** | Rebuild and validate | ⬜ Not started | — |
 | **5** | Document decisions + merge | ⬜ Not started | — |
 
@@ -81,15 +81,18 @@
 - [x] Run validation: 0 errors, 203 valid ARF refs, 153 total reqs, 30.7% coverage
 - [x] 🔒 COMMIT: `d3c00a45`
 
-### Phase 3.5: Validate deep links + pin URLs ⬜
+### Phase 3.5: Validate deep links + pin URLs ✅
 
-- [ ] Verify all `topicAnchors` against v2.8.0 golden source headings
-- [ ] Pin `csvUrl` to `refs/tags/v2.8.0` (currently `refs/heads/main`)
-- [ ] Pin `baseUrl` to `blob/v2.8.0` (currently `blob/main`)
-- [ ] Rebuild ARF data: `npm run build:arf`
-- [ ] Run/create link validation script
-- [ ] Verify in browser: ARF badge → deep link → correct scroll position
-- [ ] 🔒 COMMIT
+- [x] Verify all `topicAnchors` against v2.8.0 golden source — all 20 match ✅
+- [x] Pin `csvUrl` to `refs/tags/v2.8.0` (was `refs/heads/main`)
+- [x] Pin `baseUrl` to `blob/v2.8.0` (was `blob/main`)
+- [x] Fix subsection anchor generation in `import-arf.js`:
+  - Removed incorrect trailing hyphen (398 links affected)
+  - Stopped collapsing consecutive hyphens (`B - HLRs` → `b---hlrs`, 65 links affected)
+- [x] Rebuild ARF data: 510 HLRs, same data as before (pinned tag = same CSV)
+- [x] Link validation: 510/510 deep links resolve to valid anchors ✅
+- [x] Verify in browser: ARF badges render correctly, deepLink URLs use v2.8.0
+- [x] 🔒 COMMIT: `adf5b904`
 
 ### Phase 4: Rebuild and validate ⬜
 
