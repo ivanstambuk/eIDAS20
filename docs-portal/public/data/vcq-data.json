@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T05:29:15.498Z",
+  "generatedAt": "2026-02-10T05:48:18.979Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -2476,7 +2476,8 @@
         "topic": "Topic 52",
         "hlr": [
           "RPI_06",
-          "RPI_07"
+          "RPI_07",
+          "RPRC_19a"
         ]
       },
       "roles": [

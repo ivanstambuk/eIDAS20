@@ -27,6 +27,7 @@ requirements:
       hlr:
         - RPI_06
         - RPI_07
+        - RPRC_19a
     legalText: |
       When an intermediary requests attestations from a wallet unit, the wallet 
       unit shall display both the identity of the intermediary and the identity 
