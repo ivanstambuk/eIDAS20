@@ -1044,20 +1044,32 @@ requirements:
   VEND-ISS-032:
     questions:
       - id: Q1
-        text: "Do you support embedding disclosure policies in issued attestations?"
+        text: "Do you support embedding disclosure policies in issued attestations per EDP_09? Are policies included by value (not by reference) in the Issuer metadata via OpenID4VCI?"
         dimension: capability
       - id: Q2
-        text: "How do you define disclosure policies for different attestation types?"
+        text: "How do you define disclosure policies for different attestation types — per-attestation-type configuration, per-Rulebook default, or fully customisable per issuance?"
         dimension: technical_implementation
       - id: Q3
-        text: "How do Wallet Units interpret and enforce embedded disclosure policies?"
-        dimension: interoperability
+        text: "Per EDP_11, how do you handle the requirement to revoke attestations when a corresponding embedded disclosure policy is added, changed, or deleted? Is this automated?"
+        dimension: compliance_completeness
       - id: Q4
-        text: "Can the organization customize disclosure policies for their attestations?"
-        dimension: flexibility
+        text: "How do Wallet Units interpret and enforce embedded disclosure policies — have you tested policy enforcement across multiple wallet implementations?"
+        dimension: interoperability
       - id: Q5
-        text: "What guidance do you provide on best practices for disclosure policy design?"
+        text: "Can the organisation customise disclosure policies for their attestation types — mandatory vs optional attributes, purpose limitations, RP category restrictions?"
+        dimension: flexibility
+      - id: Q6
+        text: "What guidance do you provide on best practices for disclosure policy design — templates, validation tools, compliance checks against data minimisation principles?"
         dimension: documentation
+      - id: Q7
+        text: "How do you handle the disclosure policy lifecycle — versioning, deprecation of old policies, migration of existing attestations when policies change?"
+        dimension: lifecycle
+      - id: Q8
+        text: "What is the encoding format for embedded disclosure policies — JSON-based, CBOR-based, or format-specific (different for mDoc vs SD-JWT-VC)?"
+        dimension: technical_implementation
+      - id: Q9
+        text: "Do you provide tooling for organisations to preview how a disclosure policy will affect the user experience in wallets before deployment?"
+        dimension: operational
 
   # ============================================================================
   # VEND-ISS-033: Registration Certificate Usage
@@ -1066,20 +1078,32 @@ requirements:
   VEND-ISS-033:
     questions:
       - id: Q1
-        text: "Do you use registration certificates for Provider authentication in Wallet Unit interactions?"
+        text: "Do you use registration certificates for Provider authentication in Wallet Unit interactions? Is the certificate included in Issuer metadata per RPRC_22?"
         dimension: capability
       - id: Q2
-        text: "How do you manage registration certificate lifecycle (renewal, revocation, key rotation)?"
-        dimension: lifecycle
+        text: "Per RPRC_14, how do you distribute the registration certificate to all service supply points — is distribution automated when a new certificate is issued or rotated?"
+        dimension: operational
       - id: Q3
-        text: "What certificate types do you support as registration certificates?"
-        dimension: technical_implementation
+        text: "Per RPRC_22, is the registration certificate included by value (not by reference) in your Issuer metadata? This ensures issuance transactions are atomic and self-contained."
+        dimension: compliance_completeness
       - id: Q4
-        text: "How are registration certificates validated by Wallet Units?"
-        dimension: interoperability
+        text: "How do you manage registration certificate lifecycle — automated renewal before expiry, revocation on registration status change, key rotation procedures?"
+        dimension: lifecycle
       - id: Q5
-        text: "What happens if the registration certificate expires or is revoked during operations?"
+        text: "What certificate types do you support as registration certificates — X.509, JWT-based, or other formats specified in the technical specifications?"
+        dimension: technical_implementation
+      - id: Q6
+        text: "How are registration certificates validated by Wallet Units during issuance — certificate chain resolution, revocation status check, trust anchor lookup?"
+        dimension: interoperability
+      - id: Q7
+        text: "What happens if the registration certificate expires or is revoked during operations — immediate issuance halt, graceful degradation with warning, or automatic renewal?"
         dimension: incident_response
+      - id: Q8
+        text: "How do you handle registration certificate updates without downtime — dual-certificate overlap period, rolling deployment, or scheduled maintenance window?"
+        dimension: operational
+      - id: Q9
+        text: "Do you monitor registration certificate expiry proactively — alerts at 90/60/30 days before expiry, automated renewal triggers?"
+        dimension: alerting
 
   # ============================================================================
   # VEND-ISS-034: SD-JWT VC Format Compliance for PID
@@ -1088,26 +1112,32 @@ requirements:
   VEND-ISS-034:
     questions:
       - id: Q1
-        text: "Do you issue PIDs in SD-JWT VC format compliant with ARF specifications?"
+        text: "Do you issue PIDs in SD-JWT VC format compliant with ARF specifications? Is the `vct` claim correctly set to a URN within the `urn:eudi:pid:` namespace (per PID_14)?"
         dimension: capability
       - id: Q2
-        text: "Do you correctly include required claims (vct, iss, iat, etc.) in SD-JWT VCs?"
+        text: "Do you include all required SD-JWT VC claims — `vct`, `iss`, `iat`, `exp`, `cnf` (key binding), `status` (revocation reference) — per PID_17?"
         dimension: technical_implementation
       - id: Q3
-        text: "How do you encode PID attributes per specification?"
+        text: "How do you encode PID attributes per PID_18/PID_19 — JSON claim encoding per the PID Rulebook’s SD-JWT-VC profile, with correct data types?"
         dimension: technical_implementation
       - id: Q4
-        text: "Are all claims made selectively disclosable as required?"
+        text: "Per PID_20/PID_21, are all PID claims made selectively disclosable using the SD-JWT `_sd` mechanism? Which claims are excluded as issuer-protected (e.g., `vct`, `iss`, `cnf`)?"
         dimension: compliance_completeness
       - id: Q5
-        text: "How do you handle date formatting requirements for SD-JWT VCs?"
+        text: "How do you handle date formatting requirements — do you use `full-date` format (YYYY-MM-DD) per RFC 3339 for all date attributes?"
         dimension: technical_implementation
       - id: Q6
-        text: "Have you validated SD-JWT VC output against reference parsers?"
+        text: "Have you validated SD-JWT VC output against reference parsers — specifically the EUDI Reference Implementation or equivalent conformance test suites?"
         dimension: compliance_evidence
       - id: Q7
-        text: "Is your compliance validation integrated into your CI/CD pipeline, preferably against the official EUDI Reference Implementation test suite?"
+        text: "Is SD-JWT VC compliance validation integrated into your CI/CD pipeline, running automatically against the official EUDI Reference Implementation test suite on every build?"
         dimension: automation
+      - id: Q8
+        text: "How do you handle domestic PID type extensions — does the `vct` URN correctly extend `urn:eudi:pid:1` with a domestic type identifier?"
+        dimension: geographic_scope
+      - id: Q9
+        text: "Do you support key binding (KB-JWT) in SD-JWT VCs — is the `cnf` claim correctly populated with the device-bound public key or key reference?"
+        dimension: technical_implementation
 
   # ============================================================================
   # VEND-ISS-035: mDoc Format Compliance for PID
@@ -1116,23 +1146,32 @@ requirements:
   VEND-ISS-035:
     questions:
       - id: Q1
-        text: "Do you issue PIDs in ISO 18013-5 mDoc format compliant with ARF specifications?"
+        text: "Do you issue PIDs in ISO 18013-5 mDoc format compliant with ARF specifications? Is the `docType` correctly set to `eu.europa.ec.eudi.pid.1` (per PID_07)?"
         dimension: capability
       - id: Q2
-        text: "Do you use correct document types (docType) and element identifiers?"
+        text: "Do you use correct element identifiers as defined in the PID Rulebook? Is CBOR encoding validated for correct data types (tstr, bstr, tdate, full-date-str, uint, bool)?"
         dimension: technical_implementation
       - id: Q3
-        text: "How do you handle CBOR encoding for mDoc attributes?"
+        text: "How do you handle CBOR encoding validation — do you run CBOR structure validators before IssuerAuth signing to catch encoding errors?"
         dimension: technical_implementation
       - id: Q4
-        text: "Do you ensure each PID contains at most one attribute with the same identifier?"
+        text: "Per PID_13, do you enforce element uniqueness — each PID contains at most one attribute with the same element identifier within any namespace?"
         dimension: compliance_completeness
       - id: Q5
-        text: "How do you handle namespace definitions for mDoc?"
+        text: "Per PID_06, how do you handle domestic namespace generation — appending ISO 3166-1 alpha-2 country codes (e.g., `eu.europa.ec.eudi.pid.de.1` for Germany)?"
         dimension: technical_implementation
       - id: Q6
-        text: "Have you validated mDoc output against reference validators (e.g., ISO 18013-5 test suites)?"
+        text: "Have you validated mDoc output against reference validators — specifically ISO 18013-5 test suites and the EUDI Reference Implementation?"
         dimension: compliance_evidence
+      - id: Q7
+        text: "How do you implement the Mobile Security Object (MSO) structure — per-attribute digests with correct salt generation (CSPRNG per ISSU_35)?"
+        dimension: technical_implementation
+      - id: Q8
+        text: "Do you support portrait image encoding in mDoc format — correct CBOR data type (bstr), compression format (JPEG2000 or JPEG), and quality requirements per PID_08/PID_09?"
+        dimension: technical_implementation
+      - id: Q9
+        text: "Is mDoc format compliance validation integrated into your CI/CD pipeline, with automated testing against ISO 18013-5 conformance suites?"
+        dimension: automation
 
   # ============================================================================
   # VEND-ISS-036: Dual Status Mechanism Support
@@ -1141,20 +1180,32 @@ requirements:
   VEND-ISS-036:
     questions:
       - id: Q1
-        text: "Do you support both the Attestation Status List mechanism and the Token Status List mechanism?"
+        text: "Do you support both the Attestation Status List mechanism and the Attestation Revocation List mechanism per VCR_12a? Are both operational in production?"
         dimension: capability
       - id: Q2
-        text: "How do Relying Parties know which status mechanism to use for a given attestation?"
+        text: "How do Relying Parties know which status mechanism to use for a given attestation — is the mechanism indicated in the attestation metadata, or do RPs try both?"
         dimension: interoperability
       - id: Q3
-        text: "Are both status mechanisms updated synchronously when revocation occurs?"
+        text: "Are both status mechanisms updated synchronously when a revocation or suspension event occurs? What is the maximum time delta between the two mechanisms?"
         dimension: technical_implementation
       - id: Q4
-        text: "What are the performance characteristics of each status mechanism?"
+        text: "What are the performance characteristics of each status mechanism — response time for status checks, status list size, update frequency, caching strategy?"
         dimension: sla
       - id: Q5
-        text: "Can the organization choose which status mechanisms to use?"
+        text: "Can the organisation choose which status mechanisms to use, or is dual-mechanism support mandatory for all attestation types?"
         dimension: flexibility
+      - id: Q6
+        text: "How do you handle the privacy properties of each mechanism — does the Attestation Status List bitstring approach provide herd privacy (RP cannot distinguish which index was checked)?"
+        dimension: security
+      - id: Q7
+        text: "What is the failure mode if one status mechanism becomes unavailable — does the other mechanism serve as a fallback, or are both required for verification?"
+        dimension: incident_response
+      - id: Q8
+        text: "How do you ensure consistency between the two mechanisms during high-throughput revocation events (e.g., batch revocation of many attestations)?"
+        dimension: technical_implementation
+      - id: Q9
+        text: "Do you provide monitoring and alerting for status mechanism health — endpoint availability, update latency, synchronisation drift between mechanisms?"
+        dimension: operational
 
   # ============================================================================
   # VEND-ISS-037: Complete OpenID4VCI Implementation
@@ -1163,23 +1214,32 @@ requirements:
   VEND-ISS-037:
     questions:
       - id: Q1
-        text: "Do you implement all required elements of the OpenID4VCI protocol as specified in ARF HLRs?"
+        text: "Do you implement all required elements of the OpenID4VCI protocol as specified in the ARF HLRs — including ISSU_06/07 (issuance verification), ISSU_18/18a (authorization flows), ISSU_22-22b (access certificates), ISSU_25/26 (credential offers), ISSU_32/32a (deferred issuance)?"
         dimension: capability
       - id: Q2
-        text: "How do you structure credential offer payloads?"
+        text: "How do you structure credential offer payloads — attestation type, supported formats, issuer identifier, grant parameters? Do you support delivery via deep link, QR code, and push notification?"
         dimension: technical_implementation
       - id: Q3
-        text: "What authorization flows do you support and how are they configured?"
+        text: "What authorization flows do you support — Authorization Code flow (user-initiated) and Pre-authorized Code flow (provider-initiated)? Do you comply with the HAIP profile requirements?"
         dimension: technical_implementation
       - id: Q4
-        text: "How do you handle credential response formatting and error handling?"
+        text: "How do you handle credential response formatting and error handling — are errors returned with standard OpenID4VCI error codes and descriptions?"
         dimension: operational
       - id: Q5
-        text: "Do you support notification endpoints for issuance status callbacks?"
+        text: "Per ISSU_32/32a, do you support deferred issuance for scenarios where attestation cannot be issued immediately (e.g., pending authentic source verification)? What is the deferred issuance polling mechanism?"
         dimension: capability
       - id: Q6
-        text: "How do you handle metadata discovery for the OpenID4VCI endpoints?"
+        text: "How do you handle metadata discovery for OpenID4VCI endpoints — `/.well-known/openid-credential-issuer` and `/.well-known/oauth-authorization-server`?"
         dimension: interoperability
+      - id: Q7
+        text: "Per ISSU_22/22a/22b, how do you include access certificates in Issuer metadata? Is the certificate chain verifiable by Wallet Units without external requests?"
+        dimension: compliance_completeness
+      - id: Q8
+        text: "Do you support notification endpoints (ISSU_25/26) for issuance status callbacks — can the Wallet Unit receive push notifications about credential readiness?"
+        dimension: capability
+      - id: Q9
+        text: "How do you integrate device binding (ISSU_27b/27c) into the OpenID4VCI flow — proof-of-possession during the credential request, key attestation parameters?"
+        dimension: technical_implementation
 
   # ============================================================================
   # VEND-ISS-038: EAA Personal Data Isolation
@@ -1188,23 +1248,32 @@ requirements:
   VEND-ISS-038:
     questions:
       - id: Q1
-        text: "How do you ensure personal data collected during EAA provision is NOT combined with data from other services?"
+        text: "How do you ensure personal data collected during EAA provision is NOT combined with data from other services — per Article 45h(1), this prohibition is absolute with no consent-based exception."
         dimension: architecture
       - id: Q2
-        text: "Is there a formal data isolation policy documented and auditable?"
+        text: "Is there a formal data isolation policy documented and auditable? Does it explicitly address the Article 45h(1) prohibition (which is stricter than GDPR purpose limitation)?"
         dimension: compliance_evidence
       - id: Q3
-        text: "How do you prevent EAA user profiles from being merged with marketing or analytics databases?"
+        text: "How do you prevent EAA user profiles from being merged with marketing or analytics databases — technical barriers (network segmentation, API gating), or organisational controls only?"
         dimension: security
       - id: Q4
-        text: "What controls prevent sharing EAA user data with commercial partner systems?"
+        text: "What controls prevent sharing EAA user data with commercial partner systems — contractual prohibitions, technical enforcement, or both?"
         dimension: security
       - id: Q5
-        text: "Can independent auditors verify data isolation compliance?"
+        text: "Can independent auditors verify data isolation compliance — is there a documented audit procedure, and what evidence is provided (data flow diagrams, access logs, architecture reviews)?"
         dimension: auditability
       - id: Q6
-        text: "What are the consequences if data isolation is breached?"
+        text: "What are the consequences if data isolation is breached — automated detection, incident response procedures, notification to supervisory authorities?"
         dimension: incident_response
+      - id: Q7
+        text: "How do you prevent EAA data from being used for AI/ML training on non-EAA services — is there a technical mechanism to exclude EAA data from training pipelines?"
+        dimension: security
+      - id: Q8
+        text: "Do you perform regular data flow audits to verify no cross-service data leakage — automated scanning, penetration testing, or manual review?"
+        dimension: compliance_monitoring
+      - id: Q9
+        text: "How do you handle data isolation in development and testing environments — is production EAA data never used in non-EAA test environments?"
+        dimension: operational
 
   # ============================================================================
   # VEND-ISS-039: Logical Data Separation
@@ -1213,23 +1282,32 @@ requirements:
   VEND-ISS-039:
     questions:
       - id: Q1
-        text: "How do you implement logical separation of EAA-related personal data from other data?"
+        text: "How do you implement logical separation of EAA-related personal data from other data — separate database instances, separate schemas, logical partitioning, or data tagging?"
         dimension: architecture
       - id: Q2
-        text: "What architectural approach do you use (separate databases, schemas, partitioning, tagging)?"
+        text: "What architectural approach do you use — separate database instances (strongest isolation), separate schemas (good isolation, lower overhead), or tenant-based partitioning (multi-tenant)?"
         dimension: technical_implementation
       - id: Q3
-        text: "How are access controls enforced to prevent cross-data-store queries?"
+        text: "How are access controls enforced to prevent cross-data-store queries — separate database credentials, no cross-schema joins, role-based access, query audit logging?"
         dimension: security
       - id: Q4
-        text: "Is the logical separation verifiable through technical audits?"
+        text: "Is the logical separation verifiable through technical audits — architecture documentation, penetration testing, automated compliance scanning of database permissions?"
         dimension: auditability
       - id: Q5
-        text: "How does logical separation work in multi-tenant environments?"
+        text: "How does logical separation work in multi-tenant environments — per-tenant EAA data isolation, tenant-specific encryption keys, no cross-tenant data leakage?"
         dimension: architecture
       - id: Q6
-        text: "What happens to data separation in backup and disaster recovery scenarios?"
+        text: "What happens to data separation in backup and disaster recovery scenarios — EAA data backed up to separate media, recovery procedures tested for EAA-only restoration?"
         dimension: operational
+      - id: Q7
+        text: "How do you ensure logical separation extends to log files and monitoring data — are EAA-related logs stored separately from non-EAA logs?"
+        dimension: security
+      - id: Q8
+        text: "Do you provide architecture documentation demonstrating logical separation that can be shared with conformity assessment bodies?"
+        dimension: compliance_evidence
+      - id: Q9
+        text: "How do you handle logical separation during database migrations or schema upgrades — is separation maintained throughout the migration process?"
+        dimension: lifecycle
 
   # ============================================================================
   # VEND-ISS-040: QEAA Functional Separation
@@ -1238,20 +1316,29 @@ requirements:
   VEND-ISS-040:
     questions:
       - id: Q1
-        text: "If offering QEAA services, how do you implement functional separation from other services?"
+        text: "If offering QEAA services, how do you implement functional separation from other services per Article 45h(3) — organisational boundaries, technical infrastructure, governance structures?"
         dimension: architecture
       - id: Q2
-        text: "Are QEAA operations handled by dedicated teams with organizational boundaries?"
+        text: "Are QEAA operations handled by dedicated teams with clear organisational boundaries — separate management reporting lines, QEAA-specific HR processes?"
         dimension: operational
       - id: Q3
-        text: "Is QEAA infrastructure separated from non-QEAA infrastructure?"
+        text: "Is QEAA infrastructure separated from non-QEAA infrastructure — separate servers, networks, HSMs, monitoring systems, deployment pipelines?"
         dimension: architecture
       - id: Q4
-        text: "Are there independent governance structures for QEAA services?"
+        text: "Are there independent governance structures for QEAA services — separate risk assessment, dedicated compliance monitoring, independent audit scope and reporting?"
         dimension: operational
       - id: Q5
-        text: "How is functional separation documented and audited for conformity assessment?"
+        text: "How is functional separation documented and audited for conformity assessment — is there a separation report that can be shared with supervisory authorities?"
         dimension: compliance_evidence
       - id: Q6
-        text: "What level of personnel separation exists for QEAA operations?"
+        text: "What level of personnel separation exists for QEAA operations — dedicated teams, split roles with access restrictions, or shared teams with compensating controls?"
         dimension: operational
+      - id: Q7
+        text: "Where complete separation is impractical (shared facilities, shared legal entity), what compensating controls are in place — formal service boundaries, access matrices, change management gates?"
+        dimension: security
+      - id: Q8
+        text: "Do QEAA services have separate incident response procedures and communication channels — independent post-incident review processes?"
+        dimension: incident_response
+      - id: Q9
+        text: "How do you handle the Wallet Provider applicability of this requirement — per Article 5a(14), functional separation also applies to private Wallet Providers 'mutatis mutandis'?"
+        dimension: compliance_completeness

@@ -1666,13 +1666,48 @@ requirements:
     category: usage
     requirement: Include embedded disclosure policies in attestations
     explanation: |
-      Where applicable, attestation providers must include embedded disclosure 
-      policies in issued attestations. These policies guide Wallet Units on 
-      appropriate disclosure behavior for the attestation.
+      Where applicable, attestation providers must include embedded
+      disclosure policies in issued attestations. These policies
+      guide Wallet Units on appropriate disclosure behaviour for
+      the attestation.
+
+      **EDP_09 — Policy inclusion in Issuer metadata:**
+      An Attestation Provider SHALL include an embedded disclosure
+      policy (if any) by value in the Issuer metadata related to
+      the attestation, in compliance with the OpenID4VCI issuance
+      protocol or an extension thereof. Including by value (not
+      by reference) ensures the policy is available offline and
+      does not require additional network requests.
+
+      **EDP_11 — Revocation on policy change:**
+      An Attestation Provider SHALL revoke an attestation if a
+      corresponding embedded disclosure policy is added, changed,
+      or deleted. This ensures that wallets always use the
+      current policy and cannot rely on stale policies.
+
+      **Disclosure policy content:**
+      An embedded disclosure policy typically specifies:
+      - Which attributes are mandatory for disclosure
+      - Which attributes are optional (user-selectable)
+      - Which attributes should never be disclosed
+      - Purpose limitations (e.g., age verification only)
+      - Relying Party category restrictions
+
+      **Wallet behaviour:**
+      When a Wallet Unit receives an attestation with an embedded
+      disclosure policy, it should:
+      - Display the policy to the user during consent
+      - Enforce mandatory attribute disclosure
+      - Allow the user to opt in/out of optional attributes
+      - Prevent disclosure of restricted attributes
     legalBasis:
       regulation: 2014/910
       article: Article 5a
-      paragraph: ""
+      paragraph: "16"
+    legalText: |
+      Attestation providers shall include embedded disclosure
+      policies to guide appropriate attribute disclosure by
+      Wallet Units.
     arfReference:
       topic: Topic 43
       hlr:
@@ -1688,13 +1723,45 @@ requirements:
     category: registration
     requirement: Use registration certificates for Provider authentication
     explanation: |
-      If a registration certificate was issued during registration, the 
-      provider must use it for authentication in interactions with Wallet Units 
-      as specified in the technical specifications.
+      If a registration certificate was issued during registration,
+      the provider must use it for authentication in interactions
+      with Wallet Units as specified in the technical specifications.
+
+      **RPRC_14 — Service supply point distribution:**
+      If, during registration, a PID Provider, QEAA Provider,
+      PuB-EAA Provider, or non-qualified EAA Provider received a
+      registration certificate, it SHALL distribute it to all its
+      service supply points. A service supply point is a system
+      at which a Wallet Unit can start the process of requesting
+      and obtaining a PID or attestation.
+
+      **RPRC_22 — Issuer metadata inclusion:**
+      If a PID Provider or Attestation Provider received a
+      registration certificate, it SHALL include it in its Issuer
+      metadata used in the common OpenID4VCI protocol. The
+      registration certificate SHALL be included by value, not by
+      reference. This ensures issuance transactions are atomic and
+      self-contained without external requests.
+
+      **Registration certificate lifecycle:**
+      The provider must manage the certificate lifecycle:
+      - Renewal before expiry (automated or manual)
+      - Revocation when registration status changes
+      - Key rotation (new certificate with new key pair)
+      - Distribution to all service supply points after renewal
+
+      **Wallet Unit validation:**
+      During issuance, the Wallet Unit validates the registration
+      certificate to authenticate the provider. If validation
+      fails, the wallet should abort the issuance flow and warn
+      the user.
     legalBasis:
       regulation: 2014/910
       article: Article 45d
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Providers that received a registration certificate shall
+      use it for authentication in interactions with Wallet Units.
     arfReference:
       topic: Topic 44
       hlr:
@@ -1710,13 +1777,50 @@ requirements:
     category: issuance
     requirement: Comply with SD-JWT VC format requirements for PID issuance
     explanation: |
-      When issuing PIDs in SD-JWT VC format, providers must include required 
-      claims (vct), encode attributes per specification, ensure proper date 
-      formatting, and make all claims selectively disclosable.
+      When issuing PIDs in SD-JWT VC format, providers must include
+      required claims, encode attributes per specification, ensure
+      proper date formatting, and make all claims selectively
+      disclosable.
+
+      **PID_14 — vct claim requirement:**
+      A PID Provider issuing SD-JWT-VC-compliant PIDs SHALL
+      include the `vct` claim, where the value SHALL be a URN
+      within the `urn:eudi:pid:` namespace. The type SHALL be
+      `urn:eudi:pid:1` for the standard type or a domestic type
+      that extends it.
+
+      **PID_17 — Required SD-JWT claims:**
+      The SD-JWT VC must include at minimum:
+      - `vct`: attestation type URI
+      - `iss`: issuer identifier
+      - `iat`: issuance timestamp
+      - `exp`: expiration timestamp
+      - `cnf`: key binding (device binding)
+      - `status`: revocation status reference
+
+      **PID_18/PID_19 — Attribute encoding:**
+      PID attributes must be encoded as JSON claims per the
+      PID Rulebook’s SD-JWT-VC profile. Date attributes must
+      use `full-date` format (YYYY-MM-DD) per RFC 3339.
+
+      **PID_20/PID_21 — Selective disclosure:**
+      All PID claims (except issuer-protected claims like `vct`,
+      `iss`, `cnf`, `status`) SHALL be made selectively
+      disclosable using the SD-JWT `_sd` mechanism. This enables
+      per-attribute disclosure at presentation time.
+
+      **Validation:**
+      SD-JWT VC output should be validated against reference
+      parsers (e.g., EUDI Reference Implementation) and
+      integrated into CI/CD pipelines for continuous compliance.
     legalBasis:
       regulation: 2024/2977
       article: Annex
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      PID Providers issuing SD-JWT-VC-compliant PIDs shall
+      comply with the format requirements specified in the
+      PID Rulebook.
     arfReference:
       topic: Topic 3
       hlr:
@@ -1736,13 +1840,50 @@ requirements:
     category: issuance
     requirement: Comply with mDoc format requirements for PID issuance
     explanation: |
-      When issuing PIDs in ISO 18013-5 mDoc format, providers must use correct 
-      document types, element identifiers, value encodings, and ensure each 
-      PID contains at most one attribute with the same identifier.
+      When issuing PIDs in ISO 18013-5 mDoc format, providers must
+      use correct document types, element identifiers, value
+      encodings, and ensure each PID contains at most one attribute
+      with the same identifier.
+
+      **PID_06 — Domestic namespace generation:**
+      If including attributes not defined in the PID Rulebook, the
+      PID Provider SHALL define them within a domestic PID
+      namespace. The identifier is generated by appending the
+      ISO 3166-1 alpha-2 country code to the PID namespace
+      identifier (e.g., `eu.europa.ec.eudi.pid.de.1` for Germany).
+
+      **PID_07 — Document type:**
+      The `docType` for PIDs SHALL be the namespace identifier
+      specified in PID_05 (`eu.europa.ec.eudi.pid.1`).
+
+      **PID_11/PID_12 — Element identifiers and encoding:**
+      Each element (attribute) must use the identifier defined
+      in the PID Rulebook. CBOR encoding must use the correct
+      data types (tstr, bstr, tdate, full-date-str, uint, bool)
+      as specified per attribute.
+
+      **PID_13 — Element uniqueness:**
+      Each PID SHALL contain at most one attribute with the same
+      element identifier within any namespace. Duplicate element
+      identifiers within the same namespace are prohibited.
+
+      **PID_16 — MSO structure:**
+      The Mobile Security Object (MSO) must be correctly
+      structured with per-attribute digests (salted hashes)
+      to enable selective disclosure via IssuerAuth.
+
+      **Validation:**
+      mDoc output should be validated against ISO 18013-5 test
+      suites and CBOR structure validators to ensure encoding
+      correctness.
     legalBasis:
       regulation: 2024/2977
       article: Annex
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      PID Providers issuing ISO 18013-5-compliant PIDs shall
+      comply with the format requirements specified in the
+      PID Rulebook.
     arfReference:
       topic: Topic 3
       hlr:
@@ -1762,13 +1903,45 @@ requirements:
     category: revocation
     requirement: Support both attestation status mechanisms
     explanation: |
-      PID and Attestation Providers must support both the Attestation Status 
-      List mechanism and Token Status List mechanism for revocation checking 
-      as specified in the technical specifications.
+      PID and Attestation Providers must support both the
+      Attestation Status List mechanism and the Attestation
+      Revocation List mechanism for revocation checking as
+      specified in the technical specifications.
+
+      **VCR_12a — Dual mechanism mandate:**
+      A PID Provider or Attestation Provider SHALL support both
+      the Attestation Status List mechanism and the Attestation
+      Revocation List mechanism specified per VCR_11 for
+      verifying the revocation status of a WUA. This ensures
+      verifiers can use either mechanism regardless of their
+      technical capabilities.
+
+      **Attestation Status List:**
+      A compact, privacy-preserving mechanism where revocation
+      status is encoded as bit positions in a compressed
+      bitstring. RPs fetch the status list and check the
+      relevant bit position without revealing which attestation
+      they are checking.
+
+      **Attestation Revocation List (Token Status List):**
+      An alternative mechanism based on token-specific status
+      tokens. May offer different privacy/performance trade-offs
+      compared to the Status List approach.
+
+      **Synchronisation requirement:**
+      Both mechanisms must be updated synchronously when a
+      revocation or suspension event occurs. An attestation
+      marked as revoked in one mechanism must also be marked
+      as revoked in the other, within the applicable
+      propagation time.
     legalBasis:
       regulation: 2024/2979
       article: Article 4
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      PID and Attestation Providers shall support both
+      attestation status mechanisms specified in the technical
+      specifications.
     arfReference:
       topic: Topic 7
       hlr:
@@ -1783,13 +1956,58 @@ requirements:
     category: issuance
     requirement: Implement complete OpenID4VCI protocol requirements
     explanation: |
-      Attestation Providers must implement all required elements of the 
-      OpenID4VCI protocol, including credential offer structures, authorization 
-      flows, and credential response handling.
+      Attestation Providers must implement all required elements
+      of the OpenID4VCI protocol, including credential offer
+      structures, authorization flows, and credential response
+      handling.
+
+      **ISSU_06/ISSU_07 — Issuance verification:**
+      After receiving a PID or attestation, the Wallet Unit
+      SHALL verify that it matches what was requested. The
+      provider must therefore issue credential responses that
+      are structurally correct and match the credential offer.
+
+      **ISSU_14/ISSU_15 — PID Rulebook compliance:**
+      For PID issuance, the OpenID4VCI implementation must
+      ensure all PIDs comply with the PID Rulebook. This
+      includes correct credential type identifiers, attribute
+      encoding, and format selection.
+
+      **ISSU_18/ISSU_18a — Authorization flows:**
+      The provider must support the authorization flows
+      specified in the ARF, including:
+      - Authorization Code flow (user-initiated)
+      - Pre-authorized Code flow (provider-initiated)
+      The HAIP profile requirements apply.
+
+      **ISSU_22/ISSU_22a/ISSU_22b — Access certificates:**
+      The provider SHALL include its access certificate in
+      Issuer metadata. The certificate chain must be
+      verifiable by the Wallet Unit.
+
+      **ISSU_25/ISSU_26 — Credential offer structures:**
+      Credential offers must include the attestation type,
+      supported formats, issuer identifier, and any grant
+      parameters. The offer can be delivered via deep link,
+      QR code, or push notification.
+
+      **ISSU_27b/ISSU_27c — Device binding integration:**
+      The OpenID4VCI flow must integrate with device binding
+      (proof of possession) as specified in ISSU_27.
+
+      **ISSU_32/ISSU_32a — Deferred issuance:**
+      Where supported, the provider must implement deferred
+      issuance for scenarios where the attestation cannot be
+      issued immediately (e.g., pending authentic source
+      verification).
     legalBasis:
       regulation: 2024/2979
       article: Article 3
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Attestation Providers shall implement the required
+      elements of the OpenID4VCI protocol for attestation
+      issuance.
     arfReference:
       topic: Topic 10
       hlr:
@@ -1818,24 +2036,53 @@ requirements:
     category: security
     requirement: Do not combine EAA personal data with other services
     explanation: |
-      Personal data collected during the provision of electronic attestation of 
-      attributes services must NOT be combined with personal data from any other 
-      services offered by the provider or their commercial partners. This is a 
-      fundamental data isolation requirement that goes beyond GDPR purpose limitation.
+      Personal data collected during the provision of electronic
+      attestation of attributes services must NOT be combined
+      with personal data from any other services offered by the
+      provider or their commercial partners. This is a
+      fundamental data isolation requirement that goes beyond
+      GDPR purpose limitation.
 
-      Examples of prohibited combinations:
+      **Article 45h(1) — Prohibition scope:**
+      This prohibition applies to ALL EAA providers, both
+      qualified and non-qualified. It covers personal data
+      from:
+      - Other trust services offered by the same provider
+      - Non-trust services (e.g., cloud, SaaS, consulting)
+      - Services offered by commercial partners
+      The prohibition is absolute — there is no legitimate
+      interest or consent-based exception.
+
+      **Comparison with GDPR purpose limitation:**
+      While GDPR Article 5(1)(b) restricts processing to
+      compatible purposes, Article 45h(1) goes further by
+      prohibiting any data combination regardless of purpose
+      compatibility. Even if the purposes were compatible
+      under GDPR, combining the data is still prohibited.
+
+      **Prohibited data flows:**
       - Merging EAA user profiles with marketing databases
       - Using EAA transaction data for other service analytics
       - Sharing EAA user data with commercial partner systems
+      - Cross-referencing EAA identifiers with other services
+      - Using EAA data for AI/ML training on non-EAA services
+
+      **Implementation controls:**
+      - Data flow mapping to identify all EAA data touchpoints
+      - Technical barriers (network segmentation, API gating)
+      - Contractual controls with commercial partners
+      - Employee access restrictions per data domain
+      - Regular data flow audits and penetration testing
     legalBasis:
       regulation: 2014/910
       article: Article 45h
       paragraph: "1"
     legalText: |
-      Providers of qualified and non-qualified electronic attestation of attributes 
-      services shall not combine personal data relating to the provision of those 
-      services with personal data from any other services offered by them or their 
-      commercial partners.
+      Providers of qualified and non-qualified electronic
+      attestation of attributes services shall not combine
+      personal data relating to the provision of those services
+      with personal data from any other services offered by
+      them or their commercial partners.
     roles:
       - issuer
     productCategories:
@@ -1843,31 +2090,72 @@ requirements:
       - trust_services
     deadline: "2026-11-21"
     notes: |
-      Applies to ALL EAA providers (both qualified and non-qualified).
-      This is more restrictive than GDPR purpose limitation - it mandates
-      complete isolation of EAA-related personal data.
+      Applies to ALL EAA providers (both qualified and
+      non-qualified). This is more restrictive than GDPR
+      purpose limitation — it mandates complete isolation
+      of EAA-related personal data.
     obligation: MUST NOT
   - id: VEND-ISS-039
     category: security
     requirement: Keep EAA personal data logically separate
     explanation: |
-      Personal data relating to the provision of electronic attestation of 
-      attributes services must be kept in logically separate data stores from 
-      other data held by the provider. This requires architectural separation
-      at the data layer.
+      Personal data relating to the provision of electronic
+      attestation of attributes services must be kept in
+      logically separate data stores from other data held by
+      the provider. This requires architectural separation at
+      the data layer.
 
-      Implementation approaches:
-      - Separate database instances or schemas
-      - Logical partitioning with access controls
-      - Data classification and tagging systems
+      **Article 45h(2) — Logical separation mandate:**
+      "Logically separate" means data isolation at the
+      architectural level, not just access control restrictions.
+      The separation must be demonstrable through system
+      architecture documentation.
+
+      **Implementation approaches:**
+      - **Separate database instances**: Dedicated database
+        servers for EAA data (strongest isolation)
+      - **Separate schemas**: Isolated schemas within a shared
+        database engine (good isolation with lower overhead)
+      - **Logical partitioning**: Tenant-based partitioning
+        with enforced boundaries (acceptable for multi-tenant)
+      - **Data classification and tagging**: EAA data tagged
+        and filtered at the query layer (weakest, not
+        recommended as sole approach)
+
+      **Access control enforcement:**
+      Logical separation must be reinforced with access
+      controls:
+      - Separate database credentials for EAA data
+      - No cross-schema joins or queries permitted
+      - Role-based access limited to EAA-authorised personnel
+      - Query audit logging for cross-boundary attempts
+
+      **Multi-tenant considerations:**
+      In multi-tenant deployments, logical separation must
+      ensure:
+      - Per-tenant EAA data isolation
+      - No data leakage between tenants
+      - Tenant-specific encryption keys
+
+      **Backup and disaster recovery:**
+      Logical separation must extend to backup systems:
+      - EAA data backed up to separate media or containers
+      - Recovery procedures tested for EAA-only restoration
+      - Backup access controls mirroring production
+
+      **Verification methods:**
+      - Architecture review by independent auditors
+      - Penetration testing for cross-boundary access
+      - Automated compliance scanning of database permissions
     legalBasis:
       regulation: 2014/910
       article: Article 45h
       paragraph: "2"
     legalText: |
-      Personal data relating to the provision of electronic attestation of 
-      attributes services shall be kept logically separate from other data 
-      held by the provider of electronic attestation of attributes.
+      Personal data relating to the provision of electronic
+      attestation of attributes services shall be kept
+      logically separate from other data held by the provider
+      of electronic attestation of attributes.
     roles:
       - issuer
     productCategories:
@@ -1875,41 +2163,85 @@ requirements:
       - trust_services
     deadline: "2026-11-21"
     notes: |
-      Applies to ALL EAA providers (both qualified and non-qualified).
-      "Logically separate" means data isolation at the architectural level,
-      not just access control restrictions.
+      Applies to ALL EAA providers (both qualified and
+      non-qualified). "Logically separate" means data
+      isolation at the architectural level, not just access
+      control restrictions.
     obligation: MUST
   - id: VEND-ISS-040
     category: security
     requirement: Implement QEAA services functionally separate from other services
     explanation: |
-      Qualified Electronic Attestation of Attributes (QEAA) providers must 
-      implement the provision of such services in a manner that is functionally 
-      separate from other services they provide. This goes beyond data separation 
-      to require organizational and technical separation of the QEAA business unit.
+      Qualified Electronic Attestation of Attributes (QEAA)
+      providers must implement the provision of such services
+      in a manner that is functionally separate from other
+      services they provide. This goes beyond data separation
+      to require organisational and technical separation of
+      the QEAA business unit.
 
-      Functional separation includes:
-      - Dedicated operational teams or clear organizational boundaries
-      - Separate infrastructure and systems where practical
+      **Article 45h(3) — Functional separation:**
+      This requirement only applies to QUALIFIED EAA providers
+      (QTSPs). Non-qualified EAA providers are subject to
+      45h(1) and 45h(2) but not 45h(3). The scope includes
+      all operational, technical, and governance aspects.
+
+      **Organisational separation:**
+      - Dedicated operational teams with clear boundaries
+      - QEAA-specific management reporting lines
+      - Separate HR processes for QEAA personnel
+      - Independent training and certification programmes
+
+      **Technical separation:**
+      - Separate infrastructure (servers, networks, HSMs)
+        where practical
+      - Dedicated monitoring and alerting systems
+      - Independent deployment pipelines
+      - Isolated incident management queues
+
+      **Governance separation:**
       - Independent governance and management structures
-      - Isolated operational processes
+      - Separate risk assessment and management
+      - Dedicated compliance monitoring
+      - Independent audit scope and reporting
+
+      **Incident response:**
+      - QEAA-specific incident response procedures
+      - Separate incident communication channels
+      - Independent post-incident review processes
+
+      **Cross-provision controls:**
+      Where complete separation is impractical (e.g., shared
+      facilities, shared legal entity), documented compensating
+      controls must demonstrate equivalent isolation:
+      - Formal service boundaries with SLAs
+      - Access matrix with QEAA-specific restrictions
+      - Change management gates between QEAA and other services
+
+      **Wallet Provider applicability:**
+      This requirement also applies to private Wallet Providers
+      via Article 5a(14) "mutatis mutandis" — see RCA Wallet
+      Provider track.
     legalBasis:
       regulation: 2014/910
       article: Article 45h
       paragraph: "3"
     legalText: |
-      Providers of qualified electronic attestation of attributes' services 
-      shall implement the provision of such qualified trust services in a 
-      manner that is functionally separate from other services provided by them.
+      Providers of qualified electronic attestation of
+      attributes’ services shall implement the provision of
+      such qualified trust services in a manner that is
+      functionally separate from other services provided
+      by them.
     roles:
       - issuer
     productCategories:
       - trust_services
     deadline: "2026-11-21"
     notes: |
-      Only applies to QUALIFIED EAA providers (QTSPs). Non-qualified 
-      EAA providers are subject to 45h(1) and 45h(2) but not 45h(3).
+      Only applies to QUALIFIED EAA providers (QTSPs).
+      Non-qualified EAA providers are subject to 45h(1)
+      and 45h(2) but not 45h(3).
 
-      This requirement also applies to private Wallet Providers via 
-      Article 5a(14) "mutatis mutandis" - see RCA Wallet Provider track.
+      This requirement also applies to private Wallet
+      Providers via Article 5a(14) "mutatis mutandis" —
+      see RCA Wallet Provider track.
     obligation: MUST
