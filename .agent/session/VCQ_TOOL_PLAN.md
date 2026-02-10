@@ -141,11 +141,11 @@ A Relying Party (e.g., a bank) considering outsourcing wallet interaction to a t
 
 | ARF Topic | Relevance | Key HLRs |
 |-----------|-----------|----------|
-| Topic 45: RP Intermediaries | **Critical** | `RPI_01` - `RPI_24` |
-| Topic 6: RP Authentication | High | `RPA_01` - `RPA_12` |
-| Topic 27: RP Registration | High | `Reg_23` - `Reg_30` |
+| Topic 45: RP Intermediaries | **Critical** | `AS-RP-51-001` - `RPI_24` |
+| Topic 6: RP Authentication | High | `AS-WP-06-001` - `AS-WP-06-016` |
+| Topic 27: RP Registration | High | `AS-MS-27-030` - `AS-MS-27-037` |
 | Topic 44: Registration Certificates | Medium | `RPRC_*` |
-| Topic 1: Accessing Services | Medium | `OIA_12` - `OIA_16` |
+| Topic 1: Accessing Services | Medium | `EW-PIO-01-020` - `AS-RP-01-002` |
 
 ### 5.3 Regulation Article Mapping
 
@@ -195,15 +195,15 @@ VEND-CORE-002:
     - regulation: "2024/1183"
       article: "5b"
       paragraph: "5"
-    - arf: "Reg_23"
+    - arf: "AS-MS-27-030"
   category: "Certification"
   applicability: ["PIF", "VIF"]
 
 VEND-CORE-003:
   statement: "The vendor shall maintain a valid access certificate issued by a notified Access Certificate Authority."
   legalBasis:
-    - arf: "Reg_10"
-    - arf: "RPI_02"
+    - arf: "AS-MS-27-012"
+    - arf: "AS-RP-51-002"
   category: "Certification"
   applicability: ["PIF", "VIF"]
 
@@ -230,7 +230,7 @@ VEND-CORE-005:
 VEND-PIF-001:
   statement: "The vendor shall display both its own identity and the identity of the intermediated Relying Party to the wallet user."
   legalBasis:
-    - arf: "RPI_07"
+    - arf: "AS-RP-51-008"
   category: "Transparency"
   applicability: ["PIF"]
 
@@ -255,8 +255,8 @@ VEND-PIF-003:
 VEND-VIF-001:
   statement: "The vendor shall maintain up-to-date Trusted Lists for PID Providers and Attestation Providers."
   legalBasis:
-    - arf: "OIA_12"
-    - arf: "OIA_13"
+    - arf: "EW-PIO-01-020"
+    - arf: "EW-PIO-01-021"
   category: "Technical"
   applicability: ["VIF"]
 
@@ -265,14 +265,14 @@ VEND-VIF-002:
   legalBasis:
     - regulation: "2014/910"
       article: "32"
-    - arf: "OIA_14"
+    - arf: "EW-PIO-01-022"
   category: "Security"
   applicability: ["VIF"]
 
 VEND-VIF-003:
   statement: "The vendor shall verify attestation revocation status before accepting a presentation."
   legalBasis:
-    - arf: "VCR_13"
+    - arf: "AS-AP-07-020"
   category: "Security"
   applicability: ["VIF"]
 
@@ -357,7 +357,7 @@ legalBasis:                   # Array of legal references
   - regulation: string        # Regulation ID (e.g., "2024/1183")
     article: string           # Article number
     paragraph?: string        # Optional paragraph/point
-  - arf?: string              # ARF HLR ID (e.g., "RPI_07")
+  - arf?: string              # ARF HLR ID (e.g., "AS-RP-51-008")
   - techSpec?: string         # Technical Specification reference
 category: string              # Category from taxonomy
 applicability: string[]       # ["PIF", "VIF"] or subset
@@ -447,7 +447,7 @@ notes?: string                # Optional implementation notes
 ### Phase 6: ARF Database Integration ✅ COMPLETE
 - [x] Import ARF CSV (143 HLRs from 6 relevant topics)
 - [x] Validate VCQ arfReference fields against official ARF
-- [x] Fix invalid HLR references (RPI_11→RPI_06, RPI_13→RPI_08, RPI_14→RPI_09, RPI_15→RPI_08)
+- [x] Fix invalid HLR references (RPI_11→AS-RP-51-006, RPI_13→AS-RP-51-011, RPI_14→AS-RP-51-012, RPI_15→AS-RP-51-011)
 - [x] Enhanced deep linking with topic anchors
 - [x] HLR popovers with official specification text
 - [x] Add missing Topic 52 requirements (7 new requirements: VEND-CORE-015-018, VEND-PIF-010-012)
@@ -580,7 +580,7 @@ Columns:
 5. Topic_Number     - Numeric (1-55)
 6. Topic_Title      - Human-readable title
 7. Subsection       - Optional grouping within topic
-8. Index            - HLR ID (e.g., "RPI_07") — KEY FIELD
+8. Index            - HLR ID (e.g., "AS-RP-51-008") — KEY FIELD
 9. Requirement_specification - Full requirement text
 10. Notes           - Implementation notes/guidance
 ```
@@ -647,7 +647,7 @@ topicMapping:
 interface ARFRequirement {
   // Identity
   harmonizedId: string;     // "AS-RP-51-001"
-  hlrId: string;            // "RPI_07" (Index column)
+  hlrId: string;            // "AS-RP-51-008" (Index column)
   
   // Classification
   part: "ecosystem" | "actor-specific";
@@ -680,8 +680,8 @@ interface ARFRequirement {
   },
   "requirements": [ /* ARFRequirement[] */ ],
   "byHlrId": {
-    "RPI_07": { /* ARFRequirement */ },
-    "OIA_12": { /* ARFRequirement */ }
+    "AS-RP-51-008": { /* ARFRequirement */ },
+    "EW-PIO-01-020": { /* ARFRequirement */ }
   },
   "byTopic": {
     "52": [ /* ARFRequirement[] */ ]
@@ -721,10 +721,10 @@ interface ARFRequirement {
   - Report invalid/missing HLR references
   - Suggest corrections for renamed HLRs
 - [x] **6.2.3** Fix invalid references:
-  - `RPI_11` → RPI_06
-  - `RPI_13` → RPI_08
-  - `RPI_14` → RPI_09
-  - `RPI_15` → RPI_08
+  - `RPI_11` → AS-RP-51-006
+  - `RPI_13` → AS-RP-51-011
+  - `RPI_14` → AS-RP-51-012
+  - `RPI_15` → AS-RP-51-011
 - [x] **6.2.4** Update `arfReference.topic` from "Topic 45" → "Topic 52"
 
 #### Phase 6.3: Deep Linking Enhancement (Day 2) ✅ COMPLETE
@@ -758,15 +758,15 @@ Based on ARF Topic 52 analysis, add missing intermediary requirements:
 
 | HLR | Priority | VCQ Requirement to Add |
 |-----|----------|------------------------|
-| RPI_01 | High | Intermediary registration |
-| RPI_03 | High | Register each intermediated RP |
-| RPI_04 | Medium | Legal evidence of relationship |
-| RPI_05 | Medium | RP details in requests |
-| RPI_08 | High | Forward only to specified RP |
-| RPI_09 | High | Verification obligations |
-| RPI_10 | Critical | Delete data after forwarding |
+| AS-RP-51-001 | High | Intermediary registration |
+| AS-RP-51-003 | High | Register each intermediated RP |
+| AS-RP-51-004 | Medium | Legal evidence of relationship |
+| AS-RP-51-005 | Medium | RP details in requests |
+| AS-RP-51-011 | High | Forward only to specified RP |
+| AS-RP-51-012 | High | Verification obligations |
+| AS-RP-51-013 | Critical | Delete data after forwarding |
 
-- [x] **6.5.1** Add new requirements to `requirements/core.yaml` (RPI_01, RPI_03, RPI_04, RPI_09) and `requirements/pif.yaml` (RPI_05, RPI_08, RPI_10)
+- [x] **6.5.1** Add new requirements to `requirements/core.yaml` (AS-RP-51-001, AS-RP-51-003, AS-RP-51-004, AS-RP-51-012) and `requirements/pif.yaml` (AS-RP-51-005, AS-RP-51-011, AS-RP-51-013)
 - [x] **6.5.2** Map to appropriate categories (governance, verification, privacy)
 - [x] **6.5.3** Set criticality based on ARF language (SHALL = Critical/High)
 - [x] **6.5.4** Run validation, rebuild — **55 total requirements** (up from 48)
@@ -790,13 +790,13 @@ Based on ARF Topic 52 analysis, add missing intermediary requirements:
 #### ARF Reference Link (Enhanced)
 ```
 ┌─────────────────────────────────────────────┐
-│ 📐 RPI_07 (Topic 52)                        │ ← Orange badge, clickable
+│ 📐 AS-RP-51-008 (Topic 52)                        │ ← Orange badge, clickable
 └─────────────────────────────────────────────┘
                     │
                     ▼ (hover)
 ┌─────────────────────────────────────────────┐
 │ ┌───────────────────────────────────────┐   │
-│ │ 📐 RPI_07                             │   │ ← HLR ID
+│ │ 📐 AS-RP-51-008                             │   │ ← HLR ID
 │ │ Topic 52: Relying Party intermediaries│   │ ← Topic
 │ └───────────────────────────────────────┘   │
 │                                             │
@@ -818,7 +818,7 @@ Based on ARF Topic 52 analysis, add missing intermediary requirements:
 ```
 ┌─────────────────────────────────────────────┐
 │ 📐 ARF High-Level Requirement               │
-│ RPI_07 - Relying Party intermediaries       │
+│ AS-RP-51-008 - Relying Party intermediaries       │
 │                                             │
 │ "...it SHALL display the names and          │
 │ identifiers of both the intermediary..."    │
@@ -914,7 +914,7 @@ The following items were identified during Phase 6 implementation but deferred:
 | Task | Status | Notes |
 |------|--------|-------|
 | ~~ARF reference validation~~ | ✅ Done | Already implemented in validate-vcq.js lines 256-315. Checks HLR existence. |
-| ~~Empty HLR warning~~ | ✅ Done | Already implemented. Currently warns on Reg_23, RPI_02. |
+| ~~Empty HLR warning~~ | ✅ Done | Already implemented. Currently warns on AS-MS-27-030, AS-RP-51-002. |
 | ~~CI validation~~ | ✅ Done | Added 2026-01-23. `npm run validate:vcq` runs before build in deploy.yml. |
 
 
@@ -937,9 +937,9 @@ The following items were identified during Phase 6 implementation but deferred:
 
 | Task | Priority | Description |
 |------|----------|-------------|
-| ~~Topic 7/14 (VCR_*/VAL_*) VCQ requirements~~ | ✅ Done | Added VEND-INT-034: Support attestation status list verification mechanisms (VCR_13) |
-| ~~RPI_06 integration~~ | ✅ Done | Added VEND-INT-032: Include access cert + registration cert in requests |
-| ~~RPI_07a integration~~ | ✅ Done | Added VEND-INT-033: Ensure contractual relationship is registered (supports RPI_04/RPI_07a) |
+| ~~Topic 7/14 (VCR_*/VAL_*) VCQ requirements~~ | ✅ Done | Added VEND-INT-034: Support attestation status list verification mechanisms (AS-AP-07-020) |
+| ~~AS-RP-51-006 integration~~ | ✅ Done | Added VEND-INT-032: Include access cert + registration cert in requests |
+| ~~AS-RP-51-009 integration~~ | ✅ Done | Added VEND-INT-033: Ensure contractual relationship is registered (supports AS-RP-51-004/AS-RP-51-009) |
 
 ---
 

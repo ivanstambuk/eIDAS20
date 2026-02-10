@@ -40,7 +40,7 @@ requirements:
         text: "How do you handle forwarding failures — if the intermediated RP is temporarily unreachable, is transaction data buffered, and if so, how is this reconciled with the no-storage mandate?"
         dimension: operational
       - id: Q8
-        text: "Does the product prevent combining data from multiple transactions or across different intermediated RPs (ARF RPI_09)? What data isolation architecture enforces this?"
+        text: "Does the product prevent combining data from multiple transactions or across different intermediated RPs (ARF AS-RP-51-012)? What data isolation architecture enforces this?"
         dimension: architecture
 
   # ============================================================================
@@ -158,7 +158,7 @@ requirements:
         text: "How do you handle emergency certificate revocation and replacement — what is the expected time-to-recovery?"
         dimension: incident_response
       - id: Q7
-        text: "Does the product include the access certificate in each presentation request by value (not by reference) as required by ARF RPA_02a, ensuring atomic self-contained transactions?"
+        text: "Does the product include the access certificate in each presentation request by value (not by reference) as required by ARF AS-RP-06-001, ensuring atomic self-contained transactions?"
         dimension: compliance_completeness
       - id: Q8
         text: "Does the product support multiple certificates for different intended uses or Member States? How is the correct certificate selected per presentation request?"
@@ -294,7 +294,7 @@ requirements:
         text: "How can the organization update or modify processing instructions, and what is the implementation timeframe? Is there a formal change management process, and do you commit to SLA-backed response times?"
         dimension: operational
       - id: Q7
-        text: "In the EUDI Wallet intermediation context, how does the instruction-only principle interact with the ARF forward-only architecture (RPI_08)? Is the forwarding behaviour configurable per-RP, or is it a fixed platform behaviour?"
+        text: "In the EUDI Wallet intermediation context, how does the instruction-only principle interact with the ARF forward-only architecture (AS-RP-51-011)? Is the forwarding behaviour configurable per-RP, or is it a fixed platform behaviour?"
         dimension: architecture
       - id: Q8
         text: "How do you audit compliance with the instruction-only principle? Do you maintain logs showing that all processing operations were performed pursuant to documented instructions, and are these logs available to the organization?"
@@ -341,25 +341,25 @@ requirements:
   VEND-CORE-011:
     questions:
       - id: Q1
-        text: "How does your platform implement the dual-identity display required by Art 5b(8) and ARF RPI_06/RPI_07? Do you include both your own access certificate and the intermediated RP's RPRC_19a extension data in every presentation request?"
+        text: "How does your platform implement the dual-identity display required by Art 5b(8) and ARF AS-RP-51-006/AS-RP-51-008? Do you include both your own access certificate and the intermediated RP's EW-DM-44-018 extension data in every presentation request?"
         dimension: architecture
       - id: Q2
-        text: "What information about the intermediated Relying Party is displayed to the wallet user — do you include all five RPRC_19a fields (name, unique identifier, intended use description, Registrar URL, intended use identifier)?"
+        text: "What information about the intermediated Relying Party is displayed to the wallet user — do you include all five EW-DM-44-018 fields (name, unique identifier, intended use description, Registrar URL, intended use identifier)?"
         dimension: compliance_completeness
       - id: Q3
         text: "How does the wallet user distinguish between your identity (as intermediary) and the intermediated RP's identity in the consent flow? Is the distinction clearly labelled and unambiguous?"
         dimension: capability
       - id: Q4
-        text: "How do you handle the RPI_05 input — when the intermediated RP specifies its identity data for a presentation request, how is this data received, validated, and packaged into the RPRC_19a extension?"
+        text: "How do you handle the AS-RP-51-005 input — when the intermediated RP specifies its identity data for a presentation request, how is this data received, validated, and packaged into the EW-DM-44-018 extension?"
         dimension: architecture
       - id: Q5
-        text: "How do you handle scenarios where the intermediated RP's registered information changes (e.g., name change, merger, new intended use)? Are RPRC_19a extension fields updated dynamically from the Registrar, or cached?"
+        text: "How do you handle scenarios where the intermediated RP's registered information changes (e.g., name change, merger, new intended use)? Are EW-DM-44-018 extension fields updated dynamically from the Registrar, or cached?"
         dimension: lifecycle
       - id: Q6
-        text: "Do you support the optional wallet-side verification mechanism (RPI_07a) where the wallet unit queries the Registrar to confirm the intermediary-RP relationship? How do you ensure your registration data supports this verification?"
+        text: "Do you support the optional wallet-side verification mechanism (AS-RP-51-009) where the wallet unit queries the Registrar to confirm the intermediary-RP relationship? How do you ensure your registration data supports this verification?"
         dimension: interoperability
       - id: Q7
-        text: "If the intermediated RP does not have a registration certificate (it may be optional in some scenarios), how do you still ensure the RP's identity is conveyed to the wallet user through the RPRC_19a extension data alone?"
+        text: "If the intermediated RP does not have a registration certificate (it may be optional in some scenarios), how do you still ensure the RP's identity is conveyed to the wallet user through the EW-DM-44-018 extension data alone?"
         dimension: architecture
       - id: Q8
         text: "How do you ensure the displayed RP information is accurate and matches the data registered at the Registrar? What reconciliation process exists to detect and correct mismatches?"
@@ -475,7 +475,7 @@ requirements:
   VEND-CORE-016:
     questions:
       - id: Q1
-        text: "Per RPI_03, the intermediary must register each intermediated RP at the Registrar in the RP's Member State of establishment. Which Member State Registrars can you currently interface with, and what is your process for onboarding a new Registrar integration?"
+        text: "Per AS-RP-51-003, the intermediary must register each intermediated RP at the Registrar in the RP's Member State of establishment. Which Member State Registrars can you currently interface with, and what is your process for onboarding a new Registrar integration?"
         dimension: geographic_scope
       - id: Q2
         text: "How do you handle the Annex I data set submission for intermediated RPs, specifically point 14 (intermediary indication) and point 15 (intermediary-RP association)? Is data mapping and submission automated or manual?"
@@ -490,7 +490,7 @@ requirements:
         text: "What is your process for deregistering an intermediated RP when the contractual relationship terminates? How do you coordinate with the Registrar, certificate authority, and wallet ecosystem to ensure clean revocation?"
         dimension: lifecycle
       - id: Q6
-        text: "Registration is a prerequisite for the dual-identity display (VEND-CORE-011) and wallet-side Registrar verification (RPI_07a). How do you handle the time gap between RP onboarding and Registrar registration completion — can presentation requests be made during this period?"
+        text: "Registration is a prerequisite for the dual-identity display (VEND-CORE-011) and wallet-side Registrar verification (AS-RP-51-009). How do you handle the time gap between RP onboarding and Registrar registration completion — can presentation requests be made during this period?"
         dimension: operational
       - id: Q7
         text: "How do you manage cross-border registration when an intermediated RP operates in multiple Member States? Do you coordinate with multiple Registrars simultaneously, and how do you handle divergent national registration requirements?"
@@ -509,7 +509,7 @@ requirements:
   VEND-CORE-017:
     questions:
       - id: Q1
-        text: "Per RPI_04, what specific forms of legally valid evidence do you submit to Registrars to prove the intermediary-RP relationship (contract, power of attorney, letter of authorisation)? Does the form of evidence vary by Member State?"
+        text: "Per AS-RP-51-004, what specific forms of legally valid evidence do you submit to Registrars to prove the intermediary-RP relationship (contract, power of attorney, letter of authorisation)? Does the form of evidence vary by Member State?"
         dimension: documentation
       - id: Q2
         text: "How do you prepare evidence to satisfy the four verification checks in IR 2025/848 Art 6(3): (a) accuracy/validity/authenticity, (b) power of attorney, (c) entitlement type per Annex III, and (d) absence of duplicate registration?"
@@ -521,7 +521,7 @@ requirements:
         text: "How do you handle evidence updates when contracts between you and the intermediated RP are amended, renewed, or extended? Is there a proactive notification to the Registrar, or is re-verification triggered on next access?"
         dimension: lifecycle
       - id: Q5
-        text: "The Registrar's evidence verification underpins the wallet-side trust chain (RPI_07a). How confident are you that the evidence you provide would withstand a wallet user's Registrar verification query? Have you tested this end-to-end?"
+        text: "The Registrar's evidence verification underpins the wallet-side trust chain (AS-RP-51-009). How confident are you that the evidence you provide would withstand a wallet user's Registrar verification query? Have you tested this end-to-end?"
         dimension: compliance_evidence
       - id: Q6
         text: "Is the evidence submission and verification process automated (API-based) or manual (document upload)? What is the typical turnaround time from evidence submission to Registrar approval?"
@@ -543,7 +543,7 @@ requirements:
   VEND-CORE-018:
     questions:
       - id: Q1
-        text: "RPI_09 defines five verification dimensions (authenticity, revocation, device binding, user binding, wallet unit authenticity). Which of these do you support, and which are configurable per-RP as described by the 'as agreed' qualification?"
+        text: "AS-RP-51-012 defines five verification dimensions (authenticity, revocation, device binding, user binding, wallet unit authenticity). Which of these do you support, and which are configurable per-RP as described by the 'as agreed' qualification?"
         dimension: capability
       - id: Q2
         text: "How do you manage and synchronize trust anchors (Trusted Lists) across multiple Member State trust frameworks? Describe your update frequency, failover strategy, and how you handle the transition period when a new Member State's trust framework is added or an existing issuer is removed."
@@ -555,7 +555,7 @@ requirements:
         text: "Which attestation formats do you support for verification (mdoc per ISO 18013-5, SD-JWT VC per HAIP, or both)? If both, how do you handle format-specific verification differences (e.g., MSO signature validation vs JWS validation, mdoc deviceAuth vs SD-JWT Key Binding JWT)?"
         dimension: interoperability
       - id: Q5
-        text: "Per RPI_08, if any agreed verification fails, you must not forward any attributes. How is this conditional forwarding implemented — is it atomic (all-or-nothing), and how are partial verification failures communicated to the wallet user and logged?"
+        text: "Per AS-RP-51-011, if any agreed verification fails, you must not forward any attributes. How is this conditional forwarding implemented — is it atomic (all-or-nothing), and how are partial verification failures communicated to the wallet user and logged?"
         dimension: architecture
       - id: Q6
         text: "The RP retains ultimate legal responsibility for verification (Art 5b(9)). How do you provide verification evidence to the RP — do you include verification results, timestamps, and trust chain details in the forwarded response?"
@@ -637,10 +637,10 @@ requirements:
   VEND-CORE-021:
     questions:
       - id: Q1
-        text: "Do you implement the TS7 common data deletion request interface? Which of the three request channels (URL/web form, email draft, phone call) do you support, per DATA_DLT_02? Is the TS7 interface fully implemented for wallet-mediated deletion requests?"
+        text: "Do you implement the TS7 common data deletion request interface? Which of the three request channels (URL/web form, email draft, phone call) do you support, per AS-RP-48-001? Is the TS7 interface fully implemented for wallet-mediated deletion requests?"
         dimension: capability
       - id: Q2
-        text: "How do you authenticate users submitting deletion requests before executing deletion (DATA_DLT_07)? Do you use the wallet's own authentication/signature facilities as recommended by the ARF, or an alternative mechanism? Does the user present their PID or a pseudonymous attestation to authenticate?"
+        text: "How do you authenticate users submitting deletion requests before executing deletion (AS-RP-48-005)? Do you use the wallet's own authentication/signature facilities as recommended by the ARF, or an alternative mechanism? Does the user present their PID or a pseudonymous attestation to authenticate?"
         dimension: security
       - id: Q3
         text: "What is your committed response time for processing data deletion requests? Do you meet the Art 12(3) one-month deadline? For wallet-mediated deletion requests via TS7, is the response time faster than for manual requests?"
@@ -655,7 +655,7 @@ requirements:
         text: "How do you ensure deletion is propagated to all systems including backups, disaster recovery sites, and logs? What is the timeline for backup deletion? Do you support 'crypto-shredding' (deleting encryption keys rather than data) for backup systems? Can you certify deletion from immutable storage (tape, WORM) within a defined timeframe?"
         dimension: data_handling
       - id: Q7
-        text: "Do you provide confirmation of deletion to the requesting user? For TS7 wallet-mediated requests, does the confirmation follow the standardised response format? Is the confirmation machine-readable (for wallet dashboard logging per DATA_DLT_05-06) and digitally signed?"
+        text: "Do you provide confirmation of deletion to the requesting user? For TS7 wallet-mediated requests, does the confirmation follow the standardised response format? Is the confirmation machine-readable (for wallet dashboard logging per AS-WP-48-003-06) and digitally signed?"
         dimension: user_experience
       - id: Q8
         text: "What audit trail is maintained for deletion request processing and completion? Do your logs capture the request timestamp, requesting user identifier, data categories deleted, and completion attestation? Does the audit trail itself contain personal data (creating a retention paradox), and if so, how do you handle eventual deletion of the audit trail?"
@@ -670,7 +670,7 @@ requirements:
         text: "How do you handle deletion requests for data that has already been shared with third parties (Art 17(2))? Do you notify downstream processors, and if so, what mechanism do you use?"
         dimension: compliance_completeness
       - id: Q12
-        text: "Can the user initiate deletion directly from the wallet via the TS7 interface, and if so, does the flow include the wallet's authentication/signature facilities per DATA_DLT_07? How does the wallet-to-RP deletion flow differ from a manual deletion request?"
+        text: "Can the user initiate deletion directly from the wallet via the TS7 interface, and if so, does the flow include the wallet's authentication/signature facilities per AS-RP-48-005? How does the wallet-to-RP deletion flow differ from a manual deletion request?"
         dimension: technical_implementation
 
   # ============================================================================
@@ -933,13 +933,13 @@ requirements:
         text: "Do you support certificate verification for registration certificates from all 27 Member States, or only specific ones? If limited, what is your coverage roadmap, and how do you handle presentation requests from unsupported Member States?"
         dimension: geographic_scope
       - id: Q6
-        text: "Per RPRC_11, registration certificates must contain data deletion contact information. Do you extract and use this information to facilitate user data deletion requests (integration with VEND-CORE-021)?"
+        text: "Per EW-DM-44-012, registration certificates must contain data deletion contact information. Do you extract and use this information to facilitate user data deletion requests (integration with VEND-CORE-021)?"
         dimension: interoperability
       - id: Q7
-        text: "Per RPRC_12, registration certificates must contain DPA contact information for reporting suspicious requests. Do you surface this information to users, and do you have automated mechanisms for flagging potentially suspicious attribute requests?"
+        text: "Per EW-DM-44-013, registration certificates must contain DPA contact information for reporting suspicious requests. Do you surface this information to users, and do you have automated mechanisms for flagging potentially suspicious attribute requests?"
         dimension: compliance_completeness
       - id: Q8
-        text: "Per RPRC_10, RPs must distribute registration certificates to all their RP Instances. For intermediary deployments with multiple RP instances, how do you ensure consistent certificate distribution and synchronised revocation handling?"
+        text: "Per EW-DM-44-011, RPs must distribute registration certificates to all their RP Instances. For intermediary deployments with multiple RP instances, how do you ensure consistent certificate distribution and synchronised revocation handling?"
         dimension: architecture
       - id: Q9
         text: "What audit trail do you maintain for registration certificate verification outcomes? Do you log verification successes, failures, and the specific checks that failed for compliance reporting?"
@@ -952,7 +952,7 @@ requirements:
   VEND-CORE-030:
     questions:
       - id: Q1
-        text: "How do you verify the cryptographic signature on attestations received from wallets? Do you distinguish between attestation types (PID, QEAA, Pub-EAA, non-qualified EAA) and apply the appropriate trust anchor source for each type (OIA_12 through OIA_15)?"
+        text: "How do you verify the cryptographic signature on attestations received from wallets? Do you distinguish between attestation types (PID, QEAA, Pub-EAA, non-qualified EAA) and apply the appropriate trust anchor source for each type (EW-PIO-01-020 through EW-PIO-01-023)?"
         dimension: technical_implementation
       - id: Q2
         text: "How do you verify that attestations have not expired? Do you check both the validity period of the attestation itself and the validity of the issuer's signing certificate?"
@@ -964,7 +964,7 @@ requirements:
         text: "How do you verify the issuer's access certificate chain back to the appropriate trust anchor? Do you maintain separate trust anchor stores for each attestation type, and how do you keep them synchronised with the Trusted Lists?"
         dimension: security
       - id: Q5
-        text: "Per OIA_16, the RP SHALL discard unique elements (ISSU_35 elements + timestamps) as soon as no longer needed and SHALL NOT communicate these to the RP backend. How do you implement this requirement technically? How do you verify that unique elements are genuinely discarded from memory and not persisted in logs?"
+        text: "Per AS-RP-01-002, the RP SHALL discard unique elements (AS-AP-10-056 elements + timestamps) as soon as no longer needed and SHALL NOT communicate these to the RP backend. How do you implement this requirement technically? How do you verify that unique elements are genuinely discarded from memory and not persisted in logs?"
         dimension: privacy
       - id: Q6
         text: "What is the end-to-end latency of your attestation verification process? Have you optimised verification (e.g., parallelising signature check, revocation check, and chain validation) to minimise user-facing delay?"
@@ -973,10 +973,10 @@ requirements:
         text: "How do you handle attestations from issuers not yet in your trust list (e.g., a newly onboarded QEAA Provider)? Is there a graceful degradation path, or is the attestation rejected outright?"
         dimension: operational
       - id: Q8
-        text: "For non-qualified EAAs (per OIA_15), the trust anchor may be specified in a sector-specific Rulebook rather than a national Trusted List. How do you manage the integration and updates of Rulebook-specified trust anchors alongside national trust anchors?"
+        text: "For non-qualified EAAs (per EW-PIO-01-023), the trust anchor may be specified in a sector-specific Rulebook rather than a national Trusted List. How do you manage the integration and updates of Rulebook-specified trust anchors alongside national trust anchors?"
         dimension: interoperability
       - id: Q9
-        text: "For intermediary deployments: do you perform the full verification chain before forwarding attestation attributes to the intermediated RP (per VEND-CORE-018, RPI_09), or is any verification deferred to the RP? How do you communicate the verification outcome to the RP?"
+        text: "For intermediary deployments: do you perform the full verification chain before forwarding attestation attributes to the intermediated RP (per VEND-CORE-018, AS-RP-51-012), or is any verification deferred to the RP? How do you communicate the verification outcome to the RP?"
         dimension: architecture
 
   # ============================================================================
@@ -998,7 +998,7 @@ requirements:
         text: "How are access certificate policy updates from ACAs communicated and operationalised? Do you receive automated notifications of policy changes, or do you rely on manual monitoring of ACA publications?"
         dimension: operational
       - id: Q5
-        text: "How do you handle revocation procedures required by access certificate policies (per Reg_15)? Specifically, how quickly can you respond to: (a) Registrar suspension/cancellation, (b) requests from competent national authorities, and (c) voluntary RP-initiated revocation?"
+        text: "How do you handle revocation procedures required by access certificate policies (per AS-MS-27-018)? Specifically, how quickly can you respond to: (a) Registrar suspension/cancellation, (b) requests from competent national authorities, and (c) voluntary RP-initiated revocation?"
         dimension: incident_response
       - id: Q6
         text: "Per Art 5b(3), RPs shall not request data other than that indicated in their registration. How does your system enforce this at the technical level — does the connector validate the presentation request against the access certificate's intended use before sending it to the wallet?"
@@ -1007,7 +1007,7 @@ requirements:
         text: "For intermediary deployments: how do you manage the intended uses of each intermediated RP? Does the intermediary's access certificate contain a superset of all intermediated RPs' intended uses, or does it use per-RP registration certificates (RPRC) to distinguish individual RP scopes?"
         dimension: architecture
       - id: Q8
-        text: "How are the intended use names and unique identifiers (per Reg_31 and Reg_32) displayed to the wallet user? Do you ensure these are human-readable and meaningful enough for the user to make an informed consent decision?"
+        text: "How are the intended use names and unique identifiers (per AS-MS-27-038 and AS-MS-27-039) displayed to the wallet user? Do you ensure these are human-readable and meaningful enough for the user to make an informed consent decision?"
         dimension: user_experience
       - id: Q9
         text: "What audit evidence do you maintain showing that your actual data requests have consistently matched your registered intended uses? Can you produce a compliance report demonstrating no unauthorised attribute requests over a given period?"
@@ -1020,13 +1020,13 @@ requirements:
   VEND-CORE-032:
     questions:
       - id: Q1
-        text: "How do you present the organisation's RP Access Certificate to Wallet Units during presentation requests? Per RPA_02a, access certificates must be included **by value, not by reference** — confirm your implementation conforms to this requirement and explain the rationale (atomicity, offline support)."
+        text: "How do you present the organisation's RP Access Certificate to Wallet Units during presentation requests? Per AS-RP-06-001, access certificates must be included **by value, not by reference** — confirm your implementation conforms to this requirement and explain the rationale (atomicity, offline support)."
         dimension: technical_implementation
       - id: Q2
         text: "How do you ensure the presented certificate is current and not expired or revoked? What pre-flight checks are performed before including the certificate in a presentation request? Do you monitor certificate expiry proactively?"
         dimension: lifecycle
       - id: Q3
-        text: "What information from the access certificate is displayed to wallet users (per RPA_06)? Confirm that the RP name and requested attributes are shown. For intermediary deployments, are both the intermediary and intermediated RP names displayed (per RPI_07)?"
+        text: "What information from the access certificate is displayed to wallet users (per AS-WP-06-007)? Confirm that the RP name and requested attributes are shown. For intermediary deployments, are both the intermediary and intermediated RP names displayed (per AS-RP-51-008)?"
         dimension: user_experience
       - id: Q4
         text: "How do you handle certificate rotation or renewal without service interruption? Is there a overlap window where both old and new certificates are accepted? What is the maximum downtime during rotation?"
@@ -1035,7 +1035,7 @@ requirements:
         text: "Do you support different access certificates for different intended uses, or does a single certificate cover all your data requests? If multiple certificates, how do you select the appropriate one for each presentation request?"
         dimension: flexibility
       - id: Q6
-        text: "Per RPA_06a, if RP authentication fails, the wallet must notify the user and either block or give the user a choice. How do you minimise authentication failures on your side (certificate chain validation, correct trust anchor configuration)?"
+        text: "Per AS-WP-06-008, if RP authentication fails, the wallet must notify the user and either block or give the user a choice. How do you minimise authentication failures on your side (certificate chain validation, correct trust anchor configuration)?"
         dimension: security
       - id: Q7
         text: "For intermediary deployments: does the intermediary present its own access certificate, the intermediated RP's certificate, or both? How does the wallet distinguish between the intermediary and the intermediated RP?"
@@ -1057,16 +1057,16 @@ requirements:
         text: "Do you correctly process pseudonym-based presentations when users choose to present them? Confirm that pseudonymous presentations follow the same processing flow as identified presentations (no separate code path that could leak identity information)."
         dimension: capability
       - id: Q2
-        text: "How do you validate that the pseudonym belongs to the presenting user (PA_13)? Describe the binding verification mechanism — do you verify the wallet unit's proof-of-possession for the pseudonym key?"
+        text: "How do you validate that the pseudonym belongs to the presenting user (AS-WP-11-014)? Describe the binding verification mechanism — do you verify the wallet unit's proof-of-possession for the pseudonym key?"
         dimension: security
       - id: Q3
-        text: "Per PA_15, the RP SHALL NOT be able to derive the User's true identity from the Pseudonym value. What technical controls prevent your system or personnel from attempting to derive real identity? Is there a code-level restriction, or is it policy-based?"
+        text: "Per AS-WP-11-016, the RP SHALL NOT be able to derive the User's true identity from the Pseudonym value. What technical controls prevent your system or personnel from attempting to derive real identity? Is there a code-level restriction, or is it policy-based?"
         dimension: privacy
       - id: Q4
-        text: "Per PA_17, it SHALL NOT be possible to correlate Pseudonyms based on their values or metadata — colluding RPs SHALL NOT be able to conclude that different Pseudonyms belong to the same User. How do you prevent correlation through side channels (IP address, User-Agent, timing, session metadata)?"
+        text: "Per AS-WP-11-018, it SHALL NOT be possible to correlate Pseudonyms based on their values or metadata — colluding RPs SHALL NOT be able to conclude that different Pseudonyms belong to the same User. How do you prevent correlation through side channels (IP address, User-Agent, timing, session metadata)?"
         dimension: privacy
       - id: Q5
-        text: "How do you verify that the user is registering or authenticating a Pseudonym using a non-revoked Wallet Unit (PA_10, PA_11)? Is the wallet revocation check part of the pseudonym verification flow, or is it a separate step?"
+        text: "How do you verify that the user is registering or authenticating a Pseudonym using a non-revoked Wallet Unit (AS-WP-11-011, AS-WP-11-012)? Is the wallet revocation check part of the pseudonym verification flow, or is it a separate step?"
         dimension: security
       - id: Q6
         text: "Do you maintain logs of pseudonym presentations? If so, how do you ensure that logging does not create a correlation vector? Are pseudonym values hashed or excluded from logs entirely?"
@@ -1088,10 +1088,10 @@ requirements:
   VEND-CORE-034:
     questions:
       - id: Q1
-        text: "Do you ensure that your access certificates can be authenticated using the trust anchors of an Access Certificate Authority (ACA) notified to the Commission (per RPACANot_03)? Identify the ACA(s) you use and confirm their notification status."
+        text: "Do you ensure that your access certificates can be authenticated using the trust anchors of an Access Certificate Authority (ACA) notified to the Commission (per AS-MS-31-015)? Identify the ACA(s) you use and confirm their notification status."
         dimension: capability
       - id: Q2
-        text: "If registration certificates have been issued to you, do you ensure they can be authenticated using the trust anchors of a notified Provider of registration certificates (per RPACANot_03a)? Identify the Provider(s) and their notification status."
+        text: "If registration certificates have been issued to you, do you ensure they can be authenticated using the trust anchors of a notified Provider of registration certificates (per AS-MS-31-016)? Identify the Provider(s) and their notification status."
         dimension: capability
       - id: Q3
         text: "How are trust anchor updates (e.g., ACA key rotations) coordinated? What is the process when your ACA updates its trust anchors, and how do you ensure wallet units can still verify your certificates during the transition?"
@@ -1134,7 +1134,7 @@ requirements:
         text: "How do you handle fallback for browsers that do not support the Digital Credentials API? Is the fallback automatic (detect and redirect to alternative flow), or does the user need to manually switch? What is the alternative flow (deep-link, QR code)?"
         dimension: operational
       - id: Q4
-        text: "Per OIA_08c, the presentation request SHALL NOT be processed by the browser/OS for market analysis purposes. How do you verify that the browser is not using the request data for prohibited purposes? Do you have any contractual or technical controls with browser vendors?"
+        text: "Per EW-PIO-01-014, the presentation request SHALL NOT be processed by the browser/OS for market analysis purposes. How do you verify that the browser is not using the request data for prohibited purposes? Do you have any contractual or technical controls with browser vendors?"
         dimension: privacy
       - id: Q5
         text: "How is the credential exchange flow secured against man-in-the-middle attacks? What cross-origin protections are in place (CORS, Content-Security-Policy, origin binding)? How is the session between the RP and the wallet authenticated through the browser?"
@@ -1165,10 +1165,10 @@ requirements:
         text: "Do you implement rate limiting to avoid repeatedly requesting unavailable status lists? Describe your backoff strategy (fixed, exponential, jitter-based) and the maximum number of retries before giving up."
         dimension: technical_implementation
       - id: Q3
-        text: "Per VCR_15, the RP SHOULD NOT request the status list each time an attestation is presented. Instead, the RP SHOULD download each new version once, at a time and location unrelated to the presentation. Confirm your implementation follows this privacy-preserving pattern and describe how you decouple status list fetching from presentation events."
+        text: "Per AS-AP-07-022, the RP SHOULD NOT request the status list each time an attestation is presented. Instead, the RP SHOULD download each new version once, at a time and location unrelated to the presentation. Confirm your implementation follows this privacy-preserving pattern and describe how you decouple status list fetching from presentation events."
         dimension: privacy
       - id: Q4
-        text: "Per VCR_15, the RP SHOULD distribute downloaded status lists to all its RP Instances using an internal distribution mechanism. How do you distribute status lists across your RP Instances? What is the synchronisation latency, and how do you handle instances that miss an update?"
+        text: "Per AS-AP-07-022, the RP SHOULD distribute downloaded status lists to all its RP Instances using an internal distribution mechanism. How do you distribute status lists across your RP Instances? What is the synchronisation latency, and how do you handle instances that miss an update?"
         dimension: architecture
       - id: Q5
         text: "How long do you cache revocation status information, and what is your refresh strategy? Do you respect HTTP cache headers from the status list endpoint, or do you use a custom refresh interval?"
@@ -1196,7 +1196,7 @@ requirements:
         text: "Do you support proximity identification flows (BLE/NFC) for local credential presentation? If so, in which scenarios (border control, age verification, point-of-sale, in-branch)? Is proximity flow support a standard feature or an add-on module?"
         dimension: capability
       - id: Q2
-        text: "Per ProxId_01a, RP Instances supporting proximity flows SHALL support device retrieval as specified in ISO/IEC 18013-5. Which specific transports do you implement — BLE (mandatory), NFC (optional), or both? Which device engagement methods are supported (QR code, NFC tap)?"
+        text: "Per EW-PIO-24-002, RP Instances supporting proximity flows SHALL support device retrieval as specified in ISO/IEC 18013-5. Which specific transports do you implement — BLE (mandatory), NFC (optional), or both? Which device engagement methods are supported (QR code, NFC tap)?"
         dimension: technical_implementation
       - id: Q3
         text: "What hardware is required at the Relying Party location for proximity flows? Do you provide or certify specific reader devices, or is the proximity flow software-only running on standard mobile devices or tablets?"
@@ -1227,7 +1227,7 @@ requirements:
   VEND-CORE-041:
     questions:
       - id: Q1
-        text: "How do you handle updates to the organisation's registration certificates? Per RPRC_19, the RP Instance must include a single registration certificate applicable for its current intended use in each presentation request. How do you ensure the correct, current certificate is always used?"
+        text: "How do you handle updates to the organisation's registration certificates? Per EW-DM-44-017, the RP Instance must include a single registration certificate applicable for its current intended use in each presentation request. How do you ensure the correct, current certificate is always used?"
         dimension: lifecycle
       - id: Q2
         text: "What is the process for certificate renewal before expiration? Do you monitor certificate notBefore/notAfter dates proactively, and how far in advance of expiry do you initiate renewal?"
@@ -1236,7 +1236,7 @@ requirements:
         text: "How do you handle emergency certificate revocation situations? What is the maximum time between discovering a compromised certificate and removing it from all RP Instances?"
         dimension: incident_response
       - id: Q4
-        text: "Per RPRC_10, registration certificates must be distributed to all RP Instances. How are updated certificates distributed across your deployment topology? What is the propagation latency, and how do you handle instances that are temporarily offline during an update?"
+        text: "Per EW-DM-44-011, registration certificates must be distributed to all RP Instances. How are updated certificates distributed across your deployment topology? What is the propagation latency, and how do you handle instances that are temporarily offline during an update?"
         dimension: operational
       - id: Q5
         text: "What notifications are sent for upcoming certificate expirations? Who receives the alerts (operations team, RP customer, both)? What escalation path exists if an expiry alert is not acted upon?"
@@ -1245,13 +1245,13 @@ requirements:
         text: "Is the certificate lifecycle fully automated or does it require manual intervention? Can the product automatically request, install, and distribute new registration certificates from the Provider of registration certificates?"
         dimension: automation
       - id: Q7
-        text: "Per RPRC_19a, each presentation request must include extension fields (RP name, RP identifier, intended use description, Registrar URL, intended use identifier). How do you ensure these fields remain consistent with the registration certificate content after updates?"
+        text: "Per EW-DM-44-018, each presentation request must include extension fields (RP name, RP identifier, intended use description, Registrar URL, intended use identifier). How do you ensure these fields remain consistent with the registration certificate content after updates?"
         dimension: compliance_completeness
       - id: Q8
         text: "How do you handle the scenario where a Provider of registration certificates rotates its signing key? How do you coordinate with wallet units that may still be verifying against the old trust anchor?"
         dimension: security
       - id: Q9
-        text: "For intermediary deployments: does the intermediary manage registration certificates on behalf of the intermediated RP (per RPI_03/RPI_06), or does the RP manage its own certificates independently?"
+        text: "For intermediary deployments: does the intermediary manage registration certificates on behalf of the intermediated RP (per AS-RP-51-003/AS-RP-51-006), or does the RP manage its own certificates independently?"
         dimension: architecture
 
   # ============================================================================
@@ -1410,10 +1410,10 @@ requirements:
         text: "Does the product support adding, modifying, or deactivating intended uses without service disruption? Can intended uses be versioned, and if so, does the product retain historical versions for audit purposes?"
         dimension: lifecycle
       - id: Q4
-        text: "Per RPRC_21, the wallet may verify that requested attributes match what is registered for the selected intended use. Does the product verify this alignment locally before sending the presentation request, preventing mismatched requests from reaching the wallet?"
+        text: "Per EW-DM-44-021, the wallet may verify that requested attributes match what is registered for the selected intended use. Does the product verify this alignment locally before sending the presentation request, preventing mismatched requests from reaching the wallet?"
         dimension: compliance_completeness
       - id: Q5
-        text: "Per RPRC_20a, the RPRC_19a fields must be transferred via protocol extensions defined in ETSI TS 119 472-2 — NOT via the standard OID4VP `purpose` parameter. Does your product implement the ETSI-defined extensions for both OpenID4VP and ISO 18013-5 (proximity)? If you currently use the OID4VP `purpose` field, how will you migrate to the ETSI extension?"
+        text: "Per EW-DM-44-020, the EW-DM-44-018 fields must be transferred via protocol extensions defined in ETSI TS 119 472-2 — NOT via the standard OID4VP `purpose` parameter. Does your product implement the ETSI-defined extensions for both OpenID4VP and ISO 18013-5 (proximity)? If you currently use the OID4VP `purpose` field, how will you migrate to the ETSI extension?"
         dimension: compliance_completeness
       - id: Q6
         text: "What happens when an RP customer initiates a presentation request but no matching intended use or registration certificate is configured? Does the product fail fast with a clear error, or does it send the request without the intended use metadata (risking wallet-side rejection)?"
@@ -1422,16 +1422,16 @@ requirements:
         text: "How does the product handle the user-friendly description of the intended use across multiple languages? Does it support localisation, and if so, which language is selected for the presentation request (user's wallet locale, RP's default, or another mechanism)?"
         dimension: user_experience
       - id: Q8
-        text: "For intermediary deployments: per RPI_05, the intermediated RP must specify its intended use identifier and description to the intermediary. How does the product facilitate this communication — API call, configuration file, or management UI?"
+        text: "For intermediary deployments: per AS-RP-51-005, the intermediated RP must specify its intended use identifier and description to the intermediary. How does the product facilitate this communication — API call, configuration file, or management UI?"
         dimension: architecture
       - id: Q9
         text: "How does the product handle intended use changes that require re-registration with the Registrar? If an intended use is modified (e.g., new attributes added), does the product trigger a TS5 API update to the registry automatically?"
         dimension: lifecycle
       - id: Q10
-        text: "Per RPA_10, the wallet displays the privacy policy link 'if available' — sourced from the registration certificate or from a TS5 Registrar query. How does your product ensure the privacy policy URL is included in either the registration certificate or the TS5 registration data? What user experience results if neither source provides the privacy policy link?"
+        text: "Per AS-WP-06-013, the wallet displays the privacy policy link 'if available' — sourced from the registration certificate or from a TS5 Registrar query. How does your product ensure the privacy policy URL is included in either the registration certificate or the TS5 registration data? What user experience results if neither source provides the privacy policy link?"
         dimension: user_experience
       - id: Q11
-        text: "Per RPRC_21, attribute-to-registration mismatch triggers a wallet-side warning (not a block) — and only when the user has opted in to RP verification (RPRC_16). Does your product pre-validate that requested attributes align with the RP's registered entitlements before sending the presentation request, to proactively prevent these wallet warnings?"
+        text: "Per EW-DM-44-021, attribute-to-registration mismatch triggers a wallet-side warning (not a block) — and only when the user has opted in to RP verification (EW-DM-44-014). Does your product pre-validate that requested attributes align with the RP's registered entitlements before sending the presentation request, to proactively prevent these wallet warnings?"
         dimension: compliance_completeness
 
   # ============================================================================
@@ -1482,7 +1482,7 @@ requirements:
           Which RP Deployment Architecture(s) does your product support?
           Select all that apply:
           - **Intermediary**: your organisation acts as a registered intermediary
-            (per ARF Topic 53, RPI_01) with its own access certificate.
+            (per ARF Topic 53, AS-RP-51-001) with its own access certificate.
           - **Direct SaaS**: you host managed connector infrastructure in your
             cloud, but the RP customer uses its own access certificate.
           - **Direct Self-Hosted**: you provide deployable software that the RP
@@ -1499,13 +1499,13 @@ requirements:
       - id: Q1
         text: |
           Confirm that you register at a Registrar with your own access
-          certificate under your own Relying Party identity (per RPI_01).
+          certificate under your own Relying Party identity (per AS-RP-51-001).
           How many intermediated RPs do you currently serve, and how do you
-          register each intermediated RP at their respective Registrar (per RPI_03)?
+          register each intermediated RP at their respective Registrar (per AS-RP-51-003)?
         dimension: compliance_completeness
       - id: Q2
         text: |
-          Describe how the mandatory dual-party wallet display (RPI_07) is
+          Describe how the mandatory dual-party wallet display (AS-RP-51-008) is
           handled. What identity information (names, identifiers) does the
           wallet show to the user for both your organisation and the intermediated
           RP? How do you ensure this information is accurate and up-to-date?
@@ -1514,13 +1514,13 @@ requirements:
         text: |
           What verifications do you perform on VP Tokens received from the
           wallet before forwarding attributes to the intermediated RP
-          (per RPI_09)? Specifically address: attestation signature validation,
+          (per AS-RP-51-012)? Specifically address: attestation signature validation,
           issuer trust status check, attestation validity and revocation status,
           and holder binding verification.
         dimension: compliance_completeness
       - id: Q4
         text: |
-          Describe your data deletion procedure under RPI_10: how and when
+          Describe your data deletion procedure under AS-RP-51-013: how and when
           are personal data, PIDs, and attestations deleted after forwarding
           to the intermediated RP (or after verification failure)? What
           technical controls ensure immediate deletion occurs?

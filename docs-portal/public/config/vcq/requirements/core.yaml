@@ -110,7 +110,7 @@ requirements:
       machine-readable way.
     arfReference:
       topic: "Topic 52"
-      hlr: "Reg_23"
+      hlr: "AS-MS-27-030"
     applicability:
       - pif
       - vif
@@ -132,7 +132,7 @@ requirements:
       paragraph: "1"
     arfReference:
       topic: "Topic 52"
-      hlr: "RPI_02"
+      hlr: "AS-RP-51-002"
     applicability:
       - pif
       - vif
@@ -271,7 +271,7 @@ requirements:
       RP on whose behalf they are acting. This enables informed consent.
     arfReference:
       topic: "Topic 52"
-      hlr: "RPI_07"
+      hlr: "AS-RP-51-008"
     applicability:
       - pif
       - vif
@@ -359,7 +359,7 @@ requirements:
       obtain an access certificate containing its own name and unique ID.
     arfReference:
       topic: "Topic 52"
-      hlr: "RPI_01"
+      hlr: "AS-RP-51-001"
     applicability:
       - pif
       - vif
@@ -378,7 +378,7 @@ requirements:
       obtain a certificate for each registered intended use.
     arfReference:
       topic: "Topic 52"
-      hlr: "RPI_03"
+      hlr: "AS-RP-51-003"
     applicability:
       - pif
       - vif
@@ -397,7 +397,7 @@ requirements:
       before registering the relationship.
     arfReference:
       topic: "Topic 52"
-      hlr: "RPI_04"
+      hlr: "AS-RP-51-004"
     applicability:
       - pif
       - vif
@@ -416,7 +416,7 @@ requirements:
       what has been agreed with the Relying Party.
     arfReference:
       topic: "Topic 52"
-      hlr: "RPI_09"
+      hlr: "AS-RP-51-012"
     applicability:
       - pif
       - vif

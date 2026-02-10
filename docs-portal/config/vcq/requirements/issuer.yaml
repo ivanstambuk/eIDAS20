@@ -9,14 +9,14 @@ requirements:
       establishes the organisation's legal eligibility to issue
       attestations and enables inclusion in Trusted Lists.
 
-      **Reg_01 — Registration process:**
+      **AS-MS-27-001 — Registration process:**
       Member States SHALL provide processes and mechanisms for PID
       Providers, QEAA Providers, PuB-EAA Providers, non-qualified
       EAA Providers, and Relying Parties to register in a registry.
       Member States may implement a single registry for all roles
       or separate registries per role.
 
-      **Reg_01a — Common data set:**
+      **AS-MS-27-002 — Common data set:**
       Member States SHALL register a common set of data about
       each provider, according to the requirements in Technical
       Specification 6. This data includes the attestation type(s)
@@ -64,7 +64,7 @@ requirements:
       about their services, enabling wallets and relying parties to
       discover and evaluate providers.
 
-      **ISSU_29 — Non-discrimination mandate:**
+      **AS-AP-10-044 — Non-discrimination mandate:**
       A QEAA Provider or PuB-EAA Provider SHALL support all Wallet
       Solutions (with a narrow exception for SUA attestations when
       the Wallet Provider does not support transactional data
@@ -88,7 +88,7 @@ requirements:
       - Wallet-initiated: wallet queries the provider's metadata
         endpoint to determine available attestation types
       - Registrar-mediated: the Registrar publishes provider
-        information from the common data set (per Reg_01a)
+        information from the common data set (per AS-MS-27-002)
       - Catalogue-based: attestation types are discoverable via
         the Common Catalogue (TS11, per VEND-ISS-020)
     legalBasis:
@@ -220,7 +220,7 @@ requirements:
       formats required by the applicable PID Rulebook or Attestation
       Rulebook.
 
-      **ISSU_12 — Provider obligation:**
+      **AS-AP-10-013 — Provider obligation:**
       A PID Provider or Attestation Provider SHALL offer its PIDs
       or attestations in all formats required in the PID Rulebook
       or the applicable Attestation Rulebook. The two mandated
@@ -230,7 +230,7 @@ requirements:
       CBOR-based format using Mobile Security Objects (MSOs) for
       integrity. Originally designed for mobile driving licenses,
       now extended to all wallet attestations. Required for
-      proximity presentation use cases (per ARB_02) and also
+      proximity presentation use cases (per EW-DM-12-003) and also
       usable for remote presentation.
 
       **SD-JWT-VC:**
@@ -240,13 +240,13 @@ requirements:
       claims. Includes kb-jwt (key binding JWT) for proof of
       possession.
 
-      **ISSU_12a — Wallet-side obligation:**
+      **AS-AP-10-014 — Wallet-side obligation:**
       Wallet Providers SHALL ensure that when a user requests a PID
       or attestation, the Wallet Unit requests it in ALL formats
       offered by the provider. This means issuance always produces
       both formats simultaneously.
 
-      **ARB_02 — Proximity mandate:**
+      **EW-DM-12-003 — Proximity mandate:**
       If an Attestation Rulebook requires proximity presentation,
       it SHALL mandate the mDoc format (since OID4VP cannot
       operate without internet connectivity).
@@ -276,7 +276,7 @@ requirements:
       - issuance_platform
     deadline: "2027-11-21"
     notes: |
-      Per ARF ISSU_12: "A PID Provider or Attestation Provider
+      Per ARF AS-AP-10-013: "A PID Provider or Attestation Provider
       SHALL offer its PIDs or attestations in all formats required
       in the PID Rulebook or the applicable Attestation Rulebook."
 
@@ -294,7 +294,7 @@ requirements:
       attestation can only be presented from the authorised wallet
       instance.
 
-      **ISSU_01a — Binding mechanism:**
+      **AS-AP-10-001 — Binding mechanism:**
       During issuance, the Wallet Unit generates a key pair within
       the WSCD. The public key is sent to the issuer as part of
       the OpenID4VCI flow (proof-of-possession). The issuer binds
@@ -346,7 +346,7 @@ requirements:
       Technical Specification 6 (TS6), enabling standardised
       credential issuance to EUDI Wallets across Member States.
 
-      **ISSU_01a — Protocol mandate:**
+      **AS-AP-10-001 — Protocol mandate:**
       PID Providers and Attestation Providers SHALL support the
       OpenID4VCI protocol as profiled by the High Assurance
       Interoperability Profile (HAIP), with additions and changes
@@ -375,7 +375,7 @@ requirements:
       The OID4VCI Batch Issuance Endpoint allows issuing multiple
       credentials in a single session, reducing round-trips when
       both mDoc and SD-JWT-VC formats are issued simultaneously
-      (per ISSU_12/ISSU_12a).
+      (per AS-AP-10-013/AS-AP-10-014).
     legalBasis:
       regulation: 2024/2979
       article: Article 6
@@ -401,13 +401,13 @@ requirements:
       user requests multiple attestations simultaneously, avoiding
       redundant authentication steps.
 
-      **ISSU_64 — Mandatory batch issuance (ARF v2.8.0):**
+      **AS-AP-10-090 — Mandatory batch issuance (ARF v2.8.0):**
       PID Providers, Attestation Providers, and Wallet Units SHALL
       support the features of OpenID4VCI enabling the batch
       issuance of PIDs or attestations. This elevated batch
       issuance from optional to mandatory in v2.8.0.
 
-      **ISSU_03 — W3C Digital Credentials API:**
+      **AS-AP-10-003 — W3C Digital Credentials API:**
       Wallet Units, PID Providers, and Attestation Providers SHALL
       support the W3C Digital Credentials API for PID and
       attestation issuance, provided the API is a W3C
@@ -419,7 +419,7 @@ requirements:
       The OID4VCI Batch Issuance Endpoint (also referred to in
       VEND-ISS-007) allows issuing multiple credentials in a
       single session. This is critical when both mDoc and SD-JWT-VC
-      formats are required (per ISSU_12/ISSU_12a), as it avoids
+      formats are required (per AS-AP-10-013/AS-AP-10-014), as it avoids
       requiring separate authentication for each format.
 
       **Synchronous vs asynchronous batch:**
@@ -482,7 +482,7 @@ requirements:
       (e.g., via business register) and the natural person's
       authority to act on behalf of the organisation.
 
-      **ISSU_05 — PID activation:**
+      **AS-AP-10-005 — PID activation:**
       A Wallet Unit SHALL support a process to activate a newly
       issued PID, verifying that the PID was delivered into the
       Wallet Unit and WSCA/WSCD of the correct user. The Wallet
@@ -520,7 +520,7 @@ requirements:
       holding the original data (e.g., civil registries, tax
       authorities, educational institutions).
 
-      **ISSU_50 — Data freshness:**
+      **AS-AP-10-074 — Data freshness:**
       The provider must inform the Wallet Unit about the re-issuance
       timing relative to expiration. For limited-time attestations,
       this ensures data freshness: the attestation is re-issued
@@ -530,7 +530,7 @@ requirements:
       **Secure channels:**
       The connection to authentic sources must use secure channels
       (mTLS or equivalent) to protect data in transit. For QEAA
-      Providers, the QTSPAS_02 interface (per Topic 42) specifies
+      Providers, the AS-AP-42-002 interface (per Topic 42) specifies
       the verification request/response protocol.
 
       **Audit trail:**
@@ -564,7 +564,7 @@ requirements:
       period (valid_from and valid_until) and issuance timestamp.
       Expired attestations must be rejected by verifiers.
 
-      **ISSU_50 — Limited-time attestations:**
+      **AS-AP-10-074 — Limited-time attestations:**
       The provider SHALL inform the Wallet Unit about the moment
       at which the Wallet Unit must request re-issuance, relative
       to the expiration date of the existing attestation. This
@@ -582,7 +582,7 @@ requirements:
       avoid false validity rejections. The platform should use
       NTP and include appropriate clock skew tolerance.
 
-      **ISSU_59 — Re-issuance comparison:**
+      **AS-AP-10-085 — Re-issuance comparison:**
       After successful re-issuance, the Wallet Unit SHALL compare
       attribute values of the re-issued attestation with the
       existing one and SHALL notify the user of any differences.
@@ -612,7 +612,7 @@ requirements:
       before expiry and re-issuing attestations when the underlying
       data changes. Users should be notified of upcoming expiry.
 
-      **ISSU_65 — Re-issuance identity binding (ARF v2.8.0):**
+      **AS-AP-10-091 — Re-issuance identity binding (ARF v2.8.0):**
       A PID Provider or Attestation Provider of device-bound
       attestations SHALL verify that a re-issued PID or
       device-bound attestation is issued to the **same Wallet Unit**
@@ -620,21 +620,21 @@ requirements:
       issuing a refresh token during original issuance and
       requiring it during re-issuance.
 
-      **ISSU_05 — Re-issuance triggers:**
+      **AS-AP-10-005 — Re-issuance triggers:**
       Re-issuance can be triggered by:
-      - Approaching expiry (proactive renewal per ISSU_50)
-      - Data change at the authentic source (per VCR_09)
+      - Approaching expiry (proactive renewal per AS-AP-10-074)
+      - Data change at the authentic source (per AS-AP-07-015)
       - User request (e.g., after attribute correction)
       - Key rotation (new signing key requires re-issuance)
 
-      **ISSU_59 — Attribute comparison:**
+      **AS-AP-10-085 — Attribute comparison:**
       After successful re-issuance, the Wallet Unit SHALL compare
       attribute values and notify the user of any differences.
       This ensures the user is aware of data changes.
 
       **Old attestation handling:**
       When an attestation is renewed, the old attestation should
-      be revoked (per VCR_09) to prevent duplicate active
+      be revoked (per AS-AP-07-015) to prevent duplicate active
       attestations with different attribute values.
 
       **User notification:**
@@ -669,21 +669,21 @@ requirements:
       (revocation/validity lists) that enable relying parties to
       verify that attestations have not been revoked since issuance.
 
-      **VCR_03 — Sole-provider revocation:**
+      **AS-AP-07-004 — Sole-provider revocation:**
       If a PID or attestation is revocable, the PID Provider or
       Attestation Provider SHALL be the only party responsible for
       executing the revocation. The provider MAY outsource the
       operation of the revocation process to a third party, but
       retains responsibility.
 
-      **VCR_11 — Technical specifications:**
+      **AS-AP-07-017 — Technical specifications:**
       The Commission SHALL create or reference technical
       specifications for implementing an Attestation Status List
       mechanism or an Attestation Revocation List mechanism.
       These specifications define how providers publish status
       data and how RPs consume it.
 
-      **VCR_12 — Dual-mechanism support:**
+      **AS-AP-07-018 — Dual-mechanism support:**
       If a Relying Party verifies revocation status, it SHALL
       support BOTH the Attestation Status List mechanism AND the
       Attestation Revocation List mechanism. For issuers, this
@@ -722,7 +722,7 @@ requirements:
       When an attestation is revoked, the status list must be
       updated within the defined maximum propagation time.
 
-      **VCR_09 — Attribute-change revocation:**
+      **AS-AP-07-015 — Attribute-change revocation:**
       If the value of one or more attributes in a PID or
       attestation has changed and the attestation is still valid
       for at least 24 hours, the provider SHALL revoke it. If
@@ -772,7 +772,7 @@ requirements:
       affected wallet user through available channels, enabling
       them to take appropriate action (e.g., request re-issuance).
 
-      **VCR_09 — Notification mandate:**
+      **AS-AP-07-015 — Notification mandate:**
       If the user's contact details are known, the PID Provider,
       Attestation Provider, or Wallet Provider SHOULD, via an
       out-of-band manner, notify the user about the revocation
@@ -868,7 +868,7 @@ requirements:
       used within secure cryptographic devices (HSMs or equivalent)
       that prevent extraction and ensure key integrity.
 
-      **ISSU_35 — Unique element privacy:**
+      **AS-AP-10-056 — Unique element privacy:**
       A PID Provider or Attestation Provider SHALL ensure that all
       unique elements in a PID or attestation have a negligible
       chance of having the same value across all PIDs or
@@ -880,9 +880,9 @@ requirements:
       a cryptographically secure pseudo-random number generator
       (CSPRNG) for salt, index, and identifier generation.
 
-      **ISSU_35b — Post-issuance discarding:**
+      **AS-AP-10-058 — Post-issuance discarding:**
       After issuing a PID, attestation, or WUA, the Provider SHALL
-      discard the values of all unique elements (per ISSU_35) and
+      discard the values of all unique elements (per AS-AP-10-056) and
       any timestamps as soon as they are no longer needed. The
       Provider SHALL NOT communicate these values to any other
       party inside or outside the EUDI Wallet ecosystem.
@@ -946,7 +946,7 @@ requirements:
         via standard JWS algorithm identifiers
       The platform must ensure that the chosen algorithm is valid
       for both formats when dual-format issuance is required
-      (per ISSU_12/ISSU_12a).
+      (per AS-AP-10-013/AS-AP-10-014).
 
       **Algorithm agility:**
       The platform should support transitioning between algorithms
@@ -982,10 +982,10 @@ requirements:
       documented procedures for transitioning to new signing keys
       while maintaining validity of previously issued attestations.
 
-      **ISSU_17 — Device binding key lifecycle:**
+      **AS-AP-10-022 — Device binding key lifecycle:**
       A PID Provider SHALL implement device binding for all PIDs
       it issues, ensuring the PID is cryptographically bound to
-      the WSCA/WSCD in the Wallet Unit (per WUA_11a/AS-WP-09-015 in
+      the WSCA/WSCD in the Wallet Unit (per AS-WP-09-015/AS-WP-09-015 in
       Topic 9). When the provider's signing key rotates, existing
       device bindings remain valid (they reference the wallet's
       key, not the provider's key), but the provider's public key
@@ -1096,14 +1096,14 @@ requirements:
       the mandatory and optional attributes, data types, and
       semantic meaning of each field.
 
-      **ARB_06 — Encoding-independent semantics:**
+      **EW-DM-12-007 — Encoding-independent semantics:**
       The Scheme Provider for an Attestation Rulebook SHALL define
       all attributes that an attestation of that type may contain.
       This definition SHALL first describe the semantics of each
       attribute in an encoding-independent manner and SHALL
       subsequently for each attribute specify an ISO/IEC
       18013-5-compliant format, an SD-JWT-VC-compliant format,
-      or both (as per ARB_01–ARB_04).
+      or both (as per AS-AP-12-001–EW-DM-12-005).
 
       **Format-specific encoding:**
       - **mDoc**: attributes encoded in CBOR using the namespace
@@ -1163,7 +1163,7 @@ requirements:
       of data collected, the extent of processing, the period of
       storage, and accessibility.
 
-      **EDP_09 — Embedded disclosure policies:**
+      **EW-PIO-43-001 — Embedded disclosure policies:**
       An Attestation Provider SHALL include an embedded disclosure
       policy (if any) by value in the Issuer metadata related to
       the attestation, in compliance with the OpenID4VCI issuance
@@ -1212,7 +1212,7 @@ requirements:
       identifiers that could enable correlation of user
       presentations across different relying parties.
 
-      **ISSU_35 — Unique element negligibility:**
+      **AS-AP-10-056 — Unique element negligibility:**
       All unique elements (salt values, hash values, revocation
       indexes, device binding keys, signatures) must have a
       negligible chance of having the same value across all
@@ -1220,7 +1220,7 @@ requirements:
       identifier-based tracking but also means these unique
       elements must not be re-used across presentations.
 
-      **ISSU_35b — Post-issuance discarding:**
+      **AS-AP-10-058 — Post-issuance discarding:**
       The provider must discard unique element values after
       issuance and must not communicate them to any party.
       This prevents the provider from correlating presentations
@@ -1270,7 +1270,7 @@ requirements:
       must ensure interoperability through adherence to common
       standards.
 
-      **ISSU_12 — Mandatory format compliance:**
+      **AS-AP-10-013 — Mandatory format compliance:**
       A PID Provider or Attestation Provider SHALL offer its
       PIDs or attestations in all formats required in the PID
       Rulebook or the applicable Attestation Rulebook. By
@@ -1326,7 +1326,7 @@ requirements:
       including namespace conventions, attribute encoding, portrait
       image quality requirements, and domestic namespace publication.
 
-      **PID_01 — Full Rulebook compliance:**
+      **EW-DM-03-01 — Full Rulebook compliance:**
       PIDs and PID Providers SHALL comply with all requirements
       in the PID Rulebook. This is a blanket compliance
       requirement covering format, encoding, attributes, and
@@ -1336,18 +1336,18 @@ requirements:
       The PID Rulebook defines the mandatory attribute set:
       - Family name, given names, date of birth
       - Nationality, document number (where applicable)
-      - Portrait image (per PID_08/PID_09 quality requirements)
+      - Portrait image (per EW-DM-03-08/EW-DM-03-09 quality requirements)
       - Issuance and expiry dates
       - Issuer identifier and trust anchor reference
 
-      **Namespace conventions (PID_04/PID_05):**
+      **Namespace conventions (EW-DM-03-04/EW-DM-03-05):**
       - EU namespace: `eu.europa.ec.eudi.pid.1` for mDoc,
         standard claim names for SD-JWT-VC
       - Domestic namespace: Member States MAY define additional
         national attributes under a domestic namespace
 
       **Encoding requirements:**
-      - **mDoc (PID_10)**: CBOR encoding per ISO 18013-5, with
+      - **mDoc (EW-DM-03-10)**: CBOR encoding per ISO 18013-5, with
         correct element identifiers and data types
       - **SD-JWT-VC**: JSON encoding with standard claim names
         and selective disclosure markers
@@ -1387,22 +1387,22 @@ requirements:
       types, this means supporting both ISO 18013-5 (mDoc) and
       SD-JWT-VC formats with correct encoding.
 
-      **ISSU_12 — Rulebook-driven format mandate:**
+      **AS-AP-10-013 — Rulebook-driven format mandate:**
       A PID Provider or Attestation Provider SHALL offer its
       PIDs or attestations in all formats required in the PID
       Rulebook or the applicable Attestation Rulebook. The
       Rulebook specifies which formats are mandatory vs
       optional for that attestation type.
 
-      **ISSU_12d — Revocation chaining constraint:**
+      **AS-AP-10-017 — Revocation chaining constraint:**
       If an Attestation Provider supports revocation chaining
-      for its attestations (per WURevocation_19/AS-WP-38-019 in Topic 38),
+      for its attestations (per AS-WP-38-019/AS-WP-38-019 in Topic 38),
       the expiration date of the attestation SHALL be no later
       than the expiration date of the WUA presented during the
       issuance process. This constrains format-level validity
       metadata.
 
-      **ISSU_27 — Device binding per format:**
+      **AS-AP-10-039 — Device binding per format:**
       An Attestation Provider SHOULD implement device binding
       for all attestations it issues. The binding mechanism
       differs by format:
@@ -1445,26 +1445,26 @@ requirements:
       required, and ensuring revocation information is available
       within defined propagation times.
 
-      **VCR_02 — Rulebook-specified revocability:**
+      **AS-AP-07-003 — Rulebook-specified revocability:**
       For non-qualified EAAs, the relevant Rulebook SHALL
       specify whether that type of EAA must be revocable.
       If a non-qualified EAA type must be revocable, the
       Rulebook determines which revocation methods must be
       implemented.
 
-      **VCR_03/VCR_03a — Sole-provider revocation:**
+      **AS-AP-07-004/AS-AP-07-005 — Sole-provider revocation:**
       The PID Provider or Attestation Provider SHALL be the
       only party responsible for executing the revocation.
       The provider MAY outsource operation, but retains
       responsibility for the revocation decision.
 
-      **VCR_04 — Irreversibility:**
+      **AS-AP-07-006 — Irreversibility:**
       A Provider that revoked a PID, attestation, or WUA
       SHALL NOT reverse the revocation. Revocation is
       permanent and irreversible (suspension is the
       mechanism for temporary invalidity).
 
-      **VCR_05 — Revocation checking:**
+      **AS-AP-07-007 — Revocation checking:**
       The Rulebook specifies the revocation checking
       mechanisms that RPs must support. The provider's
       revocation publication must be compatible with these
@@ -1505,13 +1505,13 @@ requirements:
       when changes occur. This includes contact details, supported
       attestation types, and operational status.
 
-      **Reg_08 — Update without undue delay:**
+      **AS-MS-27-010 — Update without undue delay:**
       A registered PID Provider, QEAA Provider, PuB-EAA Provider,
       non-qualified EAA Provider, or Relying Party SHALL make any
       updates necessary to ensure the continued correctness of
       the registered information without undue delay.
 
-      **Reg_14 — Access certificate revocation:**
+      **AS-MS-27-017 — Access certificate revocation:**
       The common Certificate Policy SHALL require that an Access
       Certificate Authority provides one or more methods to
       revoke the access certificates it issued. This means the
@@ -1561,7 +1561,7 @@ requirements:
       information that enables Wallet Units and Relying Parties
       to verify issued attestations.
 
-      **PPNot_02 — Notification data set:**
+      **AS-WP-31-001 — Notification data set:**
       The common set of information to be notified about a PID
       Provider SHALL include at least:
       1. Identification data (MS/Country, registered name,
@@ -1570,19 +1570,19 @@ requirements:
       3. Trust anchors of Access Certificate Authorities
       4. Service supply points (issuance endpoint URLs)
 
-      **PPNot_03/PPNot_04 — Publication format:**
+      **AS-MS-31-007/AS-MS-31-008 — Publication format:**
       Trust anchor information must be published according to
       the common format specified by the Commission. This
       enables automated trust chain resolution by wallets and
       RPs across all Member States.
 
-      **PPNot_07 — Trusted List inclusion:**
+      **AS-MS-31-011 — Trusted List inclusion:**
       The provider's trust anchor must be included in the
       National Trusted List of the Member State where the
       provider is established. This is the primary mechanism
       for cross-MS trust resolution.
 
-      **PuBPNot_03 — Public body providers:**
+      **AS-MS-31-013 — Public body providers:**
       Public body Attestation Providers have additional
       notification requirements, including the legal basis
       for issuing attestations and the scope of their mandate.
@@ -1623,14 +1623,14 @@ requirements:
       provider must verify the Wallet Unit Attestation (WUA)
       to ensure the target Wallet Unit is genuine and certified.
 
-      **WUA_11a — Key possession proof:**
+      **AS-WP-09-015 — Key possession proof:**
       During issuance of a PID or device-bound attestation,
       the PID Provider or Attestation Provider SHALL verify
       that the WSCA/WSCD or keystore has proven possession of
       the new PID or attestation private key. This ensures the
       attestation will be bound to a genuine secure element.
 
-      **WUA_20a — TS3 compliance:**
+      **AS-WP-09-026 — TS3 compliance:**
       A PID Provider or Attestation Provider SHALL comply with
       all relevant requirements specified in Technical
       Specification 3 (Wallet Unit Attestation). TS3 defines
@@ -1686,7 +1686,7 @@ requirements:
       guide Wallet Units on appropriate disclosure behaviour for
       the attestation.
 
-      **EDP_09 — Policy inclusion in Issuer metadata:**
+      **EW-PIO-43-001 — Policy inclusion in Issuer metadata:**
       An Attestation Provider SHALL include an embedded disclosure
       policy (if any) by value in the Issuer metadata related to
       the attestation, in compliance with the OpenID4VCI issuance
@@ -1694,7 +1694,7 @@ requirements:
       by reference) ensures the policy is available offline and
       does not require additional network requests.
 
-      **EDP_11 — Revocation on policy change:**
+      **AS-AP-43-001 — Revocation on policy change:**
       An Attestation Provider SHALL revoke an attestation if a
       corresponding embedded disclosure policy is added, changed,
       or deleted. This ensures that wallets always use the
@@ -1742,7 +1742,7 @@ requirements:
       the provider must use it for authentication in interactions
       with Wallet Units as specified in the technical specifications.
 
-      **RPRC_14 — Service supply point distribution:**
+      **AS-AP-44-002 — Service supply point distribution:**
       If, during registration, a PID Provider, QEAA Provider,
       PuB-EAA Provider, or non-qualified EAA Provider received a
       registration certificate, it SHALL distribute it to all its
@@ -1750,7 +1750,7 @@ requirements:
       at which a Wallet Unit can start the process of requesting
       and obtaining a PID or attestation.
 
-      **RPRC_22 — Issuer metadata inclusion:**
+      **AS-AP-44-004 — Issuer metadata inclusion:**
       If a PID Provider or Attestation Provider received a
       registration certificate, it SHALL include it in its Issuer
       metadata used in the common OpenID4VCI protocol. The
@@ -1797,14 +1797,14 @@ requirements:
       proper date formatting, and make all claims selectively
       disclosable.
 
-      **PID_14 — vct claim requirement:**
+      **EW-DM-03-14 — vct claim requirement:**
       A PID Provider issuing SD-JWT-VC-compliant PIDs SHALL
       include the `vct` claim, where the value SHALL be a URN
       within the `urn:eudi:pid:` namespace. The type SHALL be
       `urn:eudi:pid:1` for the standard type or a domestic type
       that extends it.
 
-      **PID_17 — Required SD-JWT claims:**
+      **EW-DM-03-17 — Required SD-JWT claims:**
       The SD-JWT VC must include at minimum:
       - `vct`: attestation type URI
       - `iss`: issuer identifier
@@ -1813,12 +1813,12 @@ requirements:
       - `cnf`: key binding (device binding)
       - `status`: revocation status reference
 
-      **PID_18/PID_19 — Attribute encoding:**
+      **EW-DM-03-18/EW-DM-03-19 — Attribute encoding:**
       PID attributes must be encoded as JSON claims per the
       PID Rulebook’s SD-JWT-VC profile. Date attributes must
       use `full-date` format (YYYY-MM-DD) per RFC 3339.
 
-      **PID_20/PID_21 — Selective disclosure:**
+      **EW-DM-03-20/EW-DM-03-21 — Selective disclosure:**
       All PID claims (except issuer-protected claims like `vct`,
       `iss`, `cnf`, `status`) SHALL be made selectively
       disclosable using the SD-JWT `_sd` mechanism. This enables
@@ -1860,29 +1860,29 @@ requirements:
       encodings, and ensure each PID contains at most one attribute
       with the same identifier.
 
-      **PID_06 — Domestic namespace generation:**
+      **EW-DM-03-06 — Domestic namespace generation:**
       If including attributes not defined in the PID Rulebook, the
       PID Provider SHALL define them within a domestic PID
       namespace. The identifier is generated by appending the
       ISO 3166-1 alpha-2 country code to the PID namespace
       identifier (e.g., `eu.europa.ec.eudi.pid.de.1` for Germany).
 
-      **PID_07 — Document type:**
+      **EW-DM-03-07 — Document type:**
       The `docType` for PIDs SHALL be the namespace identifier
-      specified in PID_05 (`eu.europa.ec.eudi.pid.1`).
+      specified in EW-DM-03-05 (`eu.europa.ec.eudi.pid.1`).
 
-      **PID_11/PID_12 — Element identifiers and encoding:**
+      **EW-DM-03-11/EW-DM-03-12 — Element identifiers and encoding:**
       Each element (attribute) must use the identifier defined
       in the PID Rulebook. CBOR encoding must use the correct
       data types (tstr, bstr, tdate, full-date-str, uint, bool)
       as specified per attribute.
 
-      **PID_13 — Element uniqueness:**
+      **EW-DM-03-13 — Element uniqueness:**
       Each PID SHALL contain at most one attribute with the same
       element identifier within any namespace. Duplicate element
       identifiers within the same namespace are prohibited.
 
-      **PID_16 — MSO structure:**
+      **EW-DM-03-16 — MSO structure:**
       The Mobile Security Object (MSO) must be correctly
       structured with per-attribute digests (salted hashes)
       to enable selective disclosure via IssuerAuth.
@@ -1923,10 +1923,10 @@ requirements:
       Revocation List mechanism for revocation checking as
       specified in the technical specifications.
 
-      **VCR_12a — Dual mechanism mandate:**
+      **AS-AP-07-019 — Dual mechanism mandate:**
       A PID Provider or Attestation Provider SHALL support both
       the Attestation Status List mechanism and the Attestation
-      Revocation List mechanism specified per VCR_11 for
+      Revocation List mechanism specified per AS-AP-07-017 for
       verifying the revocation status of a WUA. This ensures
       verifiers can use either mechanism regardless of their
       technical capabilities.
@@ -1975,41 +1975,41 @@ requirements:
       structures, authorization flows, and credential response
       handling.
 
-      **ISSU_06/ISSU_07 — Issuance verification:**
+      **AS-AP-10-006/AS-AP-10-007 — Issuance verification:**
       After receiving a PID or attestation, the Wallet Unit
       SHALL verify that it matches what was requested. The
       provider must therefore issue credential responses that
       are structurally correct and match the credential offer.
 
-      **ISSU_14/ISSU_15 — PID Rulebook compliance:**
+      **AS-AP-10-019/AS-AP-10-020 — PID Rulebook compliance:**
       For PID issuance, the OpenID4VCI implementation must
       ensure all PIDs comply with the PID Rulebook. This
       includes correct credential type identifiers, attribute
       encoding, and format selection.
 
-      **ISSU_18/ISSU_18a — Authorization flows:**
+      **AS-AP-10-023/AS-AP-10-024 — Authorization flows:**
       The provider must support the authorization flows
       specified in the ARF, including:
       - Authorization Code flow (user-initiated)
       - Pre-authorized Code flow (provider-initiated)
       The HAIP profile requirements apply.
 
-      **ISSU_22/ISSU_22a/ISSU_22b — Access certificates:**
+      **AS-AP-10-029/AS-AP-10-030/AS-AP-10-031 — Access certificates:**
       The provider SHALL include its access certificate in
       Issuer metadata. The certificate chain must be
       verifiable by the Wallet Unit.
 
-      **ISSU_25/ISSU_26 — Credential offer structures:**
+      **AS-AP-10-037/AS-AP-10-038 — Credential offer structures:**
       Credential offers must include the attestation type,
       supported formats, issuer identifier, and any grant
       parameters. The offer can be delivered via deep link,
       QR code, or push notification.
 
-      **ISSU_27b/ISSU_27c — Device binding integration:**
+      **AS-AP-10-041/AS-AP-10-042 — Device binding integration:**
       The OpenID4VCI flow must integrate with device binding
-      (proof of possession) as specified in ISSU_27.
+      (proof of possession) as specified in AS-AP-10-039.
 
-      **ISSU_32/ISSU_32a — Deferred issuance:**
+      **AS-AP-10-048/AS-AP-10-049 — Deferred issuance:**
       Where supported, the provider must implement deferred
       issuance for scenarios where the attestation cannot be
       issued immediately (e.g., pending authentic source
@@ -2265,7 +2265,7 @@ requirements:
       resides. If the Wallet Provider revokes the WUA, the issuer
       must respond according to its cascading revocation obligations.
 
-      **WURevocation_18 (AS-WP-38-018) — PID Provider mandatory cascading (SHALL):**
+      **AS-WP-38-018 (AS-WP-38-018) — PID Provider mandatory cascading (SHALL):**
       A PID Provider issuing revocable PIDs SHALL, for each of its
       valid PIDs, regularly verify whether the Wallet Provider
       revoked the Wallet Unit on which that PID is residing, using
@@ -2277,10 +2277,10 @@ requirements:
       CIR 2024/2977, Article 5, 4.(b). The verification mechanism
       is specified in Technical Specification 3 (TS3).
 
-      **WURevocation_19 (AS-WP-38-019) — Attestation Provider policy (MAY + SHALL):**
+      **AS-WP-38-019 (AS-WP-38-019) — Attestation Provider policy (MAY + SHALL):**
       An Attestation Provider issuing revocable attestations MAY
       decide to revoke an attestation when the Wallet Unit is
-      revoked, using the same mechanism as WURevocation_18/AS-WP-38-018.
+      revoked, using the same mechanism as AS-WP-38-018/AS-WP-38-018.
       However, the Attestation Provider SHALL publish its policy
       regarding cascading revocation. This published policy allows
       Relying Parties to assess the level of trust they can place
@@ -2309,7 +2309,7 @@ requirements:
       status list cache times determine the effective cascading
       revocation latency.
 
-      **WURevocation_13 (EW-DM-38-014) — Harm assessment (ARF v2.8.0):**
+      **EW-DM-38-014 (EW-DM-38-014) — Harm assessment (ARF v2.8.0):**
       Before requesting a Wallet Provider to revoke a Wallet Unit
       (e.g., when a natural person has died), the PID Provider
       SHALL ensure that the revocation does not harm the interests
@@ -2354,13 +2354,13 @@ requirements:
       ARF v2.8.0 introduced explicit ETSI certification requirements for
       all issuer types. The applicable policy depends on the provider type:
 
-      **ISSU_67 — PID Provider policy (NCP+):**
+      **AS-AP-10-093 — PID Provider policy (NCP+):**
       A PID Provider SHALL have a policy governing all aspects of PID
       issuance and management. The policy SHALL comply with at least the
       extended normalised certificate policy ('NCP+') requirements as
       specified in ETSI EN 319 411-1, insofar applicable for PIDs.
 
-      **ISSU_69 — QEAA Provider policy (QCP-l+):**
+      **AS-AP-10-095 — QEAA Provider policy (QCP-l+):**
       A QEAA Provider SHALL have a policy governing all aspects of QEAA
       issuance and management. The policy SHALL comply with at least the
       policy for qualified certificates issued to a natural person where
@@ -2368,7 +2368,7 @@ requirements:
       electronic signature or seal creation device (QCP-l+) as specified
       in ETSI EN 319 411-2, insofar applicable for QEAAs.
 
-      **ISSU_72 — PuB-EAA Provider policy (NCP+):**
+      **AS-AP-10-098 — PuB-EAA Provider policy (NCP+):**
       A PuB-EAA Provider SHALL have a policy governing all aspects of
       PuB-EAA issuance and management, also complying with NCP+
       requirements as for PID Providers.
@@ -2407,21 +2407,21 @@ requirements:
       for all issuer types. The applicable clause of ETSI TS 119 412-6
       depends on the provider type:
 
-      **ISSU_68 — PID Provider signing certificates:**
+      **AS-AP-10-094 — PID Provider signing certificates:**
       PID Providers SHALL ensure that the certificates they use for
       signing PIDs comply with all applicable requirements in
       ETSI TS 119 412-6, in particular Clause 4.
 
-      **ISSU_70 — QEAA Provider signing certificates:**
+      **AS-AP-10-096 — QEAA Provider signing certificates:**
       QEAA Providers SHALL ensure that the certificates they use for
       signing QEAAs comply with ETSI TS 119 412-6, in particular Clause 7.
 
-      **ISSU_71 — Non-qualified EAA Provider signing certificates:**
+      **AS-AP-10-097 — Non-qualified EAA Provider signing certificates:**
       Providers of non-qualified EAAs SHALL ensure that the certificates
       they use for signing EAAs comply with ETSI TS 119 412-6, in
       particular Clause 6.
 
-      **ISSU_73 — PuB-EAA Provider signing certificates:**
+      **AS-AP-10-099 — PuB-EAA Provider signing certificates:**
       PuB-EAA Providers SHALL ensure that the certificates they use for
       signing PuB-EAAs comply with ETSI TS 119 412-6, in particular
       Clause 8.

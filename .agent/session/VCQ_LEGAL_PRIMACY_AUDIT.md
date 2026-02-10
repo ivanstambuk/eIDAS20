@@ -83,40 +83,40 @@ This implementing act establishes:
 
 | ARF HLR | Specification (summary) | Primary Legal Basis |
 |---------|------------------------|---------------------|
-| **RPI_01** | Register as RP, indicate intermediary intent | **2014/910 Art. 5b(1-2)** via 2025/848 Annex I |
-| **RPI_02** | Empty | N/A |
-| **RPI_03** | Register each intermediated RP | **2025/848 Art. 5-6**, Annex I(14-15) |
-| **RPI_04** | Provide legal evidence of RP relationship | **2025/848 Art. 6(3)(b)** |
-| **RPI_05** | Include RP details in requests | **2025/848 Annex I(9)** |
-| **RPI_06** | Request only registered attributes | **2014/910 Art. 5b(3)** (data minimization) |
-| **RPI_07** | Display both intermediary and RP identity | **2014/910 Art. 5b(8)** (RP identification to user) |
-| **RPI_07a** | Wallet verify contractual relationship | **2025/848 Art. 8** (registration certs) |
-| **RPI_07b** | Empty | N/A |
-| **RPI_08** | Forward only to specified RP | **2014/910 Art. 5b(10)** + **2016/679 Art. 28(3)(a)** |
-| **RPI_09** | Perform agreed verifications | **2014/910 Art. 5b(9)** (RP responsibility) |
-| **RPI_10** | Delete data after forwarding | **2014/910 Art. 5b(10)** (no-storage mandate) |
+| **AS-RP-51-001** | Register as RP, indicate intermediary intent | **2014/910 Art. 5b(1-2)** via 2025/848 Annex I |
+| **AS-RP-51-002** | Empty | N/A |
+| **AS-RP-51-003** | Register each intermediated RP | **2025/848 Art. 5-6**, Annex I(14-15) |
+| **AS-RP-51-004** | Provide legal evidence of RP relationship | **2025/848 Art. 6(3)(b)** |
+| **AS-RP-51-005** | Include RP details in requests | **2025/848 Annex I(9)** |
+| **AS-RP-51-006** | Request only registered attributes | **2014/910 Art. 5b(3)** (data minimization) |
+| **AS-RP-51-008** | Display both intermediary and RP identity | **2014/910 Art. 5b(8)** (RP identification to user) |
+| **AS-RP-51-009** | Wallet verify contractual relationship | **2025/848 Art. 8** (registration certs) |
+| **AS-RP-51-010** | Empty | N/A |
+| **AS-RP-51-011** | Forward only to specified RP | **2014/910 Art. 5b(10)** + **2016/679 Art. 28(3)(a)** |
+| **AS-RP-51-012** | Perform agreed verifications | **2014/910 Art. 5b(9)** (RP responsibility) |
+| **AS-RP-51-013** | Delete data after forwarding | **2014/910 Art. 5b(10)** (no-storage mandate) |
 
 ### Topic 1 (Online Identification & Authentication)
 
 | ARF HLR | Specification (summary) | Primary Legal Basis |
 |---------|------------------------|---------------------|
-| **OIA_12** | Maintain Trusted Lists for PID Providers | **2014/910 Art. 22** (Trusted Lists) |
-| **OIA_13** | Maintain Trusted Lists for Attestation Providers | **2014/910 Art. 22** |
-| **OIA_14** | Obtain trust anchors from official sources | **2014/910 Art. 32** (Trust Services) |
+| **EW-PIO-01-020** | Maintain Trusted Lists for PID Providers | **2014/910 Art. 22** (Trusted Lists) |
+| **EW-PIO-01-021** | Maintain Trusted Lists for Attestation Providers | **2014/910 Art. 22** |
+| **EW-PIO-01-022** | Obtain trust anchors from official sources | **2014/910 Art. 32** (Trust Services) |
 
 ### Topic 6 (Relying Party Authentication)
 
 | ARF HLR | Specification (summary) | Primary Legal Basis |
 |---------|------------------------|---------------------|
-| **RPA_05** | Validate attestation signatures | **2024/2979 Art. 8** (credential verification) |
-| **RPA_07** | Verify device binding | **2024/2979 Art. 3** (integrity) |
-| **RPA_08** | Verify presentation freshness | **2024/2979** (anti-replay) |
+| **AS-WP-06-006** | Validate attestation signatures | **2024/2979 Art. 8** (credential verification) |
+| **AS-WP-06-009** | Verify device binding | **2024/2979 Art. 3** (integrity) |
+| **AS-WP-06-011** | Verify presentation freshness | **2024/2979** (anti-replay) |
 
 ### Topic 7 (Revocation Checking)
 
 | ARF HLR | Specification (summary) | Primary Legal Basis |
 |---------|------------------------|---------------------|
-| **VCR_13** | Check attestation revocation status | **2024/2979** |
+| **AS-AP-07-020** | Check attestation revocation status | **2024/2979** |
 
 ---
 
@@ -128,31 +128,31 @@ This implementing act establishes:
 
 | Req ID | Current ARF | Add legalBasis |
 |--------|-------------|----------------|
-| VEND-CORE-011 | RPI_07 | `regulation: "2014/910", article: "Article 5b", paragraph: "8"` |
-| VEND-CORE-015 | RPI_01 | `regulation: "2014/910", article: "Article 5b", paragraph: "1"` |
-| VEND-CORE-016 | RPI_03 | `regulation: "2025/848", article: "Article 5-6"` |
-| VEND-CORE-017 | RPI_04 | `regulation: "2025/848", article: "Article 6", paragraph: "3(b)"` |
-| VEND-CORE-018 | RPI_09 | `regulation: "2014/910", article: "Article 5b", paragraph: "9"` |
+| VEND-CORE-011 | AS-RP-51-008 | `regulation: "2014/910", article: "Article 5b", paragraph: "8"` |
+| VEND-CORE-015 | AS-RP-51-001 | `regulation: "2014/910", article: "Article 5b", paragraph: "1"` |
+| VEND-CORE-016 | AS-RP-51-003 | `regulation: "2025/848", article: "Article 5-6"` |
+| VEND-CORE-017 | AS-RP-51-004 | `regulation: "2025/848", article: "Article 6", paragraph: "3(b)"` |
+| VEND-CORE-018 | AS-RP-51-012 | `regulation: "2014/910", article: "Article 5b", paragraph: "9"` |
 
 #### intermediary.yaml Updates
 
 | Req ID | Current ARF | Add legalBasis |
 |--------|-------------|----------------|
-| VEND-INT-001 | RPI_07 | `regulation: "2014/910", article: "Article 5b", paragraph: "8"` |
-| VEND-INT-002 | RPI_06 | `regulation: "2014/910", article: "Article 5b", paragraph: "3"` |
-| VEND-INT-003 | RPI_06 | `regulation: "2014/910", article: "Article 5b", paragraph: "3"` |
-| VEND-INT-004 | RPI_08 | `regulation: "2014/910", article: "Article 5b", paragraph: "10"` |
-| VEND-INT-006 | RPI_08 | `regulation: "2014/910", article: "Article 5b", paragraph: "10"` |
-| VEND-INT-007 | OIA_12 | `regulation: "2014/910", article: "Article 22"` |
-| VEND-INT-008 | OIA_13 | `regulation: "2014/910", article: "Article 22"` |
-| VEND-INT-010 | RPA_05 | `regulation: "2024/2979", article: "Article 8"` |
-| VEND-INT-011 | VCR_13 | `regulation: "2024/2979"` |
-| VEND-INT-012 | RPA_07 | `regulation: "2024/2979", article: "Article 3"` |
-| VEND-INT-013 | RPA_08 | `regulation: "2024/2979"` |
-| VEND-INT-014 | RPI_08 | `regulation: "2014/910", article: "Article 5b", paragraph: "10"` |
-| VEND-INT-015 | RPI_09 | `regulation: "2014/910", article: "Article 5b", paragraph: "9"` |
-| VEND-INT-017 | RPI_08 | `regulation: "2014/910", article: "Article 5b", paragraph: "10"` |
-| VEND-INT-022 | RPI_05 | `regulation: "2025/848", article: "Annex I(9)"` |
+| VEND-INT-001 | AS-RP-51-008 | `regulation: "2014/910", article: "Article 5b", paragraph: "8"` |
+| VEND-INT-002 | AS-RP-51-006 | `regulation: "2014/910", article: "Article 5b", paragraph: "3"` |
+| VEND-INT-003 | AS-RP-51-006 | `regulation: "2014/910", article: "Article 5b", paragraph: "3"` |
+| VEND-INT-004 | AS-RP-51-011 | `regulation: "2014/910", article: "Article 5b", paragraph: "10"` |
+| VEND-INT-006 | AS-RP-51-011 | `regulation: "2014/910", article: "Article 5b", paragraph: "10"` |
+| VEND-INT-007 | EW-PIO-01-020 | `regulation: "2014/910", article: "Article 22"` |
+| VEND-INT-008 | EW-PIO-01-021 | `regulation: "2014/910", article: "Article 22"` |
+| VEND-INT-010 | AS-WP-06-006 | `regulation: "2024/2979", article: "Article 8"` |
+| VEND-INT-011 | AS-AP-07-020 | `regulation: "2024/2979"` |
+| VEND-INT-012 | AS-WP-06-009 | `regulation: "2024/2979", article: "Article 3"` |
+| VEND-INT-013 | AS-WP-06-011 | `regulation: "2024/2979"` |
+| VEND-INT-014 | AS-RP-51-011 | `regulation: "2014/910", article: "Article 5b", paragraph: "10"` |
+| VEND-INT-015 | AS-RP-51-012 | `regulation: "2014/910", article: "Article 5b", paragraph: "9"` |
+| VEND-INT-017 | AS-RP-51-011 | `regulation: "2014/910", article: "Article 5b", paragraph: "10"` |
+| VEND-INT-022 | AS-RP-51-005 | `regulation: "2025/848", article: "Annex I(9)"` |
 
 ### Phase 2: Validation Script Enhancement
 

@@ -104,7 +104,7 @@ Changes:
 The ARF popover currently shows:
 ```
 ┌─────────────────────────────────────┐
-│ OIA_01                              │
+│ EW-PIO-01-001                              │
 │ Topic: Presentation Protocols       │
 ├─────────────────────────────────────┤
 │ A Wallet Unit SHALL support         │

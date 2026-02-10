@@ -567,7 +567,7 @@ requirements:
   VEND-TSP-017:
     questions:
       - id: Q1
-        text: "If acting as an Access Certificate Authority (ACA), do you comply with the Commission's common Certificate Policy per Reg_12? Can you demonstrate compliance?"
+        text: "If acting as an Access Certificate Authority (ACA), do you comply with the Commission's common Certificate Policy per AS-MS-27-015? Can you demonstrate compliance?"
         dimension: compliance_completeness
       - id: Q2
         text: "What certificate issuance procedures do you follow — registration authority processes, identity verification, certificate request validation?"
@@ -582,7 +582,7 @@ requirements:
         text: "How do you support ecosystem participants in verifying access certificates — validation endpoints, trust chain documentation, integration libraries?"
         dimension: interoperability
       - id: Q6
-        text: "Per Reg_13, do you log all issued access certificates for Certificate Transparency (CT) per Topic 55 requirements? Which CT logs do you use?"
+        text: "Per AS-MS-27-016, do you log all issued access certificates for Certificate Transparency (CT) per Topic 55 requirements? Which CT logs do you use?"
         dimension: compliance_completeness
       - id: Q7
         text: "What certificate profiles do you support — PID Provider certificates, Attestation Provider certificates, Relying Party certificates, intermediary certificates?"
@@ -616,10 +616,10 @@ requirements:
         text: "Have you ever had trust services suspended? If so, what were the circumstances and how was service restored?"
         dimension: compliance_history
       - id: Q6
-        text: "Per RPACANot_06, if acting as an ACA, are you prepared to immediately revoke ALL temporally valid access certificates upon suspension — operational readiness, automation?"
+        text: "Per EW-DM-31-001, if acting as an ACA, are you prepared to immediately revoke ALL temporally valid access certificates upon suspension — operational readiness, automation?"
         dimension: compliance_completeness
       - id: Q7
-        text: "Per RPACANot_07, if acting as a Provider of registration certificates, are you prepared to immediately revoke ALL valid registration certificates and prohibit registry access upon suspension?"
+        text: "Per AS-MS-31-019, if acting as a Provider of registration certificates, are you prepared to immediately revoke ALL valid registration certificates and prohibit registry access upon suspension?"
         dimension: compliance_completeness
       - id: Q8
         text: "What is your customer impact mitigation plan — advance notice for planned changes, alternative provider list, automated migration tools?"
@@ -635,13 +635,13 @@ requirements:
   VEND-TSP-019:
     questions:
       - id: Q1
-        text: "How do you implement the technical interfaces for authentic source access per ARF Topic 42 — QTSPAS_01 technical specifications, discovery mechanism?"
+        text: "How do you implement the technical interfaces for authentic source access per ARF Topic 42 — AS-AP-42-001 technical specifications, discovery mechanism?"
         dimension: technical_implementation
       - id: Q2
-        text: "How do you obtain and record User consent per QTSPAS_08 — informed consent (user understands what is verified), specific (per-attribute/per-request), auditable?"
+        text: "How do you obtain and record User consent per AS-AP-42-009 — informed consent (user understands what is verified), specific (per-attribute/per-request), auditable?"
         dimension: privacy
       - id: Q3
-        text: "How do you process verification responses per QTSPAS_04/05 — positive, negative, partial data, deferred (polling with unique identifier)?"
+        text: "How do you process verification responses per AS-AP-42-004/05 — positive, negative, partial data, deferred (polling with unique identifier)?"
         dimension: compliance_completeness
       - id: Q4
         text: "What authentic source response types can you handle — positive verification, negative verification, partial data, source unavailability?"
@@ -650,10 +650,10 @@ requirements:
         text: "How do you handle authentic source unavailability or errors — retry logic, fallback procedures, user notification, issuance deferral?"
         dimension: operational
       - id: Q6
-        text: "Per QTSPAS_05, do you send verification requests directly to the Authentic Source or designated intermediary — no additional intermediaries in the chain?"
+        text: "Per AS-AP-42-005, do you send verification requests directly to the Authentic Source or designated intermediary — no additional intermediaries in the chain?"
         dimension: compliance_completeness
       - id: Q7
-        text: "How do you discover Authentic Sources at national level — registry lookup, pre-configured endpoints, dynamic discovery per QTSPAS_01?"
+        text: "How do you discover Authentic Sources at national level — registry lookup, pre-configured endpoints, dynamic discovery per AS-AP-42-001?"
         dimension: technical_implementation
       - id: Q8
         text: "What security measures protect the authentic source communication channel — mutual TLS, signed requests/responses, encryption in transit?"

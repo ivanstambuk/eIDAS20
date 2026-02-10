@@ -18,7 +18,7 @@ The official ARF high-level requirements CSV is located at:
 | `Topic_Number` | Numeric topic (1-55) |
 | `Topic_Title` | Human-readable title |
 | `Subsection` | Optional subsection |
-| `Index` | HLR ID (e.g., `RPI_07`, `OIA_12`) — **THIS IS WHAT WE REFERENCE** |
+| `Index` | HLR ID (e.g., `AS-RP-51-008`, `EW-PIO-01-020`) — **THIS IS WHAT WE REFERENCE** |
 | `Requirement_specification` | The actual requirement text |
 | `Notes` | Implementation notes |
 
@@ -32,29 +32,29 @@ The official ARF high-level requirements CSV is located at:
 
 ### Our VCQ HLR References (14 unique):
 ```
-OIA_12, OIA_13, OIA_14         # Topic 1: Accessing Online Services
-RPA_05, RPA_07, RPA_08         # Topic 6: Relying Party Authentication
-RPI_02, RPI_07, RPI_11, RPI_13, RPI_14, RPI_15  # Topic 52: RP Intermediaries
-Reg_23                         # Topic 27: Registration
-VCR_13                         # Topic 14: Validity/Revocation
+EW-PIO-01-020, EW-PIO-01-021, EW-PIO-01-022         # Topic 1: Accessing Online Services
+AS-WP-06-006, AS-WP-06-009, AS-WP-06-011         # Topic 6: Relying Party Authentication
+AS-RP-51-002, AS-RP-51-008, RPI_11, RPI_13, RPI_14, RPI_15  # Topic 52: RP Intermediaries
+AS-MS-27-030                         # Topic 27: Registration
+AS-AP-07-020                         # Topic 14: Validity/Revocation
 ```
 
 ### Topic 52 (RP Intermediaries) - Official ARF Requirements:
 | HLR ID | In VCQ? | Requirement Summary |
 |--------|---------|---------------------|
-| RPI_01 | ❌ | Intermediary SHALL register as RP |
-| RPI_02 | ⚠️ Empty | (Empty in ARF) |
-| RPI_03 | ❌ | Register each intermediated RP |
-| RPI_04 | ❌ | Provide legal evidence of relationship |
-| RPI_05 | ❌ | Specify RP details when requesting |
-| RPI_06 | ❌ | Include access cert + registration cert |
-| RPI_06a | ❌ | (Empty) |
-| RPI_07 | ✅ | Display both intermediary and RP identity |
-| RPI_07a | ❌ | Wallet verify contractual relationship |
-| RPI_07b | ❌ | (Empty) |
-| RPI_08 | ❌ | Forward attributes only to specified RP |
-| RPI_09 | ❌ | Verify authenticity, revocation, binding |
-| RPI_10 | ❌ | Delete PIDs/attestations after forwarding |
+| AS-RP-51-001 | ❌ | Intermediary SHALL register as RP |
+| AS-RP-51-002 | ⚠️ Empty | (Empty in ARF) |
+| AS-RP-51-003 | ❌ | Register each intermediated RP |
+| AS-RP-51-004 | ❌ | Provide legal evidence of relationship |
+| AS-RP-51-005 | ❌ | Specify RP details when requesting |
+| AS-RP-51-006 | ❌ | Include access cert + registration cert |
+| AS-RP-51-007 | ❌ | (Empty) |
+| AS-RP-51-008 | ✅ | Display both intermediary and RP identity |
+| AS-RP-51-009 | ❌ | Wallet verify contractual relationship |
+| AS-RP-51-010 | ❌ | (Empty) |
+| AS-RP-51-011 | ❌ | Forward attributes only to specified RP |
+| AS-RP-51-012 | ❌ | Verify authenticity, revocation, binding |
+| AS-RP-51-013 | ❌ | Delete PIDs/attestations after forwarding |
 
 **Gap Analysis:** We reference 6 RPI requirements but ARF defines 13 (10 non-empty).
 
@@ -71,13 +71,13 @@ VCR_13                         # Topic 14: Validity/Revocation
 **Issue:** Our VCQ references outdated/non-existent HLR IDs!
 
 ### B. Key RPI requirements we DON'T have:
-1. **RPI_01** - Registration as intermediary
-2. **RPI_03** - Register intermediated RPs
-3. **RPI_04** - Legal evidence requirements
-4. **RPI_05** - RP details specification
-5. **RPI_08** - Forward only to specified RP
-6. **RPI_09** - Verification obligations
-7. **RPI_10** - Deletion requirements (critical!)
+1. **AS-RP-51-001** - Registration as intermediary
+2. **AS-RP-51-003** - Register intermediated RPs
+3. **AS-RP-51-004** - Legal evidence requirements
+4. **AS-RP-51-005** - RP details specification
+5. **AS-RP-51-011** - Forward only to specified RP
+6. **AS-RP-51-012** - Verification obligations
+7. **AS-RP-51-013** - Deletion requirements (critical!)
 
 ---
 
@@ -133,7 +133,7 @@ Import all 617 requirements as searchable data:
 - [ ] Link to correct topic section
 
 ### Priority 3: Complete Coverage (Enhancement)
-- [ ] Add missing RPI requirements (RPI_01, RPI_03, RPI_08, RPI_09, RPI_10)
+- [ ] Add missing RPI requirements (AS-RP-51-001, AS-RP-51-003, AS-RP-51-011, AS-RP-51-012, AS-RP-51-013)
 - [ ] Consider OIA requirements for wallet interaction
 
 ### Priority 4: Long-term (Future)

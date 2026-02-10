@@ -16,7 +16,7 @@ import sourcesConfig from '../../config/requirements/sources.json';
 
 /**
  * @typedef {Object} Requirement
- * @property {string} id - Unique identifier (e.g., "OIA_01", "VEND-CORE-001")
+ * @property {string} id - Unique identifier (e.g., "EW-PIO-01-001", "VEND-CORE-001")
  * @property {string} [harmonizedId] - ARF harmonized ID
  * @property {string} source - Source identifier ("arf-hlr", "vcq", "rca", "regulation")
  * @property {string} requirement - The requirement text

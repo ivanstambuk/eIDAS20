@@ -14,313 +14,313 @@ exclusions:
   wallet_provider:
     reason: Wallet Provider obligation - out of scope for RP/Issuer vendors
     hlrs:
-      - DATA_DLT_01
-      - DATA_DLT_02
-      - DATA_DLT_02a
-      - DATA_DLT_05
-      - DATA_DLT_08
-      - EDP_02
-      - EDP_03
-      - EDP_05
-      - EDP_06
-      - EDP_07
-      - EDP_10
-      - GenNot_01
-      - GenNot_02
-      - GenNot_05
-      - ISSU_04        # Was multi_role_review: Attestation Provider revocation on new issuance
-      - ISSU_08
-      - ISSU_09
-      - ISSU_10        # Was multi_role_review: PID Provider revocation on data change/death
-      - ISSU_11
-      - ISSU_11b
-      - ISSU_12a
-      - ISSU_12b
-      - ISSU_12c       # Was multi_role_review: PID Provider revocation on User request
-      - ISSU_13
-      - ISSU_19
-      - ISSU_19a
-      - ISSU_20
-      - ISSU_21
-      - ISSU_23
-      - ISSU_23a
-      - ISSU_23b
-      - ISSU_24
-      - ISSU_24a
-      - ISSU_28
-      - ISSU_30
-      - ISSU_33
-      - ISSU_33a
-      - ISSU_33b
-      - ISSU_34
-      - ISSU_34a
-      - ISSU_35b
-      - ISSU_36
-      - ISSU_37
-      - ISSU_38
-      - ISSU_39
-      - ISSU_40
-      - ISSU_41
-      - ISSU_42
-      - ISSU_43
-      - ISSU_44
-      - ISSU_45
-      - ISSU_46
-      - ISSU_47
-      - ISSU_48
-      - ISSU_49
-      - ISSU_51
-      - ISSU_52
-      - ISSU_53
-      - ISSU_54
-      - ISSU_55
-      - ISSU_56        # Was multi_role_review: Binding between PID and QC
-      - ISSU_56a
-      - ISSU_57
-      - ISSU_57a
-      - ISSU_58
-      - ISSU_60
-      - ISSU_61
-      - ISSU_62        # Was multi_role_review: Certificate activation keys binding
-      - ISSU_63
-      - ISSU_64
-      - ISSU_65
-      - ISSU_66        # Was multi_role_review: Certificate binding to PID holder
-      - OIA_01
-      - OIA_02
-      - OIA_03b
-      - OIA_03c
-      - OIA_05
-      - OIA_06
-      - OIA_07
-      - OIA_08
-      - OIA_08a
-      - OIA_08b
-      - OIA_08d
-      - OIA_08e
-      - OIA_09
-      - OIA_10
-      - OIA_11
-      - PA_01
-      - PA_02
-      - PA_03
-      - PA_04
-      - PA_05
-      - PA_06
-      - PA_07
-      - PA_08
-      - PA_08a
-      - PA_09
-      - PA_12          # Was multi_role_review: Pseudonym+PID binding - Wallet internal flow
-      - PA_14
-      - PA_16
-      - PA_18
-      - PA_19
-      - PA_20
-      - PA_22
-      - ProxId_01
-      - ProxId_02
-      - ProxId_03
-      - ProxId_04
-      - ProxId_05
-      - QES_01
-      - QES_02
-      - QES_03
-      - QES_04
-      - QES_05
-      - QES_06
-      - QES_07
-      - QES_08
-      - QES_10
-      - QES_11
-      - QES_12
-      - QES_13
-      - QES_14
-      - QES_15
-      - QES_16
-      - QES_17
-      - QES_17a        # Was multi_role_review: External SCA returns outcome to Wallet
-      - QES_18
-      - QES_19
-      - QES_23
-      - QES_24
-      - QES_24a        # Was multi_role_review: RP providing SCA - edge case, Wallet-side
-      - RPA_01a
-      - RPA_04
-      - RPA_06a
-      - RPA_07a
-      - RPA_10
-      - RPA_10a
-      - RPA_11
-      - RPA_12         # Was multi_role_review: MAY indicate device-bound - optional UI
-      - RPI_07a
-      - RPRC_16
-      - RPRC_17
-      - RPRC_18
-      - RPRC_20
-      - RPRC_20a
-      - RPRC_21
-      - RPRC_23
-      - TLPub_01
-      - TLPub_02
-      - TLPub_06
-      - TLPub_08
-      - VCR_06
-      - VCR_07
-      - VCR_10
-      - VCR_14         # Was multi_role_review: Private Access Tokens - Wallet mechanism
-      - VCR_16
-      - VCR_17
-      - VCR_18
-      - WPNot_01
-      - WPNot_02
-      - WPNot_03
-      - WPNot_04
-      - WPNot_05
-      - WPNot_06
-      - WUA_01
-      - WUA_02
-      - WUA_03
-      - WUA_05
-      - WUA_05a
-      - WUA_06
-      - WUA_07
-      - WUA_08
-      - WUA_09
-      - WUA_10
-      - WUA_11
-      - WUA_11b
-      - WUA_12
-      - WUA_14
-      - WUA_16
-      - WUA_17
-      - WUA_18
-      - WUA_20
+      - AS-WP-48-001
+      - AS-RP-48-001
+      - AS-RP-48-002
+      - AS-WP-48-003
+      - AS-WP-48-004
+      - AS-WP-43-002
+      - AS-WP-43-003
+      - AS-WP-43-004
+      - AS-WP-43-005
+      - AS-WP-43-006
+      - AS-WP-43-008
+      - AS-MS-31-001
+      - AS-MS-31-002
+      - AS-MS-31-005
+      - AS-AP-10-004        # Was multi_role_review: Attestation Provider revocation on new issuance
+      - AS-AP-10-008
+      - AS-AP-10-009
+      - AS-AP-10-010        # Was multi_role_review: PID Provider revocation on data change/death
+      - AS-AP-10-011
+      - AS-AP-10-012
+      - AS-AP-10-014
+      - AS-AP-10-015
+      - AS-AP-10-016       # Was multi_role_review: PID Provider revocation on User request
+      - AS-AP-10-018
+      - AS-AP-10-025
+      - AS-AP-10-026
+      - AS-AP-10-027
+      - AS-AP-10-028
+      - AS-AP-10-032
+      - AS-AP-10-033
+      - AS-AP-10-034
+      - AS-AP-10-035
+      - AS-AP-10-036
+      - AS-AP-10-043
+      - AS-AP-10-045
+      - AS-AP-10-050
+      - AS-AP-10-051
+      - AS-AP-10-052
+      - AS-AP-10-053
+      - AS-AP-10-054
+      - AS-AP-10-058
+      - AS-AP-10-059
+      - AS-AP-10-060
+      - AS-AP-10-061
+      - AS-AP-10-062
+      - AS-AP-10-064
+      - AS-AP-10-065
+      - AS-AP-10-066
+      - AS-AP-10-067
+      - AS-AP-10-068
+      - AS-AP-10-069
+      - AS-AP-10-070
+      - AS-AP-10-071
+      - AS-AP-10-072
+      - AS-AP-10-073
+      - AS-AP-10-075
+      - AS-AP-10-076
+      - AS-AP-10-077
+      - AS-AP-10-078
+      - AS-AP-10-079
+      - AS-AP-10-080        # Was multi_role_review: Binding between PID and QC
+      - AS-AP-10-081
+      - AS-AP-10-082
+      - AS-AP-10-083
+      - AS-AP-10-084
+      - AS-AP-10-086
+      - AS-AP-10-087
+      - AS-AP-10-088        # Was multi_role_review: Certificate activation keys binding
+      - AS-AP-10-089
+      - AS-AP-10-090
+      - AS-AP-10-091
+      - AS-AP-10-092        # Was multi_role_review: Certificate binding to PID holder
+      - EW-PIO-01-001
+      - EW-PIO-01-002
+      - EW-PIO-01-005
+      - EW-PIO-01-006
+      - EW-PIO-01-008
+      - EW-PIO-01-009
+      - EW-PIO-01-010
+      - EW-PIO-01-011
+      - EW-PIO-01-012
+      - EW-PIO-01-013
+      - EW-PIO-01-015
+      - EW-PIO-01-016
+      - EW-PIO-01-017
+      - EW-PIO-01-018
+      - EW-PIO-01-019
+      - AS-WP-11-001
+      - AS-WP-11-002
+      - AS-WP-11-003
+      - AS-WP-11-004
+      - AS-WP-11-005
+      - AS-WP-11-006
+      - AS-WP-11-007
+      - AS-WP-11-008
+      - AS-WP-11-009
+      - AS-WP-11-010
+      - AS-WP-11-013          # Was multi_role_review: Pseudonym+PID binding - Wallet internal flow
+      - AS-WP-11-015
+      - AS-WP-11-017
+      - AS-WP-11-019
+      - AS-WP-11-020
+      - AS-WP-11-021
+      - AS-WP-11-023
+      - EW-PIO-24-001
+      - EW-PIO-24-003
+      - EW-PIO-24-004
+      - EW-PIO-24-005
+      - EW-PIO-24-006
+      - AS-WP-16-001
+      - AS-WP-16-002
+      - AS-WP-16-003
+      - AS-WP-16-004
+      - AS-WP-16-005
+      - AS-WP-16-006
+      - AS-WP-16-007
+      - AS-WP-16-008
+      - AS-WP-16-010
+      - AS-WP-16-011
+      - AS-WP-16-012
+      - AS-WP-16-013
+      - AS-WP-16-014
+      - AS-WP-16-015
+      - AS-WP-16-016
+      - AS-WP-16-017
+      - AS-WP-16-018        # Was multi_role_review: External SCA returns outcome to Wallet
+      - AS-WP-16-019
+      - AS-WP-16-020
+      - AS-WP-16-024
+      - AS-WP-16-025
+      - AS-WP-16-026        # Was multi_role_review: RP providing SCA - edge case, Wallet-side
+      - AS-WP-06-002
+      - AS-WP-06-005
+      - AS-WP-06-008
+      - AS-WP-06-010
+      - AS-WP-06-013
+      - AS-WP-06-014
+      - AS-WP-06-015
+      - AS-WP-06-016         # Was multi_role_review: MAY indicate device-bound - optional UI
+      - AS-RP-51-009
+      - EW-DM-44-014
+      - EW-DM-44-015
+      - EW-DM-44-016
+      - EW-DM-44-019
+      - EW-DM-44-020
+      - EW-DM-44-021
+      - AS-AP-44-005
+      - AS-WP-31-010
+      - AS-WP-31-011
+      - AS-WP-31-012
+      - AS-WP-31-013
+      - AS-AP-07-008
+      - AS-AP-07-009
+      - AS-AP-07-016
+      - AS-AP-07-021         # Was multi_role_review: Private Access Tokens - Wallet mechanism
+      - AS-AP-07-023
+      - AS-AP-07-024
+      - AS-AP-07-025
+      - AS-WP-31-002
+      - AS-WP-31-003
+      - AS-WP-31-004
+      - AS-WP-31-005
+      - AS-WP-31-006
+      - AS-WP-31-007
+      - AS-WP-09-001
+      - AS-WP-09-002
+      - AS-WP-09-003
+      - AS-WP-09-005
+      - AS-WP-09-006
+      - AS-WP-09-007
+      - AS-WP-09-008
+      - AS-WP-09-009
+      - AS-WP-09-010
+      - AS-WP-09-011
+      - AS-WP-09-014
+      - AS-WP-09-016
+      - AS-WP-09-017
+      - AS-WP-09-019
+      - AS-WP-09-021
+      - AS-WP-09-022
+      - AS-WP-09-023
+      - AS-WP-09-025
       # === Added 2026-01-29 from RP-topic coverage audit ===
-      - OIA_03a        # Wallet support OpenID4VP protocol
-      - OIA_04         # Wallet verify and process RP requests
-      - RPA_05         # Wallet inform User if RP auth fails
-      - RPA_08         # Wallet authenticate User before approval
-      - VCR_01a        # Wallet Provider use revocation methods
-      - VCR_19         # Wallet regularly check revocation status
-      - DATA_DLT_03    # Wallet provide deletion request function
-      - DATA_DLT_06    # Wallet log deletion request details
+      - EW-PIO-01-004        # Wallet support OpenID4VP protocol
+      - EW-PIO-01-007         # Wallet verify and process RP requests
+      - AS-WP-06-006         # Wallet inform User if RP auth fails
+      - AS-WP-06-011         # Wallet authenticate User before approval
+      - AS-AP-07-002        # Wallet Provider use revocation methods
+      - AS-AP-07-026         # Wallet regularly check revocation status
+      - AS-RP-48-003    # Wallet provide deletion request function
+      - AS-RP-48-004    # Wallet log deletion request details
   member_state:
     reason: Member State or Commission obligation - government responsibility
     hlrs:
-      - RPA_02
-      - PA_21
-      - ARB_25
-      - Reg_01a
-      - Reg_02
-      - Reg_03
-      - Reg_04
-      - Reg_06
-      - Reg_07
-      - Reg_09
-      - Reg_10
-      - Reg_11
-      - Reg_16         # Was multi_role_review: Certificate Policy profile spec
-      - Reg_18         # Was multi_role_review: Certificate Policy change history
-      - Reg_19
-      - Reg_20
-      - Reg_20a
-      - Reg_20b
-      - Reg_21
-      - Reg_22
-      - Reg_22a
-      - Reg_22b
-      - Reg_24
-      - Reg_25
-      - Reg_26
-      - Reg_29
-      - GenNot_03
-      - GenNot_04
-      - PPNot_01
-      - PPNot_05
-      - PPNot_06
-      - PuBPNot_01
-      - PuBPNot_02
-      - RPACANot_01
-      - RPACANot_02
-      - RPACANot_04
-      - RPACANot_05    # Was multi_role_review: Trusted List format requirements
-      - TLPub_03       # Was multi_role_review: Publication over secure channel
-      - TLPub_04       # Was multi_role_review: No auth required for retrieval
-      - TLPub_05       # Was multi_role_review: Signed/sealed format publication
-      - TLPub_07
-      - QTSPAS_01
-      - QTSPAS_06
-      - QTSPAS_07
-      - EDP_08
-      - RPRC_01
-      - RPRC_02
-      - RPRC_08        # Was multi_role_review: EU-wide identifier consistency
-      - RPRC_09
-      - RPRC_13
+      - AS-WP-06-003
+      - AS-WP-11-022
+      - EW-DM-12-028
+      - AS-MS-27-002
+      - AS-MS-27-004
+      - AS-MS-27-005
+      - AS-MS-27-006
+      - AS-MS-27-008
+      - AS-MS-27-009
+      - AS-MS-27-011
+      - AS-MS-27-012
+      - AS-MS-27-014
+      - AS-MS-27-019         # Was multi_role_review: Certificate Policy profile spec
+      - AS-MS-27-021         # Was multi_role_review: Certificate Policy change history
+      - AS-MS-27-022
+      - AS-MS-27-023
+      - AS-MS-27-024
+      - AS-MS-27-025
+      - AS-MS-27-026
+      - AS-MS-27-027
+      - AS-MS-27-028
+      - AS-MS-27-029
+      - AS-MS-27-031
+      - AS-MS-27-032
+      - AS-MS-27-033
+      - AS-MS-27-036
+      - AS-MS-31-003
+      - AS-MS-31-004
+      - AS-MS-31-006
+      - AS-MS-31-009
+      - AS-MS-31-010
+      - AS-MS-31-012
+      - AS-WP-31-008
+      - AS-MS-31-014
+      - AS-WP-31-009
+      - AS-MS-31-017
+      - AS-MS-31-018    # Was multi_role_review: Trusted List format requirements
+      - EW-DM-31-002       # Was multi_role_review: Publication over secure channel
+      - EW-DM-31-003       # Was multi_role_review: No auth required for retrieval
+      - EW-DM-31-004       # Was multi_role_review: Signed/sealed format publication
+      - AS-MS-31-020
+      - AS-AP-42-001
+      - AS-AP-42-006
+      - AS-AP-42-007
+      - AS-WP-43-007
+      - EW-DM-44-001
+      - EW-DM-44-002
+      - EW-DM-44-009        # Was multi_role_review: EU-wide identifier consistency
+      - EW-DM-44-010
+      - AS-AP-44-001
   user_behavior:
     reason: User action or choice - end-user behavior, not vendor implementation
     hlrs:
-      - VCR_08
-      - ISSU_27a
+      - AS-AP-07-014
+      - AS-AP-10-040
   informative:
     reason: Informative requirement - defines terms, provides context, or advisory guidance
     hlrs:
-      - PID_03
-      - RPRC_04
-      - RPRC_06
-      - RPRC_07
-      - RPRC_15
-      - VCR_07a        # Was multi_role_review: SHOULD check revocation - already implied by VEND-CORE-030
-      - VCR_07b        # Was multi_role_review: SHOULD check freshness - already implied by VEND-CORE-030
-      - QTSPAS_07a     # Was multi_role_review: SHOULD align with OOTS - advisory guidance
+      - EW-DM-03-03
+      - EW-DM-44-004
+      - EW-DM-44-007
+      - EW-DM-44-008
+      - AS-AP-44-003
+      - AS-AP-07-010        # Was multi_role_review: SHOULD check revocation - already implied by VEND-CORE-030
+      - AS-AP-07-011        # Was multi_role_review: SHOULD check freshness - already implied by VEND-CORE-030
+      - AS-AP-42-008     # Was multi_role_review: SHOULD align with OOTS - advisory guidance
   empty:
     reason: Empty placeholder HLR - no specification text
     hlrs:
-      - OIA_03
-      - RPA_09
-      - ProxId_06
-      - DATA_DLT_04
-      - RPI_02
-      - RPI_06a
-      - RPI_07b
+      - EW-PIO-01-003
+      - AS-WP-06-012
+      - EW-PIO-24-007
+      - AS-WP-48-002
+      - AS-RP-51-002
+      - AS-RP-51-007
+      - AS-RP-51-010
   multi_role_review:
     reason: Requires manual review - multi-role HLR (RESOLVED - all reviewed 2026-01-28)
     hlrs: []           # All 32 HLRs reclassified to appropriate categories
   rulebook_author:
     reason: Rulebook or Scheme Provider obligation - defines standards, not vendor implementation
     hlrs:
-      - ARB_01
-      - ARB_01a
-      - ARB_01b
-      - ARB_05
-      - ARB_06
-      - ARB_06a
-      - ARB_06b
-      - ARB_07         # Was multi_role_review: Consider existing attribute catalogue
-      - ARB_08         # Was multi_role_review: Consider existing conventions for attributes
-      - ARB_09
-      - ARB_10
-      - ARB_11
-      - ARB_12
-      - ARB_13
-      - ARB_14
-      - ARB_15         # Was multi_role_review: Include Annex V(b) attributes in non-QEAA
-      - ARB_16
-      - ARB_17         # Was multi_role_review: Include Annex V(c) attributes in non-QEAA
-      - ARB_18
-      - ARB_19         # Was multi_role_review: Include Annex V(e) attributes in non-QEAA
-      - ARB_20
-      - ARB_21         # Was multi_role_review: Include trust anchor location in Rulebook
-      - ARB_22
-      - ARB_23
-      - ARB_24
-      - ARB_26         # Was multi_role_review: Define verification mechanisms in Rulebook
-      - ARB_27         # Was multi_role_review: Specify PID binding verification requirement
-      - ARB_28
-      - ARB_29         # Was multi_role_review: Follow Attestation Rulebook template
-      - ARB_30
-      - ARB_31         # Was multi_role_review: Define Type Metadata Document for SD-JWT VC
-      - ARB_32         # Was multi_role_review: Define JSON Schema for SD-JWT VC
-      - ARB_33
-      - ARB_34
+      - AS-AP-12-001
+      - EW-DM-12-001
+      - EW-DM-12-002
+      - EW-DM-12-006
+      - EW-DM-12-007
+      - EW-DM-12-008
+      - EW-DM-12-009
+      - EW-DM-12-010         # Was multi_role_review: Consider existing attribute catalogue
+      - EW-DM-12-011         # Was multi_role_review: Consider existing conventions for attributes
+      - EW-DM-12-012
+      - EW-DM-12-013
+      - EW-DM-12-014
+      - EW-DM-12-015
+      - EW-DM-12-016
+      - EW-DM-12-017
+      - EW-DM-12-018         # Was multi_role_review: Include Annex V(b) attributes in non-QEAA
+      - EW-DM-12-019
+      - EW-DM-12-020         # Was multi_role_review: Include Annex V(c) attributes in non-QEAA
+      - EW-DM-12-021
+      - EW-DM-12-022         # Was multi_role_review: Include Annex V(e) attributes in non-QEAA
+      - EW-DM-12-023
+      - EW-DM-12-024         # Was multi_role_review: Include trust anchor location in Rulebook
+      - EW-DM-12-025
+      - EW-DM-12-026
+      - EW-DM-12-027
+      - EW-DM-12-029         # Was multi_role_review: Define verification mechanisms in Rulebook
+      - EW-DM-12-030         # Was multi_role_review: Specify PID binding verification requirement
+      - EW-DM-12-031
+      - EW-DM-12-032         # Was multi_role_review: Follow Attestation Rulebook template
+      - EW-DM-12-033
+      - EW-DM-12-034         # Was multi_role_review: Define Type Metadata Document for SD-JWT VC
+      - EW-DM-12-035         # Was multi_role_review: Define JSON Schema for SD-JWT VC
+      - EW-DM-12-036
+      - EW-DM-12-036

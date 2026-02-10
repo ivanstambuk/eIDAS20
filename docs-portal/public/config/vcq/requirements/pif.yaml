@@ -25,7 +25,7 @@ requirements:
       informed consent.
     arfReference:
       topic: "Topic 52"
-      hlr: "RPI_07"
+      hlr: "AS-RP-51-008"
     legalText: |
       When an intermediary requests attestations from a wallet unit, the wallet 
       unit shall display both the identity of the intermediary and the identity 
@@ -44,7 +44,7 @@ requirements:
       be requested.
     arfReference:
       topic: "Topic 52"
-      hlr: "RPI_06"
+      hlr: "AS-RP-51-006"
     applicability:
       - pif
     linkedRCA:
@@ -65,7 +65,7 @@ requirements:
       request must match what the RP registered with supervisory authorities.
     arfReference:
       topic: "Topic 52"
-      hlr: "RPI_06"
+      hlr: "AS-RP-51-006"
     applicability:
       - pif
     deadline: "2027-11-21"
@@ -80,7 +80,7 @@ requirements:
       presentation integrity must be preserved.
     arfReference:
       topic: "Topic 52"
-      hlr: "RPI_08"
+      hlr: "AS-RP-51-011"
     applicability:
       - pif
     deadline: "2027-11-21"
@@ -121,7 +121,7 @@ requirements:
       (TLS 1.3 or equivalent) is required.
     arfReference:
       topic: "Topic 52"
-      hlr: "RPI_08"
+      hlr: "AS-RP-51-011"
     applicability:
       - pif
     deadline: "2027-11-21"
@@ -136,7 +136,7 @@ requirements:
       and session binding are typical approaches.
     arfReference:
       topic: "Topic 52"
-      hlr: "RPI_09"
+      hlr: "AS-RP-51-012"
     applicability:
       - pif
     deadline: "2027-11-21"
@@ -194,7 +194,7 @@ requirements:
       wallet to display accurate RP information to the user.
     arfReference:
       topic: "Topic 52"
-      hlr: "RPI_05"
+      hlr: "AS-RP-51-005"
     applicability:
       - pif
     linkedRCA:
@@ -212,7 +212,7 @@ requirements:
       no attributes may be forwarded.
     arfReference:
       topic: "Topic 52"
-      hlr: "RPI_08"
+      hlr: "AS-RP-51-011"
     applicability:
       - pif
     deadline: "2027-11-21"
@@ -228,7 +228,7 @@ requirements:
       occur immediately after completing all necessary verifications.
     arfReference:
       topic: "Topic 52"
-      hlr: "RPI_10"
+      hlr: "AS-RP-51-013"
     legalBasis:
       regulation: "2014/910"
       article: "Article 5b"

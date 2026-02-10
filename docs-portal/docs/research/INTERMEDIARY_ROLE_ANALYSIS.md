@@ -82,7 +82,7 @@ Article 9 of Implementing Regulation 2025/1569 introduces a distinct concept:
 
 **For this analysis and the VCQ tool, we focus exclusively on RP Intermediaries (Art. 5b(10)).**
 
-The original VCQ design incorrectly created separate "PIF" and "VIF" categories, with VIF implying a connection to 2025/1569. This has been corrected per DEC-254 — there is only **one** type of RP intermediary, which performs both forwarding AND verification as part of a single role (per ARF RPI_09).
+The original VCQ design incorrectly created separate "PIF" and "VIF" categories, with VIF implying a connection to 2025/1569. This has been corrected per DEC-254 — there is only **one** type of RP intermediary, which performs both forwarding AND verification as part of a single role (per ARF AS-RP-51-012).
 
 
 ---

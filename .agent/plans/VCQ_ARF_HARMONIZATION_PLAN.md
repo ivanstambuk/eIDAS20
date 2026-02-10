@@ -61,12 +61,12 @@ Decision: DEC-259
 # BEFORE (single HLR)
 arfReference:
   topic: "Topic 7"
-  hlr: "VCR_01"
+  hlr: "AS-AP-07-001"
 
 # AFTER (supports arrays for consolidated requirements)
 arfReference:
   topic: "Topic 7"
-  hlr: ["VCR_01", "VCR_02", "VCR_03", "VCR_04"]
+  hlr: ["AS-AP-07-001", "AS-AP-07-003", "AS-AP-07-004", "AS-AP-07-006"]
 ```
 **Action:** Update VCQ schema and build script to support array format.
 
@@ -151,9 +151,9 @@ Topic 52  :  10   | 10  |  0  |   1   |    9   |  4
 
 ### Currently Referenced HLRs
 ```
-OIA_12, OIA_13, OIA_14, RPA_03, RPA_05, RPA_07, RPA_08, 
-RPI_01, RPI_03, RPI_04, RPI_05, RPI_06, RPI_07, RPI_08, RPI_09, RPI_10, 
-Reg_01, VCR_01, VCR_13,
+EW-PIO-01-020, EW-PIO-01-021, EW-PIO-01-022, AS-WP-06-004, AS-WP-06-006, AS-WP-06-009, AS-WP-06-011, 
+AS-RP-51-001, AS-RP-51-003, AS-RP-51-004, AS-RP-51-005, AS-RP-51-006, AS-RP-51-008, AS-RP-51-011, AS-RP-51-012, AS-RP-51-013, 
+AS-MS-27-001, AS-AP-07-001, AS-AP-07-020,
 TS1, TS2, TS3, TS6, TS7, TS8, TS9, TS10, TS11, TS12
 ```
 
@@ -226,38 +226,38 @@ Topic 52    :  0 |   0 |     0 |      1 |        0
 
 **issuer.yaml** (15 requirements updated):
 ```
-VEND-ISS-002 → ISSU_29 (Topic 10)
-VEND-ISS-004 → QTSPAS_02 (Topic 42)
-VEND-ISS-007 → [ISSU_01, ISSU_01a] (Topic 10)
-VEND-ISS-008 → ISSU_03 (Topic 10)
-VEND-ISS-011 → ISSU_50 (Topic 10)
-VEND-ISS-012 → [ISSU_05, ISSU_59] (Topic 10)
-VEND-ISS-013 → [VCR_11, VCR_12] (Topic 7)
-VEND-ISS-014 → [VCR_12, VCR_19] (Topic 7)
-VEND-ISS-015 → VCR_09 (Topic 7)
-VEND-ISS-016 → VCR_01a (Topic 7)
-VEND-ISS-017 → [ISSU_35, ISSU_35a] (Topic 10)
-VEND-ISS-018 → ISSU_35 (Topic 10)
-VEND-ISS-019 → ISSU_17 (Topic 10)
-VEND-ISS-021 → [ARB_03, ARB_04] (Topic 12)
-VEND-ISS-022 → EDP_01 (Topic 43)
-VEND-ISS-024 → ISSU_02 (Topic 10)
+VEND-ISS-002 → AS-AP-10-044 (Topic 10)
+VEND-ISS-004 → AS-AP-42-002 (Topic 42)
+VEND-ISS-007 → [EW-PIO-10-001, AS-AP-10-001] (Topic 10)
+VEND-ISS-008 → AS-AP-10-003 (Topic 10)
+VEND-ISS-011 → AS-AP-10-074 (Topic 10)
+VEND-ISS-012 → [AS-AP-10-005, AS-AP-10-085] (Topic 10)
+VEND-ISS-013 → [AS-AP-07-017, AS-AP-07-018] (Topic 7)
+VEND-ISS-014 → [AS-AP-07-018, AS-AP-07-026] (Topic 7)
+VEND-ISS-015 → AS-AP-07-015 (Topic 7)
+VEND-ISS-016 → AS-AP-07-002 (Topic 7)
+VEND-ISS-017 → [AS-AP-10-056, AS-AP-10-057] (Topic 10)
+VEND-ISS-018 → AS-AP-10-056 (Topic 10)
+VEND-ISS-019 → AS-AP-10-022 (Topic 10)
+VEND-ISS-021 → [EW-DM-12-004, EW-DM-12-005] (Topic 12)
+VEND-ISS-022 → AS-WP-43-001 (Topic 43)
+VEND-ISS-024 → AS-AP-10-002 (Topic 10)
 ```
 
 **intermediary.yaml** (4 requirements updated):
 ```
-VEND-INT-005 → [OIA_03a, OIA_04] (Topic 1)
-VEND-INT-023 → PID_02 (Topic 3)
-VEND-INT-024 → ARB_02 (Topic 12)
-VEND-INT-029 → RPA_01 (Topic 6)
+VEND-INT-005 → [EW-PIO-01-004, EW-PIO-01-007] (Topic 1)
+VEND-INT-023 → EW-DM-03-02 (Topic 3)
+VEND-INT-024 → EW-DM-12-003 (Topic 12)
+VEND-INT-029 → AS-WP-06-001 (Topic 6)
 ```
 
 ### New HLRs Covered (25 new)
 ```
-ARB_02, ARB_03, ARB_04, EDP_01, ISSU_01, ISSU_01a, ISSU_02, ISSU_03, 
-ISSU_05, ISSU_17, ISSU_29, ISSU_35, ISSU_35a, ISSU_50, ISSU_59, 
-OIA_03a, OIA_04, PID_02, QTSPAS_02, RPA_01, VCR_01a, VCR_09, 
-VCR_11, VCR_12, VCR_19
+EW-DM-12-003, EW-DM-12-004, EW-DM-12-005, AS-WP-43-001, EW-PIO-10-001, AS-AP-10-001, AS-AP-10-002, AS-AP-10-003, 
+AS-AP-10-005, AS-AP-10-022, AS-AP-10-044, AS-AP-10-056, AS-AP-10-057, AS-AP-10-074, AS-AP-10-085, 
+EW-PIO-01-004, EW-PIO-01-007, EW-DM-03-02, AS-AP-42-002, AS-WP-06-001, AS-AP-07-002, AS-AP-07-015, 
+AS-AP-07-017, AS-AP-07-018, AS-AP-07-026
 ```
 
 ---
@@ -278,32 +278,32 @@ VCR_11, VCR_12, VCR_19
 **issuer.yaml** (8 new):
 | ID | Category | HLRs Covered |
 |----|----------|--------------|
-| VEND-ISS-026 | issuance | PID_01, PID_04, PID_05, PID_08, PID_09, PID_10 |
-| VEND-ISS-027 | issuance | ISSU_12, ISSU_12d, ISSU_27 |
-| VEND-ISS-028 | revocation | VCR_02, VCR_03, VCR_03a, VCR_04, VCR_05 |
-| VEND-ISS-029 | registration | Reg_08, Reg_14 |
-| VEND-ISS-030 | transparency | PPNot_03, PPNot_07, PuBPNot_03 |
-| VEND-ISS-031 | issuance | WUA_11a, WUA_20a |
-| VEND-ISS-032 | privacy | EDP_09, EDP_11 |
-| VEND-ISS-033 | registration | RPRC_14, RPRC_22 |
+| VEND-ISS-026 | issuance | EW-DM-03-01, EW-DM-03-04, EW-DM-03-05, EW-DM-03-08, EW-DM-03-09, EW-DM-03-10 |
+| VEND-ISS-027 | issuance | AS-AP-10-013, AS-AP-10-017, AS-AP-10-039 |
+| VEND-ISS-028 | revocation | AS-AP-07-003, AS-AP-07-004, AS-AP-07-005, AS-AP-07-006, AS-AP-07-007 |
+| VEND-ISS-029 | registration | AS-MS-27-010, AS-MS-27-017 |
+| VEND-ISS-030 | transparency | AS-MS-31-007, AS-MS-31-011, AS-MS-31-013 |
+| VEND-ISS-031 | issuance | AS-WP-09-015, AS-WP-09-026 |
+| VEND-ISS-032 | privacy | EW-PIO-43-001, AS-AP-43-001 |
+| VEND-ISS-033 | registration | AS-AP-44-002, AS-AP-44-004 |
 
 **core.yaml** (7 new):
 | ID | Category | HLRs Covered |
 |----|----------|--------------|
-| VEND-CORE-029 | verification | RPRC_03, RPRC_05, RPRC_10, RPRC_11, RPRC_12 |
-| VEND-CORE-030 | verification | OIA_15, OIA_16 |
-| VEND-CORE-031 | registration | Reg_15, Reg_31, Reg_32 |
-| VEND-CORE-032 | verification | RPA_02a, RPA_06 |
-| VEND-CORE-033 | privacy | PA_13, PA_15 |
-| VEND-CORE-034 | transparency | RPACANot_03, RPACANot_03a |
-| VEND-CORE-035 | privacy | DATA_DLT_03, DATA_DLT_06 |
+| VEND-CORE-029 | verification | EW-DM-44-003, EW-DM-44-006, EW-DM-44-011, EW-DM-44-012, EW-DM-44-013 |
+| VEND-CORE-030 | verification | EW-PIO-01-023, AS-RP-01-002 |
+| VEND-CORE-031 | registration | AS-MS-27-018, AS-MS-27-038, AS-MS-27-039 |
+| VEND-CORE-032 | verification | AS-RP-06-001, AS-WP-06-007 |
+| VEND-CORE-033 | privacy | AS-WP-11-014, AS-WP-11-016 |
+| VEND-CORE-034 | transparency | AS-MS-31-015, AS-MS-31-016 |
+| VEND-CORE-035 | privacy | AS-RP-48-003, AS-RP-48-004 |
 
 **trust_services.yaml** (3 new):
 | ID | Category | HLRs Covered |
 |----|----------|--------------|
-| VEND-TSP-017 | certification | Reg_12, Reg_13 |
-| VEND-TSP-018 | notification | RPACANot_06, RPACANot_07 |
-| VEND-TSP-019 | verification | QTSPAS_03, QTSPAS_04, QTSPAS_05, QTSPAS_08 |
+| VEND-TSP-017 | certification | AS-MS-27-015, AS-MS-27-016 |
+| VEND-TSP-018 | notification | EW-DM-31-001, AS-MS-31-019 |
+| VEND-TSP-019 | verification | AS-AP-42-003, AS-AP-42-004, AS-AP-42-005, AS-AP-42-009 |
 
 ### Remaining Gaps
 - **315 HLRs** still uncovered in ARF data
@@ -337,29 +337,29 @@ as clear **Issuer obligations** and covered by new requirements:
 
 | ID | Category | HLRs Covered |
 |----|----------|--------------|
-| VEND-ISS-034 | issuance | PID_14, PID_17, PID_18, PID_19, PID_20, PID_21 |
-| VEND-ISS-035 | issuance | PID_06, PID_07, PID_11, PID_12, PID_13, PID_16 |
-| VEND-ISS-036 | revocation | VCR_12a |
-| VEND-ISS-037 | issuance | ISSU_06, ISSU_07, ISSU_14, ISSU_15, ISSU_18, ISSU_18a, ISSU_22, ISSU_22a, ISSU_22b, ISSU_25, ISSU_26, ISSU_27b, ISSU_27c, ISSU_32, ISSU_32a |
+| VEND-ISS-034 | issuance | EW-DM-03-14, EW-DM-03-17, EW-DM-03-18, EW-DM-03-19, EW-DM-03-20, EW-DM-03-21 |
+| VEND-ISS-035 | issuance | EW-DM-03-06, EW-DM-03-07, EW-DM-03-11, EW-DM-03-12, EW-DM-03-13, EW-DM-03-16 |
+| VEND-ISS-036 | revocation | AS-AP-07-019 |
+| VEND-ISS-037 | issuance | AS-AP-10-006, AS-AP-10-007, AS-AP-10-019, AS-AP-10-020, AS-AP-10-023, AS-AP-10-024, AS-AP-10-029, AS-AP-10-030, AS-AP-10-031, AS-AP-10-037, AS-AP-10-038, AS-AP-10-041, AS-AP-10-042, AS-AP-10-048, AS-AP-10-049 |
 
 ### Exclusion Categories Explained
 
 **wallet_provider (154 HLRs):**  
 HLRs that obligate the Wallet Provider, WSCA/WSCD, or Wallet Unit.
-- Example: `WUA_03` "A Wallet Unit SHALL generate cryptographic keys..."
-- Example: `ISSU_06` "After receiving data, the WSCA/WSCD SHALL protect..."
+- Example: `AS-WP-09-003` "A Wallet Unit SHALL generate cryptographic keys..."
+- Example: `AS-AP-10-006` "After receiving data, the WSCA/WSCD SHALL protect..."
 
 **member_state (43 HLRs):**  
 Government obligations for Member States or the European Commission.
-- Example: `Reg_02` "Member States SHALL establish registration procedures..."
+- Example: `AS-MS-27-004` "Member States SHALL establish registration procedures..."
 
 **rulebook_author (19 HLRs):**  
 Obligations on Attestation Rulebook authors or Scheme Providers.
-- Example: `ARB_01` "A Rulebook SHALL specify the attestation type..."
+- Example: `AS-AP-12-001` "A Rulebook SHALL specify the attestation type..."
 
 **user_behavior (2 HLRs):**  
 Requirements describing user choices, not vendor implementations.
-- Example: `VCR_08` "A User MAY request status update..."
+- Example: `AS-AP-07-014` "A User MAY request status update..."
 
 **multi_role_review (69 HLRs):**  
 HLRs mentioning multiple actors - need human judgment on vendor applicability.

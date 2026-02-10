@@ -75,10 +75,10 @@ The existing VCQ filter tiles already support this behavior correctly. The data 
 
 | ARF Topic | HLRs | Legislative Source |
 |-----------|------|-------------------|
-| Topic 52 (Intermediaries) | RPI_01-10 | eIDAS Art. 5b, 2025/848 |
-| Topic 1 (Online ID) | OIA_12-14 | eIDAS Art. 22, 32 |
-| Topic 6 (RP Auth) | RPA_05-08 | 2024/2979 Art. 3, 8 |
-| Topic 7 (Revocation) | VCR_13 | 2024/2979 |
+| Topic 52 (Intermediaries) | AS-RP-51-001-10 | eIDAS Art. 5b, 2025/848 |
+| Topic 1 (Online ID) | EW-PIO-01-020-14 | eIDAS Art. 22, 32 |
+| Topic 6 (RP Auth) | AS-WP-06-006-08 | 2024/2979 Art. 3, 8 |
+| Topic 7 (Revocation) | AS-AP-07-020 | 2024/2979 |
 
 Full mapping in: `.agent/session/VCQ_LEGAL_PRIMACY_AUDIT.md`
 

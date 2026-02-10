@@ -44,7 +44,7 @@
   ```
 - **Example**:
   ```
-  EW-PIO-01-001;Ecosystem-Wide Rules;Protocols & Interoperability;Topic 1;1;Accessing Online Services;...;OIA_01;A Wallet Unit SHALL support [OpenID4VP]...
+  EW-PIO-01-001;Ecosystem-Wide Rules;Protocols & Interoperability;Topic 1;1;Accessing Online Services;...;EW-PIO-01-001;A Wallet Unit SHALL support [OpenID4VP]...
   ```
 
 ### 2.2 Regulations (Already Parsed)
@@ -78,7 +78,7 @@ All requirements from all sources will be normalized to this schema:
 ```typescript
 interface Requirement {
   // Identity
-  id: string;                    // e.g., "OIA_01", "VEND-CORE-001", "RP-GOV-001"
+  id: string;                    // e.g., "EW-PIO-01-001", "VEND-CORE-001", "RP-GOV-001"
   harmonizedId?: string;         // ARF: "EW-PIO-01-001"
   source: RequirementSource;
   
@@ -110,7 +110,7 @@ interface Requirement {
   conformsTo?: TechnicalReference[];
   arfReference?: {
     topic: string;               // "Topic 52"
-    hlr: string;                 // "RPI_09"
+    hlr: string;                 // "AS-RP-51-012"
   };
   
   // Applicability
@@ -276,10 +276,10 @@ docs-portal/
 │  ┌─────────────────────────────────────────────────────────────────┐   │
 │  │ ID         │ Source │ Requirement                 │ Roles      │   │
 │  ├────────────┼────────┼─────────────────────────────┼────────────┤   │
-│  │ OIA_01     │ 📐 ARF │ A Wallet Unit SHALL support │ 🏛️ Wallet  │   │
+│  │ EW-PIO-01-001     │ 📐 ARF │ A Wallet Unit SHALL support │ 🏛️ Wallet  │   │
 │  │            │        │ [OpenID4VP] for remote...   │            │   │
 │  ├────────────┼────────┼─────────────────────────────┼────────────┤   │
-│  │ RPI_09     │ 📐 ARF │ When a Wallet Unit presents │ 🔄 Interm. │   │
+│  │ AS-RP-51-012     │ 📐 ARF │ When a Wallet Unit presents │ 🔄 Interm. │   │
 │  │            │        │ to an intermediary any...   │            │   │
 │  ├────────────┼────────┼─────────────────────────────┼────────────┤   │
 │  │ VEND-001   │ 📦 VCQ │ Intermediaries shall not    │ 🔄 PIF/VIF │   │
@@ -298,7 +298,7 @@ docs-portal/
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│  ╳  OIA_01 - Accessing Online Services                                  │
+│  ╳  EW-PIO-01-001 - Accessing Online Services                                  │
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                         │
 │  ┌───────────────────────────────────────────────────────────────────┐ │
@@ -330,8 +330,8 @@ docs-portal/
 │  RELATED REQUIREMENTS                                                   │
 │  ─────────────────────────────────────────────────────────────────────  │
 │  ┌──────────────────────────────────────────────────────────────────┐  │
-│  │ OIA_02  Same WSCA/WSCD binding proof                      📐 ARF│  │
-│  │ OIA_03a Support OpenID4VP protocol                        📐 ARF│  │
+│  │ EW-PIO-01-002  Same WSCA/WSCD binding proof                      📐 ARF│  │
+│  │ EW-PIO-01-004 Support OpenID4VP protocol                        📐 ARF│  │
 │  │ VEND-018 Verify attestations as agreed with RP            📦 VCQ│  │
 │  └──────────────────────────────────────────────────────────────────┘  │
 │                                                                         │
@@ -439,7 +439,7 @@ requirements:
       - relying-party
     arfReference:
       topic: "Topic 27"
-      hlr: "Reg_23"
+      hlr: "AS-MS-27-030"
 ```
 
 ---

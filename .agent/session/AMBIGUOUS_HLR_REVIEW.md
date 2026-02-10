@@ -29,7 +29,7 @@ These HLRs were flagged as "multi_role_review" during the VCQ-ARF harmonization 
 
 These have clear vendor implementation implications:
 
-#### 1. VCR_07a [Topic 7] — Revocation Checking
+#### 1. AS-AP-07-010 [Topic 7] — Revocation Checking
 **Spec:** A Relying Party verifying an attestation SHOULD check whether that attestation has been revoked by the attestation Provider.
 
 **Rationale:** Direct RP obligation. Vendors building RP integrations must implement revocation checking.
@@ -37,7 +37,7 @@ These have clear vendor implementation implications:
 
 ---
 
-#### 2. VCR_07b [Topic 7] — Revocation Status Freshness
+#### 2. AS-AP-07-011 [Topic 7] — Revocation Status Freshness
 **Spec:** A Relying Party verifying an attestation SHOULD check that the revocation status is sufficiently fresh.
 
 **Rationale:** Direct RP obligation for revocation freshness. Vendors must implement timestamp/freshness validation.
@@ -45,7 +45,7 @@ These have clear vendor implementation implications:
 
 ---
 
-#### 3. VCR_14 [Topic 7] — Private Access Token Verification
+#### 3. AS-AP-07-021 [Topic 7] — Private Access Token Verification
 **Spec:** A Relying Party using the Private Revocation Status Check mechanism SHALL collect Private Access Tokens and SHALL use them for verification.
 
 **Rationale:** Implementation requirement for RP vendors using private revocation checks.
@@ -53,7 +53,7 @@ These have clear vendor implementation implications:
 
 ---
 
-#### 4. PA_12 [Topic 11] — Pseudonym + PID Binding Verification
+#### 4. AS-WP-11-013 [Topic 11] — Pseudonym + PID Binding Verification
 **Spec:** If Wallet Unit is used to register a Pseudonym at a Relying Party in combination with a PID, attestation or WUA being presented to the same Relying Party, then this Relying Party SHALL be able to verify that the same User performed both actions.
 
 **Rationale:** RP verification obligation. Vendors must implement cryptographic binding verification.
@@ -61,7 +61,7 @@ These have clear vendor implementation implications:
 
 ---
 
-#### 5. ARB_27 [Topic 12] — PID Binding Requirement in Attestation Flows
+#### 5. EW-DM-12-030 [Topic 12] — PID Binding Requirement in Attestation Flows
 **Spec:** The Scheme Provider for an Attestation Rulebook describing a type of attestation that is a QEAA, PuB-EAA, or non-qualified EAA SHOULD specify in the Rulebook whether a Relying Party receiving the attestation must request and verify a PID and verify the cryptographic binding between the PID and the attestation.
 
 **Rationale:** While targeted at Scheme Providers, this creates an **indirect obligation for RPs** to implement PID binding verification when the Rulebook requires it. Vendors need awareness.
@@ -69,8 +69,8 @@ These have clear vendor implementation implications:
 
 ---
 
-#### 6. QTSPAS_07a [Topic 42] — OOTS Compatibility
-**Spec:** The standards and procedures mentioned in QTSPAS_07 SHOULD, whenever possible, be aligned and compatible with those used for the platforms implementing the Once Only Technical System (OOTS).
+#### 6. AS-AP-42-008 [Topic 42] — OOTS Compatibility
+**Spec:** The standards and procedures mentioned in AS-AP-42-007 SHOULD, whenever possible, be aligned and compatible with those used for the platforms implementing the Once Only Technical System (OOTS).
 
 **Rationale:** TSP vendors accessing authentic sources should align with OOTS protocols. Implementation guidance for interoperability.
 → **Add to:** `tsp.yaml` (new requirement: VEND-TSP-xxx)
@@ -82,7 +82,7 @@ These have clear vendor implementation implications:
 These are appropriately excluded — primary obligation is on non-vendor entities:
 
 #### Attestation Rulebook Requirements (11 HLRs)
-All ARB_* requirements (ARB_07, ARB_08, ARB_15, ARB_17, ARB_19, ARB_21, ARB_26, ARB_29, ARB_31, ARB_32) are **Scheme Provider** obligations, not vendor implementation requirements.
+All ARB_* requirements (EW-DM-12-010, EW-DM-12-011, EW-DM-12-018, EW-DM-12-020, EW-DM-12-022, EW-DM-12-024, EW-DM-12-029, EW-DM-12-032, EW-DM-12-034, EW-DM-12-035) are **Scheme Provider** obligations, not vendor implementation requirements.
 
 **Exclusion Reason:** `rulebook_author` — These define what a Rulebook should contain, not what vendors must implement. Move from `multi_role_review` to `rulebook_author` category.
 
@@ -92,12 +92,12 @@ All ARB_* requirements (ARB_07, ARB_08, ARB_15, ARB_17, ARB_19, ARB_21, ARB_26, 
 
 | HLR | Spec Summary | Exclusion Reason |
 |-----|--------------|------------------|
-| ISSU_04 | Attestation Provider revocation upon issuing new instance | Wallet Provider internal process |
-| ISSU_10 | PID Provider revocation upon data change/death | PID Provider internal process |
-| ISSU_12c | PID Provider revocation upon User request | PID Provider internal process |
-| ISSU_56 | Binding creation between PID and QC | Wallet Provider + QTSP internal |
-| ISSU_62 | Certificate activation keys binding | Wallet Provider + QTSP internal |
-| ISSU_66 | Certificate binding to PID holder | Wallet Provider + QTSP internal |
+| AS-AP-10-004 | Attestation Provider revocation upon issuing new instance | Wallet Provider internal process |
+| AS-AP-10-010 | PID Provider revocation upon data change/death | PID Provider internal process |
+| AS-AP-10-016 | PID Provider revocation upon User request | PID Provider internal process |
+| AS-AP-10-080 | Binding creation between PID and QC | Wallet Provider + QTSP internal |
+| AS-AP-10-088 | Certificate activation keys binding | Wallet Provider + QTSP internal |
+| AS-AP-10-092 | Certificate binding to PID holder | Wallet Provider + QTSP internal |
 
 **Exclusion Reason:** Move to `wallet_provider` — All are Wallet/PID Provider internal operations, not vendor-facing requirements.
 
@@ -107,9 +107,9 @@ All ARB_* requirements (ARB_07, ARB_08, ARB_15, ARB_17, ARB_19, ARB_21, ARB_26, 
 
 | HLR | Spec Summary | Exclusion Reason |
 |-----|--------------|------------------|
-| TLPub_03 | Publish over secure channel | **Consumer** of trust lists, not publisher |
-| TLPub_04 | No auth required for retrieval | Infrastructure requirement |
-| TLPub_05 | Signed/sealed format | Publisher obligation |
+| EW-DM-31-002 | Publish over secure channel | **Consumer** of trust lists, not publisher |
+| EW-DM-31-003 | No auth required for retrieval | Infrastructure requirement |
+| EW-DM-31-004 | Signed/sealed format | Publisher obligation |
 
 **Exclusion Reason:** Move to `member_state` — Trust list publication is a Member State/Commission obligation.
 
@@ -119,9 +119,9 @@ All ARB_* requirements (ARB_07, ARB_08, ARB_15, ARB_17, ARB_19, ARB_21, ARB_26, 
 
 | HLR | Spec Summary | Exclusion Reason |
 |-----|--------------|------------------|
-| Reg_16 | Certificate Policy profile spec | Policy author obligation |
-| Reg_18 | Change history requirements | Policy author obligation |
-| RPRC_08 | EU-wide unique identifier consistency | Registrar obligation |
+| AS-MS-27-019 | Certificate Policy profile spec | Policy author obligation |
+| AS-MS-27-021 | Change history requirements | Policy author obligation |
+| EW-DM-44-009 | EU-wide unique identifier consistency | Registrar obligation |
 
 **Exclusion Reason:** Already in `member_state` — Correctly categorized.
 
@@ -131,16 +131,16 @@ All ARB_* requirements (ARB_07, ARB_08, ARB_15, ARB_17, ARB_19, ARB_21, ARB_26, 
 
 | HLR | Spec Summary | Exclusion Reason |
 |-----|--------------|------------------|
-| RPA_12 | MAY indicate device-bound attestation | Wallet Unit UI (MAY = optional) |
-| QES_17a | External SCA returns outcome to Wallet | Wallet Provider internal flow |
-| QES_24a | External SCA supports ETSI TS 119 101 | **RP providing SCA** — edge case |
-| RPACANot_05 | Trusted List format requirements | Member State publication |
+| AS-WP-06-016 | MAY indicate device-bound attestation | Wallet Unit UI (MAY = optional) |
+| AS-WP-16-018 | External SCA returns outcome to Wallet | Wallet Provider internal flow |
+| AS-WP-16-026 | External SCA supports ETSI TS 119 101 | **RP providing SCA** — edge case |
+| AS-MS-31-018 | Trusted List format requirements | Member State publication |
 
 **Notes:**
-- RPA_12: MAY = no vendor obligation
-- QES_17a: Wallet internal workflow
-- QES_24a: Edge case for RPs providing Signature Creation Applications — could be included if we cover TSP/RP hybrids
-- RPACANot_05: Already excluded as member_state
+- AS-WP-06-016: MAY = no vendor obligation
+- AS-WP-16-018: Wallet internal workflow
+- AS-WP-16-026: Edge case for RPs providing Signature Creation Applications — could be included if we cover TSP/RP hybrids
+- AS-MS-31-018: Already excluded as member_state
 
 ---
 
@@ -158,7 +158,7 @@ Create new requirements in the appropriate YAML files:
   category: security
   criticality: should
   arfReference:
-    hlr: VCR_07a
+    hlr: AS-AP-07-010
     topic: 7
 
 - id: VEND-RP-046
@@ -166,7 +166,7 @@ Create new requirements in the appropriate YAML files:
   category: security
   criticality: should
   arfReference:
-    hlr: VCR_07b
+    hlr: AS-AP-07-011
     topic: 7
 
 - id: VEND-RP-047
@@ -174,7 +174,7 @@ Create new requirements in the appropriate YAML files:
   category: implementation
   criticality: shall
   arfReference:
-    hlr: VCR_14
+    hlr: AS-AP-07-021
     topic: 7
 
 - id: VEND-RP-048
@@ -182,7 +182,7 @@ Create new requirements in the appropriate YAML files:
   category: security
   criticality: shall
   arfReference:
-    hlr: PA_12
+    hlr: AS-WP-11-013
     topic: 11
 
 - id: VEND-RP-049
@@ -190,7 +190,7 @@ Create new requirements in the appropriate YAML files:
   category: implementation
   criticality: should
   arfReference:
-    hlr: ARB_27
+    hlr: EW-DM-12-030
     topic: 12
 ```
 
@@ -202,7 +202,7 @@ Create new requirements in the appropriate YAML files:
   category: interoperability
   criticality: should
   arfReference:
-    hlr: QTSPAS_07a
+    hlr: AS-AP-42-008
     topic: 42
 ```
 
@@ -212,17 +212,17 @@ Move HLRs to correct exclusion categories:
 
 ```yaml
 # Move from multi_role_review to rulebook_author:
-- ARB_07, ARB_08, ARB_15, ARB_17, ARB_19, ARB_21, ARB_26, ARB_29, ARB_31, ARB_32
+- EW-DM-12-010, EW-DM-12-011, EW-DM-12-018, EW-DM-12-020, EW-DM-12-022, EW-DM-12-024, EW-DM-12-029, EW-DM-12-032, EW-DM-12-034, EW-DM-12-035
 
 # Move from multi_role_review to wallet_provider:
-- ISSU_04, ISSU_10, ISSU_12c, ISSU_56, ISSU_62, ISSU_66
-- RPA_12, QES_17a
+- AS-AP-10-004, AS-AP-10-010, AS-AP-10-016, AS-AP-10-080, AS-AP-10-088, AS-AP-10-092
+- AS-WP-06-016, AS-WP-16-018
 
 # Move from multi_role_review to member_state:
-- TLPub_03, TLPub_04, TLPub_05, RPACANot_05
+- EW-DM-31-002, EW-DM-31-003, EW-DM-31-004, AS-MS-31-018
 
 # Keep in multi_role_review for manual review:
-- QES_24a (RP providing SCA — niche case)
+- AS-WP-16-026 (RP providing SCA — niche case)
 ```
 
 ### 3. Final Resolution
@@ -233,7 +233,7 @@ Move HLRs to correct exclusion categories:
 | → rulebook_author | 10 |
 | → wallet_provider | 8 |
 | → member_state | 7 |
-| ⚠️ Remaining ambiguous | 1 (QES_24a) |
+| ⚠️ Remaining ambiguous | 1 (AS-WP-16-026) |
 
 **Coverage Impact:**
 - VCQ Requirements: 144 → **150** (+6)

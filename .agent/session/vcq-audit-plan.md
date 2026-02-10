@@ -106,5 +106,5 @@ Alternatively: Execute all in current session with user approval at each chunk.
 
 | Req ID | Issue | Severity | Resolution |
 |--------|-------|----------|------------|
-| VEND-CORE-011 | ARF link to wallet req (RPI_07) | 🔴 | Fixed → RPI_06 |
+| VEND-CORE-011 | ARF link to wallet req (AS-RP-51-008) | 🔴 | Fixed → AS-RP-51-006 |
 | ... | ... | ... | ... |

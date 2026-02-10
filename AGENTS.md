@@ -446,7 +446,7 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 **Key facts:**
 - WUAs are NOT presented to Relying Parties
 - RPs verify the Wallet Unit through **transitive trust** (issuer signature + device key binding + cascaded revocation)
-- WUA_24: data related to the User device must not be released to RPs
+- AS-WP-09-030: data related to the User device must not be released to RPs
 
 ---
 
@@ -565,7 +565,7 @@ The HLR CSV at `03_arf/hltr/high-level-requirements.csv` has non-standard format
 - **Columns:** `Harmonized_ID`, `Part`, `Category`, `Topic`, `Topic_Number`, `Topic_Title`, `Subsection`, `Index`, `Requirement_specification`, `Notes`
 - **Key fields:**
   - `Harmonized_ID` = new-format ID (e.g., `AS-WP-09-026`)
-  - `Index` = legacy/old ID (e.g., `WUA_20a`)
+  - `Index` = legacy/old ID (e.g., `AS-WP-09-026`)
   - `Requirement_specification` = the actual requirement text
   - "Empty" text = requirement withdrawn, consolidated, or deferred
 
@@ -575,7 +575,7 @@ The HLR CSV at `03_arf/hltr/high-level-requirements.csv` has non-standard format
 
 | Index | Key Format | Example | Used By |
 |-------|------------|---------|---------|
-| `byHlrId` | Old ID (Index column) | `ISSU_29` | Search index, backward compat |
+| `byHlrId` | Old ID (Index column) | `AS-AP-10-044` | Search index, backward compat |
 | `byHarmonizedId` | EC Harmonized ID | `AS-AP-10-029` | VCQ references (after migration) |
 
 **⚠️ `byHlrId` is keyed on Old ID (`row.Index`), NOT Harmonized ID.** This is the primary index used by all current VCQ lookups. Since every Old ID is unique in the CSV, no collisions occur.
@@ -1353,10 +1353,10 @@ The ARF High-Level Requirements CSV uses **semicolons (`;`)** as delimiter, NOT 
 
 ```bash
 # ✅ Correct — semicolon delimiter, exact match
-grep ";QTSPAS_03;" docs-portal/data/arf/high-level-requirements.csv
+grep ";AS-AP-42-003;" docs-portal/data/arf/high-level-requirements.csv
 
 # ❌ Wrong — comma search finds nothing
-grep ",QTSPAS_03," docs-portal/data/arf/high-level-requirements.csv
+grep ",AS-AP-42-003," docs-portal/data/arf/high-level-requirements.csv
 ```
 
 **Pre-compiled index:** See `.agent/session/hlr-index-by-track.md` for a quick-reference index grouped by VCQ track.
@@ -1412,7 +1412,7 @@ When enhancing VCQ requirements in bulk (>50% of content changing), **full-file 
 | `arf` | **Cross-cutting** — any requirement with `arfReference` |
 
 **⚠️ ARF is cross-cutting:** Requirements with `arfReference` are counted in BOTH their legal source AND in ARF. This means:
-- A requirement with `legalBasis: 2014/910` AND `arfReference: {topic: "Topic 7", hlr: "VCR_01"}` appears in BOTH eIDAS (116) AND ARF (78)
+- A requirement with `legalBasis: 2014/910` AND `arfReference: {topic: "Topic 7", hlr: "AS-AP-07-001"}` appears in BOTH eIDAS (116) AND ARF (78)
 - The tile counts (116 + 28 + 78) sum to more than total unique requirements (144) because of this overlap
 
 **Relevant file:** `docs-portal/scripts/build-vcq.js`, function `determineSourceGroup()`
@@ -1449,12 +1449,12 @@ The `arfReference` field links a VCQ requirement to ARF HLRs:
 # Single HLR (string format)
 arfReference:
   topic: "Topic 7"
-  hlr: "VCR_01"
+  hlr: "AS-AP-07-001"
 
 # Multiple HLRs (array format) — preferred for multi-HLR coverage
 arfReference:
   topic: "Topic 7"
-  hlr: ["VCR_01", "VCR_02", "VCR_03"]
+  hlr: ["AS-AP-07-001", "AS-AP-07-003", "AS-AP-07-004"]
 ```
 
 **Both formats are valid.** The build script and validators handle both.
@@ -1462,16 +1462,16 @@ arfReference:
 **⚠️ YAML Array Gotcha:** When appending to YAML files via shell `cat >>`, you create strings, NOT arrays:
 
 ```bash
-# ❌ WRONG — creates: hlr: "VCR_01, VCR_02" (a single string)
+# ❌ WRONG — creates: hlr: "AS-AP-07-001, AS-AP-07-003" (a single string)
 cat >> file.yaml << EOF
-  hlr: VCR_01, VCR_02
+  hlr: AS-AP-07-001, AS-AP-07-003
 EOF
 
 # ✅ CORRECT — creates proper array
 cat >> file.yaml << EOF
   hlr:
-    - VCR_01
-    - VCR_02
+    - AS-AP-07-001
+    - AS-AP-07-003
 EOF
 ```
 

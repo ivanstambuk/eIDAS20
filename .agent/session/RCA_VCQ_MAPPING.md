@@ -69,11 +69,11 @@ These are covered by ARF HLRs; VCQ includes the ARF reference:
 
 | RCA Topic | ARF Coverage | VCQ ARF Reference |
 |-----------|--------------|-------------------|
-| Signature validation | RPA_05 | VEND-INT-010 |
-| Revocation checking | VCR_13 | VEND-INT-011 |
-| Device binding | RPA_07 | VEND-INT-012 |
-| Trusted Lists | OIA_12, OIA_13 | VEND-INT-007, -008 |
-| Forwarding | RPI_08 | VEND-INT-004, -006 |
+| Signature validation | AS-WP-06-006 | VEND-INT-010 |
+| Revocation checking | AS-AP-07-020 | VEND-INT-011 |
+| Device binding | AS-WP-06-009 | VEND-INT-012 |
+| Trusted Lists | EW-PIO-01-020, EW-PIO-01-021 | VEND-INT-007, -008 |
+| Forwarding | AS-RP-51-011 | VEND-INT-004, -006 |
 
 ### Type D: GDPR Processor (VCQ-Specific)
 

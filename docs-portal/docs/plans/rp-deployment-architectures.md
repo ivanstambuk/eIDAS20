@@ -34,10 +34,10 @@ The deployment architecture is determined by two independent decisions:
 
 The ARF (Architecture and Reference Framework) defines two legal models:
 
-- **Intermediary**: The vendor registers as its own Relying Party (per RPI_01),
+- **Intermediary**: The vendor registers as its own Relying Party (per AS-RP-51-001),
   obtains its own access certificate with its own name and identifier, and acts
   on behalf of other RPs ("intermediated RPs"). This is a formal legal role with
-  specific ARF obligations (RPI_01 through RPI_10).
+  specific ARF obligations (AS-RP-51-001 through AS-RP-51-013).
 
 - **Direct RP Instance**: The RP uses its own access certificate and RP identity.
   The vendor provides technology (software, infrastructure) but does NOT appear
@@ -123,12 +123,12 @@ with EUDI Wallet Units.
        │  Wallet displays:            └──────┬───────────┘
        │  ┌──────────────────────┐           │
        │  │ Requesting party:    │           │ Forward attributes
-       │  │  🔀 Vendor Corp      │           │ (after RPI_09
+       │  │  🔀 Vendor Corp      │           │ (after AS-RP-51-012
        │  │ On behalf of:        │           │  verification)
        │  │  Acme Services       │           │
        │  │                      │           │ Immediately delete
        │  │ [Approve] [Decline]  │           │ all personal data
-       │  └──────────────────────┘           │ (RPI_10)
+       │  └──────────────────────┘           │ (AS-RP-51-013)
        │                                     │
        │                                     ▼
        │                              ┌──────────────────┐
@@ -146,23 +146,23 @@ with EUDI Wallet Units.
        │  Key: The wallet connects to the INTERMEDIARY's
        │       domain, not the RP's domain.
        │       The access certificate is the VENDOR's.
-       │       The wallet MUST show both identities (RPI_07).
+       │       The wallet MUST show both identities (AS-RP-51-008).
 ```
 
 ### 3.3 ARF Requirements (Topic 53)
 
 | Requirement | Obligation | Summary |
 |-------------|-----------|---------|
-| **RPI_01** | SHALL | Intermediary must register as RP, indicating intermediary role. Obtains own access certificate. |
-| **RPI_02** | SHALL | Intermediary must be registered as intermediary. |
-| **RPI_03** | SHALL | Intermediary must also register each intermediated RP at the RP's Registrar, if the RP isn't already registered. |
-| **RPI_04** | SHALL | When registering an intermediated RP, intermediary must provide legal evidence of the relationship. |
-| **RPI_05** | SHALL | Intermediary must include intermediated RP's name and identifier in each request. |
-| **RPI_06** | SHALL | Intermediary must include its own access certificate AND the RP's registration certificate (if available) in presentation requests. Must include RPRC_19a information. |
-| **RPI_07** | SHALL | Wallet must display names and identifiers of BOTH the intermediary AND the intermediated RP when asking for user approval. **This is the mandatory dual-party display.** |
-| **RPI_08** | SHALL | After successful verification (RPI_09), intermediary forwards ONLY the requested attributes to the RP. |
-| **RPI_09** | SHALL | Intermediary must verify: attestation signature, issuer trust status, attestation validity, revocation status, holder binding — before forwarding. |
-| **RPI_10** | SHALL | Intermediary must **immediately delete** all PIDs, attestations, and user attributes after forwarding (or after verification failure). |
+| **AS-RP-51-001** | SHALL | Intermediary must register as RP, indicating intermediary role. Obtains own access certificate. |
+| **AS-RP-51-002** | SHALL | Intermediary must be registered as intermediary. |
+| **AS-RP-51-003** | SHALL | Intermediary must also register each intermediated RP at the RP's Registrar, if the RP isn't already registered. |
+| **AS-RP-51-004** | SHALL | When registering an intermediated RP, intermediary must provide legal evidence of the relationship. |
+| **AS-RP-51-005** | SHALL | Intermediary must include intermediated RP's name and identifier in each request. |
+| **AS-RP-51-006** | SHALL | Intermediary must include its own access certificate AND the RP's registration certificate (if available) in presentation requests. Must include EW-DM-44-018 information. |
+| **AS-RP-51-008** | SHALL | Wallet must display names and identifiers of BOTH the intermediary AND the intermediated RP when asking for user approval. **This is the mandatory dual-party display.** |
+| **AS-RP-51-011** | SHALL | After successful verification (AS-RP-51-012), intermediary forwards ONLY the requested attributes to the RP. |
+| **AS-RP-51-012** | SHALL | Intermediary must verify: attestation signature, issuer trust status, attestation validity, revocation status, holder binding — before forwarding. |
+| **AS-RP-51-013** | SHALL | Intermediary must **immediately delete** all PIDs, attestations, and user attributes after forwarding (or after verification failure). |
 
 ### 3.4 Key Implications
 
@@ -171,17 +171,17 @@ with EUDI Wallet Units.
 | **Wallet display** | Dual-party: wallet shows vendor's name AND RP's name. The RP cannot suppress this — it's a wallet-side obligation. |
 | **Private keys** | Vendor holds its own private keys. RP does not need to manage keys for wallet interactions. |
 | **GDPR role** | The intermediary acts under its own legal basis (Article 45b). It is NOT a data processor under GDPR Article 28 in the traditional sense — it has its own RP obligations. However, the vendor-RP relationship still requires a clear agreement about data handling. |
-| **Data retention** | Zero: immediate deletion after forwarding (RPI_10). |
+| **Data retention** | Zero: immediate deletion after forwarding (AS-RP-51-013). |
 | **Operational burden** | Low for RP: the intermediary handles wallet interaction, protocol compliance, certificate management. |
-| **Registration** | Complex: the intermediary registers itself AND each intermediated RP (RPI_03, RPI_04). |
+| **Registration** | Complex: the intermediary registers itself AND each intermediated RP (AS-RP-51-003, AS-RP-51-004). |
 | **Trust** | The citizen must trust BOTH the intermediary AND the RP. Dual display is designed to make this transparent. |
 
 ### 3.5 Reference Implementation Status
 
 As of February 2026, the EU reference wallets (eudi-app-android-wallet-ui,
-eudi-app-ios-wallet-ui) do **not** implement the dual-party display (RPI_07).
+eudi-app-ios-wallet-ui) do **not** implement the dual-party display (AS-RP-51-008).
 The `RelyingPartyDataUi` (Android) and `RequestViewState` (iOS) data structures
-have no fields for intermediary information. However, RPI_07 is a SHALL
+have no fields for intermediary information. However, AS-RP-51-008 is a SHALL
 requirement, and compliant wallets in production will enforce it.
 
 ---
@@ -383,13 +383,13 @@ RP's perimeter. The wallet connects directly to the RP's endpoint.
 | Aspect | Intermediary | Direct SaaS | Direct Self-Hosted |
 |---|---|---|---|
 | **Access certificate identity** | Vendor's own | RP's own | RP's own |
-| **Wallet display** | Dual-party (RPI_07) | Single party (RP only) | Single party (RP only) |
+| **Wallet display** | Dual-party (AS-RP-51-008) | Single party (RP only) | Single party (RP only) |
 | **Wallet connects to** | Vendor's domain | Vendor's domain (unless proxied) | RP's domain |
 | **VP Token data path** | Vendor receives → verifies → forwards → deletes | Vendor receives → forwards to RP | RP receives directly |
 | **Private key custody** | Vendor (own key) | Vendor, HSM, or split-signing | RP (own infra) |
 | **GDPR role of vendor** | Own legal basis (Art. 45b) | Data processor (Art. 28 DPA) | Software vendor (no DPA needed) |
-| **Data retention** | Zero (immediate deletion RPI_10) | Per DPA terms | RP's policy |
-| **RP registration** | Vendor registers for RP (RPI_03) | RP registers itself | RP registers itself |
+| **Data retention** | Zero (immediate deletion AS-RP-51-013) | Per DPA terms | RP's policy |
+| **RP registration** | Vendor registers for RP (AS-RP-51-003) | RP registers itself | RP registers itself |
 | **Operational burden on RP** | Low (vendor) | Medium (shared) | High (RP) |
 | **Data residency control** | Vendor's juris. | Vendor's juris. (unless proxied) | RP's juris. |
 | **Vendor examples (Feb 2026)** | Hopae Connect | Sproof Ident | Lissi EUDI Wallet Connector |
@@ -405,7 +405,7 @@ RP's perimeter. The wallet connects directly to the RP's endpoint.
 Many VCQ requirements are implicitly architecture-specific:
 
 - **Intermediary-only requirements** (VEND-CORE-001, 004, 011, 016, 017, 018):
-  These reference ARF RPI_01–RPI_10 obligations that only apply when the vendor
+  These reference ARF AS-RP-51-001–AS-RP-51-013 obligations that only apply when the vendor
   operates as an intermediary. Showing these to a Direct SaaS vendor is confusing.
 
 - **SaaS-specific requirements** (DPA, key custody, data transit): These apply
@@ -492,12 +492,12 @@ Investigation of the EU reference wallets (February 2026) confirmed:
 
 - `BaseRequestViewModel` and `BaseRequestView` display RP info via
   `getTrustedRelyingParty()` — single party only
-- No handling for RPRC_19a extension data (intermediated RP information)
+- No handling for EW-DM-44-018 extension data (intermediated RP information)
 - No dual-party display logic
 
 ### Implication
 
-**RPI_07 is a SHALL requirement that is NOT implemented in either reference wallet.**
+**AS-RP-51-008 is a SHALL requirement that is NOT implemented in either reference wallet.**
 This means:
 - Current pilot wallets will NOT show the dual-party display
 - Production-compliant wallets (post-2027) WILL show it
@@ -511,11 +511,11 @@ This means:
 | Term | Definition |
 |------|-----------|
 | **Access Certificate** | X.509 certificate issued to a Relying Party (or intermediary) that authenticates it to EUDI Wallet Units during OID4VP sessions. Contains the RP's name and unique identifier. |
-| **Intermediary** | An entity that registers as a Relying Party under the ARF (RPI_01) and requests credential presentations from wallets on behalf of other RPs ("intermediated RPs"). Has its own access certificate. |
-| **Intermediated RP** | A Relying Party on whose behalf an intermediary requests credential presentations. The intermediated RP's identity is included in the request (RPRC_19a) and displayed by the wallet (RPI_07). |
+| **Intermediary** | An entity that registers as a Relying Party under the ARF (AS-RP-51-001) and requests credential presentations from wallets on behalf of other RPs ("intermediated RPs"). Has its own access certificate. |
+| **Intermediated RP** | A Relying Party on whose behalf an intermediary requests credential presentations. The intermediated RP's identity is included in the request (EW-DM-44-018) and displayed by the wallet (AS-RP-51-008). |
 | **Direct RP Instance** | The RP Instance (hardware/software) uses the RP's own access certificate. The vendor provides the technology but does not appear as a separate party to the wallet. |
 | **VP Token** | Verifiable Presentation Token — the credential data that the wallet sends to the verifier (RP or intermediary) after user approval. Contains personal data (PID attributes, attestation claims). |
 | **response_uri** | The OID4VP endpoint where the wallet sends the VP Token. In SaaS deployments, this typically points to the vendor's domain. |
-| **RPI_01–RPI_10** | ARF High-Level Requirements under Topic 53 (Relying Party Instances and Intermediaries), defining the intermediary's obligations: registration, dual display, verification, forwarding, deletion. |
-| **Dual-party display** | The wallet UI showing both the intermediary's identity and the intermediated RP's identity to the user when requesting approval (RPI_07). |
+| **AS-RP-51-001–AS-RP-51-013** | ARF High-Level Requirements under Topic 53 (Relying Party Instances and Intermediaries), defining the intermediary's obligations: registration, dual display, verification, forwarding, deletion. |
+| **Dual-party display** | The wallet UI showing both the intermediary's identity and the intermediated RP's identity to the user when requesting approval (AS-RP-51-008). |
 | **DPA** | Data Processing Agreement under GDPR Article 28, required when the vendor processes personal data on behalf of the RP (Direct SaaS model). |

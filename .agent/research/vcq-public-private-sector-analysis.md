@@ -69,8 +69,8 @@ DORA applies based on **entity type** (financial entities as defined in Art. 2),
 
 | HLR ID | Description | Public/Private Distinction? |
 |--------|-------------|---------------------------|
-| **QTSPAS_02** | Authentic Sources in public sector must implement verification interface | ⚠️ Applies to issuer integration with public authentic sources |
-| **QTSPAS_07** | Commission publishes specs for public sector authentic source access | ⚠️ Same - integration specification |
+| **AS-AP-42-002** | Authentic Sources in public sector must implement verification interface | ⚠️ Applies to issuer integration with public authentic sources |
+| **AS-AP-42-007** | Commission publishes specs for public sector authentic source access | ⚠️ Same - integration specification |
 | **ACC_01** | Wallet accessibility per Directive 2016/2102 | ✅ Directive specifically targets "public sector bodies" |
 
 **Key Insight**: The only ARF HLR with clear public sector impact is ACC_01 (accessibility), which applies **only to Wallet software** — not to Connectors, Issuance Platforms, or Trust Services.
@@ -125,7 +125,7 @@ Directive 2016/2102 applies to "websites and mobile applications of **public sec
 
 ### 2. Authentic Source Integration
 
-If a vendor builds issuance software that integrates with public sector authentic sources (per Art. 45e), they must implement specific APIs defined in QTSPAS_07.
+If a vendor builds issuance software that integrates with public sector authentic sources (per Art. 45e), they must implement specific APIs defined in AS-AP-42-007.
 
 **Recommendation**: This is an **issuer integration feature**, not a deployment sector question. The correct approach is: "Does your software integrate with authentic sources?" — already implied in issuer requirements.
 

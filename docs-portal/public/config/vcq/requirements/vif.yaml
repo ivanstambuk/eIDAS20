@@ -25,7 +25,7 @@ requirements:
       regularly to capture additions, modifications, and revocations.
     arfReference:
       topic: "Topic 1"
-      hlr: "OIA_12"
+      hlr: "EW-PIO-01-020"
     applicability:
       - vif
     linkedRCA:
@@ -42,7 +42,7 @@ requirements:
       These trust anchors are essential for validating attestation signatures.
     arfReference:
       topic: "Topic 1"
-      hlr: "OIA_13"
+      hlr: "EW-PIO-01-021"
     applicability:
       - vif
     deadline: "2027-11-21"
@@ -57,7 +57,7 @@ requirements:
       unofficial sources. This ensures the authenticity of verification keys.
     arfReference:
       topic: "Topic 1"
-      hlr: "OIA_14"
+      hlr: "EW-PIO-01-022"
     legalBasis:
       regulation: "2014/910"
       article: "Article 32"
@@ -80,7 +80,7 @@ requirements:
       signatures must result in rejection.
     arfReference:
       topic: "Topic 6"
-      hlr: "RPA_05"
+      hlr: "AS-WP-06-006"
     applicability:
       - vif
     deadline: "2027-11-21"
@@ -95,7 +95,7 @@ requirements:
       OCSP responses, or other revocation mechanisms as specified by the issuer.
     arfReference:
       topic: "Topic 7"
-      hlr: "VCR_13"
+      hlr: "AS-AP-07-020"
     applicability:
       - vif
     deadline: "2027-11-21"
@@ -110,7 +110,7 @@ requirements:
       the private key associated with the attestations.
     arfReference:
       topic: "Topic 6"
-      hlr: "RPA_07"
+      hlr: "AS-WP-06-009"
     applicability:
       - vif
     deadline: "2027-11-21"
@@ -125,7 +125,7 @@ requirements:
       presentations must be rejected.
     arfReference:
       topic: "Topic 6"
-      hlr: "RPA_08"
+      hlr: "AS-WP-06-011"
     applicability:
       - vif
     deadline: "2027-11-21"
@@ -160,7 +160,7 @@ requirements:
       outcome is authentic and unmodified.
     arfReference:
       topic: "Topic 52"
-      hlr: "RPI_08"
+      hlr: "AS-RP-51-011"
     applicability:
       - vif
     deadline: "2027-11-21"

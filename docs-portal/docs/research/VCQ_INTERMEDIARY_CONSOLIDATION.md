@@ -40,7 +40,7 @@ The idea was that a vendor might offer:
 Upon deeper analysis, we discovered:
 
 1. **PIF/VIF are not official terms** — Neither the eIDAS regulation, ARF, nor any implementing act uses these terms
-2. **The ARF Topic 52 treats verification as part of the RP Intermediary role** — RPI_09 explicitly requires intermediaries to "verify the authenticity of the PID or attestation, its revocation status, device binding, and User binding"
+2. **The ARF Topic 52 treats verification as part of the RP Intermediary role** — AS-RP-51-012 explicitly requires intermediaries to "verify the authenticity of the PID or attestation, its revocation status, device binding, and User binding"
 3. **Our "VIF" conflicted with official terminology** — 2025/1569 Article 9 defines "designated intermediary" but it refers to **issuance-time verification against authentic sources**, not RP-side wallet presentation verification
 4. **The split was artificial** — There's no regulatory basis for distinguishing "forwarding-only" from "verification" intermediaries
 
@@ -59,21 +59,21 @@ This is the **sole legal basis** for wallet presentation intermediaries. It esta
 
 ### 2.2 ARF Topic 52 — Relying Party Intermediaries
 
-The official ARF HLRs (RPI_01 through RPI_10) define intermediary requirements:
+The official ARF HLRs (AS-RP-51-001 through AS-RP-51-013) define intermediary requirements:
 
 | HLR | Requirement | Function |
 |-----|-------------|----------|
-| RPI_01 | Register as a Relying Party | Registration |
-| RPI_03 | Register each intermediated RP | Registration |
-| RPI_04 | Provide legal evidence of relationship | Governance |
-| RPI_05 | Specify RP details in requests | Transparency |
-| RPI_06 | Include certificates in requests | Technical |
-| RPI_07 | Display both identities to user | Transparency |
-| RPI_08 | Forward attributes only to requesting RP | Technical |
-| **RPI_09** | **Verify authenticity, revocation, device binding** | **VERIFICATION** |
-| RPI_10 | Delete data immediately after forwarding | Privacy |
+| AS-RP-51-001 | Register as a Relying Party | Registration |
+| AS-RP-51-003 | Register each intermediated RP | Registration |
+| AS-RP-51-004 | Provide legal evidence of relationship | Governance |
+| AS-RP-51-005 | Specify RP details in requests | Transparency |
+| AS-RP-51-006 | Include certificates in requests | Technical |
+| AS-RP-51-008 | Display both identities to user | Transparency |
+| AS-RP-51-011 | Forward attributes only to requesting RP | Technical |
+| **AS-RP-51-012** | **Verify authenticity, revocation, device binding** | **VERIFICATION** |
+| AS-RP-51-013 | Delete data immediately after forwarding | Privacy |
 
-**Critical observation:** RPI_09 explicitly includes verification as part of the RP Intermediary role. There is no separate "verification intermediary" in the ARF.
+**Critical observation:** AS-RP-51-012 explicitly includes verification as part of the RP Intermediary role. There is no separate "verification intermediary" in the ARF.
 
 ### 2.3 2025/1569 Article 9 — The OTHER "Intermediary"
 
@@ -162,7 +162,7 @@ A bank evaluating an intermediary product (e.g., Lissi Connector) for EUDIW inte
 | Manage trust lists | VIF | RP Intermediary |
 | Forward to backend | PIF | RP Intermediary |
 
-**All capabilities are part of a single RP Intermediary role per ARF RPI_09.**
+**All capabilities are part of a single RP Intermediary role per ARF AS-RP-51-012.**
 
 ### 5.2 Bank as Issuer
 

@@ -177,7 +177,7 @@ function getArfSpecification(req, arfData) {
         : [req.arfReference.hlr];
 
     const specs = hlrIds
-        .map(id => (arfData.byHlrId?.[id] || arfData.byHarmonizedId?.[id])?.specification || '')
+        .map(id => (arfData.byHarmonizedId?.[id] || arfData.byHlrId?.[id])?.specification || '')
         .filter(s => s)
         .join('\n\n');
     return specs;
@@ -193,7 +193,7 @@ function getArfNotes(req, arfData) {
         : [req.arfReference.hlr];
 
     const notes = hlrIds
-        .map(id => (arfData.byHlrId?.[id] || arfData.byHarmonizedId?.[id])?.notes || '')
+        .map(id => (arfData.byHarmonizedId?.[id] || arfData.byHlrId?.[id])?.notes || '')
         .filter(n => n)
         .join('\n\n');
     return notes;

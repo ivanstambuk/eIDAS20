@@ -2549,7 +2549,7 @@ The VCQ tool was originally designed with two intermediary types:
 
 Web research and detailed regulatory analysis revealed:
 1. **PIF/VIF are not official terms** — Neither eIDAS, ARF, nor any implementing act uses these terms
-2. **ARF Topic 52 (RPI_09) includes verification as part of the RP Intermediary role** — No separate "verification intermediary" exists
+2. **ARF Topic 52 (AS-RP-51-012) includes verification as part of the RP Intermediary role** — No separate "verification intermediary" exists
 3. **2025/1569 Art. 9 "designated intermediary" is a different concept** — Refers to national-level gateways for QTSPs verifying attributes against authentic sources during *issuance*, not RP-side wallet presentation verification
 
 **Decision:** **Collapse PIF and VIF into a single "RP Intermediary" category.**
@@ -2570,7 +2570,7 @@ Web research and detailed regulatory analysis revealed:
 3. **Simplifies UX** — One less decision point for users
 4. **Reflects operational reality** — Vendors provide unified products, not separate "forwarding" vs "verification" modules
 
-**ARF Evidence (RPI_09):**
+**ARF Evidence (AS-RP-51-012):**
 > "The intermediary SHALL verify the authenticity of the PID or attestation, its revocation status, device binding, and User binding..."
 
 This confirms verification is part of the RP Intermediary role, not a separate function.
@@ -2818,7 +2818,7 @@ ARF v2.8.0 was released on 2026-02-02 with substantial changes affecting 40% of 
 
 **Context:**
 
-ARF v2.8.0 introduced "Harmonized IDs" as a new primary identifier for HLRs, alongside the existing "Old IDs." The Harmonized ID format uses a structured prefix-topic-sequence pattern (e.g., `ISSU_64`, `WURevocation_13`), while Old IDs use a shorter format (e.g., `AS-RP-51-001`, `RPI_01`).
+ARF v2.8.0 introduced "Harmonized IDs" as a new primary identifier for HLRs, alongside the existing "Old IDs." The Harmonized ID format uses a structured prefix-topic-sequence pattern (e.g., `AS-AP-10-090`, `EW-DM-38-014`), while Old IDs use a shorter format (e.g., `AS-RP-51-001`, `AS-RP-51-001`).
 
 The portal's VCQ configuration files reference HLRs by their Old IDs (in `hlr:` fields). The question was how to handle the migration.
 
@@ -2845,10 +2845,10 @@ The portal's VCQ configuration files reference HLRs by their Old IDs (in `hlr:` 
 {
   "requirements": [...],
   "byHlrId": {
-    "RPI_01": { "hlrId": "RPI_01", "harmonizedId": "AS-RP-51-001", "deepLink": "..." }
+    "AS-RP-51-001": { "hlrId": "AS-RP-51-001", "harmonizedId": "AS-RP-51-001", "deepLink": "..." }
   },
   "byHarmonizedId": {
-    "AS-RP-51-001": { "hlrId": "RPI_01", "harmonizedId": "AS-RP-51-001", "deepLink": "..." }
+    "AS-RP-51-001": { "hlrId": "AS-RP-51-001", "harmonizedId": "AS-RP-51-001", "deepLink": "..." }
   }
 }
 ```

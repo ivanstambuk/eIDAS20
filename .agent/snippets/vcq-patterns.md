@@ -204,21 +204,21 @@ const handleAnswerChange = useCallback((reqId, value, notes) => {
 When appending to YAML files via shell `cat >>`, you create **strings**, NOT arrays:
 
 ```bash
-# ❌ WRONG — creates: hlr: "VCR_01, VCR_02" (a single string with comma)
+# ❌ WRONG — creates: hlr: "AS-AP-07-001, AS-AP-07-003" (a single string with comma)
 cat >> file.yaml << EOF
-  hlr: VCR_01, VCR_02
+  hlr: AS-AP-07-001, AS-AP-07-003
 EOF
 
-# ❌ ALSO WRONG — creates: hlr: "[VCR_01, VCR_02]" (string literal)
+# ❌ ALSO WRONG — creates: hlr: "[AS-AP-07-001, AS-AP-07-003]" (string literal)
 cat >> file.yaml << EOF
-  hlr: [VCR_01, VCR_02]
+  hlr: [AS-AP-07-001, AS-AP-07-003]
 EOF
 
 # ✅ CORRECT — creates proper YAML array
 cat >> file.yaml << EOF
   hlr:
-    - VCR_01
-    - VCR_02
+    - AS-AP-07-001
+    - AS-AP-07-003
 EOF
 ```
 

@@ -658,11 +658,11 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
     // Normalize hlr to array (supports both string and array)
     const hlrIds = Array.isArray(arfReference.hlr) ? arfReference.hlr : [arfReference.hlr];
 
-    // Get data for all HLRs — try Old ID index first, then Harmonized ID index
-    // VCQ YAML files may use either format (Old IDs like RPI_01 or Harmonized IDs like AS-RP-51-001)
+    // Get data for all HLRs — try Harmonized ID index first (primary), then Old ID as fallback
+    // VCQ YAML files now use Harmonized IDs (e.g., AS-RP-51-001); Old IDs kept for backward compat
     const hlrDataList = hlrIds.map(hlrId => ({
         id: hlrId,
-        data: arfData?.byHlrId?.[hlrId] || arfData?.byHarmonizedId?.[hlrId] || null
+        data: arfData?.byHarmonizedId?.[hlrId] || arfData?.byHlrId?.[hlrId] || null
     }));
 
     const visibleHlrs = hlrDataList.slice(0, maxVisible);
@@ -1409,14 +1409,14 @@ export default function VendorQuestionnaire() {
                             : [req.arfReference.hlr];
 
                         const arfSpecs = hlrIdList
-                            .map(id => arfData?.byHlrId?.[id]?.specification)
+                            .map(id => (arfData?.byHarmonizedId?.[id] || arfData?.byHlrId?.[id])?.specification)
                             .filter(Boolean);
                         if (arfSpecs.length > 0) {
                             md += `**ARF Specification:** ${arfSpecs.join(' | ')}\n\n`;
                         }
 
                         const arfNotes = hlrIdList
-                            .map(id => arfData?.byHlrId?.[id]?.notes)
+                            .map(id => (arfData?.byHarmonizedId?.[id] || arfData?.byHlrId?.[id])?.notes)
                             .filter(Boolean);
                         if (arfNotes.length > 0) {
                             md += `**ARF Notes:** ${arfNotes.join(' | ')}\n\n`;

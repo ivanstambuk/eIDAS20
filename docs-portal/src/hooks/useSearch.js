@@ -113,7 +113,7 @@ export function useSearch() {
             //
             // This avoids the probabilistic "fetch more and hope" pattern.
             // Orama's `exact: true` disables prefix expansion, so "RP" will
-            // match the exact token "rp" but NOT "rpi" (from "RPI_06").
+            // match the exact token "rp" but NOT "rpi" (from "AS-RP-51-006").
             // ════════════════════════════════════════════════════════════════
 
             // Search 1: Normal fuzzy search (prefix + stemming enabled)

@@ -713,14 +713,14 @@ requirements:
       infrastructure that enables relying parties to verify
       the current validity status of issued QEAAs.
 
-      **VCR_01 — Revocation methods:**
+      **AS-AP-07-001 — Revocation methods:**
       A PID Provider, QEAA Provider, or PuB-EAA Provider
       SHALL use one of the following methods for revocation:
       - Only issue short-lived attestations having a validity
         period of 24 hours or less (no revocation needed)
-      - Use an Attestation Status List mechanism (per VCR_11)
+      - Use an Attestation Status List mechanism (per AS-AP-07-017)
       - Use an Attestation Revocation List mechanism
-        (per VCR_11)
+        (per AS-AP-07-017)
 
       **Status list infrastructure:**
       The status list mechanism requires:
@@ -875,13 +875,13 @@ requirements:
       This includes certificate issuance, validation, and
       revocation procedures for all ecosystem participants.
 
-      **Reg_12 — Certificate Policy specification:**
+      **AS-MS-27-015 — Certificate Policy specification:**
       The Commission SHALL provide technical specifications
       establishing the common Access Certificate Authority
       Certificate Policy. All ACAs operating within the
       EUDI Wallet ecosystem must comply with this policy.
 
-      **Reg_13 — Certificate Transparency:**
+      **AS-MS-27-016 — Certificate Transparency:**
       The common Certificate Policy SHALL require that an
       Access Certificate Authority logs all issued access
       certificates for Certificate Transparency (CT),
@@ -932,7 +932,7 @@ requirements:
       appropriate notification and transition procedures
       must be followed to maintain ecosystem trust.
 
-      **RPACANot_06 — ACA suspension/cancellation:**
+      **EW-DM-31-001 — ACA suspension/cancellation:**
       If an Access Certificate Authority is suspended or
       cancelled, that ACA SHALL immediately revoke all of
       its temporally valid access certificates. This means
@@ -941,7 +941,7 @@ requirements:
       request attributes from Wallet Units until new
       certificates are obtained from another ACA.
 
-      **RPACANot_07 — Registration certificate provider:**
+      **AS-MS-31-019 — Registration certificate provider:**
       If a Provider of registration certificates is
       suspended or cancelled, that Provider SHALL
       immediately revoke all of its valid registration
@@ -992,26 +992,26 @@ requirements:
       interfaces, obtain User consent, and process
       verification responses according to ARF requirements.
 
-      **QTSPAS_03 — Authentic Source response obligation:**
+      **AS-AP-42-003 — Authentic Source response obligation:**
       An Authentic Source or designated intermediary SHALL
       respond to a verification request for attributes by
       any QTSP issuing qualified electronic attestation
       of attributes. This ensures QTSPs have access to
       the data needed for QEAA issuance.
 
-      **QTSPAS_04 — Verification response handling:**
+      **AS-AP-42-004 — Verification response handling:**
       The response to the QTSP SHALL include the result
       of the verification. If verification is deferred,
       the response SHALL include the maximum time for
       verification and a unique identifier for polling.
 
-      **QTSPAS_05 — Direct access requirement:**
+      **AS-AP-42-005 — Direct access requirement:**
       A QTSP SHALL send an attribute verification request
       directly to the Authentic Source or designated
       intermediary recognised at national level, after
       discovering it using the specified mechanisms.
 
-      **QTSPAS_08 — User consent:**
+      **AS-AP-42-009 — User consent:**
       A QTSP SHALL obtain approval from the User to
       verify the authenticity of attributes, before
       requesting verification from the Authentic Source.

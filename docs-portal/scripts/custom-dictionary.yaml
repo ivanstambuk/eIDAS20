@@ -110,7 +110,7 @@ terms:
       decisions about key binding based on WSCA/WSCD capabilities. To ensure
       User privacy, the Wallet Unit does not present the WUA to Relying Parties
       (ARF §6.5.3.4); data related to the User device must not be released
-      to them (WUA_24). Instead, Relying Parties verify the Wallet Unit
+      to them (AS-WP-09-030). Instead, Relying Parties verify the Wallet Unit
       indirectly through transitive trust: the PID/attestation signature
       (verified against the Provider Trusted List), device key binding
       (mdoc DeviceAuth or SD-JWT Key Binding JWT), and cascaded revocation
@@ -183,7 +183,7 @@ terms:
       operations: (1) it presents wallet unit attestations (WUAs) to PID
       providers and attestation providers during issuance for trust
       establishment (CIR 2024/2982 Art. 3) — WUAs are not presented to
-      relying parties (ARF §6.5.3.4, WUA_24); (2) it manages the issuance flow for receiving
+      relying parties (ARF §6.5.3.4, AS-WP-09-030); (2) it manages the issuance flow for receiving
       person identification data and electronic attestations of attributes,
       verifying that issuers hold valid wallet-relying party access certificates
       before accepting credentials (CIR 2024/2982 Art. 4(2)); (3) it handles
@@ -1475,13 +1475,13 @@ terms:
     definition: >-
       A formally registered declaration at the Registrar specifying why a
       Relying Party requests data and which data elements it needs. Each
-      intended use has a unique identifier (Reg_32) and a user-friendly
-      description shown to wallet users for informed consent (RPRC_19a
+      intended use has a unique identifier (AS-MS-27-039) and a user-friendly
+      description shown to wallet users for informed consent (EW-DM-44-018
       field (c)). Intended uses are bound to registration certificates —
       one certificate per intended use — and the wallet may verify that
-      requested attributes match the registered scope (RPRC_21). An RP
+      requested attributes match the registered scope (EW-DM-44-021). An RP
       may register multiple intended uses.
-    source: Synthesized from IR 2025/848 Art 5, ARF Topic 27 (Reg_31, Reg_32), Topic 33 (RPRC_19a, RPRC_21)
+    source: Synthesized from IR 2025/848 Art 5, ARF Topic 27 (AS-MS-27-038, AS-MS-27-039), Topic 33 (EW-DM-44-018, EW-DM-44-021)
     note: No single regulation defines this term explicitly; assembled from multiple sources
 
   - term: presentation request
@@ -1507,7 +1507,7 @@ terms:
       are designed for in-person verification scenarios such as border
       control, age verification, or physical access. Support for
       proximity flows is not mandatory per the ARF but may be required
-      by specific Attestation Rulebooks (ARB_02).
+      by specific Attestation Rulebooks (EW-DM-12-003).
     source: Synthesized from ARF Topic 6, ISO/IEC 18013-5, CIR 2024/2982 Art 5
     note: Contrasted with remote flow; also called proximity presentation
 

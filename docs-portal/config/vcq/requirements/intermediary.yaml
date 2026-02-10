@@ -11,20 +11,20 @@ requirements:
       the identity of the ultimate Relying Party on whose behalf the intermediary
       is acting. This ensures informed consent.
 
-      **Wallet detection mechanism (RPI_07):**
+      **Wallet detection mechanism (AS-RP-51-008):**
       The wallet detects an intermediary scenario by comparing two data sources:
       - The intermediary's identity (name, identifier) from its **access
-        certificate** (obtained via RPI_01 registration)
-      - The intermediated RP's identity (name, identifier) from the **RPRC_19a
+        certificate** (obtained via AS-RP-51-001 registration)
+      - The intermediated RP's identity (name, identifier) from the **EW-DM-44-018
         extension** in the presentation request, and from the RP's registration
-        certificate if available (obtained via RPI_03)
+        certificate if available (obtained via AS-RP-51-003)
 
       If these identities differ, the wallet knows the request is from an
       intermediary and displays both names. The intermediary product must
       therefore ensure both data sources are correctly populated in every
       presentation request.
 
-      **Data that must be populated (RPI_05 → RPRC_19a):**
+      **Data that must be populated (AS-RP-51-005 → EW-DM-44-018):**
       The intermediated RP must supply to the intermediary: (a) its
       user-friendly name, (b) its unique identifier, (c) the URL of its
       Registrar, (d) the identifier of its intended use, and (e) a
@@ -32,10 +32,10 @@ requirements:
       static, they can be configured once; (d)-(e) vary only if the RP
       has multiple registered intended uses.
 
-      **Relationship verification (RPI_07a):**
+      **Relationship verification (AS-RP-51-009):**
       If the user requests it, the wallet will additionally verify that
       the contractual relationship between intermediary and RP is
-      registered at the responsible Registrar (per RPI_04). Failure to
+      registered at the responsible Registrar (per AS-RP-51-004). Failure to
       register this relationship will cause the wallet to warn the user,
       potentially blocking the transaction.
     legalBasis:
@@ -68,13 +68,13 @@ requirements:
       data request when forwarding to wallets. Only the attributes registered
       by the RP with its Registrar may be requested.
 
-      **Request scope guarantee (RPI_06 + Art 5b(3)):**
+      **Request scope guarantee (AS-RP-51-006 + Art 5b(3)):**
       The intermediary SHALL include in the request only those attributes that
       the intermediated RP has registered for the selected intended use. The
-      wallet can verify this: per RPRC_21, the wallet may query the Registrar
-      using the intended-use identifier from RPRC_19a to retrieve the list of
+      wallet can verify this: per EW-DM-44-021, the wallet may query the Registrar
+      using the intended-use identifier from EW-DM-44-018 to retrieve the list of
       attributes the RP is authorised to request. Any discrepancy between the
-      RPRC_19a request and the registered attribute set is a compliance
+      EW-DM-44-018 request and the registered attribute set is a compliance
       violation.
 
       **Prohibited intermediary behaviours:**
@@ -121,13 +121,13 @@ requirements:
       **forwarding integrity** guarantee: the technical relay mechanism must
       preserve the request exactly as constructed.
 
-      **Technical relay requirements (RPI_06):**
+      **Technical relay requirements (AS-RP-51-006):**
       When the intermediated RP triggers a presentation request, the
       intermediary SHALL construct the OID4VP or ISO 18013-5 request
       containing:
-      - The intermediary's own access certificate (RPI_01)
-      - The RP's registration certificate, if available (RPI_03)
-      - The RPRC_19a extension fields for the intermediated RP (RPI_05)
+      - The intermediary's own access certificate (AS-RP-51-001)
+      - The RP's registration certificate, if available (AS-RP-51-003)
+      - The EW-DM-44-018 extension fields for the intermediated RP (AS-RP-51-005)
       - The exact set of requested attributes as specified by the RP
 
       The product must ensure no transformation, filtering, or enrichment
@@ -161,9 +161,9 @@ requirements:
       as received, without altering, extracting, or processing the credential
       data. The presentation integrity must be preserved.
 
-      **Forwarding after verification (RPI_08 + RPI_09):**
+      **Forwarding after verification (AS-RP-51-011 + AS-RP-51-012):**
       After receiving a presentation from a Wallet Unit, the intermediary
-      SHALL first perform the verifications specified in RPI_09 (authenticity,
+      SHALL first perform the verifications specified in AS-RP-51-012 (authenticity,
       revocation status, device binding, user binding, combined presentation
       validity). Only if all verifications succeed SHALL the intermediary
       forward the attributes to the requesting RP. If any verification
@@ -225,7 +225,7 @@ requirements:
       For proximity flows, the connector's deployment must include
       hardware (BLE/NFC readers) at the RP's physical locations. The
       intermediary must handle the additional complexity of performing
-      RPI_09 verification on-site before forwarding to the RP backend.
+      AS-RP-51-012 verification on-site before forwarding to the RP backend.
       For remote flows, the connector must correctly route the
       `redirect_uri` / `response_uri` callbacks through its own
       infrastructure while preserving the RP's session context.
@@ -262,11 +262,11 @@ requirements:
     requirement: Forward attributes only to the requesting RP after verification
     explanation: |
       After receiving attestation data from a wallet, the intermediary must
-      perform all agreed verifications (RPI_09) and forward the attributes
+      perform all agreed verifications (AS-RP-51-012) and forward the attributes
       ONLY to the specific RP on whose behalf the request was made. If any
       verification fails, no attributes may be forwarded.
 
-      **Verification gate (RPI_09):**
+      **Verification gate (AS-RP-51-012):**
       Before forwarding, the intermediary SHALL verify (as agreed with the
       RP):
       - Authenticity of the PID or attestation (signature validation)
@@ -276,7 +276,7 @@ requirements:
       - Combined presentation validity (if multiple attestations)
       - Wallet Unit authenticity and revocation status
 
-      **Conditional forwarding (RPI_08):**
+      **Conditional forwarding (AS-RP-51-011):**
       If ALL verifications succeed → forward attributes only to the
       requesting RP. If ANY verification fails → forward NOTHING. The
       intermediary must never partially forward verified attributes.
@@ -287,7 +287,7 @@ requirements:
       the wrong RP. This requires per-session RP binding from request
       initiation through to attribute delivery.
 
-      **Immediate deletion (RPI_10):**
+      **Immediate deletion (AS-RP-51-013):**
       After forwarding (or after verification failure), the intermediary
       SHALL delete all PIDs, attestations, and user attributes completely
       and immediately (see also VEND-INT-021).
@@ -321,12 +321,12 @@ requirements:
       must be refreshed regularly to capture additions, modifications,
       and revocations.
 
-      **Signature validation requirement (OIA_12):**
+      **Signature validation requirement (EW-PIO-01-020):**
       For both proximity and remote presentation flows, the intermediary
       SHALL validate the signature of a PID using a trust anchor provided
       in a PID Provider Trusted List made available in accordance with
       Topic 31 (notification and publication). This is a prerequisite for
-      the RPI_09 verification gate that determines whether attributes
+      the AS-RP-51-012 verification gate that determines whether attributes
       may be forwarded to the RP.
 
       **Trust list discovery and refresh:**
@@ -370,22 +370,22 @@ requirements:
       The connector must maintain current copies of Trusted Lists for
       qualified and non-qualified electronic attestation of attributes
       (QEAA/EAA) providers. These trust anchors are essential for
-      validating attestation signatures as part of the RPI_09
+      validating attestation signatures as part of the AS-RP-51-012
       verification gate.
 
-      **QEAA Provider validation (OIA_13):**
+      **QEAA Provider validation (EW-PIO-01-021):**
       For both proximity and remote flows, the connector SHALL validate
       the qualified signature of a QEAA in accordance with Art 32 of the
       eIDAS Regulation. The trust anchor must come from a QEAA Provider
       Trusted List made available in accordance with Art 22.
 
-      **PuB-EAA Provider validation (OIA_14):**
+      **PuB-EAA Provider validation (EW-PIO-01-022):**
       For PuB-EAAs, the connector SHALL validate the qualified
       signature using the public key from the qualified certificate of
       the QTSP, and SHALL also validate the QTSP's certificate itself
       using a trust anchor from the appropriate Trusted List.
 
-      **Non-qualified EAA validation (OIA_15):**
+      **Non-qualified EAA validation (EW-PIO-01-023):**
       For non-qualified EAAs, trust anchors are provided according to
       mechanisms specified in the applicable Rulebook (Topic 12). The
       connector may also need to verify that the EAA Provider is
@@ -393,8 +393,8 @@ requirements:
 
       **Trust anchor isolation:**
       The connector must distinguish between trust anchors for PIDs
-      (OIA_12, see VEND-INT-007), QEAAs (OIA_13), PuB-EAAs (OIA_14),
-      and non-qualified EAAs (OIA_15). A trust anchor valid for one
+      (EW-PIO-01-020, see VEND-INT-007), QEAAs (EW-PIO-01-021), PuB-EAAs (EW-PIO-01-022),
+      and non-qualified EAAs (EW-PIO-01-023). A trust anchor valid for one
       category must not inadvertently validate attestations from another.
     legalBasis:
       regulation: 2014/910
@@ -427,7 +427,7 @@ requirements:
       of verification keys and prevents supply-chain attacks on the
       trust infrastructure.
 
-      **Official sources (OIA_14):**
+      **Official sources (EW-PIO-01-022):**
       The eIDAS Regulation mandates that trust anchors come from Trusted
       Lists published by Member States (Art 22) or the Commission. The
       intermediary must use these authoritative sources directly, or
@@ -473,10 +473,10 @@ requirements:
       attestations and PIDs using the public keys from official Trusted
       Lists. Invalid or untrusted signatures must result in rejection.
 
-      **Signature validation as RPI_09 prerequisite:**
+      **Signature validation as AS-RP-51-012 prerequisite:**
       Attestation authenticity verification is the first check in the
-      RPI_09 verification gate. Without a valid signature, no attributes
-      may be forwarded to the RP (per RPI_08). The connector must
+      AS-RP-51-012 verification gate. Without a valid signature, no attributes
+      may be forwarded to the RP (per AS-RP-51-011). The connector must
       verify:
       - The attestation's issuer signature against the trust anchor
       - The certificate chain from the issuer to the Trusted List root
@@ -496,7 +496,7 @@ requirements:
       - Log the verification failure with sufficient detail for dispute
         resolution (without logging attestation content)
       - Return an appropriate error to the RP
-      - Immediately delete all received attestation data (per RPI_10)
+      - Immediately delete all received attestation data (per AS-RP-51-013)
     legalBasis:
       regulation: 2024/2979
       article: Article 8
@@ -522,21 +522,21 @@ requirements:
     explanation: |
       Before accepting a presentation as valid, the connector should
       check the revocation status of the attestation. This is a
-      recommended (SHOULD) step in the RPI_09 verification gate.
+      recommended (SHOULD) step in the AS-RP-51-012 verification gate.
 
-      **VCR_13 — Recommended verification:**
-      Per VCR_13, a Relying Party Instance SHOULD verify the
+      **AS-AP-07-020 — Recommended verification:**
+      Per AS-AP-07-020, a Relying Party Instance SHOULD verify the
       revocation status of a PID or attestation upon obtaining it
       from a Wallet Unit. This is a SHOULD (recommended), not a
       SHALL (mandatory), meaning the connector may choose not
       to verify revocation in low-risk scenarios. However, if the
       connector and RP agree that revocation checking is required
-      (per RPI_09 agreement scope), then it becomes effectively
+      (per AS-RP-51-012 agreement scope), then it becomes effectively
       mandatory for that relationship.
 
-      **VCR_12 — Dual-mechanism support:**
+      **AS-AP-07-018 — Dual-mechanism support:**
       If the connector decides to verify revocation status, it SHALL
-      support BOTH mechanisms specified per VCR_11:
+      support BOTH mechanisms specified per AS-AP-07-017:
       - **Attestation Status Lists**: compressed bitstring lists
         where each bit represents the status of one attestation;
         efficient for batch checking without per-credential queries
@@ -544,15 +544,15 @@ requirements:
         of revoked attestation identifiers; useful for targeted
         checks
 
-      **Short-lived attestation exception (VCR_01):**
+      **Short-lived attestation exception (AS-AP-07-001):**
       If an attestation has a validity period of 24 hours or less
       (short-lived), revocation checking is unnecessary because the
       attestation will expire before a revocation could take effect.
 
-      **Verification failure handling (RPI_08):**
+      **Verification failure handling (AS-RP-51-011):**
       If revocation verification fails (attestation is found to be
       revoked), the connector SHALL NOT forward attributes to the
-      RP per RPI_08. Status lists must be fetched from PID/EAA
+      RP per AS-RP-51-011. Status lists must be fetched from PID/EAA
       Providers via the URLs specified in the attestation metadata.
 
       **Operational considerations:**
@@ -586,7 +586,7 @@ requirements:
     deadline: "2027-11-21"
     notes: |
       This covers ARF Topic 7 (VCR_*) verification requirements
-      for attestation revocation. Attestation Status Lists (VCR_11)
+      for attestation revocation. Attestation Status Lists (AS-AP-07-017)
       are the primary mechanism for efficient batch revocation
       checking without per-credential queries.
       Consolidated from VEND-INT-011 + VEND-INT-034.
@@ -599,9 +599,9 @@ requirements:
       The connector must verify that the presentation is bound to the
       wallet unit's secure cryptographic device (WSCD), confirming that
       the presenter controls the private key associated with the
-      attestations. This is a core check in the RPI_09 verification gate.
+      attestations. This is a core check in the AS-RP-51-012 verification gate.
 
-      **Device binding verification (RPI_09):**
+      **Device binding verification (AS-RP-51-012):**
       The connector SHALL verify device binding by checking the
       proof-of-possession mechanism:
       - For mDoc (ISO 18013-5): verify the `deviceAuth` structure,
@@ -620,7 +620,7 @@ requirements:
 
       **Failure handling:**
       If device binding verification fails, the connector SHALL NOT
-      forward any attributes (per RPI_08). This is a hard failure — the
+      forward any attributes (per AS-RP-51-011). This is a hard failure — the
       entire presentation is rejected, and the RP is notified of the
       verification failure.
     legalBasis:
@@ -673,7 +673,7 @@ requirements:
         deployment
       - Automatically pruned after nonce expiry
 
-      **Combined with device binding (RPI_09):**
+      **Combined with device binding (AS-RP-51-012):**
       Freshness verification and device binding together ensure that
       the presentation was created by the legitimate wallet user in
       real-time, not replayed from a captured session.
@@ -708,7 +708,7 @@ requirements:
       protects the confidentiality and integrity of attestation data
       in transit between the intermediary and the RP backend.
 
-      **Transport requirements (RPI_08):**
+      **Transport requirements (AS-RP-51-011):**
       The channel used to forward attributes from the intermediary to
       the RP must provide:
       - **Confidentiality**: TLS 1.3 (or TLS 1.2 with approved cipher
@@ -734,7 +734,7 @@ requirements:
       If the secure channel cannot be established (e.g., TLS handshake
       failure, certificate validation error), the intermediary SHALL
       NOT forward any attributes. The presentation data must be deleted
-      immediately per RPI_10.
+      immediately per AS-RP-51-013.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
@@ -811,7 +811,7 @@ requirements:
       against tampering. The RP must be able to trust that the
       intermediary's verification outcome is authentic and unmodified.
 
-      **Integrity protection mechanisms (RPI_08):**
+      **Integrity protection mechanisms (AS-RP-51-011):**
       The intermediary should protect verification results using:
       - **JWS (JSON Web Signature)** for signing the verification
         outcome, creating a non-repudiable proof of the intermediary's
@@ -823,7 +823,7 @@ requirements:
 
       **Verification result payload:**
       The signed result should include:
-      - Verification outcome (pass/fail per RPI_09 check)
+      - Verification outcome (pass/fail per AS-RP-51-012 check)
       - Timestamp of verification
       - Nonce binding (linking the result to the original request)
       - List of checks performed and their individual outcomes
@@ -866,7 +866,7 @@ requirements:
       - Verification timestamp (ISO 8601)
       - Session/request identifier (internal correlation ID)
       - RP identifier (which RP the request was for)
-      - Verification outcome per RPI_09 check (pass/fail)
+      - Verification outcome per AS-RP-51-012 check (pass/fail)
       - Error codes and failure reasons
       - Protocol used (OID4VP / ISO 18013-5)
       - Processing duration
@@ -918,7 +918,7 @@ requirements:
       **Sealed pipeline architecture:**
       The intermediary's processing pipeline should be designed so that
       attestation content is never decoded into individual attributes.
-      Verification operations (RPI_09 checks) require cryptographic
+      Verification operations (AS-RP-51-012 checks) require cryptographic
       validation of signatures, device binding, and revocation status,
       but these operations can be performed without parsing the
       attribute-level content.
@@ -932,7 +932,7 @@ requirements:
       - Performing analytics, profiling, or ML training on content
 
       **Tension with verification:**
-      Some RPI_09 checks (e.g., user binding, where the attestation
+      Some AS-RP-51-012 checks (e.g., user binding, where the attestation
       may contain a user photo or biometric template) may require
       limited attribute access. If such access is necessary, it must
       be minimal, purpose-limited, and the accessed data must be
@@ -1015,7 +1015,7 @@ requirements:
       (e.g., due to verification failure), deletion must still occur
       immediately after completing all necessary verifications.
 
-      **RPI_10 requirements:**
+      **AS-RP-51-013 requirements:**
       The intermediary SHALL delete any PIDs or attestations it
       obtained from the Wallet Unit, including any user attributes,
       completely and immediately after sending them to the RP. If
@@ -1069,9 +1069,9 @@ requirements:
     explanation: |
       When requesting attestations from a wallet, the intermediary must
       include complete information about the intermediated RP via the
-      RPRC_19a extension in the presentation request.
+      EW-DM-44-018 extension in the presentation request.
 
-      **Required RPI_05 fields:**
+      **Required AS-RP-51-005 fields:**
       The intermediated RP must supply the following to the
       intermediary, which SHALL include them in each request:
       - (a) User-friendly name of the intermediated RP
@@ -1088,16 +1088,16 @@ requirements:
 
       **Registration certificate inclusion:**
       If the intermediated RP has registration certificates (per
-      RPI_03), it SHALL also indicate which single registration
+      AS-RP-51-003), it SHALL also indicate which single registration
       certificate the intermediary must include in the request.
 
       **Wallet behaviour enabled by this data:**
       This data enables the wallet to:
-      - Display accurate RP information to the user (per RPI_07)
+      - Display accurate RP information to the user (per AS-RP-51-008)
       - Verify that requested attributes match what the RP registered
-        (per RPRC_21)
+        (per EW-DM-44-021)
       - Detect that the request is from an intermediary rather than a
-        direct RP (by comparing RPRC_19a identity with the access
+        direct RP (by comparing EW-DM-44-018 identity with the access
         certificate identity)
     legalBasis:
       regulation: 2025/848
@@ -1143,8 +1143,8 @@ requirements:
       - The connector must handle device engagement, session
         establishment, CBOR decoding, and COSE signature verification
 
-      **Use-case dependency (RPRC_20a):**
-      Per RPRC_20a, Relying Party Instances and Wallet Units SHALL
+      **Use-case dependency (EW-DM-44-020):**
+      Per EW-DM-44-020, Relying Party Instances and Wallet Units SHALL
       support the extension for ISO/IEC 18013-5 OR the extension for
       OpenID4VP (as applicable). The "or" indicates use-case
       dependency:
@@ -1152,14 +1152,14 @@ requirements:
       - In-person-only RPs: mDoc / ISO 18013-5 required
       - Mixed-mode RPs: BOTH formats required
 
-      **Attestation Rulebook impact (ARB_02):**
+      **Attestation Rulebook impact (EW-DM-12-003):**
       The Attestation Rulebook for each attestation type determines
       whether proximity presentation is required. If so, the Rulebook
       mandates mDoc format issuance, meaning the connector must
       support mDoc verification for those attestation types.
 
       Note: This differs from Issuers, who must unconditionally
-      support both formats (per ISSU_12).
+      support both formats (per AS-AP-10-013).
     legalBasis:
       regulation: 2024/2979
       article: Article 8
@@ -1184,7 +1184,7 @@ requirements:
         - EW-DM-44-020
         - EW-DM-12-003
     notes: |
-      Per ARF RPRC_20a: "Relying Party Instances and Wallet Units SHALL support
+      Per ARF EW-DM-44-020: "Relying Party Instances and Wallet Units SHALL support
       the extension for [ISO/IEC 18013-5] or the extension for [OpenID4VP]..."
 
       The "or" indicates use-case dependency:
@@ -1193,7 +1193,7 @@ requirements:
       - Mixed-mode RPs: BOTH formats required
 
       This contrasts with VEND-ISS-005 where issuers must unconditionally
-      support both formats per ISSU_12.
+      support both formats per AS-AP-10-013.
     obligation: MUST
   - id: VEND-INT-024
     deploymentArchitectures: []
@@ -1338,9 +1338,9 @@ requirements:
         NOT forward the request to the wallet (or the wallet will
         reject it)
 
-      **Interaction with RPI_06:**
-      The disclosure policy check is complementary to the RPI_06
-      attribute scope check: RPI_06 ensures the RP only requests
+      **Interaction with AS-RP-51-006:**
+      The disclosure policy check is complementary to the AS-RP-51-006
+      attribute scope check: AS-RP-51-006 ensures the RP only requests
       attributes it has registered for, while the disclosure policy
       ensures the RP meets the conditions set by the attestation
       issuer.
@@ -1392,7 +1392,7 @@ requirements:
       The intermediary sees the pseudonym during verification but
       must not store or correlate it across sessions (per the
       no-storage mandate). The pseudonym should be treated with the
-      same deletion requirements as attestation data (per RPI_10).
+      same deletion requirements as attestation data (per AS-RP-51-013).
     legalBasis:
       regulation: 2024/2979
       article: Article 14
@@ -1472,7 +1472,7 @@ requirements:
       wallet units. The certificate identifies the intermediary and
       enables the wallet to verify its registration status.
 
-      **RPA_01 authentication mechanism:**
+      **AS-WP-06-001 authentication mechanism:**
       The access certificate is part of the RP authentication
       mechanism that SHALL:
       - Enable the Wallet Unit to identify and authenticate the
@@ -1485,10 +1485,10 @@ requirements:
       **Architecture-specific certificate usage:**
       The connector's access certificate identifies the
       **intermediary itself**, not the intermediated RP. The
-      intermediated RP's identity is conveyed via the RPRC_19a
+      intermediated RP's identity is conveyed via the EW-DM-44-018
       extension (per VEND-INT-022). The wallet detects the
       intermediary scenario by comparing these two identities
-      (per RPI_07).
+      (per AS-RP-51-008).
 
       **Certificate lifecycle requirements:**
       - Certificates have finite validity; the connector must
@@ -1536,7 +1536,7 @@ requirements:
       (via the wallet), the intermediary must process or relay the
       request.
 
-      **DATA_DLT_07 — User authentication:**
+      **AS-RP-48-005 — User authentication:**
       Before executing a data deletion request, the intermediary
       SHALL authenticate the requesting user using appropriate
       authentication mechanisms. The intermediary SHOULD use the
@@ -1545,7 +1545,7 @@ requirements:
       flow may involve a presentation exchange specifically for
       authentication (not for attribute disclosure).
 
-      **DATA_DLT_08 — TS7 compliance:**
+      **AS-WP-48-004 — TS7 compliance:**
       Wallet Units, Relying Parties, and Registrars SHALL comply
       with the relevant requirements in TS7. For the intermediary,
       this means implementing the TS7 API endpoint(s) that wallet
@@ -1556,7 +1556,7 @@ requirements:
       intermediated RP, deletion requests may need to be relayed:
       - The wallet sends the deletion request to the intermediary
         (since that is the entity the wallet interacted with)
-      - The intermediary authenticates the user (per DATA_DLT_07)
+      - The intermediary authenticates the user (per AS-RP-48-005)
       - The intermediary relays the request to the intermediated
         RP (the actual data controller)
       - The intermediary confirms processing to the wallet
@@ -1617,7 +1617,7 @@ requirements:
       **Intermediary visibility in reports:**
       In an intermediated scenario, the wallet displays both the
       intermediary's identity (from its access certificate) and
-      the intermediated RP's identity (from RPRC_19a). A user
+      the intermediated RP's identity (from EW-DM-44-018). A user
       report may include either or both identities:
       - The intermediary (as the entity that technically requested
         the data)
@@ -1630,7 +1630,7 @@ requirements:
       - Provide evidence of which RP instructed each request
       - Demonstrate that it complied with the no-storage mandate
       - Show that it only requested attributes registered for the
-        RP's intended use (per RPI_06)
+        RP's intended use (per AS-RP-51-006)
       - Maintain sufficient audit trails to support investigations
         without retaining personal data
     legalBasis:
@@ -1664,17 +1664,17 @@ requirements:
 
       **Dual-certificate structure:**
       - **Intermediary access certificate**: issued by the
-        intermediary's Registrar pursuant to RPA_01 and Topic 27;
+        intermediary's Registrar pursuant to AS-WP-06-001 and Topic 27;
         identifies the intermediary as a registered entity
       - **RP registration certificate**: obtained during the
         intermediary's registration of the intermediated RP (per
-        RPI_03); contains the RP's registered attributes, intended
+        AS-RP-51-003); contains the RP's registered attributes, intended
         uses, and identity
 
       **Protocol-specific inclusion:**
       - **OID4VP (remote)**: the intermediary's access certificate
         is part of the TLS handshake or request JWT; the RP's
-        registration certificate is included via the RPRC_19a
+        registration certificate is included via the EW-DM-44-018
         extension fields
       - **ISO 18013-5 (proximity)**: both certificates are included
         in the reader authentication structure
@@ -1684,8 +1684,8 @@ requirements:
       - Authenticate the intermediary (using its access certificate)
       - Verify the intermediated RP's registration (using the RP's
         registration certificate, if available)
-      - Check the intermediary-RP relationship (per RPI_07a)
-      - Display both identities to the user (per RPI_07)
+      - Check the intermediary-RP relationship (per AS-RP-51-009)
+      - Display both identities to the user (per AS-RP-51-008)
 
       **When the RP has no registration certificate:**
       If the intermediated RP does not have a registration
@@ -1715,11 +1715,11 @@ requirements:
       - connector
     deadline: "2027-11-21"
     notes: |
-      This is the technical implementation of RPI_06. The access
+      This is the technical implementation of AS-RP-51-006. The access
       certificate comes from the intermediary's own registration.
       The RP registration certificate is obtained during the
       intermediary's registration of each intermediated RP (per
-      RPI_03).
+      AS-RP-51-003).
     obligation: MUST
   - id: VEND-INT-033
     deploymentArchitectures:
@@ -1730,9 +1730,9 @@ requirements:
       Before the intermediary can act on behalf of an RP, the
       contractual relationship between them must be registered with
       the relevant Registrar. The wallet verifies this registration
-      when processing requests (per RPI_07a).
+      when processing requests (per AS-RP-51-009).
 
-      **RPI_04 registration requirement:**
+      **AS-RP-51-004 registration requirement:**
       When registering an intermediated Relying Party, the
       intermediary SHALL provide legally valid evidence that the
       RP will indeed use the intermediary's services to interact
@@ -1743,7 +1743,7 @@ requirements:
       The Registrar SHALL verify this evidence and, if correct,
       register the relationship.
 
-      **RPI_07a wallet verification:**
+      **AS-RP-51-009 wallet verification:**
       When a Wallet Unit receives a request from an intermediary
       on behalf of an intermediated RP, and the user wants to
       verify the RP's registration, the wallet SHALL verify that
@@ -1764,7 +1764,7 @@ requirements:
          with contractual evidence
       3. Registrar verifies evidence and registers the relationship
       4. Intermediary obtains the RP's registration certificate
-         (per RPI_03)
+         (per AS-RP-51-003)
       5. Intermediary begins accepting wallet interaction requests
          for that RP
 
@@ -1795,8 +1795,8 @@ requirements:
       - connector
     deadline: "2027-11-21"
     notes: |
-      This corresponds to ARF RPI_04 and supports wallet
-      verification per RPI_07a. The intermediary must ensure
+      This corresponds to ARF AS-RP-51-004 and supports wallet
+      verification per AS-RP-51-009. The intermediary must ensure
       registration is complete BEFORE accepting intermediation
       requests from an RP, otherwise wallet users will see
       verification failures.
