@@ -35,6 +35,7 @@ const DEPLOYMENT_ARCHITECTURES = {
         label: 'Intermediary',
         shortLabel: 'INT',
         icon: '🔗',
+        hint: '3rd-party acts as RP',
         description: 'Third-party acts as RP on behalf of the integrating organisation',
     },
     direct_saas: {
@@ -42,6 +43,7 @@ const DEPLOYMENT_ARCHITECTURES = {
         label: 'Direct SaaS',
         shortLabel: 'SaaS',
         icon: '☁️',
+        hint: 'vendor-hosted connector',
         description: 'Organisation is the RP; vendor provides hosted connector service',
     },
     direct_onprem: {
@@ -49,6 +51,7 @@ const DEPLOYMENT_ARCHITECTURES = {
         label: 'Direct Self-Hosted',
         shortLabel: 'OnPrem',
         icon: '🏠',
+        hint: 'you deploy on your infra',
         description: 'Organisation is the RP; deploys vendor software on own infrastructure',
     },
 };
@@ -420,6 +423,7 @@ function ProductCategorySelector({ selectedRoles, selectedCategories, onToggle, 
                                                 />
                                                 <span className="vcq-arch-inline-icon">{arch.icon}</span>
                                                 <span className="vcq-arch-inline-label">{arch.label}</span>
+                                                <span className="vcq-arch-inline-hint">({arch.hint})</span>
                                             </label>
                                         );
                                     })}
