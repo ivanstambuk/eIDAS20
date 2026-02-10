@@ -1224,23 +1224,32 @@ requirements:
   VEND-CORE-040:
     questions:
       - id: Q1
-        text: "Do you support proximity identification flows (BLE/NFC) for local credential presentation?"
+        text: "Do you support proximity identification flows (BLE/NFC) for local credential presentation? If so, in which scenarios (border control, age verification, point-of-sale, in-branch)? Is proximity flow support a standard feature or an add-on module?"
         dimension: capability
       - id: Q2
-        text: "If supported, which protocols do you implement (ISO/IEC 18013-5, BLE, NFC)?"
+        text: "Per ProxId_01a, RP Instances supporting proximity flows SHALL support device retrieval as specified in ISO/IEC 18013-5. Which specific transports do you implement — BLE (mandatory), NFC (optional), or both? Which device engagement methods are supported (QR code, NFC tap)?"
         dimension: technical_implementation
       - id: Q3
-        text: "What hardware is required at the Relying Party location for proximity flows?"
+        text: "What hardware is required at the Relying Party location for proximity flows? Do you provide or certify specific reader devices, or is the proximity flow software-only running on standard mobile devices or tablets?"
         dimension: operational
       - id: Q4
-        text: "How do proximity flows operate without internet connectivity?"
+        text: "How do proximity flows operate without internet connectivity? Specifically, how do you handle trust anchor verification and revocation checking when the reader device is offline? Do you pre-load issuer trust anchors and cache revocation status lists (connecting to VEND-CORE-039)?"
         dimension: technical_implementation
       - id: Q5
-        text: "What is the range and reliability of the proximity communication?"
+        text: "What is the effective range and reliability of the proximity communication? For BLE: what is the maximum range, and how do you handle interference in crowded environments (airports, concert venues)? For NFC: what reader positioning requirements exist?"
         dimension: sla
       - id: Q6
-        text: "How is security maintained in the proximity flow (key exchange, encryption)?"
+        text: "How is security maintained in the proximity flow? Do you implement the full ISO/IEC 18013-5 security model (HKDF key derivation, AES-256-GCM encryption, ECDSA device authentication)? How do you prevent relay attacks where an attacker forwards the BLE signal?"
         dimension: security
+      - id: Q7
+        text: "Can proximity and remote flows coexist in the same RP Instance, or are they separate deployments? If coexistent, how does the RP Instance determine which flow to use for a given transaction?"
+        dimension: architecture
+      - id: Q8
+        text: "How do you handle the user consent flow in proximity scenarios? Is the consent displayed on the user's wallet device, and how do you handle scenarios where the user walks away before completing the flow (physical timeout)?"
+        dimension: user_experience
+      - id: Q9
+        text: "For intermediary deployments: can an intermediary's reader device perform proximity identification on behalf of the intermediated RP? How is the intermediary/RP distinction communicated to the wallet in the proximity flow?"
+        dimension: architecture
 
   # ============================================================================
   # VEND-CORE-041: Registration Certificate Lifecycle
@@ -1249,23 +1258,32 @@ requirements:
   VEND-CORE-041:
     questions:
       - id: Q1
-        text: "How do you handle updates to the organization's registration certificates?"
+        text: "How do you handle updates to the organisation's registration certificates? Per RPRC_19, the RP Instance must include a single registration certificate applicable for its current intended use in each presentation request. How do you ensure the correct, current certificate is always used?"
         dimension: lifecycle
       - id: Q2
-        text: "What is the process for certificate renewal before expiration?"
+        text: "What is the process for certificate renewal before expiration? Do you monitor certificate notBefore/notAfter dates proactively, and how far in advance of expiry do you initiate renewal?"
         dimension: lifecycle
       - id: Q3
-        text: "How do you handle emergency certificate revocation situations?"
+        text: "How do you handle emergency certificate revocation situations? What is the maximum time between discovering a compromised certificate and removing it from all RP Instances?"
         dimension: incident_response
       - id: Q4
-        text: "How are updated certificates distributed to all systems that need them?"
+        text: "Per RPRC_10, registration certificates must be distributed to all RP Instances. How are updated certificates distributed across your deployment topology? What is the propagation latency, and how do you handle instances that are temporarily offline during an update?"
         dimension: operational
       - id: Q5
-        text: "What notifications are sent for upcoming certificate expirations?"
+        text: "What notifications are sent for upcoming certificate expirations? Who receives the alerts (operations team, RP customer, both)? What escalation path exists if an expiry alert is not acted upon?"
         dimension: alerting
       - id: Q6
-        text: "Is the certificate lifecycle fully automated or does it require manual intervention?"
+        text: "Is the certificate lifecycle fully automated or does it require manual intervention? Can the product automatically request, install, and distribute new registration certificates from the Provider of registration certificates?"
         dimension: automation
+      - id: Q7
+        text: "Per RPRC_19a, each presentation request must include extension fields (RP name, RP identifier, intended use description, Registrar URL, intended use identifier). How do you ensure these fields remain consistent with the registration certificate content after updates?"
+        dimension: compliance_completeness
+      - id: Q8
+        text: "How do you handle the scenario where a Provider of registration certificates rotates its signing key? How do you coordinate with wallet units that may still be verifying against the old trust anchor?"
+        dimension: security
+      - id: Q9
+        text: "For intermediary deployments: does the intermediary manage registration certificates on behalf of the intermediated RP (per RPI_03/RPI_06), or does the RP manage its own certificates independently?"
+        dimension: architecture
 
   # ============================================================================
   # VEND-CORE-042: Personal Data Safeguards by Default
@@ -1274,23 +1292,32 @@ requirements:
   VEND-CORE-042:
     questions:
       - id: Q1
-        text: "Does your platform apply GDPR-compliant data handling (encryption, access controls, audit logging) to ALL attestation processing by default?"
+        text: "Does your platform apply GDPR-compliant data handling (encryption, access controls, audit logging) to ALL attestation processing by default, regardless of whether the specific attestation content appears to be personal data?"
         dimension: security
       - id: Q2
-        text: "Do you have separate processing paths that bypass security controls for 'non-personal data'? If so, describe them."
+        text: "Do you have separate processing paths that bypass security controls for 'non-personal data' attestations (e.g., attestations related to legal persons or objects)? If so, describe the criteria for selecting the bypass path and the controls that are relaxed."
         dimension: architecture
       - id: Q3
-        text: "How do you handle attestations relating to legal persons or objects that may still be processed alongside personal data context?"
+        text: "How do you handle attestations relating to legal persons or objects (per eIDAS Art 3(43)) that are processed alongside personal data context (session tokens, wallet identifiers, IP addresses)? Do you apply the 'Compliance by Environment' principle where the combination is treated as personal data?"
         dimension: data_handling
       - id: Q4
-        text: "What guidance do you provide to customers (RPs) regarding DPIA requirements for different attestation types?"
+        text: "What guidance do you provide to customers (RPs) regarding DPIA requirements for different attestation types? Do you provide a template DPIA, and does it cover the specific processing scenarios enabled by your product?"
         dimension: documentation
       - id: Q5
-        text: "How do you document exceptions for truly anonymous processing scenarios?"
+        text: "How do you document exceptions for truly anonymous processing scenarios (e.g., pure boolean ZKP proofs with high unlinkability, device-only attestations with no wallet user context)? Who is responsible for determining that an exception applies — the product or the customer?"
         dimension: flexibility
       - id: Q6
-        text: "Do you implement 'Compliance by Environment' principles where session context (IP, wallet ID) is treated as personal data?"
+        text: "Do you implement 'Compliance by Environment' principles where session context (IP address, wallet identifier, User-Agent, timing metadata) is treated as personal data even when the attestation content is not personal? How are these contextual data elements handled?"
         dimension: architecture
+      - id: Q7
+        text: "What encryption is applied to attestation data at rest and in transit? Are different encryption levels applied based on the sensitivity of the attestation content (e.g., health data vs. age-over-18 boolean)?"
+        dimension: security
+      - id: Q8
+        text: "How do you ensure that access controls on attestation data follow the principle of least privilege? Can individual connector operators/administrators access raw attestation data, or is it encrypted at the product level?"
+        dimension: security
+      - id: Q9
+        text: "For intermediary deployments: does the intermediary's processing of attestation data require its own GDPR basis, or does the intermediated RP's legal basis cover the intermediary's processing? How does the product enforce data minimisation at the intermediary layer?"
+        dimension: compliance_completeness
 
   # ============================================================================
   # VEND-CORE-043: OID4VP Conformance Testing
@@ -1300,23 +1327,32 @@ requirements:
   VEND-CORE-043:
     questions:
       - id: Q1
-        text: "Which credential formats were tested against the OIDF OID4VP conformance suite — SD-JWT VC, ISO mDoc, or both?"
+        text: "Which credential formats were tested against the OIDF OID4VP conformance suite — SD-JWT VC, ISO mDoc, or both? Were both the HAIP (High Assurance Interoperability Profile) and standard OID4VP profiles tested?"
         dimension: interoperability
       - id: Q2
-        text: "Which version of the OID4VP specification was tested against (1.0 Final, ID2, draft-24)?"
+        text: "Which version of the OID4VP specification was tested against (1.0 Final, ID2, draft-24)? As the spec evolves, do you re-run conformance tests against updated versions?"
         dimension: technical_implementation
       - id: Q3
-        text: "Were both direct_post and direct_post.jwt (encrypted) response modes tested in the conformance suite?"
+        text: "Were both direct_post and direct_post.jwt (encrypted) response modes tested in the conformance suite? The ARF mandates both modes — confirm which mode your product defaults to and whether the mode is configurable per RP."
         dimension: technical_implementation
       - id: Q4
-        text: "Were both cross-device (QR code scanning) and same-device (app-to-app) presentation flows tested?"
+        text: "Were both cross-device (QR code scanning) and same-device (app-to-app) presentation flows tested? For same-device, was the W3C Digital Credentials API transport also tested (connects to VEND-CORE-038)?"
         dimension: capability
       - id: Q5
-        text: "Was DCQL (Digital Credentials Query Language) support tested in addition to presentation_definition?"
+        text: "Was DCQL (Digital Credentials Query Language) support tested in addition to presentation_definition? The ARF supports both query mechanisms — which does your product default to, and is the choice configurable?"
         dimension: technical_implementation
       - id: Q6
-        text: "Can you provide the OIDF conformance test results or report for OID4VP verification?"
+        text: "Can you provide the OIDF conformance test results or report for OID4VP verification? Are results publicly available or available under NDA? When was the most recent test run?"
         dimension: compliance_evidence
+      - id: Q7
+        text: "Was the x509_san_dns client_id_scheme (as specified in the ARF) specifically tested? This is the mandatory client_id_scheme for the EUDI Wallet ecosystem — confirm it is supported and tested."
+        dimension: compliance_completeness
+      - id: Q8
+        text: "Was signed request_uri tested? The ARF requires request objects to be signed — confirm that your product supports and has tested signed request objects (request_uri with signed JWT)."
+        dimension: security
+      - id: Q9
+        text: "How frequently do you re-run OID4VP conformance tests? Is conformance testing part of your CI/CD pipeline, or is it a periodic manual activity? What is your process when a new version of the conformance suite reveals a regression?"
+        dimension: lifecycle
 
   # ============================================================================
   # VEND-CORE-044: OID4VCI Conformance Testing
@@ -1326,20 +1362,32 @@ requirements:
   VEND-CORE-044:
     questions:
       - id: Q1
-        text: "Which credential formats were tested against the OIDF OID4VCI conformance suite — SD-JWT VC, ISO mDoc, or both?"
+        text: "Which credential formats were tested against the OIDF OID4VCI conformance suite — SD-JWT VC, ISO mDoc, or both? Were both tested successfully, and are the test results available for each format independently?"
         dimension: interoperability
       - id: Q2
-        text: "Was OAuth 2.0 Attestation-Based Client Authentication tested as part of the conformance validation?"
+        text: "Was OAuth 2.0 Attestation-Based Client Authentication tested as part of the conformance validation? This is a critical requirement for the EUDI Wallet ecosystem — confirm the draft version tested against (draft 05 or later)."
         dimension: technical_implementation
       - id: Q3
-        text: "Does the product support and test batch credential issuance flows in the conformance suite?"
+        text: "Does the product support and test batch credential issuance flows in the conformance suite? For issuers handling high-volume scenarios (government PID issuance), what is the batch throughput (credentials/second)?"
         dimension: capability
       - id: Q4
-        text: "Does the product support deferred issuance (asynchronous credential delivery) and was this tested?"
+        text: "Does the product support deferred issuance (asynchronous credential delivery) and was this tested? Deferred issuance is important for scenarios where credential creation requires offline processing — describe the notification mechanism when the credential is ready."
         dimension: capability
       - id: Q5
-        text: "Can you provide the OIDF conformance test results or report for OID4VCI issuance?"
+        text: "Can you provide the OIDF conformance test results or report for OID4VCI issuance? When was the most recent test run, and which draft version of the OID4VCI spec was tested?"
         dimension: compliance_evidence
+      - id: Q6
+        text: "Does the product support credential refresh/re-issuance flows? When an issued credential approaches expiry, can the wallet automatically request a refreshed credential using the OID4VCI refresh mechanism?"
+        dimension: lifecycle
+      - id: Q7
+        text: "How does the product handle issuer metadata discovery and validation? Does it correctly implement the well-known endpoint for credential issuer metadata per the OID4VCI spec?"
+        dimension: technical_implementation
+      - id: Q8
+        text: "Was the notification endpoint tested? The OID4VCI spec includes an optional notification mechanism for the wallet to inform the issuer about credential usage — does your product support this?"
+        dimension: capability
+      - id: Q9
+        text: "How frequently do you re-run OID4VCI conformance tests, and is this part of your CI/CD pipeline? What is your process when a new version of the conformance suite reveals a regression?"
+        dimension: lifecycle
 
   # ============================================================================
   # VEND-CORE-045: TS5 RP Registration API
@@ -1349,29 +1397,32 @@ requirements:
   VEND-CORE-045:
     questions:
       - id: Q1
-        text: "Does the product implement the full TS5 OpenAPI v3 specification, or a subset? Which endpoints are supported?"
+        text: "Does the product implement the full TS5 OpenAPI v3 specification, or a subset? Which endpoints are supported? List any TS5 endpoints that are NOT implemented and explain why."
         dimension: technical_implementation
       - id: Q2
-        text: "Does the product provide a management UI for registration data, or only the programmatic REST API?"
+        text: "Does the product provide a management UI for registration data, or only the programmatic REST API? If a UI is provided, does it support all CRUD operations (create, read, update, delete) and lifecycle events?"
         dimension: capability
       - id: Q3
-        text: "Can the product register with multiple Member State registries simultaneously for cross-border operations?"
+        text: "Can the product register with multiple Member State registries simultaneously for cross-border operations? How does the product handle differences in registry requirements across Member States (e.g., different entitlement schemas, different validation rules)?"
         dimension: interoperability
       - id: Q4
-        text: "Does the product validate JWS signatures on registry responses per IETF RFC 7515?"
+        text: "Does the product validate JWS signatures on registry responses per IETF RFC 7515? How does it handle responses with invalid or expired signatures?"
         dimension: security
       - id: Q5
-        text: "Does the product support the full registration lifecycle — initial registration, updates, and de-registration?"
+        text: "Does the product support the full registration lifecycle — initial registration, updates, and de-registration? When registration data changes (e.g., new intended use, updated privacy policy), is the update propagated to all relevant registries automatically?"
         dimension: lifecycle
       - id: Q6
-        text: "Does the product support configuring entitlements and sub-entitlements per Member State requirements?"
+        text: "Does the product support configuring entitlements and sub-entitlements per Member State requirements? Are Member State-specific entitlement schemas pre-loaded, or must they be manually configured?"
         dimension: regulatory_variability
       - id: Q7
-        text: "If the RP uses an intermediary, does the product correctly flag this in the registration data?"
+        text: "If the RP uses an intermediary, does the product correctly flag this in the registration data (per RPI requirements)? Does it support registering the intermediary relationship with the specific intermediated RP identifiers?"
         dimension: compliance_completeness
       - id: Q8
-        text: "Does the product support automated registration renewal, or is manual intervention required?"
+        text: "Does the product support automated registration renewal, or is manual intervention required? What happens if a registration expires before renewal is initiated — does the product alert operators, or does it gracefully degrade?"
         dimension: automation
+      - id: Q9
+        text: "How does the product handle registry API downtime or unavailability? Is there a retry mechanism, and does the product cache the last known registration state to prevent disruption to ongoing operations?"
+        dimension: operational
 
   # ============================================================================
   # VEND-CORE-046: Intended Use Selection and Management
@@ -1381,23 +1432,32 @@ requirements:
   VEND-CORE-046:
     questions:
       - id: Q1
-        text: "Does the product support configuring multiple intended uses per Relying Party customer?"
+        text: "Does the product support configuring multiple intended uses per Relying Party customer? How many intended uses can be configured, and is there a practical limit?"
         dimension: capability
       - id: Q2
-        text: "How does the product select the correct intended use (and associated registration certificate) when constructing a presentation request?"
+        text: "How does the product select the correct intended use (and associated registration certificate) when constructing a presentation request? Is the selection automatic (based on the attributes being requested), manual (configured per transaction type), or both?"
         dimension: technical_implementation
       - id: Q3
-        text: "Does the product support adding, modifying, or deactivating intended uses without service disruption?"
+        text: "Does the product support adding, modifying, or deactivating intended uses without service disruption? Can intended uses be versioned, and if so, does the product retain historical versions for audit purposes?"
         dimension: lifecycle
       - id: Q4
-        text: "Does the product verify that the attributes requested in a presentation request align with what is registered for the selected intended use?"
+        text: "Per RPRC_21, the wallet may verify that requested attributes match what is registered for the selected intended use. Does the product verify this alignment locally before sending the presentation request, preventing mismatched requests from reaching the wallet?"
         dimension: compliance_completeness
       - id: Q5
-        text: "How does the product populate the RPRC_19a extension fields (intended use identifier, user-friendly description, Registrar URL) in presentation requests?"
+        text: "How does the product populate the RPRC_19a extension fields (intended use identifier, user-friendly description, Registrar URL) in presentation requests? Are these fields derived from the registration certificate, from product configuration, or from a dynamic Registrar API query?"
         dimension: technical_implementation
       - id: Q6
-        text: "What happens when an RP customer initiates a presentation request but no matching intended use or registration certificate is configured?"
+        text: "What happens when an RP customer initiates a presentation request but no matching intended use or registration certificate is configured? Does the product fail fast with a clear error, or does it send the request without the intended use metadata (risking wallet-side rejection)?"
         dimension: operational
+      - id: Q7
+        text: "How does the product handle the user-friendly description of the intended use across multiple languages? Does it support localisation, and if so, which language is selected for the presentation request (user's wallet locale, RP's default, or another mechanism)?"
+        dimension: user_experience
+      - id: Q8
+        text: "For intermediary deployments: per RPI_05, the intermediated RP must specify its intended use identifier and description to the intermediary. How does the product facilitate this communication — API call, configuration file, or management UI?"
+        dimension: architecture
+      - id: Q9
+        text: "How does the product handle intended use changes that require re-registration with the Registrar? If an intended use is modified (e.g., new attributes added), does the product trigger a TS5 API update to the registry automatically?"
+        dimension: lifecycle
 
   # ============================================================================
   # VEND-CORE-047: User Rejection and Timeout Event Surfacing
@@ -1407,26 +1467,29 @@ requirements:
   VEND-CORE-047:
     questions:
       - id: Q1
-        text: "What distinct outcome states does the product surface to the integrating application (e.g., success, rejected, failed, timeout, error)? How are these distinguished?"
+        text: "What distinct outcome states does the product surface to the integrating application (e.g., SUCCESS, REJECTED, FAILED, TIMEOUT, ERROR)? How are these distinguished at the API level — distinct error codes, different HTTP status codes, or structured response bodies?"
         dimension: technical_implementation
       - id: Q2
-        text: "How does the product handle the OID4VP 'access_denied' error response — does it distinguish between user-refused consent, missing credentials, and failed wallet authentication?"
+        text: "How does the product handle the OID4VP 'access_denied' error response — does it distinguish between user-refused consent, missing credentials, and failed wallet authentication? Can the integrating application determine the specific reason for denial?"
         dimension: technical_implementation
       - id: Q3
-        text: "What session timeout mechanism does the product implement for cases where the wallet never responds (user abandonment)? Is the timeout value configurable per RP or per use case?"
+        text: "What session timeout mechanism does the product implement for cases where the wallet never responds (user abandonment)? Is the timeout value configurable per RP or per use case? What is the default timeout, and what is the recommended range for different scenarios (web, kiosk, call centre)?"
         dimension: operational
       - id: Q4
-        text: "How does the product notify the integrating application of outcome events — callback/webhook, polling API, real-time push (WebSocket/SSE), or other mechanism?"
+        text: "How does the product notify the integrating application of outcome events — callback/webhook, polling API, real-time push (WebSocket/SSE), or other mechanism? Which notification mechanisms are supported concurrently, and which is recommended for low-latency channel integrations?"
         dimension: technical_implementation
       - id: Q5
-        text: "What metadata is included with each outcome event (timestamp, error code, error description, session ID, correlation ID) to support downstream decision-making?"
+        text: "What metadata is included with each outcome event (timestamp, error code, error description, session ID, correlation ID, X-Request-ID)? Is the metadata schema documented for integrators, and is it extensible for custom fields?"
         dimension: technical_implementation
       - id: Q6
-        text: "Does the product support configurable retry or fallback logic when a timeout or rejection occurs — for example, automatic retry with a different credential type, or escalation to an alternative verification method?"
+        text: "Does the product support configurable retry or fallback logic when a timeout or rejection occurs — for example, automatic retry with a different credential type, or escalation to an alternative verification method (e.g., manual document check)?"
         dimension: capability
       - id: Q7
-        text: "How are rejection, timeout, and error events logged for audit purposes, and how does this logging comply with the GDPR data minimization principle (no user-identifying data in logs)?"
+        text: "How are rejection, timeout, and error events logged for audit purposes? Per GDPR data minimisation, are user-identifying data elements (wallet identifier, IP address, pseudonym) excluded from logs, or are they anonymised/pseudonymised?"
         dimension: compliance_completeness
       - id: Q8
-        text: "For channel integrations (call centre, kiosk, in-branch), does the product provide real-time status updates during the wallet interaction (e.g., 'request sent', 'waiting for user', 'user responding') or only the final outcome?"
+        text: "For channel integrations (call centre, kiosk, in-branch), does the product provide real-time status updates during the wallet interaction (e.g., 'request sent', 'waiting for user', 'user responding') or only the final outcome? What is the latency of status updates?"
         dimension: capability
+      - id: Q9
+        text: "How does the product handle partial completions — e.g., the user approves presentation of some attributes but not others? Does the product surface this as a PARTIAL_SUCCESS state, or does it treat it as a REJECTED outcome?"
+        dimension: technical_implementation

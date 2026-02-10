@@ -1890,14 +1890,48 @@ requirements:
     category: usage
     requirement: Support proximity identification flows (optional)
     explanation: |
-      Relying Party Instances may optionally support proximity identification flows. 
-      If implemented, the specified BLE or NFC protocols (ISO/IEC 18013-5) are used 
-      for local credential presentation without internet connectivity. 
-      Note: Support for proximity flows by Relying Parties is not mandatory per ARF.
+      Relying Party Instances may optionally support proximity
+      identification flows for face-to-face scenarios where the user
+      presents their wallet physically (e.g., border control, age
+      verification at point-of-sale, in-branch identity verification).
+
+      **Protocol requirements (ProxId_01a):**
+      If an RP supports proximity flows, its RP Instances SHALL support
+      **device retrieval** as specified in ISO/IEC 18013-5 for requesting
+      PID or attestation attributes. Such RP Instances SHALL comply with
+      the requirements for **mDL readers and mdoc readers** in
+      ISO/IEC 18013-5. This means:
+      - BLE (Bluetooth Low Energy) as the mandatory transport
+      - NFC as an optional transport
+      - Device engagement via QR code or NFC tap
+      - Secure session establishment with ephemeral key agreement
+
+      **Offline operation:**
+      Proximity flows are specifically designed for scenarios without
+      internet connectivity. The RP Instance performs all verification
+      locally using pre-loaded trust anchors and cached revocation
+      status. This imposes requirements on the RP Instance:
+      - Pre-load all necessary issuer trust anchors
+      - Cache revocation status lists locally (connects to VEND-CORE-039)
+      - Perform all cryptographic verification on-device
+
+      **Security considerations:**
+      ISO/IEC 18013-5 specifies HKDF-based key derivation, AES-256-GCM
+      encryption, and device authentication via ECDSA signatures. The
+      RP's reader device must support these cryptographic operations.
+
+      **Note:** Support for proximity flows is NOT mandatory per the ARF.
+      This is a MAY requirement. However, if implemented, conformance
+      to ISO/IEC 18013-5 is mandatory.
     legalBasis:
-      regulation: 2024/2979
-      article: Article 2
-      paragraph: ""
+      regulation: 2014/910
+      article: Article 5a
+      paragraph: "4"
+    legalText: |
+      The European Digital Identity Wallet shall, in particular, enable 
+      the user to electronically identify and authenticate online and 
+      offline, in both cross-border and domestic scenarios, for the purpose 
+      of accessing public and private services.
     arfReference:
       topic: Topic 24
       hlr:
@@ -1912,13 +1946,56 @@ requirements:
     category: registration
     requirement: Handle registration certificate updates and renewals
     explanation: |
-      Relying Parties must properly handle registration certificate lifecycle 
-      events including updates, renewals, and revocations, updating their 
-      stored certificates accordingly.
+      Relying Parties must properly handle the full lifecycle of their
+      registration certificates, including updates, renewals, and
+      revocations. Registration certificates are the EUDI Wallet
+      ecosystem's mechanism for conveying verified RP information
+      (identity, intended use, registered attributes) in cryptographically
+      signed form.
+
+      **Include by value (RPRC_19):**
+      If an RP Instance received one or more registration certificates
+      (via RPRC_10), it SHALL include **a single registration certificate
+      applicable for its current intended use** in each presentation
+      request to a Wallet Unit. The certificate SHALL be included **by
+      value, not by reference**. This applies to both proximity and remote
+      flows.
+
+      **RPRC_19a extension fields:**
+      The RP Instance SHALL include in each presentation request:
+      a) the user-friendly name of the RP
+      b) the unique identifier of the RP
+      c) a user-friendly description of the intended use
+      d) the URL of the Registrar of the RP
+      e) the identifier of the intended use
+
+      These fields enable wallet-side verification: the wallet can use
+      items (c) and (d) to query the Registrar and verify that the
+      requested attributes match the RP's registration (RPRC_21).
+
+      **Lifecycle events to handle:**
+      - **Renewal before expiry**: proactive replacement of certificates
+        approaching expiration (monitor notBefore/notAfter)
+      - **Content update**: when registration details change (e.g., new
+        intended use, changed RP name, updated privacy policy URL)
+      - **Revocation**: immediate removal and replacement when a
+        certificate is compromised or the registration is suspended
+      - **Key rotation**: coordinated update when the signing key or
+        trust anchor of the Provider of registration certificates changes
+      - **Distribution**: updated certificates must be propagated to all
+        RP Instances (per RPRC_10)
+
+      **Failure impact:**
+      If the RP presents an expired or revoked registration certificate,
+      the wallet will notify the user (RPRC_18 fallback) and the user
+      may decline the transaction. This directly impacts conversion rates.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
-      paragraph: ""
+      paragraph: "3"
+    legalText: |
+      Member States shall ensure that relying parties register the 
+      intended use of the European Digital Identity Wallets.
     arfReference:
       topic: Topic 44
       hlr:
@@ -2197,7 +2274,7 @@ requirements:
     legalBasis:
       regulation: 2014/910
       article: Article 5b
-      paragraph: ""
+      paragraph: "3"
     arfReference:
       topic: Topic 44
       hlr:
@@ -2281,7 +2358,7 @@ requirements:
     legalBasis:
       regulation: 2014/910
       article: Article 5b
-      paragraph: ""
+      paragraph: "8"
     arfReference:
       topic: Topic 44
       hlr:
