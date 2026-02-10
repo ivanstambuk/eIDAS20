@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-02-09T23:50:55.625Z",
+  "generatedAt": "2026-02-10T05:20:52.786Z",
   "schemaVersion": 1,
   "stats": {
     "totalRequirements": 146,
-    "totalQuestions": 822,
+    "totalQuestions": 825,
     "byDimension": {
-      "technical_implementation": 106,
+      "technical_implementation": 107,
       "data_handling": 15,
       "auditability": 25,
       "supply_chain": 7,
       "security": 67,
       "capability": 99,
-      "compliance_completeness": 22,
+      "compliance_completeness": 23,
       "lifecycle": 59,
       "operational": 77,
       "contract_terms": 3,
@@ -33,7 +33,7 @@
       "access_control": 1,
       "training": 1,
       "international_transfers": 1,
-      "compliance_monitoring": 19,
+      "compliance_monitoring": 20,
       "user_experience": 17,
       "data_integrity": 1,
       "transparency": 1,
@@ -2458,6 +2458,21 @@
         "id": "Q4",
         "text": "Can the organization customize the user-friendly name and description shown to users?",
         "dimension": "flexibility"
+      },
+      {
+        "id": "Q5",
+        "text": "How does the product populate the RPRC_19a extension fields (RP name, RP identifier, Registrar URL, intended use identifier, intended use description) in each presentation request?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q6",
+        "text": "How does the product ensure the RPRC_19a identity (intermediated RP) is distinct from the intermediary's own access certificate identity, so wallets correctly detect the intermediary scenario?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q7",
+        "text": "What validation is performed to ensure the RPRC_19a fields are consistent with the RP's actual registration at the Registrar?",
+        "dimension": "compliance_monitoring"
       }
     ],
     "VEND-INT-023": [

@@ -475,6 +475,15 @@ requirements:
       - id: Q4
         text: "Can the organization customize the user-friendly name and description shown to users?"
         dimension: flexibility
+      - id: Q5
+        text: "How does the product populate the RPRC_19a extension fields (RP name, RP identifier, Registrar URL, intended use identifier, intended use description) in each presentation request?"
+        dimension: technical_implementation
+      - id: Q6
+        text: "How does the product ensure the RPRC_19a identity (intermediated RP) is distinct from the intermediary's own access certificate identity, so wallets correctly detect the intermediary scenario?"
+        dimension: compliance_completeness
+      - id: Q7
+        text: "What validation is performed to ensure the RPRC_19a fields are consistent with the RP's actual registration at the Registrar?"
+        dimension: compliance_monitoring
 
   # ============================================================================
   # VEND-INT-023: Credential Format Support

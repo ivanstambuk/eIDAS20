@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T05:13:06.303Z",
+  "generatedAt": "2026-02-10T05:20:52.727Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -2410,7 +2410,7 @@
       "categoryLabel": "Contracts",
       "categoryIcon": "📜",
       "requirement": "Display both intermediary and RP identity before requesting attestations",
-      "explanation": "When the intermediary requests attestations from a wallet user, the wallet \nmust display both the intermediary's identity (as the direct requester) and \nthe identity of the ultimate Relying Party on whose behalf the intermediary \nis acting. This ensures informed consent.",
+      "explanation": "When the intermediary requests attestations from a wallet user, the wallet \nmust display both the intermediary's identity (as the direct requester) and \nthe identity of the ultimate Relying Party on whose behalf the intermediary \nis acting. This ensures informed consent.\n\nThe wallet detects the intermediary scenario by comparing two data sources:\n- The intermediary's identity (name, identifier) from its access certificate\n- The intermediated RP's identity (name, identifier) from the RPRC_19a \n  extension in the presentation request, and from the RP's registration \n  certificate if available\n\nIf these identities differ, the wallet knows it is an intermediary scenario \nand displays both names. The intermediary product must therefore ensure both \ndata sources are correctly populated in every presentation request.",
       "legalBases": [
         {
           "regulation": "2014/910",
@@ -3242,7 +3242,7 @@
       "categoryLabel": "Contracts",
       "categoryIcon": "📜",
       "requirement": "Specify RP details in each presentation request to wallet",
-      "explanation": "When requesting attestations from a wallet, the intermediary must include \ncomplete information about the intermediated RP: user-friendly name, unique \nidentifier, Registrar URL, intended use identifier, and description. This \nenables the wallet to display accurate RP information to the user.",
+      "explanation": "When requesting attestations from a wallet, the intermediary must include \ncomplete information about the intermediated RP via the RPRC_19a extension \nin the presentation request. The required fields are:\n\n- User-friendly name of the intermediated RP\n- Unique identifier of the intermediated RP\n- URL of the Registrar where the RP is registered\n- Intended use identifier (selecting the applicable registered use)\n- User-friendly description of the intended use\n\nThis data enables the wallet to (a) display accurate RP information to \nthe user per RPI_07, (b) verify that requested attributes match what the \nRP registered per RPRC_21, and (c) detect that the request is from an \nintermediary rather than a direct RP (by comparing the RPRC_19a identity \nwith the access certificate identity).",
       "legalBases": [
         {
           "regulation": "2025/848",
@@ -3260,7 +3260,10 @@
       "legalText": "For each intended use, a list of the data, including attestations and \nattributes, that the relying party intends to request, a user-friendly \nname and a technical name, the attestation type and a description of \nintended use of the data.",
       "arfReference": {
         "topic": "Topic 52",
-        "hlr": "RPI_05"
+        "hlr": [
+          "RPI_05",
+          "RPRC_19a"
+        ]
       },
       "roles": [
         "relying_party"

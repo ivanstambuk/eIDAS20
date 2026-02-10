@@ -8,6 +8,16 @@ requirements:
       must display both the intermediary's identity (as the direct requester) and 
       the identity of the ultimate Relying Party on whose behalf the intermediary 
       is acting. This ensures informed consent.
+
+      The wallet detects the intermediary scenario by comparing two data sources:
+      - The intermediary's identity (name, identifier) from its access certificate
+      - The intermediated RP's identity (name, identifier) from the RPRC_19a 
+        extension in the presentation request, and from the RP's registration 
+        certificate if available
+      
+      If these identities differ, the wallet knows it is an intermediary scenario 
+      and displays both names. The intermediary product must therefore ensure both 
+      data sources are correctly populated in every presentation request.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
@@ -432,9 +442,20 @@ requirements:
     requirement: Specify RP details in each presentation request to wallet
     explanation: |
       When requesting attestations from a wallet, the intermediary must include 
-      complete information about the intermediated RP: user-friendly name, unique 
-      identifier, Registrar URL, intended use identifier, and description. This 
-      enables the wallet to display accurate RP information to the user.
+      complete information about the intermediated RP via the RPRC_19a extension 
+      in the presentation request. The required fields are:
+
+      - User-friendly name of the intermediated RP
+      - Unique identifier of the intermediated RP
+      - URL of the Registrar where the RP is registered
+      - Intended use identifier (selecting the applicable registered use)
+      - User-friendly description of the intended use
+
+      This data enables the wallet to (a) display accurate RP information to 
+      the user per RPI_07, (b) verify that requested attributes match what the 
+      RP registered per RPRC_21, and (c) detect that the request is from an 
+      intermediary rather than a direct RP (by comparing the RPRC_19a identity 
+      with the access certificate identity).
     legalBasis:
       regulation: 2025/848
       article: Annex I
@@ -446,7 +467,9 @@ requirements:
       intended use of the data.
     arfReference:
       topic: Topic 52
-      hlr: RPI_05
+      hlr:
+        - RPI_05
+        - RPRC_19a
     roles:
       - relying_party
     productCategories:
