@@ -1,4 +1,4 @@
-schemaVersion: 1
+schemaVersion: 2
 requirements:
   - id: VEND-ICT-001
     category: contracts
