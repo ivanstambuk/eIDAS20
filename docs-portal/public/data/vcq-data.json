@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T11:05:45.733Z",
+  "generatedAt": "2026-02-10T11:13:55.380Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -276,6 +276,12 @@
       "explanation": "When intermediaries process personal data on behalf of the RP, they act\nas data processors under GDPR. Article 28(3) mandates a binding written\ncontract (DPA) between the controller (RP) and processor (intermediary)\nthat governs the processing relationship.\n\nThe DPA must address all eight mandatory provisions of Article 28(3):\n- (a) Processing only on documented instructions from the controller,\n  including rules on international data transfers\n- (b) Confidentiality obligations for all authorized personnel\n- (c) Implementation of Article 32 security measures\n- (d) Conditions for engaging sub-processors (see VEND-CORE-013)\n- (e) Assistance with data subject rights requests (see VEND-CORE-010)\n- (f) Assistance with security, breach notification, and DPIA\n  obligations (Articles 32-36)\n- (g) Deletion or return of data at contract end (see VEND-CORE-014)\n- (h) Audit rights and compliance demonstration (see VEND-CORE-003)\n\nIn the EUDI Wallet context, the DPA must also specifically address the\nno-storage mandate (Article 5b(10) eIDAS) and the forward-only nature\nof intermediary data handling, since these constraints are unique to\nwallet intermediation and go beyond standard GDPR processor obligations.\n\nThe DPA must be in writing (including electronic form) per Article 28(9).",
       "legalBases": [
         {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "17",
+          "link": "/regulation/2014-910?section=article-5a"
+        },
+        {
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "3",
@@ -283,11 +289,11 @@
         }
       ],
       "legalBasis": {
-        "regulation": "2016/679",
-        "article": "Article 28",
-        "paragraph": "3"
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "17"
       },
-      "legalBasisLink": "/regulation/2016-679?section=article-28",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "Processing by a processor shall be governed by a contract or other legal act\nunder Union or Member State law, that is binding on the processor with regard\nto the controller and that sets out the subject-matter and duration of the\nprocessing, the nature and purpose of the processing, the type of personal\ndata and categories of data subjects and the obligations and rights of the\ncontroller. That contract or other legal act shall stipulate, in particular,\nthat the processor: (a) processes the personal data only on documented\ninstructions from the controller; (b) ensures that persons authorised to\nprocess the personal data have committed themselves to confidentiality;\n(c) takes all measures required pursuant to Article 32; [...]\n(h) makes available to the controller all information necessary to\ndemonstrate compliance with the obligations laid down in this Article and\nallow for and contribute to audits, including inspections, conducted by the\ncontroller or another auditor mandated by the controller.",
       "roles": [],
       "productCategories": [],
@@ -295,6 +301,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
+        "eidas",
         "gdpr"
       ],
       "deadline": "2027-11-21",
@@ -310,6 +317,12 @@
       "explanation": "Article 28(3)(h) imposes two distinct obligations on the processor\n(intermediary vendor):\n\n1. **Information provision**: the processor must make available to the\n   controller (RP) all information necessary to demonstrate compliance\n   with the processing obligations set out in Article 28\n2. **Active audit support**: the processor must allow for and actively\n   contribute to audits, including on-site inspections, conducted by\n   the controller or by an independent auditor mandated by the controller\n\nIn the EUDI Wallet intermediary context, audits are particularly\nimportant for verifying:\n- Compliance with the no-storage mandate (Art 5b(10) eIDAS) — that no\n  transaction content is persisted beyond the forwarding operation\n- Correct implementation of the forward-only architecture (RPI_08)\n- Security of cryptographic key management for access certificates\n- Proper handling of sub-processor relationships\n- Data isolation between intermediated RPs (no cross-RP correlation)\n\nThe last sentence of Article 28(3) also obliges the processor to\nimmediately inform the controller if an instruction infringes GDPR or\nother EU/Member State data protection law — this is an active\ncompliance monitoring obligation, not just a passive audit right.\n\nVendors should be prepared to demonstrate compliance through a\ncombination of third-party certifications (ISO 27001, SOC 2 Type II),\narchitectural documentation, and facilitation of direct inspections.",
       "legalBases": [
         {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "17",
+          "link": "/regulation/2014-910?section=article-5a"
+        },
+        {
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "3(h)",
@@ -317,11 +330,11 @@
         }
       ],
       "legalBasis": {
-        "regulation": "2016/679",
-        "article": "Article 28",
-        "paragraph": "3(h)"
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "17"
       },
-      "legalBasisLink": "/regulation/2016-679?section=article-28",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "The processor shall make available to the controller all information \nnecessary to demonstrate compliance with the obligations laid down in \nthis Article and allow for and contribute to audits, including inspections, \nconducted by the controller or another auditor mandated by the controller.",
       "roles": [],
       "productCategories": [],
@@ -329,6 +342,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
+        "eidas",
         "gdpr"
       ],
       "deadline": "2027-11-21",
@@ -425,6 +439,12 @@
       "explanation": "Article 32(1) GDPR mandates that both controllers and processors\nimplement technical and organisational security measures appropriate to\nthe risk, taking into account the state of the art, implementation\ncosts, and the nature/scope/context of processing.\n\nArticle 32(1) specifically enumerates four categories of measures:\n- (a) Pseudonymization and encryption of personal data\n- (b) Ability to ensure ongoing confidentiality, integrity,\n  availability, and resilience of processing systems\n- (c) Ability to restore availability and access to data in a timely\n  manner after a physical or technical incident\n- (d) Regular testing, assessing, and evaluating the effectiveness of\n  measures (penetration testing, vulnerability scanning, red-teaming)\n\nIn the EUDI Wallet intermediary context, the following security\nconsiderations are particularly critical:\n- Secure handling of cryptographic material (access certificate private\n  keys, signing keys) — preferably in HSMs or equivalent\n- Transport-layer security (TLS 1.2+ with strong cipher suites) for\n  all wallet-to-intermediary and intermediary-to-RP communication\n- Application-layer encryption for sensitive payloads where applicable\n- Network segmentation and access controls between RP tenants\n- Secure development lifecycle (SDLC) practices for the product\n- Incident detection capabilities (SIEM, anomaly detection, IDS/IPS)\n\nThe vendor should demonstrate appropriateness through certifications\n(ISO 27001, SOC 2 Type II, CSA STAR) and documented risk assessments\nper Article 32(2) that specifically address the wallet intermediation\nprocessing context.",
       "legalBases": [
         {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "17",
+          "link": "/regulation/2014-910?section=article-5a"
+        },
+        {
           "regulation": "2016/679",
           "article": "Article 32",
           "paragraph": "1",
@@ -432,11 +452,11 @@
         }
       ],
       "legalBasis": {
-        "regulation": "2016/679",
-        "article": "Article 32",
-        "paragraph": "1"
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "17"
       },
-      "legalBasisLink": "/regulation/2016-679?section=article-32",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "Taking into account the state of the art, the costs of implementation \nand the nature, scope, context and purposes of processing as well as \nthe risk of varying likelihood and severity for the rights and freedoms \nof natural persons, the controller and processor shall implement appropriate \ntechnical and organisational measures to ensure a level of security \nappropriate to the risk.",
       "roles": [],
       "productCategories": [],
@@ -444,6 +464,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
+        "eidas",
         "gdpr"
       ],
       "deadline": "2027-11-21",
@@ -459,6 +480,12 @@
       "explanation": "Article 33(2) GDPR requires the processor (intermediary) to notify the\ncontroller (RP) without undue delay after becoming aware of a personal\ndata breach. This obligation is time-critical because it sits at the\nstart of a cascading notification chain:\n\n**The breach notification chain:**\n1. Processor → Controller: \"without undue delay\" (Art 33(2))\n2. Controller → Supervisory Authority: within 72 hours of becoming\n   aware (Art 33(1)), unless the breach is unlikely to result in a risk\n3. Controller → Data Subjects: \"without undue delay\" if the breach is\n   likely to result in a high risk to rights and freedoms (Art 34(1))\n\nThe processor's notification must provide sufficient information for\nthe controller to fulfil its own obligations under Article 33(3):\n- (a) Nature of the breach, including categories and approximate\n  number of data subjects and records concerned\n- (b) Name and contact details of the DPO or other contact point\n- (c) Description of likely consequences of the breach\n- (d) Description of measures taken or proposed to address the breach\n  and mitigate its adverse effects\n\nIn the EUDI Wallet intermediary context, breaches may involve:\n- Compromise of access certificate private keys\n- Unauthorized access to transaction metadata or logs\n- Failure of the no-storage controls (accidental data persistence)\n- Interception of wallet presentations during forwarding\n\nThe vendor should have a documented incident response plan with\ndefined escalation paths, 24/7 security operations capability, and\ncontractually committed notification timeframes (ideally within hours,\nnot days) to ensure the RP can meet its 72-hour supervisory authority\nnotification deadline.",
       "legalBases": [
         {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "17",
+          "link": "/regulation/2014-910?section=article-5a"
+        },
+        {
           "regulation": "2016/679",
           "article": "Article 33",
           "paragraph": "2",
@@ -466,11 +493,11 @@
         }
       ],
       "legalBasis": {
-        "regulation": "2016/679",
-        "article": "Article 33",
-        "paragraph": "2"
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "17"
       },
-      "legalBasisLink": "/regulation/2016-679?section=article-33",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "The processor shall notify the controller without undue delay after\nbecoming aware of a personal data breach.",
       "roles": [],
       "productCategories": [],
@@ -478,6 +505,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
+        "eidas",
         "gdpr"
       ],
       "deadline": "2027-11-21",
@@ -493,6 +521,12 @@
       "explanation": "Article 28(3)(b) GDPR requires the processor to ensure that all persons\nauthorised to process personal data have committed themselves to\nconfidentiality or are under an appropriate statutory obligation of\nconfidentiality. This is a prerequisite obligation — it must be in place\n*before* personnel are granted access to personal data.\n\n**Scope of the obligation:**\n- All employees with access to wallet transaction data, system logs,\n  configuration data, or cryptographic material\n- Contractors, temporary staff, and consultants\n- Sub-processor personnel (flow-down via Art 28(4))\n- On-call and support staff who may access production systems\n\nIn the EUDI Wallet intermediary context, confidentiality is particularly\ncritical because personnel may have transient access to:\n- PID attributes (name, date of birth, nationality) during forwarding\n- Attestation content during verification operations\n- Access certificate private keys and signing material\n- Transaction metadata that could reveal user behaviour patterns\n\nThe product vendor should demonstrate:\n- Contractual confidentiality clauses in all employment/service agreements\n- Background checks and security vetting proportionate to access level\n- Role-based access control (RBAC) enforcing least-privilege\n- Regular security awareness training including wallet-specific scenarios\n- Immediate access revocation upon role change or contract termination",
       "legalBases": [
         {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "17",
+          "link": "/regulation/2014-910?section=article-5a"
+        },
+        {
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "3(b)",
@@ -500,11 +534,11 @@
         }
       ],
       "legalBasis": {
-        "regulation": "2016/679",
-        "article": "Article 28",
-        "paragraph": "3(b)"
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "17"
       },
-      "legalBasisLink": "/regulation/2016-679?section=article-28",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "The processor shall ensure that persons authorised to process the \npersonal data have committed themselves to confidentiality or are \nunder an appropriate statutory obligation of confidentiality.",
       "roles": [],
       "productCategories": [],
@@ -512,6 +546,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
+        "eidas",
         "gdpr"
       ],
       "deadline": "2027-11-21",
@@ -527,6 +562,12 @@
       "explanation": "Article 28(3)(a) GDPR imposes a fundamental limitation on the processor:\npersonal data may only be processed on documented instructions from the\ncontroller (RP). This is the cornerstone of the controller-processor\nrelationship — the processor has no autonomous decision-making authority\nover the purposes or means of processing.\n\n**The instruction-only principle has two important qualifications:**\n1. International transfers: the instruction scope explicitly includes\n   rules on transfers to third countries or international organisations.\n   The processor must not transfer data outside the EEA unless the\n   controller's documented instructions permit it and appropriate\n   safeguards (Art 46) or derogations (Art 49) are in place.\n2. Legal override: if Union or Member State law requires the processor\n   to process data beyond the controller's instructions, the processor\n   must inform the controller of that legal requirement *before*\n   processing, unless the law prohibits such disclosure on important\n   grounds of public interest (see VEND-CORE-012).\n\nIn the EUDI Wallet intermediary context, this principle is reinforced\nby the eIDAS Article 5b(10) no-storage mandate (VEND-CORE-001) and the\nARF forward-only architecture (RPI_08). The intermediary must:\n- Process wallet data exclusively for the purpose of forwarding to\n  the intermediated RP — no analytics, profiling, or product improvement\n- Not repurpose transaction metadata for any secondary use\n- Maintain a documented record of the RP's processing instructions\n- Implement technical controls that prevent processing outside scope",
       "legalBases": [
         {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "17",
+          "link": "/regulation/2014-910?section=article-5a"
+        },
+        {
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "3(a)",
@@ -534,11 +575,11 @@
         }
       ],
       "legalBasis": {
-        "regulation": "2016/679",
-        "article": "Article 28",
-        "paragraph": "3(a)"
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "17"
       },
-      "legalBasisLink": "/regulation/2016-679?section=article-28",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "The processor shall process the personal data only on documented \ninstructions from the controller, including with regard to transfers \nof personal data to a third country or an international organisation,\nunless required to do so by Union or Member State law to which the\nprocessor is subject; in such a case, the processor shall inform the\ncontroller of that legal requirement before processing, unless that\nlaw prohibits such information on important grounds of public interest.",
       "roles": [],
       "productCategories": [],
@@ -546,6 +587,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
+        "eidas",
         "gdpr"
       ],
       "deadline": "2027-11-21",
@@ -561,6 +603,12 @@
       "explanation": "Article 28(3)(e) GDPR requires the processor to assist the controller\nby appropriate technical and organisational measures, insofar as\npossible, for the fulfilment of the controller's obligation to respond\nto data subject rights requests under GDPR Chapter III.\n\n**Data subject rights that may be exercised (Chapter III):**\n- Art 15: Right of access — confirmation of processing and copy of data\n- Art 16: Right to rectification — correction of inaccurate data\n- Art 17: Right to erasure (\"right to be forgotten\") — deletion\n- Art 18: Right to restriction of processing\n- Art 20: Right to data portability — structured, machine-readable format\n- Art 21: Right to object to processing\n- Art 22: Rights related to automated decision-making and profiling\n\nIn the EUDI Wallet intermediary context, the no-storage mandate\n(Art 5b(10) eIDAS, VEND-CORE-001) fundamentally limits the scope of\ndata subject requests since the intermediary should not hold any\ntransaction content data. However, the intermediary may still process:\n- Configuration and registration data (RP identifiers, intended uses)\n- Audit logs and transaction metadata (timestamps, success/failure)\n- Certificate-related data (access certificate details)\n\nThe vendor must provide:\n- Technical capability to search and identify all data relating to a\n  specific data subject across all systems (including backups and logs)\n- Documented procedures for handling each type of DSAR\n- Committed response timeframes to assist the controller in meeting\n  the one-month response deadline (Art 12(3))\n- Audit trail of DSAR handling for compliance verification",
       "legalBases": [
         {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "17",
+          "link": "/regulation/2014-910?section=article-5a"
+        },
+        {
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "3(e)",
@@ -568,11 +616,11 @@
         }
       ],
       "legalBasis": {
-        "regulation": "2016/679",
-        "article": "Article 28",
-        "paragraph": "3(e)"
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "17"
       },
-      "legalBasisLink": "/regulation/2016-679?section=article-28",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "The processor shall, taking into account the nature of the processing,\nassist the controller by appropriate technical and organisational \nmeasures, insofar as this is possible, for the fulfilment of the \ncontroller's obligation to respond to requests for exercising the \ndata subject's rights laid down in Chapter III.",
       "roles": [],
       "productCategories": [],
@@ -580,6 +628,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
+        "eidas",
         "gdpr"
       ],
       "deadline": "2027-11-21",
@@ -638,6 +687,12 @@
       "explanation": "The second part of Article 28(3)(a) GDPR addresses the scenario where\nthe processor is required by Union or Member State law to process\npersonal data beyond the controller's documented instructions — for\nexample, in response to a court order, law enforcement data access\nrequest, or regulatory investigation.\n\n**The dual obligation:**\n1. The processor must inform the controller of the legal requirement\n   *before* processing the data beyond instructions\n2. Exception: the processor is not required to inform the controller\n   if the law prohibits such disclosure on important grounds of public\n   interest (e.g., secrecy orders accompanying criminal investigations)\n\nIn the EUDI Wallet intermediary context, this obligation intersects\nwith the no-storage mandate (Art 5b(10) eIDAS). Since the intermediary\nshould not hold transaction content data, the scope of data that could\nbe subject to legal demands is limited to:\n- Transaction metadata and audit logs\n- Registration and configuration data\n- Cryptographic material (access certificate data)\n- Server-side operational logs\n\nThe vendor should have:\n- A documented process for evaluating and responding to government\n  access requests, including legal review procedures\n- A commitment to challenge overbroad or unlawful requests\n- A transparency report or willingness to disclose statistics on\n  government access requests received and complied with\n- Clear documentation of all jurisdictions where it is subject to\n  data access laws (including foreign surveillance laws)",
       "legalBases": [
         {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "17",
+          "link": "/regulation/2014-910?section=article-5a"
+        },
+        {
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "3(a)",
@@ -645,11 +700,11 @@
         }
       ],
       "legalBasis": {
-        "regulation": "2016/679",
-        "article": "Article 28",
-        "paragraph": "3(a)"
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "17"
       },
-      "legalBasisLink": "/regulation/2016-679?section=article-28",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "Unless required to do so by Union or Member State law to which the\nprocessor is subject; in such a case, the processor shall inform the\ncontroller of that legal requirement before processing, unless that\nlaw prohibits such information on important grounds of public interest.",
       "roles": [],
       "productCategories": [],
@@ -657,6 +712,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
+        "eidas",
         "gdpr"
       ],
       "deadline": "2027-11-21",
@@ -672,6 +728,12 @@
       "explanation": "Article 28(2) GDPR prohibits the processor from engaging another\nprocessor (sub-processor) without the prior written authorisation of\nthe controller. This is a fundamental control that ensures the RP\nretains oversight of the entire processing chain.\n\n**Two authorisation models are available:**\n1. **Specific authorisation**: the RP approves each sub-processor\n   individually before engagement. This gives maximum control.\n2. **General authorisation**: the RP grants blanket permission, but\n   the processor must inform the RP of any intended changes\n   (additions or replacements of sub-processors), thereby giving\n   the RP the opportunity to object to such changes.\n\n**Flow-down obligations (Article 28(4)):**\nWhen engaging a sub-processor, the same data protection obligations\nfrom the controller-processor contract must be imposed on the\nsub-processor via a binding contract. Critically:\n- The initial processor remains **fully liable** for the sub-processor's\n  performance — this cannot be contracted away\n- The sub-processor must be bound by equivalent security measures,\n  confidentiality, no-storage mandate compliance, and audit rights\n\nIn the EUDI Wallet intermediary context, sub-processors may include:\n- Cloud infrastructure providers (IaaS/PaaS)\n- HSM-as-a-Service providers for key management\n- Certificate management service providers\n- Monitoring and logging service providers\n- CDN or DDoS mitigation providers handling encrypted traffic\n\nThe DPA (VEND-CORE-002) must specify whether the authorisation model\nis specific or general, and the advance notice period for changes.",
       "legalBases": [
         {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "17",
+          "link": "/regulation/2014-910?section=article-5a"
+        },
+        {
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "2",
@@ -679,11 +741,11 @@
         }
       ],
       "legalBasis": {
-        "regulation": "2016/679",
-        "article": "Article 28",
-        "paragraph": "2"
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "17"
       },
-      "legalBasisLink": "/regulation/2016-679?section=article-28",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "The processor shall not engage another processor without prior specific \nor general written authorisation of the controller. In the case of \ngeneral written authorisation, the processor shall inform the controller \nof any intended changes concerning the addition or replacement of other \nprocessors, thereby giving the controller the opportunity to object to\nsuch changes.",
       "roles": [],
       "productCategories": [],
@@ -691,6 +753,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
+        "eidas",
         "gdpr"
       ],
       "deadline": "2027-11-21",
@@ -706,6 +769,12 @@
       "explanation": "Article 28(3)(g) GDPR gives the controller (RP) the choice: at the\nend of the service contract, the processor must either delete or\nreturn all personal data, and must also delete existing copies —\nunless Union or Member State law requires continued storage.\n\n**Key aspects of the obligation:**\n- The choice (delete vs return) belongs to the controller, not the\n  processor — the DPA should clearly specify which option applies\n- \"All personal data\" includes data in primary systems, backups,\n  disaster recovery sites, logs, and any derived data\n- The processor must certify completion of deletion\n- The retention exception for legal requirements must be documented\n  and the specific legal basis identified\n\n**Intersection with the eIDAS no-storage mandate:**\nIn the EUDI Wallet intermediary context, the no-storage mandate\n(Art 5b(10), VEND-CORE-001) means the intermediary should already\nhold minimal personal data at any point. At contract termination,\nthe data that may need deletion or return includes:\n- Registration and configuration data (RP identifiers, intended uses)\n- Audit logs containing transaction metadata\n- Certificate and key management records\n- Any DPA-related documentation containing personal data references\n- Data in backups that may contain historical transaction metadata\n\nThe vendor should provide:\n- A documented data return/deletion procedure with defined timelines\n- A deletion certificate or formal attestation upon completion\n- A commitment to delete data from all backup media within a\n  specified timeframe (which may be longer than primary deletion)\n- Identification of any data subject to legal retention requirements",
       "legalBases": [
         {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "17",
+          "link": "/regulation/2014-910?section=article-5a"
+        },
+        {
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "3(g)",
@@ -713,11 +782,11 @@
         }
       ],
       "legalBasis": {
-        "regulation": "2016/679",
-        "article": "Article 28",
-        "paragraph": "3(g)"
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "17"
       },
-      "legalBasisLink": "/regulation/2016-679?section=article-28",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "At the choice of the controller, the processor shall delete or return \nall the personal data to the controller after the end of the provision \nof services relating to processing, and delete existing copies unless\nUnion or Member State law requires storage of the personal data.",
       "roles": [],
       "productCategories": [],
@@ -725,6 +794,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
+        "eidas",
         "gdpr"
       ],
       "deadline": "2027-11-21",
@@ -942,6 +1012,12 @@
       "explanation": "Relying Parties must implement the common data deletion request interface\nspecified in Technical Specification 7 (TS7). This enables wallet users\nto exercise their GDPR Article 17 right to erasure by requesting\ndeletion of any data the RP has collected from wallet presentations.\n\n**The data deletion request chain (Topic 48):**\n1. **User initiation (DATA_DLT_01-03)**: the wallet unit provides a\n   function where the user can select an RP and initiate a deletion\n   request via URL (web form), email (draft template), or phone call\n2. **Registrar lookup (DATA_DLT_02a)**: if no RP contact information\n   is in the transaction log, the wallet unit queries the Registrar\n   to obtain the RP's contact details\n3. **Wallet logging (DATA_DLT_05-06)**: the wallet logs the deletion\n   request initiation (date/time, RP identifier, attributes requested\n   for deletion)\n4. **RP authentication (DATA_DLT_07)**: before executing deletion, the\n   RP SHALL authenticate the requesting user using appropriate\n   mechanisms — the ARF recommends using the wallet's own\n   authentication or signature facilities for this purpose\n5. **RP compliance with TS7 (DATA_DLT_08)**: wallets, RPs, and\n   Registrars must comply with the TS7 technical interface\n\n**Key obligations for the RP/intermediary:**\n- Implement the TS7 standardised interface for receiving deletion\n  requests in a machine-readable format\n- Authenticate the requesting user before executing deletion\n- Process deletion without undue delay (Art 17(1) GDPR)\n- Handle exceptions (Art 17(3)) where deletion may be refused\n  (legal obligation, public interest, legal claims, archiving)\n- Confirm completion of deletion to the user\n\nIn the EUDI Wallet intermediary context, the intermediary may receive\ndeletion requests for data it processed on behalf of the RP. Given\nthe no-storage mandate (VEND-CORE-001), the intermediary's deletable\ndata is limited to transaction metadata and audit logs — but the\ninterface must still be implemented.",
       "legalBases": [
         {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "4(d)(ii)",
+          "link": "/regulation/2014-910?section=article-5a"
+        },
+        {
           "regulation": "2016/679",
           "article": "Article 17",
           "paragraph": "1",
@@ -949,11 +1025,11 @@
         }
       ],
       "legalBasis": {
-        "regulation": "2016/679",
-        "article": "Article 17",
-        "paragraph": "1"
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "4(d)(ii)"
       },
-      "legalBasisLink": "/regulation/2016-679?section=article-17",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "The data subject shall have the right to obtain from the controller the \nerasure of personal data concerning him or her without undue delay and \nthe controller shall have the obligation to erase personal data without \nundue delay.",
       "arfReference": {
         "topic": "Topic 48",
@@ -972,6 +1048,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
+        "eidas",
         "gdpr",
         "arf"
       ],
@@ -1215,6 +1292,11 @@
       "explanation": "RPs and Issuers must provide data export capabilities as specified in\nTechnical Specification 10 (TS10). This supports GDPR Article 20 data\nportability rights, enabling users to obtain and transfer their data\nin a structured, commonly used, and machine-readable format.\n\n**Data portability scope in the EUDI Wallet context:**\n- **Transaction logs**: history of attestation presentations, issuances,\n  and data deletion requests\n- **User preferences**: stored consent records, selective disclosure\n  configurations, and RP relationship metadata\n- **Credential backup data**: depending on the wallet architecture,\n  users may need to export credential metadata for migration between\n  wallet providers\n\n**GDPR Art 20 requirements:**\n- Data must be provided in a structured, commonly used, and machine-\n  readable format (Art 20(1))\n- Where technically feasible, the user has the right to have data\n  transmitted directly from one controller to another (Art 20(2))\n- The right applies only to data \"provided by\" the data subject and\n  processed on consent or contract basis\n\n**Implementation obligations:**\n- Self-service export interface to minimise processing time\n- Support for at least one structured/machine-readable format\n  (JSON recommended, XML and CSV as alternatives)\n- Secure transmission of exported data (encryption in transit and\n  at rest during download)\n- Response within the Art 12(3) one-month deadline\n\nFor intermediaries, the portability scope is limited to the data the\nintermediary holds as processor — primarily transaction metadata and\naudit logs, given the no-storage mandate (VEND-CORE-001).",
       "legalBases": [
         {
+          "regulation": "2024/2979",
+          "article": "Article 13",
+          "link": "/implementing-acts/2024-2979?section=article-13"
+        },
+        {
           "regulation": "2016/679",
           "article": "Article 20",
           "paragraph": "1",
@@ -1222,11 +1304,10 @@
         }
       ],
       "legalBasis": {
-        "regulation": "2016/679",
-        "article": "Article 20",
-        "paragraph": "1"
+        "regulation": "2024/2979",
+        "article": "Article 13"
       },
-      "legalBasisLink": "/regulation/2016-679?section=article-20",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-13",
       "legalText": "The data subject shall have the right to receive the personal data \nconcerning him or her, which he or she has provided to a controller, \nin a structured, commonly used and machine-readable format and have \nthe right to transmit those data to another controller.",
       "roles": [
         "relying_party",
@@ -1240,6 +1321,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
+        "eidas",
         "gdpr"
       ],
       "deadline": "2027-11-21",
@@ -1538,6 +1620,12 @@
       "explanation": "When Users exercise their right to data deletion (erasure) under GDPR\nArticle 17, RPs must process these requests according to both GDPR\nrequirements and the EUDI Wallet-specific data deletion blueprint\n(ARF Topic 48). The TS7 common interface provides a standardised\nmechanism for wallet-mediated deletion requests.\n\n**Pre-deletion authentication (DATA_DLT_07):**\nBefore executing a data deletion request, the RP SHALL authenticate\nthe requesting User (or the request itself) using appropriate\nauthentication mechanisms of its own choosing. The RP SHOULD use\nthe authentication or signature facilities offered by the User's\nWallet Unit for this purpose. This ensures that only the actual data\nsubject can trigger deletion of their data.\n\n**TS7 compliance (DATA_DLT_08):**\nWallet Units, Relying Parties, and Registrars SHALL comply with the\nrelevant requirements in Technical Specification 7. The common\ninterface provides standardised endpoints, request formats, and\nresponse codes to ensure interoperability across the ecosystem.\n\n**GDPR Art 17 requirements:**\n- Deletion must be performed \"without undue delay\" and in any event\n  within one month (Art 12(3))\n- The RP must inform the user of any valid grounds for refusal\n  (Art 17(3) exceptions: freedom of expression, legal obligation,\n  public interest, health, archiving/research, legal claims)\n- If the data has been made public, the RP must take reasonable\n  steps to inform other controllers processing the data\n- All copies including backups must be addressed (though backup\n  deletion may follow a deferred schedule)\n\n**Response obligations:**\nThe RP must provide confirmation of deletion or a reasoned refusal.\nFor wallet-mediated requests via TS7, responses must follow the\nstandardised response format.\n\nThis requirement connects to VEND-CORE-021 (data deletion chain)\nand VEND-CORE-029 (RPRC_11 deletion contact information in\nregistration certificates).",
       "legalBases": [
         {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "4(d)(ii)",
+          "link": "/regulation/2014-910?section=article-5a"
+        },
+        {
           "regulation": "2016/679",
           "article": "Article 17",
           "paragraph": "1",
@@ -1545,11 +1633,11 @@
         }
       ],
       "legalBasis": {
-        "regulation": "2016/679",
-        "article": "Article 17",
-        "paragraph": "1"
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "4(d)(ii)"
       },
-      "legalBasisLink": "/regulation/2016-679?section=article-17",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "The data subject shall have the right to obtain from the controller \nthe erasure of personal data concerning him or her without undue \ndelay and the controller shall have the obligation to erase personal \ndata without undue delay.",
       "arfReference": {
         "topic": "Topic 48",
@@ -1568,6 +1656,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
+        "eidas",
         "gdpr",
         "arf"
       ],
@@ -1765,6 +1854,12 @@
       "explanation": "Vendor products must apply GDPR Article 28 (processor obligations) and \nArticle 32 (security of processing) safeguards by default to ALL attestation \nprocessing, regardless of whether specific attestation content appears to be \npersonal data.\n\nWhile eIDAS 2.0 Article 3(43) defines \"attribute\" as covering natural persons, \nlegal persons, AND objects, the processing environment almost always contains \npersonal data context (session tokens, wallet identifiers, IP addresses). \nTherefore, the product architecture must assume personal data processing.\n\nThis \"Compliance by Environment\" principle means:\n- Default to GDPR-compliant data handling for all attestations\n- Apply encryption, access controls, and audit logging universally\n- Do not create separate \"non-personal data\" processing paths that bypass \n  security controls\n- Treat the combination of attestation + session context as personal data\n\nThe customer (RP) may document exceptions for truly anonymous processing \nscenarios, but the product must not assume such exceptions.",
       "legalBases": [
         {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "17",
+          "link": "/regulation/2014-910?section=article-5a"
+        },
+        {
           "regulation": "2016/679",
           "article": "Article 4",
           "paragraph": "1",
@@ -1772,11 +1867,11 @@
         }
       ],
       "legalBasis": {
-        "regulation": "2016/679",
-        "article": "Article 4",
-        "paragraph": "1"
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "17"
       },
-      "legalBasisLink": "/regulation/2016-679?section=article-4",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "'personal data' means any information relating to an identified or \nidentifiable natural person ('data subject'); an identifiable natural \nperson is one who can be identified, directly or indirectly, in particular \nby reference to an identifier such as a name, an identification number, \nlocation data, an online identifier or to one or more factors specific \nto the physical, physiological, genetic, mental, economic, cultural or \nsocial identity of that natural person.",
       "roles": [],
       "productCategories": [],
@@ -1784,6 +1879,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
+        "eidas",
         "gdpr"
       ],
       "deadline": "2027-11-21",
@@ -6744,30 +6840,44 @@
   "requirementsBySourceGroup": {
     "eidas": [
       "VEND-CORE-001",
+      "VEND-CORE-002",
+      "VEND-CORE-003",
       "VEND-CORE-004",
       "VEND-CORE-005",
+      "VEND-CORE-006",
+      "VEND-CORE-007",
+      "VEND-CORE-008",
+      "VEND-CORE-009",
+      "VEND-CORE-010",
       "VEND-CORE-011",
+      "VEND-CORE-012",
+      "VEND-CORE-013",
+      "VEND-CORE-014",
       "VEND-CORE-016",
       "VEND-CORE-017",
       "VEND-CORE-018",
       "VEND-CORE-019",
       "VEND-CORE-020",
+      "VEND-CORE-021",
       "VEND-CORE-022",
       "VEND-CORE-023",
       "VEND-CORE-024",
       "VEND-CORE-025",
       "VEND-CORE-026",
       "VEND-CORE-027",
+      "VEND-CORE-028",
       "VEND-CORE-029",
       "VEND-CORE-030",
       "VEND-CORE-031",
       "VEND-CORE-032",
       "VEND-CORE-033",
       "VEND-CORE-034",
+      "VEND-CORE-035",
       "VEND-CORE-038",
       "VEND-CORE-039",
       "VEND-CORE-040",
       "VEND-CORE-041",
+      "VEND-CORE-042",
       "VEND-CORE-043",
       "VEND-CORE-044",
       "VEND-CORE-045",
@@ -6995,7 +7105,7 @@
       "universal": 32
     },
     "bySourceGroup": {
-      "eidas": 110,
+      "eidas": 124,
       "gdpr": 20,
       "dora": 12,
       "arf": 88

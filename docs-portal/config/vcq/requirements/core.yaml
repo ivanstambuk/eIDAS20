@@ -69,9 +69,12 @@ requirements:
 
       The DPA must be in writing (including electronic form) per Article 28(9).
     legalBasis:
-      regulation: 2016/679
-      article: Article 28
-      paragraph: "3"
+      - regulation: 2014/910
+        article: Article 5a
+        paragraph: "17"
+      - regulation: 2016/679
+        article: Article 28
+        paragraph: "3"
     legalText: |
       Processing by a processor shall be governed by a contract or other legal act
       under Union or Member State law, that is binding on the processor with regard
@@ -123,9 +126,12 @@ requirements:
       combination of third-party certifications (ISO 27001, SOC 2 Type II),
       architectural documentation, and facilitation of direct inspections.
     legalBasis:
-      regulation: 2016/679
-      article: Article 28
-      paragraph: 3(h)
+      - regulation: 2014/910
+        article: Article 5a
+        paragraph: "17"
+      - regulation: 2016/679
+        article: Article 28
+        paragraph: 3(h)
     legalText: |
       The processor shall make available to the controller all information 
       necessary to demonstrate compliance with the obligations laid down in 
@@ -270,9 +276,12 @@ requirements:
       per Article 32(2) that specifically address the wallet intermediation
       processing context.
     legalBasis:
-      regulation: 2016/679
-      article: Article 32
-      paragraph: "1"
+      - regulation: 2014/910
+        article: Article 5a
+        paragraph: "17"
+      - regulation: 2016/679
+        article: Article 32
+        paragraph: "1"
     legalText: |
       Taking into account the state of the art, the costs of implementation 
       and the nature, scope, context and purposes of processing as well as 
@@ -321,9 +330,12 @@ requirements:
       not days) to ensure the RP can meet its 72-hour supervisory authority
       notification deadline.
     legalBasis:
-      regulation: 2016/679
-      article: Article 33
-      paragraph: "2"
+      - regulation: 2014/910
+        article: Article 5a
+        paragraph: "17"
+      - regulation: 2016/679
+        article: Article 33
+        paragraph: "2"
     legalText: |
       The processor shall notify the controller without undue delay after
       becoming aware of a personal data breach.
@@ -362,9 +374,12 @@ requirements:
       - Regular security awareness training including wallet-specific scenarios
       - Immediate access revocation upon role change or contract termination
     legalBasis:
-      regulation: 2016/679
-      article: Article 28
-      paragraph: 3(b)
+      - regulation: 2014/910
+        article: Article 5a
+        paragraph: "17"
+      - regulation: 2016/679
+        article: Article 28
+        paragraph: 3(b)
     legalText: |
       The processor shall ensure that persons authorised to process the 
       personal data have committed themselves to confidentiality or are 
@@ -404,9 +419,12 @@ requirements:
       - Maintain a documented record of the RP's processing instructions
       - Implement technical controls that prevent processing outside scope
     legalBasis:
-      regulation: 2016/679
-      article: Article 28
-      paragraph: 3(a)
+      - regulation: 2014/910
+        article: Article 5a
+        paragraph: "17"
+      - regulation: 2016/679
+        article: Article 28
+        paragraph: 3(a)
     legalText: |
       The processor shall process the personal data only on documented 
       instructions from the controller, including with regard to transfers 
@@ -453,9 +471,12 @@ requirements:
         the one-month response deadline (Art 12(3))
       - Audit trail of DSAR handling for compliance verification
     legalBasis:
-      regulation: 2016/679
-      article: Article 28
-      paragraph: 3(e)
+      - regulation: 2014/910
+        article: Article 5a
+        paragraph: "17"
+      - regulation: 2016/679
+        article: Article 28
+        paragraph: 3(e)
     legalText: |
       The processor shall, taking into account the nature of the processing,
       assist the controller by appropriate technical and organisational 
@@ -552,9 +573,12 @@ requirements:
       - Clear documentation of all jurisdictions where it is subject to
         data access laws (including foreign surveillance laws)
     legalBasis:
-      regulation: 2016/679
-      article: Article 28
-      paragraph: 3(a)
+      - regulation: 2014/910
+        article: Article 5a
+        paragraph: "17"
+      - regulation: 2016/679
+        article: Article 28
+        paragraph: 3(a)
     legalText: |
       Unless required to do so by Union or Member State law to which the
       processor is subject; in such a case, the processor shall inform the
@@ -600,9 +624,12 @@ requirements:
       The DPA (VEND-CORE-002) must specify whether the authorisation model
       is specific or general, and the advance notice period for changes.
     legalBasis:
-      regulation: 2016/679
-      article: Article 28
-      paragraph: "2"
+      - regulation: 2014/910
+        article: Article 5a
+        paragraph: "17"
+      - regulation: 2016/679
+        article: Article 28
+        paragraph: "2"
     legalText: |
       The processor shall not engage another processor without prior specific 
       or general written authorisation of the controller. In the case of 
@@ -650,9 +677,12 @@ requirements:
         specified timeframe (which may be longer than primary deletion)
       - Identification of any data subject to legal retention requirements
     legalBasis:
-      regulation: 2016/679
-      article: Article 28
-      paragraph: 3(g)
+      - regulation: 2014/910
+        article: Article 5a
+        paragraph: "17"
+      - regulation: 2016/679
+        article: Article 28
+        paragraph: 3(g)
     legalText: |
       At the choice of the controller, the processor shall delete or return 
       all the personal data to the controller after the end of the provision 
@@ -963,9 +993,12 @@ requirements:
       data is limited to transaction metadata and audit logs — but the
       interface must still be implemented.
     legalBasis:
-      regulation: 2016/679
-      article: Article 17
-      paragraph: "1"
+      - regulation: 2014/910
+        article: Article 5a
+        paragraph: 4(d)(ii)
+      - regulation: 2016/679
+        article: Article 17
+        paragraph: "1"
     legalText: |
       The data subject shall have the right to obtain from the controller the 
       erasure of personal data concerning him or her without undue delay and 
@@ -1334,9 +1367,11 @@ requirements:
       intermediary holds as processor — primarily transaction metadata and
       audit logs, given the no-storage mandate (VEND-CORE-001).
     legalBasis:
-      regulation: 2016/679
-      article: Article 20
-      paragraph: "1"
+      - regulation: 2024/2979
+        article: Article 13
+      - regulation: 2016/679
+        article: Article 20
+        paragraph: "1"
     legalText: |
       The data subject shall have the right to receive the personal data 
       concerning him or her, which he or she has provided to a controller, 
@@ -1747,9 +1782,12 @@ requirements:
       and VEND-CORE-029 (RPRC_11 deletion contact information in
       registration certificates).
     legalBasis:
-      regulation: 2016/679
-      article: Article 17
-      paragraph: "1"
+      - regulation: 2014/910
+        article: Article 5a
+        paragraph: 4(d)(ii)
+      - regulation: 2016/679
+        article: Article 17
+        paragraph: "1"
     legalText: |
       The data subject shall have the right to obtain from the controller 
       the erasure of personal data concerning him or her without undue 
@@ -2031,9 +2069,12 @@ requirements:
       The customer (RP) may document exceptions for truly anonymous processing 
       scenarios, but the product must not assume such exceptions.
     legalBasis:
-      regulation: 2016/679
-      article: Article 4
-      paragraph: "1"
+      - regulation: 2014/910
+        article: Article 5a
+        paragraph: "17"
+      - regulation: 2016/679
+        article: Article 4
+        paragraph: "1"
     legalText: |
       'personal data' means any information relating to an identified or 
       identifiable natural person ('data subject'); an identifiable natural 
