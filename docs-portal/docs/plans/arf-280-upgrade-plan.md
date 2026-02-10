@@ -417,9 +417,14 @@ VCQ YAML (arfReference.hlr) → build-vcq.js → vcq-data.json → src/pages/Ven
    ```js
    // Line 247: add parallel index
    byHlrId[hlrId] = requirement;
-   byHarmonizedId[raw.Harmonized_ID] = requirement;
+   // ⚠️ Content-wins guard: 8 Harmonized IDs are duplicated in v2.8.0 CSV.
+   // 5 are "empty tombstones" (Topic 38) where the Empty row comes AFTER the
+   // content row. Naïve last-write-wins would lose the content.
+   if (!byHarmonizedId[harmonizedId] || !requirement.isEmpty) {
+       byHarmonizedId[harmonizedId] = requirement;
+   }
    ```
-   This ensures both Old IDs (for search, backward compat) and Harmonized IDs (for VCQ lookups) resolve.
+   This ensures both Old IDs (for search, backward compat) and Harmonized IDs (for VCQ lookups) resolve. The content-wins guard handles the 8 duplicate Harmonized IDs (5 empty tombstones + 3 genuinely different requirements sharing an ID).
 6. **Update `validate-vcq-arf.js`** — change validation lookup to use Harmonized IDs:
    ```js
    // Before:

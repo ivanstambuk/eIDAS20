@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-02-10 18:30 CET |
+| **Last Updated** | 2026-02-10 20:16 CET |
 | **Version** | V4.1.1 |
 | **Portal Stats** | 44 docs, 391K words, 363 terms, 2,384 article links, 487 RCA reqs, 147 VCQ reqs (1,323 clarification Qs), 559 ARF HLRs |
-| **Next Action** | **ARF v2.8.0 upgrade** — execute 5-phase plan in `docs-portal/docs/plans/arf-280-upgrade-plan.md` |
+| **Next Action** | **ARF v2.8.0 upgrade** — execute Phase 0 (branch+tag) then Phase 1 of 7-phase plan in `docs-portal/docs/plans/arf-280-upgrade-plan.md` |
 
 
 ---
@@ -37,6 +37,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-02-10 20:16 | **Refine: ARF v2.8.0 Upgrade Plan** — Deep codebase analysis of upgrade plan found 9 issues (3 critical, 4 medium, 2 low). Critical: Topics 38/53 missing from `relevantTopics` (silently drops HLRs), two parallel ARF import scripts undocumented, `csvUrl` pointing to `main` (race condition). Plan expanded 5→7 phases: added Phase 0 (rollback branch+tag), merged Phase 2+2.5 (avoids double-editing YAML), enhanced Phase 4 (search index, import-arf-hlr.js, Excel export). 13 risk entries (up from 8). Retro: 6 improvements — AGENTS.md Rule 19 (codebase-first plan review), ARF dual-script docs, arf-config.yaml critical config section, byHlrId/byHarmonizedId index pattern, relevantTopics cross-check in validate-vcq-arf.js (catches Topics 38/53 bug), TERMINOLOGY.md Old ID + ID Migration terms. 2 commits: `ee7cc5e0`, `93af4737`. |
 | 2026-02-10 18:30 | **Assessment: ARF v2.8.0 Impact** — Full diff of ARF v2.7.3→v2.8.0: +43 added HLRs, -11 removed, 247 text changed, 33 emptied. 13 VCQ references impacted (3 in core.yaml, 8 in issuer.yaml, 1 in trust_services.yaml). New Topic 56 (Wallet Provider Support & Maintenance). Created 5-phase upgrade plan (`arf-280-upgrade-plan.md`), raw diff report (`arf-280-impact-assessment.md`), reusable `diff-arf-hlrs.py` script. SCA/SUA definitions synthesized. RP deployment comparison matrix converted to markdown table. Retro: AGENTS.md ARF CSV format + version tracking; TERMINOLOGY.md ARF Data Model section (4 terms); source validation in build-terminology.js. |
 | 2026-02-10 13:17 | **Fix: Case-Insensitive Abbreviation Search + Terminology Formatting** — Two fixes: (1) **Search**: Orama's `exact: true` is case-sensitive, so lowercase abbreviation searches ("wua") failed. Added `termLower` field to search index (build-time lowercase copy of `term`); runtime queries `termLower` with `searchQuery.toLowerCase()`. (2) **Terminology display**: "— Internal , Synthesized from" had extra space (CSS `inline-flex` + `gap` splitting text nodes into flex children) and wrong capitalization. Fix: wrapped attribution in single `<span>` to make one flex child; lowercased "Synthesized" → "synthesized". Retro: AGENTS.md CSS-first debugging gotcha + termLower pattern; TERMINOLOGY.md: `termLower`, `Exact Match Boost` terms; ⚠️ code comments in useSearch.js and Terminology.jsx. 2 commits: `5370bfa9`, `c511f098`. |
 | 2026-02-10 12:40 | **Fix: VCQ GDPR Dual Legal Basis + ARF Cross-References** — 14 GDPR-only core requirements had incorrect eIDAS source group due to blanket `core.yaml → eidas` rule. Fix: (1) removed blanket rule, (2) added mandating eIDAS articles as dual legal basis (Art 5a(17) for processor obligations, Art 5a(4)(d)(ii) for erasure, IR 2024/2979 Art 13 for portability), (3) searched all 559 ARF HLRs for GDPR-relevant requirements — added Topic 48 DATA_DLT_07 to VEND-CORE-010 (data subject rights) and DATA_DLT_08 to VEND-CORE-028 (data portability). ARF count: 88→90. Retro: AGENTS.md shell quoting gotcha for TS10 filename, TERMINOLOGY.md: 'Dual Legal Basis' + 'Art 5a(17) Cross-Reference' terms. 4 commits. |

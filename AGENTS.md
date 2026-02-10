@@ -579,10 +579,31 @@ The HLR CSV at `03_arf/hltr/high-level-requirements.csv` has non-standard format
 | `byHlrId` | Old ID (Index column) | `ISSU_29` | Search index, backward compat |
 | `byHarmonizedId` | EC Harmonized ID | `AS-AP-10-029` | VCQ references (after migration) |
 
+**⚠️ `byHlrId` is keyed on Old ID (`row.Index`), NOT Harmonized ID.** This is the primary index used by all current VCQ lookups. Since every Old ID is unique in the CSV, no collisions occur.
+
+**⚠️ `byHarmonizedId` has 8 duplicate keys in v2.8.0.** The EC CSV contains 656 rows but only 648 unique Harmonized IDs. Five are Topic 38 "empty tombstones" (retired requirement + content-bearing requirement share an ID), three are genuinely different requirements sharing an ID. When building `byHarmonizedId`, use a **content-wins guard** to prevent Empty tombstones from overwriting content entries:
+
+```js
+// Content-wins guard for byHarmonizedId:
+if (!byHarmonizedId[harmonizedId] || !requirement.isEmpty) {
+    byHarmonizedId[harmonizedId] = requirement;
+}
+```
+
+**Key file locations for ARF data consumers:**
+
+| File | Purpose |
+|------|---------|
+| `scripts/import-arf.js` | Builds `byHlrId` + `byHarmonizedId` from remote CSV |
+| `scripts/import-arf-hlr.js` | Builds Requirements Browser data from local CSV |
+| `src/utils/vcq/exportExcel.js` | Excel export — looks up specs via `byHlrId` |
+| `src/pages/VendorQuestionnaire.jsx` | `ARFReferenceLink` renders deep links via `byHlrId` |
+| `scripts/validate-vcq.js` | Validates `hlr:` references against `byHlrId` keys |
+
 **After the Harmonized ID migration (Phase 2 of ARF v2.8.0 upgrade):**
 - VCQ YAML `arfReference.hlr` will use Harmonized IDs
 - `validate-vcq.js` and `validate-vcq-arf.js` will validate against `byHarmonizedId`
-- `exportExcel.js` will look up specs via `byHarmonizedId` with `byHlrId` fallback
+- `src/utils/vcq/exportExcel.js` will look up specs via `byHarmonizedId` with `byHlrId` fallback
 - Search index will display both IDs for discoverability
 
 
