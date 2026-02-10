@@ -1,7 +1,7 @@
 # Deployment Architecture Filter — Implementation Plan
 
 > **Created:** 2026-02-10  
-> **Status:** Phase 1 in progress (10/12 tasks done)  
+> **Status:** Phase 2 in progress (Phase 1 complete, Phase 2: 5/6 tasks done)  
 > **Decision:** DEC-TBD  
 > **Scope:** VCQ requirements (core.yaml), clarification questions, build pipeline, UI  
 > **Background:** [RP Deployment Architectures](./rp-deployment-architectures.md)
@@ -188,11 +188,11 @@ Each question is a **single, focused question** — no (a)(b)(c)(d) sub-question
 
 | # | Task | Files affected | Status |
 |---|------|---------------|--------|
-| 2.1 | Tag VEND-CORE-001 through VEND-CORE-018 with `deploymentArchitectures` per §1.3 table | `config/vcq/requirements/core.yaml` | ⬜ TODO |
-| 2.2 | Fix `roles` and `productCategories` on VEND-CORE-001–018 (currently universal) | `config/vcq/requirements/core.yaml` | ⬜ TODO |
-| 2.3 | Audit VEND-CORE-019 through VEND-CORE-047 for architecture tagging | `config/vcq/requirements/core.yaml` | ⬜ TODO |
-| 2.4 | Audit `intermediary.yaml` — all 33 should get `[intermediary]` (confirm) | `config/vcq/requirements/intermediary.yaml` | ⬜ TODO |
-| 2.5 | Build and validate | — | ⬜ TODO |
+| 2.1 | Tag VEND-CORE-001 through VEND-CORE-018 with `deploymentArchitectures` per §1.3 table | `config/vcq/requirements/core.yaml` | ✅ DONE |
+| 2.2 | Fix `roles` and `productCategories` on VEND-CORE-001–018 (currently universal) | `config/vcq/requirements/core.yaml` | ✅ DONE |
+| 2.3 | Audit VEND-CORE-019 through VEND-CORE-047 for architecture tagging | `config/vcq/requirements/core.yaml` | ✅ DONE (all agnostic — no tags needed) |
+| 2.4 | Audit `intermediary.yaml` — all 33 should get `[intermediary]` (confirm) | `config/vcq/requirements/intermediary.yaml` | ✅ DONE (33/33 tagged) |
+| 2.5 | Build and validate | — | ✅ DONE |
 | 2.6 | Git commit: `feat: tag existing VCQ requirements with deploymentArchitectures` | — | ⬜ TODO |
 
 ### Phase 3: UI — Architecture filter & badges

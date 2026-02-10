@@ -2,6 +2,8 @@ schemaVersion: 1
 requirements:
   - id: VEND-CORE-001
     category: usage
+    deploymentArchitectures:
+      - intermediary
     requirement: Intermediaries shall not store data about the content of transactions
     explanation: |
       The no-storage mandate is the central privacy protection for wallet users
@@ -37,12 +39,17 @@ requirements:
         - RPI_08
         - RPI_09
         - RPI_10
-    roles: []
-    productCategories: []
+    roles:
+      - relying_party
+    productCategories:
+      - connector
     deadline: "2027-11-21"
     obligation: MUST NOT
   - id: VEND-CORE-002
     category: contracts
+    deploymentArchitectures:
+      - intermediary
+      - direct_saas
     requirement: Implement a Data Processing Agreement meeting GDPR Article 28 requirements
     explanation: |
       When intermediaries process personal data on behalf of the RP, they act
@@ -90,12 +97,17 @@ requirements:
       demonstrate compliance with the obligations laid down in this Article and
       allow for and contribute to audits, including inspections, conducted by the
       controller or another auditor mandated by the controller.
-    roles: []
-    productCategories: []
+    roles:
+      - relying_party
+    productCategories:
+      - connector
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-CORE-003
     category: contracts
+    deploymentArchitectures:
+      - intermediary
+      - direct_saas
     requirement: Provide audit rights to the Relying Party
     explanation: |
       Article 28(3)(h) imposes two distinct obligations on the processor
@@ -137,12 +149,16 @@ requirements:
       necessary to demonstrate compliance with the obligations laid down in 
       this Article and allow for and contribute to audits, including inspections, 
       conducted by the controller or another auditor mandated by the controller.
-    roles: []
-    productCategories: []
+    roles:
+      - relying_party
+    productCategories:
+      - connector
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-CORE-004
     category: registration
+    deploymentArchitectures:
+      - intermediary
     requirement: Register as a Relying Party indicating intermediary status
     explanation: |
       Any entity acting as an intermediary must register as a Relying Party
@@ -186,12 +202,15 @@ requirements:
     arfReference:
       topic: Topic 52
       hlr: RPI_01
-    roles: []
-    productCategories: []
+    roles:
+      - relying_party
+    productCategories:
+      - connector
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-CORE-005
     category: registration
+    deploymentArchitectures: []
     requirement: Maintain a valid Relying Party Access Certificate
     explanation: |
       Access certificates are the primary trust mechanism between wallet units
@@ -238,12 +257,15 @@ requirements:
       hlr:
         - RPA_03
         - RPA_02a
-    roles: []
-    productCategories: []
+    roles:
+      - relying_party
+    productCategories:
+      - connector
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-CORE-006
     category: security
+    deploymentArchitectures: []
     requirement: Implement appropriate technical and organizational security measures
     explanation: |
       Article 32(1) GDPR mandates that both controllers and processors
@@ -295,6 +317,9 @@ requirements:
     obligation: MUST
   - id: VEND-CORE-007
     category: security
+    deploymentArchitectures:
+      - intermediary
+      - direct_saas
     requirement: Notify the RP of data breaches without undue delay
     explanation: |
       Article 33(2) GDPR requires the processor (intermediary) to notify the
@@ -339,12 +364,17 @@ requirements:
     legalText: |
       The processor shall notify the controller without undue delay after
       becoming aware of a personal data breach.
-    roles: []
-    productCategories: []
+    roles:
+      - relying_party
+    productCategories:
+      - connector
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-CORE-008
     category: security
+    deploymentArchitectures:
+      - intermediary
+      - direct_saas
     requirement: Ensure personnel authorized to process data are bound by confidentiality
     explanation: |
       Article 28(3)(b) GDPR requires the processor to ensure that all persons
@@ -384,12 +414,17 @@ requirements:
       The processor shall ensure that persons authorised to process the 
       personal data have committed themselves to confidentiality or are 
       under an appropriate statutory obligation of confidentiality.
-    roles: []
-    productCategories: []
+    roles:
+      - relying_party
+    productCategories:
+      - connector
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-CORE-009
     category: contracts
+    deploymentArchitectures:
+      - intermediary
+      - direct_saas
     requirement: Process personal data only on documented instructions from the RP
     explanation: |
       Article 28(3)(a) GDPR imposes a fundamental limitation on the processor:
@@ -433,12 +468,17 @@ requirements:
       processor is subject; in such a case, the processor shall inform the
       controller of that legal requirement before processing, unless that
       law prohibits such information on important grounds of public interest.
-    roles: []
-    productCategories: []
+    roles:
+      - relying_party
+    productCategories:
+      - connector
     deadline: "2027-11-21"
     obligation: MUST NOT
   - id: VEND-CORE-010
     category: contracts
+    deploymentArchitectures:
+      - intermediary
+      - direct_saas
     requirement: Support data subject rights requests
     explanation: |
       Article 28(3)(e) GDPR requires the processor to assist the controller
@@ -487,12 +527,16 @@ requirements:
       topic: Topic 48
       hlr:
         - DATA_DLT_07
-    roles: []
-    productCategories: []
+    roles:
+      - relying_party
+    productCategories:
+      - connector
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-CORE-011
     category: contracts
+    deploymentArchitectures:
+      - intermediary
     requirement: Display both intermediary and RP identity to wallet users
     explanation: |
       Article 5b(8) eIDAS requires relying parties to identify themselves
@@ -538,12 +582,17 @@ requirements:
         - RPI_05
         - RPI_06
         - RPI_07
-    roles: []
-    productCategories: []
+    roles:
+      - relying_party
+    productCategories:
+      - connector
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-CORE-012
     category: contracts
+    deploymentArchitectures:
+      - intermediary
+      - direct_saas
     requirement: Inform the RP of any legal requirement to process data beyond instructions
     explanation: |
       The second part of Article 28(3)(a) GDPR addresses the scenario where
@@ -588,12 +637,17 @@ requirements:
       processor is subject; in such a case, the processor shall inform the
       controller of that legal requirement before processing, unless that
       law prohibits such information on important grounds of public interest.
-    roles: []
-    productCategories: []
+    roles:
+      - relying_party
+    productCategories:
+      - connector
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-CORE-013
     category: contracts
+    deploymentArchitectures:
+      - intermediary
+      - direct_saas
     requirement: Obtain RP authorization before engaging sub-processors
     explanation: |
       Article 28(2) GDPR prohibits the processor from engaging another
@@ -641,12 +695,17 @@ requirements:
       of any intended changes concerning the addition or replacement of other 
       processors, thereby giving the controller the opportunity to object to
       such changes.
-    roles: []
-    productCategories: []
+    roles:
+      - relying_party
+    productCategories:
+      - connector
     deadline: "2027-11-21"
     obligation: MUST NOT
   - id: VEND-CORE-014
     category: contracts
+    deploymentArchitectures:
+      - intermediary
+      - direct_saas
     requirement: Delete or return personal data at end of contract
     explanation: |
       Article 28(3)(g) GDPR gives the controller (RP) the choice: at the
@@ -692,12 +751,16 @@ requirements:
       all the personal data to the controller after the end of the provision 
       of services relating to processing, and delete existing copies unless
       Union or Member State law requires storage of the personal data.
-    roles: []
-    productCategories: []
+    roles:
+      - relying_party
+    productCategories:
+      - connector
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-CORE-016
     category: registration
+    deploymentArchitectures:
+      - intermediary
     requirement: Register each intermediated RP at the appropriate Registrar
     explanation: |
       ARF HLR RPI_03 mandates that an intermediary SHALL register each
@@ -744,12 +807,16 @@ requirements:
       topic: Topic 52
       hlr:
         - RPI_03
-    roles: []
-    productCategories: []
+    roles:
+      - relying_party
+    productCategories:
+      - connector
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-CORE-017
     category: registration
+    deploymentArchitectures:
+      - intermediary
     requirement: Provide legal evidence of RP relationship when registering
     explanation: |
       ARF HLR RPI_04 requires the intermediary to provide legally valid
@@ -799,12 +866,16 @@ requirements:
       topic: Topic 52
       hlr:
         - RPI_04
-    roles: []
-    productCategories: []
+    roles:
+      - relying_party
+    productCategories:
+      - connector
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-CORE-018
     category: usage
+    deploymentArchitectures:
+      - intermediary
     requirement: Perform verification of attestations as agreed with RP
     explanation: |
       ARF HLR RPI_09 mandates that the intermediary SHALL verify attributes
@@ -854,8 +925,10 @@ requirements:
       hlr:
         - RPI_08
         - RPI_09
-    roles: []
-    productCategories: []
+    roles:
+      - relying_party
+    productCategories:
+      - connector
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-CORE-019

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T14:47:03.057Z",
+  "generatedAt": "2026-02-10T14:53:36.814Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -254,16 +254,22 @@
           "RPI_10"
         ]
       },
-      "roles": [],
-      "productCategories": [],
-      "isUniversal": true,
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "core.yaml"
@@ -296,16 +302,23 @@
       },
       "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "Processing by a processor shall be governed by a contract or other legal act\nunder Union or Member State law, that is binding on the processor with regard\nto the controller and that sets out the subject-matter and duration of the\nprocessing, the nature and purpose of the processing, the type of personal\ndata and categories of data subjects and the obligations and rights of the\ncontroller. That contract or other legal act shall stipulate, in particular,\nthat the processor: (a) processes the personal data only on documented\ninstructions from the controller; (b) ensures that persons authorised to\nprocess the personal data have committed themselves to confidentiality;\n(c) takes all measures required pursuant to Article 32; [...]\n(h) makes available to the controller all information necessary to\ndemonstrate compliance with the obligations laid down in this Article and\nallow for and contribute to audits, including inspections, conducted by the\ncontroller or another auditor mandated by the controller.",
-      "roles": [],
-      "productCategories": [],
-      "isUniversal": true,
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
         "eidas",
         "gdpr"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary",
+        "direct_saas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -338,16 +351,23 @@
       },
       "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "The processor shall make available to the controller all information \nnecessary to demonstrate compliance with the obligations laid down in \nthis Article and allow for and contribute to audits, including inspections, \nconducted by the controller or another auditor mandated by the controller.",
-      "roles": [],
-      "productCategories": [],
-      "isUniversal": true,
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
         "eidas",
         "gdpr"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary",
+        "direct_saas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -378,16 +398,22 @@
         "topic": "Topic 52",
         "hlr": "RPI_01"
       },
-      "roles": [],
-      "productCategories": [],
-      "isUniversal": true,
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -421,9 +447,13 @@
           "RPA_02a"
         ]
       },
-      "roles": [],
-      "productCategories": [],
-      "isUniversal": true,
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
@@ -505,16 +535,23 @@
       },
       "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "The processor shall notify the controller without undue delay after\nbecoming aware of a personal data breach.",
-      "roles": [],
-      "productCategories": [],
-      "isUniversal": true,
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
         "eidas",
         "gdpr"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary",
+        "direct_saas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -547,16 +584,23 @@
       },
       "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "The processor shall ensure that persons authorised to process the \npersonal data have committed themselves to confidentiality or are \nunder an appropriate statutory obligation of confidentiality.",
-      "roles": [],
-      "productCategories": [],
-      "isUniversal": true,
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
         "eidas",
         "gdpr"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary",
+        "direct_saas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -589,16 +633,23 @@
       },
       "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "The processor shall process the personal data only on documented \ninstructions from the controller, including with regard to transfers \nof personal data to a third country or an international organisation,\nunless required to do so by Union or Member State law to which the\nprocessor is subject; in such a case, the processor shall inform the\ncontroller of that legal requirement before processing, unless that\nlaw prohibits such information on important grounds of public interest.",
-      "roles": [],
-      "productCategories": [],
-      "isUniversal": true,
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
         "eidas",
         "gdpr"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary",
+        "direct_saas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "core.yaml"
@@ -637,9 +688,13 @@
           "DATA_DLT_07"
         ]
       },
-      "roles": [],
-      "productCategories": [],
-      "isUniversal": true,
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
@@ -647,7 +702,10 @@
         "gdpr",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary",
+        "direct_saas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -682,16 +740,22 @@
           "RPI_07"
         ]
       },
-      "roles": [],
-      "productCategories": [],
-      "isUniversal": true,
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -724,16 +788,23 @@
       },
       "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "Unless required to do so by Union or Member State law to which the\nprocessor is subject; in such a case, the processor shall inform the\ncontroller of that legal requirement before processing, unless that\nlaw prohibits such information on important grounds of public interest.",
-      "roles": [],
-      "productCategories": [],
-      "isUniversal": true,
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
         "eidas",
         "gdpr"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary",
+        "direct_saas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -766,16 +837,23 @@
       },
       "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "The processor shall not engage another processor without prior specific \nor general written authorisation of the controller. In the case of \ngeneral written authorisation, the processor shall inform the controller \nof any intended changes concerning the addition or replacement of other \nprocessors, thereby giving the controller the opportunity to object to\nsuch changes.",
-      "roles": [],
-      "productCategories": [],
-      "isUniversal": true,
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
         "eidas",
         "gdpr"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary",
+        "direct_saas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "core.yaml"
@@ -808,16 +886,23 @@
       },
       "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "At the choice of the controller, the processor shall delete or return \nall the personal data to the controller after the end of the provision \nof services relating to processing, and delete existing copies unless\nUnion or Member State law requires storage of the personal data.",
-      "roles": [],
-      "productCategories": [],
-      "isUniversal": true,
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
         "eidas",
         "gdpr"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary",
+        "direct_saas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -850,16 +935,22 @@
           "RPI_03"
         ]
       },
-      "roles": [],
-      "productCategories": [],
-      "isUniversal": true,
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -892,16 +983,22 @@
           "RPI_04"
         ]
       },
-      "roles": [],
-      "productCategories": [],
-      "isUniversal": true,
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -935,16 +1032,22 @@
           "RPI_09"
         ]
       },
-      "roles": [],
-      "productCategories": [],
-      "isUniversal": true,
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -2916,7 +3019,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2960,7 +3065,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
@@ -3004,7 +3111,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3051,7 +3160,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
@@ -3096,7 +3207,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3144,7 +3257,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3188,7 +3303,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3236,7 +3353,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3280,7 +3399,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3327,7 +3448,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3374,7 +3497,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
       "_sourceFile": "intermediary.yaml"
@@ -3418,7 +3543,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3468,7 +3595,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3512,7 +3641,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3551,7 +3682,9 @@
       "sourceGroups": [
         "eidas"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3595,7 +3728,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3634,7 +3769,9 @@
       "sourceGroups": [
         "gdpr"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Logs must not contain attestation content (due to no-storage mandate)\nbut may contain verification metadata (pass/fail, timestamp, error codes).",
@@ -3674,7 +3811,9 @@
       "sourceGroups": [
         "eidas"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
@@ -3713,7 +3852,9 @@
       "sourceGroups": [
         "eidas"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
@@ -3757,7 +3898,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3804,7 +3947,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3853,7 +3998,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Per ARF RPRC_20a: \"Relying Party Instances and Wallet Units SHALL support\nthe extension for [ISO/IEC 18013-5] or the extension for [OpenID4VP]...\"\n\nThe \"or\" indicates use-case dependency:\n- Online-only RPs: SD-JWT-VC / OpenID4VP required\n- In-person-only RPs (e.g., age verification at venue): mDoc / ISO 18013-5 required\n- Mixed-mode RPs: BOTH formats required\n\nThis contrasts with VEND-ISS-005 where issuers must unconditionally\nsupport both formats per ISSU_12.",
@@ -3898,7 +4045,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3937,7 +4086,9 @@
       "sourceGroups": [
         "eidas"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "This is a conditional requirement based on the RP's risk assessment and\nthe sensitivity of the use case. Not all intermediaries will require\ncertification.",
@@ -3977,7 +4128,9 @@
       "sourceGroups": [
         "eidas"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -4017,7 +4170,9 @@
       "sourceGroups": [
         "eidas"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -4056,7 +4211,9 @@
       "sourceGroups": [
         "eidas"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -4103,7 +4260,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -4150,7 +4309,9 @@
         "gdpr",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -4189,7 +4350,9 @@
       "sourceGroups": [
         "eidas"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -4237,7 +4400,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "This is the technical implementation of RPI_06. The access\ncertificate comes from the intermediary's own registration.\nThe RP registration certificate is obtained during the\nintermediary's registration of each intermediated RP (per\nRPI_03).",
@@ -4285,7 +4450,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "This corresponds to ARF RPI_04 and supports wallet\nverification per RPI_07a. The intermediary must ensure\nregistration is complete BEFORE accepting intermediation\nrequests from an RP, otherwise wallet users will see\nverification failures.",
@@ -4334,7 +4501,9 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
       "notes": "This covers ARF Topic 7 (VCR_*) verification requirements\nfor attestation revocation. Attestation Status Lists (VCR_11)\nare the primary mechanism for efficient batch revocation\nchecking without per-credential queries.",
@@ -6940,6 +7109,22 @@
   ],
   "requirementsByRole": {
     "relying_party": [
+      "VEND-CORE-001",
+      "VEND-CORE-002",
+      "VEND-CORE-003",
+      "VEND-CORE-004",
+      "VEND-CORE-005",
+      "VEND-CORE-007",
+      "VEND-CORE-008",
+      "VEND-CORE-009",
+      "VEND-CORE-010",
+      "VEND-CORE-011",
+      "VEND-CORE-012",
+      "VEND-CORE-013",
+      "VEND-CORE-014",
+      "VEND-CORE-016",
+      "VEND-CORE-017",
+      "VEND-CORE-018",
       "VEND-CORE-019",
       "VEND-CORE-021",
       "VEND-CORE-027",
@@ -7077,23 +7262,7 @@
       "VEND-TSP-019"
     ],
     "universal": [
-      "VEND-CORE-001",
-      "VEND-CORE-002",
-      "VEND-CORE-003",
-      "VEND-CORE-004",
-      "VEND-CORE-005",
       "VEND-CORE-006",
-      "VEND-CORE-007",
-      "VEND-CORE-008",
-      "VEND-CORE-009",
-      "VEND-CORE-010",
-      "VEND-CORE-011",
-      "VEND-CORE-012",
-      "VEND-CORE-013",
-      "VEND-CORE-014",
-      "VEND-CORE-016",
-      "VEND-CORE-017",
-      "VEND-CORE-018",
       "VEND-CORE-023",
       "VEND-CORE-042",
       "VEND-CORE-043",
@@ -7116,6 +7285,22 @@
   },
   "requirementsByProductCategory": {
     "connector": [
+      "VEND-CORE-001",
+      "VEND-CORE-002",
+      "VEND-CORE-003",
+      "VEND-CORE-004",
+      "VEND-CORE-005",
+      "VEND-CORE-007",
+      "VEND-CORE-008",
+      "VEND-CORE-009",
+      "VEND-CORE-010",
+      "VEND-CORE-011",
+      "VEND-CORE-012",
+      "VEND-CORE-013",
+      "VEND-CORE-014",
+      "VEND-CORE-016",
+      "VEND-CORE-017",
+      "VEND-CORE-018",
       "VEND-CORE-019",
       "VEND-CORE-021",
       "VEND-CORE-027",
@@ -7252,23 +7437,7 @@
       "VEND-TSP-019"
     ],
     "universal": [
-      "VEND-CORE-001",
-      "VEND-CORE-002",
-      "VEND-CORE-003",
-      "VEND-CORE-004",
-      "VEND-CORE-005",
       "VEND-CORE-006",
-      "VEND-CORE-007",
-      "VEND-CORE-008",
-      "VEND-CORE-009",
-      "VEND-CORE-010",
-      "VEND-CORE-011",
-      "VEND-CORE-012",
-      "VEND-CORE-013",
-      "VEND-CORE-014",
-      "VEND-CORE-016",
-      "VEND-CORE-017",
-      "VEND-CORE-018",
       "VEND-CORE-023",
       "VEND-CORE-042",
       "VEND-CORE-043",
@@ -7554,15 +7723,15 @@
   "stats": {
     "totalRequirements": 153,
     "byRole": {
-      "relying_party": 68,
+      "relying_party": 84,
       "issuer": 65,
-      "universal": 35
+      "universal": 19
     },
     "byProductCategory": {
-      "connector": 56,
+      "connector": 72,
       "issuance_platform": 48,
       "trust_services": 26,
-      "universal": 32
+      "universal": 16
     },
     "bySourceGroup": {
       "eidas": 129,
