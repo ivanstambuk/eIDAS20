@@ -1355,6 +1355,31 @@ cat >> file.yaml << EOF
 EOF
 ```
 
+### deploymentArchitectures Schema (DEC-289)
+
+The `deploymentArchitectures` field tags a VCQ requirement to specific connector deployment models:
+
+```yaml
+# Agnostic (applies to all architectures) — omit field or leave empty
+deploymentArchitectures: []
+
+# Architecture-specific (applies only to listed models)
+deploymentArchitectures:
+  - intermediary
+  - direct_saas
+  - direct_onprem
+```
+
+| Value | Badge | Color | Description |
+|-------|-------|-------|-------------|
+| `intermediary` | INT | Blue (#3b82f6) | Vendor acts as RP on behalf of customer |
+| `direct_saas` | SaaS | Purple (#8b5cf6) | Vendor provides hosted connector, customer is RP |
+| `direct_onprem` | OnPrem | Emerald (#10b981) | Customer deploys vendor software on own infra |
+
+**Filtering logic:** Union semantics. A requirement appears if ANY of its architectures match the selected filter. Agnostic requirements (empty/absent field) always appear.
+
+**Visibility:** Step 2b only renders when Role=Relying Party AND Category=Connector. Schema defined in `config/vcq/vcq-config.yaml` under `deploymentArchitectures`.
+
 ### VCQ Export Formats
 
 | Format | Button | File Type | Features |

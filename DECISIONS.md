@@ -2679,3 +2679,64 @@ After systematic review of eIDAS 2.0, GDPR, DORA, and ARF HLRs, the conclusion i
 **Related Decisions:**
 - DEC-222: VCQ Tool Implementation
 - DEC-255: VCQ Source Selection Simplification
+
+---
+
+## DEC-289: VCQ Deployment Architecture Filter & Badges
+
+**Date:** 2026-02-10  
+**Status:** Implemented  
+**Category:** VCQ Tool / Filtering Enhancement
+
+**Context:**  
+The VCQ tool treated all connector requirements as equally applicable regardless of how the vendor's product is deployed. In practice, the deployment model fundamentally changes which regulatory requirements apply — an intermediary vendor acting as RP on behalf of customers has different obligations (Article 5b(10) no-storage mandate, dual registration) than a SaaS or on-premises connector where the customer is the RP.
+
+**Decision:** **Add a "Deployment Architecture" filter (Step 2b) to the VCQ tool** that surfaces only when Role = Relying Party AND Category = Connector.
+
+**Three Architecture Models:**
+
+| ID | Label | Badge | Description |
+|----|-------|-------|-------------|
+| `intermediary` | Intermediary | INT (blue) | Vendor acts as RP on behalf of customer |
+| `direct_saas` | Direct SaaS | SaaS (purple) | Vendor provides hosted connector; customer is RP |
+| `direct_onprem` | Direct Self-Hosted | OnPrem (emerald) | Customer deploys vendor software on own infrastructure |
+
+**Data Model:**
+
+Requirements have an optional `deploymentArchitectures` array field:
+- Empty/absent = **agnostic** (applies to all architectures, always shown)
+- Non-empty = architecture-specific (shown only when filter matches)
+
+**Filtering Logic:**
+- **Union semantics**: Requirement appears if ANY of its architectures match ANY selected filter
+- Agnostic requirements always pass the filter
+- When no architectures are selected, all requirements are shown (no filtering)
+
+**UI Components:**
+
+1. **Step 2b section** — Conditionally rendered between Product Category (Step 2) and Source Selection (Step 3)
+2. **Architecture badges** — Color-coded labels (INT/SaaS/OnPrem) next to requirement IDs in the table
+3. **Export integration** — Badges included in both Markdown and Excel exports
+
+**Rationale:**
+
+1. **Regulatory precision** — Article 5b(10) obligations only apply to intermediary deployments
+2. **Reduced noise** — Customers evaluating SaaS connectors don't see intermediary-only requirements
+3. **Vendor differentiation** — Helps organizations compare products with different deployment models
+4. **Non-breaking** — Existing requirements work without modification (empty = agnostic)
+
+**Files Changed:**
+
+| File | Change |
+|------|--------|
+| `VendorQuestionnaire.jsx` | ArchitectureSelector component, filter logic, badge rendering, export updates |
+| `VendorQuestionnaire.css` | Step 2b styling, architecture badges |
+| `exportExcel.js` | New "Deployment Architecture" column |
+| `vcq-config.yaml` | `deploymentArchitectures` schema definition |
+| `TERMINOLOGY.md` | 6 new terms (deployment architecture, intermediary/SaaS/onprem models, agnostic requirement, architecture badge) |
+| `AGENTS.md` | `deploymentArchitectures` schema documentation |
+
+**Related Decisions:**
+- DEC-222: VCQ Tool Implementation
+- DEC-254: VCQ Intermediary Consolidation
+- DEC-256: VCQ Role/Category Structure

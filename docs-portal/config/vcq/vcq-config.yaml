@@ -1,11 +1,12 @@
 # VCQ (Vendor Compliance Questionnaire) Configuration
-# 
+#
 # This file configures the VCQ tool for assessing third-party products
 # that organizations use to integrate with the EUDIW ecosystem.
 #
 # Created: 2026-01-22
 # Updated: 2026-01-26 (DEC-256: Added Organisation Role and Product Category selection)
-# Decisions: DEC-222 (original), DEC-254 (consolidation), DEC-256 (role/category structure)
+# Updated: 2026-02-10 (DEC-289: Added Deployment Architecture filter for Connector category)
+# Decisions: DEC-222 (original), DEC-254 (consolidation), DEC-256 (role/category structure), DEC-289 (deployment architectures)
 
 schemaVersion: 2
 
@@ -18,7 +19,7 @@ tool:
     products to integrate with the EUDIW ecosystem. Select your organisation's 
     role, the product category you're evaluating, and the regulatory sources 
     to include.
-    
+
     **Scope**: VCQ targets private sector commercial products. Public-sector-only 
     mandates and organization-only requirements (registration with authorities, 
     HR/personnel, financial obligations) are covered in the RCA tool.
@@ -32,7 +33,7 @@ tool:
 # LEGACY: Intermediary Types (kept for build-vcq.js compatibility)
 # =============================================================================
 # DEC-254: This is maintained for backward compatibility with the build script
-# and existing requirements files. The new UI uses organisationRoles and 
+# and existing requirements files. The new UI uses organisationRoles and
 # productCategories instead.
 
 intermediaryTypes:
@@ -71,7 +72,6 @@ scopeExtensions:
       id: "2022/2554"
       articles: ["28", "29", "30", "31"]
 
-
 # =============================================================================
 # STEP 1: Organisation Roles
 # =============================================================================
@@ -93,14 +93,14 @@ organisationRoles:
       - "Strong Customer Authentication (SCA) for payments"
       - "KYC/AML identity verification"
     technicalSpecs:
-      - "TS5"   # RP Registration Information
-      - "TS7"   # Data Deletion Request Interface
-      - "TS12"  # Electronic Payments SCA (as RP verifier)
+      - "TS5" # RP Registration Information
+      - "TS7" # Data Deletion Request Interface
+      - "TS12" # Electronic Payments SCA (as RP verifier)
     arfTopics:
-      - 6   # RP Authentication
-      - 14  # Online Presentation
-      - 27  # RP Registration
-      - 52  # RP Intermediaries
+      - 6 # RP Authentication
+      - 14 # Online Presentation
+      - 27 # RP Registration
+      - 52 # RP Intermediaries
     regulations:
       - regulation: "2014/910"
         articles: ["5b(10)", "6b", "6c"]
@@ -122,14 +122,14 @@ organisationRoles:
       - "Credential lifecycle management (issuance, revocation)"
       - "Integration with organisational authentic data sources"
     technicalSpecs:
-      - "TS2"   # Notification & Publication of Provider Information
-      - "TS6"   # EUDI Wallet Issuance Protocol
-      - "TS11"  # Catalogue of Attributes and Attestations
-      - "TS12"  # Electronic Payments SCA (as issuer)
+      - "TS2" # Notification & Publication of Provider Information
+      - "TS6" # EUDI Wallet Issuance Protocol
+      - "TS11" # Catalogue of Attributes and Attestations
+      - "TS12" # Electronic Payments SCA (as issuer)
     arfTopics:
-      - 10  # Issuing PID/Attestation
-      - 7   # Validity Status (revocation)
-      - 31  # Provider Notification/Publication
+      - 10 # Issuing PID/Attestation
+      - 7 # Validity Status (revocation)
+      - 31 # Provider Notification/Publication
     regulations:
       - regulation: "2014/910"
         articles: ["45d", "45e", "45f", "45g"]
@@ -161,9 +161,9 @@ productCategories:
       - "RP authentication against wallet"
       - "Trusted List integration"
     technicalSpecs:
-      - "TS5"   # RP Registration
-      - "TS7"   # Data Deletion Interface
-    vendorExamples: []  # Vendor-agnostic
+      - "TS5" # RP Registration
+      - "TS7" # Data Deletion Interface
+    vendorExamples: [] # Vendor-agnostic
 
   issuance_platform:
     id: "issuance_platform"
@@ -183,11 +183,11 @@ productCategories:
       - "Revocation management"
       - "Integration with authentic data sources"
     technicalSpecs:
-      - "TS2"   # Provider Information
-      - "TS6"   # Issuance Protocol
-      - "TS11"  # Catalogue of Attributes
-      - "TS12"  # SCA Attestations
-    vendorExamples: []  # Vendor-agnostic
+      - "TS2" # Provider Information
+      - "TS6" # Issuance Protocol
+      - "TS11" # Catalogue of Attributes
+      - "TS12" # SCA Attestations
+    vendorExamples: [] # Vendor-agnostic
 
   trust_services:
     id: "trust_services"
@@ -208,12 +208,58 @@ productCategories:
       - "Secure Cryptographic Device (QSCD)"
       - "Remote signing services"
     technicalSpecs:
-      - "TS3"   # Wallet Unit Attestation
-      - "TS8"   # Remote QES Protocol
+      - "TS3" # Wallet Unit Attestation
+      - "TS8" # Remote QES Protocol
     arfTopics:
-      - 23  # Trust Services
-      - 32  # eSignatures
-    vendorExamples: []  # Vendor-agnostic
+      - 23 # Trust Services
+      - 32 # eSignatures
+    vendorExamples: [] # Vendor-agnostic
+
+# =============================================================================
+# STEP 2b: Deployment Architectures (DEC-289)
+# =============================================================================
+# How the vendor's connector product integrates with the customer's RP.
+# Only shown when Role=Relying Party AND Category=Connector.
+#
+# Requirements have a `deploymentArchitectures` field (array).
+# - Empty/absent = "agnostic" (applies to all architectures)
+# - Non-empty = applies only to those specific architectures
+# UI uses union logic: requirement appears if ANY of its architectures is selected.
+
+deploymentArchitectures:
+  intermediary:
+    id: "intermediary"
+    label: "Intermediary"
+    shortLabel: "INT"
+    description: |
+      Third-party acts as RP on behalf of the integrating organisation.
+      Vendor holds its own Access Certificate and interacts with wallets directly.
+    icon: "🔗"
+    color: "#3b82f6" # Blue
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "10"
+
+  direct_saas:
+    id: "direct_saas"
+    label: "Direct SaaS"
+    shortLabel: "SaaS"
+    description: |
+      Organisation is the RP; vendor provides hosted connector service.
+      Vendor manages infrastructure; customer maintains own RP registration.
+    icon: "☁️"
+    color: "#8b5cf6" # Purple
+
+  direct_onprem:
+    id: "direct_onprem"
+    label: "Direct Self-Hosted"
+    shortLabel: "OnPrem"
+    description: |
+      Organisation is the RP; deploys vendor software on own infrastructure.
+      Vendor delivers binaries/containers; customer manages all operations.
+    icon: "🏠"
+    color: "#10b981" # Emerald
 
 # =============================================================================
 # Technical Specifications Reference
@@ -230,7 +276,7 @@ technicalSpecifications:
     version: "1.0"
     roles: ["relying_party", "issuer"]
     categories: ["connector", "issuance_platform", "trust_services"]
-    
+
   TS2:
     id: "TS2"
     title: "Notification and Publication of Provider Information"
@@ -240,7 +286,7 @@ technicalSpecifications:
     version: "1.0"
     roles: ["issuer"]
     categories: ["issuance_platform"]
-    
+
   TS3:
     id: "TS3"
     title: "Wallet Unit Attestation (WUA)"
@@ -250,7 +296,7 @@ technicalSpecifications:
     version: "1.0"
     roles: ["issuer"]
     categories: ["trust_services"]
-    
+
   TS4:
     id: "TS4"
     title: "Zero-Knowledge Proofs Overview"
@@ -260,7 +306,7 @@ technicalSpecifications:
     version: "1.0"
     roles: ["relying_party", "issuer"]
     categories: ["connector", "issuance_platform"]
-    
+
   TS5:
     id: "TS5"
     title: "Common Formats and API for RP Registration Information"
@@ -270,7 +316,7 @@ technicalSpecifications:
     version: "1.0"
     roles: ["relying_party"]
     categories: ["connector"]
-    
+
   TS6:
     id: "TS6"
     title: "EUDI Wallet Issuance Protocols"
@@ -280,7 +326,7 @@ technicalSpecifications:
     version: "1.0"
     roles: ["issuer"]
     categories: ["issuance_platform"]
-    
+
   TS7:
     id: "TS7"
     title: "Common Interface for Data Deletion Request"
@@ -290,7 +336,7 @@ technicalSpecifications:
     version: "1.0"
     roles: ["relying_party"]
     categories: ["connector"]
-    
+
   TS8:
     id: "TS8"
     title: "Remote Qualified Electronic Signature/Seal Protocol"
@@ -300,7 +346,7 @@ technicalSpecifications:
     version: "1.0"
     roles: ["issuer"]
     categories: ["trust_services"]
-    
+
   TS9:
     id: "TS9"
     title: "Pseudonym Attestations"
@@ -310,7 +356,7 @@ technicalSpecifications:
     version: "1.0"
     roles: ["relying_party", "issuer"]
     categories: ["connector", "issuance_platform"]
-    
+
   TS10:
     id: "TS10"
     title: "Data Portability and Download (Export)"
@@ -320,7 +366,7 @@ technicalSpecifications:
     version: "1.0"
     roles: ["relying_party", "issuer"]
     categories: ["connector", "issuance_platform"]
-    
+
   TS11:
     id: "TS11"
     title: "Catalogue of Attributes and Attestations"
@@ -330,7 +376,7 @@ technicalSpecifications:
     version: "1.0"
     roles: ["issuer"]
     categories: ["issuance_platform"]
-    
+
   TS12:
     id: "TS12"
     title: "Electronic Payments SCA Implementation"
@@ -345,7 +391,7 @@ technicalSpecifications:
       - "SCA verification for payments (RP)"
       - "Dynamic linking for transactions"
       - "KB-JWT for payment authentication"
-    
+
   TS13:
     id: "TS13"
     title: "ZKPs from Arithmetic Circuits (zkSNARKs)"
@@ -355,7 +401,7 @@ technicalSpecifications:
     version: "1.0"
     roles: ["relying_party", "issuer"]
     categories: ["connector", "issuance_platform"]
-    
+
   TS14:
     id: "TS14"
     title: "ZKPs from Multi-Message Signatures"
@@ -494,7 +540,7 @@ output:
       label: "Questionnaire Export"
       description: "Exportable document for vendors"
       icon: "📤"
-  
+
   exportFormats:
     - id: "markdown"
       label: "Markdown"
@@ -502,23 +548,33 @@ output:
     - id: "pdf"
       label: "PDF Document"
       extension: ".pdf"
-
 # =============================================================================
-# Migration Notes (DEC-256)
+# Migration Notes (DEC-256, DEC-289)
 # =============================================================================
-# 
+#
 # Previous structure (v2 - DEC-254):
 #   - Step 1: Source Selection only
 #   - Single RP Intermediary type
 #
-# New structure (v3 - DEC-256):
+# Structure (v3 - DEC-256):
 #   - Step 1: Organisation Role Selection (Relying Party, Issuer)
 #   - Step 2: Product Category Selection (Connector, Issuance Platform, Trust Services)
 #   - Step 3: Source Selection (eIDAS, Related, Architecture/Tech Specs)
 #
+# Current structure (v4 - DEC-289):
+#   - Step 1:  Organisation Role Selection (Relying Party, Issuer)
+#   - Step 2:  Product Category Selection (Connector, Issuance Platform, Trust Services)
+#   - Step 2b: Deployment Architecture (Intermediary, Direct SaaS, Direct Self-Hosted)
+#              → Only visible when Role=Relying Party AND Category=Connector
+#   - Step 3:  Source Selection (eIDAS, Related, Architecture/Tech Specs)
+#
 # Role → Product Category Mapping:
 #   - Relying Party → Connector, Trust Services
 #   - Issuer → Issuance Platform, Trust Services
+#
+# Deployment Architecture → Connector only:
+#   Requirements have `deploymentArchitectures` field (array of IDs).
+#   Empty/absent = agnostic (all architectures). Union filter logic.
 #
 # Technical Specifications are now included in the Architecture tile,
 # filtered by the selected Role and Product Category.

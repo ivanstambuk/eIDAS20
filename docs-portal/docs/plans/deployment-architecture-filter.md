@@ -210,17 +210,17 @@ Each question is a **single, focused question** — no (a)(b)(c)(d) sub-question
 | 3.8 | Update Excel export with architecture column | `exportExcel.js` | ✅ DONE |
 | 3.9 | Update summary bar count for architecture-filtered count | `VendorQuestionnaire.jsx` | ✅ DONE (uses existing count) |
 | 3.10 | Manual verification in portal | — | ✅ DONE |
-| 3.11 | Git commit: `feat: add deployment architecture filter and badges to VCQ UI` | — | ⬜ TODO |
+| 3.11 | Git commit: `feat: add deployment architecture filter and badges to VCQ UI` | — | ✅ DONE |
 
 ### Phase 4: Documentation & cleanup
 **Scope:** AGENTS.md, terminology, vcq-config.yaml
 
 | # | Task | Files affected | Status |
 |---|------|---------------|--------|
-| 4.1 | Add deployment architecture definitions to terminology | terminology files | ⬜ TODO |
-| 4.2 | Update vcq-config.yaml with `deploymentArchitectures` schema docs | `vcq-config.yaml` | ⬜ TODO |
-| 4.3 | Update AGENTS.md with new field convention | `AGENTS.md` | ⬜ TODO |
-| 4.4 | Record DEC-number for this architectural decision | Decision log | ⬜ TODO |
+| 4.1 | Add deployment architecture definitions to terminology | `TERMINOLOGY.md` | ✅ DONE — 6 terms added |
+| 4.2 | Update vcq-config.yaml with `deploymentArchitectures` schema docs | `vcq-config.yaml` | ✅ DONE — Step 2b schema + migration notes |
+| 4.3 | Update AGENTS.md with new field convention | `AGENTS.md` | ✅ DONE — schema table + filtering docs |
+| 4.4 | Record DEC-number for this architectural decision | `DECISIONS.md` | ✅ DONE — DEC-289 |
 | 4.5 | Git commit: `docs: document deploymentArchitectures field and terminology` | — | ⬜ TODO |
 
 ---
