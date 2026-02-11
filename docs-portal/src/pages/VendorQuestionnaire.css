@@ -1342,12 +1342,15 @@
     color: var(--text-primary);
     font-weight: 500;
     font-size: var(--text-sm);
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .vcq-arch-inline-hint {
     color: var(--text-secondary);
     font-size: 0.78rem;
     font-weight: 400;
+    white-space: nowrap;
 }
 
 .vcq-arch-inline-option.selected .vcq-arch-inline-label {
