@@ -278,6 +278,7 @@ function loadARFHLRs() {
                 sectionTitle: displayTitle,
                 content: req.specification + (req.notes ? ` ${req.notes}` : ''),
                 sourceCount: 1,
+                deepLink: req.deepLink || '',  // GitHub deep link for external navigation
             });
         }
 
@@ -311,6 +312,7 @@ async function buildIndex() {
             sectionTitle: 'string',
             content: 'string',
             sourceCount: 'number', // Number of sources for multi-source boost
+            deepLink: 'string',    // External URL for ARF HLRs (GitHub deep link)
         },
     });
 

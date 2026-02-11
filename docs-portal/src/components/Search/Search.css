@@ -340,6 +340,20 @@
     border-color: #d97706;
 }
 
+/* External link icon for ARF results (opens on GitHub) */
+.search-result-external-icon {
+    display: inline-block;
+    margin-left: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    vertical-align: super;
+    transition: color var(--transition-fast);
+}
+
+.search-result-arf:hover .search-result-external-icon {
+    color: #d97706;
+}
+
 .search-result-section {
     color: var(--text-muted);
     background: var(--bg-secondary);

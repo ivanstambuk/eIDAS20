@@ -12,7 +12,7 @@ import { useSemanticSearch } from '../../hooks/useSemanticSearch';
 import { useSearchSuggestions } from '../../hooks/useSearchSuggestions';
 import { useQuickJump } from '../../hooks/useQuickJump';
 import { useCitationJump } from '../../hooks/useCitationJump';
-import { buildDocumentLink, buildTerminologyLink, buildVCQLink, buildSectionId } from '../../utils/linkBuilder';
+import { buildDocumentLink, buildTerminologyLink, buildSectionId } from '../../utils/linkBuilder';
 import './Search.css';
 
 /**
@@ -84,11 +84,6 @@ function SearchResult({ result, query, onClick, isSemanticMode }) {
             return buildTerminologyLink({ section: result.id });
         }
 
-        // Handle ARF HLRs - link to VCQ tool
-        if (result.type === 'arf-hlr') {
-            return buildVCQLink();
-        }
-
         // Handle regulations and implementing acts - use centralized link builder
         const section = result.section ? buildSectionId(result.section) : '';
         return buildDocumentLink(result.slug, {
@@ -107,12 +102,14 @@ function SearchResult({ result, query, onClick, isSemanticMode }) {
         ? Math.round(result.score * 100)
         : null;
 
-    return (
-        <Link
-            to={getDocUrl()}
-            className={`search-result ${result.type === 'arf-hlr' ? 'search-result-arf' : ''}`}
-            onClick={onClick}
-        >
+    // ARF HLR results: open GitHub deep link in new tab (like VCQ tool badges)
+    const isARF = result.type === 'arf-hlr';
+    const arfUrl = isARF
+        ? (result.deepLink || 'https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v2.8.0/docs/annexes/annex-2/annex-2.03-high-level-requirements-by-category.md')
+        : null;
+
+    const resultContent = (
+        <>
             <div className="search-result-header">
                 <span className={`search-result-type ${result.type}`}>
                     {getIcon()} {result.docTitle}
@@ -145,12 +142,39 @@ function SearchResult({ result, query, onClick, isSemanticMode }) {
                         ? <span className="search-result-alias"> ({aliasText})</span>
                         : null;
                 })()}
+                {isARF && (
+                    <span className="search-result-external-icon" title="Opens on GitHub">↗</span>
+                )}
             </div>
             <div className="search-result-snippet">
                 {isSemanticMode
                     ? getSnippet(result.content, query)
                     : highlightTerms(getSnippet(result.content, query), query)}
             </div>
+        </>
+    );
+
+    if (isARF) {
+        return (
+            <a
+                href={arfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="search-result search-result-arf"
+                onClick={onClick}
+            >
+                {resultContent}
+            </a>
+        );
+    }
+
+    return (
+        <Link
+            to={getDocUrl()}
+            className="search-result"
+            onClick={onClick}
+        >
+            {resultContent}
         </Link>
     );
 }

@@ -42,6 +42,7 @@ async function loadSearchIndex() {
                     sectionTitle: 'string',
                     content: 'string',
                     sourceCount: 'number', // Number of sources (for multi-source boost)
+                    deepLink: 'string',    // External URL for ARF HLRs
                 },
             });
 
@@ -233,6 +234,7 @@ export function useSearch() {
                     score: boostedScore,
                     sourceCount: sourceCount,
                     isMultiSource: isMultiSource,
+                    deepLink: hit.document.deepLink || '',  // GitHub URL for ARF HLRs
                 };
             });
 
