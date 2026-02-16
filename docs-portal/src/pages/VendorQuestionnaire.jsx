@@ -1383,6 +1383,7 @@ export default function VendorQuestionnaire() {
 
                 md += `**Obligation:** ${req.obligation}\n\n`;
                 md += `**Vendor Compliance:** *(to be completed)*\n\n`;
+                md += `**Evidence:** \n\n`;
 
                 // Legal basis with legal text immediately after
                 if (req.legalBasis) {

@@ -240,6 +240,7 @@ export function exportToExcel({ requirements, selectedRoles, selectedCategories,
         'Clarification Questions',
         'Obligation',
         'Vendor Compliance',
+        'Evidence',
         'Deadline',
         'Roles',
         'Product Categories',
@@ -298,6 +299,7 @@ export function exportToExcel({ requirements, selectedRoles, selectedCategories,
                 { v: questionsText, s: cellStyle },
                 { v: req.obligation || 'SHOULD', s: getObligationStyle(req.obligation) },
                 { v: '', s: cellStyle },  // Vendor Compliance (empty — to be filled by vendor)
+                { v: '', s: cellStyle },  // Evidence (empty — to be filled by vendor)
                 { v: req.deadline || '', s: cellStyle },
                 { v: formatRoles(req), s: cellStyle },
                 { v: formatProductCategories(req), s: cellStyle },
@@ -323,6 +325,7 @@ export function exportToExcel({ requirements, selectedRoles, selectedCategories,
         { wch: 60 },  // Clarification Questions
         { wch: 12 },  // Obligation
         { wch: 20 },  // Vendor Compliance
+        { wch: 30 },  // Evidence
         { wch: 12 },  // Deadline
         { wch: 12 },  // Roles
         { wch: 18 },  // Product Categories
