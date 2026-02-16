@@ -654,25 +654,25 @@ On both platforms, there are legacy mechanisms that could theoretically detect s
 The EUDI Wallet ecosystem follows a clear separation:
 
 ```
-┌─────────────────────────────────────────────────┐
+┌──────────────────────────────────────────────────┐
 │  Third-Party Native App (RP Instance)            │
-│                                                 │
-│  Can: "I need a PID with these attributes"      │
-│  Cannot: "Tell me what wallets and credentials  │
+│                                                  │
+│  Can: "I need a PID with these attributes"       │
+│  Cannot: "Tell me what wallets and credentials   │
 │           exist on this device"                  │
-├─────────────────────────────────────────────────┤
+├──────────────────────────────────────────────────┤
 │  OS Platform API (CredentialManager / DC API)    │
-│                                                 │
+│                                                  │
 │  Knows: Which wallets are installed              │
 │  Knows: Which credential types they registered   │
-│  Does: Matching, selection UI, routing            │
+│  Does: Matching, selection UI, routing           │
 │  Does NOT: Expose this info to the RP app        │
-├─────────────────────────────────────────────────┤
+├──────────────────────────────────────────────────┤
 │  Wallet App(s)                                   │
-│                                                 │
-│  Registers: Credential types with OS              │
-│  Does: Authentication, consent, crypto, response  │
-└─────────────────────────────────────────────────┘
+│                                                  │
+│  Registers: Credential types with OS             │
+│  Does: Authentication, consent, crypto, response │
+└──────────────────────────────────────────────────┘
 ```
 
 **The RP native app operates on a "fire and hope" model:**

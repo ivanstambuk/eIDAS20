@@ -1,22 +1,31 @@
 # Legal Person Differentiation in eIDAS 2.0
 
-> **Research Date:** 2026-02-16  
-> **Status:** Complete — includes EBW roadmap + attribute mandatory/optional analysis + normalization + interim onboarding strategy + Representation EAA analysis + phase-based impact assessment  
-> **Context:** Investigating whether the eIDAS 2.0 framework provides sufficient basis for filtering between natural and legal persons, particularly for differentiated onboarding procedures. Extended to cover mandatory vs. country-specific attributes, cross-border normalization mechanisms, interim legal person onboarding strategies before the EBW, and the impact of each migration phase on VCQ requirements and operational integration.
+**Research Date:** 2026-02-16  
+**Sources:** Regulation (EU) 2024/1183, Consolidated Regulation (EU) No 910/2014, CIR 2024/2977, CIR 2025/1569, ARF v2.8.0, TS2/TS5/TS6/TS10/TS11/TS14, COM(2025) 838, EWC LSP Rulebooks, RPaM Ontology
 
 ---
 
-## 1. Executive Summary
+## 1. Introduction & Scope
 
-The eIDAS 2.0 framework **explicitly and consistently** differentiates between natural and legal persons across all layers: legislation, architecture (ARF), and technical specifications. This distinction is fundamental to the regulatory design and provides a strong basis for implementing filtered onboarding workflows.
+This document analyses how the eIDAS 2.0 framework differentiates between natural and legal persons, and what this means for identity verification, onboarding, and cross-border interoperability. It traces the full chain from the legislative basis, through ARF architecture decisions, to PID attribute structures and cross-border normalization mechanisms, and derives practical guidance for implementing differentiated workflows.
 
-However, there is a deliberate **architectural split**: while the legal basis covers both person types comprehensively, the current ARF has deferred "Wallet Units for legal persons" to a separate **business wallet** initiative. Legal persons remain fully in scope as Relying Parties, Providers, and Registrants — just not (yet) as Wallet holders.
+The central questions addressed are:
 
-For the **interim period (2026–2028)** before the European Business Wallet is operational, this document proposes a three-phase migration path (§5.4–5.6): starting with a hybrid approach using the authorized representative's EUDI Wallet PID combined with external registry verification, transitioning to Representation EAAs (§5.5) once the Catalogue of Attributes is operational, and ultimately to full EBW integration. A detailed impact analysis (§5.6) demonstrates that **Phase 1 requires zero VCQ changes**, and each subsequent phase introduces only incremental additions to the existing verification pipeline.
+1. **Does the framework differentiate?** — Is the natural/legal person distinction embedded in law and architecture?
+2. **What attributes identify each type?** — Which PID attributes are mandatory vs. country-specific for each?
+3. **How does cross-border normalization work?** — When a Dutch company and a German company present different identifier formats, how does an RP handle both?
+4. **How are legal persons onboarded today?** — Given that the ARF descopes wallet units for legal persons, what interim mechanism exists?
+5. **What comes next?** — How do Representation EAAs and the European Business Wallet change the picture?
+
+The document proceeds top-down: **legal foundation → architecture → data model → normalization → representation mechanism → practical guidance → future roadmap**.
+
+**Key finding:** The eIDAS 2.0 framework **explicitly and consistently** differentiates between natural and legal persons across all layers. However, there is a deliberate **architectural split**: while the legal basis covers both person types comprehensively, the current ARF has deferred "Wallet Units for legal persons" to a separate **European Business Wallet** initiative (COM(2025) 838). Legal persons remain fully in scope as Relying Parties, Providers, and Registrants — just not (yet) as Wallet holders.
+
+For the **interim period (2026–2028)** before the EBW is operational, a three-phase migration path is proposed (§7.3–7.5): starting with a hybrid approach using the authorized representative's EUDI Wallet PID combined with external registry verification, transitioning to Representation EAAs (§6) once the Catalogue of Attributes is operational, and ultimately to full EBW integration. A detailed impact analysis (§7.5) demonstrates that **Phase 1 requires zero VCQ changes**, and each subsequent phase introduces only incremental additions to the existing verification pipeline.
 
 ---
 
-## 2. Legislative Basis
+## 2. Legal Framework
 
 ### 2.1 Regulation (EU) 2024/1183 — Key Definitions
 
@@ -107,7 +116,7 @@ This confirms the ARF treats the two representation scenarios differently. The l
 
 ---
 
-## 4. Technical Specifications
+## 4. PID Attributes & Data Model
 
 ### 4.1 Data Model Differentiation
 
@@ -121,9 +130,7 @@ The technical specifications use distinct classes and attributes for natural vs.
 | **TS10** (Data Portability) | `NaturalPerson.givenName` + `NaturalPerson.familyName` | `LegalPerson.legalName` |
 | **TS14** (ZKPs) | eID confirms **natural** person identity | eID confirms **legal** person identity |
 
-### 4.2 Attribute Differences — Mandatory vs. Country-Specific
-
-> **Key question:** Which attributes are mandatory across all Member States, which are optional/country-specific, and how is normalization handled for Relying Parties accepting persons from multiple countries?
+### 4.2 Mandatory vs. Country-Specific Attributes
 
 #### 4.2.1 Natural Person PID — Mandatory Attributes
 
@@ -198,10 +205,14 @@ The technical specifications use distinct classes and attributes for natural vs.
 3. **Which optional attributes are included** — Member States choose which optional attributes to provide based on their national eID schemes
 
 **What is NOT yet fully decided (but in progress):**
-1. **Semantic normalization of the unique legal person identifier** — While every MS must provide one, the format and meaning varies. This is being addressed through the Catalogue of Attributes (see §4.2.4)
-2. **Detailed attribute schemas for Annex VI categories** — The 11 categories in Annex VI (address, age, gender, etc.) are high-level. The specific data schemas for each are being developed through Attestation Rulebooks (see §4.2.5)
+1. **Semantic normalization of the unique legal person identifier** — While every MS must provide one, the format and meaning varies. This is being addressed through the Catalogue of Attributes (see §5.1)
+2. **Detailed attribute schemas for Annex VI categories** — The 11 categories in Annex VI (address, age, gender, etc.) are high-level. The specific data schemas for each are being developed through Attestation Rulebooks (see §5.2)
 
-#### 4.2.4 Cross-Border Normalization — The Catalogue of Attributes
+---
+
+## 5. Cross-Border Normalization
+
+### 5.1 The Catalogue of Attributes
 
 **Status: Legislated (CIR 2025/1569, adopted 29 July 2025), technical spec v1.0 published (TS11, 10 Nov 2025). Catalogue itself not yet operational — becomes applicable 12 months after CIR entry into force.**
 
@@ -209,7 +220,7 @@ The **Catalogue of Attributes** is the Commission's answer to the normalization 
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│            Commission's Catalogue of Attributes               │
+│            Commission's Catalogue of Attributes              │
 │            (CIR 2025/1569, Art. 7 + TS11)                    │
 │                                                              │
 │  For each registered attribute:                              │
@@ -224,12 +235,12 @@ The **Catalogue of Attributes** is the Commission's answer to the normalization 
 │  └────────────────────────────────────────────────────────┘  │
 │                                                              │
 │  Mandate:                                                    │
-│  • Annex VI attributes → mandatory registration by MS       │
-│  • Other public sector attributes → optional registration   │
-│  • Private entity attributes → optional registration        │
+│  • Annex VI attributes → mandatory registration by MS        │
+│  • Other public sector attributes → optional registration    │
+│  • Private entity attributes → optional registration         │
 │                                                              │
-│  Hosted on: Single Digital Gateway (SDG) / OOTS infra       │
-│  Format: Human-readable + machine-readable (API)            │
+│  Hosted on: Single Digital Gateway (SDG) / OOTS infra        │
+│  Format: Human-readable + machine-readable (API)             │
 │  Access: Public, free, no authentication required            │
 └──────────────────────────────────────────────────────────────┘
 ```
@@ -243,7 +254,7 @@ The **Catalogue of Attributes** is the Commission's answer to the normalization 
 
 > **Key insight for RPs:** The normalization is **not** full format unification — a Dutch KvK number will not become identical to a German Handelsregister entry. Instead, the framework provides a **semantic layer** (common attribute identifiers, descriptions, and verification endpoints) that allows RPs to programmatically interpret and verify attributes from any MS, despite underlying format differences.
 
-#### 4.2.5 Attestation Rulebooks — Attribute Schema Governance
+### 5.2 Attestation Rulebooks — Attribute Schema Governance
 
 **Status: Framework legislated (CIR 2025/1569, Art. 8). Rulebook template published. Individual rulebooks under development by scheme owners.**
 
@@ -258,55 +269,7 @@ The Commission maintains an [Attestation Rulebooks Catalog](https://github.com/e
 
 > **Note — EWC Large Scale Pilot Rulebooks (non-binding):** The [EUDI Wallet Consortium (EWC)](https://github.com/EWC-consortium/eudi-wallet-rulebooks-and-schemas), a Large Scale Pilot funded under the EU's Digital Europe Programme, has published draft rulebooks and JSON data schemas for legal person attestations, including an **LPID (Legal Person Identification Data) Rulebook** (rb001), an **EU Company Certificate Rulebook** (rb002), a **Signatory Rights Rulebook** (rb004), and an **Ultimate Beneficial Owners Rulebook** (rb005). These are **pilot artifacts with no legal force** — they are not Commission-level official rulebooks and are not mandated by any implementing act. However, they represent the most advanced concrete work on legal person attestation schemas to date and may inform the eventual official rulebooks. They are useful as a reference for the likely structure and attribute set of future official attestation schemas.
 
-#### 4.2.6 Clarification — Answering the Key Questions
-
-The following Q&A captures the practical interpretation of the regulatory and technical findings above.
-
----
-
-**Q1: Are PID attributes mandatory or country-specific?**
-
-**Both — and the distinction is fully decided.** CIR 2024/2977 (adopted November 2024, already in force) establishes a two-tier system:
-
-- **Mandatory attributes are EU-wide and non-negotiable.** Every Member State must issue them in every PID. For natural persons, that's 5 attributes (`family_name`, `given_name`, `birth_date`, `birth_place`, `nationality`). For legal persons, it's just 2 (`current legal name` + a unique identifier).
-- **Optional attributes are at Member State discretion.** Each MS chooses which additional attributes to provide based on their national eID schemes. Recital 12 of CIR 2024/2977 clarifies that MSs *"should, in addition to the mandatory attributes, provide optional attributes needed to ensure that the set of person identification data is unique"* — so there is regulatory pressure to include enough optionals for uniqueness, but not a rigid list.
-
-The legal person unique identifier is an important special case. The CIR deliberately states it is *"constructed by the sending Member State"* and must be *"as persistent as possible in time."* In practice, this means:
-- The Netherlands would use a **KvK** (Kamer van Koophandel) number
-- Germany would use a **Handelsregisternummer**
-- France would use a **SIREN/SIRET** number
-- Each country defines its own identifier format, but the **attribute slot itself** is mandatory across all 27 MSs
-
-This is **by design**, not a gap. National company registries are fundamentally different systems, and the regulation does not attempt to force a single identifier format. Instead, it mandates a common semantic wrapper (see Q2).
-
-> **Maturity: Decided.** CIR 2024/2977, adopted November 2024, in force.
-
----
-
-**Q2: How will normalization work for RPs accepting legal persons from multiple countries?**
-
-Via the **Catalogue of Attributes** — a Commission-maintained, machine-readable semantic registry legislated in **CIR 2025/1569** (adopted July 2025) and technically specified in **TS11** (v1.0, November 2025).
-
-The critical insight is that this is **semantic interoperability, not format unification**. A Dutch KvK number will never become identical to a German Handelsregister entry — they are issued by different national systems with different formats. Instead, the Catalogue of Attributes provides a **semantic layer** that lets RPs programmatically work with attributes from any MS:
-
-1. **Discovery** — An RP queries the catalogue API to find which attributes are available for legal persons in each MS, including the specific identifier types used.
-2. **Semantic mapping** — The catalogue assigns each attribute a unique URI and provides semantic descriptions. This enables the RP to understand that a KvK number and a Handelsregisternummer serve the **same function** (unique legal person identifier), even though their format differs.
-3. **Verification endpoints** — For each registered attribute, the catalogue maps to per-MS verification services (authentic sources). An RP can verify a KvK number against the Dutch authentic source and a Handelsregisternummer against the German one — both via **standardized API interfaces** (either OOTS eDelivery or REST/OAuth 2.0, per TS11 §3.2).
-4. **Schema distributions** — The catalogue provides JSON schemas and format-specific distributions (mDoc, SD-JWT VC) so RPs can parse attribute values programmatically.
-
-**What this means in practice for a Relying Party:**
-- You do **not** need to build custom integrations for each of 27 Member States
-- You query a single Commission-hosted API to discover what's available
-- You use standardized verification interfaces to validate attributes against authentic sources
-- You rely on semantic descriptions to map country-specific identifiers to a common conceptual model in your own system
-
-> **Maturity: Framework decided, implementation in progress.** CIR 2025/1569 adopted July 2025. TS11 v1.0 published November 2025. The catalogue itself is **not yet operational** — CIR 2025/1569 Art. 11 specifies a 12-month applicability delay for Articles 6–9 (catalogue and verification points). Projected operational date: ~H2 2026.
-
----
-
-**Q3: Is it too early to ask these questions?**
-
-**No.** The regulatory picture is clear and stable. Here is a maturity assessment by layer:
+### 5.3 Maturity Assessment
 
 | Layer | Status | Certainty |
 |-------|--------|-----------|
@@ -320,130 +283,9 @@ The bottom line: **the foundational questions about what attributes are required
 
 ---
 
-## 5. Implications for Filtering & Onboarding
+## 6. Representation EAAs — The Future In-Ecosystem Mechanism
 
-### 5.1 Filtering is Well-Supported
-
-The regulatory and technical framework provides **clear grounds** for implementing filtering between natural and legal persons. The differentiation exists at every level of the stack.
-
-### 5.2 Onboarding Differentiation
-
-| Aspect | Natural Person | Legal Person |
-|--------|----------------|--------------|
-| **Identity verification** | Individual PID | Representative identification (natural person) + legal entity verification |
-| **Proof required** | Personal ID documents | Proof of representational authority / mandate + entity registration |
-| **Mandatory PID attributes** | `family_name`, `given_name`, `birth_date`, `birth_place`, `nationality` (5 attrs) | `current legal name` + MS-constructed unique identifier (2 attrs) |
-| **Representation** | Self or via another natural person | Via a natural person with mandate |
-| **Wallet holding** | Current ARF scope | Deferred to business wallet |
-
-### 5.3 RP Registration Filtering
-
-For Relying Party registration specifically:
-- **TS6** defines common RP registration information that includes whether the RP is a natural or legal person
-- **TS5** provides distinct data format classes (`LegalEntity`, `LegalPerson`) for legal person RPs
-- Registrars manage registration and make entity data publicly available
-
-### 5.4 Interim Legal Person Onboarding — Before the European Business Wallet
-
-#### 5.4.1 The Problem
-
-The ARF explicitly descopes wallet units for legal persons (ARF Annex 2, Topic 28), and the European Business Wallet (COM(2025) 838) is not projected for EU-wide adoption until 2028–2029. This creates a **transitional gap**: Relying Parties that need to onboard legal persons cannot rely on full wallet-based legal person identification during the initial EUDI Wallet rollout period (2026–2028).
-
-The question is: **how should legal person onboarding be handled in the interim?**
-
-#### 5.4.2 Recommended Approach — Hybrid Two-Step Identification
-
-The regulation's tri-partite identity model (§2) was established with full awareness that legal person wallet units would be descoped. This indicates the legislators anticipated an interim period where legal person onboarding would operate through a **natural person's wallet combined with external verification**. The recommended approach follows a three-step pattern:
-
-**Step 1 — Authenticate the representative via EUDI Wallet (natural person PID)**
-
-The authorized representative (e.g., director, managing partner, authorized signatory) authenticates using their personal EUDI Wallet. This provides the RP with the mandatory natural person PID attributes (`family_name`, `given_name`, `birth_date`, etc.) at high assurance level.
-
-**Step 2 — Collect the legal entity identifier**
-
-The representative provides the legal entity's national registration number. This is a manual input step, outside the wallet ecosystem. Examples of national identifiers:
-- 🇳🇱 Netherlands — **KvK number** (Kamer van Koophandel)
-- 🇩🇪 Germany — **Handelsregisternummer** (commercial register number)
-- 🇫🇷 France — **SIREN/SIRET number**
-- 🇮🇹 Italy — **Codice fiscale** (for legal entities) or **REA number**
-
-**Step 3 — Verify against the authentic source and cross-reference**
-
-The RP calls the relevant national company registry API and verifies two things:
-1. **Entity validity** — the legal entity exists and is currently active
-2. **Representative authority** — the authenticated natural person is listed as a director, authorized signatory, or holder of a relevant mandate for that entity
-
-This cross-check creates a **high-confidence binding** between the wallet-authenticated natural person and the legal entity, even without a representation EAA or an EBW.
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│              Interim Legal Person Onboarding Flow               │
-│                                                                 │
-│  ┌──────────────┐    ┌──────────────────┐    ┌──────────────┐  │
-│  │ EUDI Wallet  │    │  Manual Input    │    │  Registry    │  │
-│  │              │    │                  │    │  Verification│  │
-│  │ Natural      │───►│ Entity ID        │───►│              │  │
-│  │ Person PID   │    │ (e.g. KvK nr.)   │    │ ✓ Entity     │  │
-│  │ (high        │    │                  │    │   active?    │  │
-│  │  assurance)  │    │                  │    │ ✓ Person is  │  │
-│  │              │    │                  │    │   authorized │  │
-│  │              │    │                  │    │   rep.?      │  │
-│  └──────────────┘    └──────────────────┘    └──────────────┘  │
-│                                                                 │
-│  Output: Authenticated natural person bound to verified         │
-│          legal entity with confirmed representative authority   │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-#### 5.4.3 Alternatives Comparison
-
-| Approach | Available when | Assurance level | Key limitation |
-|----------|---------------|-----------------|----------------|
-| **Hybrid** (wallet PID + registry check) | Now → 2028 | High — wallet-grade identity + registry cross-check | Manual input of entity ID; requires per-registry API integration |
-| **Representation EAAs** ("powers & mandates" attestation issued by a QTSP, linking the natural person to the legal entity within the wallet ecosystem) | ~H2 2026–2027, once Catalogue of Attributes + attestation rulebooks are operational | Higher — fully in-ecosystem, no manual input | Depends on QTSPs actually issuing representation attestations; Annex VI item 9 rulebook still under development |
-| **Legal person PID via natural person's wallet** | Theoretically possible under CIR 2024/2977 (data model exists), but no wallet implementation supports this pattern yet | High — if implemented | Unclear timeline; no wallet provider has announced support |
-| **Full EBW** (legal person holds its own wallet and authenticates directly) | 2028–2029 (projected, subject to legislative procedure) | Highest — native legal person identity | Too far out for interim planning |
-
-The hybrid approach is the **only realistic option for 2026–2027**. It upgrades the weakest link in traditional legal person onboarding (identity verification of the representative) to wallet-level assurance, while maintaining the legal entity verification step as a familiar registry check.
-
-#### 5.4.4 Cross-Border Considerations
-
-For cross-border onboarding scenarios (e.g., a French authorized representative of a German company), the RP must query the **entity's** Member State registry, not the representative's. This creates a practical challenge: the quality and accessibility of national company registry APIs varies significantly across Member States.
-
-| Registry | API maturity | Programmatic representative lookup |
-|----------|-------------|------------------------------|
-| 🇳🇱 NL — Kamer van Koophandel (KvK) | Mature — well-documented REST API | ✅ Available |
-| 🇩🇪 DE — Handelsregister | Improving — electronic access via `handelsregister.de` | ⚠️ Limited — online search available, full API integration less mature |
-| 🇫🇷 FR — Infogreffe / RCS | Available — API access via `api.infogreffe.fr` | ✅ Available (via data.gouv.fr for basic data) |
-| 🇮🇹 IT — Registro delle Imprese | Available — InfoCamere provides API access | ✅ Available |
-
-This per-registry variation is **precisely the problem** that the Catalogue of Attributes verification endpoints (CIR 2025/1569 Art. 9, TS11 §3.2) will solve by providing standardized API interfaces to national authentic sources. Once operational (~H2 2026), the catalogue will replace the need for per-registry custom integrations.
-
-#### 5.4.5 Migration Path
-
-The hybrid approach should be designed **modularly** to enable a smooth migration as the ecosystem matures:
-
-```
-Phase 1 (2026–2027)      Phase 2 (~H2 2026–2027)     Phase 3 (2028–2029)
-─────────────────────    ────────────────────────    ─────────────────────
-Wallet PID               Wallet PID                  EBW authentication
-  +                        +                           (legal person
-Manual entity ID input   Representation EAA            identity native
-  +                      (powers & mandates)            in wallet)
-Direct registry check      +
-                         Catalogue of Attributes
-                         verification endpoints
-```
-
-The key design principle is: **keep the three-step structure (authenticate person → identify entity → verify authority) constant, and swap the implementation of each step as higher-assurance mechanisms become available.**
-
-- In Phase 1, step 2 is manual input and step 3 is a direct registry API call
-- In Phase 2, steps 2+3 merge into a single representation EAA verification via the Catalogue
-- In Phase 3, all steps are handled natively by the EBW
-
-### 5.5 Representation EAAs — The Future In-Ecosystem Mechanism
-
-#### 5.5.1 What Is a Representation EAA?
+### 6.1 What Is a Representation EAA?
 
 A **Representation EAA** (Electronic Attestation of Attributes) is a credential that attests: *"This natural person has the authority to act on behalf of this legal entity, with a defined scope of power."* It is **not** a PID — it is a separate credential stored in the natural person's wallet alongside their personal PID.
 
@@ -453,9 +295,9 @@ When onboarding a legal person in the future, the flow would work as follows:
 2. The natural person presents a **Representation EAA** from the same wallet (proving their authority to act for the legal entity)
 3. The Relying Party verifies both credentials — identity and authority — **entirely within the wallet ecosystem**, eliminating the need for manual entity ID input or out-of-band registry checks
 
-This replaces the hybrid approach described in §5.4 with a fully in-ecosystem mechanism.
+This replaces the hybrid interim approach described in §7.3 with a fully in-ecosystem mechanism.
 
-#### 5.5.2 Content of a Representation EAA
+### 6.2 Content of a Representation EAA
 
 Based on the regulatory framework and the RPaM (Representation Powers and Mandates) Ontology referenced in TS11, a Representation EAA would contain at minimum:
 
@@ -466,10 +308,10 @@ Based on the regulatory framework and the RPaM (Representation Powers and Mandat
 | **Type of power** | The nature of the representational authority | Director, authorized signatory, proxy holder, specific mandate |
 | **Scope** | Boundaries of the authority granted | Full representation, limited to contracts under €50,000, tax matters only, etc. |
 | **Validity period** | Temporal boundaries of the mandate | Start date / end date or open-ended |
-| **Issuer** | The entity that attested the representation | QTSP or public sector body (see §5.5.3) |
+| **Issuer** | The entity that attested the representation | QTSP or public sector body (see §6.3) |
 | **Authentic source** | The registry or authority from which the mandate information originates | National company registry |
 
-#### 5.5.3 Who Issues Representation EAAs?
+### 6.3 Who Issues Representation EAAs?
 
 The eIDAS framework provides **two issuance paths**, each with distinct trust characteristics:
 
@@ -500,32 +342,32 @@ This path is the **scalable** option — QTSPs can operate across multiple Membe
 ┌──────────────────────────────────────────────────────────────────┐
 │           Representation EAA Issuance — Two Paths                │
 │                                                                  │
-│  Path 1: PuB-EAA (direct)          Path 2: QEAA (via QTSP)     │
+│  Path 1: PuB-EAA (direct)          Path 2: QEAA (via QTSP)       │
 │                                                                  │
-│  ┌───────────────┐                 ┌───────────────┐            │
-│  │ Company       │                 │ QTSP          │            │
-│  │ Registry      │                 │               │            │
-│  │ (e.g. KvK,    │                 │ Verifies      │            │
-│  │  Handels-     │──┐         ┌───►│ against       │            │
-│  │  register)    │  │         │    │ registry      │            │
-│  └───────┬───────┘  │         │    └───────┬───────┘            │
+│  ┌───────────────┐                 ┌───────────────┐             │
+│  │ Company       │                 │ QTSP          │             │
+│  │ Registry      │                 │               │             │
+│  │ (e.g. KvK,    │                 │ Verifies      │             │
+│  │  Handels-     │──┐         ┌───►│ against       │             │
+│  │  register)    │  │         │    │ registry      │             │
+│  └───────┬───────┘  │         │    └───────┬───────┘             │
 │          │          │         │            │                     │
-│   Issues │     Authentic     │     Issues  │                     │
-│   PuB-EAA│     source   Verification      QEAA                  │
+│   Issues │     Authentic      │    Issues  │                     │
+│   PuB-EAA│     source   Verification      QEAA                   │
 │          │     data      endpoint          │                     │
 │          ▼          │         │            ▼                     │
-│  ┌──────────────────┴─────────┴──────────────────┐              │
+│  ┌──────────────────┴─────────┴───────────────────┐              │
 │  │              Natural Person's Wallet           │              │
 │  │                                                │              │
-│  │  ┌─────────────┐   ┌──────────────────────┐   │              │
-│  │  │ Personal PID│   │ Representation EAA   │   │              │
-│  │  │ (identity)  │   │ (authority to act)   │   │              │
-│  │  └─────────────┘   └──────────────────────┘   │              │
+│  │  ┌─────────────┐   ┌──────────────────────┐    │              │
+│  │  │ Personal PID│   │ Representation EAA   │    │              │
+│  │  │ (identity)  │   │ (authority to act)   │    │              │
+│  │  └─────────────┘   └──────────────────────┘    │              │
 │  └────────────────────────────────────────────────┘              │
 └──────────────────────────────────────────────────────────────────┘
 ```
 
-#### 5.5.4 Legal Basis
+### 6.4 Legal Basis
 
 **Annex VI of the Regulation, item 9** explicitly lists:
 
@@ -535,7 +377,7 @@ This places representation powers among the attributes that **must be verifiable
 
 Additionally, the **RPaM (Representation Powers and Mandates) Ontology** — developed under the EU's DE4A (Digital Europe for All) and SEMPER projects — provides a standardized semantic vocabulary for expressing mandates. TS11 (§2, attribute inclusion sources) explicitly references RPaM alongside SEMIC Core Vocabularies and the IANA JWT Claims Registry as inputs to the Catalogue of Attributes data model.
 
-#### 5.5.5 Current Maturity
+### 6.5 Current Maturity
 
 | Aspect | Status |
 |--------|--------|
@@ -546,13 +388,130 @@ Additionally, the **RPaM (Representation Powers and Mandates) Ontology** — dev
 | **RPaM Ontology integration** into Catalogue of Attributes | 🟡 Referenced in TS11, not yet formalized as a registered attribute schema |
 | **QTSPs or public bodies actually issuing** Representation EAAs | 🔴 Not yet — dependent on verification endpoints and attestation rulebook |
 
-**Bottom line:** Representation EAAs are legally mandated and the issuance framework is fully legislated, but **no entity is currently issuing them**. The prerequisite infrastructure — Member State verification endpoints, the Catalogue of Attributes, and the specific attestation rulebook for powers and mandates — is still being built. This confirms that the hybrid approach (§5.4) remains the only viable mechanism for legal person onboarding during the 2026–2027 period, with Representation EAAs expected to become available as the Catalogue of Attributes goes operational and QTSPs/public bodies begin issuance.
+**Bottom line:** Representation EAAs are legally mandated and the issuance framework is fully legislated, but **no entity is currently issuing them**. The prerequisite infrastructure — Member State verification endpoints, the Catalogue of Attributes, and the specific attestation rulebook for powers and mandates — is still being built. This confirms that the hybrid approach (§7.3) remains the only viable mechanism for legal person onboarding during the 2026–2027 period, with Representation EAAs expected to become available as the Catalogue of Attributes goes operational and QTSPs/public bodies begin issuance.
 
-### 5.6 Impact Analysis by Phase
 
-The three-phase migration path (§5.4.5) has distinct implications for VCQ requirements, wallet integration, and operational IT effort. This section provides a breakdown of what changes — and what does not — at each transition.
+---
 
-#### 5.6.1 Phase 1: Hybrid Approach (2026–2027)
+## 7. Practical Implications
+
+### 7.1 Filtering is Well-Supported
+
+The regulatory and technical framework provides **clear grounds** for implementing filtering between natural and legal persons. The differentiation exists at every level of the stack: legislation (§2), ARF architecture (§3), data model (§4), and cross-border normalization (§5).
+
+### 7.2 Onboarding Differentiation
+
+| Aspect | Natural Person | Legal Person |
+|--------|----------------|--------------|
+| **Identity verification** | Individual PID | Representative identification (natural person) + legal entity verification |
+| **Proof required** | Personal ID documents | Proof of representational authority / mandate + entity registration |
+| **Mandatory PID attributes** | `family_name`, `given_name`, `birth_date`, `birth_place`, `nationality` (5 attrs) | `current legal name` + MS-constructed unique identifier (2 attrs) |
+| **Representation** | Self or via another natural person | Via a natural person with mandate |
+| **Wallet holding** | Current ARF scope | Deferred to business wallet |
+
+### 7.3 Interim Legal Person Onboarding — Before the European Business Wallet
+
+#### 7.3.1 The Problem
+
+The ARF explicitly descopes wallet units for legal persons (ARF Annex 2, Topic 28), and the European Business Wallet (COM(2025) 838) is not projected for EU-wide adoption until 2028–2029. This creates a **transitional gap**: Relying Parties that need to onboard legal persons cannot rely on full wallet-based legal person identification during the initial EUDI Wallet rollout period (2026–2028).
+
+The question is: **how should legal person onboarding be handled in the interim?**
+
+#### 7.3.2 Recommended Approach — Hybrid Two-Step Identification
+
+The regulation's tri-partite identity model (§2) was established with full awareness that legal person wallet units would be descoped. This indicates the legislators anticipated an interim period where legal person onboarding would operate through a **natural person's wallet combined with external verification**. The recommended approach follows a three-step pattern:
+
+**Step 1 — Authenticate the representative via EUDI Wallet (natural person PID)**
+
+The authorized representative (e.g., director, managing partner, authorized signatory) authenticates using their personal EUDI Wallet. This provides the RP with the mandatory natural person PID attributes (`family_name`, `given_name`, `birth_date`, etc.) at high assurance level.
+
+**Step 2 — Collect the legal entity identifier**
+
+The representative provides the legal entity's national registration number. This is a manual input step, outside the wallet ecosystem. Examples of national identifiers:
+- 🇳🇱 Netherlands — **KvK number** (Kamer van Koophandel)
+- 🇩🇪 Germany — **Handelsregisternummer** (commercial register number)
+- 🇫🇷 France — **SIREN/SIRET number**
+- 🇮🇹 Italy — **Codice fiscale** (for legal entities) or **REA number**
+
+**Step 3 — Verify against the authentic source and cross-reference**
+
+The RP calls the relevant national company registry API and verifies two things:
+1. **Entity validity** — the legal entity exists and is currently active
+2. **Representative authority** — the authenticated natural person is listed as a director, authorized signatory, or holder of a relevant mandate for that entity
+
+This cross-check creates a **high-confidence binding** between the wallet-authenticated natural person and the legal entity, even without a representation EAA or an EBW.
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│              Interim Legal Person Onboarding Flow               │
+│                                                                 │
+│  ┌──────────────┐    ┌──────────────────┐    ┌──────────────┐   │
+│  │ EUDI Wallet  │    │  Manual Input    │    │  Registry    │   │
+│  │              │    │                  │    │  Verification│   │
+│  │ Natural      │--->│ Entity ID        │--->│              │   │
+│  │ Person PID   │    │ (e.g. KvK nr.)   │    │ * Entity     │   │
+│  │ (high        │    │                  │    │   active?    │   │
+│  │  assurance)  │    │                  │    │ * Person is  │   │
+│  │              │    │                  │    │   authorized │   │
+│  │              │    │                  │    │   rep.?      │   │
+│  └──────────────┘    └──────────────────┘    └──────────────┘   │
+│                                                                 │
+│  Output: Authenticated natural person bound to verified         │
+│          legal entity with confirmed representative authority   │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+#### 7.3.3 Alternatives Comparison
+
+| Approach | Available when | Assurance level | Key limitation |
+|----------|---------------|-----------------|----------------|
+| **Hybrid** (wallet PID + registry check) | Now → 2028 | High — wallet-grade identity + registry cross-check | Manual input of entity ID; requires per-registry API integration |
+| **Representation EAAs** ("powers & mandates" attestation issued by a QTSP, linking the natural person to the legal entity within the wallet ecosystem) | ~H2 2026–2027, once Catalogue of Attributes + attestation rulebooks are operational | Higher — fully in-ecosystem, no manual input | Depends on QTSPs actually issuing representation attestations; Annex VI item 9 rulebook still under development |
+| **Legal person PID via natural person's wallet** | Theoretically possible under CIR 2024/2977 (data model exists), but no wallet implementation supports this pattern yet | High — if implemented | Unclear timeline; no wallet provider has announced support |
+| **Full EBW** (legal person holds its own wallet and authenticates directly) | 2028–2029 (projected, subject to legislative procedure) | Highest — native legal person identity | Too far out for interim planning |
+
+The hybrid approach is the **only realistic option for 2026–2027**. It upgrades the weakest link in traditional legal person onboarding (identity verification of the representative) to wallet-level assurance, while maintaining the legal entity verification step as a familiar registry check.
+
+#### 7.3.4 Cross-Border Considerations
+
+For cross-border onboarding scenarios (e.g., a French authorized representative of a German company), the RP must query the **entity's** Member State registry, not the representative's. This creates a practical challenge: the quality and accessibility of national company registry APIs varies significantly across Member States.
+
+| Registry | API maturity | Programmatic representative lookup |
+|----------|-------------|------------------------------|
+| 🇳🇱 NL — Kamer van Koophandel (KvK) | Mature — well-documented REST API | ✅ Available |
+| 🇩🇪 DE — Handelsregister | Improving — electronic access via `handelsregister.de` | ⚠️ Limited — online search available, full API integration less mature |
+| 🇫🇷 FR — Infogreffe / RCS | Available — API access via `api.infogreffe.fr` | ✅ Available (via data.gouv.fr for basic data) |
+| 🇮🇹 IT — Registro delle Imprese | Available — InfoCamere provides API access | ✅ Available |
+
+This per-registry variation is **precisely the problem** that the Catalogue of Attributes verification endpoints (CIR 2025/1569 Art. 9, TS11 §3.2) will solve by providing standardized API interfaces to national authentic sources. Once operational (~H2 2026), the catalogue will replace the need for per-registry custom integrations.
+
+### 7.4 Migration Path
+
+The hybrid approach should be designed **modularly** to enable a smooth migration as the ecosystem matures:
+
+```
+Phase 1 (2026–2027)      Phase 2 (~H2 2026–2027)     Phase 3 (2028–2029)
+─────────────────────    ────────────────────────    ─────────────────────
+Wallet PID               Wallet PID                  EBW authentication
+  +                        +                           (legal person
+Manual entity ID input   Representation EAA            identity native
+  +                      (powers & mandates)            in wallet)
+Direct registry check      +
+                         Catalogue of Attributes
+                         verification endpoints
+```
+
+The key design principle is: **keep the three-step structure (authenticate person → identify entity → verify authority) constant, and swap the implementation of each step as higher-assurance mechanisms become available.**
+
+- In Phase 1, step 2 is manual input and step 3 is a direct registry API call
+- In Phase 2, steps 2+3 merge into a single representation EAA verification via the Catalogue
+- In Phase 3, all steps are handled natively by the EBW
+
+### 7.5 Impact Analysis by Phase
+
+The three-phase migration path (§7.4) has distinct implications for VCQ requirements, wallet integration, and operational IT effort. This section provides a breakdown of what changes — and what does not — at each transition.
+
+#### 7.5.1 Phase 1: Hybrid Approach (2026–2027)
 
 **VCQ requirements impact: None.**
 
@@ -575,7 +534,7 @@ The RP's wallet-facing integration handles a standard natural person PID present
 
 None of this work is wallet-specific. It is the same type of corporate verification that regulated entities already perform, with the person identification step upgraded from traditional eID or in-person verification to wallet-level assurance.
 
-#### 5.6.2 Phase 2: Representation EAAs (~H2 2026–2027)
+#### 7.5.2 Phase 2: Representation EAAs (~H2 2026–2027)
 
 **VCQ requirements impact: Low-to-Moderate — incremental additions using existing mechanisms.**
 
@@ -648,7 +607,7 @@ The RP's OID4VP presentation request is updated to ask for both a PID **and** a 
 
 Phase 2 **reduces** overall operational complexity. The per-registry integrations built in Phase 1 become unnecessary, and the manual input step is eliminated entirely.
 
-#### 5.6.3 Phase 3: Full EBW (2028–2029)
+#### 7.5.3 Phase 3: Full EBW (2028–2029)
 
 **VCQ requirements impact: Moderate — new credential type.**
 
@@ -672,7 +631,7 @@ However, the EBW shares the **same trust infrastructure** (LoTEs, ACAs, Registra
 
 If Phase 2 is already operational, Phase 3 adds only the ability to accept a new credential type through the same pipeline. The operational complexity is lower than Phase 1.
 
-#### 5.6.4 Consolidated Impact Matrix
+#### 7.5.4 Consolidated Impact Matrix
 
 | Dimension | Phase 1 (Hybrid) | Phase 2 (EAAs) | Phase 3 (EBW) |
 |-----------|------------------|----------------|---------------|
@@ -685,11 +644,18 @@ If Phase 2 is already operational, Phase 3 adds only the ability to accept a new
 
 The heaviest IT lift occurs in **Phase 1** — the per-country registry integrations. That investment is progressively replaced by standardized ecosystem mechanisms in Phases 2 and 3. Each subsequent phase reduces operational complexity while requiring only minor, incremental wallet integration updates, because the EUDI Wallet trust infrastructure (LoTEs, OID4VP, mDoc/SD-JWT VC, revocation protocols) is reused across all credential types.
 
+### 7.6 RP Registration Filtering
+
+For Relying Party registration specifically:
+- **TS6** defines common RP registration information that includes whether the RP is a natural or legal person
+- **TS5** provides distinct data format classes (`LegalEntity`, `LegalPerson`) for legal person RPs
+- Registrars manage registration and make entity data publicly available
+
 ---
 
-## 6. The European Business Wallet (EBW) Initiative
+## 8. The European Business Wallet (EBW) Initiative
 
-### 6.1 Origin & Legislative Reference
+### 8.1 Origin & Legislative Reference
 
 The "separate business wallet" referenced in ARF Topic 28 has now materialized as a **formal legislative proposal**:
 
@@ -701,7 +667,7 @@ The "separate business wallet" referenced in ARF Topic 28 has now materialized a
 
 This confirms the ARF's descoping was deliberate and planned — the Commission always intended to address legal persons through a dedicated regulation rather than squeezing them into the citizen-focused EUDI Wallet ARF.
 
-### 6.2 Recital 12 — The Legislative Bridge
+### 8.2 Recital 12 — The Legislative Bridge
 
 Recital 12 of Regulation (EU) 2024/1183 explicitly foreshadows the EBW:
 
@@ -711,7 +677,7 @@ This Recital establishes the **legislative intent** that was later fulfilled by 
 - **Wallet Provider audit:** `➖` (Art. 5a scope covered)
 - **Relying Party audit:** `➖` (Legal person user context)
 
-### 6.3 EBW Scope & Target Users
+### 8.3 EBW Scope & Target Users
 
 The EBW is designed for **all economic operators**, not just large enterprises:
 
@@ -729,7 +695,7 @@ The EBW is designed for **all economic operators**, not just large enterprises:
 - **B2C** — Interactions with consumers
 - **G2G** — Exchanges between public sector bodies
 
-### 6.4 EBW Roadmap & Timeline
+### 8.4 EBW Roadmap & Timeline
 
 ```
 2024 May         eIDAS 2.0 (Reg. 2024/1183) enters into force
@@ -754,13 +720,13 @@ The EBW is designed for **all economic operators**, not just large enterprises:
 - **Public bodies** must also **hold their own EBW** for document/notification exchange
 - **Use is optional** for businesses — no mandate to adopt, but strong incentives (est. **€150 billion** annual cost savings cited by Commission)
 
-### 6.5 Relationship Between EUDI Wallet and EBW
+### 8.5 Relationship Between EUDI Wallet and EBW
 
 The EBW is **not** a separate silo — it is designed to interoperate with the EUDI Wallet ecosystem:
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│                  eIDAS 2.0 Trust Framework                    │
+│                  eIDAS 2.0 Trust Framework                   │
 │                                                              │
 │  ┌─────────────┐         ┌──────────────────┐                │
 │  │ EUDI Wallet │◄───────►│ European Business│                │
@@ -770,11 +736,11 @@ The EBW is **not** a separate silo — it is designed to interoperate with the E
 │         │                         │                          │
 │         │    ┌────────────────┐   │                          │
 │         └───►│ Representation │◄──┘                          │
-│              │ Layer          │                               │
-│              │ (Natural person│                               │
-│              │  acting for    │                               │
-│              │  legal person) │                               │
-│              └────────────────┘                               │
+│              │ Layer          │                              │
+│              │ (Natural person│                              │
+│              │  acting for    │                              │
+│              │  legal person) │                              │
+│              └────────────────┘                              │
 │                                                              │
 │  Shared infrastructure:                                      │
 │  - Trust anchors & LoTEs                                     │
@@ -791,7 +757,7 @@ The EBW is **not** a separate silo — it is designed to interoperate with the E
 - The EBW integrates with existing EU systems: **Single Digital Gateway (SDG)** and **Once-Only Technical System (OOTS)**
 - Wallet Unit Attestations follow the same trust list framework (Commission Implementing Regulation (EU) 2024/2980)
 
-### 6.6 EBW Technical Requirements
+### 8.6 EBW Technical Requirements
 
 The COM(2025) 838 proposal outlines these technical requirements for EBW:
 
@@ -806,7 +772,7 @@ The COM(2025) 838 proposal outlines these technical requirements for EBW:
 | **Technological Neutrality** | Emphasis on technology-neutral, flexible, future-proof design |
 | **International Alignment** | Support for global identifiers for European businesses operating internationally |
 
-### 6.7 Standardization Efforts
+### 8.7 Standardization Efforts
 
 CEN and CENELEC are actively developing:
 - Standardized protocols for enterprise wallets
@@ -817,9 +783,9 @@ Large-scale pilot projects have been testing various B2G and B2B use cases and d
 
 ---
 
-## 7. Remaining Gaps & Open Questions
+## 9. Open Questions
 
-### 7.1 EBW Adoption Timeline Uncertainty
+### 9.1 EBW Adoption Timeline Uncertainty
 
 While the COM(2025) 838 proposal was published in November 2025, the ordinary legislative procedure means adoption is still ahead:
 - As of February 2026, the proposal remains in the **preparatory phase** within the European Parliament
@@ -827,28 +793,28 @@ While the COM(2025) 838 proposal was published in November 2025, the ordinary le
 - Trilogues may modify requirements
 - Entry into force date is not yet fixed — public authority readiness is projected ~2027–2028 at earliest, assuming the legislative process proceeds without major delays
 
-### 7.2 Representation Attestations for Legal Persons
+### 9.2 Representation Attestations for Legal Persons
 
-The regulatory framework for Representation EAAs is now largely defined (see §5.5 for a detailed analysis of the mechanism, content, issuance paths, and current maturity). Several questions from earlier research are now answered:
-- **Attestation format:** mDoc or SD-JWT VC, same formats as PID (§5.6.2)
-- **Revocability:** Yes — same revocation protocol as PID (§5.6.2)
-- **Scope of authority:** Defined via mandate type and scope attributes in the EAA (§5.5.2)
+The regulatory framework for Representation EAAs is now largely defined (see §6 for a detailed analysis of the mechanism, content, issuance paths, and current maturity). Several questions from earlier research are now answered:
+- **Attestation format:** mDoc or SD-JWT VC, same formats as PID (§7.5.2)
+- **Revocability:** Yes — same revocation protocol as PID (§7.5.2)
+- **Scope of authority:** Defined via mandate type and scope attributes in the EAA (§6.2)
 
 **Remaining open questions:**
 - How will the EUDI Wallet / EBW interplay work at the **protocol level** for representation? (i.e., when a natural person uses their EUDI Wallet to act on behalf of a legal entity that also holds an EBW — which wallet leads the presentation?)
 - What specific mandate types and scope values will the official attestation rulebook for "powers & mandates" (Annex VI, item 9) define? The EWC LSP Signatory Rights Rulebook (rb004) provides an early draft, but the Commission-level rulebook has not yet been published.
 
-### 7.3 Cross-Border Legal Person Identification
+### 9.3 Cross-Border Legal Person Identification
 
-As of February 2026, the cross-border identification mechanism for legal persons is defined but not yet operational. CIR 2025/1569 + TS11 establish the Catalogue of Attributes with per-MS verification endpoints and semantic normalization (see §4.2.4 for details). **Remaining gap:** The catalogue itself is not yet operational (12-month applicability delay from CIR entry into force) and individual Member State verification endpoints have not yet been deployed.
+As of February 2026, the cross-border identification mechanism for legal persons is defined but not yet operational. CIR 2025/1569 + TS11 establish the Catalogue of Attributes with per-MS verification endpoints and semantic normalization (see §5.1 for details). **Remaining gap:** The catalogue itself is not yet operational (12-month applicability delay from CIR entry into force) and individual Member State verification endpoints have not yet been deployed.
 
-### 7.4 Legal-Person PID Structure
+### 9.4 Legal-Person PID Structure
 
 As of February 2026, the legal person PID structure is fully defined. CIR 2024/2977 Annex, Section 2 specifies it as a set of mandatory + optional data elements with required metadata, following the same structural pattern as the natural person PID. The legal person PID is structurally simpler: only 2 mandatory attributes (`current legal name` + MS-constructed unique identifier) versus 5 for natural persons. See §4.2.2 for the complete attribute table.
 
 ---
 
-## 8. Recommendations
+## 10. Recommendations
 
 1. **Implement natural/legal person filtering** — The regulatory basis is clear and strong. Different onboarding flows should be supported.
 
@@ -871,7 +837,7 @@ As of February 2026, the legal person PID structure is fully defined. CIR 2024/2
 
 ---
 
-## 9. Source References
+## 11. Source References
 
 ### Primary Sources (Legislation & Implementing Acts)
 
