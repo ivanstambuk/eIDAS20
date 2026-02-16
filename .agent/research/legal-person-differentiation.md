@@ -873,29 +873,35 @@ As of February 2026, the legal person PID structure is fully defined. CIR 2024/2
 
 ## 9. Source References
 
-| Source | Location |
-|--------|----------|
-| Regulation (EU) 2024/1183 | `01_legislation/docs/` |
-| Consolidated Regulation (EU) No 910/2014 | `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md` |
-| **CIR 2024/2977** (PID and EAA) | `02_implementing_acts/2024_2977_PID_and_EAA/32024R2977.md` |
-| **CIR 2025/1569** (EAA, Catalogue of Attributes) | `02_implementing_acts/2025_1569_Sign_Creation_Devices/32025R1569.md` |
-| ARF Main Document | `03_arf/docs/architecture-and-reference-framework-main.md` |
-| ARF Annex 2 (HLRs by Topic) | `03_arf/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md` |
-| Discussion Paper: Topic I | `03_arf/docs/discussion-topics/i-natural-person-representing-another-natural-person.md` |
-| Discussion Paper: Topic O (Catalogues) | `03_arf/docs/discussion-topics/o-catalogues-for-attestations.md` |
-| **TS11** (Catalogue Interfaces & Formats) | `04_technical_specs/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md` |
-| TS2 (Notification/Publication) | `03_arf/docs/technical-specifications/ts2-notification-publication-provider-information.md` |
-| TS5 (RP Registration Formats) | `03_arf/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md` |
-| TS6 (RP Registration Info) | `03_arf/docs/technical-specifications/ts6-common-set-of-rp-information-to-be-registered.md` |
-| TS10 (Data Portability) | `03_arf/docs/technical-specifications/ts10-data-portability-and-download-(export).md` |
-| TS14 (ZKPs) | `03_arf/docs/technical-specifications/ts14-zkps-mms.md` |
+### Primary Sources (Legislation & Implementing Acts)
+
+| Source | Link |
+|--------|------|
+| Regulation (EU) 2024/1183 (Amending Regulation) | [Portal](https://ivanstambuk.github.io/eIDAS20/#/regulation/2024-1183) · [EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1183/oj) |
+| Consolidated Regulation (EU) No 910/2014 | [Portal](https://ivanstambuk.github.io/eIDAS20/#/regulation/2014-910) · [EUR-Lex](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02014R0910-20241018) |
+| **CIR 2024/2977** (PID and EAA) | [Portal](https://ivanstambuk.github.io/eIDAS20/#/implementing-acts/2024-2977) · [EUR-Lex](https://eur-lex.europa.eu/eli/reg_impl/2024/2977/oj) |
+| **CIR 2025/1569** (EAA, Catalogue of Attributes) | [Portal](https://ivanstambuk.github.io/eIDAS20/#/implementing-acts/2025-1569) · [EUR-Lex](https://eur-lex.europa.eu/eli/reg_impl/2025/1569/oj) |
+
+### Architecture & Technical Specifications
+
+| Source | Link |
+|--------|------|
+| ARF Main Document (v2.8.0) | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/architecture-and-reference-framework-main.md) |
+| ARF Annex 2 (HLRs by Topic) | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md) |
+| Discussion Paper: Topic I (Representation) | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/discussion-topics/i-natural-person-representing-another-natural-person.md) |
+| Discussion Paper: Topic O (Catalogues) | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/discussion-topics/o-catalogues-for-attestations.md) |
+| TS11 (Catalogue Interfaces & Formats) | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md) |
+| TS2 (Notification/Publication) | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts2-notification-publication-provider-information.md) |
+| TS5 (RP Registration Formats) | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md) |
+| TS6 (RP Registration Info) | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts6-common-set-of-rp-information-to-be-registered.md) |
+| TS10 (Data Portability) | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md) |
+| TS14 (ZKPs) | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts14-zkps-from-mms.md) |
 
 ### External Sources (Web Research — 2026-02-16)
 
 | Source | Description |
 |--------|-------------|
-| [COM(2025) 838](https://europa.eu) | European Commission proposal for European Business Wallets regulation |
-| [businesswallet.eu](https://www.businesswallet.eu) | Independent knowledge platform for EU digital business identity |
+| [COM(2025) 838](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=COM:2025:838:FIN) | European Commission proposal for European Business Wallets regulation |
 | [spherity.com](https://spherity.com) | EBW roadmap analysis and timeline projections |
 | [cheqd.io](https://cheqd.io) | Analysis of EBW adoption obligations and timeline |
 | [digitaleurope.org](https://digitaleurope.org) | Industry perspective on EBW requirements and interoperability |
