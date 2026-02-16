@@ -14,16 +14,6 @@ import XLSX from 'xlsx-js-style';
 const COLORS = {
     headerBg: '1E3A5F',      // Dark blue
     headerText: 'FFFFFF',    // White
-    compliant: 'D4EDDA',     // Light green
-    compliantText: '155724', // Dark green
-    nonCompliant: 'F8D7DA',  // Light red
-    nonCompliantText: '721C24', // Dark red
-    partial: 'FFF3CD',       // Light yellow
-    partialText: '856404',   // Dark yellow
-    na: 'E2E3E5',            // Light gray
-    naText: '383D41',        // Dark gray
-    pending: 'E3F2FD',       // Light blue
-    pendingText: '0D47A1',   // Dark blue
     border: 'CCCCCC',        // Border color
     altRow: 'F8F9FA',        // Alternating row
     // RFC 2119 Obligation colors
@@ -60,36 +50,6 @@ const STYLES = {
         border: createBorder(),
         alignment: { vertical: 'top', wrapText: true },
     },
-    statusCompliant: {
-        font: { sz: 10, bold: true, color: { rgb: COLORS.compliantText } },
-        fill: { fgColor: { rgb: COLORS.compliant } },
-        border: createBorder(),
-        alignment: { horizontal: 'center', vertical: 'center' },
-    },
-    statusNonCompliant: {
-        font: { sz: 10, bold: true, color: { rgb: COLORS.nonCompliantText } },
-        fill: { fgColor: { rgb: COLORS.nonCompliant } },
-        border: createBorder(),
-        alignment: { horizontal: 'center', vertical: 'center' },
-    },
-    statusPartial: {
-        font: { sz: 10, bold: true, color: { rgb: COLORS.partialText } },
-        fill: { fgColor: { rgb: COLORS.partial } },
-        border: createBorder(),
-        alignment: { horizontal: 'center', vertical: 'center' },
-    },
-    statusNA: {
-        font: { sz: 10, color: { rgb: COLORS.naText } },
-        fill: { fgColor: { rgb: COLORS.na } },
-        border: createBorder(),
-        alignment: { horizontal: 'center', vertical: 'center' },
-    },
-    statusPending: {
-        font: { sz: 10, color: { rgb: COLORS.pendingText } },
-        fill: { fgColor: { rgb: COLORS.pending } },
-        border: createBorder(),
-        alignment: { horizontal: 'center', vertical: 'center' },
-    },
     // RFC 2119 Obligation styles
     obligationMust: {
         font: { sz: 10, bold: true, color: { rgb: COLORS.mustText } },
@@ -115,25 +75,7 @@ const STYLES = {
 // Helper Functions
 // ============================================================================
 
-function getStatusStyle(status) {
-    switch (status) {
-        case 'compliant': return STYLES.statusCompliant;
-        case 'non_compliant': return STYLES.statusNonCompliant;
-        case 'partial': return STYLES.statusPartial;
-        case 'na': return STYLES.statusNA;
-        default: return STYLES.statusPending;
-    }
-}
 
-function getStatusLabel(status) {
-    switch (status) {
-        case 'compliant': return 'Compliant';
-        case 'non_compliant': return 'Non-Compliant';
-        case 'partial': return 'Partial';
-        case 'na': return 'N/A';
-        default: return 'Pending';
-    }
-}
 
 function getObligationStyle(obligation) {
     switch (obligation) {
@@ -261,7 +203,6 @@ function cleanText(text) {
  * 
  * @param {Object} options
  * @param {Array} options.requirements - Filtered requirements to export
- * @param {Object} options.answers - User's answer status per requirement
  * @param {Array} options.selectedRoles - Selected role IDs
  * @param {Array} options.selectedCategories - Selected product category IDs
  * @param {Object} options.data - VCQ data object with categories
@@ -271,7 +212,7 @@ function cleanText(text) {
  * @param {Object} [options.arfData] - ARF HLR data for specification/notes lookup
  * @param {Object} [options.clarificationQuestions] - Clarification questions keyed by requirement ID
  */
-export function exportToExcel({ requirements, answers, selectedRoles, selectedCategories, data, categorizationScheme, effectiveCategories, getReqCategory, arfData, clarificationQuestions }) {
+export function exportToExcel({ requirements, selectedRoles, selectedCategories, data, categorizationScheme, effectiveCategories, getReqCategory, arfData, clarificationQuestions }) {
     const wb = XLSX.utils.book_new();
     const now = new Date();
     const dateStr = now.toISOString().split('T')[0];
@@ -290,7 +231,6 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
     //   Context: Deadline, Roles, Product Categories
     //   Legal: Legal Basis, Legal Text
     //   ARF: ARF Reference, ARF Specification, ARF Notes
-    //   Meta: Notes, Status
 
     const headers = [
         'ID',
@@ -299,6 +239,7 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
         'Explanation',
         'Clarification Questions',
         'Obligation',
+        'Vendor Compliance',
         'Deadline',
         'Roles',
         'Product Categories',
@@ -308,8 +249,6 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
         'ARF Reference',
         'ARF Specification',
         'ARF Notes',
-        'Notes',
-        'Status'
     ];
 
     const sheetData = [
@@ -342,7 +281,6 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
     sortedCategories.forEach(cat => {
         if (!grouped[cat.id]) return;
         grouped[cat.id].forEach(req => {
-            const answer = answers[req.id]?.value || 'pending';
             const isAlt = rowIndex % 2 === 1;
             const cellStyle = isAlt ? STYLES.cellAlt : STYLES.cell;
 
@@ -359,6 +297,7 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
                 { v: cleanText(req.explanation), s: cellStyle },
                 { v: questionsText, s: cellStyle },
                 { v: req.obligation || 'SHOULD', s: getObligationStyle(req.obligation) },
+                { v: '', s: cellStyle },  // Vendor Compliance (empty — to be filled by vendor)
                 { v: req.deadline || '', s: cellStyle },
                 { v: formatRoles(req), s: cellStyle },
                 { v: formatProductCategories(req), s: cellStyle },
@@ -368,8 +307,6 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
                 { v: formatArfReference(req), s: cellStyle },
                 { v: cleanText(getArfSpecification(req, arfData)), s: cellStyle },
                 { v: cleanText(getArfNotes(req, arfData)), s: cellStyle },
-                { v: cleanText(req.notes), s: cellStyle },
-                { v: getStatusLabel(answer), s: getStatusStyle(answer) },
             ]);
             rowIndex++;
         });
@@ -385,6 +322,7 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
         { wch: 50 },  // Explanation
         { wch: 60 },  // Clarification Questions
         { wch: 12 },  // Obligation
+        { wch: 20 },  // Vendor Compliance
         { wch: 12 },  // Deadline
         { wch: 12 },  // Roles
         { wch: 18 },  // Product Categories
@@ -394,8 +332,6 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
         { wch: 22 },  // ARF Reference
         { wch: 50 },  // ARF Specification
         { wch: 40 },  // ARF Notes
-        { wch: 40 },  // Notes
-        { wch: 14 },  // Status
     ];
 
     // Freeze header row

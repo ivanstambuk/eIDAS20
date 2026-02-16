@@ -1357,10 +1357,6 @@ export default function VendorQuestionnaire() {
 
             md += `## ${cat.icon} ${cat.label}\n\n`;
             reqs.forEach(req => {
-                const answer = answers[req.id]?.value || 'pending';
-                const answerIcon = answer === 'yes' ? '✅' : answer === 'no' ? '❌' :
-                    answer === 'partial' ? '⚠️' : answer === 'na' ? '➖' : '⏳';
-
                 md += `### ${req.id}`;
                 // Add architecture badges
                 if (req.deploymentArchitectures && req.deploymentArchitectures.length > 0) {
@@ -1386,6 +1382,7 @@ export default function VendorQuestionnaire() {
                 }
 
                 md += `**Obligation:** ${req.obligation}\n\n`;
+                md += `**Vendor Compliance:** *(to be completed)*\n\n`;
 
                 // Legal basis with legal text immediately after
                 if (req.legalBasis) {
@@ -1424,7 +1421,6 @@ export default function VendorQuestionnaire() {
                     }
                 }
 
-                md += `**Response:** ${answerIcon} ${answer}\n\n`;
                 md += `---\n\n`;
             });
         });
@@ -1436,12 +1432,11 @@ export default function VendorQuestionnaire() {
         a.download = `vcq-questionnaire-${new Date().toISOString().split('T')[0]}.md`;
         a.click();
         URL.revokeObjectURL(url);
-    }, [selectedRoles, selectedCategories, selectedSourceGroups, applicableRequirements, answers, categorizationScheme, effectiveCategories, getReqCategory, arfData, clarificationQuestions]);
+    }, [selectedRoles, selectedCategories, selectedSourceGroups, applicableRequirements, categorizationScheme, effectiveCategories, getReqCategory, arfData, clarificationQuestions]);
 
     const handleExportExcel = useCallback(() => {
         exportToExcel({
             requirements: applicableRequirements,
-            answers,
             selectedRoles,
             selectedCategories,
             data,
@@ -1451,7 +1446,7 @@ export default function VendorQuestionnaire() {
             arfData,
             clarificationQuestions
         });
-    }, [applicableRequirements, answers, selectedRoles, selectedCategories, data, categorizationScheme, effectiveCategories, getReqCategory, arfData, clarificationQuestions]);
+    }, [applicableRequirements, selectedRoles, selectedCategories, data, categorizationScheme, effectiveCategories, getReqCategory, arfData, clarificationQuestions]);
 
     // Loading/error states
     if (loading) {
