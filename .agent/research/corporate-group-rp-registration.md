@@ -6,15 +6,20 @@
 
 ---
 
-## 1. Executive Summary
+## 1. Introduction & Scope
 
-Under eIDAS 2.0, **each legal entity that relies on EUDI Wallets must register as a separate Relying Party**. A parent or holding company cannot register once on behalf of all subsidiaries. This follows directly from:
+This document analyses how corporate group structures — holding companies, subsidiaries, and shared services entities — map to the eIDAS 2.0 Relying Party registration model. It addresses a practical question that frequently arises in enterprise contexts: *can a parent company register once as an RP on behalf of all its subsidiaries?*
 
-1. The Article 3(6) definition of "relying party" as *"a natural or legal person"* — each subsidiary is a distinct legal person.
-2. Article 5b(1), which requires registration *"in the Member State where [the relying party] is established"* — pointing to individual legal entity establishment.
-3. The RP Access Certificate architecture (ARF Topic 27, 44, 52), which binds certificates to specific legal entities with unique identifiers.
+The central questions addressed are:
 
-However, the regulation **does** accommodate shared infrastructure through the **intermediary** mechanism (Article 5b(10), ARF Topic 52), which allows a technical service provider — including an intra-group shared services entity — to handle wallet interactions on behalf of individually registered RPs.
+1. **Must each subsidiary register separately?** — Does the regulation require per-entity RP registration, or does it permit group-level registration?
+2. **What can be shared within a group?** — Which aspects of EUDI Wallet integration can be centralized (infrastructure, compliance), and which must remain per-entity (registration, certificates, data processing)?
+3. **How do intermediaries help?** — The intermediary mechanism (Art. 5b(10)) enables shared technical infrastructure while maintaining per-entity registration. How does this work in practice?
+4. **What changes in the VCQ?** — Do deployment architectures serving multiple RPs require additional compliance assessment?
+
+The document proceeds top-down: **legal basis → architecture → shared vs. separate concerns → deployment architectures → compliance implications → cross-border → open questions**.
+
+**Key finding:** Each legal entity within a corporate group **must register as a separate Relying Party**. However, the regulation's **intermediary mechanism** (Art. 5b(10)) accommodates shared technical infrastructure through a well-defined architectural pattern where one entity (e.g., group IT services) handles wallet interactions on behalf of individually registered subsidiaries. A detailed analysis of three deployment architectures (§5) shows that the existing VCQ framework covers corporate group scenarios well, requiring only one additional cross-cutting assessment question for multi-RP support (§6.2).
 
 ---
 
@@ -158,25 +163,11 @@ What the wallet user sees:
 
 ---
 
-## 5. Implications for RCA and VCQ
+## 5. Deployment Architecture Analysis
 
-### 5.1 RCA Scope — Per Legal Entity, Unchanged
+The practical impact of corporate group structures on the VCQ depends on the **deployment architecture** (cf. DEC-289). This section analyses three architectures and how each handles multi-RP deployments.
 
-The RCA (Regulatory Compliance Assessment) covers obligations that fall on the **organisation itself** — registration with authorities, internal governance, personnel, financial obligations. These are inherently per legal entity:
-
-- **Each subsidiary** must independently assess its own regulatory obligations
-- A holding company **cannot** satisfy RCA obligations on behalf of a subsidiary
-- The corporate group structure is invisible to the RCA — it assesses each entity as a standalone RP
-
-**Key implication:** The RCA does not need new requirements for corporate groups. The existing per-entity model already covers this correctly. Each subsidiary's RCA will include its own registration obligation (Art. 5b(1)), its own data protection obligations (GDPR controller status), and its own sectoral compliance (PSD2, DORA, Solvency II, etc.).
-
-### 5.2 VCQ Scope — Deployment Architecture Matters
-
-The VCQ (Vendor Compliance Questionnaire) assesses the **product**, not the organisation. The question is: *does the product need to support multi-RP deployments, and if so, do the VCQ requirements change?*
-
-The answer depends on the **deployment architecture** (cf. DEC-289):
-
-#### Architecture 1: Intermediary (`intermediary`)
+### 5.1 Architecture 1: Intermediary (`intermediary`)
 
 > *Vendor acts as RP on behalf of the customer. Vendor holds its own RPAC and interacts with wallets directly.*
 
@@ -188,7 +179,7 @@ In this model, the vendor **is** the intermediary (Art. 5b(10)). For corporate g
 
 **Multi-RP impact:** The vendor's product **must** natively support multiple End-RPs. This is inherent to the intermediary model — one intermediary, many End-RPs. No additional VCQ changes needed beyond what DEC-289 already established.
 
-#### Architecture 2: Direct SaaS (`direct_saas`)
+### 5.2 Architecture 2: Direct SaaS (`direct_saas`)
 
 > *Customer is the RP. Vendor provides hosted connector service. Customer maintains own RP registration.*
 
@@ -207,9 +198,9 @@ In this model, the vendor provides infrastructure but the **customer (or its sub
 | User-facing identity | The wallet user sees the specific subsidiary's name (from that tenant's RPAC), not the platform or group name |
 | Compliance reporting | Each tenant can independently export its own compliance evidence |
 
-**VCQ implication:** The existing VCQ requirements apply per tenant instance, but we should add a **cross-cutting multi-tenant support assessment** (see §5.4 below).
+**VCQ implication:** The existing VCQ requirements apply per tenant instance, but a **cross-cutting multi-tenant support assessment** should be added (see §6.2).
 
-#### Architecture 3: Direct Self-Hosted (`direct_onprem`)
+### 5.3 Architecture 3: Direct Self-Hosted (`direct_onprem`)
 
 > *Customer is the RP. Deploys vendor software on own infrastructure. Vendor delivers binaries/containers; customer manages all operations.*
 
@@ -224,7 +215,7 @@ In this model, the vendor delivers software that the customer deploys. For corpo
 
 **VCQ implication:** Same as SaaS multi-tenancy. The product must support tenant isolation if deployed in shared mode. The deployment being on-prem doesn't change what the *product* needs to support — it just shifts *operational responsibility* to the customer.
 
-### 5.3 Deployment × Concern Matrix
+### 5.4 Deployment × Concern Matrix
 
 | Concern | Intermediary | Direct SaaS | Direct Self-Hosted (shared) | Direct Self-Hosted (separate) |
 |---------|:-----------:|:-----------:|:---------------------------:|:----------------------------:|
@@ -237,7 +228,21 @@ In this model, the vendor delivers software that the customer deploys. For corpo
 | Who registers as RP? | Vendor + each End-RP | Each subsidiary | Group IT entity (as intermediary) + each subsidiary | Each subsidiary |
 | VCQ assesses | Product + vendor operations | Product | Product | Product |
 
-### 5.4 Recommended VCQ Addition for Multi-RP Support
+---
+
+## 6. Compliance Assessment Implications
+
+### 6.1 RCA Scope — Per Legal Entity, Unchanged
+
+The RCA (Regulatory Compliance Assessment) covers obligations that fall on the **organisation itself** — registration with authorities, internal governance, personnel, financial obligations. These are inherently per legal entity:
+
+- **Each subsidiary** must independently assess its own regulatory obligations
+- A holding company **cannot** satisfy RCA obligations on behalf of a subsidiary
+- The corporate group structure is invisible to the RCA — it assesses each entity as a standalone RP
+
+**Key implication:** The RCA does not need new requirements for corporate groups. The existing per-entity model already covers this correctly. Each subsidiary's RCA will include its own registration obligation (Art. 5b(1)), its own data protection obligations (GDPR controller status), and its own sectoral compliance (PSD2, DORA, Solvency II, etc.).
+
+### 6.2 Recommended VCQ Addition for Multi-RP Support
 
 The VCQ should add a **cross-cutting assessment question** applicable to both `intermediary` and `direct_saas` deployment architectures (and conditionally to `direct_onprem` when deployed in shared mode):
 
@@ -256,7 +261,7 @@ The VCQ should add a **cross-cutting assessment question** applicable to both `i
 **Category:** Registration & Notification (or cross-cutting)
 **Deployment architectures:** `intermediary`, `direct_saas` (conditionally `direct_onprem`)
 
-### 5.5 Platform-Level vs. Entity-Level Assessment
+### 6.3 Platform-Level vs. Entity-Level Assessment
 
 For a vendor providing an EUDI Wallet integration platform to a corporate group, the VCQ assessment has a dual structure:
 
@@ -275,7 +280,7 @@ For a vendor providing an EUDI Wallet integration platform to a corporate group,
 - Alignment with sectoral regulatory requirements (for regulated entities)
 - Correct RPRC binding to the intermediary's RPAC (if using intermediary pattern)
 
-### 5.6 What Does NOT Change
+### 6.4 What Does NOT Change
 
 To be explicit about what is **not** affected by corporate group considerations:
 
@@ -286,22 +291,22 @@ To be explicit about what is **not** affected by corporate group considerations:
 
 ---
 
-## 6. Cross-Border Considerations
+## 7. Cross-Border Considerations
 
 Corporate groups frequently operate across multiple Member States. Key considerations:
 
-### 6.1 Multi-Jurisdiction Registration
+### 7.1 Multi-Jurisdiction Registration
 
 Each subsidiary registers in **its own** Member State. A group with entities in NL, DE, and FR will have registrations in three separate national registries.
 
-### 6.2 Non-EU Subsidiaries
+### 7.2 Non-EU Subsidiaries
 
 Per Article 5b(1), a relying party must register *"in the Member State where it is established."* For non-EU subsidiaries that wish to interact with EUDI Wallets:
 
 - They would need to establish an EU-based entity or use an EU-established intermediary
 - This has been explicitly discussed in the GitHub issue ["Will the European Digital Identity Wallets work outside of Europe?"](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/issues) on the ARF repository
 
-### 6.3 Intermediary in a Different Member State
+### 7.3 Intermediary in a Different Member State
 
 The intermediary need not be in the same Member State as the End-Relying Party. A group IT services company in the Netherlands can act as intermediary for a subsidiary registered in Germany, as long as:
 - The intermediary itself is registered as an RP in its own Member State (NL)
@@ -310,9 +315,9 @@ The intermediary need not be in the same Member State as the End-Relying Party. 
 
 ---
 
-## 7. Open Questions
+## 8. Open Questions
 
-### 7.1 Intra-Group Intermediary vs. Third-Party Intermediary
+### 8.1 Intra-Group Intermediary vs. Third-Party Intermediary
 
 The regulation does not distinguish between intra-group and third-party intermediaries. An intra-group shared services entity follows the **same** intermediary rules as an external platform provider. This means:
 
@@ -322,11 +327,11 @@ The regulation does not distinguish between intra-group and third-party intermed
 
 **Open:** Will Member States provide any simplified registration path for intra-group intermediaries, recognizing the common ownership structure? The ARF currently leaves this to national discretion (see RPI_04: *"in a manner to be decided by a Member State"*).
 
-### 7.2 Group-Level Compliance Reporting
+### 8.2 Group-Level Compliance Reporting
 
 For regulated entities (banks, insurers), supervisory bodies often require group-level risk reporting. **Open:** How will supervisory bodies (National Competent Authorities) approach compliance monitoring for EUDI Wallet integration at the group level?
 
-### 7.3 Shared Services Entity as RP vs. Intermediary
+### 8.3 Shared Services Entity as RP vs. Intermediary
 
 If a group's shared services company both provides IT services to subsidiaries **and** uses wallets for its own purposes (e.g., employee onboarding), it would be both:
 - An **End-RP** for its own intended uses
@@ -334,7 +339,7 @@ If a group's shared services company both provides IT services to subsidiaries *
 
 Both the ARF and Discussion Paper X support this dual role. The current ARF HLR RPI_01 (note c) states: *"An entity that registered as an intermediary may also register as a Relying Party in its own capacity. In such a case, it will receive one or more registration certificates for its intended use(s), and will use one of these certificates when interacting with a Wallet Unit."* The Discussion Paper X (§3.5) adds: *"this assumption remains valid unless the Relying Party acting as an intermediary has other wallet-relying party services with intended uses that invoke the duty to register an RPRC."*
 
-### 7.4 Liability Chain Within the Group
+### 8.4 Liability Chain Within the Group
 
 > **Discussion Paper X, §3.5.1:** *"As the intermediaries are acting on behalf of the End-Relying Parties, and will remain liable towards the Registrar on accuracy of the information to be registered, they must carry same identity proofing and data verification checks for their customers as the Registrar would do for the End-Relying Party in case of direct registration path. The Registrar shall also not trust blindly the Intermediary but execute the identity verification of both the Intermediary and the End-Relying Parties to be registered."*
 
@@ -342,7 +347,7 @@ Both the ARF and Discussion Paper X support this dual role. The current ARF HLR 
 
 ---
 
-## 8. Terminology
+## 9. Terminology
 
 | Term | Definition |
 |------|-----------|
@@ -356,7 +361,7 @@ Both the ARF and Discussion Paper X support this dual role. The current ARF HLR 
 
 ---
 
-## 9. Source References
+## 10. Source References
 
 ### Primary Sources
 
