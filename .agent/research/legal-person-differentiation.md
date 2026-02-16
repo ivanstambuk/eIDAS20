@@ -1,7 +1,7 @@
 # Legal Person Differentiation in eIDAS 2.0
 
 > **Research Date:** 2026-02-16  
-> **Status:** Complete — includes EBW roadmap + attribute mandatory/optional analysis + normalization + interim onboarding strategy + Representation EAA analysis + phase-based impact assessment
+> **Status:** Complete — includes EBW roadmap + attribute mandatory/optional analysis + normalization + interim onboarding strategy + Representation EAA analysis + phase-based impact assessment  
 > **Context:** Investigating whether the eIDAS 2.0 framework provides sufficient basis for filtering between natural and legal persons, particularly for differentiated onboarding procedures. Extended to cover mandatory vs. country-specific attributes, cross-border normalization mechanisms, interim legal person onboarding strategies before the EBW, and the impact of each migration phase on VCQ requirements and operational integration.
 
 ---
