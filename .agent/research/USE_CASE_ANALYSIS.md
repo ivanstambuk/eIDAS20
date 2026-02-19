@@ -498,11 +498,10 @@ Our YAML groups by category (different ordering), which is fine — we sort by `
 
 ## E5. Potential Future Improvements (Out of Scope for this plan)
 
-1. **Frontend: Add "📖 Manual" link** — Render `ecManualUrl` as a clickable link next to the Published badge
-2. **Frontend: Add "📄 PDF" download link** — Render `pdfManualUrl` as a download button
+1. ~~**Frontend: Add "📖 Manual" link** — Render `ecManualUrl` as a clickable link~~ ✅ Done (Design B — `718268b1`)
+2. ~~**Frontend: Add "📄 PDF" download link** — Render `pdfManualUrl` as a download button~~ ✅ Done (Design B — `718268b1`)
 3. **Data: Populate `technicalSpecs` arrays** — Add TS references to all published use cases (currently only `payment-auth` has `technicalSpecs: [TS12]`)
-4. **Data: Add `ecNumber` field** — Track the EC numbering (01=mDL, 03=EPC, 04=PID, etc.) for PDF filename correlation
-5. **VCQ: Cross-reference use cases** — Link VCQ clarification questions to specific use case IDs for filtered views
+4. ~~**VCQ: Cross-reference use cases** — Link VCQ clarification questions to specific use case IDs~~ ✅ Done (`useCaseRef` field — `40be9a02`)
 
 ---
 
