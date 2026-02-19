@@ -310,9 +310,23 @@ output._meta = {
 
 fs.writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2));
 
+// ============================================================================
+// Fingerprint manifest: append contentHash → gitCommit mapping for traceability
+// Given an exported Excel with fingerprint "6fc215e8", run:
+//   grep 6fc215e8 .fingerprint-manifest
+// to find the exact git commit that produced it.
+// ============================================================================
+const MANIFEST_FILE = path.resolve(__dirname, '..', '.fingerprint-manifest');
+const manifestLine = `${contentHash}\t${buildCommit}\t${output._meta.buildDate}\trca\n`;
+// Only append if this fingerprint isn't already the last entry for this source
+const existingManifest = fs.existsSync(MANIFEST_FILE) ? fs.readFileSync(MANIFEST_FILE, 'utf-8') : '';
+if (!existingManifest.includes(`${contentHash}\t${buildCommit}\t${output._meta.buildDate}\trca`)) {
+    fs.appendFileSync(MANIFEST_FILE, manifestLine);
+}
+
 console.log(`\n✅ RCA data built successfully!`);
 console.log(`   📁 Output: ${OUTPUT_FILE}`);
-console.log(`   🔖 Data version: ${contentHash} (commit: ${buildCommit})`);
+console.log(`   🔖 Dataset fingerprint: ${contentHash} (commit: ${buildCommit})`);
 console.log(`   📊 Stats:`);
 console.log(`      - ${output.stats.totalRequirements} requirements`);
 console.log(`      - ${output.stats.totalUseCases} use cases`);

@@ -458,9 +458,23 @@ output._meta = {
 
 fs.writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2));
 
+// ============================================================================
+// Fingerprint manifest: append contentHash → gitCommit mapping for traceability
+// Given an exported Excel with fingerprint "693a042d", run:
+//   grep 693a042d .fingerprint-manifest
+// to find the exact git commit that produced it.
+// ============================================================================
+const MANIFEST_FILE = path.resolve(__dirname, '..', '.fingerprint-manifest');
+const manifestLine = `${contentHash}\t${buildCommit}\t${output._meta.buildDate}\tvcq\n`;
+// Only append if this exact entry doesn't already exist
+const existingManifest = fs.existsSync(MANIFEST_FILE) ? fs.readFileSync(MANIFEST_FILE, 'utf-8') : '';
+if (!existingManifest.includes(`${contentHash}\t${buildCommit}\t${output._meta.buildDate}\tvcq`)) {
+    fs.appendFileSync(MANIFEST_FILE, manifestLine);
+}
+
 console.log(`\n✅ VCQ data built successfully!`);
 console.log(`   📁 Output: ${OUTPUT_FILE}`);
-console.log(`   🔖 Data version: ${contentHash} (commit: ${buildCommit})`);
+console.log(`   🔖 Dataset fingerprint: ${contentHash} (commit: ${buildCommit})`);
 console.log(`   📊 Stats:`);
 console.log(`      - ${stats.totalRequirements} total requirements`);
 console.log(`   👤 By Role (DEC-257):`);
