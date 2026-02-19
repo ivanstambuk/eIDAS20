@@ -1333,7 +1333,7 @@ export default function VendorQuestionnaire() {
         let md = `# Vendor Compliance Questionnaire\n\n`;
         md += `**Generated:** ${new Date().toLocaleDateString()}\n\n`;
         if (data?._meta?.contentHash) {
-            md += `**Data version:** ${data._meta.contentHash} (${data._meta.buildDate || ''})\n\n`;
+            md += `**Dataset fingerprint:** ${data._meta.contentHash} · Built ${data._meta.buildDate || ''}\n\n`;
         }
         md += `**Organisation Role(s):** ${roleLabels}\n\n`;
         md += `**Product Category:** ${categoryLabels}\n\n`;
@@ -1475,7 +1475,12 @@ export default function VendorQuestionnaire() {
     const canGenerate = selectedRoles.length > 0 && selectedCategories.length > 0;
 
     return (
-        <div className="animate-fadeIn">
+        <div className="animate-fadeIn vcq-page-wrapper">
+            {data?._meta?.contentHash && (
+                <span className="dataset-fingerprint" title={`Build commit: ${data._meta.buildCommit || 'dev'}`}>
+                    Dataset fingerprint: {data._meta.contentHash} · Built {data._meta.buildDate || 'unknown'}
+                </span>
+            )}
             {/* Header */}
             <div className="vcq-header">
                 <h1>📋 Vendor Compliance Questionnaire</h1>
@@ -1484,11 +1489,6 @@ export default function VendorQuestionnaire() {
                     to integrate your organisation with the EUDIW ecosystem. Select your role,
                     product category, and regulatory sources.
                 </p>
-                {data?._meta?.contentHash && (
-                    <span className="data-version-badge" title={`Build: ${data._meta.buildCommit || 'dev'} · ${data._meta.buildDate || ''}`}>
-                        v{data._meta.contentHash}
-                    </span>
-                )}
             </div>
 
             {/* Step 1: Organisation Role Selection */}

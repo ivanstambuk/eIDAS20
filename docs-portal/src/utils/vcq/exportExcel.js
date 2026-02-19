@@ -257,7 +257,7 @@ export function exportToExcel({ requirements, selectedRoles, selectedCategories,
     // Add data version subtitle row if available
     if (dataMeta?.contentHash) {
         const versionRow = Array(headers.length).fill({ v: '', s: {} });
-        versionRow[0] = { v: `Data version: ${dataMeta.contentHash} (${dataMeta.buildDate || ''})`, s: { font: { sz: 9, italic: true, color: { rgb: '888888' } } } };
+        versionRow[0] = { v: `Dataset fingerprint: ${dataMeta.contentHash} · Built ${dataMeta.buildDate || ''}`, s: { font: { sz: 9, italic: true, color: { rgb: '888888' } } } };
         sheetData.push(versionRow);
     }
 

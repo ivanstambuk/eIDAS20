@@ -149,7 +149,7 @@ export function exportToExcel({ requirements, assessments, role, useCases, requi
     const summaryData = [
         [{ v: 'Regulatory Compliance Assessment', s: STYLES.title }],
         [{ v: `Generated: ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`, s: STYLES.subtitle }],
-        ...(dataMeta?.contentHash ? [[{ v: `Data version: ${dataMeta.contentHash} (${dataMeta.buildDate || ''})`, s: STYLES.subtitle }]] : []),
+        ...(dataMeta?.contentHash ? [[{ v: `Dataset fingerprint: ${dataMeta.contentHash} · Built ${dataMeta.buildDate || ''}`, s: STYLES.subtitle }]] : []),
         [],
         [{ v: 'Role:', s: { font: { bold: true } } }, { v: role }],
         [{ v: 'Use Cases:', s: { font: { bold: true } } }, { v: useCases.join(', ') }],

@@ -74,7 +74,7 @@ export function exportToMarkdown({ requirements, assessments, role, useCases, re
     lines.push('');
     lines.push(`**Generated:** ${now.toLocaleDateString()} at ${now.toLocaleTimeString()}`);
     if (dataMeta?.contentHash) {
-        lines.push(`**Data version:** ${dataMeta.contentHash} (${dataMeta.buildDate || 'unknown'})`);
+        lines.push(`**Dataset fingerprint:** ${dataMeta.contentHash} · Built ${dataMeta.buildDate || 'unknown'}`);
     }
     lines.push(`**Role:** ${role}`);
     lines.push(`**Use Cases:** ${useCases.join(', ')}`);

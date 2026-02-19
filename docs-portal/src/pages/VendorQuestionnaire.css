@@ -9,7 +9,12 @@
    Page Header
    ============================================================================ */
 
+.vcq-page-wrapper {
+    position: relative;
+}
+
 .vcq-header {
+    position: relative;
     margin-bottom: var(--space-8);
 }
 

@@ -5,6 +5,7 @@
  */
 
 .rca-page {
+    position: relative;
     padding: 0.5rem 1rem 1.5rem;
     max-width: none;
 }
@@ -14,6 +15,7 @@
    ============================================================================ */
 
 .rca-header {
+    position: relative;
     margin-bottom: 0.5rem;
     text-align: left;
 }
