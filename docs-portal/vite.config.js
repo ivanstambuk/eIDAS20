@@ -188,7 +188,10 @@ export default defineConfig({
     // Build scripts write 50+ JSON files there in bursts, which can crash
     // the dev server. These are static assets — no HMR needed.
     watch: {
-      ignored: ['**/public/data/**']
+      ignored: [
+        join(__dirname, 'public/data/**'),
+        '**/public/data/**'
+      ]
     }
   }
 })

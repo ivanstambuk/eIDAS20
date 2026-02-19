@@ -219,7 +219,9 @@ function loadTerminology() {
                 term: termField,     // Original case for display
                 termLower: termField.toLowerCase(),  // Lowercased for case-insensitive exact search
                 docTitle: 'Terminology',
-                section: `Art. ${primarySource.articleNumber}`,
+                section: /^\d/.test(primarySource.articleNumber)
+                    ? `Art. ${primarySource.articleNumber}`
+                    : primarySource.articleNumber,
                 sectionTitle: term.term,
                 content: aliasesText
                     ? `${aliasesText} ${allDefinitions}`  // Include aliases in content too

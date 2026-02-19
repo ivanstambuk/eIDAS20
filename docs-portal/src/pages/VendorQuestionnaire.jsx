@@ -1478,7 +1478,7 @@ export default function VendorQuestionnaire() {
         <div className="animate-fadeIn vcq-page-wrapper">
             {data?._meta?.contentHash && (
                 <span className="dataset-fingerprint" title={`Build commit: ${data._meta.buildCommit || 'dev'}`}>
-                    Dataset fingerprint: {data._meta.contentHash} · Built {data._meta.buildDate || 'unknown'}
+                    Dataset fingerprint: {data._meta.contentHash}
                 </span>
             )}
             {/* Header */}

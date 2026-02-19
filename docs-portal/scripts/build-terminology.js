@@ -327,6 +327,10 @@ function loadSupplementaryTerms() {
  * These are curated definitions for terms commonly used but not formally defined.
  * They blend into the terminology WITHOUT "View Source" links.
  * 
+ * ⚠️ HAND-ROLLED YAML PARSER: This function manually parses the YAML structure.
+ * Adding new fields to custom-dictionary.yaml requires explicit parser support here.
+ * Currently supported fields: term, definition, source, note, aliases.
+ * 
  * Returns array of term objects compatible with the main extraction pipeline
  */
 function loadCustomDictionary() {
@@ -338,6 +342,7 @@ function loadCustomDictionary() {
         const content = readFileSync(CUSTOM_DICTIONARY_FILE, 'utf-8');
         const terms = [];
         let currentTerm = null;
+        let inAliases = false;
         let inTerms = false;
         let inDefinition = false;
         let definitionLines = [];
@@ -364,6 +369,7 @@ function loadCustomDictionary() {
                     terms.push({
                         term: currentTerm.term,
                         definition: currentTerm.definition.trim(),
+                        aliases: currentTerm.aliases || [],
                         source: {
                             celex: null,
                             title: 'Internal Definition',
@@ -383,9 +389,11 @@ function loadCustomDictionary() {
                     term: trimmed.replace('- term:', '').trim(),
                     definition: '',
                     source: null,
-                    note: null
+                    note: null,
+                    aliases: []
                 };
                 inDefinition = false;
+                inAliases = false;
                 definitionLines = [];
                 continue;
             }
@@ -411,8 +419,26 @@ function loadCustomDictionary() {
             }
 
             // End of multi-line definition (found a new field)
-            if (inDefinition && (trimmed.startsWith('source:') || trimmed.startsWith('note:') || trimmed.startsWith('- term:'))) {
+            if (inDefinition && (trimmed.startsWith('source:') || trimmed.startsWith('note:') || trimmed.startsWith('aliases:') || trimmed.startsWith('- term:'))) {
                 inDefinition = false;
+            }
+
+            // Aliases field (inline abbreviations like mDL, EHIC, DTC)
+            if (trimmed === 'aliases:' && currentTerm) {
+                inAliases = true;
+                continue;
+            }
+
+            // Alias list entries ("      - ABBREV")
+            if (inAliases && trimmed.startsWith('- ') && line.startsWith('      ')) {
+                const alias = trimmed.replace(/^- /, '').trim();
+                if (alias) currentTerm.aliases.push(alias);
+                continue;
+            }
+
+            // End of aliases block (found a non-alias line)
+            if (inAliases && !trimmed.startsWith('- ')) {
+                inAliases = false;
             }
 
             // Source field (for documentation, stored in article field for display)
@@ -432,6 +458,7 @@ function loadCustomDictionary() {
             terms.push({
                 term: currentTerm.term,
                 definition: currentTerm.definition.trim(),
+                aliases: currentTerm.aliases || [],
                 source: {
                     celex: null,
                     title: 'Internal Definition',
@@ -1131,6 +1158,25 @@ function build() {
     // ═══════════════════════════════════════════════════════════════════════════
     console.log('\n🔤 Loading abbreviation aliases...');
     const abbreviations = loadAbbreviations();
+
+    // Inject inline aliases from custom dictionary terms
+    // These are aliases defined directly on terms in custom-dictionary.yaml (e.g., mDL, EHIC)
+    let inlineAliasCount = 0;
+    for (const term of customDictionaryTerms) {
+        if (term.aliases && term.aliases.length > 0) {
+            const termId = term.term.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+            for (const alias of term.aliases) {
+                if (!abbreviations.has(alias)) {
+                    abbreviations.set(alias, termId);
+                    inlineAliasCount++;
+                }
+            }
+        }
+    }
+    if (inlineAliasCount > 0) {
+        console.log(`   📝 Injected ${inlineAliasCount} inline aliases from custom dictionary`);
+    }
+
     let termsWithAliases = 0;
     let unmappedAbbreviations = [];
 
@@ -1162,6 +1208,16 @@ function build() {
         console.warn(`   ⚠️  Abbreviations pointing to non-existent terms:`);
         for (const unmapped of unmappedAbbreviations) {
             console.warn(`      - ${unmapped}`);
+        }
+    }
+
+    // Validate: inline aliases from custom dictionary should have survived the pipeline
+    if (inlineAliasCount > 0) {
+        const aliasedTermCount = mergedTerms.filter(t => t.aliases && t.aliases.length > 0).length;
+        if (aliasedTermCount === 0) {
+            console.error(`   ❌ VALIDATION FAILED: ${inlineAliasCount} inline aliases were injected but 0 terms have aliases`);
+            console.error('      This means the alias assignment loop is broken.');
+            process.exit(1);
         }
     }
 

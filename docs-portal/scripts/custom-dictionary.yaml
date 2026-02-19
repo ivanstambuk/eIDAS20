@@ -44,6 +44,17 @@
 #   Rule of thumb: If unsure, check how the term is written in the ARF or
 #   EU legal texts. Common technical terms should be lowercase.
 #
+# SUPPORTED FIELDS PER TERM:
+#   - term:        (required) The display name of the term
+#   - definition:  (required) Single-line or multi-line (use >- for multi-line)
+#   - source:      (recommended) Attribution text shown in the UI
+#   - note:        (optional) Internal documentation only, not in output
+#   - aliases:     (optional) List of abbreviation aliases (e.g., mDL, EHIC)
+#                  These are injected into the search index so users can find
+#                  the term by its abbreviation. Example:
+#                    aliases:
+#                      - EHIC
+#
 # ═══════════════════════════════════════════════════════════════════════════════
 
 version: "1.0"
@@ -1537,7 +1548,7 @@ terms:
       the ISO/IEC 18013-5 (proximity) and ISO 18013-7 (remote) standards,
       using the mdoc data format. Issuance follows OpenID4VCI (ARF Annex 4).
       See the EC use case manual for full details.
-    source: EC Use Case Manual #01 — https://ec.europa.eu/digital-building-blocks/sites/display/EUDIGITALIDENTITYWALLET/The+mobile+Driving+License+manual
+    source: EC Use Case Manual #01
     note: One of the 19 EUDIW use cases defined by the European Commission; Published
     aliases:
       - mDL
@@ -1550,7 +1561,7 @@ terms:
       ICAO 9303 and ISO/IEC TS 23220-2:2024 standards. Verification uses
       PKI-based signature validation against passport and identity card
       trusted lists.
-    source: EC Use Case Manual #06 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451772/Travel+Credentials
+    source: EC Use Case Manual #06
     note: One of the 19 EUDIW use cases defined by the European Commission; Published
     aliases:
       - DTC
@@ -1562,7 +1573,7 @@ terms:
       another Member State. The digital EHIC uses SD-JWT-VC (IETF) and
       W3C VC Data Model 2.0 formats, with issuance via OID4VCI (ES256).
       Piloted under the DC4EU Large-Scale Pilot framework.
-    source: EC Use Case Manual #10 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930453001/EHIC
+    source: EC Use Case Manual #10
     note: One of the 19 EUDIW use cases defined by the European Commission; Published
     aliases:
       - EHIC
@@ -1574,7 +1585,7 @@ terms:
       certain reserved parking conditions and facilities across Member States.
       The EPC is governed by Directive 2024/2841 and its implementing acts
       are pending.
-    source: EC Use Case Manual #03 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452118/European+Parking+Card
+    source: EC Use Case Manual #03
     note: One of the 19 EUDIW use cases defined by the European Commission; Published
     aliases:
       - EPC
@@ -1586,7 +1597,7 @@ terms:
       disability services across Member States. The EDC is governed by
       Directive 2024/2841 and its implementing acts are pending. Closely
       related to the European Parking Card (EPC) use case.
-    source: EC Use Case Manual #08 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452528/Disability+Card
+    source: EC Use Case Manual #08
     note: One of the 19 EUDIW use cases defined by the European Commission; Published
     aliases:
       - EDC
@@ -1599,7 +1610,7 @@ terms:
       issuance via OpenID4VCI and verification via ISO 18013-5 (proximity)
       and ISO 18013-7 (remote). Integrates with the cross-border digital
       health infrastructure MyHealth@EU.
-    source: EC Use Case Manual #09 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452930/ePrescription
+    source: EC Use Case Manual #09
     note: One of the 19 EUDIW use cases defined by the European Commission; Published
 
   - term: Vehicle Registration Certificate
@@ -1608,7 +1619,7 @@ terms:
       proof of the registration and legal compliance of a vehicle with
       national and European road transport regulations. This use case is
       currently in the "coming soon" stage, with its manual not yet published.
-    source: EC EUDIW Use Case Portal — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/896827987/Use+case+manuals
+    source: EC EUDIW Use Case Portal
     note: One of the 19 EUDIW use cases defined by the European Commission; Coming soon
     aliases:
       - VRC

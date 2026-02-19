@@ -690,7 +690,7 @@ export default function ComplianceAssessment() {
         <div className="rca-page">
             {data._meta?.contentHash && (
                 <span className="dataset-fingerprint" title={`Build commit: ${data._meta.buildCommit || 'dev'}`}>
-                    Dataset fingerprint: {data._meta.contentHash} · Built {data._meta.buildDate || 'unknown'}
+                    Dataset fingerprint: {data._meta.contentHash}
                 </span>
             )}
             <header className="rca-header">

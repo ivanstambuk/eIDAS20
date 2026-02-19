@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated": "2026-02-19T22:30:06.399Z",
+  "generated": "2026-02-19T23:01:38.841Z",
   "statistics": {
     "totalTerms": 374,
     "totalDefinitions": 536,
@@ -4580,13 +4580,13 @@
           "documentCategory": "internal",
           "documentType": "internal",
           "celex": null,
-          "articleId": "article-EC Use Case Manual #06 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451772/Travel+Credentials",
-          "articleNumber": "EC Use Case Manual #06 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451772/Travel+Credentials",
+          "articleId": "article-EC Use Case Manual #06",
+          "articleNumber": "EC Use Case Manual #06",
           "displayOrder": 5
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-EC Use Case Manual #06 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451772/Travel+Credentials",
+      "primaryLinkTarget": "article-EC Use Case Manual #06",
       "definitionGroups": [
         {
           "definition": "An EUDI Wallet use case providing a digital representation of the user's identity document such as a passport or identity card, enabling streamlined border control and travel processes. The DTC follows ICAO 9303 and ISO/IEC TS 23220-2:2024 standards. Verification uses PKI-based signature validation against passport and identity card trusted lists.",
@@ -4598,8 +4598,8 @@
               "documentCategory": "internal",
               "documentType": "internal",
               "celex": null,
-              "articleId": "article-EC Use Case Manual #06 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451772/Travel+Credentials",
-              "articleNumber": "EC Use Case Manual #06 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451772/Travel+Credentials",
+              "articleId": "article-EC Use Case Manual #06",
+              "articleNumber": "EC Use Case Manual #06",
               "displayOrder": 5
             }
           ],
@@ -4607,7 +4607,10 @@
         }
       ],
       "roles": [],
-      "domains": []
+      "domains": [],
+      "aliases": [
+        "DTC"
+      ]
     },
     {
       "id": "directly-or-indirectly",
@@ -4900,13 +4903,13 @@
           "documentCategory": "internal",
           "documentType": "internal",
           "celex": null,
-          "articleId": "article-EC Use Case Manual #09 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452930/ePrescription",
-          "articleNumber": "EC Use Case Manual #09 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452930/ePrescription",
+          "articleId": "article-EC Use Case Manual #09",
+          "articleNumber": "EC Use Case Manual #09",
           "displayOrder": 5
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-EC Use Case Manual #09 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452930/ePrescription",
+      "primaryLinkTarget": "article-EC Use Case Manual #09",
       "definitionGroups": [
         {
           "definition": "An EUDI Wallet use case enabling users to identify themselves in order to access electronic prescriptions stored and presented via the wallet. Uses ISO 18013-5 mdoc format for the Health ID attestation, with issuance via OpenID4VCI and verification via ISO 18013-5 (proximity) and ISO 18013-7 (remote). Integrates with the cross-border digital health infrastructure MyHealth@EU.",
@@ -4918,8 +4921,8 @@
               "documentCategory": "internal",
               "documentType": "internal",
               "celex": null,
-              "articleId": "article-EC Use Case Manual #09 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452930/ePrescription",
-              "articleNumber": "EC Use Case Manual #09 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452930/ePrescription",
+              "articleId": "article-EC Use Case Manual #09",
+              "articleNumber": "EC Use Case Manual #09",
               "displayOrder": 5
             }
           ],
@@ -6487,13 +6490,13 @@
           "documentCategory": "internal",
           "documentType": "internal",
           "celex": null,
-          "articleId": "article-EC Use Case Manual #08 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452528/Disability+Card",
-          "articleNumber": "EC Use Case Manual #08 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452528/Disability+Card",
+          "articleId": "article-EC Use Case Manual #08",
+          "articleNumber": "EC Use Case Manual #08",
           "displayOrder": 5
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-EC Use Case Manual #08 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452528/Disability+Card",
+      "primaryLinkTarget": "article-EC Use Case Manual #08",
       "definitionGroups": [
         {
           "definition": "An EUDI Wallet use case enabling users to store and present a digital proof of recognised disability status, granting entitlement to disability services across Member States. The EDC is governed by Directive 2024/2841 and its implementing acts are pending. Closely related to the European Parking Card (EPC) use case.",
@@ -6505,8 +6508,8 @@
               "documentCategory": "internal",
               "documentType": "internal",
               "celex": null,
-              "articleId": "article-EC Use Case Manual #08 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452528/Disability+Card",
-              "articleNumber": "EC Use Case Manual #08 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452528/Disability+Card",
+              "articleId": "article-EC Use Case Manual #08",
+              "articleNumber": "EC Use Case Manual #08",
               "displayOrder": 5
             }
           ],
@@ -6514,7 +6517,10 @@
         }
       ],
       "roles": [],
-      "domains": []
+      "domains": [],
+      "aliases": [
+        "EDC"
+      ]
     },
     {
       "id": "european-health-data-space",
@@ -6554,7 +6560,10 @@
         }
       ],
       "roles": [],
-      "domains": []
+      "domains": [],
+      "aliases": [
+        "EHDS"
+      ]
     },
     {
       "id": "european-health-insurance-card",
@@ -6567,13 +6576,13 @@
           "documentCategory": "internal",
           "documentType": "internal",
           "celex": null,
-          "articleId": "article-EC Use Case Manual #10 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930453001/EHIC",
-          "articleNumber": "EC Use Case Manual #10 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930453001/EHIC",
+          "articleId": "article-EC Use Case Manual #10",
+          "articleNumber": "EC Use Case Manual #10",
           "displayOrder": 5
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-EC Use Case Manual #10 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930453001/EHIC",
+      "primaryLinkTarget": "article-EC Use Case Manual #10",
       "definitionGroups": [
         {
           "definition": "An EUDI Wallet use case enabling users to store and present a digital version of the EHIC, granting access to necessary healthcare when in another Member State. The digital EHIC uses SD-JWT-VC (IETF) and W3C VC Data Model 2.0 formats, with issuance via OID4VCI (ES256). Piloted under the DC4EU Large-Scale Pilot framework.",
@@ -6585,8 +6594,8 @@
               "documentCategory": "internal",
               "documentType": "internal",
               "celex": null,
-              "articleId": "article-EC Use Case Manual #10 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930453001/EHIC",
-              "articleNumber": "EC Use Case Manual #10 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930453001/EHIC",
+              "articleId": "article-EC Use Case Manual #10",
+              "articleNumber": "EC Use Case Manual #10",
               "displayOrder": 5
             }
           ],
@@ -6594,7 +6603,10 @@
         }
       ],
       "roles": [],
-      "domains": []
+      "domains": [],
+      "aliases": [
+        "EHIC"
+      ]
     },
     {
       "id": "european-parking-card",
@@ -6607,13 +6619,13 @@
           "documentCategory": "internal",
           "documentType": "internal",
           "celex": null,
-          "articleId": "article-EC Use Case Manual #03 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452118/European+Parking+Card",
-          "articleNumber": "EC Use Case Manual #03 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452118/European+Parking+Card",
+          "articleId": "article-EC Use Case Manual #03",
+          "articleNumber": "EC Use Case Manual #03",
           "displayOrder": 5
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-EC Use Case Manual #03 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452118/European+Parking+Card",
+      "primaryLinkTarget": "article-EC Use Case Manual #03",
       "definitionGroups": [
         {
           "definition": "An EUDI Wallet use case enabling persons with disabilities to store and present a digital European Parking Card, recognising the right to certain reserved parking conditions and facilities across Member States. The EPC is governed by Directive 2024/2841 and its implementing acts are pending.",
@@ -6625,8 +6637,8 @@
               "documentCategory": "internal",
               "documentType": "internal",
               "celex": null,
-              "articleId": "article-EC Use Case Manual #03 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452118/European+Parking+Card",
-              "articleNumber": "EC Use Case Manual #03 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452118/European+Parking+Card",
+              "articleId": "article-EC Use Case Manual #03",
+              "articleNumber": "EC Use Case Manual #03",
               "displayOrder": 5
             }
           ],
@@ -6634,7 +6646,10 @@
         }
       ],
       "roles": [],
-      "domains": []
+      "domains": [],
+      "aliases": [
+        "EPC"
+      ]
     },
     {
       "id": "european-standard",
@@ -9054,7 +9069,10 @@
         }
       ],
       "roles": [],
-      "domains": []
+      "domains": [],
+      "aliases": [
+        "KYC"
+      ]
     },
     {
       "id": "large-scale-cybersecurity-incident",
@@ -9924,13 +9942,13 @@
           "documentCategory": "internal",
           "documentType": "internal",
           "celex": null,
-          "articleId": "article-EC Use Case Manual #01 — https://ec.europa.eu/digital-building-blocks/sites/display/EUDIGITALIDENTITYWALLET/The+mobile+Driving+License+manual",
-          "articleNumber": "EC Use Case Manual #01 — https://ec.europa.eu/digital-building-blocks/sites/display/EUDIGITALIDENTITYWALLET/The+mobile+Driving+License+manual",
+          "articleId": "article-EC Use Case Manual #01",
+          "articleNumber": "EC Use Case Manual #01",
           "displayOrder": 5
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-EC Use Case Manual #01 — https://ec.europa.eu/digital-building-blocks/sites/display/EUDIGITALIDENTITYWALLET/The+mobile+Driving+License+manual",
+      "primaryLinkTarget": "article-EC Use Case Manual #01",
       "definitionGroups": [
         {
           "definition": "An EUDI Wallet use case enabling users to store and present a digital proof of their right to drive a certain kind of vehicle. The mDL follows the ISO/IEC 18013-5 (proximity) and ISO 18013-7 (remote) standards, using the mdoc data format. Issuance follows OpenID4VCI (ARF Annex 4). See the EC use case manual for full details.",
@@ -9942,8 +9960,8 @@
               "documentCategory": "internal",
               "documentType": "internal",
               "celex": null,
-              "articleId": "article-EC Use Case Manual #01 — https://ec.europa.eu/digital-building-blocks/sites/display/EUDIGITALIDENTITYWALLET/The+mobile+Driving+License+manual",
-              "articleNumber": "EC Use Case Manual #01 — https://ec.europa.eu/digital-building-blocks/sites/display/EUDIGITALIDENTITYWALLET/The+mobile+Driving+License+manual",
+              "articleId": "article-EC Use Case Manual #01",
+              "articleNumber": "EC Use Case Manual #01",
               "displayOrder": 5
             }
           ],
@@ -9951,7 +9969,10 @@
         }
       ],
       "roles": [],
-      "domains": []
+      "domains": [],
+      "aliases": [
+        "mDL"
+      ]
     },
     {
       "id": "multi-country-projects",
@@ -11346,7 +11367,10 @@
         }
       ],
       "roles": [],
-      "domains": []
+      "domains": [],
+      "aliases": [
+        "PSP"
+      ]
     },
     {
       "id": "peer-evaluation",
@@ -15037,7 +15061,10 @@
         }
       ],
       "roles": [],
-      "domains": []
+      "domains": [],
+      "aliases": [
+        "SE"
+      ]
     },
     {
       "id": "securitisation-repository",
@@ -16960,7 +16987,10 @@
         }
       ],
       "roles": [],
-      "domains": []
+      "domains": [],
+      "aliases": [
+        "TEE"
+      ]
     },
     {
       "id": "trusted-list",
@@ -17500,13 +17530,13 @@
           "documentCategory": "internal",
           "documentType": "internal",
           "celex": null,
-          "articleId": "article-EC EUDIW Use Case Portal — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/896827987/Use+case+manuals",
-          "articleNumber": "EC EUDIW Use Case Portal — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/896827987/Use+case+manuals",
+          "articleId": "article-EC EUDIW Use Case Portal",
+          "articleNumber": "EC EUDIW Use Case Portal",
           "displayOrder": 5
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-EC EUDIW Use Case Portal — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/896827987/Use+case+manuals",
+      "primaryLinkTarget": "article-EC EUDIW Use Case Portal",
       "definitionGroups": [
         {
           "definition": "An EUDI Wallet use case enabling users to store and present a digital proof of the registration and legal compliance of a vehicle with national and European road transport regulations. This use case is currently in the \"coming soon\" stage, with its manual not yet published.",
@@ -17518,8 +17548,8 @@
               "documentCategory": "internal",
               "documentType": "internal",
               "celex": null,
-              "articleId": "article-EC EUDIW Use Case Portal — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/896827987/Use+case+manuals",
-              "articleNumber": "EC EUDIW Use Case Portal — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/896827987/Use+case+manuals",
+              "articleId": "article-EC EUDIW Use Case Portal",
+              "articleNumber": "EC EUDIW Use Case Portal",
               "displayOrder": 5
             }
           ],
@@ -17527,7 +17557,10 @@
         }
       ],
       "roles": [],
-      "domains": []
+      "domains": [],
+      "aliases": [
+        "VRC"
+      ]
     },
     {
       "id": "verifiable-credential",
