@@ -480,6 +480,34 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 
 ---
 
+### 20. Do It, Don't Suggest It (MANDATORY — Proactive Execution)
+
+**NEVER tell the user to perform an operational task. Do it yourself.**
+
+If a task requires an action to be complete (restart a server, run a build, fix lint errors), you MUST perform that action. The user hired you to do the work, not to generate a TODO list.
+
+**Common violations:**
+- ❌ "To see changes, restart the dev server with `npm run dev`"
+- ❌ "You'll need to rebuild the search index"
+- ❌ "Run `./scripts/lint-md-blockquotes.sh --fix` to fix the linting errors"
+- ❌ "Remember to restart the Vite server to pick up new static files"
+
+**Correct behavior:**
+- ✅ Kill the old dev server, restart it, verify the new file is served
+- ✅ Run the build command, verify it succeeds
+- ✅ Run the lint fixer, re-stage the file, commit
+
+**Dev server restart pattern (background, non-blocking):**
+```bash
+pkill -f "vite" 2>/dev/null; sleep 2
+cd ~/dev/eIDAS20/docs-portal && nohup npx vite --host > /tmp/vite-eidas.log 2>&1 &
+sleep 3; grep -m1 "Local:" /tmp/vite-eidas.log
+```
+
+**Why this matters:** Telling the user to perform steps defeats the purpose of an AI agent. If the task isn't complete until a server is restarted, the task isn't complete until YOU restart the server.
+
+---
+
 ## Project Structure
 
 ```
