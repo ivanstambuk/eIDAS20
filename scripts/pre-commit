@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# =============================================================================
+# pre-commit — Git pre-commit hook for the eIDAS 2.0 Documentation Portal
+#
+# Checks:
+#   1. Markdown blockquote line-break linting (trailing two spaces)
+#
+# Install: cp scripts/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+# Or:      ln -sf ../../scripts/pre-commit .git/hooks/pre-commit
+#
+# Created: 2026-02-19
+# =============================================================================
+
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+# =============================================================================
+# Check 1: Markdown blockquote trailing spaces
+# =============================================================================
+
+# Get staged .md files (added, modified, or renamed — not deleted)
+MD_FILES=$(git diff --cached --name-only --diff-filter=AMR -- '*.md' || true)
+
+if [[ -n "$MD_FILES" ]]; then
+    # Build array of full paths
+    FILES_TO_CHECK=()
+    while IFS= read -r f; do
+        FILES_TO_CHECK+=("${REPO_ROOT}/${f}")
+    done <<< "$MD_FILES"
+
+    if [[ ${#FILES_TO_CHECK[@]} -gt 0 ]]; then
+        if ! "${REPO_ROOT}/scripts/lint-md-blockquotes.sh" "${FILES_TO_CHECK[@]}"; then
+            echo ""
+            echo "💡 To auto-fix:  ./scripts/lint-md-blockquotes.sh --fix ${MD_FILES}"
+            echo "   Then:         git add <fixed files> && git commit"
+            echo ""
+            exit 1
+        fi
+    fi
+fi
+
+# =============================================================================
+# All checks passed
+# =============================================================================
+exit 0

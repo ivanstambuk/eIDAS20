@@ -1,9 +1,9 @@
 # EC Use Case Analysis — Gap Analysis & Implementation Plan
 
-> **Created:** 2026-02-19
-> **Last updated:** 2026-02-20T10:30:00+01:00
-> **Source:** https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/896827987/Use+case+manuals
-> **Purpose:** Living document — research findings + implementation tracker for synchronising our RCA/VCQ data with EC's official use case portal.
+> **Created:** 2026-02-19  
+> **Last updated:** 2026-02-20T10:30:00+01:00  
+> **Source:** https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/896827987/Use+case+manuals  
+> **Purpose:** Living document — research findings + implementation tracker for synchronising our RCA/VCQ data with EC's official use case portal.  
 > **Manual archive:** `.agent/research/use-case-manuals/` (11 PDFs + text extractions)
 
 ---
@@ -144,8 +144,8 @@ All 11 PDFs confirmed and downloaded to `.agent/research/use-case-manuals/pdf/`.
 
 ## Phase 1: YAML Data Fix (names, descriptions, statuses)
 
-> **Target file:** `docs-portal/config/rca/use-cases.yaml`
-> **Estimated effort:** ~10 minutes
+> **Target file:** `docs-portal/config/rca/use-cases.yaml`  
+> **Estimated effort:** ~10 minutes  
 > **Risk:** Low — pure data correction, no schema changes
 
 ### Step 1.1 — Rename `payment-auth`
@@ -199,8 +199,8 @@ All 11 PDFs confirmed and downloaded to `.agent/research/use-case-manuals/pdf/`.
 
 ## Phase 2: Populate EC Manual URLs
 
-> **Target file:** `docs-portal/config/rca/use-cases.yaml`
-> **Estimated effort:** ~5 minutes
+> **Target file:** `docs-portal/config/rca/use-cases.yaml`  
+> **Estimated effort:** ~5 minutes  
 > **Risk:** Low — populating existing null fields
 
 ### Step 2.1 — Set `ecManualUrl` for 10 newly-published use cases
@@ -229,8 +229,8 @@ All 11 PDFs confirmed and downloaded to `.agent/research/use-case-manuals/pdf/`.
 
 ## Phase 3: Add PDF Manual URLs (new schema field)
 
-> **Target files:** `docs-portal/config/rca/use-cases.yaml` only (see audit notes below)
-> **Estimated effort:** ~15 minutes
+> **Target files:** `docs-portal/config/rca/use-cases.yaml` only (see audit notes below)  
+> **Estimated effort:** ~15 minutes  
 > **Risk:** Low — adds a new optional field; build pipeline confirmed to handle it
 
 ### Step 3.1 — Add `pdfManualUrl` field to each use case entry in YAML
@@ -262,7 +262,7 @@ All 11 PDFs confirmed and downloaded to `.agent/research/use-case-manuals/pdf/`.
 
 ## Phase 4: Rebuild & Verify
 
-> **Target:** Full build cycle + visual verification
+> **Target:** Full build cycle + visual verification  
 > **Estimated effort:** ~10 minutes
 
 ### Step 4.1 — Run RCA data build
@@ -291,9 +291,9 @@ All 11 PDFs confirmed and downloaded to `.agent/research/use-case-manuals/pdf/`.
 
 ## Phase 5: VCQ Technical Standard Enrichment
 
-> **Target:** VCQ clarification question YAML files
-> **Estimated effort:** ~1-2 hours
-> **Risk:** Medium — requires careful semantic analysis of technical standards vs our existing questions
+> **Target:** VCQ clarification question YAML files  
+> **Estimated effort:** ~1-2 hours  
+> **Risk:** Medium — requires careful semantic analysis of technical standards vs our existing questions  
 > **Prerequisites:** Phases 1-4 complete
 
 ### Step 5.1 — Age Verification VCQ enrichment
@@ -355,15 +355,15 @@ All 11 PDFs confirmed and downloaded to `.agent/research/use-case-manuals/pdf/`.
 
 # PART E — Comprehensive Second Pass Audit
 
-> **Audit date:** 2026-02-19T19:10+01:00
-> **Method:** Cross-checked implementation plan against:
-> 1. `use-cases.yaml` (line-by-line vs EC listing page)
-> 2. `build-rca.js` (field handling logic)
-> 3. `validate-rca.js` (schema validation scope)
-> 4. `ComplianceAssessment.jsx` (frontend rendering)
-> 5. `vcq-config.yaml` (VCQ structure and existing references)
-> 6. `legal-sources.yaml` (technical specs and legislation refs)
-> 7. EC main listing page content (re-scraped for verbatim comparison)
+> **Audit date:** 2026-02-19T19:10+01:00  
+> **Method:** Cross-checked implementation plan against:  
+> 1. `use-cases.yaml` (line-by-line vs EC listing page)  
+> 2. `build-rca.js` (field handling logic)  
+> 3. `validate-rca.js` (schema validation scope)  
+> 4. `ComplianceAssessment.jsx` (frontend rendering)  
+> 5. `vcq-config.yaml` (VCQ structure and existing references)  
+> 6. `legal-sources.yaml` (technical specs and legislation refs)  
+> 7. EC main listing page content (re-scraped for verbatim comparison)  
 > 8. EC manual subpages (re-checked key claims)
 
 ## E1. Corrections Made to the Plan
@@ -508,10 +508,10 @@ Our YAML groups by category (different ordering), which is fine — we sort by `
 
 ## Phase 6: Manual Content Analysis & Recommendations
 
-> **Target:** Analyze `.agent/research/use-case-manuals/txt/` content and produce recommendations
-> **Estimated effort:** ~2-3 hours
-> **Risk:** Low — read-only analysis, no code changes
-> **Prerequisites:** Phases 1-4 complete (data corrections applied first)
+> **Target:** Analyze `.agent/research/use-case-manuals/txt/` content and produce recommendations  
+> **Estimated effort:** ~2-3 hours  
+> **Risk:** Low — read-only analysis, no code changes  
+> **Prerequisites:** Phases 1-4 complete (data corrections applied first)  
 > **Archive:** 11 PDFs downloaded and text-extracted to `.agent/research/use-case-manuals/`
 
 ⚠️ **Note:** The PDFs contain images, diagrams, and formatted layouts that don't fully convert to text.
@@ -546,8 +546,8 @@ Total extracted: ~2,285 lines / 269 KB across 11 files.
 
 # PART F — Applied Changes (commit `7c07b306`)
 
-> **Applied:** 2026-02-19T20:15+01:00
-> **File:** `docs-portal/config/rca/use-cases.yaml`
+> **Applied:** 2026-02-19T20:15+01:00  
+> **File:** `docs-portal/config/rca/use-cases.yaml`  
 > **Build output:** `docs-portal/public/data/rca-data.json` (regenerated)
 
 ### ⚠️ SCOPE: No RCA requirements were changed
@@ -666,13 +666,13 @@ The following fields were **audited and confirmed to already match** EC data —
 
 # PART G — VCQ Enrichment Changes (commit `40be9a02`)
 
-> **Applied:** 2026-02-19T21:30+01:00
-> **Files modified:**
-> - `docs-portal/config/vcq/clarification-questions/core.yaml` (source)
-> - `docs-portal/scripts/build-vcq-clarifications.js` (build pipeline)
-> - `docs-portal/public/data/vcq-clarification-questions.json` (rebuilt output)
+> **Applied:** 2026-02-19T21:30+01:00  
+> **Files modified:**  
+> - `docs-portal/config/vcq/clarification-questions/core.yaml` (source)  
+> - `docs-portal/scripts/build-vcq-clarifications.js` (build pipeline)  
+> - `docs-portal/public/data/vcq-clarification-questions.json` (rebuilt output)  
 >
-> **No existing questions were modified or removed.** All changes are strictly additive.
+> **No existing questions were modified or removed.** All changes are strictly additive.  
 > **No RCA requirements were changed.** This is VCQ-only enrichment.
 
 ## G1. Overview
