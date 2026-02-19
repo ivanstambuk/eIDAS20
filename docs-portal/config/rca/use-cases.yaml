@@ -1,6 +1,7 @@
 # RCA Configuration: Use Cases
 # Source: EC Use Case Manuals
 # https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/896827987/Use+case+manuals
+# Last synced: 2026-02-19
 
 categories:
   core:
@@ -34,8 +35,9 @@ useCases:
     name: "PID-based identification in online services"
     description: "Secure identification to an online service using the PID stored in an EUDI Wallet."
     category: core
-    status: coming_soon
-    ecManualUrl: null
+    status: published
+    ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451131/PID+Identification+Manual"
+    pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930451131/04_Use%20Case_Manual_PID-based%20identification%201.pdf"
 
   pseudonym:
     name: "Use of a pseudonym in online services"
@@ -43,21 +45,24 @@ useCases:
     category: core
     status: coming_soon
     ecManualUrl: null
+    pdfManualUrl: null
 
   esignature:
     name: "eSignature"
-    description: "Create advanced electronic signatures with the same legal validity as a handwritten signature."
+    description: "Create qualified electronic signatures with the same legal validity as a handwritten signature."
     category: core
-    status: coming_soon
-    ecManualUrl: null
+    status: published
+    ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452287/eSignature"
+    pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930452287/07_Use%20Case_Manual_eSignature.pdf"
 
   # === Banking & payment ===
   payment-auth:
-    name: "Online payment authorisation"
-    description: "Enables online payments to be authorised via an EUDI Wallet."
+    name: "Payment authentication"
+    description: "Enables online payments to be authenticated via an EUDI Wallet."
     category: banking
-    status: coming_soon
-    ecManualUrl: null
+    status: published
+    ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/935397429/Payment+Authentication"
+    pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/935397429/11_Use%20Case_Manual_Payment%20Authentication.pdf"
     # Links to TS12 for PSD2 SCA requirements
     technicalSpecs:
       - TS12
@@ -68,6 +73,7 @@ useCases:
     category: banking
     status: coming_soon
     ecManualUrl: null
+    pdfManualUrl: null
 
   # === Travel ===
   mdl:
@@ -76,20 +82,23 @@ useCases:
     category: travel
     status: published
     ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/display/EUDIGITALIDENTITYWALLET/The+mobile+Driving+License+manual"
+    pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/929202846/01_Use%20Case_Manual_Mobile%20Driving%20Licence%201.pdf"
 
   dtc:
     name: "Digital Travel Credential (DTC)"
     description: "A digital representation of the user's identity document such as an identity card, passport or another travel document."
     category: travel
-    status: coming_soon
-    ecManualUrl: null
+    status: published
+    ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451772/Travel+Credentials"
+    pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930451772/06_Use%20Case_Manual_Digital%20Travel%20Credential.pdf"
 
   epc:
     name: "European Parking Card (EPC)"
     description: "Issued to persons with disabilities, recognising the right to certain reserved parking conditions and facilities."
     category: travel
-    status: coming_soon
-    ecManualUrl: null
+    status: published
+    ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452118/European+Parking+Card"
+    pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930452118/03_Use%20Case_Manual_European%20Parking%20Card.pdf"
 
   vrc:
     name: "Vehicle Registration Certificate (VRC)"
@@ -97,28 +106,32 @@ useCases:
     category: travel
     status: coming_soon
     ecManualUrl: null
+    pdfManualUrl: null
 
   # === Health & social security ===
   disability-card:
     name: "European Disability Card"
     description: "Serves as proof of recognised disability status/entitlement to disability services."
     category: health
-    status: coming_soon
-    ecManualUrl: null
+    status: published
+    ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452528/Disability+Card"
+    pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930452528/08_Use%20Case_Manual_Disability%20Card.pdf"
 
   eprescription:
     name: "e-Prescription"
     description: "Identify yourself in order to access e-prescriptions stored and presented via an EUDI Wallet."
     category: health
-    status: coming_soon
-    ecManualUrl: null
+    status: published
+    ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452930/ePrescription"
+    pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930452930/09_Use%20Case_Manual_ePrescription.pdf"
 
   ehic:
     name: "European Health Insurance Card (EHIC)"
     description: "Grants access to necessary healthcare when in another Member State."
     category: health
-    status: coming_soon
-    ecManualUrl: null
+    status: published
+    ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930453001/EHIC"
+    pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930453001/10_Use%20Case_Manual_European%20Health%20Insurance%20Card%20%28EHIC%29.pdf"
 
   public-warnings:
     name: "Public warnings"
@@ -126,14 +139,16 @@ useCases:
     category: health
     status: coming_soon
     ecManualUrl: null
+    pdfManualUrl: null
 
   # === Consumer ===
   age-verification:
     name: "Age verification"
     description: "Prove you are above a specific age threshold (e.g., over 16, 18, or 21) using a verifiable digital credential."
     category: consumer
-    status: coming_soon
-    ecManualUrl: null
+    status: published
+    ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930450954/The+Age+Verification+Manual"
+    pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930450954/Use%20Case_Manual_Age%20verification.pdf"
 
   ticket-pass:
     name: "Ticket or pass"
@@ -141,6 +156,7 @@ useCases:
     category: consumer
     status: coming_soon
     ecManualUrl: null
+    pdfManualUrl: null
 
   # === Education ===
   edu-credentials:
@@ -149,6 +165,7 @@ useCases:
     category: education
     status: coming_soon
     ecManualUrl: null
+    pdfManualUrl: null
 
   student-card:
     name: "European student card"
@@ -156,14 +173,16 @@ useCases:
     category: education
     status: coming_soon
     ecManualUrl: null
+    pdfManualUrl: null
 
   # === Identification ===
   proximity-id:
     name: "Identification in proximity scenarios"
     description: "Secure in-person identification for services where the transaction requires strong assurance of identity."
     category: identification
-    status: coming_soon
-    ecManualUrl: null
+    status: published
+    ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451396/Identification+in+proximity+scenarios"
+    pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930451396/05_Use%20Case_Manual_The%20identification%20in%20proximity%20scenarios.pdf"
 
   # === Legal representation ===
   representation:
@@ -172,3 +191,4 @@ useCases:
     category: legal
     status: coming_soon
     ecManualUrl: null
+    pdfManualUrl: null

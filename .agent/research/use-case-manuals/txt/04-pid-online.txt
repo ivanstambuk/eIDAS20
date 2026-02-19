@@ -1,0 +1,287 @@
+Use Case Manual
+PID-based
+identification in
+online services
+
+
+
+
+                    1
+                                                                      Description
+                                                                      Identification based on Person Identification Data (PID) refers to the scenario where a Relying Party
+                                                                      identifies an EU Digital Identity Wallet (EUDI Wallet) user using their PID.
+                                                                      After successful authentication of PID, the Relying Party may grant the user access to their services,
+                                                                      such as public and private sector digital services, ranging from social security portals and tax filings
+                                                                      to telecom subscriptions and banking services. PID can also be used to register a new account at the service
+                                                                      provider.
+
+                                                                      PID is a core credential within the EUDI Wallet that includes attributes like full name, date of birth,
+                                                                      nationality and more, issued and signed by the issuing Member State.
+
+
+
+
+    A Use Case Manual is a description of a specific use case
+    for the EU Digital Identity Wallet. It includes an introduction   User Journey(s)
+    to the use case and the user journey, the state of play of the
+    use case development, as well as references to the relevant
+                                                                      •   Getting a PID. Look here
+    technical specifications and infrastructures, legislation, and
+    governance structures.
+
+    The Use Case Manual is designed for the Wallet
+    implementers, Member States and other stakeholders
+    interested in the development of the Wallet and its use cases.
+
+    The Use Case Manual is not intended to contain full
+    detailed technical specifications for the use case. However,
+    where such specifications are available, the Use Case
+    Manual contains pointers to them.
+
+
+
+
+2                                                                                                                                                                               3
+•       Using a PID. Look here
+
+Online Identiﬁcation & Authentication
+                                                                                                                                                                                                                                                                               Use case impact
+    Journey Steps
+                                                                                                                                            Usage                                                                                                                              PID identification is an alternative to current manual account registration or identity verification
+    Which step of the experience
+    are you describing?
+                                                                                                                                   How would they use the app?                                                                                                                 procedures or existing online login flows. Depending on the specific scenario applicable for the Relying Party,
+                                                                                                                                                                                                                                                                               implementing PID identification is to be done for the following reasons:
+
+                                                                                                                                                                                                                                                                               •   Legal compliance, specifically requirements of Article 5f of the EUDI Regulation.
+    Enablers
+    What do they need                             For citizen:                         For Relying Party:                                                                  For citizen: Being able
+                                                                                                                                                                                                                                                                               •   Improvement of a manual and less secure procedures.
+                                                   Internet                       Being a certiﬁed EUDI Wallet                                                              to authenticate via
+                                                                                 ecosystem entity included in a                                                             PIN/biometrics etc.
+                                                                                          Trusted List
+
+
+
+
+                                                                                                                                                                                                                                                                               Benefits
+                                     Launch relying          Request access to         Select authentication                             Access EUDI      View / Select           Conﬁrm                                                  Return to relying   Granted Access
+                                                                                                                                                                                                                                                                               End-user/citizen value
+    Citizen                         party website/app       relying party service         via EUDI wallet                                 Wallet app   requested data or        authorizing                                                 party service
+                                                                                                                                                                                                                                         /Receives positive
+                                                                                                                                                         data types and      disclosure of data
+    Actor                                                                                      To increase                                                 requestor                (PIN,                                                    feedback
+
+
+                                                                                                                                                                                                                                                                               PID-based identification makes it possible to access important online services using a single, secure
+                                                                                               awareness it
+                                                                                                  shall be                                                                      Biometrics)
+                                                                                              considered to
+                                                                                              show the EUDI
+                                                                                                                                                                                Depending on the
+
+
+                                                                                                                                                                                                                                                                               and legally valid digital identity, avoiding manual procedures and without the need to use multiple login
+                                                                                             Wallet Trust Mark.
+                                                                                                                                                                               architecture further
+                                                                                                                                                                                  actions may be
+                                                                                                                                                                                    needed like
+                                                                                                                                                                                 retrieving PID in
+
+
+
+                                                                                                                                         Read
+                                                                                                                                                                               synchronous ﬂows.
+
+
+                                                                                                                                                                                                                              Read                            Denied access
+                                                                                                                                                                                                                                                                               methods. It may enhance user convenience while giving users full control over which identity attributes
+                                                                                                                                                                                                                                                                               are shared with each service. Through features like selective disclosure, users can avoid oversharing
+                                                                                                                                    error message                                                                        error message
+
+
+
+
+    Touchpoint                                                                                                                                                                                                                                                                 personal information, thus benefiting from GDPR-compliant data minimisation and greater digital trust.
+    What service do they interact                                Relying party service                                                                                                                                                         Relying party service
+
+    with?
+                                    EUDI Wallet (Operational/Valid State)                                                                                                                                                                                                      •   Single, secure access:
+                                                                                                                                                                                                                                                                                   One verified identity credential for all supported online services, eliminating the need for multiple
+                                    Valid State
+
+
+
+
+    Backstage
+                                                                                                                                                                                                                                                                                   logins and passwords.
+
+    Relying party                                                                                                                                                                                                                                                              •   Privacy & control:
+    Actor
+                                      Sends request to EUDI
+                                                                        The interaction between                                                                                                                          Identify the    Authenticate the
+                                                                                                                                                                                                                                                                                   Selective disclosure of attributes allows users to share only the necessary attributes (e.g., name,
+                                                                                                                                                                                                                                                                                   age, residency), supporting data minimisation principle in the GDPR.
+                                                                        the EUDI Wallet and the                                                                                                                                           presentation
+                                        Wallet (deep link)                                                                                                                                                                 citizen
+                                                                      relaying party is indicatively
+                                                                         depicted to occur via a
+                                                                       deep link, but it could also
+                                                                       be achieved through other
+                                                                      means, e.g. the scanning of
+                                                                          a QR code or others
+
+
+
+    PID provider
+                                                                                                                                                                                                                                                                               •   Avoid physical documents:
+    Actor                                                                                                                                                                                                                                                                          May remove the need to upload or scan ID documents during registration or verification.
+
+                                                                                                                                                                                                                                                                               •   Cross-border usability:
+    EUDI Wallet                                                                                                                                                                                                                                                                    Works across participating EU Member States, enabling access to foreign public services or regulated
+    Actor / Touchpoint
+                                                                                                                  Veriﬁes authenticity                                                                Authenticate the
+                                                                                                                                                                                                                                                                                   platforms.
+                                                                       Launches EUDI
+                                                                           Wallet                                 of relying party and                                                                     User
+                                                                                                                   validity of request
+
+
+                                                                                                                                                                                                                                                                               •   Enhanced trust:
+                                                                                                                                                                                                                                                                                   Reduces risks of phishing, fraud or identity theft, increasing citizens’ confidence in digital interactions.
+    EUDI Wallet Provider
+    Actor
+                                                                                                                                                                                                                                                                               Value for public and private service providers
+
+                                                                                                                                                                                                                                                                               For public government service portals and private sector service providers (financial institutions, mobile
+                                                                                                                                                                                                                                                                               network operators, etc) PID identification can provide an alternative way to register and identify users across
+                                                                                                                                                                                                                                                                               the EU at a high level of assurance. This can reduce fraud and identity theft, accelerate user onboarding, and
+                                                                                                                                                                                                                                                                               help comply with regulatory requirements like AML (Anti Money Laundering legislation) and eIDAS.
+
+                                                                                                                                                                                                                                                                               •   Regulatory compliance:
+                                                                                                                                                                                                                                                                                   Meets AML, KYC, and European Digital Identity Regulation trust framework requirements without
+                                                                                                                                                                                                                                                                                   storing excessive personal data.
+
+
+
+4                                                                                                                                                                                                                                                                                                                                                                                                 5
+•   Fraud reduction:                                                                                                banking and signing contracts to accessing eGovernment and healthcare services. In contrast, in countries
+    Cryptographic proofs from authorised issuers significantly lower the risk of identity fraud.                    where PID usage is primarily limited to public sector portals, frequency may be lower, with private service
+                                                                                                                    providers relying on separate login systems or proprietary solutions.
+•   Operational efficiency:
+    Automates verification processes, reducing costs and speeding up onboarding.
+
+•   Interoperability:
+                                                                                                                    Synergies with other use cases
+    Ready for future cross-border identity transactions with minimal additional integration.                        Further benefits from the use of the wallet for PID-based identification in online services can be achieved
+                                                                                                                    through synergy with the following use cases:
+•   Improved service delivery:
+    Streamlined and secure access to services, reducing operational overhead.                                       •   eSignature
+                                                                                                                    •   Use of pseudonym in online services
+•   Support for policy goals:                                                                                       •   Age verification
+    Advances digital literacy and adoption among users by facilitating making secure digital identification
+    a default
+
+
+
+                                                                                                                    Use case implementation
+•   Cross-border service access:
+    A common way to identify users regardless of eID issuing country.
+
+
+Economic value and potential market size
+                                                                                                                    The POTENTIAL consortium focused on high-volume sectors such as eGov Services, Bank Account
+According to Eurostat, 88% of EU citizens used the internet in 2022, and over 65% interacted with                   Opening, Mobile Driving Licence, and Qualified eSignature which require frequent and high-assurance
+public authorities online. PID-based identification has the potential to serve over 300 million active digital      identification. In cross-border interoperability testing for eGov Services (Use Case 1, Scenario
+users.                                                                                                              1B – Authentication Remote Scenario). POTENTIAL successfully demonstrated wallet functionality, where
+                                                                                                                    PID on the EUDIW is provided by another member staten than the member state of the service provider
+Issuers                                                                                                             relying on the authentication. This scenario covered cross-border presentation, not cross-border issuing.
+The economic potential of PID-based identification for issuers depends on the underlying business
+model established at national or EU level. If a remuneration model is adopted whereby relying parties               The EU Digital Wallet Consortium (EWC) outlined the definition of PID country enrolment process
+pay per PID authentication or credential verification, issuers have a clear incentive to promote widespread         in Deliverable 3.3, which offers a clear roadmap of how PIDs for natural persons will be managed within
+adoption across both public and private sectors. Increased usage would allow issuers to offset the fixed costs      the EUDI Wallet framework. While limited by the lack of technical specifications, the deliverable provides
+of credential issuance, infrastructure maintenance, and governance processes.                                       foundation for further standardization of the governance and technical protocols by which sovereign
+                                                                                                                    Member State authorizes issuance of base identity data into the EUDIW ecosystem, providing technical
+Users                                                                                                               harmonization required at the source of PID issuance for international travel.
+The potential user base is essentially all digitally active EU citizens and residents, which Eurostat
+reports as ~92% of EU population aged 16–74 using the internet in 2023. This translates to over 400 million         Digital Credentials for Europe (DC4EU) Large-Scale Pilot is strategically focused on integrating PID
+potential wallet users in the EU-27 once adoption is mature.                                                        into the education and social security sectors across the European Union. The consortium’s work
+                                                                                                                    specifically addresses how a citizen’s foundational, legally verified identity (the PID) can be used
+Relying Parties                                                                                                     securely as the base layer for sector-specific attributes, ensuring cross-border recognition and high trust.
+eGovernment portals, healthcare systems, social services, tax administrations, and municipal services
+would benefit from a unified, secure identity layer that reduces administrative overhead and ensures
+consistent user authentication.
+                                                                                                                    Legislation
+In the private sector, financial institutions, telecom operators, insurance companies, regulated
+                                                                                                                    Regulation (EU) No 910/2014: Established a European framework for electronic identification and trust
+marketplaces, higher education institutions, and real estate platforms will all gain from streamlined onboarding,
+                                                                                                                    services for electronic transactions in the internal market. It required mutual recognition of notified
+compliance with KYC/AML requirements, and reduced exposure to identity fraud.
+                                                                                                                    electronic identification means between Member States and provided the legal basis for secure electronic
+                                                                                                                    identification, authentication, and trust services at EU level across borders.
+Transactions
+The frequency with which PID-based identification is used varies significantly across Member States,
+                                                                                                                    Regulation (EU) 2024/1183. Entered into force on 20 May 2024, amends the original Regulation to create
+depending on the range of services integrated with eID and the maturity of the national digital identity
+                                                                                                                    the European Digital Identity (EUDI) framework. It introduces the obligation on Member States to issue
+ecosystem. In Member States where PID credentials are widely accepted across both public and private
+                                                                                                                    at least one European Digital Identity Wallet by the end of 2026 as a harmonised tool for users to store,
+sectors, for example in Estonia, digital identity may be used multiple times per day, for everything from
+                                                                                                                    manage, and present PID and EAAs in both online and offline scenarios.
+
+6                                                                                                                                                                                                                             7
+Implementing Regulation (EU) 2024/2977: Establishes the rules for the issuance, management, and                     The PID attestation must be issued by a trusted identity provider designated at the national level, and should
+revocation of Person Identification Data (PID) and Electronic Attestations of Attributes (EAAs). It defines         be verifiable via cryptographically signed evidence anchored in EU trust lists.
+mandatory and optional PID elements (such as family name, given name, date and place of birth, and
+nationality), prescribes enrolment at assurance level “high,” and requires that PID be cryptographically bound      Issuance
+to the wallet unit.                                                                                                 The OpenID4VCI protocol is the recommended framework for credential issuance, with formal adoption
+                                                                                                                    expected across the ecosystem in 2025. Open-source libraries supporting this protocol are available and
+Implementing Regulation (EU) 2024/2979: Lays down rules for the integrity and core functionalities of               being actively maintained in the EUDI Wallet community (e.g., eudi-wallet/openid4vci). The issuance flow is
+EUDI Wallets. It ensures that EUDI Wallets can securely manage PID, obtain informed user consent, support           described in Annex 4 of the ARF, covering initiation, user authentication, credential creation, and storage.
+selective disclosure of attributes, and maintain auditable records.
+                                                                                                                    Verification
+Implementing Regulation (EU) 2024/2981: Establishes the certification framework for EUDI Wallets to                 The EUDI ecosystem profiles OpenID for Verifiable Presentations (OID4VP) for presentation. Open-source
+ensure compliance with security, privacy, and interoperability requirements. Certification confirms that            toolkits (e.g., https://github.com/eu-digital-identity-wallet/eudi-web-verifier) are available to facilitate
+wallets handling PID meet the technical and organisational standards necessary to guarantee trustworthy             implementation of secure verification processes, including consent handling, attribute validation, and
+electronic identification and authentication.                                                                       integrity checking.
+
+Implementing Regulation (EU) 2024/2982: Sets out the protocols and interfaces required for secure                   Trust framework
+exchange of PID and EAAs between EUDI Wallets, issuers, and online service providers. By harmonising                The trust framework for PID-based identification is based on a federated trust model:
+communication standards, it ensures interoperability and consistency of PID-based identification throughout
+the Union.                                                                                                          •   Issuers of PID credentials must be designated by Member States and notified through official EU
+                                                                                                                        mechanisms.
+The Architecture and Reference Framework (ARF): For the EUDI Wallet ecosystem describes, among other                •   A central trust list infrastructure—building on the existing EU trust list under the European Digital
+topics, how PID and authentication flows work.                                                                          Identity Regulation framework—is expected to publish the list of recognised PID issuers.
+                                                                                                                    •   Relying parties (public or private entities accepting PID credentials) must register according to national
+                                                                                                                        onboarding processes and comply with wallet-specific integration and data protection requirements.
+
+Technical specifications, software libraries                                                                        The trust model ensures legal validity, data origin authenticity, and cross-border recognition of PID creden-
+                                                                                                                    tials throughout the EU.
+and infrastructure
+The technical foundations for PID-based identification in online services are defined by the eIDAS 2.0
+Implementing Acts, which establish the legal and technical specifications for credential formats, issuance
+protocols, and interoperability profiles. The European Commission’s reference implementation serves as the
+main source of open source components, libraries, and guidance for wallet developers and Member States.
+
+Technical interfaces for the wallet and relying parties are aligned with open specifications for digital
+credential exchange, such as OpenID for Verifiable Presentations (OpenID4VP) and OpenID for Verifiable
+Credential Issuance (OpenID4VCI). These specifications are referenced in the upcoming implementing acts
+on wallet protocols and are intended to ensure cross-wallet compatibility across Member States.
+
+Data model, format and proof mechanisms
+Under the Implementing Acts, the legally binding specification for PID defines both the data to be
+conveyed (e.g., core identity attributes such as name, date of birth, nationality, and person identifier) and the
+interoperability modes in which it may be issued and presented. The Acts profile two main modes: a W3C VC
+mode and an ISO/IEC 18013‑5/‑7 mdoc mode.
+
+In the VC mode, PID is issued and presented as a W3C Verifiable Credential (VCDM 2.0) using JOSE/JWS‑based
+proofs and the OpenID profiles for issuance and presentation (OID4VCI and OID4VP). In the mdoc mode, PID
+is encoded according to ISO/IEC 18013‑5 (and 18013‑7 for remote presentation), with COSE signatures
+on issuerSignedItems and support for device‑ and reader‑authentication, enabling selective per‑attribute
+disclosure and robust offline or proximity verification. SD‑JWT and zero‑knowledge approaches are not part
+of the Implementing Acts; attribute minimisation is achieved through the query and disclosure mechanisms
+defined in these IA‑profiled modes.
+
+8                                                                                                                                                                                                                               9
+10
+

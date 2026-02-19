@@ -1,0 +1,163 @@
+Use Case Manual
+European
+Parking Card
+
+
+
+
+                  1
+                                                                      Description
+                                                                      The European Parking Card for persons with disabilities (EPC) will promote the free movement for
+                                                                      persons with disabilities and facilitate their short stays in Member States other than the one in which they
+                                                                      reside. The EPC is issued as a proof of the right to use parking conditions and facilities, reserved for persons
+                                                                      with disabilities. Each Member State defines its own application procedure and eligibility criteria.
+
+                                                                      The EPC is established by Directive (EU) 2024/2841 together with the European Disability Card (EDC)
+                                                                      (see separate manual). The EPC will be mutually recognised in all Member States and will replace
+                                                                      all existing parking cards at national, regional or local level issued in accordance with Recommendation
+                                                                      98/376/EC by 5 December 2029. The issuance of the physical EPC displayed on the vehicle dashboard
+                                                                      is mandatory. Member States have the option to complement it with a digital version. The Member
+                                                                      States have the option to link a EPC to a specific licence plate number. The directive has EEA relevance.
+                                                                      Its beneficiaries are the Union citizens and their family members. The complementary Directive (EU)
+                                                                      2024/2842 extends the provisions of Directive (EU) 2024/2841 and both cards to third-country nationals
+    A Use Case Manual is a description of a specific use case         (non-EU citizens) legally residing in a Member State.
+    for the EU Digital Identity Wallet. It includes an introduction
+                                                                      A digital EPC supports EU goals for inclusion and equality, freedom of movement, mobility, and digital
+    to the use case and the user journey, the state of play of the    public services. It naturally complements the European Disability Card (EDC) and can share much
+    use case development, as well as references to the relevant       of the same infrastructure.
+    technical specifications and infrastructures, legislation, and
+    governance structures.
+
+    The Use Case Manual is designed for the Wallet
+    implementers, Member States and other stakeholders
+    interested in the development of the Wallet and its use cases.
+                                                                      User Journey(s)
+    The Use Case Manual is not intended to contain full               Scenario 1
+    detailed technical specifications for the use case. However,
+    where such specifications are available, the Use Case             1. User parks at parking spot marked for EPC holders.
+    Manual contains pointers to them.                                 2. A parking machine or mobile app requests EPC verification and, if required, parking fee payment.
+
+                                                                      3. User presents the EPC stored in their EUDI Wallet (via NFC or QR).
+
+                                                                      4. The machine or app verifies the EPC’s validity.
+
+                                                                      5. If the parking space is not free of charge, the system may trigger online payment authorisation to
+                                                                         settle the fee.
+
+                                                                      6. Parking session is recorded and authorised without the need for a human inspector.
+
+
+                                                                      Scenario 2
+                                                                      1. The vehicle approaches the entrance of an accessible parking area equipped with an automated gate
+                                                                         and an automatic number-plate recognition camera.
+
+
+2                                                                                                                                                                                   3
+2. A parking machine or the officer’s/inspector’s mobile app automatically requests verification of the                   The EUDI Wallet itself will be accessible in line with the requirements of Annex I of Directive 2019/882,
+   European Parking Card (EPC).                                                                                           thus benefiting the experience of cardholders.
+
+3. The user presents the EPC stored in their EUDI Wallet (via NFC tap or QR code).                                    Value for service providers
+
+4. The machine or the officer/inspector verifies the EPC’s validity.                                                  •   Fraud reduction:
+                                                                                                                          The digital card includes a verifiable signature, reducing misuse and false entitlement claims.
+5. Once the EPC is confirmed, the camera records the vehicle’s licence plate and stores it in the registry
+   as “authorised for disabled parking” for the duration of the session.                                              •   Efficient verification:
+                                                                                                                          Machines and apps can check validity instantly.
+6. The gate opens and the driver parks in a designated accessible space. The system logs the entry
+   time for potential fee calculation.                                                                                •   Standard format:
+                                                                                                                          A unified credential structure across all EU Member States improves operational clarity and integration
+7. At any time, a parking officer can query the registry by scanning the plate to confirm that the vehicle                with digital systems.
+   is correctly entitled to occupy the space.
+
+8. On exit, the gate re-scans the licence plate.
+   • If parking is free for EPC holders, the gate opens automatically.
+                                                                                                                      Economic value and potential market size
+   • If a fee applies, the system prompts for payment and opens the gate once payment is confirmed.                   The European Parking Card (EPC) offers a significant opportunity to modernise mobility and parking
+                                                                                                                      services for persons with disabilities while supporting the EU’s wider digital identity goals.
+Note: these scenarios are potential and might not reflect final implementation or requirements
+                                                                                                                      Potential user base
+                                                                                                                      • It is estimated that around 30 million EU residents have a recognised disability status that, depending
+                                                                                                                         on national eligibility criteria, may entitle them to special conditions such as accessible parking, parking
+
+
+Use case impact
+                                                                                                                         spaces reserved for persons with disabilities, free parking, etc. Source
+
+                                                                                                                      Infrastructure scale
+                                                                                                                      • According to the data collection of the European Parking Association Europe counts roughly 41 million
+                                                                                                                          regulated on- and off-street parking spaces, with a much larger overall supply when unregulated
+The digital option addresses persistent issues: physical cards can be lost, stolen or forged; visual checks               spaces are included. Source
+are slow and inconsistent; and cross-border interoperability is often poor.
+                                                                                                                      •   More than 300 major municipal or private parking applications operate across the EU, alongside
+                                                                                                                          tens of thousands of smart parking meters and machines, creating a large, ready-made verification
+Benefits                                                                                                                  network.
+
+End-user/citizen value                                                                                                Economic impact
+                                                                                                                      • Digital credentials reduce fraud and misuse of accessible parking, losses estimated in the tens of millions
+•   Easy to store and present:                                                                                           of euros annually in large cities alone, while lowering administrative costs for issuers.
+    The credential is stored in the user’s EUDI Wallet on their phone and is always available without the
+    need to carry a physical card.                                                                                    •   Automated verification and optional integration with online payment authorisation streamline parking
+                                                                                                                          transactions, cut enforcement costs, and free resources for municipalities and private operators.
+•   Cross-border recognition:
+    The EPC supports harmonised verification across the EU, eliminating confusion or non-acceptance                   •   For citizens, a digital EPC removes paperwork and border-crossing barriers, ensuring that legitimate
+    in other Member States.                                                                                               users can access accessible parking spaces when travelling, with or without internet connectivity.
+
+•   Offline usability:                                                                                                Cross-border value
+    The card can be shown and verified even in areas without internet connectivity, using QR or NFC.                  • Persons with disabilities frequently travel for work, tourism, or medical reasons. Seamless recognition
+                                                                                                                         of parking rights supports economic participation and complements the European Disability Card,
+•   Reduced risk of loss or damage:                                                                                      sharing issuance infrastructure and verification methods.
+    If the device is lost or replaced, the credential can be reissued without requiring a full application process.
+                                                                                                                      By leveraging the EU Digital Identity Wallet, the EPC can therefore create a pan-European market
+•   Accessibility:                                                                                                    of millions of active users and thousands of relying parties, municipalities, private parking operators,
+
+4                                                                                                                                                                                                                                  5
+transport hubs, and payment providers—delivering measurable efficiencies and improved mobility for people          Current formats and upcoming formats for EPC:
+with disabilities while safeguarding scarce accessible-parking resources.
+                                                                                                                   •   National documents:
+Issuers                                                                                                                Parking cards currently issued by Member States in accordance with Council Recommendation
+Designated competent authorities and bodies (e.g., transport or social-affairs ministries) will be responsible         98/376/EC. Member States are mandated by the Directive to replace these cards with the introduction
+for issuance of the EPC.                                                                                               of the European Parking Card by 5 December 2029 at the latest.
+Where a digital EPC is offered, the designated national authorities, already responsible for issuing the digital
+version of the EDC, can use the same secure infrastructure to issue the European Parking Card directly to the      •   Physical EPC with digital features:
+citizen’s EUDI Wallet. Therefore, since these authorities must issue EDC in any case, they can likewise issue          Annex II to the Directive defines the format for the physical European Parking Card with a digital feature
+EPC with minimal system updates.                                                                                       (QR code on the front side). Similar to the approach followed for the EU Digital COVID Certificates, this
+                                                                                                                       QR code when scanned would authenticate the document contents and check its validity. The QR code
+Relying Parties                                                                                                        and, where appropriate, other digital features of the physical card are to be defined in a delegated act
+Municipal parking authorities and private parking operators are expected to be the main verifiers. Member              to be adopted by the Commission by 5 December 2025 (the adoption will be postponed till Q1 2026).
+States making use of the digital EPC must raise awareness so that machines, apps, and inspectors can all               The card is usually required to be displayed at the front of the vehicle in a way that is clearly visible for
+register and accept the credential.                                                                                    checking purposes.
+
+Easy to store and present:                                                                                         •   Digital EPC - credential:
+• Some Member States lack nationwide parking apps or smart meters, making machine-based verification                   The physical European Parking Card may be complemented by a digital version within a reasonable
+   harder.                                                                                                             time after the Commission has laid down the technical specifications for it through implementing acts.
+• Smaller municipalities may rely on traditional inspectors, requiring phased deployment or hybrid                     There is no deadline for the adoption of these implementing acts. The specifications shall build on the
+   solutions.                                                                                                          experience on digitalisation of certificates and documents, such as the EU Digital COVID Certificate, and
+                                                                                                                       the empowering provision refers to enabling the use of the European Parking Card in “a digital identity
+                                                                                                                       wallet at Union level”.
+Synergies with other use cases
+The EPC use case shares multiple technical, legal, and functional building blocks with other use cases             Technical specifications, software libraries
+particularly with ones in scope or social security. Those are:
+
+•    European Disability Card
+                                                                                                                   and infrastructure
+•    European Health Insurance Card                                                                                The technical specifications for the EDC will be determined in an upcoming Implementing Act adopted
+•    Online payment authorisation                                                                                  further to Directive (EU) 2024/2841.
+
+
+
+
+Use case implementation
+Existing implementations
+Directive (EU) 2024/2841 requires Member States to issue the physical EPC and enables, but does not
+require, a digital version of the card.
+
+
+Legislation
+The EPC is established by Directive (EU) 2024/2841 (same as for the European Disability Card), which
+is currently in force. More specifically, Directive (EU) 2024/2841 defines the physical EPC and allows
+(but does not require) a digital version. Member States shall adopt transposition laws by 5 June 2027 and
+will apply them as from 5 June 2028.
+
+6                                                                                                                                                                                                                                 7
+8
+

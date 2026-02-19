@@ -1,0 +1,171 @@
+Use Case Manual
+Digital Travel
+Credential
+
+
+
+
+                  1
+                                                                      Description
+                                                                      A Digital Travel Credential (DTC) is a digital representation of the user’s travel document such as a passport,
+                                                                      identity card, or another travel document. Travel documents with chips are already composed of both a
+                                                                      virtual and a physical component. A DTC (i.e. the virtual component as specified by ICAO) contains essentially
+                                                                      the same information as that in the chip of a travel document*.
+
+                                                                      A EUDI Wallet user can store a DTC in their EUDI Wallet and use it for the submission of the travel document
+                                                                      information to border authorities prior to travel, facilitating pre-screening and thereby shortening the checks
+                                                                      performed at the border. In addition to the DTC, the user may also need to submit other travel data, such as
+                                                                      the date of travel, flight number, etc. The reception of the DTC and other travel data is handled by a Traveller
+                                                                      Router, which collects and verifies the information and forwards it to the relevant border authorities.
+
+                                                                      The use case applies to extra-EU travel as well as to travel to the Schengen area from Ireland and Cyprus
+                                                                      and back. It applies to both inbound and outbound travel. Regarding the outbound travel to third countries,
+    A Use Case Manual is a description of a specific use case         the goal is to facilitate pre-departure checks. Submission of DTCs to border authorities of third countries is
+    for the EU Digital Identity Wallet. It includes an introduction   currently out of scope of the use case and is subject to extra-EU legislation.
+    to the use case and the user journey, the state of play of the    Technically, the submission of a DTC to entities such as airlines, hotels, embassies, banks can also be
+    use case development, as well as references to the relevant       implemented, however this is not in scope of the currently proposed legislation.
+    technical specifications and infrastructures, legislation, and
+    governance structures.
+
+    The Use Case Manual is designed for the Wallet
+    implementers, Member States and other stakeholders                User Journey(s)
+    interested in the development of the Wallet and its use cases.
+
+    The Use Case Manual is not intended to contain full               Scenario 1 - DTC Issuance:
+    detailed technical specifications for the use case. However,
+    where such specifications are available, the Use Case             This part describes how a traveller obtains a Digital Travel Credential (DTC) and stores it in their EUDI Wallet
+                                                                      before use.
+    Manual contains pointers to them.
+                                                                      1. Start and choice of issuance option: The user initiates the process by requesting the issuance of a
+                                                                         DTC. Two methods are supported: scanning a physical travel document or requesting issuance directly
+                                                                         from the competent authority.
+
+                                                                      2. Option A – Scan physical document: The user scans their physical passport or identity card using
+                                                                         functionalities of the EU Digital Travel app. The app reads and verifies the relevant data groups and
+                                                                         issues a DTC. In this case, eu-LISA acts as the issuing entity through the EU Digital Travel app.
+
+                                                                      3. Option B – Request from issuing authority: Alternatively, the user may request the DTC directly from the
+                                                                         Member State’s issuing authority (e.g., passport or police authority). The authority issues the DTC.
+
+
+
+
+                                                                      *
+                                                                       Exceptions apply, e.g. fingerprints which are contained in eMRTDs issued by Member States, are not included in the DTC.
+
+
+2                                                                                                                                                                                                3
+4. Store DTC in EUDI Wallet: Once issued, the DTC is securely stored in the user’s EUDI Wallet, ready to be           The traveller can choose digital route or fallback to physical document, there is no mandatory shift.
+   used for pre-travel submissions and border control checks.
+                                                                                                                  •   Enhanced trust:
+                                                                                                                      By enabling verification of document authenticity/integrity ahead of physical check, the traveller benefits
+Scenario 2 - DTC Use:                                                                                                 from smoother process, fewer ad-hoc hold-ups due to manual document checks.
+
+This part outlines how a traveller uses the DTC when travelling.                                                  Value for service providers
+                                                                                                                  Airlines, airports, and other travel operators gain from automated and interoperable passenger
+1. Travel planning: The user plans a trip that involves crossing the external Schengen border and prepares        processing systems that lower verification costs, reduce manual data handling, and improve overall
+   to submit their DTC before departure.                                                                          operational efficiency.
+
+2. Navigate to Traveller Router: The user accesses the Traveller Router via their EUDI Wallet. The Traveller      •   Airlines, airports, other border crossing point operators, travel industry stakeholders benefit indirectly:
+   Router serves as a secure intermediary, ensuring data is sent only to the relevant border authorities.             smoother flow of travellers can reduce boarding delays, improve schedule adherence and enhance
+                                                                                                                      customer experience as well as improve the quality of data that is required by EU law (e.g. Advance
+3. Submit DTC via EUDI Wallet: Using their EUDI Wallet, the traveller submits their DTC along with other              Passenger Information (API) data by airlines) to be captured and submitted to national authorities.
+   required travel data (e.g., flight number, travel date).
+                                                                                                                  Value for public authorities
+4. Traveller Router receives and forwards DTC: The Traveller Router forwards it to the relevant border            Border and immigration authorities can achieve faster clearance processes, improved risk analysis, and
+   authority for pre-screening.                                                                                   stronger identity assurance, leading to better resource allocation and higher border security standards.
+
+5. Border Authority performs Pre-Checks: The border authority receives the DTC and conducts preliminary           •   Border authorities:
+   checks before the traveller arrives.                                                                               Advance submission of DTC enables pre-screening and risk assessment ahead of physical crossing,
+                                                                                                                      enabling better resource allocation, focusing on higher-risk persons rather than routine checks.
+6. Arrival at the border: Final checks (identity verification, travel document validation, and entry clearance)
+   are completed using both digital and physical credentials where necessary.                                     •   Member States:
+                                                                                                                      Reduced border-crossing bottlenecks, improved external border management efficiency, better
+                                                                                                                      alignment with digitalisation agenda and international standardisation.
+
+
+
+Use case impact                                                                                                   •   Travel document issuers:
+                                                                                                                      Digital issuance capability opens modern service offering, can reduce reliance solely on physical
+                                                                                                                      document systems, improve user experience.
+
+The DTC use case enhances the travel experience by enabling seamless, secure, and privacy-preserving
+identity verification before and during border crossing. It generates value for travellers, service providers,    Economic value and potential market size
+and public authorities through greater efficiency, reduced processing times, and strengthened trust in travel
+processes.                                                                                                        The economic value of the DTC Use Case is driven by its potential adoption across the EU’s vast travel
+                                                                                                                  ecosystem, encompassing millions of annual cross-border travellers, multiple national issuing authorities,
+                                                                                                                  and high-frequency verification transactions at airports and borders.
+Benefits                                                                                                          Users
+                                                                                                                  The potential user base includes all persons who travel across the external EU borders, representing
+End-user/citizen value
+                                                                                                                  hundreds of millions of individuals.
+Travellers benefit from faster border checks, simplified pre-travel procedures, and enhanced control over
+their personal data, ensuring a smoother and more secure travel experience.
+                                                                                                                  Issuers
+                                                                                                                  Issuance of travel documents, including passports and identity cards, falls under the responsibility
+•   Voluntary digital option improves convenience:
+                                                                                                                  of Member State authorities (or, in the cases of third-country nationals, authorities of third countries).
+    The traveller may experience shorter waiting times at border-crossing points because pre-submission
+    allows authorities to pre-screen. One estimate indicates ~20 seconds average saving per EU national
+                                                                                                                  The proposed regulation on the EU Digital Travel application would, if adopted, mandate that passports
+    traveller.
+                                                                                                                  and travel documents issued are accompanied by DTCs upon the applicant’s request.
+•   The DTC supports flexibility:
+                                                                                                                  DTCs can be issued to EUDI Wallets by eu-LISA using the EU Digital Travel app or by Member States using
+
+4                                                                                                                                                                                                                              5
+the issuance services established for this purpose.                                                                  Travel application (COM/2024/670 final).
+
+Relying Parties                                                                                                  •   Proposal for a Council Regulation on the issuance and technical standards for digital travel credentials
+In the context of travel, relying parties would be border authorities of Member States, as well                      based on identity cards (COM/2024/671 final).
+as Iceland, Liechtenstein, Norway and Switzerland. Representatives of the border authorities would be at
+all international airports, seaports, train stations and road borders. As a system supporting border crossing,   The proposals refer to ICAO specifications as a reference standard. DTCs would be in a format that
+DTCs do not only apply to air travel but could be extended to terrestrial or maritime transport.                 enables their storage in EUDI Wallets. The EU Digital Travel app is foreseen to become operational at the
+                                                                                                                 end of 2030.
+Transactions
+According to statistics provided by Frontex, a total of 593 million crossings were recorded in 2023.             Use of DTCs is voluntary for travellers, but Member States would be required to accept DTCs once
+From these crossings, 65% were at air borders, 31% at land borders and the remaining 4% via sea                  the legislation is adopted, and the common EU technical solution is available.
+borders. According to the Eurostat monthly statistics, in the first 3 months of 2025 there were 208 million
+air passengers (all types) and the international extra-EU transport accounted for 50.6% of all passengers
+carried at EU level.                                                                                             Technical specifications, software libraries
+Synergies with other use cases                                                                                   and infrastructure
+                                                                                                                 Data model, format and proof mechanisms
+Further benefits from the use of the wallet for DTCs can be achieved through synergy with the following          The DTC contains data equivalent to that in the electronic Machine-Readable Travel Document (eMRTD) chip.
+use cases:                                                                                                       It uses ICAO 9303 and ISO/IEC TS 23220-2:2024 standards for data structure and cryptographic proofs.
+                                                                                                                 Verification relies partly on public key infrastructure (PKI) for the DTC itself and partly on the EUDI Wallet
+•   Age verification:                                                                                            trust framework.
+    Before the availability of the Wallets, data from the chip of a travel document could be read by an age
+    verification app (a “mini-wallet”) and used to generate a proof of age attestation. The attestation could    Issuance
+    then be used for access to age-restricted content in online platforms.                                       DTCs can be created in two ways:
+
+•   Identification in proximity and online scenarios in which the use of a photo is required:                    •   Via Public Authorities:
+    A DTC can be used as a source of an authentic photo linked to other identity attributes, to facilitate           To enable the issuance of DTCs, passport and identity card issuers should implement online
+    identity checks in such scenarios. (Note however that in many identification scenarios there is no need          systems whereby citizens can request and obtain a DTC based on an existing travel document
+    to use a photo as part of the identification process, as the wallet enables strong user authentication           issued by the same authority.
+    without it.)
+                                                                                                                 •   Via the EU Digital Travel App:
+                                                                                                                     eu-LISA should implement a functionality in the EU Digital Travel App to generate a DTC by
+                                                                                                                     scanning a travel document and to store it in the EUDI Wallet in the form of an electronic attestation
+
+Use case implementation                                                                                              of attributes.
+
+                                                                                                                 Currently issued passports and identity cards with chips include information necessary for the generation
+                                                                                                                 of DTCs. Some Member States have established online systems for handling passport and identity card
+                                                                                                                 applications. These systems could potentially be extended with the issuance of DTCs to the EUDI wallet.
+
+Existing implementations                                                                                         Verification
+                                                                                                                 Verification is performed by border authorities through secure interfaces that validate the DTC’s
+Ongoing pilots under EUDI Wallet Large-Scale Pilots are testing DTC functionalities. The EWC pilot               digital signature and authenticity against passport and identity card related trusted lists (PKI).
+has been concluded, while others like WeBuild and Aptitude are building upon its findings,                       The Traveller Router forwards the DTCs to the border authorities, facilitating pre-screening while maintaining
+focusing on travel-related use cases.                                                                            traveller privacy.
+
+                                                                                                                 Border authorities, airports and other relevant entities should implement changes to their border
+Legislation                                                                                                      control systems to enable the submission of DTCs for pre-checks. This has been piloted in FI, HR, NL.
+
+The proposed DTC framework is based on two proposals:                                                            Further pilot projects are being planned.
+
+•   Proposal for a Regulation of the European Parliament and of the Council establishing the EU Digital
+
+6                                                                                                                                                                                                                            7
+8
+

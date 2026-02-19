@@ -1,0 +1,213 @@
+Use Case Manual
+Disability Card
+
+
+
+
+                  1
+                                                                      Description
+                                                                      The European Disability Card (EDC) will promote the free movement for persons with disabilities and
+                                                                      facilitate their short stays in Member States other than the one in which they reside. The EDC will serve as
+                                                                      a proof of recognised disability status or of an entitlement to specific services based on a disability.
+                                                                      The card will grant equal access to special conditions or preferential treatment for a wide range of services,
+                                                                      activities or facilities, offered to persons with disabilities in the visited Member State. Special conditions
+                                                                      or preferential treatment could take the form of discounted museum tickets, free access, priority access,
+                                                                      personal assistance, etc.
+
+                                                                      The EDC is established by Directive (EU) 2024/284, together with the European Parking Card for persons with
+                                                                      disabilities. The Directive provides for EU‑wide recognition of the EDC and foresees both physical and digital
+                                                                      versions of the card, with the latter intended to be usable “by means of a digital identity wallet at Union
+                                                                      level.” It will be possible for persons with disabilities to request the physical version of the card, the digital
+                                                                      version or both. For the physical EDC, Member States are obliged to introduce it within a reasonable time
+    A Use Case Manual is a description of a specific use case         after the adoption of the Commission delegated act/s (deadline for adoption 5 December 2025) and not
+    for the EU Digital Identity Wallet. It includes an introduction   later than 5 June 2028. As regards the digital version of the card, the Member States have to introduce
+                                                                      it within a reasonable time after the Commission has adopted implementing act/s establishing the
+    to the use case and the user journey, the state of play of the    technical specifications referred to in Article 9(2). The directive has EEA relevance. Its beneficiaries are the
+    use case development, as well as references to the relevant       Union citizens and their family members. Complementary Directive (EU) 2024/2842 extends the provisions
+    technical specifications and infrastructures, legislation, and    of Directive (EU) 2024/2841 and both cards to third-country nationals (non-EU citizens) legally residing
+    governance structures.                                            in a Member State.
+
+                                                                      The EDC aligns with the EU’s broader goals for inclusion and equality, freedom of movement, and
+    The Use Case Manual is designed for the Wallet                    digitalisation. Together, the legal and technical foundations make the EDC a high‑impact wallet credential
+    implementers, Member States and other stakeholders                (electronic attestation of attributes).
+    interested in the development of the Wallet and its use cases.
+
+    The Use Case Manual is not intended to contain full
+    detailed technical specifications for the use case. However,
+    where such specifications are available, the Use Case
+                                                                      User Journey(s)
+    Manual contains pointers to them.
+
+                                                                      Scenario 1
+                                                                      1. The user opens a transport booking website to buy discounted train tickets for an upcoming trip
+                                                                         to another Member State.
+
+                                                                      2. During checkout, the user detects that a disability discount is available and applies for it. Then the
+                                                                         system asks the user to confirm eligibility.
+
+                                                                      3. The user selects the EDC stored in their EUDI Wallet. With a single tap, the EUDI Wallet creates
+                                                                         a verifiable proof of recognised disability. The booking site instantly verifies the credential and confirms
+                                                                         the disability. The site applies the discounted fare and finalises the ticket purchase. The user receives
+                                                                         a confirmation email without any uploads, scans, or physical documents required.
+
+                                                                      4. The EDC stays in the EUDI Wallet for future online services across the EU, ready whenever the user books
+                                                                         another trip or registers for an event.
+
+2                                                                                                                                                                                     3
+Scenario 2                                                                                                            •   Reduced risk of loss or damage:
+                                                                                                                          If the device is lost or replaced, the credential can be reissued in line with national rules in place without
+                                                                                                                          requiring a full application process.
+1. The user heads to a museum in a neighbouring Member State that offers reduced entrance fees for
+   people with recognised disabilities.                                                                               •   Support for accessibility-by-design:
+                                                                                                                          Credential rendering and usage flows in the EUDI Wallet follow accessibility requirements of Annex I
+2. At the ticket counter, the staff member asks for proof of eligibility to apply the reduced rate.                       of Directive 2019/882.
+
+3. The user opens the EUDI Wallet on their phone and selects the European Disability Card.                            Value for service providers
+                                                                                                                      Public and private entities offering disability-related benefits can simplify and secure their access
+4. With a simple NFC tap or QR scan, the EUDI Wallet generates a verifiable presentation of the European              management using verifiable credentials issued under the EUDI Wallet trust model.
+   Disability Card.
+                                                                                                                      •   Faster onboarding and verification:
+5. The museum’s system verifies the credential on the spot.                                                               Status is proven in seconds, without requiring paperwork or manual checks.
+
+6. The user pays the reduced fee and walks straight in without presenting any physical disability                     •   Cross-border service enablement:
+   documents, showing any extra medical record details, and nothing more than their phone.                                Enables providers to recognise disability status from any EU Member State without any bilateral
+                                                                                                                          agreements.
+7. The EDC can be reused to benefit from other available special conditions or preferential treatment
+   provided by different services, such as other cultural or sport sites, public transport, or events, retail, etc.   •   Decreased administrative burden
+   across the EU until it expires or is revoked.                                                                          linked to processing the national disability cards and certificates in the national languages.
+
+                                                                                                                      Value for public authorities
+                                                                                                                      Issuing authorities and municipalities in Member States benefit from a harmonised framework supported
+
+
+Use case impact                                                                                                       by the EUDI Wallet that enables secure, compliant, and user-friendly delivery of disability credentials.
+
+                                                                                                                      •   Legal compliance:
+                                                                                                                          Directive (EU) 2024/2841 requires Member States to issue a European Disability Card and to provide
+                                                                                                                          a complementary digital version. Using the EUDI Wallet helps authorities meet this obligation efficiently.
+Embedding a verifiable digital version of the card into the EUDI Wallet enhances ease of use and legal
+recognition across Member States, while significantly reducing administrative burden and fraud risk. The              •   Regulatory alignment:
+EUDI Wallet itself will be accessible in line with the requirements of annex I of Directive 2019/882, thus                Fully supports GDPR-compliant data handling through selective disclosure and local verification.
+benefiting the experience of cardholders.
+                                                                                                                      •   Cost efficiency:
+                                                                                                                          Reduces administrative workload and printing costs by allowing some users to rely on a digital card
+Benefits                                                                                                                  instead of requesting a physical one.
+
+End-user/citizen value                                                                                                •   Digital inclusion strategy:
+                                                                                                                          The accessibility features of the EUDI Wallet will provide accessible credential delivery for citizens with
+•   Selective disclosure:                                                                                                 functional limitations (alongside the QR-based card format).
+    For persons with disabilities, the EUDI Wallet-based EDC enables secure and seamless access to
+    entitlements across Member States. It empowers users to control their own credentials and share only
+    the data necessary in a given context.                                                                            Economic value and potential market size
+•   Fewer printed documents and greater autonomy:                                                                     According to Eurostat, 23.9% of people aged 16 years or over in the EU reported having a disability
+    Users no longer need to exclusively rely on physical cards or printouts. EUDI Wallet-based credentials            (activity limitation) in 2024. It is estimated that around 30 million EU residents have a recognised disabil‑
+    can be self-managed, updated digitally, and used seamlessly across service types and Member States.               ity status that can entitle them to special conditions and preferential treatment provided to persons with
+                                                                                                                      disabilities. Source
+•   EU-wide recognition:
+    Access to special conditions and preferential treatment (e.g., transport discounts, free / discounted entry       The implementation of the EDC in the context of the EUDI Wallet marks an opportunity for the EU’s digital
+    to museums, cultural and sport sites and events, assistance in services and facilities, etc.) without a need      identity ecosystem, since the potential user base is significant.
+    to undergo disability assessment in the respective Member State.                                                  Public consultation results (accompanying the Commission proposal of Directive establishing the
+
+4                                                                                                                                                                                                                                     5
+European Disability Card and the European Parking Card for persons with disabilities that took place in 2023)        •   Ticket or pass:
+confirm demand:                                                                                                          The EDC may be used in conjunction with transport or event tickets stored in the EUDI Wallet, allowing
+                                                                                                                         streamlined multi-credential presentations
+•   73% of respondents with disabilities reported that the lack of mutual recognition (i.e. having to
+    re-prove their status when crossing borders) across borders is a major obstacle.                                 •   Online payment authorisation:
+                                                                                                                         Discounts validated through the EDC can be applied directly during online purchases (e.g., ticketing
+•   70% said the EDC must be available in both physical and electronic format to be effective.                           platforms), enabling seamless end-to-end booking flows.
+
+•   The main sectors identified as priorities were public transport (54%), cultural activities (47%),                •   Photo ID:
+    and parking rights (46%) - all of which represent large and recurring markets for eligibility verification.          When required (e.g., for ticket collection or access control), the EDC can be presented together with
+                                                                                                                         a digital photo ID from the EUDI Wallet to confirm identity and entitlement.
+Digitally enabling the EDC in the EUDI Wallet would therefore create a pan-European market of millions
+of active users and tens of thousands of relying parties (transport operators, cultural institutions,                Moreover, the EDC use case shares multiple technical, legal, and functional building blocks with other use
+municipalities, and private sector providers), supporting seamless cross-border participation in social,             cases particularly with ones in scope or social security. Those are:
+cultural, and economic life, while reducing friction and administrative costs for issuers and verifiers.
+                                                                                                                     •   European Parking Card for persons with disabilities
+                                                                                                                     •   European Health Insurance Card
+Relying parties                                                                                                      •   Online Payment Authorisation
+
+Providers of services offered to people with disabilities will be the main verifiers of the European
+Disability Card. These include public authorities, cultural and sports venues, transport operators, and private
+
+
+                                                                                                                     Use case implementation
+entities that grant discounts, priority access, or special support to individuals with disabilities. Member States
+implementing the digital EDC should ensure awareness and readiness across these actors so that
+physical access control systems, online booking platforms, and staff can reliably recognise and validate the
+credential.
+
+Considerations
+                                                                                                                     Existing implementations
+•   The landscape of disability-related benefits varies significantly across Member States, meaning that
+    some verifiers may rely on more automated and some on mostly manual checks.                                      While an EU-wide implementation of the EDC within the context of the EUDI Wallet is still under
+                                                                                                                     development, several Member States have already introduced national solutions:
+•   Smaller service providers may need phased onboarding and clear guidance to adopt digital verification
+    processes.                                                                                                       •   BE, CY, FI, IT, MT, RO and SI participated in the EU Disability Card pilot in 2016-2018. Pilot cards issued
+                                                                                                                         were mutually recognised among the project countries. The EU Disability Card pilot is the predecessor
+•   Support for hybrid verification (digital and physical card acceptance) will be necessary to ensure                   of the European Disability Card
+    inclusiveness.
+                                                                                                                     •   Austria: Austria’s digital disability card is integrated into the ID Austria and the “eAusweise” app, which
+                                                                                                                         can digitally present a person’s disabled person’s pass (Behindertenpass).
+Synergies with other use cases                                                                                       •   Greece: The Gov.gr Wallet app in Greece allows users to access their digital disability card.
+The use of a digital EDC can be envisaged in both proximity and online scenarios. According to
+                                                                                                                     •   Italy: The digital version of the European Card for People with Disabilities is available, free of charge,
+a deliverable of the EWC pilot project, airlines, other transport providers, hospitality services, museums and
+                                                                                                                         in the “Wallet” section of the IO App.
+other service providers have the need to check the eligibility of customers for fares dedicated to disabled
+people, and to collect some information concerning the specific needs of the customers. The EDC could become the
+                                                                                                                     •   Poland: mLegitymacja is the electronic version of the identity card for all reliefs and entitlements which
+credential used to communicate about and prove those needs to the different service providers.
+                                                                                                                         may be used by disability pensioners and can be added in the mObywatel app.
+The EDC use case benefits from strong synergies with several other EUDI Wallet use cases, like:
+                                                                                                                     •   Slovenia: Invalidska kartica ugodnosti is a mobile app by the Ministry of Labour, Family, Social Affairs
+                                                                                                                         and Equal Opportunities allowing the use of the European Disability Card in digital form.
+•   Representation:
+    Parents, carers, or legal guardians can act on behalf of persons with disabilities, especially children
+    or adults requiring support.
+
+
+6                                                                                                                                                                                                                                 7
+Legislation
+The EDC is mandatory for all Member States and established by Directive (EU) 2024/2841 (same as for the
+European Parking Card for persons with disabilities). Member States shall adopt transposition laws by 5 June
+2027, and these will apply from 5 June 2028.
+
+Current formats for the national disability cards and upcoming formats for the EDC:
+
+•   National documents:
+    National disability cards and disability certificates can be issued by Member States according to national
+    law; however, they are out of scope of the Directive and may be not accepted in other Member States.
+
+•   Physical EDC with digital features:
+    Annex I to the Directive defines the format for the physical EDC with a digital feature (QR code on the
+    reverse side). Similar to the approach followed for the EU Digital COVID Certificates, when scanned, this
+    QR code would authenticate the document contents, including a check of its possible revocation. The QR
+    code and, where appropriate, other digital features on the physical card are to be defined in a delegated
+    act envisaged to be adopted by the Commission by 5 December 2025.
+
+•   Digital EDC - credential:
+    the physical EDC shall be complemented by an accessible digital version by the Member States within
+    a reasonable time after the Commission has laid down the corresponding technical specifications through
+    implementing acts. There is no deadline for the adoption of these implementing acts. The specifications
+    are envisaged to build on the experience on digitalisation of certificates and documents, such as the EU
+    Digital COVID Certificate and the empowering provision refers to enabling the use of the EDC in “a digital
+    identity wallet at Union level”.
+
+Member States shall designate one or more competent authorities or bodies responsible for the issuance,
+renewal and withdrawal of the European Disability Card and the European Parking Card for persons with
+disabilities..
+
+
+Technical specifications, software libraries
+and infrastructure
+The technical specifications for the EDC will be determined in an upcoming Implementing Act adopted
+further to Directive (EU) 2024/2841.
+
+
+
+
+8                                                                                                                9
+10
+

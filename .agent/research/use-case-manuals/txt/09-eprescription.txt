@@ -1,0 +1,195 @@
+Use Case Manual
+ePrescription
+
+
+
+
+                  1
+                                                                      Description
+                                                                      With the EUDI Wallet, a user who has been issued an Electronic Prescription can present their Wallet
+                                                                      at a pharmacy. This allows the pharmacist to securely identify the citizen, access and retrieve the
+                                                                      prescription, and then dispense the medication accordingly. Information about the dispensed medicinal
+                                                                      product is submitted by the pharmacy system to the electronic prescription system, which in turn marks the
+                                                                      prescription as dispensed or decreases the remaining available amount of medication.
+
+                                                                      The use case builds upon and extends the existing digital health systems of Member States (namely the
+                                                                      electronic prescription systems) and, in case of cross-border dispensations, the cross-border digital health
+                                                                      infrastructure MyHealth@EU for the exchange of prescription and dispensation data across borders.
+
+                                                                      To enable the use of the Wallet at pharmacies, the user retrieves and stores in their Wallet a Health ID
+                                                                      attestation. The attestation can be read by the pharmacy systems to get access to the prescription data. The
+                                                                      same Health ID attestation can be used for all prescriptions throughout its validity period. The Wallet does
+    A Use Case Manual is a description of a specific use case         not store an electronic prescription or dispensation data as an electronic attestation of attributes. Instead,
+    for the EU Digital Identity Wallet. It includes an introduction   prescription and dispensation data are retrieved from and submitted to the relevant national digital health
+                                                                      system.
+    to the use case and the user journey, the state of play of the
+    use case development, as well as references to the relevant
+    technical specifications and infrastructures, legislation, and
+    governance structures.
+
+    The Use Case Manual is designed for the Wallet
+                                                                      User Journey(s)
+    implementers, Member States and other stakeholders
+    interested in the development of the Wallet and its use cases.    1. Laura has a Health ID attestation stored in her EUDI Wallet.
+
+                                                                      2. She goes to her physician and is prescribed medication. The physician enters the data electronically into
+    The Use Case Manual is not intended to contain full                  the electronic prescription system connected to MyHealth@EU.
+    detailed technical specifications for the use case. However,
+    where such specifications are available, the Use Case             3. She goes to a pharmacy of her choice and presents her Health ID attestation stored in her EUDI wallet.
+    Manual contains pointers to them.
+                                                                      4. The pharmacist scans it and then retrieves her prescription data from the system.
+
+                                                                      5. The pharmacist finds the prescription uploaded by her physician.
+
+                                                                      6. The pharmacist dispenses the required medication to Laura and submits the dispensation data to the
+                                                                         electronic prescription system.
+
+
+
+
+2                                                                                                                                                                                 3
+                                                                                                                Value for public authorities
+                                                                                                                For public authorities, the electronic prescription use case supports the strategic objective of
+                                                                                                                cross-border interoperability of digital health services within the EU. The use of a harmonised Wallet-based
+                                                                                                                framework ensures compliance with European standards on digital identity, data protection, and eHealth
+                                                                                                                interoperability, thus improving trust and consistency across Member States.
+
+                                                                                                                By reducing administrative complexity for citizens and healthcare providers, authorities can improve
+                                                                                                                the overall efficiency and cost-effectiveness of healthcare delivery systems.
+
+
+                                                                                                                Economic value and potential market size
+                                                                                                                Economic benefits of electronic prescriptions are associated with fraud reduction, increased convenience and
+                                                                                                                time savings for users, cost savings related to more efficient use of medicines through its better monitoring
+                                                                                                                and data-driven policy making. Most of these benefits are achieved even before the use of the Wallet.
+
+                                                                                                                The Wallet could stimulate new market possibilities and business opportunities such as home delivery of
+                                                                                                                prescription medications from online pharmacies. This is currently possible at national level but only in
+                                                                                                                a limited number of Member States and does not function cross-border. The Wallet can additionally offer
+                                                                                                                further time savings especially in the case of cross-border prescriptions.
+
+Use case impact                                                                                                 The use case involves payment as part of the user journey, which could be an indicator of its relevance for
+                                                                                                                economic operators (notably pharmacies).
+
+                                                                                                                Users
+                                                                                                                In the 2019 European Health Interview Survey results published by Eurostat, the share of persons
+Benefits                                                                                                        reporting prescribed medicine use within the two weeks prior to the interview varied among EU Member
+                                                                                                                States, from below 40% in some countries to above 55% in others. Considering that a significant part of the
+End-user/citizen value                                                                                          population does not have chronic diseases and therefore does not use prescription medications daily/weekly,
+The implementation of the electronic prescription use case would enable a harmonised user experience            but may need such medications occasionally, arguably over a half of the overall EU population is likely to
+across Member States for citizens retrieving prescribed medicinal products from pharmacies. The use of          use prescriptions at least yearly.
+the wallet would also improve usability and speed of dispensations, especially in the case of cross-border
+dispensations. The current system for such dispensations relies on the use of (sets of) identifiers which       Issuers
+vary significantly by Member States and in some cases by regions. Currently this leads to difficulties for      Primary issuers will be licensed health professionals and authorized healthcare institutions responsible
+pharmacists and customers and to errors in identification. These can be resolved if the wallet is used.         for prescribing medicinal products within the national health system. These include general practitioners,
+                                                                                                                specialists, hospitals, clinics, and other accredited healthcare providers operating under national health
+Patients would be able to purchase their medication by presenting their wallet, without the need to have        authorities.
+a dedicated ePrescription app installed on their phone (if such an app is published by their Member State),
+printouts of prescriptions or insurance cards.                                                                  In most EU Member States, electronic prescriptions are created and managed through centralised
+                                                                                                                or federated eHealth infrastructures, ensuring consistency, traceability, and compliance with national and
+If the use of a photo ID is required under national law, such a photo ID can be provided using an appropriate   EU-level eHealth standards. Issuers will generate verifiable electronic prescriptions based on trusted health
+attestation in the same Wallet.                                                                                 registry data and certified prescribing systems.
+
+Value for service providers                                                                                     Relying Parties
+The introduction of the electronic prescription use case would simplify and streamline workflows for            According to the Pharmaceutical Group of the European Union (PGEU), in 2024 there were approximately
+healthcare professionals and pharmacists, both in national and cross-border contexts. The standardised          200.000 pharmacies and 500.000 pharmacists in the EU.
+use of the Wallet would eliminate the need to handle different national identifiers, prescription formats,
+or authentication mechanisms, reducing the administrative and cognitive burden for service providers.           Transactions
+                                                                                                                No comprehensive EU statistics were found on the number of dispensations per person per year.
+Pharmacists would be able to access and verify ePrescriptions in a harmonised and secure manner through
+the Wallet, ensuring faster service delivery and minimising errors related to patient identification or data    However, in Italy in 2022 there were approximately 18 medicine packages dispensed per inhabitant under
+entry. This leads to improved operational efficiency, and greater patient satisfaction.                         the approved care regime. So, if one uses this as a high-end benchmark for dispensations per person, then
+
+4                                                                                                                                                                                                                          5
+assuming an EU average of about 15 dispensations per person per year would imply, for a population of                 Member State authorities in digital health.
+~445 million, about 6.7 billion dispensations annually. Source
+                                                                                                                      Relevant key legislation at EU level
+Regarding cross-border transactions, an estimate based on the evaluation of the Cross-Border Healthcare
+Directive indicates that around 7.8 million cross-border prescriptions are presented for dispensation per year        •   Regulation (EU) 2025/327 on the European Health Data Space:
+in EU, with an approximate non-dispensation rate of 46%. Source                                                           mandatory connection of all Member States and all pharmacies to the cross-border digital health
+                                                                                                                          infrastructure MyHealth@EU (Article 23). Interoperability obligations for electronic prescriptions will
+                                                                                                                          apply from 26 March 2029.
+Synergies with other use cases                                                                                        •   Directive 2011/24/EU on the application of patients’ rights in cross-border healthcare:
+Further benefits from the use of the Wallet for Electronic prescriptions can be achieved through synergy                  Requirement for Member States to recognise prescriptions issued in other Member States.
+with the following use cases:
+                                                                                                                      While the mentioned legal acts do not specifically mandate the use of the Wallet for electronic prescriptions,
+•   Use cases for photo identification in proximity scenarios (e.g. digital identity card, mobile driving license):   the European Health Data Space regulation makes a reference to the EU Digital Identity Regulation in the
+    This would enable dispensations in cases when citizens do not have their physical identity document with          part related to the electronic identification of patients and health professionals in cross-border situations.
+    them, if such a document is required according to national law.                                                   Digital health authorities tasked with the implementation of relevant provisions of the European Health Data
+                                                                                                                      Space Regulation are to be appointed by Member States by the beginning of 2027.
+•   Loyalty cards:
+    As many pharmacies are offering loyalty programs, the Wallet could be used to gain benefits from them.            No legislative barriers have been identified in Union law for the deployment of the use case. The Commission
+                                                                                                                      is not aware of possible barriers in national legislation.
+•   Payment authorisation:
+    This use case can be used when paying for medication purchases in online pharmacies.                              Attestation
+                                                                                                                      The Health ID attestation is not defined in the current legislation. A possibility is to lay down its specifications
+                                                                                                                      in an implementing act under the European Health Data Space (EHDS) Regulation (e.g. under Article 16 on
+                                                                                                                      identification management).
+
+
+Use case implementation                                                                                               Issuance
+                                                                                                                      The issuance of Health ID in the EUDI Wallet is neither mandated nor prohibited by current Union law.
+                                                                                                                      A possibility is to lay down issuance rules in an implementing act under the European Health Data Space
+                                                                                                                      (EHDS) Regulation (e.g. under Article 16 on identification management).
+
+Existing implementations                                                                                              Acceptance
+                                                                                                                      The EHDS Regulation includes an obligation for pharmacies to accept electronic (and not only paper)
+The use case has been piloted in the POTENTIAL project by 11 Member States (AT BE CY CZ EL ES FR HU                   prescriptions issued in other Member States, under the conditions laid down in Cross-Border Healthcare
+IT PL PT) and Ukraine. The piloting included the implementation of the use case and multiple test events              Directive 2011/24/EU. Acceptance of the Health ID attestation is not mandated in the current legislation.
+involving both the issuance and acceptance of Health ID attestations. The pilot participants included Member          A possibility is to introduce an obligation in an implementing act under the EHDS Regulation. Member States
+State authorities such as operators of electronic prescription systems. The pilot has been in contact with            could consider including acceptance requirements for example as a subset of their national electronic
+economic operators (pharmacies and their associations, developers of pharmacy systems) mainly through                 prescription system requirements.
+the participating national authorities.
+
+Cross-border digital health infrastructure MyHealth@EU has been operational with electronic prescription              Technical specifications, software libraries
+services since 2019 with 15 countries currently actively participating. It s the European Union’s cross-border
+health data exchange infrastructure, providing secure, efficient, and interoperable exchange of health data           and infrastructure
+between participating Member States. MyHealth@EU allows a pharmacist in one EU country to securely
+retrieve the electronic prescription issued by a doctor in the patient’s home country, overcoming language            This use case is based on the Health ID attestation, which has been specified in the POTENTIAL pilot.
+barriers and ensuring continuity of care for citizens traveling abroad. This network connects national e-health       The Health ID attestation could also be used for enabling access to other health data in national and
+systems via National Contact Points for eHealth (NCPeH).                                                              cross-border contexts. For cross-border dispensations, the use case relies on the MyHealth@EU cross-border
+                                                                                                                      digital health infrastructure that already exists and is used by a number of Member States for the exchange
+                                                                                                                      of electronic prescriptions. Some technical specifications of MyHealth@EU may require an update to reflect
+Legislation                                                                                                           the use of the EUDI Wallet. No major changes are foreseen. The need for changes in national electronic
+                                                                                                                      prescription infrastructures may depend on their national specifics.
+This use case is linked to the implementation of the European Health Data Space, which is a key priority for
+
+6                                                                                                                                                                                                                                       7
+Data model, format and proof mechanisms
+The Health ID attestation uses the Mobile Driving Licence (mDL) format (ISO/IEC 18013-5). The attestation
+contains information such as affiliation country, health insurance id, patient id, institution id, person’s name,
+birth date, some other data and metadata based on the current MyHealth@EU specifications.
+
+Issuance
+OpenID4VCI specifications (version 1.0 adopted in September 2025) can be considered for issuance.
+
+Attestation issuance should be implemented considering specifics of each Member State, in line with the
+EUDI Wallet requirements. A Health ID attestation can be issued for example by a national or regional health
+authority, by a health insurance system, or by an operator of the ePrescription system. In many cases, the
+attestation is likely to be issued by or on behalf of a public sector body responsible for an authentic source.
+
+Verification
+Specifications on presenting Health ID in proximity and remotely are available as ISO standards (ISO/IEC
+18013-5 and ISO/IEC TS 18013-7. Updates to pharmacy systems should be implemented to enable the use
+of the wallet by them. This should be done in cooperation with pharmacy system vendors, pharmacies, and
+other relevant stakeholders.
+
+Where needed, pharmacies should acquire additional hardware for facilitating device engagement and data
+retrieval: QR code readers, Bluetooth adapters, and/or NFC readers. The POTENTIAL pilot has relied on QR
+codes and Bluetooth. As investigated by the POTENTIAL pilot, some of the infrastructure already exists in
+pharmacies.
+
+Trust framework
+Health ID issuers can be registered in the trusted list for PuB-EAA providers established under the EUDI
+Regulation.
+MyHealth@EU, defined in Article 23 of the EHDS Regulation, is the cross-border digital health infrastructure
+that will be used as the trust infrastructure for ePrescription exchange. To enable cross-border dispensations,
+country of prescription and country of dispensation should be connected to the MyHealth@EU infrastructure
+to ensure that the full cycle of dispensation is completed. This is an obligation under the EHDS regulation.
+
+
+
+
+8                                                                                                                   9
+10
+

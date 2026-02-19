@@ -1,0 +1,289 @@
+Use Case Manual
+Payment
+Authentication
+
+
+
+
+                  1
+                                                                      Description
+                                                                      The Payment Authentication use case enables the authentication of payment requests through EU Dig-
+                                                                      ital Identity Wallets (EUDI Wallets) for both online and in-store transactions. It can leverage existing
+                                                                      payment infrastructures such as SEPA Credit Transfer (SCT), including instant and traditional account-to-account
+                                                                      payments, and card payments, complementing current card-based and A2A systems without causing
+                                                                      disruption. For online transactions, this integration model supports enriched checkouts where identity
+                                                                      attributes (e.g. age) or attestations (e.g. driving license) can be securely shared as part of the payment flow,
+                                                                      enabling use cases such as age verification when paying online for an age-restricted service, or presenting
+                                                                      a driving license when paying for renting a car online.
+
+                                                                      With regard to authentication for electronic payments, EU Digital Identity users will be able to perform
+                                                                      Strong Customer Authentication by using their EU Digital Identity Wallets, ensuring a high level of security
+                                                                      and compliance with PSD2 (and with the future PSD3/PSR). In particular, the Wallet must enable the user
+                                                                      to give his/her consent for a payment by authenticating transactional information (e.g., payment and payee
+    A Use Case Manual is a description of a specific use case         information).
+    for the EU Digital Identity Wallet. It includes an introduction
+                                                                      From a regulatory perspective, by the end of 2027, various service providers from different sectors
+    to the use case and the user journey, the state of play of the    (e.g., payment service providers in the financial sector) will be required to accept EU Digital Identity Wallets
+    use case development, as well as references to the relevant       (EUDI Wallet), upon request of the user, where SCA is required by Union or national law or by contractual
+    technical specifications and infrastructures, legislation, and    obligation (Article 5f of the EU Digital Identity Framework).
+    governance structures.
+
+    The Use Case Manual is designed for the Wallet
+    implementers, Member States and other stakeholders
+    interested in the development of the Wallet and its use cases.
+                                                                      User Journey(s)
+    The Use Case Manual is not intended to contain full
+    detailed technical specifications for the use case. However,      Prior to any payment transactions with the EUDI Wallet, the Payment Service Provider – PSP (e.g. a bank)
+    where such specifications are available, the Use Case             – will offer its clients (Users) the option to link their Wallets as a means of payment authentication.
+    Manual contains pointers to them.                                 This is a one-time registration process involving verification of both the User and the EUDI Wallet
+                                                                      by the PSP, after which the PSP will issue dedicated payment-authentication credentials to the Wallet
+                                                                      in the form of attestations.
+
+                                                                      After this, the User will be able to authenticate any subsequent payments with the Wallet by presenting
+                                                                      these attestations.
+
+                                                                      [DISCLAIMER] The following preliminary (merchant-led) user journeys are only indicative and are subject
+                                                                      to change based on updates to technical and legislative documentation, as well as outcomes of the Large
+                                                                      Scale Pilots (LSPs). They should not be taken as definitive, and are not representing final configuration.
+
+
+                                                                      Scenario - Online Transaction:
+                                                                      1. User completes an online checkout and selects the payment method linked with his EUDI Wallet
+
+                                                                      2. Merchant sends a payment request to payment interface, including at least:
+
+2                                                                                                                                                                                   3
+    •
+    •
+    •
+        Amount
+        Recipient
+        Request for verification of required attributes
+                                                                                                      Use case impact
+3. Payment window on merchant website prompts user to scan QR code using the EUDI Wallet or to push
+   a button to open the EUDI Wallet                                                                   This use case enables secure, consent-based payment authentication directly through the EU Digital
+                                                                                                      Identity Wallet.
+4. User opens the EUDI Wallet application
+
+5. EUDI Wallet displays:
+   • Amount
+                                                                                                      Value for user/citizen
+   • Recipient                                                                                        For citizens, the use of the EU Digital Identity Wallets to authenticate payments presents an improvement
+   • Request for verification of required attributes                                                  in security, privacy, and convenience. Users can authenticate a payment directly from their wallet with
+   and EUDI Wallet asks for consent confirmation                                                      a biometric or PIN.
+
+6. User reviews information and confirms by authenticating with biometric or PIN                      Selective disclosure: The user selects to share verified attributes (like age or address) alongside payment
+                                                                                                      only when needed, without exposing full identity and remains in control of the personal data shared;
+7. Wallet generates and signs a proof of payment authentication
+                                                                                                      Easy to use: Pay via QR scan or by clicking a button and then store digital receipt, boarding pass or other
+8. The Payment Service Provider receives the proof, verifies the user’s attributes and executes       credentials received from the merchant;
+   the transaction
+                                                                                                      Combined presentations: one or more different types of attestations (e.g., age, driving license) from
+9. Merchant receives a confirmation from the Payment Service Provider                                 different authentic sources can be securely shared as part of a single payment flow;
+
+10. Payment window on merchant website closes. The user receives the good or service.                 Prevents fraud: Fraud attacks such as phishing and credential theft are harder to execute, as users never
+                                                                                                      expose account details or passwords to merchants;
+
+Scenario - In-Person Transaction:                                                                     Increased trust in EU Digital Identity Wallet infrastructure: As payment authentication could be one
+                                                                                                      of the most frequently used wallet interactions, it serves as a practical proof of reliability and security
+1. At the checkout, merchant asks the User for payment authentication                                 in everyday life;
+
+2. Merchant generates a payment request and displays a QR code with their payment terminal            Cross-service continuity: Use the same wallet to authenticate payments across banks, merchants,
+                                                                                                      and platforms;
+3. User scans the QR code using the EUDI Wallet application
+                                                                                                      Privacy and consent: Authenticate payments without sharing static credentials or passwords.
+4. EUDI Wallet app displays:
+   • Merchant name, payment amount, and other payment related data
+   • Required attributes to share
+   • Additional information e.g. on security or data privacy
+                                                                                                      Value for service providers
+   and EUDI Wallet asks for consent confirmation                                                      Service providers receive a standards-based, secure, and interoperable channel for SCA and consistent
+                                                                                                      checkout experience across the single market. Service providers benefit from lower implementation costs
+5. User reviews information and confirms by authenticating with biometric or PIN                      and improved customer satisfaction.
+
+6. Wallet generates and signs a proof of payment authentication                                       Cost reduction: Ready-to-use new authentication solution via the Wallet that can reduce costs versus
+                                                                                                      existing solutions;
+7. The Payment Service Provider receives the proof, verifies the user’s attributes and executes
+   the transaction                                                                                    Streamlined Compliance & Audit: The Wallet’s built-in, certified security features streamline compliance
+                                                                                                      with regulatory requirements (e.g., SCA under PSD2), reducing the need of external audits and compliance
+8. Transaction is confirmed and user receives goods                                                   costs;
+
+                                                                                                      Increased Convenience for Merchants: Using government-verified age checks directly from the Wallet
+                                                                                                      app helps merchants legally sell restricted items (like alcohol, tobacco, or gambling services).
+
+4                                                                                                                                                                                                              5
+This high-assurance verification significantly lowers the risk of fines and penalties for accidentally selling    transactions, including card payments, credit transfers, and direct debits. In 2024 this number increased
+to minors;                                                                                                        to 150 billion. Source 1 Source 2
+                                                                                                                  In terms of payment transaction value, the euro area accounted for €230.4 trillion in 2024, compared
+Risk Mitigation for Banks/PSPs: Benefit from the reduced risk associated with fraud and unauthorised              to €225.3 in 2023. Source
+transactions due to the Wallet providing a higher, standardized assurance level for the identity of the payer
+and the security of the authentication.                                                                           The Study on the payment attitudes of consumers in the euro area from 2024 (ECB) observes rise
+                                                                                                                  of preference for card and other cashless payments at POS, as well as rising preference for online payments
+                                                                                                                  in relation to fall in share of POS payments, whose value dropped from 76% in 2019 to 58% in 2024. In the
+Value for public authorities                                                                                      same period, the share of online day-to day payments increased from 18% to 36% in value.
+
+Use of the EU Digital Identity Wallets in payment authentication supports financial inclusion, fraud              The most frequently used instrument for online payments in 2024 was cards, representing 48%
+mitigation, and harmonised compliance across Member States. Regulators benefit from improved                      of number of transactions (vs. 51% in 2022). However, the share of e-payment solutions, i.e. payment
+auditability and increased trust in the identity of payment initiators. The wallet’s ability to carry             wallets and mobile apps, rose from 26% in 2022 to 29% in 2024. These include services like PayPal, big tech
+cryptographically verifiable identity and consent signals enhances enforcement of AML/CFT (Anti-Money             wallets (Apple Pay, Google Pay/Wallet) and other mobile apps (e.g., iDEAL in the Netherlands).
+Laundering and Combating the Financing of Terrorism) controls without increasing complexity for users.
+                                                                                                                  Remote / online payment flows are disproportionately exposed to fraud, compared to in‑person (POS) or
+Regulatory harmonisation: Aligns payment authentication with the eIDAS (electronic Identification,                non‑remote flows. As per 2024 Report on Payment Fraud by ECB, the payment fraud reported by the industry
+Authentication and trust Services) trust framework, reducing fragmentation across national                        across the European Economic Area amounted to €4.3 billion in the year 2022 and €2.0 billion in the first
+implementations;                                                                                                  half of 2023. Most payment fraud in value terms was related to credit transfers and card payments, across
+                                                                                                                  all three reference periods analysed. Source
+Auditability: Wallet-backed payment authentication creates secured proof of transaction approval;
+
+Increased Trust in Digital Transactions: Provides regulators and public bodies with increased trust               Synergies with other use cases
+in the identity of payment initiators and service providers, reducing risk within the digital economy;
+                                                                                                                  Payment Authentication can act as a foundational component across numerous scenarios of digital
+Public Service Modernisation: Shows progress in digital transformation of public and private sector               service delivery and therefore creates synergies with the majority of EUDI Wallet use cases. For example, the
+services by providing modern digital payment services based on privacy preservation and cross-border              following use cases show strong synergies with Payment Authentication:
+interoperability.
+                                                                                                                  •   eSignature:
+                                                                                                                      In many financial or contractual processes, both payment and signature must occur for transaction to
+Economic value and potential market size                                                                              execute, for example, completing an online service contract that requires both a signature and a fee. The
+                                                                                                                      EU Digital Identity Wallets can handle both operations.
+Users
+The potential user base includes all EU residents with a bank account or payment method. According                •   Age Verification:
+to Eurostat, over 86% of EU adults have made an online purchase in the past year.                                     Wallet-based payment flows combine age or eligibility verification with transaction authorisation
+                                                                                                                      for regulated products or services. When a user pays for age-restricted goods, the same wallet flow can
+Issuers                                                                                                               deliver both the payment proof and a selectively disclosed age attestation. No need for merchants to
+The primary issuers of credentials are banks and payment service providers (PSPs) who integrate the EUDI              perform separate age checks or store sensitive personal data.
+Wallet into their SCA infrastructure. For financial institutions, wallet integration offers both cost reduction
+and value-added service potential. While the EU Digital Identity Wallets themselves are not monetised,            •   Natural or legal person representation:
+banks can differentiate themselves by offering frictionless SCA and seamless identity–payment experiences.            This synergy ensures legal certainty in delegated payments.
+
+Relying Parties
+All enterprises that accept digital payments can play the role of Relying Parties when a user authorises
+a payment (both online and in-store) through the EU Digital Identity Wallet. Considering online
+transactions, Relying Parties would be represented by enterprises that operate in e-commerce. As per European
+Commission’s E-commerce statistics report, the share of enterprises that had e-sales in 2023 resulted in
+23.8%. Eurostat reported that in 2023 there were about 33 million enterprises in EU (27 MS countries),
+meaning that almost 8 million enterprises did business online.
+
+Transactions
+In 2023, based on ECB data, the euro area recorded approximately 140 billion non-cash payment
+
+6                                                                                                                                                                                                                            7
+Use case implementation
+                                                                                                                 Demo - In-person payment and age verification
+                                                                                                                 Demo - Online payment and age verification
+                                                                                                                 Demo - Full payment flow
+                                                                                                                 Demo – In-person payment and age verification and digital receipt.
+
+
+Existing implementations                                                                                         WE BUILD is an ongoing large-scale, European collaboration aiming to design, implement, and test a trusted
+                                                                                                                 digital business identity ecosystem based on the European Digital Identity Wallet (EUDIW) framework. Out
+                                                                                                                 of 13 projected use cases, 4 are related to payments, including Consumer Banking and Consumer payments
+Several EU Digital identity Wallet Large-Scale Pilots (LSPs) have successfully tested the use of the             & Business Banking and Payments, with VISA Europe as domain lead.
+EU Digital Identity Wallets in payment scenarios. The EWC (European Wallet Consortium) and the NOBID
+(Nordic-Baltic eID) consortium successfully piloted SCA specifications, demonstrating their application          APTITUDE has one of the objectives dedicated to enhancing the wallet to support banking and payment
+in payment transactions and assessing related regulatory and user experience aspects. Overall,                   features, not only through technical implementations like protocols, security, and cryptography but also
+this resulted in five payment use cases of various scenarios, from in-person to online payment                   by ensuring an excellent user experience necessary for the wallet’s adoption in financial use-cases.
+authentication with age verification, as well as exploring the possibility of payment initiation.                To achieve this, APTITUDE, with DSGV as domain lead, will release the Payment and Banking EUDIW
+Together, they have converged on a joint solution that aims to introduce a harmonised, EU-wide model for         Extension (PBEE) Framework, standardising payment features across wallet implementations. This
+integrating SCA and attribute sharing, ensuring the integration of EU Digital Identity Wallets with card-based   framework will enable wallet providers to integrate payment functionalities seamlessly, like mobile SDKs
+and account-based payments while minimising disruption to existing payment infrastructures. Building on          (Software Development Kit) used in banking apps.
+the outcomes of the pilots, ongoing initiatives such as WeBuild and Aptitude continue testing and refining
+the integration of the EU Digital Identity Wallets in payment scenarios.
+
+In particular, EWC Payment Taskforce main focus was on piloting and designing the use of the European            Legislation
+Digital Identity Wallet (EUDI Wallet) as a means of Strong Customer Authentication (SCA) for online
+payments, aligning with the eIDAS2 requirements for banks to accept EUDI Wallets for SCA. Beyond SCA             Commission Delegated Regulation (EU) 2018/389 (RTS on SCA and secure communication under PSD2)
+requirements, EWC’s wide piloting scope included also payment initiation, transforming EUDI Wallets into         – lays down the requirements for SCA, which needs to be complied with when accessing a payment account
+true payment wallets holding payment credentials. They emphasized that combining the payment and                 online and for initiating electronic payments, or carrying out any action through a remote channel which may
+identity credentials enabled “Fast Checkout”, which 80% of surveyed users found to be easier than standard       imply a risk of payment fraud or other abuses.
+checkout.
+                                                                                                                 Users should be able to authenticate themselves and their electronic payments securely and
+In the end, EWC piloted two flows in production stage. Firstly a “bank-led1“ authentication flow, where the      conveniently using their Wallet Units. A Wallet Unit facilitates complying with strong customer authentication (SCA)
+payer’s bank interacts with the EUDI Wallet to authenticate the payer in a €25 ferry ticket purchase. And        requirements for electronic payments, ensuring a high level of security and compliance with Article 97 of the
+secondly, a “merchant-captured2“ authentication flow, where the merchant interacts with the EUDI Wallet to       PSD2 (and with the future PSD3/PSR).
+capture the authentication data before providing it back to the payer’s bank for the approval. Users were able
+to use Fast Checkout with the EUDI Wallet to authenticate the payment, consent to share PhotoID, student         Regulation (EU) 2024/886 on Instant Payments – requires EU banks to offer SCT Inst payments by default
+attestation and loyalty card attestation. When the payment concluded, payment receipt and boarding pass          and mandates faster, irrevocable execution.
+attestations were both issued in the EUDI Wallet without further interaction from the user.
+                                                                                                                 Regulation (EU) 2024/1183 on the European Digital Identity Framework (and related Commission
+Demo – Online payments with an EUDI Wallet                                                                       Implementing Regulations) – enables the creation of a universal, trustworthy, and secure European Digital
+Demo - Fast checkout with an EU Digital Identity Wallet                                                          Identity Wallet.
+
+NOBID consortium was made up of a group of Nordic and Baltic countries (Iceland, Norway, Denmark,                Regulation (EU) 2014/910 provides regulatory environment on electronic identification and trust services for
+Latvia), together with Italy and Germany, and focused on domestic and cross-border payments use case,            electronic transactions in the internal market.
+aiming to create a seamless, secure and inclusive payment ecosystem across Europe for citizens and
+businesses. The pilot contributed to defining requirements and technical specifications, and entailed
+robust implementations and national usability testing in all six partner countries. This ultimately
+validated key architectural components of the EU Digital Identity framework and pointed to practical
+interoperability across Member States. NOBID concluded in September 2025 and its efforts resulted in
+three relevant payment demos, the in-person payment and age verification, the online payment and age
+verification, and the full payment flow. An additional demo has also been developed in November 2025
+showcasing the in-person payment with age verification and digital receipt.
+
+
+Also known as issuer-requested flow in technical specifications (ts-12)
+1
+
+Also known as Third-party-requested flow in technical specifications (ts-12)
+2
+
+
+
+
+8                                                                                                                                                                                                                                  9
+Technical specifications, software libraries                                                                      SCA Attestation is an attestation issued by a Payment Service Provider (PSP) into a Wallet Unit that serves
+                                                                                                                  as a verifiable digital proof that the Wallet Unit is associated with a specific Payer and their account
+
+and infrastructure                                                                                                managed by the PSP. In the payments ecosystem, payment data structures differ between payment
+                                                                                                                  methods. Therefore, there will be multiple types and versions of SCA Attestations. The structures of the SCA
+                                                                                                                  Attestations applicable to this specification are to be specified in related SCA Attestation Rulebook(s).
+Disclaimer: the technical specifications will be determined in upcoming implementing Acts and are
+subject to change.                                                                                                Issuance
+                                                                                                                  Attestations in general are issued by trust service providers or governmental entities. In case of payments,
+Developers should comply with Specification of Electronic Payments Strong Customer Authentication                 related attestations can be issued directly by the Payment Service Provider (such as Banks, acting as
+(SCA) Implementation with the Wallet document which defines the behaviour of the Wallet Units when                a trust service provider) or another entity acting on behalf of this PSP (another trust service provider). These
+receiving a presentation request of attributes from a SUA Attestation used for SCA in payments (called            issuers use the OID4VCI protocol to deliver “SCA Attestations” directly to the user’s wallet after a secure
+“SCA Attestation”). The current version of the document focuses on [SD-JWT-VC] format and [OID4VP]                User’s identity and Wallet’s validity verifications.
+presentation protocol only.
+                                                                                                                  Verification
+Strong Customer Authentication (SCA) for payments is mandated under PSD2 Article 97(1)(b) for electronic          When a user initiates a payment or responds to a payment request, the EUDI Wallet uses the OID4VP
+payment initiation, as well as accessing a payment account or other User’s actions that present a risk of         (or ISO/IEC 18013-5 in the future) protocol to present the relevant credential to the relying party (e.g. bank,
+fraud or other abuses. By design, the EUDI Wallet supports all three authentication factors required by PSD2      acquirer, or merchant).
+(knowledge, possession, inherence) to enable SCA. More details on the use of the Wallet for SCA purposes
+can be found in the Architecture Reference Framework (ARF) latest release (2.7.3 in November 2025), under         The solution addresses the regulatory requirement that the Payer can give consent to execute a payment
+section 2.6.4.                                                                                                    directly towards their Payment Service Provider (PSP) in the setup referred to as “Issuer-requested flow”,
+                                                                                                                  or via a third party (Payee or Payment Initiation Service Provider/Account Information Service Provider) in the
+The Payment Authentication use case is designed to work within the existing payment infrastructure                setup referred to as “Third-party-requested flow”.
+in Europe, enabling integration with both card-based and account-to-account (A2A) systems. It operates
+in VC mode using OpenID for Verifiable Credential Issuance (OID4VCI) and OpenID for Verifiable                    Trust framework
+Presentations (OID4VP) protocols. Wallet-based User authentication can be triggered in response to                The Payment Authentication use case relies on the eIDAS 2.0 trust framework to establish legal
+a payment request initiated by a merchant, platform, or payment service provider (PSP). These modalities          and technical validity for both identity credentials and authentication signals. All issuers of PID or EAA
+are aligned with real-world checkout flows and user expectations, including compatibility with EMV 3-D            used in payments must be listed on a Trusted List and conform to the appliable regulatory requirements.
+Secure for online card transactions and SEPA Instant Credit Transfer (SCT Inst) flows for bank transfers.         Verifiers (such as banks or merchants) resolve trust by validating the issuer’s metadata and cryptographic
+Communication between PSP/bank or payment terminal and Wallet Unit is conducted via standard HTTPS                keys against this federated trust list.
+endpoints and OAuth 2.0-based authorisation protocols, ensuring compatibility with existing financial APIs
+and merchant platforms.
+
+In the future, it is planned to support proximity (“contactless”) scenarios with use of ISO/IEC 18013 stand-
+ards as well.
+
+Data model, format and proof mechanisms
+The Payment Authentication process leverages a Verifiable Credential that proves the user’s identity
+(if required) and payment credentials and, where applicable, additional attributes such as age, license status,
+or residence. These credentials are in a form of a verifiable attestations, formatted as SD-JWT Verifiable
+Credentials or other in the future.
+
+In the context of payments, attestations are often presented to fulfil SCA requirements defined under PSD2,
+with wallet-based authentication serving as the “possession” and biometric/PIN acting as the “inherence”
+or “knowledge” factor. Selective disclosure is supported, allowing users to share only the required attributes
+for a specific payment context, without revealing full identity unnecessarily.
+
+Each of the flows may provide with its own “schema” for transaction processing. Each schema contains (at
+least) the following data structures:
+1. transactional data schema (for constructing a presentation request),
+2. display schema (for rendering information displayed to the Wallet User),
+3. localisation information (for proper translations of information for the Wallet User),
+4. response schema (for delivering an authentication code as proof of consent for the payment transaction).
+
+
+10                                                                                                                                                                                                                             11
+12
+

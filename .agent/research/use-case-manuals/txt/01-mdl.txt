@@ -1,0 +1,179 @@
+Use Case Manual
+Mobile Driving
+Licence
+
+
+
+
+                  1
+                                                                      Description
+                                                                      A Mobile Driving Licence (mDL) is an electronic attestation of attributes that proves a person’s right to drive
+                                                                      a particular kind of vehicle on public roads. Following the possible adoption of the new Driving Licence
+                                                                      Directive, transport authorities would be required to issue driving licences as mDLs by default from second
+                                                                      half of 2029 (tbc). This does not preclude the issuance and recognition of mobile driving licences by Member
+                                                                      States for national usage already earlier.
+
+                                                                      There are various scenarios in which a person may need to prove their right to drive a vehicle.
+
+                                                                      Roadside checks by the traffic police
+                                                                      At a roadside check the police can check the driving licence, along with other standard documentation,
+                                                                      including insurance, roadworthiness, possible emission zone permit, etc.
+
+                                                                      Car rentals
+    A Use Case Manual is a description of a specific use case         Car rental companies need to check their customers’ right to drive. This can take place when the customer
+    for the EU Digital Identity Wallet. It includes an introduction   is picking the car, or the information on the driving licence can be submitted online in advance.
+    to the use case and the user journey, the state of play of the    Remote and proximity electronic identification
+    use case development, as well as references to the relevant       Additionally, an mDL could be used as an electronic identification means or electronic identity document
+    technical specifications and infrastructures, legislation, and    in various scenarios, where accepted by verifiers.
+    governance structures.
+
+    The Use Case Manual is designed for the Wallet
+    implementers, Member States and other stakeholders
+    interested in the development of the Wallet and its use cases.    User Journey(s)
+    The Use Case Manual is not intended to contain full
+    detailed technical specifications for the use case. However,
+    where such specifications are available, the Use Case
+    Manual contains pointers to them.
+
+
+
+
+                                                                      Figure 1 The mains user journey steps of using a Mobile Driving Licence in a car rental scenario
+
+
+2                                                                                                                                                                                  3
+Use case impact                                                                                                                                •   Car rental companies:
+                                                                                                                                                   There are about 10 000 car rental locations in Europe; driving privilege is increasingly also proven
+                                                                                                                                                   via apps remotely.
+
+
+End-user value                                                                                                                                 Transactions:
+
+                                                                                                                                               •   Issuance of driving licences:
+Drivers: Convenience could be considered the main factor: people increasingly do not need to carry along                                           considering that a driving licence is valid for 5-15 years, and that there are approximately 269 million
+anything else than a phone – adding a mobile driving licence there would avoid situations where the driving                                        licence holders, assuming similar size population, around 20 million issuance transactions per year
+licence is forgotten when needed.                                                                                                                  could be assumed.
+Drivers opting for a mobile driving licence can also gain financial savings (common cost of a physical driving                                 •   Roadside check by traffic police:
+licence for a holder is between EUR 15 and EUR 30, more in case of expedite issuance).                                                             up to 45 million checks per year, in many if not most cases mDL needs not to be presented (e.g. not
+                                                                                                                                                   relevant for the check or police has other means to access information)
+
+Economic value and potential market size                                                                                                       •   Car rental companies:
+                                                                                                                                                   given the estimate of 40 to 70 million yearly users, at least the same number of transactions can be
+Issuers: The cost of procuring physical driving licences could be estimated to be around 54 million euros                                          used as a yearly estimate.
+annually at EU level. It could be that issuing mDLs instead of physical DL reduces these costs.
+
+Relying Parties: For traffic police, people are less likely to forget to carry along their driving licence,
+simplifying checks. For car rental companies, thanks to mDL being able to identify a person, some processes
+                                                                                                                                               Synergies with other use cases
+could be further automated so that the car company.                                                                                            Further benefits from the use of the wallet for mobile driving licences can be achieved through synergy with
+                                                                                                                                               the following use cases:
+Users: According to the European Parliamentary Research Service, around 60% of the EU population, or
+more than 270 million citizens, held a valid driving licence in 2021. This translates to approximately 269                                     •   Use cases for photo identification in proximity scenarios (e.g. digital identity card, mobile driving licence).
+million people.                                                                                                                                •   Digital receipts stored in the Wallet could be used by the citizen to for car rentals.
+                                                                                                                                               •   Mobile Vehicle Registration Certificates stored in the wallet.
+•      Roadside check by traffic police:
+       approximately 45 million checks yearly. This is based on an extrapolationof an estimate from one
+       Member State. The number of roadside alcohol checks could also be used as a proxy to estimate the
+       number of driving licence checks. In 2020, alcohol checks were performed on the average 96 times per
+
+
+                                                                                                                                               Use case implementation
+       1000 inhabitants. The overall number of alcohol checks could be estimated at 43 million, however only
+       a part of them involves a driving licence check.
+
+•      Car rental companies:
+       Insurance companies require car rental companies to check if the person renting the car has a right to
+       drive - 401 to 70 million yearly users.
+                                                                                                                                               Existing implementations
+Relying parties:
+                                                                                                                                               mDL-s based on the relevant ISO standard are used in Austria since 1,5 years ago. Legally valid digital
+•      Roadside check by traffic police:                                                                                                       driving licence are implemented using other technologies in DK, EE, EL, ES, FR, LV, LT, PT, FR, ES, PL, CZ, SK.
+       In line with the mutual recognition requirement under the upcoming new Driving Licence Directive,                                       Digital licence not yet legally valid, but digital driving licences are planned or piloted in BE, CY, DE, FI, IE, IT,
+       traffic police authorities of all Member States would become relying parties. Verification would take                                   LU, NL.
+       place using verification apps distributed to police officers and using, where necessary or back office
+       intermediary server.                                                                                                                    The use case is being piloted in the POTENTIAL project by 15 Member States (AT BE CY EL ES FR IT PL PT EE
+                                                                                                                                               FI LT LU NL DE) and Ukraine. As of early 2025, implementation of the use case is ongoing, and deployments
+                                                                                                                                               are being planned to take place in the beginning of 2025.
+1
+    According to a survey conducted by Statista, some 12% of the population aged between 18 and 64 years have rented a car in the last year,
+    counting EU countries included in the survey (17 countries)3. found some here and if EU countries are counted, the average is 12%.         Several kinds of digital driving licences exist already in some of Member States, even if these are not
+    Respondents were adults of 18-64 years old, and the question was about the last 12 months. If we count EU population aged between 20 and   interoperable or mutually recognised at EU level:
+    79 (~331M)3, this gives around 40 million of possible users.
+
+
+4                                                                                                                                                                                                                                                                 5
+•
+•
+    No need to carry along a DL (e.g. Baltics),
+    MS-specific solutions like mObywatel app in PL, mobile driving licence app in DK and IT (IO app).            Technical specifications, software libraries
+                                                                                                                 and infrastructure
+Legislation                                                                                                      Technical specifications on interoperability are mature (ISO/IEC 18013-5/7 are adopted international
+                                                                                                                 standards) and have been tested in ISO test events as well as in test events organised by the large-scale
+Mobile driving licences with legal effect are in use in several Member States.
+                                                                                                                 pilot. The ISO/IEC 18013-5/7 standard is referenced by the implementing act2 on the protocols and
+                                                                                                                 interfaces for the EUDI Wallets. Implementation of trusted lists, as well as issuance services and verifiers
+At EU level, the new Driving Licence Directive would establish default issuance and mutual recognition of
+                                                                                                                 are technically needed.
+mobile driving licences. It would refer to ISO/IEC 18013-5 as a reference standard. Adoption of the Directive
+is foreseen in the second half of 2025, depending on trilogues (launched in December 2024). Transposition
+                                                                                                                 Data model, format and proof mechanisms
+in national laws is foreseen by the second half of 2027, and their entry into application by the second half
+                                                                                                                 Specifications can be found in ISO 18013-5.
+of 2028.
+                                                                                                                 Issuance
+The Driving Licence Directive and its implementing acts would establish a legal basis for mutual recognition
+                                                                                                                 Attestation issuance should be implemented considering specifics of each Member State, in line with the EUDI
+of driving licences across the EU. Two digital methods would become available to verify driving rights:
+                                                                                                                 Wallet requirements. The issuance of mobile driving licences would rely on the existing infrastructures established
+• Issuance and verification of mDL.
+                                                                                                                 by Member States’ transport authorities. These would need to be extended with the capability of issuing mDLs.
+• Verification of driving licences via RESPER directly between authorities.
+                                                                                                                 OpenID4VCI specifications can be considered for issuance. Formal adoption of the specification is foreseen
+Attestation: The mDL attestation is defined in the upcoming Driving Licence Directive.
+                                                                                                                 2025.
+Technical specifications for the attestation could be further detailed in an implementing act, even if the
+standard is already referred to in the main text of the Directive. Adoption of the implementing act could take
+                                                                                                                 Libraries to facilitate issuance of mDL can be found here.
+place in 2026 (12 months after adoption of the Directive).
+                                                                                                                 An issuance flow is described in the ARF Annex 4.
+Issuance and acceptance: Obligations to issue and accept mDL are to be laid down in the upcoming Driving
+Licence Directive. According to its text, issuance of mDL would only be enabled to EUDI wallets. Pending
+                                                                                                                 Verification
+the outcome of the trilogues on the Directive and adoption of subsequent implementing acts, all Member
+                                                                                                                 Specifications on presenting mDL in proximity and remotely are available as ISO standards.
+States could be expected to start issuing and accepting mDLs by end of 2030. However, early adopters may
+                                                                                                                 Business blueprints on proximity verification flows are also described in the ARF Annex 4: supervised flow
+start issuing and accepting mDLs earlier, after adoption of the relevant implementing acts. Therefore, it is
+                                                                                                                 and unsupervised flow.
+a possibility for Member States to implement mDLs from the launch of the EUDI wallets (by end of 2026).
+This would support the uptake and positive perception of both mDL and EUDI wallets.
+                                                                                                                 Libraries to facilitate implementation of mDL presentation and varification can be found here.
+Several Member States already currently implement mobile driving licences based on national law. These
+                                                                                                                 Member States need to equip police officers with verification means such as verifier apps. The same should
+are not however interoperable or mutually recognised at EU level.
+                                                                                                                 be done by car rental, carsharing and transport companies that want or need to check either their customers
+                                                                                                                 (people renting a car) or employees/partners entrusted with driving vehicles on their behalf.
+                                                            Foreseen dates, subject to negotiations
+           Mobile driving licence timeline                                                                       Trust framework
+              (subject to negotiations)                                                                          The new Driving Licence Directive would require Member States to notify the Commission of authorised
+                                                        2025    2026     2027     2028    2029    2030
+                                                                                                                 mDL issuers. The Commission would publish a list of these authorities for verification purposes. More
+                                                                                                                 specific trusted list arrangements for issuers are to be defined. EU trusted list infrastructure established
+           Driving Licence Directive in force                                                                    under Regulation (EU) 910/2014 can be reused for establishing an EU trusted list for mDLs issuers.
+           Implementing act with technical
+                  specifications                                                                                 Relying party registration should be implemented in line with the EUDI Wallet requirements and considering
+                                                                                                                 specifics of each Member State.
+             Transposition laws adopted
+                                                                                                                 An implementing act under the Driving Licence Directive can lay down further technical provisions on mobile
+           Transposition laws in application                                                                     driving licences, such as on the trusted list of authorised issuers to enable validation of mDLs.
+
+       Shall issue and mutually recognise mDL
+                                                                                                                 2
+                                                                                                                     Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU)
+    Shall issue driving licences as mDL by default                                                                   No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital
+                                                                                                                     Identity Framework. C/2024/8496 (OJ L, 2024/2982, 4.12.2024, ELI).
+
+
+6                                                                                                                                                                                                                                                       7
+8
+

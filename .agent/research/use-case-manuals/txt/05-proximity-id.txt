@@ -1,0 +1,185 @@
+Use Case Manual
+The identification
+in proximity
+scenarios
+
+
+
+
+                     1
+                                                                      Description
+                                                                      In this use case, relying parties are utilizing EUDI Wallets to identify users in proximity scenarios. Relying
+                                                                      parties’ objectives may include allowing access to premises to only authorised users, law enforcement,
+                                                                      airports or hotels registering the identity of the person they are dealing with, pharmacies checking the
+                                                                      identity of a person to see if they have a prescription, shops checking the identity of a person to see if they
+                                                                      are authorised to get access to a service or benefits etc.
+
+                                                                      It builds on the same PID, and electronic attestation of attributes framework defined in the European
+                                                                      Digital Identity Regulation and the EUDI Wallet Architecture Reference Framework (ARF), but adapts it to
+                                                                      short-range, offline-capable communication channels. In order to enable proximity identification, it is
+                                                                      expected that the document would need to include a photo, which per PID rulebook1 falls under the portrait
+                                                                      attribute in optional attributes specified in Implementing Regulation (EU) 2024/2977 in ARF, however, the
+                                                                      mandatory use of photo ID in proximity scenarios remains unclear at the point of writing.
+
+    A Use Case Manual is a description of a specific use case         The important emphasis is that the EUDI Wallet should be able to perform identification no matter if the
+    for the EU Digital Identity Wallet. It includes an introduction   EUDI Wallet itself is online or offline (identification may work even without internet access), as it was the
+                                                                      case in the Potential use case UC 1.1, Identification in Close Proximity Scenario.
+    to the use case and the user journey, the state of play of the
+    use case development, as well as references to the relevant       This use case gives citizens the ability to use their EUDI Wallet for face-to-face interactions with
+    technical specifications and infrastructures, legislation, and    relying parties, where the transaction requires strong assurance of identity. Instead of presenting physical
+    governance structures.                                            identity documents, employment badges or loyalty cards, users can present document from their EUDI Wallet
+                                                                      using secure device-to-device communication protocols. Deployment of this use case currently depends on
+                                                                      national legal frameworks and on the voluntary acceptance by relying parties.
+    The Use Case Manual is designed for the Wallet
+    implementers, Member States and other stakeholders                There are two separate scenarios for proximity identification, supervised, where user and their device are
+    interested in the development of the Wallet and its use cases.    close to the service provider, for example at a public administration office or a bank, or unsupervised (with
+                                                                      a machine), the user interacts with a machine such as a terminal or a self-service kiosk to retrieve the keys
+                                                                      of a rented car for example, instead of a person.
+    The Use Case Manual is not intended to contain full
+    detailed technical specifications for the use case. However,
+    where such specifications are available, the Use Case
+    Manual contains pointers to them.
+                                                                      User Journey(s)
+                                                                      Supervised
+                                                                      1. User holds a valid digital ID document with photo attribute
+                                                                      2. At check-in, the hotel receptionist request identification through a verifier device
+                                                                      3. The user opens the EUDI Wallet on a smartphone and scans the QR code
+                                                                      4. User reviews the request and consents to share the required data, for example:
+                                                                         • Name
+                                                                         • Date of birth
+                                                                         • Nationality
+                                                                         • Photo
+                                                                      5. The user confirms the disclosure with PIN or biometric authentication
+
+
+2                                                                                                                                                                                  3
+6. The verifier’s device validates the proof locally, and shows document’s picture to verifier to confirm           Value for service providers
+7. Verifier confirms the identity and continues with check in process
+                                                                                                                    For private entities such as retailers, hotels, mobility companies, and rental services, EUDI Wallet-based
+                                                                                                                    proximity identification simplifies and accelerates in-person verification. It reduces the administrative
+Unsupervised                                                                                                        burden of checking physical IDs, cuts fraud and misuse risks, and support regulatory compliance (e.g. age
+                                                                                                                    verification, AML).
+1.   User holds a valid digital ID document with photo attribute
+2.   At the airport, user walks to the automatic security doors                                                     •   Speed and efficiency:
+3.   Security door’s screen prompt user to scan the document at the gate scanner                                        Faster in-person verification compared to manual ID checks.
+4.   User opens the EUDI Wallet and opens the document’s code and presents it to scanner
+5.   EUDI Wallet verifies the authenticity of relying party                                                         •   Fraud reduction:
+6.   User reviews the request and confirms the disclosure of data                                                       Cryptographic proofs minimise risks of forged or stolen identity documents.
+7.   EUDI Wallet authenticates the user
+8.   The security doors identify the citizen and authenticate the presentation                                      •   Lower operational burden:
+9.   Citizen is granted access through the doors                                                                        Reduces manual document inspection and associated errors.
+
+                                                                                                                    •   Regulatory compliance:
+                                                                                                                        Supports age verification, KYC, and AML requirements in regulated sectors.
+
+
+Use case impact                                                                                                     Value forpublic authorities
+
+                                                                                                                    Public authorities gain reliable, secure, and efficient tools for in-person verification. Law enforcement, border
+                                                                                                                    management, and local government offices can use verifier apps to authenticate citizens instantly and with
+                                                                                                                    high assurance, even in offline scenarios. This reduces fraud, supports mutual recognition across borders,
+This capability is essential for real-world in-person identifications with physical presence, such as at
+                                                                                                                    and ensures accountability through auditable transaction histories. Authorities also benefit from advancing
+airports, hotels, pharmacies, police checks, or public offices. It offers a digital alternative to presenting
+                                                                                                                    EU-wide digitalisation targets by fostering adoption of secure, digital-first services.
+physical documents like ID cards, driving licences, or insurance cards, while preserving user control of data.
+                                                                                                                    •   Instant verification:
+
+Benefits                                                                                                                Enables quick identity checks by police, border agents, or local officials.
+
+                                                                                                                    •   Forgery prevention:
+End-user/citizen value                                                                                                  Cryptographically secured credentials protect against fake IDs and impersonation.
+
+For citizens, proximity identification replaces the need to present physical documents for in-person                •   Cross-border recognition:
+purchases of goods and services, from renting a car to proving age in a store. It provides a faster, more               Can be used across Member States once mutual recognition is implemented.
+private way to verify identity, while ensuring that users remain in full control of the attributes they disclose.
+This builds digital trust and transparency.                                                                         •   Auditability:
+                                                                                                                        Verification flows can be logged and audited for accountability and oversight.
+•    Convenience:
+     Citizens can use their EUDI Wallet instead of carrying and presenting physical ID documents.                   •   Digitalisation progress:
+                                                                                                                        Contributes to EU policy goals for secure, digital-first public service delivery.
+•    Selective disclosure:
+     Only the strictly necessary attributes are shared (e.g., “18+” instead of date of birth).
+
+•    Offline usability:
+                                                                                                                    Economic value and potential market size
+     Works without internet or mobile network, useful in rural areas or while travelling.
+                                                                                                                    Users
+                                                                                                                    The potential user base is essentially all EU residents holding a EUDI Wallet, in total to be hundreds of
+•    Trust in relying party:
+                                                                                                                    millions once national rollouts mature. This functionality promises to replace the need to carry and present
+     They will always share data only with relying parties that are registered.
+                                                                                                                    multiple physical ID documents with a single, privacy-preserving digital alternative usable both online and
+                                                                                                                    offline.
+•    Transparency
+     A transaction history in the EUDI Wallet allows oversight of all past identification transactions.
+
+
+4                                                                                                                                                                                                                                  5
+Issuers                                                                                                           flows can be implemented consistently across different EUDI Wallet apps and verifier systems, highlighting
+The primary issuers of electronic attestations of attributes for proximity scenarios are national identity        both interoperability and user experience requirements.
+authorities, ministries of interior, or qualified trust service providers (QTSPs) designated under the European
+Digital Identity Framework. In most Member States, issuance is expected to align with existing national eID
+ecosystems, such as digital ID cards, mobile ID apps, or population registries, that are extended to produce
+interoperable, EUDI Wallet compatible credentials.
+                                                                                                                  Legislation
+                                                                                                                  At this stage, there is no separate EU legal act dedicated solely to proximity identification. Instead, the legal
+Relying Parties                                                                                                   foundation is embedded within the broader European Digital Identity Framework. These acts define:
+Across Europe, there are more than 200,000 hotels and 10,000 car rental locations, many of which conduct
+in-person ID checks or check-in processes. As proximity identification scales, these organisations will be        •   The requirement for EUDI Wallets to support identification and authentication across both online
+able to replace manual inspection of documents with cryptographically secured, standardised digital proofs,           and offline scenarios.
+reducing fraud and operational costs, streamlining their service and make the experience more pleasant.           •   The role of relying party certificates and trusted lists to authenticate verifiers in proximity flows.
+                                                                                                                  •   Obligations for Member States to issue and recognise EUDI Wallets until 2026.
+Transactions
+Transactions in proximity identification cover a wide spectrum, from frequent, low-friction checks to
+high-value interactions. In border control, hundreds of millions of crossings occur annually within the
+Schengen Area, many of which involve ID checks. In retail, millions of daily purchases involve age-restricted
+                                                                                                                  Technical specifications, software libraries
+goods such as alcohol or tobacco. In hospitality and travel, hotel check-ins, flight boarding, and car rentals
+collectively represent tens of millions of yearly ID verifications across the EU.                                 and infrastructure
+The total transaction volume for proximity identification is therefore expected to reach into the hundreds        Proximity identification must follow the ARF flows for in‑person verification. The ARF defines two proximity
+of millions annually in the short term, with potential to scale to billions once adoption is widespread across    modes, supervised (human operator present) and unsupervised (kiosk/terminal), while it explicitly supports
+Member States and sectors.                                                                                        near‑proximity transport (NFC/BLE) with online or offline connectivity on either side.
+
+                                                                                                                  Data model, format and proof mechanisms
+Synergies with other use cases                                                                                    Proximity checks typically present PID attributes (e.g., name, date of birth, or derived claims like “18+”)
+                                                                                                                  or other attestations, with selective disclosure enforced by the EUDI Wallet.
+                                                                                                                  Proof and transport options:
+Further benefits from the use of the wallet for Educational Credentials can be achieved through synergy with
+the following use cases:
+                                                                                                                  •   ISO proximity (mdoc) for device‑to‑device: the ARF and EUDI Wallet reference code support ISO/IEC
+                                                                                                                      18013‑5 (mdoc over NFC/BLE) for proximity presentation; remote presentation profiles use ISO/IEC
+•   PID-based identification in online services
+                                                                                                                      18013‑7 / ISO 23220‑4 constraints where applicable.
+•   Age Verification
+•   Ticket or Pass
+                                                                                                                  •   OpenID profiles for request/response: for remote or blended flows, EUDI Wallet uses OpenID for Verifiable
+•   Mobile Driving Licence (mDL)
+                                                                                                                      Presentations (OID4VP) and SIOPv2, with EUDI Wallet constraints aligned to ISO 18013‑7 / 23220‑4
+                                                                                                                      where relevant. OpenID for Verifiable Credential Issuance (OID4VCI) is used to issue the credentials that
+                                                                                                                      will later be presented in proximity.
+
+
+Use case implementation                                                                                           Issuance
+                                                                                                                  Issuer (e.g., population registry/ministry or designated TSP) issue the electronic attestations of attributes
+                                                                                                                  that will be shown in proximity.
+
+                                                                                                                  Use OID4VCI (EUDI profile) to deliver credentials into the EUDI Wallet (PID and any derived/sectoral
+Existing implementations                                                                                          attestations). The same issued credential can be presented either proximity (ISO/IEC 18013‑5) or remote
+                                                                                                                  (OID4VP) depending on the scenario.
+The most concrete reference is the mobile Driving Licence (mDL), defined in ISO/IEC 18013-5, which has
+                                                                                                                  Verification
+been piloted in multiple EU countries (e.g., Germany, the Netherlands, Finland) and tested in EU large-scale
+                                                                                                                  Before any disclosure, the EUDI Wallet must verify the relying parties’ authenticity (RP request is signed; RP
+pilots such as POTENTIAL and NOBID. These implementations demonstrate the feasibility of short-range
+                                                                                                                  certificate chains to a trusted CA in the wallet). The ARF sets explicit steps for signature/certificate validation
+verification via NFC or Bluetooth, supervised and unsupervised flows, and offline capability.
+                                                                                                                  and revocation checks.
+                                                                                                                  The EUDI Wallet releases only the requested, necessary attributes, preserving data minimisation for
+Other proximity-related pilots under the EUDI Large Scale Pilots (LSPs) have included hotel check-ins,
+                                                                                                                  in‑person checks.
+retail age verification, and border control experiments. These projects have validated that proximity
+
+6                                                                                                                                                                                                                                  7
+8
+

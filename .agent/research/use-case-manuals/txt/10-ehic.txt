@@ -1,0 +1,211 @@
+Use Case Manual
+European Health
+Insurance Card
+(EHIC)
+
+
+
+
+                  1
+                                                                      Description
+                                                                      The European Health Insurance Card (EHIC) is a free card that allows EU citizens, their family members,
+                                                                      and certain eligible individuals to access medically necessary state-provided healthcare during a temporary
+                                                                      stay in any of the 27 EU countries, Iceland, Liechtenstein, Norway, Switzerland and the United Kingdom
+                                                                      under the same conditions and at the same cost (free in some countries) as for people insured in that
+                                                                      Member State.
+
+                                                                      The EHIC is issued by a Member State’s (MS) national insurance provider in a physical format. The EHIC
+                                                                      is currently specified as a plastic card and does not include mandatory security features nor optional ones,
+                                                                      such as a photograph or a chip with cryptographic features that may anyway appear as part of the national
+                                                                      insurance card on the reverse side.
+
+                                                                      The involved stakeholders are:
+
+    A Use Case Manual is a description of a specific use case         •   Insured Person:
+    for the EU Digital Identity Wallet. It includes an introduction       A citizen of one of the beforementioned countries seeking for unforeseen healthcare abroad.
+    to the use case and the user journey, the state of play of the    •   Social Security Institution:
+    use case development, as well as references to the relevant           An entity responsible for the issuance of social security documents, including the EHIC, and for managing
+    technical specifications and infrastructures, legislation, and        the payment and reimbursement of sickness benefits in kind provided by another Member State (liaison
+    governance structures.                                                body as specified in the coordination of social security regulation). These include institutions responsible
+                                                                          for sickness, maternity, invalidity, retirement, accidents at work, unemployment, family benefits, as well
+                                                                          as pre-retirement schemes.
+    The Use Case Manual is designed for the Wallet
+    implementers, Member States and other stakeholders                •   Healthcare Provider:
+    interested in the development of the Wallet and its use cases.        A Private/Public health professional or a Private/Public healthcare organisation to provide healthcare
+                                                                          benefits in kind, including diagnosis, treatment services, medication, surgery and medical devices as
+                                                                          specified in the legislation of the member state where benefits are provided.
+    The Use Case Manual is not intended to contain full
+    detailed technical specifications for the use case. However,      The EHIC plays a crucial role in the healthcare reimbursement process in accordance with EU social
+    where such specifications are available, the Use Case             security legislation. When a citizen with a EHIC receives healthcare services in a Member State other than
+                                                                      their home country, the costs are typically reimbursed by the liaison body in the competent Member State
+    Manual contains pointers to them.                                 (the MS where the person is insured) based on the rates applicable in the visited MS. The EHIC is a proof of
+                                                                      the insurance and base for the reimbursement. In the reimbursement process, the healthcare provider keeps
+                                                                      a copy of the provided EHIC.
+
+
+
+
+                                                                      User Journey(s)
+                                                                      Scenario - Requesting healthcare services
+                                                                      during a temporary stay abroad:
+2                                                                                                                                                                                   3
+1. Setup – Anna, a Greek student and a frequent traveller within the EU, securely stores her digital EHIC       Healthcare providers would benefit in the following ways:
+   in her EUDI Wallet, enabling quick access to unplanned medically necessary healthcare services while
+   abroad.                                                                                                      •   Streamlined verification:
+                                                                                                                    Enable immediate and reliable verification of EHIC validity and insurance coverage through secure digital
+2. Presentation – While on a short trip to Lisbon, Anna experiences a sudden health issue and visits                validation.
+   a nearby healthcare clinic. At reception, the healthcare provider asks her to present her digital EHIC to
+   confirm her insurance status, authenticity, validity.                                                        •   Operational efficiency:
+                                                                                                                    Reduce time and effort spent on manual checks, paper forms, and follow-up with foreign insurance
+3. Verification Process – The healthcare provider, onboarded in the EUDI Wallet ecosystem, initiates the            institutions.
+   verification by displaying a QR code. Anna scans the QR code with her EUDI Wallet, triggering a secure
+   and standardised data-exchange flow.                                                                         •   Reduced errors and fraud:
+   • Anna’s EUDI Wallet evaluates the request, verifies the healthcare provider’s identity, and prompts her         Minimise risks of misidentification, data inaccuracies, and fraudulent card use.
+       to consent to share the requested information. Once consent is given, the wallet securely transmits
+       the EHIC and PID data.                                                                                   •   Accelerated reimbursement:
+   • Once the verification is completed, Anna can access the necessary healthcare services according to             Facilitate faster submission and settlement of cross-border healthcare claims through interoperable
+       the applicable conditions in the Member State of treatment. The healthcare provider proceeds with            digital processes.
+       patient admission, and the information required for potential reimbursement is exchanged with the
+       relevant social security institutions.                                                                   •   Improved patient experience:
+                                                                                                                    Ensure smoother patient admission and service provision through quick, automated eligibility
+                                                                                                                    confirmation.
+
+
+
+Use case impact
+                                                                                                                Value for public authorities
+                                                                                                                Public authorities would gain from improved efficiency, transparency, and interoperability in the
+                                                                                                                management and monitoring of cross-border healthcare entitlements, aligned with EU objectives for secure
+                                                                                                                and trusted digital identity solutions.
+
+                                                                                                                Public authorities would benefit in the following ways:
+Benefits                                                                                                        •   Fraud prevention:
+End-user/citizen value                                                                                              Strengthen fraud detection mechanisms via secure, verifiable credentials and auditable digital records.
+The digitisation of the EHIC would introduce a standardised and simplified digital process for the issuance,
+verification, and the possibility of revocation and reimbursement of costs provided based on over 253 million   •   Revocation capability:
+EHICs currently in circulation across Europe.                                                                       Enable real-time revocation of EHIC credentials, allowing authorities to immediately invalidate lost,
+                                                                                                                    stolen, or invalid cards and prevent their misuse.
+Citizens would benefit in the following ways:
+                                                                                                                •   Cross-border interoperability:
+•   Enhanced access                                                                                                 Promote harmonised and secure data exchange between national healthcare and insurance institutions
+                                                                                                                    across Member States.
+•   Convenience:
+    Provides a simple mobile-enabled solution for requesting, storing and presenting EHIC information.
+
+•   Reduced administrative burden:
+                                                                                                                Economic value and potential market size
+    Reduce the administrative burden placed on users for requesting cross-border healthcare.                    Users
+    Guarantee the confirmation of insurance in real-time.                                                       In 2023, approximately 253 million European Health Insurance Cards (EHICs) were in circulation.
+                                                                                                                In several Member States, including Germany (DE), Austria (AT), and Italy (IT), EHICs are integrated into the
+•   Efficient reimbursement process:                                                                            back of the national insurance card. This approach is supported in the card’s specifications and allows for
+    Streamline and potentially digitalise the reimbursement process.                                            the combination of data specified for an EHIC with additional attributes from a Member State’s national
+                                                                                                                insurance card such as a photo. Furthermore, a provisional replacement certificate (PRC) for the EHIC, issued
+Value for service providers                                                                                     as a paper document, is also included in the specification, for cases where the EHIC is lost, or requested too
+The digitalisation of the EHIC would simplify and harmonise the process for healthcare providers to identify,   close to the departure date not to be able to provide a plastic card.
+validate, and claim reimbursement for insured citizens across borders, supporting the digital transformation
+of healthcare administration within the EU.
+
+
+4                                                                                                                                                                                                                           5
+Issuers                                                                                                             Proof of valid health insurance status can be utilised in scenarios such as labour inspections, employer
+The EUDI Wallet enables a digital and standardised approach for managing EHICs offering the following               registrations or when enrolling at a university.
+economic benefits:
+
+•   Improves transparency and efficiency:
+
+
+                                                                                                                Use case implementation
+    Enhances the process of creating and verifying EHICs, reducing errors and delays.
+
+•   Reduces administrative burden:
+    Streamlines procedures, lowering costs and reducing resource demands for institutions and stakeholders.
+
+•   Reducing issuing costs:
+    Reduces significantly the issuing costs of the plastic cards.                                               Existing implementations
+Relying Parties                                                                                                 Member States’ social security institutions have been issuing social security documents, such as the EHIC
+According to Eurostat, there is an estimated 1.83 million practicing physicians in the EU in 2022. These        and Standard forms for social security rights, in physical formats (plastic or paper) at a national level since
+physicians are the primary relying party for EHICs, allowing them to get reimbursement for the medical          2004. The Commission maintains a registry of trust anchors for these institutions (Institution Repository –
+treatments they provide to insured foreign citizens. As many physicians are working in hospitals and other      IR) to support the implementation of a reliable Electronic Exchange of Social Security Data (EESSI) among
+healthcare provider organisations, the actual number of relying parties is smaller. The EHIC is also utilised   Member States.
+by public authorities and private entities to verify a citizen’s social insurance status to provide services.   Digital EHICs have been implemented and tested in the DC4EU pilot project, with social security institutions
+From a European perspective these situations are mostly unknown, are not covered by the social security         across all Europe being surveyed and consulted (21 Member States + Norway, Switzerland and Ukraine
+coordination framework and sometimes are Member State specific.                                                 participated in it). The large-scale pilot DC4EU was running from April 2023 to July 2025. About 15000
+                                                                                                                transactions were performed in a pre-production environment. 16 social security institutions were involved
+Transactions                                                                                                    in this work. This piloting took place alongside the ESSPASS initiative for the digitisation of social security
+Healthcare benefits provided in the Member State of stay are reimbursed by the competent Member State           documents.
+in accordance with the rates of the Member State of stay. Data indicate a widespread and routinised
+payment and reimbursement procedure following the use of the EHIC. From the perspective of the Member
+State of treatment, Germany, Spain, France, and Austria received the highest amounts in 2023, as they all
+claimed/received an amount of over EUR 140 million. In almost all Member States, a growth in the number
+                                                                                                                Legislation
+of claims for reimbursement of necessary unplanned care issued by the Member State of treatment can be          The social security coordination Regulations safeguard the social security entitlements of individuals
+noted from 2022 to 2023. In total in 2023, from this perspective, the number of claims amounted to around       moving throughout the 27 EU countries, as well as Iceland, Liechtenstein, Norway, Switzerland, and the
+2.2 million and the amount to approximately EUR 1.1 billion. The main flows from the perspective of the         United Kingdom.
+Member State of treatment in 2023 were received by Austria from Germany (EUR 76 million) and received
+by Belgium from France (EUR 50 million, data 2021). Source                                                      Relevant key legislation and acts at EU level:
+
+                                                                                                                •   Regulation (EC) No 883/2004 modernises the rules on the coordination of Member States’ social security
+Synergies with other use cases                                                                                      systems.
+
+Further benefits of integrating the EHIC into the wallet can be realised through synergies with the following   •   Regulation (EC) No 987/2009 lays down the procedure for implementing Regulation (EC) No 883/2004.
+use cases:
+                                                                                                                •   Decisions S1 and S2 of the Administrative Commission for the coordination of social security adopted
+•   Electronic identification in proximity scenarios:                                                               in June 2009 establish the design and specifications of the European Health Insurance Card and the
+    The wallet’s electronic identification means (e.g. PID, digital identity card, mobile driving license)          provisional replacement certificate.
+    can be used to request medically necessary, state-provided healthcare during a temporary stay in any
+    EU country.                                                                                                 •   Decision S11 of the Administrative Commission for the coordination of social security adopted
+                                                                                                                    in December 2020 lays down refund procedures for the implementation of articles 35 and 41 of
+•   Payment authorisation:                                                                                          Regulation (EC) No 883/2004.
+    The wallet can facilitate secure payment for healthcare services.
+                                                                                                                Insured persons are entitled to receive EHICs under the provision of Regulations 883/2004 (Articles 19,
+•   ePrescription:                                                                                              27(1)) and 987/2009 (Article 25(A) and (C)). The issuance of EHICs in the EUDI Wallet is neither mandated
+    EHIC integration supports scenarios where a prescription is dispensed abroad.                               nor prohibited by Union law.
+
+•   Health insurance attestation:                                                                               Currently, EHICs are issued in a physical format in accordance with the specifications set by the
+
+6                                                                                                                                                                                                                            7
+Administrative Commission for Social Security Coordination.
+
+The European Commission’s 2026 Work Programme includes a legislative proposal for the European Social
+Security Pass (ESSPASS) as part of a broader “Fair labour mobility package”. This initiative, scheduled for Q3
+2026, aims to digitise social security coordination attestations and facilitate the exercise of social security
+rights for people working or moving within the EU.
+
+
+Technical specifications, software libraries
+and infrastructure
+Technical specifications for EHICs have been defined as part of the DC4EU pilot. This work built on the
+existing infrastructure and processes for the issuance, presentation and verification of EHIC information and
+adding support for revocation.
+
+Data model, format and proof mechanisms
+DC4EU has piloted the EHIC attestation using the specifications found in IETF SD-JWT-VC credential format.
+DC4EU has also defined the data model for the EHIC containing information uniquely identifying the subject
+of the credential from a social security perspective (PIN), Authentic Source (Competent Institution) of the
+EAA, PuB-EAA provider, (issuer) identification number of the entitlement document and the validity date. The
+data model is based on the W3C Verifiable Credentials Data Model.
+
+Proof mechanism: JWT proof type is used according to OID4VCI along with ES256.
+
+Verification
+Currently, the verification of the EHIC is performed through visual inspection of the physical plastic card or
+by utilising scanning technologies, such as Optical Character Recognition (OCR), to extract data for further
+processing. The plastic card has been specified in such a way that these technologies can be applied.
+
+In some countries, hardware and software systems are already in place for verifying the national insurance
+card, which serves as the domestic counterpart to the EHIC. This existing infrastructure could potentially be
+upgraded to enable the verification of the EHIC as well.
+
+Where needed, healthcare providers should acquire additional hardware for facilitating device engagement
+and data retrieval: QR code readers, Bluetooth adapters, and/or NFC readers. It is up to the Member States
+to define a harmonised national verification process for relying parties including the implementation of a
+verifier as a standalone or as part of a software stack. A verifier app implementation is available as part
+of the EUDI Wallet reference implementation, however its adaptation to the specifics of the EHIC may be
+needed.
+
+
+
+
+8                                                                                                                 9
+10
+

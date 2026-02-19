@@ -1,0 +1,172 @@
+Use Case Manual
+Age
+Verification
+
+
+
+
+                  1
+                                                                      Description
+                                                                      The Age Verification use case allows citizens to prove they are above a specific age threshold (e.g., over
+                                                                      16, 18, or 21) using a verifiable digital credential stored in their EUDI Wallet. The wallet enables confirming
+                                                                      age without revealing other personal details such as the full birthdate or name.
+
+                                                                      Age Verification is performed according to a very strict privacy approach, by presenting an attestation
+                                                                      that contains a boolean age claim (e.g., age_over_18 = true). The claim can be included in a dedicated
+                                                                      attestation or be part of a broader set of attributes in another attestation, such as a mobile driving licence
+                                                                      or a photo ID. The use of selected disclosure allows the verifier service to perform an age check without
+                                                                      learning the date of birth or other personal details.
+
+                                                                      The use case is applicable to both online and proximity scenarios. Examples of scenarios where age
+                                                                      verification may be required include:
+
+    A Use Case Manual is a description of a specific use case         •   Purchasing age-restricted goods (e.g., alcohol, tobacco)
+    for the EU Digital Identity Wallet. It includes an introduction   •   Accessing online content or services (e.g., adult content, gaming platforms)
+                                                                      •   Entering venues (e.g., nightclubs, festivals)
+    to the use case and the user journey, the state of play of the    •   Using age-gated public services (e.g., youth discounts, senior benefits)
+    use case development, as well as references to the relevant
+    technical specifications and infrastructures, legislation, and
+    governance structures.
+
+    The Use Case Manual is designed for the Wallet
+    implementers, Member States and other stakeholders
+                                                                      User Journey(s)
+    interested in the development of the Wallet and its use cases.
+                                                                      1. The user acquires an attestation with a proof of age (a proof of age attestation). The attestation
+    The Use Case Manual is not intended to contain full                  is issued by a trusted authority (e.g., national population registry) and stored by the EUDI Wallet.
+    detailed technical specifications for the use case. However,
+                                                                      2. User seeks to access an age-restricted service (e.g., accessing a website with sensitive content,
+    where such specifications are available, the Use Case
+                                                                         entering a bar, buying alcohol online).
+    Manual contains pointers to them.
+                                                                      3. The Relying Party (e.g., website, bartender, vending machine, or online merchant) requests age
+                                                                         verification through a standard EUDI Wallet interface.
+
+                                                                      4. The EUDI Wallet invites the user to prove their age, by showing:
+                                                                         • The name and identity of the requesting party
+                                                                         • The requested age threshold (e.g., “18+”)
+                                                                         • A prompt to confirm sharing the proof
+
+                                                                      5. If the user confirms sharing the proof, the wallet uses the proof of age attestation to generate
+                                                                         a cryptographic proof that the user meets the age requirement.
+
+                                                                      6. The proof is shared with the relying party, who verifies it instantly without seeing any excess personal
+                                                                         information.
+
+                                                                      7. Access is granted or denied based on the result.
+
+
+2                                                                                                                                                                                  3
+Age Verification short-term solution:                                                                           Value for relying parties
+                                                                                                                Service providers in regulated sectors (e.g., e-commerce, online gaming, content platforms) can meet
+User Journey (e.g. 18+)                                                                                         legal obligations for age gating without storing excessive personal data. Receiving only a verified “over age”
+                                                                                                                claim reduces compliance costs, decreases impact of data breaches, and improves onboarding speed.
+
+                                                                                                                Value for public authorities
+                                                                                                                Implementing age verification through the EUDI Wallet allows public authorities to deliver on their
+                                                                                                                digitalisation and privacy-by-design commitments to citizens. By embedding privacy-preserving
+                                                                                                                age checks into national wallet systems, authorities can promote safer online environments while giving
+                                                                                                                citizens control over their personal data.
+
+                                                                                                                Verifiable age proofs help authorities ensure compliance with age-related regulations, reducing
+                                                                                                                reliance on less secure self-declaration methods. By providing regulated industries with a consistent
+                                                                                                                verification mechanism, authorities also improve enforcement efficiency while minimising the risk of data
+                                                                                                                breaches and misuse.
+
+
+                                                                                                                Economic value and potential market size
+                                                                                                                Issuers: The cost impact is low relative to other wallet functions since age proofs can be derived from other
+                                                                                                                wallet-based identity data such as PID. The value lies in improved compliance services that governments
+                                                                                                                can offer to regulated industries (e.g., gambling, adult content, alcohol sales) without privacy compromise.
+
+                                                                                                                Relying Parties: As the solution is based on harmonised EU-level specifications, relying parties avoid
+                                                                                                                the need to implement support for different national solutions in their services, decreasing costs.
+
+
+
+Use case impact
+                                                                                                                Users: Potential positive impact on the service costs, as costs of implementing age verification are smaller
+                                                                                                                for service providers using an EU-harmonised approach.
+
+                                                                                                                Transactions
+                                                                                                                Volume estimates:
+                                                                                                                • Gambling sector: ~23 million regular online players in the EU.
+Benefits                                                                                                        • Adult content sites: monthly traffic counts in hundreds of millions; France’s new law implies millions
+                                                                                                                   of monthly age checks.
+End-user/citizen value
+Age verification via the EUDI Wallet gives citizens a privacy-preserving way to prove they meet a legal         Moving these checks into the wallet reduces per-transaction verification costs from several euros
+age requirement without disclosing unnecessary personal information, such as their exact date of birth          (manual KYC) to cents (automated credential proof).
+or other identity details.
+
+•   Convenience:
+    No need to upload ID documents to service providers websites.
+                                                                                                                Synergies with other use cases
+                                                                                                                As a proof of age attestation may be presented alongside other attestations, further benefits from the use
+•   Cross-border usability:                                                                                     of the wallet for Age Verification can be achieved through synergy with use cases such as:
+    The same age credential works in all participating EU Member States, both online and in person.
+                                                                                                                •   PID identification
+•   Privacy protection and increased trust:                                                                     •   Mobile driving licence
+    Shares only a boolean attribute (e.g., age_over_18), not full date of birth, in line with the GDPR’s data   •   Online payment authorisation
+    minimisation principle. Individuals explicitly approve each request for age verification, maintaining
+    full control over who accesses this information. Reduces the risk of profiling or misuse of personal
+    information, increasing confidence in online services.
+
+
+
+
+4                                                                                                                                                                                                                           5
+Use case implementation
+                                                                                                                   Verification
+                                                                                                                   Presentation via OpenID4VP (available) or via W3C Digital Credentials API (under development). Support for
+                                                                                                                   a zero-knowledge proof is upcoming.
+
+                                                                                                                   Verifiers must check that the attestation issuer is on the trusted list of authorised issuers, maintained
+
+Existing implementations                                                                                           by the Commission.
+
+                                                                                                                   Trust framework
+On 14 July 2025, the Commission released the first version of the technical specifications and their               Proof of age attestation issuers are placed on a trusted list maintained by the Commission. Member States
+open-source implementation, forming an EU age-verification blueprint. Testing and piloting is ongoing in           notify the European Commission of their accredited issuers, which are then placed on the publicly available
+collaboration with Member States, online platforms and end-users. Denmark, France, Greece, Italy and Spain         list to enable cross-border verification.
+are the forerunning countries and will be the first to take it up in their national digital wallets or publish a
+customised national age verification app based on the same specifications. Market players can also take up         Relying party registration is not currently required, awaiting the implementation of the necessary
+the software solution and further develop it.                                                                      registration procedures.
+
+The full set of technical specifications and their open-source implementation are available here.
+
+
+Legislation
+Article 28 of the Digital Services Act (DSA) requires providers to put in place appropriate and
+proportionate measures to ensure a high level of privacy, safety, and security of minors, on their service.
+Guidelines adopted pursuant to Article 28 further specify cases in which age verification should be used.
+Examples of these include the sale of alcohol or tobacco, access to pornographic or gambling content, or
+cases in which a minimum age is prescribed by law.
+
+
+Technical specifications, software libraries
+and infrastructure
+The full set of technical specifications and their open-source implementation are available here.
+Development of further features is underway.
+
+Data model, format and proof mechanisms
+Detailed technical specifications of the EU Age Verification solution provide complete information
+and examples of the attestation and proof mechanisms.
+
+The data model for the proof of age attestation is based on the attribute schema specified in
+ISO/IEC 18013-5 (Mobile Driving Licence Application) and ISO/IEC 23220-2 (Data objects and encoding
+rules for generic eID systems).
+
+The attestation format used is ISO mDoc.
+
+Issuance
+Proof of age attestations may be issued by entities placed on the trusted list of proof of age attestation
+providers deployed and managed by the Commission.
+
+OpenID4VCI (OpenID for Verifiable Credential Issuance) may be used for delivering the proof of age
+attestation to the wallet, however issuers may choose to rely on alternative protocols. Implementation that
+relies on OpenID4VCI is included in available open-source implementation of the EU age verification solution.
+
+
+6                                                                                                                                                                                                                           7
+8
+
