@@ -210,6 +210,20 @@
     "tocCount": 50
   },
   {
+    "slug": "ec-eudiw-faq",
+    "type": "regulation",
+    "legalType": "faq",
+    "category": "supplementary",
+    "title": "EU Digital Identity Wallet FAQ",
+    "shortTitle": "EUDIW FAQ",
+    "sidebarTitle": "EUDIW FAQ",
+    "description": "EU Digital Identity Wallet FAQ",
+    "celex": null,
+    "date": null,
+    "wordCount": 6112,
+    "tocCount": 57
+  },
+  {
     "slug": "2024-2977",
     "type": "implementing-act",
     "legalType": "regulation",

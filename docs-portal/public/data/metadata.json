@@ -1,20 +1,20 @@
 {
-  "documentCount": 44,
-  "regulationCount": 15,
+  "documentCount": 45,
+  "regulationCount": 16,
   "implementingActCount": 29,
   "supplementaryCount": 0,
-  "totalWordCount": 391316,
-  "regulationWordCount": 290247,
+  "totalWordCount": 397428,
+  "regulationWordCount": 296359,
   "implementingActWordCount": 101069,
   "supplementaryWordCount": 0,
-  "terminologyCount": 363,
-  "totalArticles": 974,
-  "lastBuildTime": "2026-02-19T20:43:44.742Z",
-  "buildDate": "Feb 19, 2026",
+  "terminologyCount": 374,
+  "totalArticles": 1031,
+  "lastBuildTime": "2026-02-19T23:16:30.838Z",
+  "buildDate": "Feb 20, 2026",
   "categories": {
     "regulations": {
-      "count": 15,
-      "wordCount": 290247,
+      "count": 16,
+      "wordCount": 296359,
       "slugs": [
         "2002-58",
         "2008-765",
@@ -30,7 +30,8 @@
         "2022-2554",
         "2022-2555",
         "2024-1183",
-        "ec-esignature-faq"
+        "ec-esignature-faq",
+        "ec-eudiw-faq"
       ]
     },
     "implementingActs": {
