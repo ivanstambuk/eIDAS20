@@ -724,6 +724,31 @@ npm run build:embeddings
 1. Is `embeddings.json` older than `terminology.json`? → Run `build:embeddings`
 2. Is the terminology correctly extracted? → Run `build:all-content` first
 
+### Dataset Fingerprint Lookup (Agent Quick Reference)
+
+**When the user asks "what git commit is fingerprint X?" or similar:**
+
+```bash
+grep <fingerprint> docs-portal/.fingerprint-manifest
+```
+
+**Example:** User says "I have an Excel with fingerprint 6fc215e8, what commit is that?"
+
+```bash
+grep 6fc215e8 docs-portal/.fingerprint-manifest
+# Output: 6fc215e8    ababff54    2026-02-19    rca
+# → Git commit: ababff54, built on 2026-02-19, from the RCA pipeline
+```
+
+**How it works:**
+- Both `build-rca.js` and `build-vcq.js` append to `docs-portal/.fingerprint-manifest` after each build
+- Format: `<contentHash>\t<gitCommit>\t<buildDate>\t<source>`
+- The `contentHash` (8-char SHA-256 prefix) is the "Dataset fingerprint" shown in the UI and exports
+- It only changes when the actual data content changes (not on code-only commits)
+- The manifest is version-controlled, so it accumulates a full audit trail over time
+
+**If fingerprint is not found:** It may predate the manifest (introduced 2026-02-19). Check `git log` for builds around the `buildDate` shown in the export.
+
 ### Mobile Breakpoints Reference
 
 The portal uses 4 standard breakpoints for responsive design:
