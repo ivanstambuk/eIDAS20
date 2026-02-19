@@ -212,7 +212,7 @@ function cleanText(text) {
  * @param {Object} [options.arfData] - ARF HLR data for specification/notes lookup
  * @param {Object} [options.clarificationQuestions] - Clarification questions keyed by requirement ID
  */
-export function exportToExcel({ requirements, selectedRoles, selectedCategories, data, categorizationScheme, effectiveCategories, getReqCategory, arfData, clarificationQuestions }) {
+export function exportToExcel({ requirements, selectedRoles, selectedCategories, data, categorizationScheme, effectiveCategories, getReqCategory, arfData, clarificationQuestions, dataMeta }) {
     const wb = XLSX.utils.book_new();
     const now = new Date();
     const dateStr = now.toISOString().split('T')[0];
@@ -252,9 +252,16 @@ export function exportToExcel({ requirements, selectedRoles, selectedCategories,
         'ARF Notes',
     ];
 
-    const sheetData = [
-        headers.map(h => ({ v: h, s: STYLES.header })),
-    ];
+    const sheetData = [];
+
+    // Add data version subtitle row if available
+    if (dataMeta?.contentHash) {
+        const versionRow = Array(headers.length).fill({ v: '', s: {} });
+        versionRow[0] = { v: `Data version: ${dataMeta.contentHash} (${dataMeta.buildDate || ''})`, s: { font: { sz: 9, italic: true, color: { rgb: '888888' } } } };
+        sheetData.push(versionRow);
+    }
+
+    sheetData.push(headers.map(h => ({ v: h, s: STYLES.header })));
 
     // Group by category (scheme-aware if getReqCategory provided, DEC-279)
     const grouped = {};

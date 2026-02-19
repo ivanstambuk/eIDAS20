@@ -772,6 +772,30 @@ a.btn-primary:hover {
   padding: 0;
 }
 
+/* --- Data Version Badge (content hash fingerprint) --- */
+.data-version-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-tertiary);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--border-radius-full);
+  cursor: default;
+  user-select: all;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.data-version-badge:hover {
+  color: var(--accent-primary);
+  border-color: var(--border-accent);
+  background: var(--bg-hover);
+}
+
 /* --- Sidebar --- */
 .sidebar {
   position: fixed;

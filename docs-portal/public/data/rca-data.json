@@ -1,6 +1,4 @@
 {
-  "generatedAt": "2026-02-19T19:13:15.324Z",
-  "schemaVersion": 1,
   "categories": [
     {
       "id": "core",
@@ -29385,5 +29383,11 @@
       "trust_service_provider": 103,
       "wallet_provider": 132
     }
+  },
+  "_meta": {
+    "contentHash": "6fc215e8",
+    "buildCommit": "718268b1",
+    "buildDate": "2026-02-19",
+    "schemaVersion": 1
   }
 }

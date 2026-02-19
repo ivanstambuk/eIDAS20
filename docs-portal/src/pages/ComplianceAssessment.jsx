@@ -609,7 +609,8 @@ export default function ComplianceAssessment() {
                 assessments: {}, // All items export as 'Pending'
                 role: getRoleLabels(),
                 useCases: getUseCaseNames(),
-                requirementCategories: data.requirementCategories
+                requirementCategories: data.requirementCategories,
+                dataMeta: data._meta
             });
 
             // Add to export history
@@ -643,7 +644,8 @@ export default function ComplianceAssessment() {
                 assessments: {}, // All items export as 'Pending'
                 role: getRoleLabels(),
                 useCases: getUseCaseNames(),
-                requirementCategories: data.requirementCategories
+                requirementCategories: data.requirementCategories,
+                dataMeta: data._meta
             });
 
             // Add to export history
@@ -707,6 +709,11 @@ export default function ComplianceAssessment() {
                 <span className="rca-stat-scope">
                     🎯 {data.stats.totalUseCases} use cases
                 </span>
+                {data._meta?.contentHash && (
+                    <span className="data-version-badge" title={`Build: ${data._meta.buildCommit || 'dev'} · ${data._meta.buildDate || ''}`}>
+                        v{data._meta.contentHash}
+                    </span>
+                )}
             </div>
 
             <div className="rca-content">

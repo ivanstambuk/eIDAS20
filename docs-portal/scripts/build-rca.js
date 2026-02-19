@@ -17,6 +17,8 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { createHash } from 'crypto';
+import { execSync } from 'child_process';
 import yaml from 'js-yaml';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -242,10 +244,6 @@ const requirementCategories = Object.entries(reqCategoriesConfig.categories).map
 // ============================================================================
 
 const output = {
-    // Metadata
-    generatedAt: new Date().toISOString(),
-    schemaVersion: 1,
-
     // Use cases organized by category
     categories: categoryList,
     useCases,
@@ -285,6 +283,28 @@ const output = {
 };
 
 // ============================================================================
+// Content fingerprinting: hash the output BEFORE injecting metadata
+// This ensures the version only changes when actual content changes.
+// ============================================================================
+
+const contentJson = JSON.stringify(output, null, 2);
+const contentHash = createHash('sha256').update(contentJson).digest('hex').slice(0, 8);
+
+// Get current git commit for traceability
+let buildCommit = 'dev';
+try {
+    buildCommit = execSync('git rev-parse --short HEAD', { encoding: 'utf-8' }).trim();
+} catch { /* not in a git repo */ }
+
+// Inject _meta into the output
+output._meta = {
+    contentHash,
+    buildCommit,
+    buildDate: new Date().toISOString().split('T')[0],
+    schemaVersion: 1,
+};
+
+// ============================================================================
 // Write output
 // ============================================================================
 
@@ -292,6 +312,7 @@ fs.writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2));
 
 console.log(`\n✅ RCA data built successfully!`);
 console.log(`   📁 Output: ${OUTPUT_FILE}`);
+console.log(`   🔖 Data version: ${contentHash} (commit: ${buildCommit})`);
 console.log(`   📊 Stats:`);
 console.log(`      - ${output.stats.totalRequirements} requirements`);
 console.log(`      - ${output.stats.totalUseCases} use cases`);

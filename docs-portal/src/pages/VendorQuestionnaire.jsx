@@ -1332,6 +1332,9 @@ export default function VendorQuestionnaire() {
 
         let md = `# Vendor Compliance Questionnaire\n\n`;
         md += `**Generated:** ${new Date().toLocaleDateString()}\n\n`;
+        if (data?._meta?.contentHash) {
+            md += `**Data version:** ${data._meta.contentHash} (${data._meta.buildDate || ''})\n\n`;
+        }
         md += `**Organisation Role(s):** ${roleLabels}\n\n`;
         md += `**Product Category:** ${categoryLabels}\n\n`;
         if (selectedRoles.includes('relying_party') && selectedCategories.includes('connector')) {
@@ -1445,7 +1448,8 @@ export default function VendorQuestionnaire() {
             effectiveCategories,
             getReqCategory,
             arfData,
-            clarificationQuestions
+            clarificationQuestions,
+            dataMeta: data?._meta
         });
     }, [applicableRequirements, selectedRoles, selectedCategories, data, categorizationScheme, effectiveCategories, getReqCategory, arfData, clarificationQuestions]);
 
@@ -1480,6 +1484,11 @@ export default function VendorQuestionnaire() {
                     to integrate your organisation with the EUDIW ecosystem. Select your role,
                     product category, and regulatory sources.
                 </p>
+                {data?._meta?.contentHash && (
+                    <span className="data-version-badge" title={`Build: ${data._meta.buildCommit || 'dev'} · ${data._meta.buildDate || ''}`}>
+                        v{data._meta.contentHash}
+                    </span>
+                )}
             </div>
 
             {/* Step 1: Organisation Role Selection */}

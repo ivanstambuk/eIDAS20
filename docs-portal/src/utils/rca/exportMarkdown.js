@@ -55,7 +55,7 @@ function escapeMarkdown(text) {
  * @param {Array} options.useCases - Selected use case names
  * @param {Array} options.requirementCategories - Category metadata
  */
-export function exportToMarkdown({ requirements, assessments, role, useCases, requirementCategories }) {
+export function exportToMarkdown({ requirements, assessments, role, useCases, requirementCategories, dataMeta }) {
     const now = new Date();
     const dateStr = now.toISOString().split('T')[0];
 
@@ -73,6 +73,9 @@ export function exportToMarkdown({ requirements, assessments, role, useCases, re
     lines.push('# Regulatory Compliance Assessment');
     lines.push('');
     lines.push(`**Generated:** ${now.toLocaleDateString()} at ${now.toLocaleTimeString()}`);
+    if (dataMeta?.contentHash) {
+        lines.push(`**Data version:** ${dataMeta.contentHash} (${dataMeta.buildDate || 'unknown'})`);
+    }
     lines.push(`**Role:** ${role}`);
     lines.push(`**Use Cases:** ${useCases.join(', ')}`);
     lines.push('');

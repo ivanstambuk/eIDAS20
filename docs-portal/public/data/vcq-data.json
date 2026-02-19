@@ -1,6 +1,4 @@
 {
-  "generatedAt": "2026-02-10T23:39:09.139Z",
-  "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
     "shortName": "VCQ",
@@ -7684,5 +7682,11 @@
       "SHOULD NOT": 0,
       "MAY": 1
     }
+  },
+  "_meta": {
+    "contentHash": "693a042d",
+    "buildCommit": "718268b1",
+    "buildDate": "2026-02-19",
+    "schemaVersion": 2
   }
 }

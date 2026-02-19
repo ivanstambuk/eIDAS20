@@ -138,7 +138,7 @@ function formatLegalBasis(req) {
  * @param {Array} options.useCases - Selected use case names
  * @param {Array} options.requirementCategories - Category metadata
  */
-export function exportToExcel({ requirements, assessments, role, useCases, requirementCategories }) {
+export function exportToExcel({ requirements, assessments, role, useCases, requirementCategories, dataMeta }) {
     const wb = XLSX.utils.book_new();
     const now = new Date();
     const dateStr = now.toISOString().split('T')[0];
@@ -149,6 +149,7 @@ export function exportToExcel({ requirements, assessments, role, useCases, requi
     const summaryData = [
         [{ v: 'Regulatory Compliance Assessment', s: STYLES.title }],
         [{ v: `Generated: ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`, s: STYLES.subtitle }],
+        ...(dataMeta?.contentHash ? [[{ v: `Data version: ${dataMeta.contentHash} (${dataMeta.buildDate || ''})`, s: STYLES.subtitle }]] : []),
         [],
         [{ v: 'Role:', s: { font: { bold: true } } }, { v: role }],
         [{ v: 'Use Cases:', s: { font: { bold: true } } }, { v: useCases.join(', ') }],
