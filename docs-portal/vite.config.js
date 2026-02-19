@@ -178,5 +178,10 @@ export default defineConfig({
   // Optimize dependency pre-bundling
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom']
+  },
+
+  // Allow Tailscale hostname for remote access
+  server: {
+    allowedHosts: ['alfred-server.taild8e5b6.ts.net']
   }
 })

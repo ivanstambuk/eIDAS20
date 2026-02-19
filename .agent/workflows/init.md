@@ -103,6 +103,28 @@ cd ~/dev/eIDAS20/docs-portal && npm run dev
 
 ---
 
+## 6.1. Detect Tailscale URL
+
+// turbo
+```bash
+TS_HOSTNAME=$(tailscale status --self --json 2>/dev/null | grep -o '"DNSName":"[^"]*"' | head -1 | cut -d'"' -f4 | sed 's/\.$//')
+if [ -n "$TS_HOSTNAME" ]; then
+  # Check if port 5173 is being served via tailscale
+  if tailscale serve status 2>/dev/null | grep -q ':5173'; then
+    echo "✅ Tailscale URL: https://${TS_HOSTNAME}:5173/eIDAS20/"
+  else
+    echo "⚠️ Tailscale active ($TS_HOSTNAME) but port 5173 not served. Run: sudo tailscale serve --bg --https 5173 http://localhost:5173"
+  fi
+else
+  echo "❌ Tailscale not available"
+fi
+```
+
+If Tailscale is active but port 5173 is not served, offer to configure it.
+Also ensure `server.allowedHosts` in `vite.config.js` includes the Tailscale hostname.
+
+---
+
 ## 7. Check Chrome CDP (for browser_subagent)
 
 // turbo
@@ -139,7 +161,8 @@ Provide a brief summary:
 - **TRACKER.md**: [Current phase and progress %]
 - **Git status**: [clean / uncommitted changes]
 - **Pending task**: [task from previous session / none]
-- **Portal server**: [running on :5173 / not running]
+- **Portal (local)**: [running on http://localhost:5173/eIDAS20/ / not running]
+- **Portal (tailscale)**: [https://hostname:5173/eIDAS20/ / not served / tailscale unavailable]
 - **Chrome CDP**: [running on :9222 / not running]
 
 ## Current Phase: [Phase N]
