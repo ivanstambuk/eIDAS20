@@ -1522,3 +1522,150 @@ terms:
       support remote flows as the baseline presentation mechanism.
     source: Synthesized from ARF Topic 6, OID4VP specification, CIR 2024/2982 Art 5
     note: Contrasted with proximity flow; also called remote presentation
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # EC Use Case Terms
+  # Terms and abbreviations from the European Commission's EUDIW use case
+  # manuals. Each links to the official EC use case manual page.
+  # Source: https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/896827987/Use+case+manuals
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: Mobile Driving Licence
+    definition: >-
+      An EUDI Wallet use case enabling users to store and present a digital
+      proof of their right to drive a certain kind of vehicle. The mDL follows
+      the ISO/IEC 18013-5 (proximity) and ISO 18013-7 (remote) standards,
+      using the mdoc data format. Issuance follows OpenID4VCI (ARF Annex 4).
+      See the EC use case manual for full details.
+    source: EC Use Case Manual #01 — https://ec.europa.eu/digital-building-blocks/sites/display/EUDIGITALIDENTITYWALLET/The+mobile+Driving+License+manual
+    note: One of the 19 EUDIW use cases defined by the European Commission; Published
+    aliases:
+      - mDL
+
+  - term: Digital Travel Credential
+    definition: >-
+      An EUDI Wallet use case providing a digital representation of the
+      user's identity document such as a passport or identity card, enabling
+      streamlined border control and travel processes. The DTC follows
+      ICAO 9303 and ISO/IEC TS 23220-2:2024 standards. Verification uses
+      PKI-based signature validation against passport and identity card
+      trusted lists.
+    source: EC Use Case Manual #06 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451772/Travel+Credentials
+    note: One of the 19 EUDIW use cases defined by the European Commission; Published
+    aliases:
+      - DTC
+
+  - term: European Health Insurance Card
+    definition: >-
+      An EUDI Wallet use case enabling users to store and present a digital
+      version of the EHIC, granting access to necessary healthcare when in
+      another Member State. The digital EHIC uses SD-JWT-VC (IETF) and
+      W3C VC Data Model 2.0 formats, with issuance via OID4VCI (ES256).
+      Piloted under the DC4EU Large-Scale Pilot framework.
+    source: EC Use Case Manual #10 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930453001/EHIC
+    note: One of the 19 EUDIW use cases defined by the European Commission; Published
+    aliases:
+      - EHIC
+
+  - term: European Parking Card
+    definition: >-
+      An EUDI Wallet use case enabling persons with disabilities to store
+      and present a digital European Parking Card, recognising the right to
+      certain reserved parking conditions and facilities across Member States.
+      The EPC is governed by Directive 2024/2841 and its implementing acts
+      are pending.
+    source: EC Use Case Manual #03 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452118/European+Parking+Card
+    note: One of the 19 EUDIW use cases defined by the European Commission; Published
+    aliases:
+      - EPC
+
+  - term: European Disability Card
+    definition: >-
+      An EUDI Wallet use case enabling users to store and present a digital
+      proof of recognised disability status, granting entitlement to
+      disability services across Member States. The EDC is governed by
+      Directive 2024/2841 and its implementing acts are pending. Closely
+      related to the European Parking Card (EPC) use case.
+    source: EC Use Case Manual #08 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452528/Disability+Card
+    note: One of the 19 EUDIW use cases defined by the European Commission; Published
+    aliases:
+      - EDC
+
+  - term: e-Prescription
+    definition: >-
+      An EUDI Wallet use case enabling users to identify themselves in order
+      to access electronic prescriptions stored and presented via the wallet.
+      Uses ISO 18013-5 mdoc format for the Health ID attestation, with
+      issuance via OpenID4VCI and verification via ISO 18013-5 (proximity)
+      and ISO 18013-7 (remote). Integrates with the cross-border digital
+      health infrastructure MyHealth@EU.
+    source: EC Use Case Manual #09 — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452930/ePrescription
+    note: One of the 19 EUDIW use cases defined by the European Commission; Published
+
+  - term: Vehicle Registration Certificate
+    definition: >-
+      An EUDI Wallet use case enabling users to store and present a digital
+      proof of the registration and legal compliance of a vehicle with
+      national and European road transport regulations. This use case is
+      currently in the "coming soon" stage, with its manual not yet published.
+    source: EC EUDIW Use Case Portal — https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/896827987/Use+case+manuals
+    note: One of the 19 EUDIW use cases defined by the European Commission; Coming soon
+    aliases:
+      - VRC
+
+  # --- Domain terms referenced in EC use case manuals ---
+
+  - term: Payment Service Provider
+    definition: >-
+      An entity authorised to provide payment services such as credit
+      transfers, direct debits, card-based payments, and payment initiation
+      services. In the EUDI Wallet payment authentication use case, the PSP
+      (e.g. a bank) issues dedicated payment-authentication credentials
+      (SCA Attestations) to the wallet, enabling Strong Customer
+      Authentication (SCA) as required by PSD2 Article 97, without the user
+      needing to leave the merchant's checkout flow.
+    source: EC Payment Authentication Manual; PSD2 (Directive 2015/2366) Art. 4(11)
+    note: The PSP is the counterpart that verifies the SCA Attestation during payment flows
+    aliases:
+      - PSP
+
+  - term: MyHealth@EU
+    definition: >-
+      The EU cross-border digital health infrastructure enabling the secure
+      exchange of health data — including electronic prescriptions and
+      dispensation records — between Member States. The e-Prescription EUDI
+      Wallet use case integrates with MyHealth@EU to enable cross-border
+      access to prescriptions. Interoperability obligations for electronic
+      prescriptions are defined in the European Health Data Space (EHDS)
+      Regulation.
+    source: EC ePrescription Manual; EHDS Regulation Art. 23
+    note: Operational since before eIDAS 2.0; now being extended with EUDI Wallet integration
+
+  - term: European Health Data Space
+    definition: >-
+      An EU regulatory framework (Regulation on the EHDS) establishing rules
+      for the access to and exchange of electronic health data across the
+      Union. The EHDS defines interoperability requirements for health data
+      systems, including electronic prescriptions, and provides the legal
+      basis for issuance rules related to health-related attestations in
+      the EUDI Wallet ecosystem. The e-Prescription use case manual
+      references EHDS Art. 16 on identification management as a potential
+      basis for health credential issuance.
+    source: EC ePrescription Manual; EHDS Regulation
+    note: Complements eIDAS 2.0 for the health sector
+    aliases:
+      - EHDS
+
+  - term: Know Your Customer
+    definition: >-
+      A regulatory process by which financial institutions verify the
+      identity of their clients before or during business relationships.
+      In the EUDI Wallet context, the payment authentication use case
+      enables PSPs to perform KYC checks by requesting PID attributes
+      and other verified credentials directly from the wallet, streamlining
+      onboarding while maintaining compliance with Anti-Money Laundering
+      (AML) directives.
+    source: EC Payment Authentication Manual; AML Directive (Directive 2015/849)
+    note: KYC is a key driver for EUDI Wallet adoption in the financial sector
+    aliases:
+      - KYC
