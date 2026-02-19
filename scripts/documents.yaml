@@ -106,15 +106,6 @@ documents:
     output_dir: 01_regulation/2022_2554_DORA
   # ── Supplementary Documents ─────────────────────────────────────────────────
   # Non-legal guidance resources (DEC-093)
-  - id: ec-esignature-faq
-    title: EC eSignature FAQ
-    shortTitle: eSignature FAQ
-    sidebarTitle: eSignature FAQ
-    legalType: faq
-    category: supplementary
-    source: manual # One-time import from EC Digital Building Blocks (DEC-092)
-    external_url: https://ec.europa.eu/digital-building-blocks/sites/spaces/DIGITAL/pages/880312429/eSignature+FAQ
-    output_dir: 01_regulation/ec_esignature_faq
   - id: ec-eudiw-faq
     title: EC EU Digital Identity Wallet FAQ
     shortTitle: EUDIW FAQ
@@ -124,6 +115,15 @@ documents:
     source: manual # One-time import from EC Digital Building Blocks (DEC-092)
     external_url: https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/713526976/FAQ
     output_dir: 01_regulation/ec_eudiw_faq
+  - id: ec-esignature-faq
+    title: EC eSignature FAQ
+    shortTitle: eSignature FAQ
+    sidebarTitle: eSignature FAQ
+    legalType: faq
+    category: supplementary
+    source: manual # One-time import from EC Digital Building Blocks (DEC-092)
+    external_url: https://ec.europa.eu/digital-building-blocks/sites/spaces/DIGITAL/pages/880312429/eSignature+FAQ
+    output_dir: 01_regulation/ec_esignature_faq
   - celex: 52020DC0067
     title: "Communication: Shaping Europe's Digital Future"
     shortTitle: Digital Future Communication

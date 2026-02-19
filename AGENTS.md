@@ -497,12 +497,19 @@ If a task requires an action to be complete (restart a server, run a build, fix 
 - ✅ Run the build command, verify it succeeds
 - ✅ Run the lint fixer, re-stage the file, commit
 
-**Dev server restart pattern (background, non-blocking):**
+**Dev server restart pattern (two separate commands to avoid self-kill):**
 ```bash
-pkill -f "vite" 2>/dev/null; sleep 2
+# Step 1: Kill existing server (use [v]ite regex trick so pkill doesn't match itself)
+timeout 5 pkill -f "[v]ite" 2>/dev/null; echo "killed"
+
+# Step 2: Start new server (separate command)
 cd ~/dev/eIDAS20/docs-portal && nohup npx vite --host > /tmp/vite-eidas.log 2>&1 &
 sleep 3; grep -m1 "Local:" /tmp/vite-eidas.log
 ```
+
+**⚠️ `pkill -f "vite"` kills itself** — the `-f` flag matches the full command line, so if the same command contains "vite" later (e.g., `npx vite`), pkill matches its own shell process. Always use `[v]ite` bracket trick.
+
+**⚠️ Use `timeout` for commands that could hang** — wrap `pkill`, `curl`, and similar network/process commands in `timeout N` to prevent indefinite blocking.
 
 **Why this matters:** Telling the user to perform steps defeats the purpose of an AI agent. If the task isn't complete until a server is restarted, the task isn't complete until YOU restart the server.
 
