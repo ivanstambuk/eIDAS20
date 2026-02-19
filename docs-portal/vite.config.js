@@ -182,6 +182,13 @@ export default defineConfig({
 
   // Allow Tailscale hostname for remote access
   server: {
-    allowedHosts: ['alfred-server.taild8e5b6.ts.net']
+    allowedHosts: ['alfred-server.taild8e5b6.ts.net'],
+
+    // Exclude public/data/ from the file watcher.
+    // Build scripts write 50+ JSON files there in bursts, which can crash
+    // the dev server. These are static assets — no HMR needed.
+    watch: {
+      ignored: ['**/public/data/**']
+    }
   }
 })
