@@ -245,32 +245,35 @@ function UseCaseSelector({
                                         <div className="rca-usecase-content">
                                             <span className="rca-usecase-name">{uc.name}</span>
                                             <span className="rca-usecase-desc">{uc.description}</span>
+                                            {(uc.ecManualUrl || uc.pdfManualUrl) && (
+                                                <span className="rca-usecase-links">
+                                                    {uc.ecManualUrl && (
+                                                        <a
+                                                            href={uc.ecManualUrl}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            title="View EC Use Case Manual"
+                                                            onClick={e => e.stopPropagation()}
+                                                        >📖 View EC Manual</a>
+                                                    )}
+                                                    {uc.ecManualUrl && uc.pdfManualUrl && (
+                                                        <span className="rca-usecase-links-sep">·</span>
+                                                    )}
+                                                    {uc.pdfManualUrl && (
+                                                        <a
+                                                            href={uc.pdfManualUrl}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            title="Download PDF Manual"
+                                                            onClick={e => e.stopPropagation()}
+                                                        >📄 Download PDF</a>
+                                                    )}
+                                                </span>
+                                            )}
                                         </div>
-                                        <div className="rca-usecase-actions">
-                                            {uc.status === 'published' && (
-                                                <span className="rca-usecase-badge published">Published</span>
-                                            )}
-                                            {uc.ecManualUrl && (
-                                                <a
-                                                    href={uc.ecManualUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="rca-usecase-link manual"
-                                                    title="View EC Use Case Manual"
-                                                    onClick={e => e.stopPropagation()}
-                                                >🌐 Manual</a>
-                                            )}
-                                            {uc.pdfManualUrl && (
-                                                <a
-                                                    href={uc.pdfManualUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="rca-usecase-link pdf"
-                                                    title="Download PDF Manual"
-                                                    onClick={e => e.stopPropagation()}
-                                                >📄 PDF</a>
-                                            )}
-                                        </div>
+                                        {uc.status === 'published' && (
+                                            <span className="rca-usecase-badge published">Published</span>
+                                        )}
                                     </label>
                                 ))}
                             </div>

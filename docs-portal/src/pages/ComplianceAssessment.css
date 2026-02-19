@@ -688,52 +688,29 @@
     color: #22d3ee;
 }
 
-/* Use case action links (Manual, PDF) */
-.rca-usecase-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.35rem;
-    flex-shrink: 0;
-    margin-left: auto;
+/* Use case manual links — Design B: subtle inline text below description */
+.rca-usecase-links {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.78rem;
+    line-height: 1.4;
 }
 
-.rca-usecase-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    padding: 0.2rem 0.55rem;
-    font-size: 0.7rem;
-    font-weight: 500;
-    border-radius: 4px;
+.rca-usecase-links a {
+    color: rgba(96, 165, 250, 0.7);
     text-decoration: none;
-    transition: all 0.15s ease;
-    white-space: nowrap;
+    transition: color 0.15s ease;
     cursor: pointer;
 }
 
-.rca-usecase-link.manual {
-    background: rgba(59, 130, 246, 0.15);
+.rca-usecase-links a:hover {
     color: #60a5fa;
-    border: 1px solid rgba(59, 130, 246, 0.25);
+    text-decoration: underline;
 }
 
-.rca-usecase-link.manual:hover {
-    background: rgba(59, 130, 246, 0.3);
-    border-color: rgba(59, 130, 246, 0.5);
-    color: #93bbfd;
-}
-
-.rca-usecase-link.pdf {
-    background: rgba(234, 179, 8, 0.12);
-    color: #eab308;
-    border: 1px solid rgba(234, 179, 8, 0.25);
-}
-
-.rca-usecase-link.pdf:hover {
-    background: rgba(234, 179, 8, 0.25);
-    border-color: rgba(234, 179, 8, 0.5);
-    color: #fbbf24;
+.rca-usecase-links-sep {
+    margin: 0 0.4rem;
+    color: rgba(255, 255, 255, 0.2);
 }
 
 /* ============================================================================
