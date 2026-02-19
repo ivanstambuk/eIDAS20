@@ -560,6 +560,24 @@ requirements:
       - id: Q6
         text: "The RP retains ultimate legal responsibility for verification (Art 5b(9)). How do you provide verification evidence to the RP — do you include verification results, timestamps, and trust chain details in the forwarded response?"
         dimension: auditability
+      # --- Use-case enrichment: DTC (Digital Travel Credential) ---
+      - id: Q7
+        text: "For Digital Travel Credential (DTC) verification: do you support ICAO Doc 9303 compliant data structures within ISO mDoc attestations? How do you validate the DTC's PKI trust chain against border authority trust anchors, including the ICAO PKD (Public Key Directory)?"
+        dimension: interoperability
+        useCaseRef: dtc
+      - id: Q8
+        text: "For DTC cross-border scenarios: do you support integration with the Traveller Router infrastructure for routing DTC presentations to the appropriate border inspection system? How is the DTC validated when the traveller's issuing state is different from the verifying state?"
+        dimension: interoperability
+        useCaseRef: dtc
+      # --- Use-case enrichment: EHIC (European Health Insurance Card) ---
+      - id: Q9
+        text: "For EHIC attestation verification: do you support SD-JWT-VC format as specified by the IETF SD-JWT specification and W3C VC Data Model 2.0? How do you handle real-time revocation checks for health insurance attestations where coverage validity changes frequently?"
+        dimension: interoperability
+        useCaseRef: ehic
+      - id: Q10
+        text: "For EHIC and ePrescription cross-border verification: is your product compatible with the DC4EU pilot infrastructure for health credential exchange? How do you integrate with MyHealth@EU trust frameworks for cross-border health attestation issuers?"
+        dimension: interoperability
+        useCaseRef: ehic
 
   # ============================================================================
   # VEND-CORE-019: PSD2 Strong Customer Authentication (TS12)
@@ -594,6 +612,23 @@ requirements:
       - id: Q9
         text: "Have you obtained or are you pursuing PSD2 SCA certification or attestation? Have you been tested by any NCA (national competent authority) for SCA compliance in a wallet context?"
         dimension: compliance_evidence
+      # --- Use-case enrichment: Payment Authentication (EC Manual) ---
+      - id: Q10
+        text: "Do you support the SD-JWT VC credential format for SCA Attestations as specified in TS12? The EC Payment Authentication manual specifies SD-JWT-VC as the primary format for payment attestations with OID4VP as the presentation protocol. How do you handle the KB-JWT (Key Binding JWT) for payment-specific proof of possession?"
+        dimension: technical_implementation
+        useCaseRef: payment-auth
+      - id: Q11
+        text: "Are you preparing for PSD3/PSR compliance alongside PSD2? The EC manual highlights that the EUDI Wallet SCA framework is designed to bridge PSD2 and the upcoming PSD3/Payment Services Regulation. How does your implementation accommodate the regulatory transition — do you have a migration path for PSR SCA requirements?"
+        dimension: lifecycle
+        useCaseRef: payment-auth
+      - id: Q12
+        text: "Do you support the SCA Attestation Rulebook as referenced by TS12? Specifically, how do you handle attestation rulebook-based schema validation for payment-specific attestation types, and how do you ensure your SCA Attestation issuance conforms to the sector-specific rulebook requirements?"
+        dimension: compliance_completeness
+        useCaseRef: payment-auth
+      - id: Q13
+        text: "For in-store (proximity) payment authentication: how do you integrate the ISO/IEC 18013-5 proximity presentation flow with payment terminal infrastructure (POS/mPOS)? The EC manual specifies synergy between age verification and payment authentication at point-of-sale — can your product combine SCA with age verification in a single proximity transaction?"
+        dimension: interoperability
+        useCaseRef: payment-auth
 
   # ============================================================================
   # VEND-CORE-020: OpenID4VCI for Attestation Issuance (TS6)
@@ -628,6 +663,19 @@ requirements:
       - id: Q9
         text: "Have you participated in OpenID4VCI interoperability testing events (EU plugfests, OIDF conformance testing)? Which wallet implementations have you successfully tested credential issuance with?"
         dimension: compliance_evidence
+      # --- Use-case enrichment: ePrescription (EC Manual) ---
+      - id: Q10
+        text: "For Health ID attestation issuance (ePrescription use case): do you support issuing Health ID attestations in the ISO mDoc format (ISO/IEC 18013-5) using OpenID4VCI? The EC ePrescription manual specifies that the Health ID attestation uses the mDL-based format. How do you handle the health-specific namespace and attribute set within the mDoc data model?"
+        dimension: interoperability
+        useCaseRef: eprescription
+      - id: Q11
+        text: "For cross-border issuance scenarios: can your platform interface with the MyHealth@EU infrastructure for Health ID attestation issuance? The EC manual specifies that cross-border ePrescription data exchange relies on MyHealth@EU. How does your issuance platform integrate with or complement this infrastructure?"
+        dimension: interoperability
+        useCaseRef: eprescription
+      - id: Q12
+        text: "For EHIC attestation issuance: do you support SD-JWT-VC format with W3C VC Data Model 2.0 compliance as specified in the EC EHIC manual? How do you handle the insurance coverage validity period and automatic attestation refresh/re-issuance when coverage changes?"
+        dimension: interoperability
+        useCaseRef: ehic
 
   # ============================================================================
   # VEND-CORE-021: Data Deletion Interface & Processing (TS7 + GDPR Art 17)
@@ -706,6 +754,15 @@ requirements:
       - id: Q9
         text: "If you issue both SD-JWT-VC and mdoc formats for the same attestation type, do you register separate schemas or a unified schema with format-specific encoding profiles? How is format selection communicated to wallets?"
         dimension: architecture
+      # --- Use-case enrichment: Health Sector Attestations (EC Manuals) ---
+      - id: Q10
+        text: "For health sector attestations (ePrescription, EHIC): do you follow the health-specific attestation rulebooks for schema structures? The EC ePrescription manual specifies Health ID attestations must comply with MyHealth@EU data exchange formats. How do you ensure your health attestation schemas are interoperable with the MyHealth@EU infrastructure and pharmacy dispensing systems across Member States?"
+        dimension: interoperability
+        useCaseRef: eprescription
+      - id: Q11
+        text: "For DTC attestation schemas: do you register schemas that comply with both ICAO Doc 9303 (Machine Readable Travel Documents) and the EUDI Wallet attestation catalogue? How do you handle the dual-compliance requirement where the DTC must satisfy both ICAO interoperability and EUDI Wallet ecosystem requirements?"
+        dimension: interoperability
+        useCaseRef: dtc
 
   # ============================================================================
   # VEND-CORE-023: Open Standards Implementation (TS1)
@@ -842,6 +899,27 @@ requirements:
       - id: Q9
         text: "What audit trail is generated for each signing operation? Does the trail include the signatory's identity (pseudonymised), the document hash, the signing timestamp, and the authorisation mechanism used?"
         dimension: auditability
+      # --- Use-case enrichment: eSignature (EC Manual) ---
+      - id: Q10
+        text: "The EC eSignature manual defines two distinct user journeys: (a) a simplified wallet-driven flow where the user initiates signing from within the wallet itself, and (b) a relying-party-driven flow via a web portal where the QTSP's signing service is triggered externally. Which of these paths does your product support, and can the RP customer configure which flow is offered to end users?"
+        dimension: capability
+        useCaseRef: esignature
+      - id: Q11
+        text: "Per Implementing Regulation (EU) 2025/1567, Qualified Trust Service Providers managing remote QSCDs (rQSCDs) must comply with specific technical requirements for key management, sole control protocols, and audit logging. How does your product ensure compliance with IR 2025/1567 for rQSCD management? Is your rQSCD infrastructure certified under this specific regulation?"
+        dimension: compliance_evidence
+        useCaseRef: esignature
+      - id: Q12
+        text: "Do you support the ASiC (Associated Signature Container) format for packaging signed documents with their validation data? The EC manual emphasises long-term validation (LTV) with PAdES B-LTA and CAdES B-LTA levels. How does your product handle the embedding of validation data (certificates, OCSP responses, timestamps) for long-term signature preservation?"
+        dimension: interoperability
+        useCaseRef: esignature
+      - id: Q13
+        text: "For the wallet-driven QES creation path: does the wallet itself function as a local QSCD, or does it exclusively interface with a remote rQSCD managed by a QTSP? If both models are supported, how is the QSCD certification status communicated to the relying party and embedded in the signature metadata?"
+        dimension: architecture
+        useCaseRef: esignature
+      - id: Q14
+        text: "How does your eSignature service integrate with the EU Trusted Lists for signature validation? Specifically, do you support standardised eSignature validation protocols (ETSI TS 119 102-2) that allow relying parties to verify QES signatures against the trusted list of QTSPs?"
+        dimension: interoperability
+        useCaseRef: esignature
 
   # ============================================================================
   # VEND-CORE-027: Pseudonym Attestations (TS9)
@@ -876,6 +954,19 @@ requirements:
       - id: Q9
         text: "What audit evidence do you retain for pseudonymous transactions? How do you balance the need for audit trails with the requirement to not undermine pseudonymity through logging?"
         dimension: auditability
+      # --- Use-case enrichment: Age Verification (EC Manual) ---
+      - id: Q10
+        text: "For the age verification use case: do you support Zero-Knowledge Proof (ZKP) based age-over predicates that prove a user meets an age threshold (e.g., age_over_18 = true) without disclosing the actual date of birth? The EC Age Verification manual flags this as an 'upcoming' capability. What is your implementation status and roadmap for ZKP-based age predicates?"
+        dimension: capability
+        useCaseRef: age-verification
+      - id: Q11
+        text: "For age verification attestations: do you support the ISO mDoc format (ISO/IEC 18013-5 + ISO/IEC 23220-2) with boolean age_over claims as the data model? How do you handle the distinction between a full PID-based age derivation and a dedicated age attestation with pre-computed boolean claims?"
+        dimension: technical_implementation
+        useCaseRef: age-verification
+      - id: Q12
+        text: "For age verification: how do you integrate with the Commission-maintained trusted list for age attestation providers? The EC manual specifies that verification relies on trusted issuer lists to validate age attestation authenticity. Does your product support automatic discovery and refresh of the age attestation provider trusted list?"
+        dimension: interoperability
+        useCaseRef: age-verification
 
   # ============================================================================
   # VEND-CORE-028: Data Export Capability (TS10)
@@ -1219,6 +1310,19 @@ requirements:
       - id: Q9
         text: "For intermediary deployments: can an intermediary's reader device perform proximity identification on behalf of the intermediated RP? How is the intermediary/RP distinction communicated to the wallet in the proximity flow?"
         dimension: architecture
+      # --- Use-case enrichment: Proximity ID (EC Manual) ---
+      - id: Q10
+        text: "The ARF defines two distinct proximity verification modes: supervised (where a human operator oversees the verification, e.g., border control, police checkpoint) and unsupervised (self-service terminal, turnstile, vending machine). Which modes does your product support? For supervised flows, do you provide an operator interface that displays verification results and flags anomalies?"
+        dimension: capability
+        useCaseRef: proximity-id
+      - id: Q11
+        text: "For verifier authentication in proximity flows: how does your reader device present its service provider certificate to the user's wallet for authentication before the user consents to share data? Per the EC Proximity ID manual, the wallet must verify the reader's identity before releasing attributes. How is this mutual authentication implemented in your BLE/NFC flow?"
+        dimension: security
+        useCaseRef: proximity-id
+      - id: Q12
+        text: "For offline proximity verification: how do you ensure trust anchor freshness when the reader device has been disconnected from the network for an extended period? What is the maximum offline duration your product supports while still maintaining reliable verification, and what degradation strategy is applied when cached trust data exceeds its freshness threshold?"
+        dimension: operational
+        useCaseRef: proximity-id
 
   # ============================================================================
   # VEND-CORE-041: Registration Certificate Lifecycle

@@ -68,7 +68,8 @@ for (const file of files) {
             clarificationsByReqId[reqId] = reqData.questions.map(q => ({
                 id: q.id,
                 text: q.text,
-                dimension: q.dimension
+                dimension: q.dimension,
+                ...(q.useCaseRef && { useCaseRef: q.useCaseRef })
             }));
             fileQuestionCount += reqData.questions.length;
             fileReqCount++;
