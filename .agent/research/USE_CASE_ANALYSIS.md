@@ -664,6 +664,158 @@ The following fields were **audited and confirmed to already match** EC data —
 
 ---
 
+# PART G — VCQ Enrichment Changes (commit `40be9a02`)
+
+> **Applied:** 2026-02-19T21:30+01:00
+> **Files modified:**
+> - `docs-portal/config/vcq/clarification-questions/core.yaml` (source)
+> - `docs-portal/scripts/build-vcq-clarifications.js` (build pipeline)
+> - `docs-portal/public/data/vcq-clarification-questions.json` (rebuilt output)
+>
+> **No existing questions were modified or removed.** All changes are strictly additive.
+> **No RCA requirements were changed.** This is VCQ-only enrichment.
+
+## G1. Overview
+
+24 new clarification questions added across 8 existing VCQ requirements. Each question is derived from EC Use Case Manual technical standard analysis and tagged with a `useCaseRef` field linking it to the relevant use case.
+
+| Metric | Value |
+|--------|-------|
+| Questions added | 24 |
+| Requirements enriched | 8 |
+| Use cases covered | 7 |
+| New `useCaseRef` field introduced | Yes (additive — no existing data affected) |
+| Build script change | `useCaseRef` passthrough added |
+| Total clarification questions (after) | 1,352 (was 1,328) |
+
+## G2. Questions by Use Case
+
+| Use Case | Questions | Target Requirement(s) |
+|----------|-----------|----------------------|
+| eSignature | 5 | VEND-CORE-026 |
+| Payment Auth | 4 | VEND-CORE-019 |
+| Age Verification | 3 | VEND-CORE-027 |
+| Proximity ID | 3 | VEND-CORE-040 |
+| ePrescription | 3 | VEND-CORE-020, VEND-CORE-022 |
+| EHIC | 3 | VEND-CORE-018, VEND-CORE-020 |
+| DTC | 3 | VEND-CORE-018, VEND-CORE-022 |
+
+## G3. Complete Question Manifest
+
+### VEND-CORE-018 — Attestation Verification (4 questions added)
+
+| ID | useCaseRef | Dimension | Summary |
+|----|-----------|-----------|---------|
+| Q7 | `dtc` | interoperability | ICAO Doc 9303 compliance within ISO mDoc; PKI trust chain against ICAO PKD |
+| Q8 | `dtc` | interoperability | Traveller Router integration; cross-state DTC validation |
+| Q9 | `ehic` | interoperability | SD-JWT-VC format per IETF spec + W3C VC Data Model 2.0; real-time revocation for health coverage |
+| Q10 | `ehic` | interoperability | DC4EU pilot compatibility; MyHealth@EU trust framework integration |
+
+**EC manual sources:** DTC manual (ICAO 9303, Traveller Router), EHIC manual (SD-JWT-VC, DC4EU)
+
+### VEND-CORE-019 — PSD2/SCA for Payments (4 questions added)
+
+| ID | useCaseRef | Dimension | Summary |
+|----|-----------|-----------|---------|
+| Q10 | `payment-auth` | technical_implementation | SD-JWT VC format for SCA Attestations; KB-JWT for payment proof-of-possession |
+| Q11 | `payment-auth` | lifecycle | PSD3/PSR regulatory transition; migration path from PSD2 to PSR SCA |
+| Q12 | `payment-auth` | compliance_completeness | SCA Attestation Rulebook compliance; sector-specific schema validation |
+| Q13 | `payment-auth` | interoperability | Proximity payment + age verification synergy at POS; ISO 18013-5 + POS integration |
+
+**EC manual source:** Payment Authentication manual (TS12, SD-JWT-VC, PSD3/PSR bridge, SCA Rulebook)
+
+### VEND-CORE-020 — OpenID4VCI Issuance (3 questions added)
+
+| ID | useCaseRef | Dimension | Summary |
+|----|-----------|-----------|---------|
+| Q10 | `eprescription` | interoperability | Health ID attestation in ISO mDoc format via OpenID4VCI; health-specific namespace |
+| Q11 | `eprescription` | interoperability | MyHealth@EU infrastructure integration for cross-border Health ID issuance |
+| Q12 | `ehic` | interoperability | EHIC in SD-JWT-VC with W3C VC Data Model 2.0; coverage validity lifecycle |
+
+**EC manual sources:** ePrescription manual (Health ID mDoc, MyHealth@EU), EHIC manual (SD-JWT-VC issuance)
+
+### VEND-CORE-022 — Schema Registration TS11 (2 questions added)
+
+| ID | useCaseRef | Dimension | Summary |
+|----|-----------|-----------|---------|
+| Q10 | `eprescription` | interoperability | Health sector attestation rulebooks; MyHealth@EU format interoperability |
+| Q11 | `dtc` | interoperability | Dual-compliance (ICAO Doc 9303 + EUDI catalogue) for DTC schemas |
+
+**EC manual sources:** ePrescription manual (health rulebooks), DTC manual (ICAO dual-compliance)
+
+### VEND-CORE-026 — Remote Signing TS8 (5 questions added)
+
+| ID | useCaseRef | Dimension | Summary |
+|----|-----------|-----------|---------|
+| Q10 | `esignature` | capability | Wallet-driven vs QTSP-driven QES creation paths; RP flow configuration |
+| Q11 | `esignature` | compliance_evidence | IR 2025/1567 rQSCD compliance; rQSCD certification under this regulation |
+| Q12 | `esignature` | interoperability | ASiC container format; long-term validation (PAdES B-LTA, CAdES B-LTA) |
+| Q13 | `esignature` | architecture | Local QSCD (wallet) vs remote rQSCD (QTSP); certification status communication |
+| Q14 | `esignature` | interoperability | EU Trusted Lists for QES validation; ETSI TS 119 102-2 validation protocols |
+
+**EC manual source:** eSignature manual (wallet-driven/QTSP-driven paths, IR 2025/1567, ETSI profiles, ASiC/LTV)
+
+### VEND-CORE-027 — Pseudonyms / ZKP (3 questions added)
+
+| ID | useCaseRef | Dimension | Summary |
+|----|-----------|-----------|---------|
+| Q10 | `age-verification` | capability | ZKP-based age-over predicates (age_over_18 = true without DoB); EC flags as "upcoming" |
+| Q11 | `age-verification` | technical_implementation | ISO mDoc format with boolean age_over claims; PID derivation vs dedicated attestation |
+| Q12 | `age-verification` | interoperability | Commission-maintained trusted list for age attestation providers; auto-discovery |
+
+**EC manual source:** Age Verification manual (ZKP upcoming, ISO mdoc boolean claims, trusted list)
+
+### VEND-CORE-040 — Proximity Flows (3 questions added)
+
+| ID | useCaseRef | Dimension | Summary |
+|----|-----------|-----------|---------|
+| Q10 | `proximity-id` | capability | Supervised (border, police) vs unsupervised (kiosk, turnstile) verification modes |
+| Q11 | `proximity-id` | security | Mutual authentication: reader certificate presented to wallet before data release |
+| Q12 | `proximity-id` | operational | Offline trust anchor freshness; max offline duration; degradation strategy |
+
+**EC manual source:** Proximity ID manual (supervised/unsupervised, verifier authentication, offline durability)
+
+## G4. Build Pipeline Change
+
+The `build-vcq-clarifications.js` script was updated to pass through the `useCaseRef` field:
+
+```javascript
+// Before:
+clarificationsByReqId[reqId] = reqData.questions.map(q => ({
+    id: q.id,
+    text: q.text,
+    dimension: q.dimension
+}));
+
+// After:
+clarificationsByReqId[reqId] = reqData.questions.map(q => ({
+    id: q.id,
+    text: q.text,
+    dimension: q.dimension,
+    ...(q.useCaseRef && { useCaseRef: q.useCaseRef })
+}));
+```
+
+This change is backward-compatible: questions without `useCaseRef` are unaffected.
+
+## G5. Technical Standards Referenced
+
+| Standard | Use Cases | Requirements |
+|----------|-----------|-------------|
+| **SD-JWT VC** (IETF) | payment-auth, ehic | VEND-CORE-019, VEND-CORE-018, VEND-CORE-020 |
+| **ISO mDoc** (18013-5 + 23220-2) | age-verification, eprescription | VEND-CORE-027, VEND-CORE-020 |
+| **ICAO Doc 9303** | dtc | VEND-CORE-018, VEND-CORE-022 |
+| **IR 2025/1567** (rQSCD) | esignature | VEND-CORE-026 |
+| **ETSI TS 119 102-2** (sig validation) | esignature | VEND-CORE-026 |
+| **PSD3/PSR** (upcoming) | payment-auth | VEND-CORE-019 |
+| **MyHealth@EU** | eprescription, ehic | VEND-CORE-018, VEND-CORE-020, VEND-CORE-022 |
+| **DC4EU** | ehic | VEND-CORE-018 |
+| **SCA Attestation Rulebook** | payment-auth | VEND-CORE-019 |
+| **ASiC** (signature container) | esignature | VEND-CORE-026 |
+| **W3C VC Data Model 2.0** | ehic | VEND-CORE-018, VEND-CORE-020 |
+
+---
+
 # PART C — Decision Log
 
 | Date | Decision | Rationale |
@@ -673,6 +825,7 @@ The following fields were **audited and confirmed to already match** EC data —
 | 2026-02-19 | **All 11 PDF URLs confirmed** | Payment Auth (#11) and EHIC (#10) PDFs found via browser inspection — they were behind "Download detailed Use Case Manual" banners not visible in HTML scrape. |
 | 2026-02-19 | **Skip Step 1.5 (pid-online desc)** | Audit revealed description is already an exact match with EC listing page. No change needed. |
 | 2026-02-19 | **Minimize Step 1.3 (payment-auth desc)** | Audit revealed EC listing description matches ours verbatim. Only verb alignment needed (authorised→authenticated) to match renamed title. |
+| 2026-02-19 | **Additive-only VCQ enrichment** | No existing questions modified or removed. All 24 new questions strictly appended to existing requirement blocks. New `useCaseRef` field is optional and backward-compatible. |
 
 ---
 
@@ -685,3 +838,4 @@ The following fields were **audited and confirmed to already match** EC data —
 | 2026-02-19 | **Comprehensive second pass audit** — cross-checked against 8 golden sources. Found 3 corrections, 4 gaps. Pre-resolved build pipeline questions (Steps 3.2, 3.3). |
 | 2026-02-19 | **Renamed:** USE_CASE_MANUALS_ANALYSIS → USE_CASE_ANALYSIS (manuals are part of the analysis, not the whole thing) |
 | 2026-02-19 | **Downloaded all 11 manual PDFs** + text extraction. Added Phase 6 (manual content analysis & recommendations). Found missing Payment Auth (#11) and EHIC (#10) PDFs via browser. Total: 22 steps. |
+| 2026-02-19 | **Phase 5 VCQ enrichment complete** — 24 use-case-specific clarification questions added across 8 requirements, covering 7 use cases. Build script updated for `useCaseRef` passthrough. Commit `40be9a02`. |
