@@ -246,9 +246,31 @@ function UseCaseSelector({
                                             <span className="rca-usecase-name">{uc.name}</span>
                                             <span className="rca-usecase-desc">{uc.description}</span>
                                         </div>
-                                        {uc.status === 'published' && (
-                                            <span className="rca-usecase-badge published">Published</span>
-                                        )}
+                                        <div className="rca-usecase-actions">
+                                            {uc.status === 'published' && (
+                                                <span className="rca-usecase-badge published">Published</span>
+                                            )}
+                                            {uc.ecManualUrl && (
+                                                <a
+                                                    href={uc.ecManualUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="rca-usecase-link manual"
+                                                    title="View EC Use Case Manual"
+                                                    onClick={e => e.stopPropagation()}
+                                                >🌐 Manual</a>
+                                            )}
+                                            {uc.pdfManualUrl && (
+                                                <a
+                                                    href={uc.pdfManualUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="rca-usecase-link pdf"
+                                                    title="Download PDF Manual"
+                                                    onClick={e => e.stopPropagation()}
+                                                >📄 PDF</a>
+                                            )}
+                                        </div>
                                     </label>
                                 ))}
                             </div>
