@@ -285,7 +285,7 @@ All 11 PDFs confirmed and downloaded to `.agent/research/use-case-manuals/pdf/`.
   - Manual links are populated where applicable ✅
   - PID-based identification shows "Published" badge ✅
   - "Use of a pseudonym" has no Published badge (correct — coming_soon) ✅
-- [ ] **Commit** all changes with descriptive message
+- [x] **Commit:** `7c07b306` — feat(rca): sync use cases with EC portal — Phases 1-4 complete
 
 ---
 
@@ -541,6 +541,126 @@ Total extracted: ~2,285 lines / 269 KB across 11 files.
   - Priority ranking (high/medium/low impact) for each suggestion
   - Estimated effort for each group of changes
   - Present to user for review and approval before implementation
+
+---
+
+# PART F — Applied Changes (commit `7c07b306`)
+
+> **Applied:** 2026-02-19T20:15+01:00
+> **File:** `docs-portal/config/rca/use-cases.yaml`
+> **Build output:** `docs-portal/public/data/rca-data.json` (regenerated)
+
+### ⚠️ SCOPE: No RCA requirements were changed
+
+**Only use case metadata was modified** (names, descriptions, statuses, URLs).
+The 487 RCA requirements across all 7 role files are **completely untouched**:
+- `wallet-provider.yaml` (132 req) — ❌ not changed
+- `trust-service-provider.yaml` (103 req) — ❌ not changed
+- `relying-party.yaml` (102 req) — ❌ not changed
+- `supervisory-body.yaml` (42 req) — ❌ not changed
+- `issuer.yaml` (42 req) — ❌ not changed
+- `conformity-assessment-body.yaml` (36 req) — ❌ not changed
+- `pid-provider.yaml` (30 req) — ❌ not changed
+
+Future changes to compliance content will target **VCQ clarification questions only** (Phase 5).
+
+## F1. Data Corrections (3 changes)
+
+| # | Use Case | Field | Before | After | Rationale |
+|---|----------|-------|--------|-------|-----------|
+| 1 | `payment-auth` | `name` | `"Online payment authorisation"` | `"Payment authentication"` | EC renamed this use case entirely |
+| 2 | `esignature` | `description` | `"Create advanced electronic signatures..."` | `"Create qualified electronic signatures..."` | Legal distinction: QES > AdES. EC now says "qualified" |
+| 3 | `payment-auth` | `description` | `"...to be authorised via..."` | `"...to be authenticated via..."` | Verb alignment with renamed title "Payment authentication" |
+
+## F2. Status Updates (10 changes)
+
+All changed from `coming_soon` → `published`:
+
+| # | Use Case | Category |
+|---|----------|----------|
+| 1 | `pid-online` | Core functionality |
+| 2 | `esignature` | Core functionality |
+| 3 | `payment-auth` | Banking & payment |
+| 4 | `dtc` | Travel |
+| 5 | `epc` | Travel |
+| 6 | `disability-card` | Health & social security |
+| 7 | `eprescription` | Health & social security |
+| 8 | `ehic` | Health & social security |
+| 9 | `age-verification` | Consumer |
+| 10 | `proximity-id` | Identification |
+
+**Result:** 11 published (was 1) · 8 coming soon (was 18)
+
+## F3. EC Manual URLs Added (10 changes)
+
+All changed from `ecManualUrl: null` → populated URL:
+
+| Use Case | URL Set To |
+|----------|-----------|
+| `pid-online` | `.../pages/930451131/PID+Identification+Manual` |
+| `esignature` | `.../pages/930452287/eSignature` |
+| `payment-auth` | `.../pages/935397429/Payment+Authentication` |
+| `dtc` | `.../pages/930451772/Travel+Credentials` |
+| `epc` | `.../pages/930452118/European+Parking+Card` |
+| `disability-card` | `.../pages/930452528/Disability+Card` |
+| `eprescription` | `.../pages/930452930/ePrescription` |
+| `ehic` | `.../pages/930453001/EHIC` |
+| `age-verification` | `.../pages/930450954/The+Age+Verification+Manual` |
+| `proximity-id` | `.../pages/930451396/Identification+in+proximity+scenarios` |
+
+(All URLs prefixed with `https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET`)
+
+**`mdl`** already had a URL — unchanged: `.../display/EUDIGITALIDENTITYWALLET/The+mobile+Driving+License+manual`
+
+## F4. New Field: `pdfManualUrl` (19 additions)
+
+Brand new field added to **every** use case entry. This field did not exist before.
+
+### Published use cases — with PDF URLs (11):
+
+| Use Case | `pdfManualUrl` |
+|----------|---------------|
+| `mdl` | `.../929202846/01_Use%20Case_Manual_Mobile%20Driving%20Licence%201.pdf` |
+| `pid-online` | `.../930451131/04_Use%20Case_Manual_PID-based%20identification%201.pdf` |
+| `esignature` | `.../930452287/07_Use%20Case_Manual_eSignature.pdf` |
+| `payment-auth` | `.../935397429/11_Use%20Case_Manual_Payment%20Authentication.pdf` |
+| `dtc` | `.../930451772/06_Use%20Case_Manual_Digital%20Travel%20Credential.pdf` |
+| `epc` | `.../930452118/03_Use%20Case_Manual_European%20Parking%20Card.pdf` |
+| `disability-card` | `.../930452528/08_Use%20Case_Manual_Disability%20Card.pdf` |
+| `eprescription` | `.../930452930/09_Use%20Case_Manual_ePrescription.pdf` |
+| `ehic` | `.../930453001/10_Use%20Case_Manual_European%20Health%20Insurance%20Card%20(EHIC).pdf` |
+| `age-verification` | `.../930450954/Use%20Case_Manual_Age%20verification.pdf` |
+| `proximity-id` | `.../930451396/05_Use%20Case_Manual_The%20identification%20in%20proximity%20scenarios.pdf` |
+
+(All URLs prefixed with `https://ec.europa.eu/digital-building-blocks/sites/download/attachments`)
+
+### Coming soon use cases — set to null (8):
+
+`pseudonym` · `open-bank-account` · `vrc` · `public-warnings` · `ticket-pass` · `edu-credentials` · `student-card` · `representation`
+
+## F5. Unchanged (verified correct)
+
+The following fields were **audited and confirmed to already match** EC data — no changes needed:
+
+| Field | Use Cases | Notes |
+|-------|-----------|-------|
+| All `description` values | 16 of 19 | Verbatim match with EC listing page (see Audit E2/GAP 4) |
+| All `category` values | All 19 | All match EC categories (see Audit E3) |
+| `mdl` name | 1 | We use "mDL" (ISO standard); EC uses "mDl" — kept ours |
+| `mdl` `ecManualUrl` | 1 | Legacy `/display/` format, but works correctly |
+| `payment-auth` `technicalSpecs: [TS12]` | 1 | Retained — other use cases don't have this yet (future improvement) |
+
+## F6. Summary Statistics
+
+| Metric | Count |
+|--------|-------|
+| Fields modified | 23 |
+| Fields added (new) | 19 |
+| **Total changes** | **42** |
+| Use cases touched | **19 of 19** |
+| Use cases with data corrections | 2 (`payment-auth`, `esignature`) |
+| Use cases with status change | 10 |
+| Use cases with only `pdfManualUrl: null` added | 8 |
 
 ---
 
