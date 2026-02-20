@@ -1801,3 +1801,106 @@ requirements:
       requests from an RP, otherwise wallet users will see
       verification failures.
     obligation: MUST
+
+  # ============================================================================
+  # VEND-MULTI-01: Multi-Relying-Party Support
+  # Cross-cutting requirement for platforms serving multiple legal entities
+  # Source: corporate-group-rp-registration.md §6.2
+  # ============================================================================
+  - id: VEND-MULTI-01
+    deploymentArchitectures:
+      - intermediary
+      - direct_saas
+    category: registration
+    requirement: Support multi-relying-party deployments with per-entity isolation
+    explanation: |
+      The product must support deployments where a single platform instance
+      serves multiple distinct legal entities as separate Relying Parties.
+      Each Relying Party is an independently registered entity (Art. 5b(1))
+      with its own RPAC, one or more RPRCs, and its own GDPR controller
+      obligations (Art. 4(7) GDPR). The platform must enforce strict
+      separation between these entities at every layer.
+
+      **Certificate management (per entity):**
+      Each RP requires its own Wallet-Relying Party Access Certificate
+      (RPAC, per Art. 7 CIR 2025/848) and one or more Registration
+      Certificates (RPRC, per Art. 8) — one per registered intended use.
+      The platform must manage these certificates independently, with
+      separate private key material per entity stored in isolated key
+      containers. Certificate lifecycle events (issuance, renewal,
+      revocation) for one entity must not affect another entity's
+      certificates. During corporate restructuring events (mergers,
+      acquisitions, entity conversions), the platform must support
+      orderly certificate revocation and re-issuance within the
+      24-hour revocation notification window (CIR Art. 9(5-6)).
+
+      **Data isolation:**
+      Transaction records, audit logs, received attributes (during the
+      transient processing window before deletion per Art. 5b(10)), and
+      compliance evidence must be logically or physically isolated per
+      RP. No administrative action, database query, API call, or log
+      search should be able to inadvertently cross entity boundaries.
+      This complements the cross-RP unlinkability requirement
+      (VEND-INT-020) at the platform level by extending it from
+      user-level unlinkability to entity-level data isolation.
+
+      **Per-entity configuration:**
+      Intended use declarations, data request scopes, privacy policy
+      URLs, and attribute request profiles must be independently
+      configurable per RP. When a platform serves an intermediary and
+      its End-RPs (the intermediary pattern, Art. 5b(10)), the correct
+      RPRC must be bound to each wallet transaction based on which
+      End-RP the request is for. The platform must enforce the flat
+      two-layer delegation constraint — it cannot support multi-level
+      intermediary chains.
+
+      **Compliance evidence isolation:**
+      Each RP must be able to independently export its own compliance
+      evidence, audit trails, and registration records without gaining
+      visibility into other entities' data. This supports the per-entity
+      RCA model where each subsidiary undergoes independent compliance
+      assessment.
+
+      **GDPR controller boundaries:**
+      Because each RP is an independent data controller, the platform's
+      data processing boundaries must align precisely with the GDPR
+      controller/processor structure. The no-storage mandate
+      (Art. 5b(10)) applies per-entity in intermediary deployments,
+      requiring pass-through architecture where attestation data is
+      not retained beyond the immediate verification-and-forward cycle.
+    arfReference:
+      topic: Topic 52
+      hlr:
+        - AS-RP-51-001
+        - AS-RP-51-003
+        - AS-RP-51-006
+        - AS-RP-51-007
+    legalBasis:
+      - regulation: 2014/910
+        article: Article 5b
+        paragraph: "1"
+      - regulation: 2025/848
+        article: Article 7
+        paragraph: "1"
+      - regulation: 2025/848
+        article: Article 8
+        paragraph: "1"
+    legalText: |
+      Each relying party relying on electronic identification means
+      or electronic attestations of attributes presented through the
+      European Digital Identity Wallet shall register in the Member
+      State where it is established.
+    roles:
+      - relying_party
+    productCategories:
+      - connector
+    deadline: "2027-11-21"
+    notes: |
+      This requirement is cross-cutting: it applies to any product
+      deployed in multi-RP configurations, whether using the
+      intermediary pattern (Art. 5b(10)) or direct SaaS multi-tenancy.
+      It complements VEND-INT-020 (cross-RP unlinkability) and
+      VEND-INT-021 (immediate data deletion) by adding entity-level
+      isolation guarantees. Source: corporate-group-rp-registration.md
+      §6.2 research analysis.
+    obligation: MUST

@@ -1111,3 +1111,38 @@ requirements:
       - id: Q9
         text: "Do you maintain an internal registry of all registered intermediary-RP relationships with their registration status? Is this synchronised with the Registrar in real time or on a polling basis?"
         dimension: technical_implementation
+
+  # ============================================================================
+  # VEND-MULTI-01: Multi-Relying-Party Support
+  # Requirement: Support multi-relying-party deployments with per-entity isolation
+  # Source: corporate-group-rp-registration.md §6.2
+  # ============================================================================
+  VEND-MULTI-01:
+    questions:
+      - id: Q1
+        text: "How does the platform manage multiple RPACs and RPRCs simultaneously? Are private keys for each entity stored in isolated key containers (separate HSM partitions, separate key vaults), or do they share a key management infrastructure with logical separation only?"
+        dimension: security
+      - id: Q2
+        text: "What data isolation model is enforced between RP tenants — physical isolation (separate databases/instances per entity), logical isolation (shared database with row-level security), or namespace isolation (schema-per-tenant)? How is cross-tenant data leakage prevented in queries, log searches, and API responses?"
+        dimension: architecture
+      - id: Q3
+        text: "Can intended use declarations, data request scopes, privacy policy URLs, and attribute request profiles be configured independently per RP entity? If the platform serves 50 entities each with 3 intended uses (150 configurations), how does the configuration model scale?"
+        dimension: operational
+      - id: Q4
+        text: "How does the platform bind the correct RPRC to each wallet transaction based on the requesting entity? In an intermediary deployment where the intermediary holds RPRCs for multiple End-RPs, what mechanism ensures the right certificate is selected for each request — is this configured per API call, per session, or per endpoint?"
+        dimension: technical_implementation
+      - id: Q5
+        text: "Can each RP entity independently export its own compliance evidence and audit trails without gaining visibility into other entities' data? What access controls ensure a subsidiary's compliance officer can only access that subsidiary's records?"
+        dimension: auditability
+      - id: Q6
+        text: "How does the platform handle certificate lifecycle events during corporate restructuring — mergers, acquisitions, and entity conversions? Can it process certificate revocation for an absorbed entity and re-issuance for the successor entity within the 24-hour revocation notification window (CIR Art. 9(5-6))?"
+        dimension: lifecycle
+      - id: Q7
+        text: "How does multi-RP support interact with the no-storage mandate (Art. 5b(10)) and immediate deletion requirement (VEND-INT-021)? In a multi-tenant deployment, does the deletion pipeline operate per-entity, and how is it verified that no attestation data leaks across tenant boundaries during the transient processing window?"
+        dimension: privacy
+      - id: Q8
+        text: "What is the onboarding process for adding a new RP entity to the platform? How long does it take from registration completion at the national Registrar to the entity being operational on the platform? Is this process automated via the common registration API (ETSI TS 119 475)?"
+        dimension: operational
+      - id: Q9
+        text: "How does the platform enforce the flat two-layer intermediary model mandated by the ARF? If a corporate group has regional hubs between the central intermediary and local subsidiaries, does the platform prevent or detect attempts to configure multi-level delegation chains?"
+        dimension: compliance_completeness

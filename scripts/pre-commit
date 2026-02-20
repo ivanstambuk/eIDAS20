@@ -4,6 +4,7 @@
 #
 # Checks:
 #   1. Markdown blockquote line-break linting (trailing two spaces)
+#   2. VCQ YAML: enforce new-style ARF HLR references (AS-XX-YY-ZZZ)
 #
 # Install: cp scripts/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
 # Or:      ln -sf ../../scripts/pre-commit .git/hooks/pre-commit
@@ -34,6 +35,26 @@ if [[ -n "$MD_FILES" ]]; then
             echo ""
             echo "💡 To auto-fix:  ./scripts/lint-md-blockquotes.sh --fix ${MD_FILES}"
             echo "   Then:         git add <fixed files> && git commit"
+            echo ""
+            exit 1
+        fi
+    fi
+fi
+
+# =============================================================================
+# Check 2: VCQ YAML — enforce new-style ARF HLR references
+# =============================================================================
+
+VCQ_FILES=$(git diff --cached --name-only --diff-filter=AMR -- 'docs-portal/config/vcq/requirements/*.yaml' || true)
+
+if [[ -n "$VCQ_FILES" ]]; then
+    FILES_TO_CHECK=()
+    while IFS= read -r f; do
+        FILES_TO_CHECK+=("${REPO_ROOT}/${f}")
+    done <<< "$VCQ_FILES"
+
+    if [[ ${#FILES_TO_CHECK[@]} -gt 0 ]]; then
+        if ! "${REPO_ROOT}/docs-portal/scripts/lint-vcq-hlr-refs.sh" "${FILES_TO_CHECK[@]}"; then
             echo ""
             exit 1
         fi

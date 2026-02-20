@@ -389,7 +389,7 @@ The VCQ should add a **cross-cutting requirement** for multi-RP platform deploym
 | **Product categories** | Connector |
 | **Deadline** | 2027-11-21 |
 | **Legal basis** | Art. 5b(1) Reg. 2014/910; Art. 7(1) & Art. 8(1) CIR 2025/848 |
-| **ARF reference** | Topic 52 — RPI_01, RPI_03, RPI_06, RPI_07 |
+| **ARF reference** | Topic 52 — AS-RP-51-001, AS-RP-51-003, AS-RP-51-006, AS-RP-51-007 |
 | **Complements** | VEND-INT-020 (cross-RP unlinkability), VEND-INT-021 (immediate data deletion) |
 
 **Explanation:**
@@ -510,10 +510,10 @@ The product must support deployments where a single platform instance serves mul
   arfReference:
     topic: Topic 52
     hlr:
-      - RPI_01
-      - RPI_03
-      - RPI_06
-      - RPI_07
+      - AS-RP-51-001
+      - AS-RP-51-003
+      - AS-RP-51-006
+      - AS-RP-51-007
   roles:
     - relying_party
   productCategories:
@@ -1053,7 +1053,7 @@ This declared purpose functions as a **GDPR purpose ceiling** — the data was o
 **Scenario 1: Direct use by the receiving RP (the base case)**
 
 ```
-User's Wallet → [PID: name, DOB, address] → ING Bank N.V.
+User's Wallet → [PID: name, DOB, address] → Europa Bank N.V.
                                                ↓
                                         KYC verification ✓
 ```
@@ -1065,33 +1065,33 @@ User's Wallet → [PID: name, DOB, address] → ING Bank N.V.
 **Scenario 2: Intra-group sharing for the same purpose**
 
 ```
-User's Wallet → [PID: name, DOB, address] → ING Bank N.V. (KYC)
+User's Wallet → [PID: name, DOB, address] → Europa Bank N.V. (KYC)
                                                ↓
-                                        ING Insurance B.V. (KYC)
+                                        Europa Insurance B.V. (KYC)
 ```
 
-- ING Bank received PID for "KYC verification"
-- ING Insurance also needs KYC for its services
-- **Can ING Bank share the wallet-obtained PID with ING Insurance?**
+- Europa Bank received PID for "KYC verification"
+- Europa Insurance also needs KYC for its services
+- **Can Europa Bank share the wallet-obtained PID with Europa Insurance?**
 
 Analysis:
 - **GDPR Art. 5(1)(b)**: Further processing for a "compatible purpose" may be lawful. KYC at both entities is arguably the same purpose category, but the *specific* purpose (banking KYC vs. insurance KYC) differs
-- **The RP registration problem**: ING Bank's RPRC declares KYC for *banking services*. Sharing for *insurance KYC* is a different intended use — it was not declared in ING Bank's registration
-- **User expectation**: The user shared data with ING Bank, saw ING Bank's name in the wallet, and consented to ING Bank's privacy policy. Sharing with a different legal entity (even in the same group) was not part of that interaction
-- **Likely outcome**: This requires either (a) ING Insurance separately requests the PID from the wallet (recommended), or (b) a GDPR-compliant data sharing agreement with a compatible purpose assessment, plus transparency to the user via the privacy policy
+- **The RP registration problem**: Europa Bank's RPRC declares KYC for *banking services*. Sharing for *insurance KYC* is a different intended use — it was not declared in Europa Bank's registration
+- **User expectation**: The user shared data with Europa Bank, saw Europa Bank's name in the wallet, and consented to Europa Bank's privacy policy. Sharing with a different legal entity (even in the same group) was not part of that interaction
+- **Likely outcome**: This requires either (a) Europa Insurance separately requests the PID from the wallet (recommended), or (b) a GDPR-compliant data sharing agreement with a compatible purpose assessment, plus transparency to the user via the privacy policy
 
 **Scenario 3: Intra-group sharing for a different purpose**
 
 ```
-User's Wallet → [PID: name, DOB, address] → ING Bank N.V. (KYC)
+User's Wallet → [PID: name, DOB, address] → Europa Bank N.V. (KYC)
                                                ↓
-                                        ING Analytics B.V. (group risk modelling)
+                                        Europa Analytics B.V. (group risk modelling)
 ```
 
 - The data was obtained for KYC but is being used for group-wide risk analytics
 - This is a **different purpose** — GDPR Art. 5(1)(b) purpose limitation applies
 - Requires a separate legal basis (consent, legitimate interest under Art. 6(1)(f), or legal obligation)
-- Must be disclosed in ING Bank's privacy policy (Art. 8(2)(g))
+- Must be disclosed in Europa Bank's privacy policy (Art. 8(2)(g))
 - Even with BCRs, the original purpose limitation constrains what can be shared
 
 **The intermediary's no-storage mandate in context:**
@@ -1099,7 +1099,7 @@ User's Wallet → [PID: name, DOB, address] → ING Bank N.V. (KYC)
 If the group uses an intermediary (§8.1), Art. 5b(10) adds a constraint:
 
 ```
-User's Wallet → [PID] → ING Group IT (intermediary) → ING Bank N.V. (controller)
+User's Wallet → [PID] → Europa Group IT (intermediary) → Europa Bank N.V. (controller)
                               ↓
                         Cannot store ← Art. 5b(10)
 ```
@@ -1499,23 +1499,23 @@ The dashboard is structured per **relying party**, not per corporate group. The 
 
 ```
 Transaction History:
-  ├─ ING Bank N.V. — KYC verification (14 Jan 2027)
+  ├─ Europa Bank N.V. — KYC verification (14 Jan 2027)
   │   Data shared: Full name, DOB, Address, BSN
-  ├─ ING Insurance B.V. — Policy onboarding (22 Jan 2027)
+  ├─ Europa Insurance B.V. — Policy onboarding (22 Jan 2027)
   │   Data shared: Full name, DOB, Address
-  ├─ NN Group N.V. — Investment account opening (3 Feb 2027)
+  ├─ Meridian Group N.V. — Investment account opening (3 Feb 2027)
   │   Data shared: Full name, DOB, Tax ID
-  └─ Achmea Claims — Accident report (15 Feb 2027)
+  └─ Vesta Claims — Accident report (15 Feb 2027)
       Data shared: Full name, Address, Driver licence number
 ```
 
-The user cannot see that ING Bank and ING Insurance are part of the same group. Each entity appears independently.
+The user cannot see that Europa Bank and Europa Insurance are part of the same group. Each entity appears independently.
 
 **RPRC_09 — unique identifier does NOT encode group membership:**
 
 RPRC_09 requires: *"The EU-wide unique identifier SHALL be identical in all registration certificates issued for a given Relying Party."*
 
-This ensures consistency across a single entity's multiple RPRCs (for different intended uses), but it does **not** encode group relationships. The identifiers for ING Bank and ING Insurance are different — they are different legal entities.
+This ensures consistency across a single entity's multiple RPRCs (for different intended uses), but it does **not** encode group relationships. The identifiers for Europa Bank and Europa Insurance are different — they are different legal entities.
 
 The CIR Annex I data model does not include any field for "parent entity", "group membership", or "corporate group identifier". This is a deliberate design choice — the wallet's trust model is entity-to-entity, not group-to-entity.
 
@@ -1523,9 +1523,9 @@ The CIR Annex I data model does not include any field for "parent entity", "grou
 
 Art. 5a(4)(d)(ii) enables the user to *"easily request the erasure by a relying party of personal data."* This operates at the **RP level**:
 
-- If the user wants to erase data shared with the entire ING group, they must send **separate erasure requests** to ING Bank, ING Insurance, and any other ING entity they interacted with
+- If the user wants to erase data shared with the entire Europa group, they must send **separate erasure requests** to Europa Bank, Europa Insurance, and any other Europa entity they interacted with
 - The wallet cannot send a "group erasure" — it doesn't know these entities are related
-- From the user's perspective, this is inconvenient: they shared data with "ING" but the wallet forces them to track down each legal entity separately
+- From the user's perspective, this is inconvenient: they shared data with "Europa" but the wallet forces them to track down each legal entity separately
 
 **Complaint mechanism — per entity:**
 
@@ -1537,14 +1537,14 @@ If the group uses an intermediary model (Option A, §8.1), the wallet UX changes
 
 ```
 Transaction History:
-  ├─ ING Group IT (intermediary) on behalf of ING Bank N.V.
+  ├─ Europa Group IT (intermediary) on behalf of Europa Bank N.V.
   │   Data shared: Full name, DOB, Address, BSN
-  ├─ ING Group IT (intermediary) on behalf of ING Insurance B.V.
+  ├─ Europa Group IT (intermediary) on behalf of Europa Insurance B.V.
   │   Data shared: Full name, DOB, Address
   └─ ...
 ```
 
-The intermediary name ("ING Group IT") now provides a **visual clue** that these entities are related. The user can see a common thread in their transaction history. However:
+The intermediary name ("Europa Group IT") now provides a **visual clue** that these entities are related. The user can see a common thread in their transaction history. However:
 - This is an unintended UX benefit — the intermediary is shown for accountability, not for group transparency
 - Erasure still goes to the intermediary (as a processor) who must forward it to the End-RP (the controller)
 - The intermediary's no-storage mandate means the intermediary itself has no data to erase
@@ -1553,11 +1553,11 @@ The intermediary name ("ING Group IT") now provides a **visual clue** that these
 
 CIR Annex I Point 2 allows a *"user-friendly name...that can be either a trade name or service name that is recognisable to the user."* This means:
 
-- "ING Bank N.V." might display as "ING Banking"
-- "ING Insurance B.V." might display as "ING Insurance"
+- "Europa Bank N.V." might display as "Europa Banking"
+- "Europa Insurance B.V." might display as "Europa Insurance"
 - But there's no requirement that related entities use consistent naming conventions
 
-A corporate group could choose to use a consistent prefix ("ING Banking", "ING Insurance", "ING Payments") for user recognition, or each entity could use entirely different trade names ("Orange Bank", "Nationale-Nederlanden", "ING Direct"). The CIR does not constrain this choice.
+A corporate group could choose to use a consistent prefix ("Europa Banking", "Europa Insurance", "Europa Payments") for user recognition, or each entity could use entirely different trade names ("Solaris Bank", "Euroguard", "Europa Direct"). The CIR does not constrain this choice.
 
 **Assessment:** The wallet provides **no group-level transparency**. This is architecturally consistent with the per-entity registration model and the wallet's role as a user-controlled privacy tool — it is designed to show *who* requested data, not *who owns whom*. For corporate groups, this means the user experience fragments across entities. The intermediary model provides an incidental group indicator (common intermediary name), but this is not its primary purpose. A future enhancement — an optional "group membership" field in the CIR data model — could improve user transparency without changing the per-entity registration architecture.
 

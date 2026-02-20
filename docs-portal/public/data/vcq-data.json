@@ -4349,6 +4349,71 @@
       "_sourceFile": "intermediary.yaml"
     },
     {
+      "id": "VEND-MULTI-01",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
+      "requirement": "Support multi-relying-party deployments with per-entity isolation",
+      "explanation": "The product must support deployments where a single platform instance\nserves multiple distinct legal entities as separate Relying Parties.\nEach Relying Party is an independently registered entity (Art. 5b(1))\nwith its own RPAC, one or more RPRCs, and its own GDPR controller\nobligations (Art. 4(7) GDPR). The platform must enforce strict\nseparation between these entities at every layer.\n\n**Certificate management (per entity):**\nEach RP requires its own Wallet-Relying Party Access Certificate\n(RPAC, per Art. 7 CIR 2025/848) and one or more Registration\nCertificates (RPRC, per Art. 8) — one per registered intended use.\nThe platform must manage these certificates independently, with\nseparate private key material per entity stored in isolated key\ncontainers. Certificate lifecycle events (issuance, renewal,\nrevocation) for one entity must not affect another entity's\ncertificates. During corporate restructuring events (mergers,\nacquisitions, entity conversions), the platform must support\norderly certificate revocation and re-issuance within the\n24-hour revocation notification window (CIR Art. 9(5-6)).\n\n**Data isolation:**\nTransaction records, audit logs, received attributes (during the\ntransient processing window before deletion per Art. 5b(10)), and\ncompliance evidence must be logically or physically isolated per\nRP. No administrative action, database query, API call, or log\nsearch should be able to inadvertently cross entity boundaries.\nThis complements the cross-RP unlinkability requirement\n(VEND-INT-020) at the platform level by extending it from\nuser-level unlinkability to entity-level data isolation.\n\n**Per-entity configuration:**\nIntended use declarations, data request scopes, privacy policy\nURLs, and attribute request profiles must be independently\nconfigurable per RP. When a platform serves an intermediary and\nits End-RPs (the intermediary pattern, Art. 5b(10)), the correct\nRPRC must be bound to each wallet transaction based on which\nEnd-RP the request is for. The platform must enforce the flat\ntwo-layer delegation constraint — it cannot support multi-level\nintermediary chains.\n\n**Compliance evidence isolation:**\nEach RP must be able to independently export its own compliance\nevidence, audit trails, and registration records without gaining\nvisibility into other entities' data. This supports the per-entity\nRCA model where each subsidiary undergoes independent compliance\nassessment.\n\n**GDPR controller boundaries:**\nBecause each RP is an independent data controller, the platform's\ndata processing boundaries must align precisely with the GDPR\ncontroller/processor structure. The no-storage mandate\n(Art. 5b(10)) applies per-entity in intermediary deployments,\nrequiring pass-through architecture where attestation data is\nnot retained beyond the immediate verification-and-forward cycle.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "1",
+          "link": "/regulation/2014-910?section=article-5b"
+        },
+        {
+          "regulation": "2025/848",
+          "article": "Article 7",
+          "paragraph": "1",
+          "link": "/regulation/2025-848?section=article-7"
+        },
+        {
+          "regulation": "2025/848",
+          "article": "Article 8",
+          "paragraph": "1",
+          "link": "/regulation/2025-848?section=article-8"
+        }
+      ],
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
+      "legalText": "Each relying party relying on electronic identification means\nor electronic attestations of attributes presented through the\nEuropean Digital Identity Wallet shall register in the Member\nState where it is established.",
+      "arfReference": {
+        "topic": "Topic 52",
+        "hlr": [
+          "AS-RP-51-001",
+          "AS-RP-51-003",
+          "AS-RP-51-006",
+          "AS-RP-51-007"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
+      "deploymentArchitectures": [
+        "intermediary",
+        "direct_saas"
+      ],
+      "deadline": "2027-11-21",
+      "obligation": "MUST",
+      "notes": "This requirement is cross-cutting: it applies to any product\ndeployed in multi-RP configurations, whether using the\nintermediary pattern (Art. 5b(10)) or direct SaaS multi-tenancy.\nIt complements VEND-INT-020 (cross-RP unlinkability) and\nVEND-INT-021 (immediate data deletion) by adding entity-level\nisolation guarantees. Source: corporate-group-rp-registration.md\n§6.2 research analysis.",
+      "_sourceFile": "intermediary.yaml"
+    },
+    {
       "id": "VEND-ISS-001",
       "category": "registration",
       "categoryLabel": "Registration",
@@ -7119,7 +7184,8 @@
       "VEND-INT-030",
       "VEND-INT-031",
       "VEND-INT-032",
-      "VEND-INT-033"
+      "VEND-INT-033",
+      "VEND-MULTI-01"
     ],
     "issuer": [
       "VEND-CORE-019",
@@ -7283,7 +7349,8 @@
       "VEND-INT-030",
       "VEND-INT-031",
       "VEND-INT-032",
-      "VEND-INT-033"
+      "VEND-INT-033",
+      "VEND-MULTI-01"
     ],
     "issuance_platform": [
       "VEND-CORE-019",
@@ -7464,6 +7531,7 @@
       "VEND-INT-031",
       "VEND-INT-032",
       "VEND-INT-033",
+      "VEND-MULTI-01",
       "VEND-ISS-001",
       "VEND-ISS-004",
       "VEND-ISS-005",
@@ -7603,6 +7671,7 @@
       "VEND-INT-030",
       "VEND-INT-032",
       "VEND-INT-033",
+      "VEND-MULTI-01",
       "VEND-ISS-001",
       "VEND-ISS-002",
       "VEND-ISS-003",
@@ -7649,34 +7718,34 @@
     ]
   },
   "stats": {
-    "totalRequirements": 153,
+    "totalRequirements": 154,
     "byRole": {
-      "relying_party": 82,
+      "relying_party": 83,
       "issuer": 67,
       "universal": 19
     },
     "byProductCategory": {
-      "connector": 70,
+      "connector": 71,
       "issuance_platform": 50,
       "trust_services": 26,
       "universal": 16
     },
     "bySourceGroup": {
-      "eidas": 129,
+      "eidas": 130,
       "gdpr": 19,
       "dora": 12,
-      "arf": 94
+      "arf": 95
     },
     "byCategory": {
       "usage": 47,
       "contracts": 22,
-      "registration": 27,
+      "registration": 28,
       "security": 29,
       "issuance": 20,
       "revocation": 8
     },
     "byObligation": {
-      "MUST": 129,
+      "MUST": 130,
       "MUST NOT": 11,
       "SHOULD": 12,
       "SHOULD NOT": 0,
@@ -7684,8 +7753,8 @@
     }
   },
   "_meta": {
-    "contentHash": "693a042d",
-    "buildCommit": "5f38b62c",
+    "contentHash": "478f7ae7",
+    "buildCommit": "4ac73370",
     "buildDate": "2026-02-20",
     "schemaVersion": 2
   }
