@@ -346,7 +346,8 @@ requirements:
     deadline: "2026-11-20"
     roles:
       - trust_service_provider
-    useCases: all
+    useCases:
+      - esignature
   - id: TSP-GOV-012
     category: governance
     requirement: Apply risk management framework per 2025/2160
@@ -1078,7 +1079,8 @@ requirements:
     deadline: "2026-11-20"
     roles:
       - trust_service_provider
-    useCases: all
+    useCases:
+      - esignature
   - id: TSP-SEC-007
     category: security
     requirement: Perform quarterly vulnerability scans
@@ -1180,7 +1182,8 @@ requirements:
     deadline: "2026-11-20"
     roles:
       - trust_service_provider
-    useCases: all
+    useCases:
+      - esignature
   - id: TSP-TEC-003
     category: technical
     requirement: Include all required elements in qualified signature certificates
@@ -1205,7 +1208,8 @@ requirements:
     deadline: "2026-11-20"
     roles:
       - trust_service_provider
-    useCases: all
+    useCases:
+      - esignature
   - id: TSP-TEC-004
     category: technical
     requirement: Ensure QSCD meets security requirements
@@ -1228,7 +1232,8 @@ requirements:
     deadline: "2026-11-20"
     roles:
       - trust_service_provider
-    useCases: all
+    useCases:
+      - esignature
   - id: TSP-TEC-005
     category: technical
     requirement: Ensure QSCD does not alter data to be signed
@@ -1249,7 +1254,8 @@ requirements:
     deadline: "2026-11-20"
     roles:
       - trust_service_provider
-    useCases: all
+    useCases:
+      - esignature
   - id: TSP-TEC-006
     category: technical
     requirement: Include all required elements in qualified seal certificates
@@ -1403,7 +1409,8 @@ requirements:
     deadline: "2027-08-19"
     roles:
       - trust_service_provider
-    useCases: all
+    useCases:
+      - esignature
   - id: TSP-TEC-013
     category: technical
     requirement: Use ENISA-compliant cryptographic techniques
@@ -1423,7 +1430,8 @@ requirements:
     deadline: "2027-08-19"
     roles:
       - trust_service_provider
-    useCases: all
+    useCases:
+      - esignature
   - id: TSP-TEC-014
     category: technical
     requirement: Maintain signature/seal trustworthiness beyond validity period
@@ -1768,7 +1776,8 @@ requirements:
     deadline: "2027-08-19"
     roles:
       - trust_service_provider
-    useCases: all
+    useCases:
+      - esignature
   - id: TSP-TRN-013
     category: transparency
     requirement: Include QSCD certification reference in practice statement
@@ -1788,7 +1797,8 @@ requirements:
     deadline: "2027-08-19"
     roles:
       - trust_service_provider
-    useCases: all
+    useCases:
+      - esignature
   - id: TSP-TRN-014
     category: transparency
     requirement: Inform subscribers clearly before entering contractual relationship
