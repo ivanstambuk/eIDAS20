@@ -58,6 +58,12 @@
       "status": "published",
       "ecManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451131/PID+Identification+Manual",
       "pdfManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930451131/04_Use%20Case_Manual_PID-based%20identification%201.pdf",
+      "technicalSpecs": [
+        "TS6",
+        "OpenID4VP",
+        "ISO 18013-5",
+        "ISO 18013-7"
+      ],
       "categoryLabel": "Core functionality",
       "categoryOrder": 1
     },
@@ -80,6 +86,11 @@
       "status": "published",
       "ecManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452287/eSignature",
       "pdfManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930452287/07_Use%20Case_Manual_eSignature.pdf",
+      "technicalSpecs": [
+        "TS8",
+        "ETSI TS 119 102-2",
+        "IR 2025/1567"
+      ],
       "categoryLabel": "Core functionality",
       "categoryOrder": 1
     },
@@ -116,6 +127,11 @@
       "status": "published",
       "ecManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/display/EUDIGITALIDENTITYWALLET/The+mobile+Driving+License+manual",
       "pdfManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/929202846/01_Use%20Case_Manual_Mobile%20Driving%20Licence%201.pdf",
+      "technicalSpecs": [
+        "TS6",
+        "ISO 18013-5",
+        "ISO 18013-7"
+      ],
       "categoryLabel": "Travel",
       "categoryOrder": 3
     },
@@ -127,6 +143,10 @@
       "status": "published",
       "ecManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451772/Travel+Credentials",
       "pdfManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930451772/06_Use%20Case_Manual_Digital%20Travel%20Credential.pdf",
+      "technicalSpecs": [
+        "ICAO 9303",
+        "ISO 23220-2"
+      ],
       "categoryLabel": "Travel",
       "categoryOrder": 3
     },
@@ -138,6 +158,7 @@
       "status": "published",
       "ecManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452118/European+Parking+Card",
       "pdfManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930452118/03_Use%20Case_Manual_European%20Parking%20Card.pdf",
+      "technicalSpecs": [],
       "categoryLabel": "Travel",
       "categoryOrder": 3
     },
@@ -160,6 +181,7 @@
       "status": "published",
       "ecManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452528/Disability+Card",
       "pdfManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930452528/08_Use%20Case_Manual_Disability%20Card.pdf",
+      "technicalSpecs": [],
       "categoryLabel": "Health & social security",
       "categoryOrder": 4
     },
@@ -171,6 +193,12 @@
       "status": "published",
       "ecManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452930/ePrescription",
       "pdfManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930452930/09_Use%20Case_Manual_ePrescription.pdf",
+      "technicalSpecs": [
+        "TS6",
+        "ISO 18013-5",
+        "ISO 18013-7",
+        "MyHealth@EU"
+      ],
       "categoryLabel": "Health & social security",
       "categoryOrder": 4
     },
@@ -182,6 +210,11 @@
       "status": "published",
       "ecManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930453001/EHIC",
       "pdfManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930453001/10_Use%20Case_Manual_European%20Health%20Insurance%20Card%20%28EHIC%29.pdf",
+      "technicalSpecs": [
+        "TS6",
+        "SD-JWT-VC",
+        "W3C VC Data Model 2.0"
+      ],
       "categoryLabel": "Health & social security",
       "categoryOrder": 4
     },
@@ -204,6 +237,13 @@
       "status": "published",
       "ecManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930450954/The+Age+Verification+Manual",
       "pdfManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930450954/Use%20Case_Manual_Age%20verification.pdf",
+      "technicalSpecs": [
+        "TS4",
+        "OpenID4VP",
+        "ISO 18013-5",
+        "ISO 23220-2",
+        "W3C DC API"
+      ],
       "categoryLabel": "Consumer",
       "categoryOrder": 5
     },
@@ -248,6 +288,10 @@
       "status": "published",
       "ecManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451396/Identification+in+proximity+scenarios",
       "pdfManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930451396/05_Use%20Case_Manual_The%20identification%20in%20proximity%20scenarios.pdf",
+      "technicalSpecs": [
+        "OpenID4VP",
+        "ISO 18013-5"
+      ],
       "categoryLabel": "Identification",
       "categoryOrder": 7
     },
@@ -29385,9 +29429,9 @@
     }
   },
   "_meta": {
-    "contentHash": "6fc215e8",
-    "buildCommit": "ababff54",
-    "buildDate": "2026-02-19",
+    "contentHash": "671db6b9",
+    "buildCommit": "33541eed",
+    "buildDate": "2026-02-20",
     "schemaVersion": 1
   }
 }

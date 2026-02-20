@@ -11,7 +11,7 @@
 | **Last Updated** | 2026-02-20 10:35 CET |
 | **Version** | V4.1.3 |
 | **Portal Stats** | 45 docs, 397K words, 380 terms, 2,397 article links, 487 RCA reqs, 153 VCQ reqs (1,352 clarification Qs), 510 ARF HLRs (v2.8.0, 20 topics) |
-| **Next Action** | Execute Step 6.3 (technicalSpecs alignment) from USE_CASE_ANALYSIS.md |
+| **Next Action** | Execute Step 6.4 (VCQ clarification question audit & use case tagging) from USE_CASE_ANALYSIS.md |
 
 
 ---

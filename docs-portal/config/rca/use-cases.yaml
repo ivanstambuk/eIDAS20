@@ -38,6 +38,12 @@ useCases:
     status: published
     ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451131/PID+Identification+Manual"
     pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930451131/04_Use%20Case_Manual_PID-based%20identification%201.pdf"
+    # PID issuance via OID4VCI (TS6), online verification via OID4VP, dual-format (W3C VC + ISO mdoc)
+    technicalSpecs:
+      - TS6
+      - OpenID4VP
+      - ISO 18013-5
+      - ISO 18013-7
 
   pseudonym:
     name: "Use of a pseudonym in online services"
@@ -54,6 +60,11 @@ useCases:
     status: published
     ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452287/eSignature"
     pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930452287/07_Use%20Case_Manual_eSignature.pdf"
+    # Remote QES protocol (TS8), ETSI validation profiles, rQSCD implementing regulation
+    technicalSpecs:
+      - TS8
+      - ETSI TS 119 102-2
+      - IR 2025/1567
 
   # === Banking & payment ===
   payment-auth:
@@ -83,6 +94,11 @@ useCases:
     status: published
     ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/display/EUDIGITALIDENTITYWALLET/The+mobile+Driving+License+manual"
     pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/929202846/01_Use%20Case_Manual_Mobile%20Driving%20Licence%201.pdf"
+    # ISO mdoc format, proximity (18013-5) + remote (18013-7), OID4VCI issuance (TS6)
+    technicalSpecs:
+      - TS6
+      - ISO 18013-5
+      - ISO 18013-7
 
   dtc:
     name: "Digital Travel Credential (DTC)"
@@ -91,6 +107,10 @@ useCases:
     status: published
     ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451772/Travel+Credentials"
     pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930451772/06_Use%20Case_Manual_Digital%20Travel%20Credential.pdf"
+    # ICAO 9303 for DTC data structures, ISO 23220-2 for mobile credential interface
+    technicalSpecs:
+      - ICAO 9303
+      - ISO 23220-2
 
   epc:
     name: "European Parking Card (EPC)"
@@ -99,6 +119,8 @@ useCases:
     status: published
     ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452118/European+Parking+Card"
     pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930452118/03_Use%20Case_Manual_European%20Parking%20Card.pdf"
+    # TBD — implementing acts for EPC under Directive 2024/2841 are pending
+    technicalSpecs: []
 
   vrc:
     name: "Vehicle Registration Certificate (VRC)"
@@ -116,6 +138,8 @@ useCases:
     status: published
     ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452528/Disability+Card"
     pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930452528/08_Use%20Case_Manual_Disability%20Card.pdf"
+    # TBD — implementing acts for Disability Card under Directive 2024/2841 are pending
+    technicalSpecs: []
 
   eprescription:
     name: "e-Prescription"
@@ -124,6 +148,12 @@ useCases:
     status: published
     ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930452930/ePrescription"
     pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930452930/09_Use%20Case_Manual_ePrescription.pdf"
+    # Health ID attestation (ISO mdoc), OID4VCI issuance (TS6), proximity+remote, MyHealth@EU
+    technicalSpecs:
+      - TS6
+      - ISO 18013-5
+      - ISO 18013-7
+      - MyHealth@EU
 
   ehic:
     name: "European Health Insurance Card (EHIC)"
@@ -132,6 +162,11 @@ useCases:
     status: published
     ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930453001/EHIC"
     pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930453001/10_Use%20Case_Manual_European%20Health%20Insurance%20Card%20%28EHIC%29.pdf"
+    # SD-JWT-VC (IETF) + W3C VC Data Model 2.0, OID4VCI issuance (TS6), DC4EU pilot
+    technicalSpecs:
+      - TS6
+      - SD-JWT-VC
+      - W3C VC Data Model 2.0
 
   public-warnings:
     name: "Public warnings"
@@ -149,6 +184,13 @@ useCases:
     status: published
     ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930450954/The+Age+Verification+Manual"
     pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930450954/Use%20Case_Manual_Age%20verification.pdf"
+    # ISO mdoc for boolean age claims, ZKP (TS4), OID4VP verification, W3C DC API
+    technicalSpecs:
+      - TS4
+      - OpenID4VP
+      - ISO 18013-5
+      - ISO 23220-2
+      - W3C DC API
 
   ticket-pass:
     name: "Ticket or pass"
@@ -183,6 +225,10 @@ useCases:
     status: published
     ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451396/Identification+in+proximity+scenarios"
     pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930451396/05_Use%20Case_Manual_The%20identification%20in%20proximity%20scenarios.pdf"
+    # NFC/BLE proximity via ISO 18013-5, OID4VP for credential exchange
+    technicalSpecs:
+      - OpenID4VP
+      - ISO 18013-5
 
   # === Legal representation ===
   representation:

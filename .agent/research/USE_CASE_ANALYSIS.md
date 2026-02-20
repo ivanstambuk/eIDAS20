@@ -500,7 +500,7 @@ Our YAML groups by category (different ordering), which is fine — we sort by `
 
 1. ~~**Frontend: Add "📖 Manual" link** — Render `ecManualUrl` as a clickable link~~ ✅ Done (Design B — `718268b1`)
 2. ~~**Frontend: Add "📄 PDF" download link** — Render `pdfManualUrl` as a download button~~ ✅ Done (Design B — `718268b1`)
-3. **Data: Populate `technicalSpecs` arrays** — Add TS references to all published use cases (currently only `payment-auth` has `technicalSpecs: [TS12]`)
+3. ~~**Data: Populate `technicalSpecs` arrays**~~ ✅ Done (Step 6.3 — hybrid TS-number + external standard identifiers)
 4. ~~**VCQ: Cross-reference use cases** — Link VCQ clarification questions to specific use case IDs~~ ✅ Done (`useCaseRef` field — `40be9a02`)
 
 ---
@@ -574,41 +574,36 @@ original checklist was NOT performed — it is now properly scoped in Steps 6.3�
 - [x] All aliases (OID4VP, OID4VCI, ESSPASS) confirmed present in JSON output
 - [x] Committed `6a561968`
 
-### Step 6.3 — Technical Specifications Alignment ⬜ NOT STARTED
+### Step 6.3 — Technical Specifications Alignment ✅ DONE
 
-> **Effort:** ~30-45 minutes  
+> **Effort:** ~30 minutes  
 > **Risk:** Low — data entry into existing YAML field  
 > **Target file:** `docs-portal/config/rca/use-cases.yaml`
 
-**Problem:** Only `payment-auth` has `technicalSpecs: [TS12]`. The other 10 published use cases
-have no technical specification references, despite the Technical Standards Inventory (Part A,
-Section A3) already documenting which standards each use case relies on.
+- [x] Populated `technicalSpecs` arrays for all 11 published use cases from the A3 inventory
+- [x] Cross-referenced against `legal-sources.yaml` — TS-numbered refs (TS4, TS6, TS8, TS12) are tracked; external standards (ISO, ICAO, ETSI, W3C) are correctly outside RCA's curated subset
+- [x] No standards missing from `legal-sources.yaml` that should be there — external standards are informational, not RCA legal sources
+- [x] Rebuilt RCA data (`build-rca.js`) and validated (`validate-rca.js`) — both pass
 
-**Plan:**
-- [ ] For each of the 11 published use cases, populate the `technicalSpecs` array from the A3 inventory
-- [ ] Cross-reference against `legal-sources.yaml` to ensure all referenced specs are tracked
-- [ ] Identify any standards from the manuals not yet in `legal-sources.yaml` and flag for addition
-- [ ] Rebuild and verify
+**Design decision (resolved):** Use **hybrid identifiers** — ARF TS-number IDs (`TS4`, `TS6`, `TS8`, `TS12`) where the standard maps to an ARF technical specification, and external standard identifiers (`ISO 18013-5`, `ICAO 9303`, `ETSI TS 119 102-2`, etc.) for standards outside the ARF TS catalogue. This preserves consistency with the existing `TS12` on `payment-auth` while correctly representing external dependencies.
 
-**Expected `technicalSpecs` values per use case (from A3):**
+**Final `technicalSpecs` values per use case:**
 
-| Use Case | technicalSpecs (proposed) |
+| Use Case | technicalSpecs |
 |----------|---------------------------|
-| `pid-online` | OID4VCI, OID4VP, ISO 18013-5/7 |
-| `esignature` | ETSI TS 119 102-2, IR 2025/1567 |
-| `mdl` | ISO 18013-5, ISO 18013-7, OID4VCI |
-| `proximity-id` | ISO 18013-5, OID4VP |
-| `payment-auth` | TS12 *(already set)* |
-| `age-verification` | ISO 18013-5, ISO 23220-2, OID4VP, W3C DC API |
+| `pid-online` | TS6, OpenID4VP, ISO 18013-5, ISO 18013-7 |
+| `esignature` | TS8, ETSI TS 119 102-2, IR 2025/1567 |
+| `mdl` | TS6, ISO 18013-5, ISO 18013-7 |
+| `proximity-id` | OpenID4VP, ISO 18013-5 |
+| `payment-auth` | TS12 *(unchanged)* |
+| `age-verification` | TS4, OpenID4VP, ISO 18013-5, ISO 23220-2, W3C DC API |
 | `dtc` | ICAO 9303, ISO 23220-2 |
-| `epc` | TBD (implementing acts pending) |
-| `disability-card` | TBD (implementing acts pending) |
-| `eprescription` | ISO 18013-5, ISO 18013-7, OID4VCI, MyHealth@EU |
-| `ehic` | SD-JWT-VC, W3C VC Data Model 2.0, OID4VCI |
+| `epc` | [] *(implementing acts pending — Directive 2024/2841)* |
+| `disability-card` | [] *(implementing acts pending — Directive 2024/2841)* |
+| `eprescription` | TS6, ISO 18013-5, ISO 18013-7, MyHealth@EU |
+| `ehic` | TS6, SD-JWT-VC, W3C VC Data Model 2.0 |
 
-⚠️ **Decision needed:** The `technicalSpecs` field currently holds TS-number references (e.g. `TS12`).
-The standards above are a mix of ISO standards, IETF specs, and protocol names. Need to decide:
-(a) use ARF TS-number mapping where it exists, (b) use protocol/spec names directly, or (c) both.
+**15 unique specs** referenced across all use cases: 4 ARF TS + 11 external standards.
 
 ### Step 6.4 — VCQ Clarification Question Audit & Use Case Tagging ⬜ NOT STARTED
 
@@ -751,7 +746,7 @@ data covers, with prioritised recommendations.
 |----------|-------------|--------|--------|
 | **6.1** | Read & extract content from all 11 manuals | Done | ✅ Complete |
 | **6.2** | Import terminology into `custom-dictionary.yaml` | Done | ✅ Complete |
-| **6.3** | Populate `technicalSpecs` arrays on all use cases | ~30 min | ⬜ Not started |
+| **6.3** | Populate `technicalSpecs` arrays on all use cases | ~30 min | ✅ Complete |
 | **6.4** | VCQ clarification question audit & use case tagging (11 use cases × 5 files) | ~3-4 hrs | ⬜ Not started |
 | **6.5** | RCA requirement description enrichment & use case scoping | ~2-3 hrs | ⬜ Not started |
 | **6.6** | Cross-validation gap report | ~1-2 hrs | ⬜ Not started |
