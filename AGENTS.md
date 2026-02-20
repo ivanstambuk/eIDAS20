@@ -558,9 +558,10 @@ sudo tailscale serve --bg --https 5173 http://localhost:5173
 **Rules:**
 1. **`timeout N`** — Wrap `pkill`, `curl`, `lsof`, and process-management commands in `timeout`
 2. **`[v]ite` bracket trick** — When using `pkill -f`, use bracket syntax (e.g., `pkill -f "[v]ite"`) to prevent the command from matching its own shell process
-3. **`jq` over `python3 -c`** — For JSON inspection, always use `jq` instead of inline Python. Inline Python with nested quotes creates unescapable shell issues
+3. **`jq` over `python3 -c`** — For JSON inspection, always use `jq` instead of inline Python. Inline Python with nested quotes creates unescapable shell issues. Large JSON files (e.g., `vcq-clarification-questions.json`) will hang indefinitely with `python3 -c`
 4. **Split compound commands** — Never combine `pkill` + `start` in a single command. The kill may terminate the shell before the start executes
 5. **`--max-time`** — All `curl` calls MUST include `--max-time N` (3s for health checks, 10s for data)
+6. **Step completion verification** — Never mark a plan step as `[x]` complete if its sub-objectives are not ALL verified. If a step is partially done, break it into sub-steps with individual completion markers
 
 **Anti-patterns:**
 - ❌ `pkill -f "vite"; sleep 2; npx vite` — pkill kills itself

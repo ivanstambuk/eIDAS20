@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-02-20 09:35 CET |
+| **Last Updated** | 2026-02-20 10:35 CET |
 | **Version** | V4.1.3 |
-| **Portal Stats** | 45 docs, 397K words, 380 terms, 2,397 article links, 487 RCA reqs, 153 VCQ reqs (1,323 clarification Qs), 510 ARF HLRs (v2.8.0, 20 topics) |
-| **Next Action** | *(No active plan — ready for next task)* |
+| **Portal Stats** | 45 docs, 397K words, 380 terms, 2,397 article links, 487 RCA reqs, 153 VCQ reqs (1,352 clarification Qs), 510 ARF HLRs (v2.8.0, 20 topics) |
+| **Next Action** | Execute Step 6.3 (technicalSpecs alignment) from USE_CASE_ANALYSIS.md |
 
 
 ---
@@ -38,6 +38,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-02-20 10:35 | **Refactor: Use Case Analysis Phase 6 Expansion + Convention Alignment** — Expanded Phase 6 from 2 to 6 sub-steps (6.1-6.6). Steps 6.3 (technicalSpecs), 6.4 (VCQ audit + use case tagging), 6.5 (RCA enrichment + use case scoping), 6.6 (gap report) planned with detailed scope and effort estimates. Aligned use case scoping convention across RCA (`useCases`) and VCQ (`useCaseRef`): VCQ build script now normalises `useCaseRef` to array in output (Schema v2). Added use case tagging stats to build output. Current: 24/1,352 questions tagged, 64/487 requirements scoped. AGENTS.md: added step completion verification rule + reinforced jq-over-python3 guidance. Retro: 3 items implemented. 1 commit: `86cae86b`. |
 | 2026-02-20 09:35 | **Feat: EUDIW FAQ Terminology Enrichment + Enter-Key Search** — Cross-referenced EUDIW FAQ with terminology database. Added 6 new terms (wallet certification, SCA Attestation, Large Scale Pilot, digital document, digital asset, Very Large Online Platform) with aliases (LSP, VLOP). Enhanced 10 existing definitions (selective disclosure, pseudonym, EAA, SCA/SUA synonym, LoA + 4 enriched multi-source entries: Wallet Solution, Wallet Unit, PID Provider, EUDIW). Terms: 374→380. Aliases: 13→18 inline. Search UX: Enter key now opens first result in search dropdown (was promised in UI hints but not wired). Retro: alias location code comment. |
 | 2026-02-20 08:57 | **Refactor: AGENTS.md Restructuring + Version Badge Feature** — Reduced AGENTS.md from 1708→783 lines (-54%), extracted 7 reference docs to `.agent/docs/` (portal-gotchas, arf-data-model, vcq-architecture, rca-reference, link-builder, conversion-guidelines, browser-testing, build-reference). Added `sidebarOrder: 1` to eSignature FAQ. Fixed EUDIW FAQ source_version 3→73, eSignature FAQ 1→12 (verified via Confluence page history). Version badge (v73/v12) now clickable link to Confluence page history. Added `history_url` field to documents.yaml schema + updated `/import-regulation` workflow with Confluence version verification step. 4 commits. |
 | 2026-02-20 08:15 | **Feat: EUDIW FAQ Internal Linking + External Links UX (DEC-292, DEC-293)** — Replaced 17 EUR-Lex links in FAQ with internal `#/regulation/{slug}` portal routes (3 URL variants: eur-lex.europa.eu/eli/, eur-lex.europa.eu/legal-content/, data.europa.eu/eli/). PSD2 (2015/2366) kept external per DEC-253. Added `useEffect` in `RegulationViewer.jsx` to set `target="_blank"` on all external links in regulation content (applies globally, not just FAQ). Added collapsible FAQ TOC grouping via `extractSectionsFromFAQ()` in `CollapsibleTOC.jsx`. Snapshot provenance badge (📸 Snapshot date + version). Added AGENTS.md Rule 2: Session Length Guard (Step 250 alert to trigger /retro before context truncation). 5 commits. |
