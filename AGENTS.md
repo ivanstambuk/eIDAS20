@@ -599,6 +599,21 @@ Do NOT mark a step as "done" when only one of its objectives is complete.
 **Correct pattern:**
 - ✅ "Step 6.4: tagging ✅ DONE, quality audit ⬜ NOT STARTED — tracker created at `.agent/session/vcq-quality-audit-tracker.md`"
 
+### 25. Human-Readable Names in Explanation Text (MANDATORY — RCA/VCQ Content)
+
+**When writing `explanation` fields in RCA requirements or VCQ questions, always use proper English names — never internal YAML keys.**
+
+| ❌ Internal key | ✅ Proper name |
+|----------------|---------------|
+| `payment-auth` | Payment Authentication |
+| `age-verification` | Age Verification |
+| `pid-online` | PID-based Online Identification |
+| `proximity-id` | Proximity Identification |
+| `esignature` | eSignature |
+| `eprescription` | ePrescription |
+
+**Why:** YAML keys like `payment-auth` are machine identifiers. The `explanation` field is read by humans (vendors, auditors). Using hyphenated internal keys makes the text look like code, not compliance guidance.
+
 ---
 
 ### `documents.yaml` — `sidebarOrder` Field
