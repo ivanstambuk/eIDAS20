@@ -607,8 +607,8 @@ original checklist was NOT performed — it is now properly scoped in Steps 6.3�
 
 ### Step 6.4 — VCQ Clarification Question Audit & Use Case Tagging ⬜ NOT STARTED
 
-> **Effort:** ~3-4 hours (largest sub-step; consider splitting across sessions)  
-> **Risk:** Medium — modifying existing VCQ questions  
+> **Effort:** ~3-4 hours (largest sub-step; split across sub-steps per file)  
+> **Risk:** Medium — modifying question wording and adding `useCaseRef` fields  
 > **Target files:** `docs-portal/config/vcq/clarification-questions/*.yaml` (5 files)
 
 **Two primary objectives:**
@@ -633,33 +633,50 @@ use case manuals were analyzed. They may be:
 
 **Scope:** Audit ALL questions across all 5 VCQ files, evaluating both quality and use case scope.
 
-**Plan — for each of the 11 use cases:**
-1. [ ] **Read** the TXT manual file + fetch the EC manual HTML page at runtime via `read_url_content`
-2. [ ] **Identify** which VCQ requirements and questions are relevant to this use case:
-   - Requirements already tagged with `useCaseRef` (currently 24 questions in core.yaml)
-   - Requirements likely relevant based on their `id`, description, or the parent requirement's scope
-3. [ ] **Cross-validate** each question against the manual content:
-   - Does the question use the correct technical terminology?
-   - Does the question reference the right protocols/formats?
-   - Is the question specific enough given what the manual reveals?
-   - Could the question be sharpened with concrete details from the manual?
-4. [ ] **Classify** each question as: `keep` | `sharpen` | `split` | `merge` | `add follow-up`
-5. [ ] **Tag use case scope** for each question:
-   - `useCaseRef: [specific-use-case-id]` — question is specific to one or more use cases
-   - No `useCaseRef` — question applies generically to all use cases
-   - A question may reference multiple use cases: `useCaseRef: [esignature, payment-auth]`
-6. [ ] **Apply** changes (wording + `useCaseRef` tags)
-7. [ ] **Rebuild** VCQ JSON after each batch
+> ⛔ **MANDATORY METHODOLOGY: MANUAL AI-DRIVEN ANALYSIS**  
+>
+> This step MUST be performed manually by the AI agent reading and semantically  
+> understanding each requirement and its questions. **The following approaches  
+> are EXPLICITLY FORBIDDEN:**  
+>
+> - ❌ Python/Node scripts that do keyword-matching or pattern-based tagging  
+> - ❌ Automated grep/regex-based use case detection  
+> - ❌ Any script that applies `useCaseRef` tags based on string matching  
+>
+> **The correct approach is:**  
+> - ✅ Read each requirement title + description to understand its semantic scope  
+> - ✅ Read each question under that requirement to understand what it probes  
+> - ✅ Apply domain knowledge (eIDAS regulation, ARF, EC manuals) to determine  
+>   whether the question is inherently about a specific use case or generic  
+> - ✅ Make tagging decisions based on understanding, not keyword presence  
+> - ✅ Sharpen question wording where manual context reveals opportunities  
+>
+> A question mentioning "mDL" as an example doesn't make it mDL-specific.  
+> A question about QSCD sole control IS esignature-specific even if it  
+> doesn't mention the word "eSignature". Semantic judgement is required.
 
-**Execution order (by VCQ file):**
+**Method — for each VCQ file (sub-step):**
+1. Read ALL requirements and questions in the file sequentially
+2. For each requirement:
+   a. **Understand** its scope from the requirement title and VEND ID
+   b. **Evaluate** whether it is inherently use-case-specific or generic
+   c. For each question under it:
+      - Determine if it applies to all use cases or specific ones
+      - Assess quality: can it be sharpened with EC manual context?
+      - Add `useCaseRef` tag if use-case-specific
+      - Improve wording if warranted
+3. After processing all requirements in the file, rebuild and validate
+4. Commit the file
 
-| VCQ File | Questions | Use Cases Covered | Priority |
-|----------|-----------|-------------------|----------|
-| `core.yaml` | 421 | All 11 (foundational wallet-provider requirements) | 🔴 High — most use-case-relevant |
-| `issuer.yaml` | 360 | mDL, DTC, EHIC, ePrescription, disability card (issuance-heavy) | 🟡 Medium |
-| `intermediary.yaml` | 292 | Payment auth, PID online (intermediation scenarios) | 🟡 Medium |
-| `trust_services.yaml` | 171 | eSignature (QES, QTSP, QSCD) | 🟡 Medium |
-| `ict.yaml` | 108 | Cross-cutting (infrastructure & security) | 🟢 Lower — less use-case-specific |
+**Execution order (by VCQ file, each is a separate sub-step):**
+
+| Sub-step | VCQ File | Reqs | Qs | Priority | Status |
+|----------|----------|------|----|----------|--------|
+| 6.4.1 | `core.yaml` | 48 | 421 | 🔴 High | ⬜ Not started |
+| 6.4.2 | `issuer.yaml` | 40 | 360 | 🟡 Medium | ⬜ Not started |
+| 6.4.3 | `intermediary.yaml` | 32 | 292 | 🟡 Medium | ⬜ Not started |
+| 6.4.4 | `trust_services.yaml` | 19 | 171 | 🟡 Medium | ⬜ Not started |
+| 6.4.5 | `ict.yaml` | 12 | 108 | 🟢 Lower | ⬜ Not started |
 
 **Constraints:**
 - Do NOT rewrite questions from scratch — sharpen existing wording with specific details
@@ -667,6 +684,7 @@ use case manuals were analyzed. They may be:
 - All changes must be backward-compatible (no ID changes)
 - Preserve the existing `dimension` classification
 - Every question must be evaluated for use case scope, even if the conclusion is "applies to all"
+- ⛔ NO automated keyword/pattern-matching scripts — manual semantic analysis ONLY
 
 ### Step 6.5 — RCA Requirement Description Enrichment & Use Case Scoping ⬜ NOT STARTED
 

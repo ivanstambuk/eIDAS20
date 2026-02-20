@@ -588,30 +588,39 @@ requirements:
       - id: Q1
         text: "Do you implement the EUDI Wallet-based Strong Customer Authentication flow as specified in ARF Technical Specification 12 (TS12)? If not yet implemented, what is your roadmap?"
         dimension: capability
+        useCaseRef: payment-auth
       - id: Q2
         text: "How do you map the PSD2 SCA elements (knowledge, possession, inherence) to the EUDI Wallet's cryptographic mechanisms? Specifically, which wallet capabilities satisfy each SCA element?"
         dimension: technical_implementation
+        useCaseRef: payment-auth
       - id: Q3
         text: "How do you achieve dynamic linking of the authentication to a specific transaction amount and payee (PSD2 RTS Art 5)? Is the transaction detail included in the signed wallet presentation, or is a separate binding mechanism used?"
         dimension: technical_implementation
+        useCaseRef: payment-auth
       - id: Q4
         text: "How do you ensure independence of SCA elements (PSD2 RTS Art 9) — that compromise of one element does not reveal another? Does the WSCD-backed key architecture provide sufficient hardware separation for your implementation?"
         dimension: security
+        useCaseRef: payment-auth
       - id: Q5
         text: "Which SCA exemptions do you support (low-value transactions under Art 16, recurring transactions under Art 14, trusted beneficiaries under Art 13)? How is exemption eligibility determined and documented per transaction?"
         dimension: compliance_completeness
+        useCaseRef: payment-auth
       - id: Q6
         text: "Which payment scenarios does your TS12 implementation cover: in-store (proximity), online card-not-present, account-to-account, or all three? Are there any payment scenarios you explicitly do not support?"
         dimension: capability
+        useCaseRef: payment-auth
       - id: Q7
         text: "What integration is required with the organization's existing payment infrastructure (PSP acquirer, card scheme, payment gateway)? Do you support the standard TS5 (OpenID4VP) flow extended for payment context, or a separate protocol?"
         dimension: interoperability
+        useCaseRef: payment-auth
       - id: Q8
         text: "What transaction monitoring and fraud detection mechanisms are in place to detect and prevent manipulation of the payment authentication flow? Does this include velocity checks, anomaly detection, or device fingerprinting?"
         dimension: security
+        useCaseRef: payment-auth
       - id: Q9
         text: "Have you obtained or are you pursuing PSD2 SCA certification or attestation? Have you been tested by any NCA (national competent authority) for SCA compliance in a wallet context?"
         dimension: compliance_evidence
+        useCaseRef: payment-auth
       # --- Use-case enrichment: Payment Authentication (EC Manual) ---
       - id: Q10
         text: "Do you support the SD-JWT VC credential format for SCA Attestations as specified in TS12? The EC Payment Authentication manual specifies SD-JWT-VC as the primary format for payment attestations with OID4VP as the presentation protocol. How do you handle the KB-JWT (Key Binding JWT) for payment-specific proof of possession?"
@@ -628,7 +637,7 @@ requirements:
       - id: Q13
         text: "For in-store (proximity) payment authentication: how do you integrate the ISO/IEC 18013-5 proximity presentation flow with payment terminal infrastructure (POS/mPOS)? The EC manual specifies synergy between age verification and payment authentication at point-of-sale — can your product combine SCA with age verification in a single proximity transaction?"
         dimension: interoperability
-        useCaseRef: payment-auth
+        useCaseRef: [payment-auth, age-verification]
 
   # ============================================================================
   # VEND-CORE-020: OpenID4VCI for Attestation Issuance (TS6)
@@ -875,30 +884,39 @@ requirements:
       - id: Q1
         text: "Do you support remote qualified electronic signature (QES) and/or qualified electronic seal (QESeal) creation via EUDI Wallet as specified in Technical Specification 8 (TS8)? Specify which signing types you support and whether the protocol is fully implemented or partially."
         dimension: capability
+        useCaseRef: esignature
       - id: Q2
         text: "How do you ensure sole control of the signatory over the remote signing process? Describe the Sole Control Interface (SCI) architecture — how does the wallet authorise each signing operation, and what multi-factor authentication is required?"
         dimension: security
+        useCaseRef: esignature
       - id: Q3
         text: "Are signing keys generated and stored exclusively in certified QSCDs (HSMs meeting Art 29(1) eIDAS requirements)? Provide the certification details and standards met (e.g., EN 419 241-2, Common Criteria EAL4+)."
         dimension: compliance_evidence
+        useCaseRef: esignature
       - id: Q4
         text: "How is the What You See Is What You Sign (WYSIWYS) principle implemented? Who renders the document — the wallet, the SSA, or both? How do you prevent tampering between the displayed document and the signed document?"
         dimension: user_experience
+        useCaseRef: esignature
       - id: Q5
         text: "What document and signature formats do you support? Cover at minimum PAdES (PDF), XAdES (XML), CAdES (binary), and JAdES (JSON). Which signature levels are supported (B-B, B-T, B-LT, B-LTA)?"
         dimension: interoperability
+        useCaseRef: esignature
       - id: Q6
         text: "How do you handle batch and automated signing scenarios while maintaining sole control per Art 26(1)(c)? Is per-document consent required, or can the user authorise a batch? What is the maximum batch size?"
         dimension: flexibility
+        useCaseRef: esignature
       - id: Q7
         text: "How is the link between the signing key and the user's identity established? Is the user's PID from the wallet used for this purpose, and if so, how is the PID verified before key binding?"
         dimension: technical_implementation
+        useCaseRef: esignature
       - id: Q8
         text: "Is your Server Signing Application (SSA) independently certified as part of a QSCD? Provide certification body, certificate ID, and validity period. How does recertification work when the SSA is updated?"
         dimension: compliance_evidence
+        useCaseRef: esignature
       - id: Q9
         text: "What audit trail is generated for each signing operation? Does the trail include the signatory's identity (pseudonymised), the document hash, the signing timestamp, and the authorisation mechanism used?"
         dimension: auditability
+        useCaseRef: esignature
       # --- Use-case enrichment: eSignature (EC Manual) ---
       - id: Q10
         text: "The EC eSignature manual defines two distinct user journeys: (a) a simplified wallet-driven flow where the user initiates signing from within the wallet itself, and (b) a relying-party-driven flow via a web portal where the QTSP's signing service is triggered externally. Which of these paths does your product support, and can the RP customer configure which flow is offered to end users?"
@@ -1286,30 +1304,39 @@ requirements:
       - id: Q1
         text: "Do you support proximity identification flows (BLE/NFC) for local credential presentation? If so, in which scenarios (border control, age verification, point-of-sale, in-branch)? Is proximity flow support a standard feature or an add-on module?"
         dimension: capability
+        useCaseRef: proximity-id
       - id: Q2
         text: "Per EW-PIO-24-002, RP Instances supporting proximity flows SHALL support device retrieval as specified in ISO/IEC 18013-5. Which specific transports do you implement — BLE (mandatory), NFC (optional), or both? Which device engagement methods are supported (QR code, NFC tap)?"
         dimension: technical_implementation
+        useCaseRef: proximity-id
       - id: Q3
         text: "What hardware is required at the Relying Party location for proximity flows? Do you provide or certify specific reader devices, or is the proximity flow software-only running on standard mobile devices or tablets?"
         dimension: operational
+        useCaseRef: proximity-id
       - id: Q4
         text: "How do proximity flows operate without internet connectivity? Specifically, how do you handle trust anchor verification and revocation checking when the reader device is offline? Do you pre-load issuer trust anchors and cache revocation status lists (connecting to VEND-CORE-039)?"
         dimension: technical_implementation
+        useCaseRef: proximity-id
       - id: Q5
         text: "What is the effective range and reliability of the proximity communication? For BLE: what is the maximum range, and how do you handle interference in crowded environments (airports, concert venues)? For NFC: what reader positioning requirements exist?"
         dimension: sla
+        useCaseRef: proximity-id
       - id: Q6
         text: "How is security maintained in the proximity flow? Do you implement the full ISO/IEC 18013-5 security model (HKDF key derivation, AES-256-GCM encryption, ECDSA device authentication)? How do you prevent relay attacks where an attacker forwards the BLE signal?"
         dimension: security
+        useCaseRef: proximity-id
       - id: Q7
         text: "Can proximity and remote flows coexist in the same RP Instance, or are they separate deployments? If coexistent, how does the RP Instance determine which flow to use for a given transaction?"
         dimension: architecture
+        useCaseRef: proximity-id
       - id: Q8
         text: "How do you handle the user consent flow in proximity scenarios? Is the consent displayed on the user's wallet device, and how do you handle scenarios where the user walks away before completing the flow (physical timeout)?"
         dimension: user_experience
+        useCaseRef: proximity-id
       - id: Q9
         text: "For intermediary deployments: can an intermediary's reader device perform proximity identification on behalf of the intermediated RP? How is the intermediary/RP distinction communicated to the wallet in the proximity flow?"
         dimension: architecture
+        useCaseRef: proximity-id
       # --- Use-case enrichment: Proximity ID (EC Manual) ---
       - id: Q10
         text: "The ARF defines two distinct proximity verification modes: supervised (where a human operator oversees the verification, e.g., border control, police checkpoint) and unsupervised (self-service terminal, turnstile, vending machine). Which modes does your product support? For supervised flows, do you provide an operator interface that displays verification results and flags anomalies?"
