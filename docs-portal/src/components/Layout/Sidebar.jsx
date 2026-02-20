@@ -205,6 +205,7 @@ const Sidebar = ({ isOpen, isCollapsed, onClose }) => {
                     // Filter for supplementary categories (DEC-093)
                     const supplementary = data
                         .filter(doc => doc.category === 'referenced' || doc.category === 'supplementary')
+                        .sort((a, b) => (a.configOrder ?? 999) - (b.configOrder ?? 999))
                         .map(doc => ({
                             name: doc.sidebarTitle || doc.shortTitle,  // Prefer sidebarTitle for cleaner nav
                             path: `/regulation/${doc.slug}`,

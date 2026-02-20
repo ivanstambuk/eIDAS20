@@ -451,6 +451,27 @@ function getDocumentTypingFromConfig(dirName) {
 }
 
 /**
+ * Get document order from documents.yaml position.
+ * 
+ * Returns the 0-based index of the document in documents.yaml,
+ * used for sidebar ordering to respect the YAML-defined sequence.
+ * 
+ * @param {string} dirName - Directory name
+ * @returns {number} - Position in documents.yaml, or 999 if not found
+ */
+function getConfigOrder(dirName) {
+    const config = loadDocumentsConfig();
+    if (!config?.documents) return 999;
+
+    const idx = config.documents.findIndex(d =>
+        (d.output_dir && d.output_dir.endsWith(dirName)) ||
+        (d.id && (d.id === dirName || dirName.includes(d.id.replace(/-/g, '_'))))
+    );
+
+    return idx >= 0 ? idx : 999;
+}
+
+/**
  * Preamble Injection Configuration
  * 
  * The consolidated eIDAS regulation (910/2014) from EUR-Lex doesn't include a preamble.
@@ -1159,7 +1180,9 @@ function processMarkdownFile(filePath, dirName, type) {
         wordCount: content.split(/\s+/).length,  // Use processed content for accurate count
         lastProcessed: new Date().toISOString(),
         // Track preamble injection for debugging
-        preambleInjected
+        preambleInjected,
+        // Position in documents.yaml for sidebar ordering
+        configOrder: getConfigOrder(dirName)
     };
 
     return regulationData;
@@ -1482,7 +1505,8 @@ function build() {
         celex: reg.celex,
         date: reg.date,
         wordCount: reg.wordCount,
-        tocCount: reg.toc.length
+        tocCount: reg.toc.length,
+        configOrder: reg.configOrder ?? 999  // Position in documents.yaml for sidebar ordering
     }));
 
     // Sort index: regulations first, then implementing acts by date
