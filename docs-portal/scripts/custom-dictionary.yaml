@@ -734,6 +734,37 @@ terms:
     source: ARF Annex 1, Section A.4
     note: Technical component of RP infrastructure
 
+  - term: European Business Wallet
+    aliases:
+      - EBW
+    definition: >-
+      A digital wallet for legal persons — companies, SMEs, sole traders,
+      self-employed professionals, and public sector bodies — proposed by
+      the European Commission under COM(2025) 838 as a dedicated regulation
+      complementing the EUDI Wallet. The European Business Wallet (EBW)
+      provides economic operators with a single, trusted digital identity
+      recognised across all 27 Member States, enabling secure authentication
+      and credential exchange in B2B, B2G, G2G, and B2C interactions with
+      full legal effect. The ARF (v2.8.0, Topic 28) explicitly descoped
+      wallet units for legal persons from the current EUDI Wallet framework,
+      noting that this functionality has been deferred "in view of the
+      development of a separate business wallet." The EBW shares the same
+      trust infrastructure as the EUDI Wallet — Trusted Lists, Access
+      Certificate Authorities, Registrars, and Wallet Unit Attestation
+      framework (CIR 2024/2980) — and is designed to interoperate with it.
+      Key use cases include verified business identity, digital credential
+      exchange (licences, certificates, registrations), and integration
+      with the Single Digital Gateway (SDG) and Once-Only Technical System
+      (OOTS). Public authorities will be mandated to accept the EBW; use
+      is optional for businesses. EU-wide acceptance is projected for
+      2028–2029, subject to the ordinary legislative procedure.
+    source: COM(2025) 838; ARF Topic 28 (VCR_08 note); eIDAS Recital 12
+    note: >-
+      Legal basis: Article 114 TFEU. Published 18-19 Nov 2025. Currently in
+      preparatory phase (EP committee assignment pending). Estimated EUR 150
+      billion annual savings cited by Commission. See legal-person-differentiation.md
+      §8 for detailed analysis.
+
   # ═══════════════════════════════════════════════════════════════════════════
   # Privacy & Security Concepts
   # ═══════════════════════════════════════════════════════════════════════════

@@ -1,9 +1,9 @@
 {
   "version": "2.0",
-  "generated": "2026-02-20T11:43:21.157Z",
+  "generated": "2026-02-20T15:17:14.857Z",
   "statistics": {
-    "totalTerms": 399,
-    "totalDefinitions": 565,
+    "totalTerms": 400,
+    "totalDefinitions": 566,
     "sources": {
       "regulations": 252,
       "implementingActs": 143,
@@ -275,6 +275,7 @@
       "entity-providing-domain-name-registration-services",
       "esignature",
       "eu-digital-identity-wallet-trust-mark",
+      "european-business-wallet",
       "european-cybersecurity-certificate",
       "european-cybersecurity-certification-scheme",
       "european-digital-identity-cooperation-group",
@@ -6608,6 +6609,49 @@
       "domains": [
         "wallet_ecosystem",
         "governance"
+      ]
+    },
+    {
+      "id": "european-business-wallet",
+      "term": "European Business Wallet",
+      "sources": [
+        {
+          "definition": "A digital wallet for legal persons — companies, SMEs, sole traders, self-employed professionals, and public sector bodies — proposed by the European Commission under COM(2025) 838 as a dedicated regulation complementing the EUDI Wallet. The European Business Wallet (EBW) provides economic operators with a single, trusted digital identity recognised across all 27 Member States, enabling secure authentication and credential exchange in B2B, B2G, G2G, and B2C interactions with full legal effect. The ARF (v2.8.0, Topic 28) explicitly descoped wallet units for legal persons from the current EUDI Wallet framework, noting that this functionality has been deferred \"in view of the development of a separate business wallet.\" The EBW shares the same trust infrastructure as the EUDI Wallet — Trusted Lists, Access Certificate Authorities, Registrars, and Wallet Unit Attestation framework (CIR 2024/2980) — and is designed to interoperate with it. Key use cases include verified business identity, digital credential exchange (licences, certificates, registrations), and integration with the Single Digital Gateway (SDG) and Once-Only Technical System (OOTS). Public authorities will be mandated to accept the EBW; use is optional for businesses. EU-wide acceptance is projected for 2028–2029, subject to the ordinary legislative procedure.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-COM(2025) 838; ARF Topic 28 (VCR_08 note); eIDAS Recital 12",
+          "articleNumber": "COM(2025) 838; ARF Topic 28 (VCR_08 note); eIDAS Recital 12",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-COM(2025) 838; ARF Topic 28 (VCR_08 note); eIDAS Recital 12",
+      "definitionGroups": [
+        {
+          "definition": "A digital wallet for legal persons — companies, SMEs, sole traders, self-employed professionals, and public sector bodies — proposed by the European Commission under COM(2025) 838 as a dedicated regulation complementing the EUDI Wallet. The European Business Wallet (EBW) provides economic operators with a single, trusted digital identity recognised across all 27 Member States, enabling secure authentication and credential exchange in B2B, B2G, G2G, and B2C interactions with full legal effect. The ARF (v2.8.0, Topic 28) explicitly descoped wallet units for legal persons from the current EUDI Wallet framework, noting that this functionality has been deferred \"in view of the development of a separate business wallet.\" The EBW shares the same trust infrastructure as the EUDI Wallet — Trusted Lists, Access Certificate Authorities, Registrars, and Wallet Unit Attestation framework (CIR 2024/2980) — and is designed to interoperate with it. Key use cases include verified business identity, digital credential exchange (licences, certificates, registrations), and integration with the Single Digital Gateway (SDG) and Once-Only Technical System (OOTS). Public authorities will be mandated to accept the EBW; use is optional for businesses. EU-wide acceptance is projected for 2028–2029, subject to the ordinary legislative procedure.",
+          "sources": [
+            {
+              "definition": "A digital wallet for legal persons — companies, SMEs, sole traders, self-employed professionals, and public sector bodies — proposed by the European Commission under COM(2025) 838 as a dedicated regulation complementing the EUDI Wallet. The European Business Wallet (EBW) provides economic operators with a single, trusted digital identity recognised across all 27 Member States, enabling secure authentication and credential exchange in B2B, B2G, G2G, and B2C interactions with full legal effect. The ARF (v2.8.0, Topic 28) explicitly descoped wallet units for legal persons from the current EUDI Wallet framework, noting that this functionality has been deferred \"in view of the development of a separate business wallet.\" The EBW shares the same trust infrastructure as the EUDI Wallet — Trusted Lists, Access Certificate Authorities, Registrars, and Wallet Unit Attestation framework (CIR 2024/2980) — and is designed to interoperate with it. Key use cases include verified business identity, digital credential exchange (licences, certificates, registrations), and integration with the Single Digital Gateway (SDG) and Once-Only Technical System (OOTS). Public authorities will be mandated to accept the EBW; use is optional for businesses. EU-wide acceptance is projected for 2028–2029, subject to the ordinary legislative procedure.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-COM(2025) 838; ARF Topic 28 (VCR_08 note); eIDAS Recital 12",
+              "articleNumber": "COM(2025) 838; ARF Topic 28 (VCR_08 note); eIDAS Recital 12",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": [],
+      "aliases": [
+        "EBW"
       ]
     },
     {
