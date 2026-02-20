@@ -294,14 +294,14 @@ Problems:
 **Example output:**
 
 *Desktop:*
-> ...rely on the work carried out under <u>Commission Recommendation (EU) 2021/946</u>...
+> ...rely on the work carried out under <u>Commission Recommendation (EU) 2021/946</u>...  
 > [Popover on hover: Title, Date, OJ ref, "View on EUR-Lex →"]
 
 *Mobile:*
-> ...rely on the work carried out under Recommendation 2021/946<sup>1</sup>...
+> ...rely on the work carried out under Recommendation 2021/946<sup>1</sup>...  
 > 
-> ---
-> **References**
+> ---  
+> **References**  
 > 1. [Commission Recommendation (EU) 2021/946](https://eur-lex.europa.eu/...) 🔗
 
 *Internal link (we have the document):*
@@ -2871,3 +2871,83 @@ The portal's VCQ configuration files reference HLRs by their Old IDs (in `hlr:` 
 
 **Related Decisions:**
 - DEC-290: ARF v2.8.0 Upgrade (companion decision)
+
+---
+
+## DEC-292: FAQ Internal Portal Linking
+
+**Date:** 2026-02-20
+**Status:** Implemented
+**Category:** Content / Navigation
+
+**Context:**
+
+The EUDIW FAQ (`ec_eudiw_faq.md`) contained 17 external links to EUR-Lex pages for implementing acts that are already imported into the portal. Clicking these links navigated away from the portal, breaking the user's workflow.
+
+**Decision:** Replace EUR-Lex links with internal `#/regulation/{slug}` hash routes in the markdown source.
+
+**Approach: Source-Level Replacement**
+
+Links are replaced directly in the markdown file rather than via build-time rewriting. This was chosen because:
+
+1. **Simplicity** — No build script changes needed
+2. **Transparency** — The markdown source shows exactly where each link goes
+3. **Selective** — Only links to imported regulations are replaced; PSD2 (2015/2366) stays external since it's not in the portal (DEC-253)
+
+**URL Pattern Mapping:**
+
+| EUR-Lex Pattern | Portal Route |
+|-----------------|-------------|
+| `eur-lex.europa.eu/eli/reg_impl/2024/2979/oj` | `#/regulation/2024-2979` |
+| `eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202402979` | `#/regulation/2024-2979` |
+| `data.europa.eu/eli/reg_impl/2025/848/oj` | `#/regulation/2025-0848` |
+
+**⚠️ Three URL variants exist for EUR-Lex links:** `eur-lex.europa.eu/eli/`, `eur-lex.europa.eu/legal-content/`, and `data.europa.eu/eli/`. When grepping for external links, check all three patterns.
+
+**Files Changed:**
+
+| File | Change |
+|------|--------|
+| `01_regulation/ec_eudiw_faq/ec_eudiw_faq.md` | 17 links replaced with portal routes |
+
+**Related Decisions:**
+- DEC-092: FAQ Import (original import)
+- DEC-253: Do Not Import PSD2 (why PSD2 link stays external)
+
+---
+
+## DEC-293: External Links Open in New Tab
+
+**Date:** 2026-02-20
+**Status:** Implemented
+**Category:** UI / Navigation
+
+**Context:**
+
+After internal linking (DEC-292), remaining external links (EUR-Lex, EC websites, GitHub) in regulation content opened in the same tab, navigating users away from the portal. The standard UX expectation is that external links open in new tabs.
+
+**Decision:** Add a post-render `useEffect` in `RegulationViewer.jsx` that sets `target="_blank"` and `rel="noopener noreferrer"` on all `http://` and `https://` links within `.regulation-content`.
+
+**Why useEffect DOM manipulation (not build-time):**
+
+1. **Content is rendered via `dangerouslySetInnerHTML`** — React doesn't process link attributes in injected HTML
+2. **Universal** — Applies to all regulation pages, not just pages with manually-edited markdown
+3. **No build pipeline change** — Adding `target="_blank"` in the markdown-to-HTML build would require modifying the Markdown processor
+
+**Scope:**
+
+| Link Type | Behavior |
+|-----------|----------|
+| `http://` or `https://` | Opens in new tab (`target="_blank"`) |
+| `#/regulation/...` | SPA navigation (same tab) |
+| `#article-...` | In-page scroll (same tab) |
+
+**Files Changed:**
+
+| File | Change |
+|------|--------|
+| `docs-portal/src/pages/RegulationViewer.jsx` | Added `useEffect` for external link attributes |
+
+**Related Decisions:**
+- DEC-292: FAQ Internal Portal Linking (companion)
+

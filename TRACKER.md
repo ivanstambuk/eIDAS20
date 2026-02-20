@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-02-11 00:04 CET |
-| **Version** | V4.1.1 |
-| **Portal Stats** | 44 docs, 391K words, 363 terms, 2,384 article links, 487 RCA reqs, 153 VCQ reqs (1,323 clarification Qs), 510 ARF HLRs (v2.8.0, 20 topics) |
+| **Last Updated** | 2026-02-20 08:15 CET |
+| **Version** | V4.1.2 |
+| **Portal Stats** | 45 docs, 397K words, 363 terms, 2,397 article links, 487 RCA reqs, 153 VCQ reqs (1,323 clarification Qs), 510 ARF HLRs (v2.8.0, 20 topics) |
 | **Next Action** | *(No active plan — ready for next task)* |
 
 
@@ -38,6 +38,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-02-20 08:15 | **Feat: EUDIW FAQ Internal Linking + External Links UX (DEC-292, DEC-293)** — Replaced 17 EUR-Lex links in FAQ with internal `#/regulation/{slug}` portal routes (3 URL variants: eur-lex.europa.eu/eli/, eur-lex.europa.eu/legal-content/, data.europa.eu/eli/). PSD2 (2015/2366) kept external per DEC-253. Added `useEffect` in `RegulationViewer.jsx` to set `target="_blank"` on all external links in regulation content (applies globally, not just FAQ). Added collapsible FAQ TOC grouping via `extractSectionsFromFAQ()` in `CollapsibleTOC.jsx`. Snapshot provenance badge (📸 Snapshot date + version). Added AGENTS.md Rule 2: Session Length Guard (Step 250 alert to trigger /retro before context truncation). 5 commits. |
 | 2026-02-11 00:00 | **UI: Home Page Compliance Tools Redesign** — Replaced oversized full-width "Open RCA Tool" button with twin side-by-side ToolCard components for RCA (487 reqs, cyan shield icon) and VCQ (153 reqs, green clipboard icon). Cards use left-accent border, icon containers with `color-mix()` backgrounds, requirement count pill badges, and arrow indicators. New `ToolCard` component with `card-glow` hover effect. Added VCQ data fetching (`vcq-data.json`). Matches existing Quick Links card design language. Section renamed "Compliance Assessment" → "Compliance Tools". |
 | 2026-02-10 23:45 | **Review: ARF Standards Catalogue & Legal Sources** — Deep analysis of STS vs ARF repositories: STS repo is canonical source for TS01–TS14, ARF repo contains only stub redirects. Fixed 5 broken `-private` TS12 links in `arf-hlr.json` (commit `2820a42c`). Investigated CIR 2025/1567 and 2025/2164 — confirmed both already fully imported. Deep dive on ETSI TS 119 411-8 (ACA certificate policy) and TS 119 475 (RP attributes for certificates): concluded both are already covered operationally by existing VCQ requirements (VEND-CORE-005, -029, -041); adding as tracked specs would improve traceability but reveals no functional gaps. Retro: added Legal Source Data Pipeline Map + External Reference Repositories to AGENTS.md, scope clarification to `legal-sources.yaml` header, 3 terms (ACA, STS Repo, ARF Repo) to TERMINOLOGY.md. 2 commits: `2820a42c`, `84132108`. |
 | 2026-02-10 21:30 | **Feat: ARF v2.8.0 Upgrade — Phase 0+1** — Created feature branch `feat/arf-280-upgrade` + `pre-arf-280` tag. Imported all v2.8.0 source files from golden clone at `/tmp/arf_v280/`: CSV (656 rows), annexes, main doc, media (figures renumbered 6→7, 7→8, etc., new Fig 6 Wallet Provider statechart), discussion topics (5 files), technical specs (README + TS2). Fixed `arf-config.yaml`: added Topics 38 (Wallet Unit Revocation), 53 (ZKP), 56 (Wallet Provider Support) to `relevantTopics`; updated Topic 9 anchor (`wallet-unit-attestation` → `wallet-unit-attestation-and-wallet-instance-attestation`); added `topicAnchors` for 38/53/56. Re-ran both ARF imports: `import-arf.js` (510 HLRs, 20 topics) + `import-arf-hlr.js` (572 requirements). |
