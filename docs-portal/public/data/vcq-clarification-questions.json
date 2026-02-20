@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-20T10:27:26.303Z",
+  "generatedAt": "2026-02-20T10:30:57.364Z",
   "schemaVersion": 2,
   "stats": {
     "totalRequirements": 151,
@@ -4714,12 +4714,12 @@
       },
       {
         "id": "Q5",
-        "text": "Which wallet implementations have you tested format compatibility with (e.g., EUDI reference wallet, Apple, Google, third-party)? Have you participated in plugfest events?",
+        "text": "Which wallet implementations have you tested dual-format issuance compatibility with (e.g., EUDI reference wallet, Apple, Google, third-party national wallets)? Provide a compatibility matrix showing which wallets successfully accepted each format.",
         "dimension": "interoperability"
       },
       {
         "id": "Q6",
-        "text": "Have you participated in EUDI Wallet plugfest or interoperability testing events? What were the results for dual-format issuance?",
+        "text": "Have you participated in EU-organised EUDI Wallet plugfest or interoperability testing events specifically for dual-format issuance? Provide the test results, including any format-specific interoperability issues discovered and their resolution status.",
         "dimension": "compliance_evidence"
       },
       {
@@ -4897,7 +4897,7 @@
       },
       {
         "id": "Q4",
-        "text": "Do you support FIDO2/WebAuthn for authentication during identity verification flows? Is this used as a second factor or primary?  ",
+        "text": "Do you support FIDO2/WebAuthn for authentication during identity verification flows? Is this used as a second factor or primary authenticator?",
         "dimension": "capability"
       },
       {
@@ -5075,7 +5075,7 @@
       },
       {
         "id": "Q2",
-        "text": "What status list formats do you support — IETF Token Status List, compressed bitstring lists, identifier-based revocation lists? Are all formats published simultaneously?",
+        "text": "What status list formats do you support — IETF Token Status List (draft-ietf-oauth-status-list), compressed bitstring lists, identifier-based revocation lists? Are all formats published simultaneously?",
         "dimension": "technical_implementation"
       },
       {
@@ -5263,7 +5263,7 @@
       },
       {
         "id": "Q2",
-        "text": "What certification level do your cryptographic modules have — FIPS 140-2/3 Level 3, Common Criteria EAL4+ with AVA_VAN.5, or both? Can certificates be provided upon request?",
+        "text": "What certification level do your cryptographic modules have — FIPS 140-2/3 Level 3, Common Criteria EAL4+ with AVA_VAN.5, or EN 419 221-5 (for cloud HSM)? Can certificates be provided upon request?",
         "dimension": "compliance_evidence"
       },
       {
@@ -5320,7 +5320,7 @@
       },
       {
         "id": "Q4",
-        "text": "Is Post-Quantum Cryptography (PQC) on your roadmap? Which NIST PQC algorithms are you evaluating (ML-DSA, SLH-DSA)? Do you plan to support hybrid classical+PQC signatures?",
+        "text": "Is Post-Quantum Cryptography (PQC) on your roadmap? Which NIST PQC standards are you evaluating — ML-DSA (FIPS 204), SLH-DSA (FIPS 205), or ML-KEM (FIPS 203) for key encapsulation? Do you plan to support hybrid classical+PQC signatures during the transition period?",
         "dimension": "roadmap"
       },
       {
@@ -5540,7 +5540,7 @@
     "VEND-ISS-023": [
       {
         "id": "Q1",
-        "text": "How do you ensure attestations do not contain overt or hidden tracking identifiers — do you perform automated privacy reviews of attestation structures before deployment?",
+        "text": "How do you ensure attestations do not contain overt or hidden tracking identifiers — do you perform automated privacy impact assessments of attestation structures before deployment, covering all fields visible to RPs (including status list indexes, serial numbers, timestamps, and format-specific identifiers)?",
         "dimension": "privacy"
       },
       {
@@ -5580,14 +5580,14 @@
       },
       {
         "id": "Q9",
-        "text": "Do you support or plan to support unlinkable proof mechanisms (e.g., ZKP-based selective disclosure, BBS+ signatures) for advanced anti-tracking scenarios?",
+        "text": "Do you support or plan to support unlinkable proof mechanisms (e.g., ZKP-based selective disclosure, BBS+ signatures per draft-irtf-cfrg-bbs-signatures) for advanced anti-tracking scenarios? What is your implementation roadmap?",
         "dimension": "roadmap"
       }
     ],
     "VEND-ISS-024": [
       {
         "id": "Q1",
-        "text": "Are attestations issued through your platform verifiable and recognisable in all 27 EU Member States? Have you tested cross-border verification with wallets and RPs from at least 3 different Member States?",
+        "text": "Are attestations issued through your platform verifiable and recognisable in all 27 EU Member States plus EEA countries? Have you tested cross-border verification with wallets and RPs from at least 3 different Member States? Provide specific country pairs tested.",
         "dimension": "capability"
       },
       {
@@ -5634,7 +5634,7 @@
     "VEND-ISS-026": [
       {
         "id": "Q1",
-        "text": "Do you support Person Identification Data (PID) issuance fully compliant with the PID Rulebook (EW-DM-03-01)? Can you demonstrate compliance with all mandatory attribute requirements?",
+        "text": "Do you support Person Identification Data (PID) issuance fully compliant with the PID Rulebook (EW-DM-03-01 through EW-DM-03-21)? Can you demonstrate compliance with all mandatory attribute requirements? The EC PID-online manual specifies PID as the foundational attestation for cross-border identification — how do you ensure your PID issuance meets the requirements for both online (OID4VP) and proximity (ISO 18013-5) presentation?",
         "dimension": "capability"
       },
       {
@@ -5674,7 +5674,7 @@
       },
       {
         "id": "Q9",
-        "text": "How do you ensure semantic equivalence between the mDoc and SD-JWT-VC encodings of the same PID — are both formats generated from a single canonical source?",
+        "text": "How do you ensure semantic equivalence between the mDoc and SD-JWT-VC encodings of the same PID — are both formats generated from a single canonical source? Per the EC PID-online manual, both formats must be supported for all PID use cases (online and proximity).",
         "dimension": "interoperability"
       }
     ],
@@ -6198,7 +6198,7 @@
     "VEND-ISS-038": [
       {
         "id": "Q1",
-        "text": "How do you ensure personal data collected during EAA provision is NOT combined with data from other services — per Article 45h(1), this prohibition is absolute with no consent-based exception.",
+        "text": "How do you ensure personal data collected during EAA provision is NOT combined with data from other services — per Article 45h(1) eIDAS 2.0, this prohibition is absolute with no consent-based exception. What technical architecture enforces this (separate databases, separate compute, API gating, network segmentation)?",
         "dimension": "architecture"
       },
       {
@@ -6245,7 +6245,7 @@
     "VEND-ISS-039": [
       {
         "id": "Q1",
-        "text": "How do you implement logical separation of EAA-related personal data from other data — separate database instances, separate schemas, logical partitioning, or data tagging?",
+        "text": "How do you implement logical separation of EAA-related personal data from other data per Article 45h(2) — separate database instances, separate schemas, logical partitioning with access controls, or data tagging with enforcement?",
         "dimension": "architecture"
       },
       {
@@ -6292,7 +6292,7 @@
     "VEND-ISS-040": [
       {
         "id": "Q1",
-        "text": "If offering QEAA services, how do you implement functional separation from other services per Article 45h(3) — organisational boundaries, technical infrastructure, governance structures?",
+        "text": "If offering QEAA services, how do you implement functional separation from other services per Article 45h(3) eIDAS 2.0 — organisational boundaries, dedicated technical infrastructure, independent governance structures? Does your architecture support full functional separation or compensating controls where full separation is impractical?",
         "dimension": "architecture"
       },
       {
@@ -6339,7 +6339,7 @@
     "VEND-ISS-041": [
       {
         "id": "Q1",
-        "text": "Do you monitor the revocation status of Wallet Unit Attestations (WUAs) received during issuance for all active credentials? Per AS-WP-38-018, PID Providers SHALL regularly verify whether the Wallet Unit has been revoked — describe your monitoring mechanism (polling status lists, webhook notifications, or other).",
+        "text": "Do you monitor the revocation status of Wallet Unit Attestations (WUAs) received during issuance for all active credentials? Per AS-WP-38-018, PID Providers SHALL regularly verify whether the Wallet Unit has been revoked — describe your monitoring mechanism (polling status lists, webhook notifications from Wallet Providers, or other). What is the polling frequency and worst-case detection latency?",
         "dimension": "capability"
       },
       {

@@ -2,7 +2,7 @@
 
 > **Parent step:** Step 6.4 in `USE_CASE_ANALYSIS.md`  
 > **Created:** 2026-02-20  
-> **Status:** 🔄 IN PROGRESS (1/5 files complete)
+> **Status:** 🔄 IN PROGRESS (2/5 files complete)
 
 ## Context
 
@@ -26,7 +26,7 @@ Audit ALL 1,352 questions across 5 files for quality improvements.
 | File | Reqs | Qs | Quality Audit Status |
 |------|------|----|---------------------|
 | `config/vcq/clarification-questions/core.yaml` | 48 | 421 | ✅ Complete |
-| `config/vcq/clarification-questions/issuer.yaml` | 40 | 360 | ⬜ Not started |
+| `config/vcq/clarification-questions/issuer.yaml` | 40 | 360 | ✅ Complete |
 | `config/vcq/clarification-questions/intermediary.yaml` | 32 | 292 | ⬜ Not started |
 | `config/vcq/clarification-questions/trust_services.yaml` | 19 | 171 | ⬜ Not started |
 | `config/vcq/clarification-questions/ict.yaml` | 12 | 108 | ⬜ Not started |
@@ -51,7 +51,8 @@ Audit ALL 1,352 questions across 5 files for quality improvements.
 
 | Date | File | Changes | Commit |
 |------|------|---------|--------|
-| 2026-02-20 | `core.yaml` | Quality audit complete: 20 questions sharpened across 15 requirements. Critical fix: VEND-CORE-001 Q5 was duplicate of Q1 (rewrote as proper supply_chain question). Added specific article/ARF references (Art 5b(10), AS-RP-51-011, IR 2025/848 Arts 5–9). Enriched with EC manual terminology (TS12 issuer-requested/third-party-requested flows, TS8 wallet-driven/RP-driven paths, EMV 3-D Secure/SEPA rail names). Fixed British English consistency. No IDs/dimensions changed. | pending |
+| 2026-02-20 | `core.yaml` | Quality audit complete: 20 questions sharpened across 15 requirements. Critical fix: VEND-CORE-001 Q5 was duplicate of Q1 (rewrote as proper supply_chain question). Added specific article/ARF references (Art 5b(10), AS-RP-51-011, IR 2025/848 Arts 5–9). Enriched with EC manual terminology (TS12 issuer-requested/third-party-requested flows, TS8 wallet-driven/RP-driven paths, EMV 3-D Secure/SEPA rail names). Fixed British English consistency. No IDs/dimensions changed. | f676d176 |
+| 2026-02-20 | `issuer.yaml` | Quality audit complete: 15 questions sharpened across 12 requirements. Fixed corrupted header text ('implementatioarchitecturen'). Resolved Q5/Q6 overlap in ISS-005 (specialised Q5 to compatibility matrix, Q6 to plugfest evidence). Fixed ISS-009 Q4 trailing whitespace. Added specific references: IETF draft-ietf-oauth-status-list, NIST FIPS 204/205, EN 419 221-5, BBS+ draft-irtf-cfrg-bbs-signatures, Article 45h paragraph numbers (1/2/3). Added EC PID-online manual context to ISS-026 PID Rulebook questions. No IDs/dimensions changed. | pending |
 
 ## core.yaml Audit Summary
 
