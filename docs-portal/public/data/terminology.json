@@ -1,9 +1,9 @@
 {
   "version": "2.0",
-  "generated": "2026-02-20T07:59:42.621Z",
+  "generated": "2026-02-20T08:16:00.609Z",
   "statistics": {
-    "totalTerms": 374,
-    "totalDefinitions": 536,
+    "totalTerms": 380,
+    "totalDefinitions": 546,
     "sources": {
       "regulations": 252,
       "implementingActs": 143,
@@ -226,6 +226,8 @@
       "data-record",
       "data-reporting-service-provider",
       "device-binding",
+      "digital-asset",
+      "digital-document",
       "digital-intensity",
       "digital-operational-resilience",
       "digital-service",
@@ -345,6 +347,7 @@
       "know-your-customer"
     ],
     "L": [
+      "large-scale-pilot",
       "large-scale-cybersecurity-incident",
       "lead-overseer",
       "ledger-report",
@@ -478,6 +481,7 @@
       "risk-register"
     ],
     "S": [
+      "sca-attestation",
       "scheme-for-the-attestation-of-attributes",
       "scheme-owner",
       "secure-element",
@@ -539,9 +543,11 @@
       "verifiable-credential",
       "verifier",
       "verifier-wallet-unit",
+      "very-large-online-platform",
       "vulnerability"
     ],
     "W": [
+      "wallet-certification",
       "wallet-cryptographic-operation",
       "wallet-instance",
       "wallet-provider",
@@ -4365,6 +4371,86 @@
       "domains": []
     },
     {
+      "id": "digital-asset",
+      "term": "digital asset",
+      "sources": [
+        {
+          "definition": "A digital object such as a document, song, film, or Non-Fungible Token (NFT). Digital assets are distinct from digital documents (Electronic Attestations of Attributes): the EU Digital Identity Wallet stores and presents person identification data and digital documents (EAAs) but not digital assets. There are no plans or provisions in the regulation for the wallet to store digital assets or NFTs.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EUDIW FAQ",
+          "articleNumber": "EUDIW FAQ",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EUDIW FAQ",
+      "definitionGroups": [
+        {
+          "definition": "A digital object such as a document, song, film, or Non-Fungible Token (NFT). Digital assets are distinct from digital documents (Electronic Attestations of Attributes): the EU Digital Identity Wallet stores and presents person identification data and digital documents (EAAs) but not digital assets. There are no plans or provisions in the regulation for the wallet to store digital assets or NFTs.",
+          "sources": [
+            {
+              "definition": "A digital object such as a document, song, film, or Non-Fungible Token (NFT). Digital assets are distinct from digital documents (Electronic Attestations of Attributes): the EU Digital Identity Wallet stores and presents person identification data and digital documents (EAAs) but not digital assets. There are no plans or provisions in the regulation for the wallet to store digital assets or NFTs.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EUDIW FAQ",
+              "articleNumber": "EUDIW FAQ",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "digital-document",
+      "term": "digital document",
+      "sources": [
+        {
+          "definition": "A user-friendly synonym for Electronic Attestation of Attributes (EAA), used by the European Commission in public-facing communications. Digital documents are digital credentials that can be added to, stored in, and presented with the EU Digital Identity Wallet. They contain important information about the holder, such as a university diploma, a boarding pass, or a driver's licence. The Commission distinguishes between digital documents (EAAs), which the wallet stores, and digital assets (songs, films, NFTs), which the wallet does not store.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EUDIW FAQ",
+          "articleNumber": "EUDIW FAQ",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EUDIW FAQ",
+      "definitionGroups": [
+        {
+          "definition": "A user-friendly synonym for Electronic Attestation of Attributes (EAA), used by the European Commission in public-facing communications. Digital documents are digital credentials that can be added to, stored in, and presented with the EU Digital Identity Wallet. They contain important information about the holder, such as a university diploma, a boarding pass, or a driver's licence. The Commission distinguishes between digital documents (EAAs), which the wallet stores, and digital assets (songs, films, NFTs), which the wallet does not store.",
+          "sources": [
+            {
+              "definition": "A user-friendly synonym for Electronic Attestation of Attributes (EAA), used by the European Commission in public-facing communications. Digital documents are digital credentials that can be added to, stored in, and presented with the EU Digital Identity Wallet. They contain important information about the holder, such as a university diploma, a boarding pass, or a driver's licence. The Commission distinguishes between digital documents (EAAs), which the wallet stores, and digital assets (songs, films, NFTs), which the wallet does not store.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EUDIW FAQ",
+              "articleNumber": "EUDIW FAQ",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "digital-intensity",
       "term": "digital intensity",
       "sources": [
@@ -5032,14 +5118,14 @@
           "displayOrder": 1
         },
         {
-          "definition": "An attestation in electronic form that allows attributes to be authenticated — a verifiable digital credential containing a set of attributes (characteristics, qualities, rights, or permissions) about a natural or legal person. Electronic attestations of attributes (EAAs) are the general credential type in the EUDI Wallet ecosystem and exist in three tiers: (1) Qualified EAAs (QEAAs), issued by qualified trust service providers and meeting the requirements of eIDAS Annex V, with the same legal effect as legally issued paper attestations (eIDAS Art. 45f); (2) EAAs issued by or on behalf of public sector bodies (PuB-EAAs), issued from authentic sources with equivalent recognition (eIDAS Art. 45f); and (3) non-qualified EAAs, which may be issued by any provider. Providers issuing EAAs to wallet units must identify themselves using wallet-relying party access certificates (CIR 2024/2977 Art. 4(2)) and ensure that attestations contain the information necessary for authentication and validation (CIR 2024/2977 Art. 4(3)). EAAs shall be cryptographically bound to the wallet unit using the standards in CIR 2024/2979 Annex II, and providers may embed disclosure policies specifying conditions that relying parties must meet to access the attestation (CIR 2024/2979 Art. 11, CIR 2024/2982 Art. 2(13)). Wallet users can selectively disclose individual attributes from an EAA without revealing the full credential (CIR 2024/2982 Art. 5(4)).",
+          "definition": "An attestation in electronic form that allows attributes to be authenticated — a verifiable digital credential containing a set of attributes (characteristics, qualities, rights, or permissions) about a natural or legal person. Electronic attestations of attributes (EAAs) are the general credential type in the EUDI Wallet ecosystem and exist in three tiers: (1) Qualified EAAs (QEAAs), issued by qualified trust service providers and meeting the requirements of eIDAS Annex V, with the same legal effect as legally issued paper attestations (eIDAS Art. 45f); (2) EAAs issued by or on behalf of public sector bodies (PuB-EAAs), issued from authentic sources with equivalent recognition (eIDAS Art. 45f); and (3) non-qualified EAAs, which may be issued by any provider. Providers issuing EAAs to wallet units must identify themselves using wallet-relying party access certificates (CIR 2024/2977 Art. 4(2)) and ensure that attestations contain the information necessary for authentication and validation (CIR 2024/2977 Art. 4(3)). EAAs shall be cryptographically bound to the wallet unit using the standards in CIR 2024/2979 Annex II, and providers may embed disclosure policies specifying conditions that relying parties must meet to access the attestation (CIR 2024/2979 Art. 11, CIR 2024/2982 Art. 2(13)). Wallet users can selectively disclose individual attributes from an EAA without revealing the full credential (CIR 2024/2982 Art. 5(4)). The Commission informally refers to EAAs as 'digital documents' in its public-facing communications.",
           "documentId": null,
           "documentTitle": "Internal",
           "documentCategory": "internal",
           "documentType": "internal",
           "celex": null,
-          "articleId": "article-Synthesized from eIDAS Art. 3(44-46), 45d-45g; CIR 2024/2977 Art. 4; CIR 2024/2979 Art. 8, 11, Annex II; CIR 2024/2982 Art. 2(13), 5(4); ARF Annex 1 Section A.2",
-          "articleNumber": "Synthesized from eIDAS Art. 3(44-46), 45d-45g; CIR 2024/2977 Art. 4; CIR 2024/2979 Art. 8, 11, Annex II; CIR 2024/2982 Art. 2(13), 5(4); ARF Annex 1 Section A.2",
+          "articleId": "article-Synthesized from eIDAS Art. 3(44-46), 45d-45g; CIR 2024/2977 Art. 4; CIR 2024/2979 Art. 8, 11, Annex II; CIR 2024/2982 Art. 2(13), 5(4); ARF Annex 1 Section A.2; EUDIW FAQ",
+          "articleNumber": "Synthesized from eIDAS Art. 3(44-46), 45d-45g; CIR 2024/2977 Art. 4; CIR 2024/2979 Art. 8, 11, Annex II; CIR 2024/2982 Art. 2(13), 5(4); ARF Annex 1 Section A.2; EUDIW FAQ",
           "displayOrder": 5
         }
       ],
@@ -5064,17 +5150,17 @@
           "isVariant": false
         },
         {
-          "definition": "An attestation in electronic form that allows attributes to be authenticated — a verifiable digital credential containing a set of attributes (characteristics, qualities, rights, or permissions) about a natural or legal person. Electronic attestations of attributes (EAAs) are the general credential type in the EUDI Wallet ecosystem and exist in three tiers: (1) Qualified EAAs (QEAAs), issued by qualified trust service providers and meeting the requirements of eIDAS Annex V, with the same legal effect as legally issued paper attestations (eIDAS Art. 45f); (2) EAAs issued by or on behalf of public sector bodies (PuB-EAAs), issued from authentic sources with equivalent recognition (eIDAS Art. 45f); and (3) non-qualified EAAs, which may be issued by any provider. Providers issuing EAAs to wallet units must identify themselves using wallet-relying party access certificates (CIR 2024/2977 Art. 4(2)) and ensure that attestations contain the information necessary for authentication and validation (CIR 2024/2977 Art. 4(3)). EAAs shall be cryptographically bound to the wallet unit using the standards in CIR 2024/2979 Annex II, and providers may embed disclosure policies specifying conditions that relying parties must meet to access the attestation (CIR 2024/2979 Art. 11, CIR 2024/2982 Art. 2(13)). Wallet users can selectively disclose individual attributes from an EAA without revealing the full credential (CIR 2024/2982 Art. 5(4)).",
+          "definition": "An attestation in electronic form that allows attributes to be authenticated — a verifiable digital credential containing a set of attributes (characteristics, qualities, rights, or permissions) about a natural or legal person. Electronic attestations of attributes (EAAs) are the general credential type in the EUDI Wallet ecosystem and exist in three tiers: (1) Qualified EAAs (QEAAs), issued by qualified trust service providers and meeting the requirements of eIDAS Annex V, with the same legal effect as legally issued paper attestations (eIDAS Art. 45f); (2) EAAs issued by or on behalf of public sector bodies (PuB-EAAs), issued from authentic sources with equivalent recognition (eIDAS Art. 45f); and (3) non-qualified EAAs, which may be issued by any provider. Providers issuing EAAs to wallet units must identify themselves using wallet-relying party access certificates (CIR 2024/2977 Art. 4(2)) and ensure that attestations contain the information necessary for authentication and validation (CIR 2024/2977 Art. 4(3)). EAAs shall be cryptographically bound to the wallet unit using the standards in CIR 2024/2979 Annex II, and providers may embed disclosure policies specifying conditions that relying parties must meet to access the attestation (CIR 2024/2979 Art. 11, CIR 2024/2982 Art. 2(13)). Wallet users can selectively disclose individual attributes from an EAA without revealing the full credential (CIR 2024/2982 Art. 5(4)). The Commission informally refers to EAAs as 'digital documents' in its public-facing communications.",
           "sources": [
             {
-              "definition": "An attestation in electronic form that allows attributes to be authenticated — a verifiable digital credential containing a set of attributes (characteristics, qualities, rights, or permissions) about a natural or legal person. Electronic attestations of attributes (EAAs) are the general credential type in the EUDI Wallet ecosystem and exist in three tiers: (1) Qualified EAAs (QEAAs), issued by qualified trust service providers and meeting the requirements of eIDAS Annex V, with the same legal effect as legally issued paper attestations (eIDAS Art. 45f); (2) EAAs issued by or on behalf of public sector bodies (PuB-EAAs), issued from authentic sources with equivalent recognition (eIDAS Art. 45f); and (3) non-qualified EAAs, which may be issued by any provider. Providers issuing EAAs to wallet units must identify themselves using wallet-relying party access certificates (CIR 2024/2977 Art. 4(2)) and ensure that attestations contain the information necessary for authentication and validation (CIR 2024/2977 Art. 4(3)). EAAs shall be cryptographically bound to the wallet unit using the standards in CIR 2024/2979 Annex II, and providers may embed disclosure policies specifying conditions that relying parties must meet to access the attestation (CIR 2024/2979 Art. 11, CIR 2024/2982 Art. 2(13)). Wallet users can selectively disclose individual attributes from an EAA without revealing the full credential (CIR 2024/2982 Art. 5(4)).",
+              "definition": "An attestation in electronic form that allows attributes to be authenticated — a verifiable digital credential containing a set of attributes (characteristics, qualities, rights, or permissions) about a natural or legal person. Electronic attestations of attributes (EAAs) are the general credential type in the EUDI Wallet ecosystem and exist in three tiers: (1) Qualified EAAs (QEAAs), issued by qualified trust service providers and meeting the requirements of eIDAS Annex V, with the same legal effect as legally issued paper attestations (eIDAS Art. 45f); (2) EAAs issued by or on behalf of public sector bodies (PuB-EAAs), issued from authentic sources with equivalent recognition (eIDAS Art. 45f); and (3) non-qualified EAAs, which may be issued by any provider. Providers issuing EAAs to wallet units must identify themselves using wallet-relying party access certificates (CIR 2024/2977 Art. 4(2)) and ensure that attestations contain the information necessary for authentication and validation (CIR 2024/2977 Art. 4(3)). EAAs shall be cryptographically bound to the wallet unit using the standards in CIR 2024/2979 Annex II, and providers may embed disclosure policies specifying conditions that relying parties must meet to access the attestation (CIR 2024/2979 Art. 11, CIR 2024/2982 Art. 2(13)). Wallet users can selectively disclose individual attributes from an EAA without revealing the full credential (CIR 2024/2982 Art. 5(4)). The Commission informally refers to EAAs as 'digital documents' in its public-facing communications.",
               "documentId": null,
               "documentTitle": "Internal",
               "documentCategory": "internal",
               "documentType": "internal",
               "celex": null,
-              "articleId": "article-Synthesized from eIDAS Art. 3(44-46), 45d-45g; CIR 2024/2977 Art. 4; CIR 2024/2979 Art. 8, 11, Annex II; CIR 2024/2982 Art. 2(13), 5(4); ARF Annex 1 Section A.2",
-              "articleNumber": "Synthesized from eIDAS Art. 3(44-46), 45d-45g; CIR 2024/2977 Art. 4; CIR 2024/2979 Art. 8, 11, Annex II; CIR 2024/2982 Art. 2(13), 5(4); ARF Annex 1 Section A.2",
+              "articleId": "article-Synthesized from eIDAS Art. 3(44-46), 45d-45g; CIR 2024/2977 Art. 4; CIR 2024/2979 Art. 8, 11, Annex II; CIR 2024/2982 Art. 2(13), 5(4); ARF Annex 1 Section A.2; EUDIW FAQ",
+              "articleNumber": "Synthesized from eIDAS Art. 3(44-46), 45d-45g; CIR 2024/2977 Art. 4; CIR 2024/2979 Art. 8, 11, Annex II; CIR 2024/2982 Art. 2(13), 5(4); ARF Annex 1 Section A.2; EUDIW FAQ",
               "displayOrder": 5
             }
           ],
@@ -6442,9 +6528,20 @@
           "articleId": "article-3-para-42",
           "articleNumber": "3(42)",
           "displayOrder": 1
+        },
+        {
+          "definition": "A personal digital wallet, in the form of a mobile application, allowing citizens to digitally prove who they are, as well as store and manage identity data and official documents in digital form. These may include a driving licence, educational qualifications, health insurance cards, or travel credentials. With EU Digital Identity Wallets, all European citizens will be able to prove their identity across the EU where necessary to access public and private digital services, to share digital documents, or to prove a specific personal attribute (such as age) without revealing their full identity or other personal details. Citizens will at all times have full control of the data they share and with whom. Wallets will be free of charge for natural persons, including electronic signatures for non-professional purposes. Member States have the choice to offer wallets directly, mandate another organisation, or recognise an independent provider.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from eIDAS Art. 5a; EUDIW FAQ",
+          "articleNumber": "Synthesized from eIDAS Art. 5a; EUDIW FAQ",
+          "displayOrder": 5
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-42",
       "definitionGroups": [
         {
@@ -6463,6 +6560,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "A personal digital wallet, in the form of a mobile application, allowing citizens to digitally prove who they are, as well as store and manage identity data and official documents in digital form. These may include a driving licence, educational qualifications, health insurance cards, or travel credentials. With EU Digital Identity Wallets, all European citizens will be able to prove their identity across the EU where necessary to access public and private digital services, to share digital documents, or to prove a specific personal attribute (such as age) without revealing their full identity or other personal details. Citizens will at all times have full control of the data they share and with whom. Wallets will be free of charge for natural persons, including electronic signatures for non-professional purposes. Member States have the choice to offer wallets directly, mandate another organisation, or recognise an independent provider.",
+          "sources": [
+            {
+              "definition": "A personal digital wallet, in the form of a mobile application, allowing citizens to digitally prove who they are, as well as store and manage identity data and official documents in digital form. These may include a driving licence, educational qualifications, health insurance cards, or travel credentials. With EU Digital Identity Wallets, all European citizens will be able to prove their identity across the EU where necessary to access public and private digital services, to share digital documents, or to prove a specific personal attribute (such as age) without revealing their full identity or other personal details. Citizens will at all times have full control of the data they share and with whom. Wallets will be free of charge for natural persons, including electronic signatures for non-professional purposes. Member States have the choice to offer wallets directly, mandate another organisation, or recognise an independent provider.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from eIDAS Art. 5a; EUDIW FAQ",
+              "articleNumber": "Synthesized from eIDAS Art. 5a; EUDIW FAQ",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [
@@ -9075,6 +9189,49 @@
       ]
     },
     {
+      "id": "large-scale-pilot",
+      "term": "Large Scale Pilot",
+      "sources": [
+        {
+          "definition": "EU-funded pilot projects, co-funded under the Digital Europe Programme, that test EUDI Wallets in a diverse range of everyday use cases. Examples include providing identification to online and offline public and private services, displaying mobile driving licences, authorising payments, exchanging diplomas, signing documents electronically, and presenting medical prescriptions. The results of the pilots inform Member States' wallet development and help identify implementation challenges before deployment.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EUDIW FAQ; Digital Europe Programme",
+          "articleNumber": "EUDIW FAQ; Digital Europe Programme",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EUDIW FAQ; Digital Europe Programme",
+      "definitionGroups": [
+        {
+          "definition": "EU-funded pilot projects, co-funded under the Digital Europe Programme, that test EUDI Wallets in a diverse range of everyday use cases. Examples include providing identification to online and offline public and private services, displaying mobile driving licences, authorising payments, exchanging diplomas, signing documents electronically, and presenting medical prescriptions. The results of the pilots inform Member States' wallet development and help identify implementation challenges before deployment.",
+          "sources": [
+            {
+              "definition": "EU-funded pilot projects, co-funded under the Digital Europe Programme, that test EUDI Wallets in a diverse range of everyday use cases. Examples include providing identification to online and offline public and private services, displaying mobile driving licences, authorising payments, exchanging diplomas, signing documents electronically, and presenting medical prescriptions. The results of the pilots inform Member States' wallet development and help identify implementation challenges before deployment.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EUDIW FAQ; Digital Europe Programme",
+              "articleNumber": "EUDIW FAQ; Digital Europe Programme",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": [],
+      "aliases": [
+        "LSP"
+      ]
+    },
+    {
       "id": "large-scale-cybersecurity-incident",
       "term": "large-scale cybersecurity incident",
       "sources": [
@@ -9279,32 +9436,32 @@
       "term": "Level of Assurance",
       "sources": [
         {
-          "definition": "The degree of confidence in the claimed identity of a person when using electronic identification. In the eIDAS framework, three levels are defined: (1) Low - provides limited confidence, suitable for reducing risk of misuse or alteration; (2) Substantial - provides substantial confidence, suitable for controlling access to medium-value services; (3) High - provides high confidence in the claimed identity, suitable for high-value or high-risk services. The EUDIW must comply with High LoA standards for storing and presenting qualified attestations.",
+          "definition": "The degree of confidence in the claimed identity of a person when using electronic identification. In the eIDAS framework, three levels are defined: (1) Low - provides limited confidence, suitable for reducing risk of misuse or alteration; (2) Substantial - provides substantial confidence, suitable for controlling access to medium-value services; (3) High - provides high confidence in the claimed identity, suitable for high-value or high-risk services. The EUDIW must comply with High LoA standards for storing and presenting qualified attestations. EUDI Wallets will be certified against level of assurance 'high' requirements by accredited public or private bodies designated by Member States, ensuring high standards for privacy and security.",
           "documentId": null,
           "documentTitle": "Internal",
           "documentCategory": "internal",
           "documentType": "internal",
           "celex": null,
-          "articleId": "article-eIDAS Regulation Article 8, Implementing Regulation 2015/1502; EDPS TechDispatch #3/2025",
-          "articleNumber": "eIDAS Regulation Article 8, Implementing Regulation 2015/1502; EDPS TechDispatch #3/2025",
+          "articleId": "article-eIDAS Regulation Article 8, Implementing Regulation 2015/1502; EDPS TechDispatch #3/2025; EUDIW FAQ",
+          "articleNumber": "eIDAS Regulation Article 8, Implementing Regulation 2015/1502; EDPS TechDispatch #3/2025; EUDIW FAQ",
           "displayOrder": 5
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-eIDAS Regulation Article 8, Implementing Regulation 2015/1502; EDPS TechDispatch #3/2025",
+      "primaryLinkTarget": "article-eIDAS Regulation Article 8, Implementing Regulation 2015/1502; EDPS TechDispatch #3/2025; EUDIW FAQ",
       "definitionGroups": [
         {
-          "definition": "The degree of confidence in the claimed identity of a person when using electronic identification. In the eIDAS framework, three levels are defined: (1) Low - provides limited confidence, suitable for reducing risk of misuse or alteration; (2) Substantial - provides substantial confidence, suitable for controlling access to medium-value services; (3) High - provides high confidence in the claimed identity, suitable for high-value or high-risk services. The EUDIW must comply with High LoA standards for storing and presenting qualified attestations.",
+          "definition": "The degree of confidence in the claimed identity of a person when using electronic identification. In the eIDAS framework, three levels are defined: (1) Low - provides limited confidence, suitable for reducing risk of misuse or alteration; (2) Substantial - provides substantial confidence, suitable for controlling access to medium-value services; (3) High - provides high confidence in the claimed identity, suitable for high-value or high-risk services. The EUDIW must comply with High LoA standards for storing and presenting qualified attestations. EUDI Wallets will be certified against level of assurance 'high' requirements by accredited public or private bodies designated by Member States, ensuring high standards for privacy and security.",
           "sources": [
             {
-              "definition": "The degree of confidence in the claimed identity of a person when using electronic identification. In the eIDAS framework, three levels are defined: (1) Low - provides limited confidence, suitable for reducing risk of misuse or alteration; (2) Substantial - provides substantial confidence, suitable for controlling access to medium-value services; (3) High - provides high confidence in the claimed identity, suitable for high-value or high-risk services. The EUDIW must comply with High LoA standards for storing and presenting qualified attestations.",
+              "definition": "The degree of confidence in the claimed identity of a person when using electronic identification. In the eIDAS framework, three levels are defined: (1) Low - provides limited confidence, suitable for reducing risk of misuse or alteration; (2) Substantial - provides substantial confidence, suitable for controlling access to medium-value services; (3) High - provides high confidence in the claimed identity, suitable for high-value or high-risk services. The EUDIW must comply with High LoA standards for storing and presenting qualified attestations. EUDI Wallets will be certified against level of assurance 'high' requirements by accredited public or private bodies designated by Member States, ensuring high standards for privacy and security.",
               "documentId": null,
               "documentTitle": "Internal",
               "documentCategory": "internal",
               "documentType": "internal",
               "celex": null,
-              "articleId": "article-eIDAS Regulation Article 8, Implementing Regulation 2015/1502; EDPS TechDispatch #3/2025",
-              "articleNumber": "eIDAS Regulation Article 8, Implementing Regulation 2015/1502; EDPS TechDispatch #3/2025",
+              "articleId": "article-eIDAS Regulation Article 8, Implementing Regulation 2015/1502; EDPS TechDispatch #3/2025; EUDIW FAQ",
+              "articleNumber": "eIDAS Regulation Article 8, Implementing Regulation 2015/1502; EDPS TechDispatch #3/2025; EUDIW FAQ",
               "displayOrder": 5
             }
           ],
@@ -12053,6 +12210,17 @@
           "articleId": "article-2-para-9",
           "articleNumber": "2(9)",
           "displayOrder": 2
+        },
+        {
+          "definition": "An entity responsible for issuing and revoking person identification data and ensuring that the PID of a user is cryptographically bound to a wallet unit. PID providers can be public sector bodies (e.g. a Ministry or national register) or recognised private entities entrusted with the provision of personal information — such as name and date of birth — to be used for identification. PID providers must identify themselves to the wallet unit using wallet-relying party access certificates before issuance (CIR 2024/2977 Art. 4(2)), and they validate the wallet unit attestation (WUA) during the issuance process to confirm they are interacting with a genuine, certified wallet unit (CIR 2024/2982 Art. 3).",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from CIR 2024/2977 Art. 2(4); EUDIW FAQ",
+          "articleNumber": "Synthesized from CIR 2024/2977 Art. 2(4); EUDIW FAQ",
+          "displayOrder": 5
         }
       ],
       "hasMultipleSources": true,
@@ -12129,6 +12297,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "An entity responsible for issuing and revoking person identification data and ensuring that the PID of a user is cryptographically bound to a wallet unit. PID providers can be public sector bodies (e.g. a Ministry or national register) or recognised private entities entrusted with the provision of personal information — such as name and date of birth — to be used for identification. PID providers must identify themselves to the wallet unit using wallet-relying party access certificates before issuance (CIR 2024/2977 Art. 4(2)), and they validate the wallet unit attestation (WUA) during the issuance process to confirm they are interacting with a genuine, certified wallet unit (CIR 2024/2982 Art. 3).",
+          "sources": [
+            {
+              "definition": "An entity responsible for issuing and revoking person identification data and ensuring that the PID of a user is cryptographically bound to a wallet unit. PID providers can be public sector bodies (e.g. a Ministry or national register) or recognised private entities entrusted with the provision of personal information — such as name and date of birth — to be used for identification. PID providers must identify themselves to the wallet unit using wallet-relying party access certificates before issuance (CIR 2024/2977 Art. 4(2)), and they validate the wallet unit attestation (WUA) during the issuance process to confirm they are interacting with a genuine, certified wallet unit (CIR 2024/2982 Art. 3).",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from CIR 2024/2977 Art. 2(4); EUDIW FAQ",
+              "articleNumber": "Synthesized from CIR 2024/2977 Art. 2(4); EUDIW FAQ",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [
@@ -12412,32 +12597,32 @@
       "term": "pseudonym",
       "sources": [
         {
-          "definition": "Data uniquely representing a User which in itself does not allow inference of the User's attributes or person identification data, without additional information kept separately by the issuer of the data.",
+          "definition": "A unique, wallet-specific identifier that can be chosen by the user and used for interactions with a specific relying party. Pseudonyms help prevent user tracking across services while enabling seamless authentication. In accordance with the state of the art, pseudonym generation follows WebAuthn standards and is designed to limit data exposure during transactions. The underlying technical property is that a pseudonym does not allow inference of the User's attributes or person identification data, without additional information kept separately by the issuer of the data.",
           "documentId": null,
           "documentTitle": "Internal",
           "documentCategory": "internal",
           "documentType": "internal",
           "celex": null,
-          "articleId": "article-ARF Annex 1, Section A.4",
-          "articleNumber": "ARF Annex 1, Section A.4",
+          "articleId": "article-ARF Annex 1, Section A.4; CIR 2024/2979 Art. 14; EUDIW FAQ",
+          "articleNumber": "ARF Annex 1, Section A.4; CIR 2024/2979 Art. 14; EUDIW FAQ",
           "displayOrder": 5
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4; CIR 2024/2979 Art. 14; EUDIW FAQ",
       "definitionGroups": [
         {
-          "definition": "Data uniquely representing a User which in itself does not allow inference of the User's attributes or person identification data, without additional information kept separately by the issuer of the data.",
+          "definition": "A unique, wallet-specific identifier that can be chosen by the user and used for interactions with a specific relying party. Pseudonyms help prevent user tracking across services while enabling seamless authentication. In accordance with the state of the art, pseudonym generation follows WebAuthn standards and is designed to limit data exposure during transactions. The underlying technical property is that a pseudonym does not allow inference of the User's attributes or person identification data, without additional information kept separately by the issuer of the data.",
           "sources": [
             {
-              "definition": "Data uniquely representing a User which in itself does not allow inference of the User's attributes or person identification data, without additional information kept separately by the issuer of the data.",
+              "definition": "A unique, wallet-specific identifier that can be chosen by the user and used for interactions with a specific relying party. Pseudonyms help prevent user tracking across services while enabling seamless authentication. In accordance with the state of the art, pseudonym generation follows WebAuthn standards and is designed to limit data exposure during transactions. The underlying technical property is that a pseudonym does not allow inference of the User's attributes or person identification data, without additional information kept separately by the issuer of the data.",
               "documentId": null,
               "documentTitle": "Internal",
               "documentCategory": "internal",
               "documentType": "internal",
               "celex": null,
-              "articleId": "article-ARF Annex 1, Section A.4",
-              "articleNumber": "ARF Annex 1, Section A.4",
+              "articleId": "article-ARF Annex 1, Section A.4; CIR 2024/2979 Art. 14; EUDIW FAQ",
+              "articleNumber": "ARF Annex 1, Section A.4; CIR 2024/2979 Art. 14; EUDIW FAQ",
               "displayOrder": 5
             }
           ],
@@ -14907,6 +15092,46 @@
       ]
     },
     {
+      "id": "sca-attestation",
+      "term": "SCA Attestation",
+      "sources": [
+        {
+          "definition": "A dedicated attestation issued by a Payment Service Provider (PSP) into a wallet user's wallet unit, enabling Strong Customer Authentication (SCA) for payment transactions as required by PSD2 Article 97. The SCA Attestation is device-bound, ensuring usage is linked to the user's cryptographic keys on that device, and requires multi-factor authentication to activate the signing key. The process works as follows: (1) the user registers their wallet with the PSP through an existing PSD2-compliant method; (2) the wallet generates a cryptographic key pair, with the private key securely stored and the public key shared with the PSP; (3) the PSP issues the SCA Attestation into the wallet; (4) for each payment, the wallet presents the SCA Attestation together with transaction-specific details for the user to confirm; (5) the confirmation is cryptographically bound to the transaction, ensuring dynamic linking to the specific amount and payee. The PSP acts as both issuer and verifier of the SCA Attestation, retaining full control over the authentication decision without delegating to a third party.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EUDIW FAQ; TS12; EC Payment Authentication Manual",
+          "articleNumber": "EUDIW FAQ; TS12; EC Payment Authentication Manual",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EUDIW FAQ; TS12; EC Payment Authentication Manual",
+      "definitionGroups": [
+        {
+          "definition": "A dedicated attestation issued by a Payment Service Provider (PSP) into a wallet user's wallet unit, enabling Strong Customer Authentication (SCA) for payment transactions as required by PSD2 Article 97. The SCA Attestation is device-bound, ensuring usage is linked to the user's cryptographic keys on that device, and requires multi-factor authentication to activate the signing key. The process works as follows: (1) the user registers their wallet with the PSP through an existing PSD2-compliant method; (2) the wallet generates a cryptographic key pair, with the private key securely stored and the public key shared with the PSP; (3) the PSP issues the SCA Attestation into the wallet; (4) for each payment, the wallet presents the SCA Attestation together with transaction-specific details for the user to confirm; (5) the confirmation is cryptographically bound to the transaction, ensuring dynamic linking to the specific amount and payee. The PSP acts as both issuer and verifier of the SCA Attestation, retaining full control over the authentication decision without delegating to a third party.",
+          "sources": [
+            {
+              "definition": "A dedicated attestation issued by a Payment Service Provider (PSP) into a wallet user's wallet unit, enabling Strong Customer Authentication (SCA) for payment transactions as required by PSD2 Article 97. The SCA Attestation is device-bound, ensuring usage is linked to the user's cryptographic keys on that device, and requires multi-factor authentication to activate the signing key. The process works as follows: (1) the user registers their wallet with the PSP through an existing PSD2-compliant method; (2) the wallet generates a cryptographic key pair, with the private key securely stored and the public key shared with the PSP; (3) the PSP issues the SCA Attestation into the wallet; (4) for each payment, the wallet presents the SCA Attestation together with transaction-specific details for the user to confirm; (5) the confirmation is cryptographically bound to the transaction, ensuring dynamic linking to the specific amount and payee. The PSP acts as both issuer and verifier of the SCA Attestation, retaining full control over the authentication decision without delegating to a third party.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EUDIW FAQ; TS12; EC Payment Authentication Manual",
+              "articleNumber": "EUDIW FAQ; TS12; EC Payment Authentication Manual",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "scheme-for-the-attestation-of-attributes",
       "term": "Scheme for the Attestation of Attributes",
       "sources": [
@@ -15179,32 +15404,32 @@
       "term": "selective disclosure",
       "sources": [
         {
-          "definition": "The capability enabling the User to present a subset of the attributes included in a PID or attestation, rather than disclosing the entire credential. This feature reinforces the protection of personal data and the principle of data minimisation.",
+          "definition": "The capability enabling the User to present a subset of the attributes included in a PID or attestation, rather than disclosing the entire credential. This is one of the ways in which wallets help to comply with the data protection principles enshrined in the GDPR, in particular the principles of data minimisation (Article 5(1)(c)) and purpose limitation. More generally, this feature allows users to have control over their personal data. For example, a user could share their date of birth without revealing their place of birth, allowing for greater privacy while still enabling access to digital services.",
           "documentId": null,
           "documentTitle": "Internal",
           "documentCategory": "internal",
           "documentType": "internal",
           "celex": null,
-          "articleId": "article-ARF Annex 1, Section A.4",
-          "articleNumber": "ARF Annex 1, Section A.4",
+          "articleId": "article-ARF Annex 1, Section A.4; EUDIW FAQ",
+          "articleNumber": "ARF Annex 1, Section A.4; EUDIW FAQ",
           "displayOrder": 5
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4; EUDIW FAQ",
       "definitionGroups": [
         {
-          "definition": "The capability enabling the User to present a subset of the attributes included in a PID or attestation, rather than disclosing the entire credential. This feature reinforces the protection of personal data and the principle of data minimisation.",
+          "definition": "The capability enabling the User to present a subset of the attributes included in a PID or attestation, rather than disclosing the entire credential. This is one of the ways in which wallets help to comply with the data protection principles enshrined in the GDPR, in particular the principles of data minimisation (Article 5(1)(c)) and purpose limitation. More generally, this feature allows users to have control over their personal data. For example, a user could share their date of birth without revealing their place of birth, allowing for greater privacy while still enabling access to digital services.",
           "sources": [
             {
-              "definition": "The capability enabling the User to present a subset of the attributes included in a PID or attestation, rather than disclosing the entire credential. This feature reinforces the protection of personal data and the principle of data minimisation.",
+              "definition": "The capability enabling the User to present a subset of the attributes included in a PID or attestation, rather than disclosing the entire credential. This is one of the ways in which wallets help to comply with the data protection principles enshrined in the GDPR, in particular the principles of data minimisation (Article 5(1)(c)) and purpose limitation. More generally, this feature allows users to have control over their personal data. For example, a user could share their date of birth without revealing their place of birth, allowing for greater privacy while still enabling access to digital services.",
               "documentId": null,
               "documentTitle": "Internal",
               "documentCategory": "internal",
               "documentType": "internal",
               "celex": null,
-              "articleId": "article-ARF Annex 1, Section A.4",
-              "articleNumber": "ARF Annex 1, Section A.4",
+              "articleId": "article-ARF Annex 1, Section A.4; EUDIW FAQ",
+              "articleNumber": "ARF Annex 1, Section A.4; EUDIW FAQ",
               "displayOrder": 5
             }
           ],
@@ -15800,7 +16025,7 @@
       "term": "Strong Customer Authentication",
       "sources": [
         {
-          "definition": "Authentication based on the use of two or more elements categorised as knowledge (something only the user knows), possession (something only the user possesses), and inherence (something the user is) that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SCA. This is the PSD2-specific term for strong authentication in payment services, defined in PSD2 Article 4(30) and elaborated in the RTS on SCA (Commission Delegated Regulation (EU) 2018/389). SCA goes beyond basic two-factor authentication by additionally requiring Dynamic Linking (binding the authentication to a specific transaction amount and payee), authentication code generation, and transaction monitoring, as mandated by PSD2 Article 97 and the RTS. While functionally equivalent to Strong User Authentication (SUA) in its core two-factor requirement, SCA applies exclusively to payment services and imposes stricter obligations. The EUDI Wallet bridges the gap between SUA and SCA through dedicated SCA Attestations, specified in Technical Specification 12 (TS12), which are issued by Payment Service Providers into Wallet Units and enable Dynamic Linking via transactional data signing.",
+          "definition": "Authentication based on the use of two or more elements categorised as knowledge (something only the user knows), possession (something only the user possesses), and inherence (something the user is) that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SCA. This is the PSD2-specific term for strong authentication in payment services, defined in PSD2 Article 4(30) and elaborated in the RTS on SCA (Commission Delegated Regulation (EU) 2018/389). SCA goes beyond basic two-factor authentication by additionally requiring Dynamic Linking (binding the authentication to a specific transaction amount and payee), authentication code generation, and transaction monitoring, as mandated by PSD2 Article 97 and the RTS. While functionally equivalent to Strong User Authentication (SUA) in its core two-factor requirement — the European Commission explicitly considers SCA and SUA as synonyms, both referring to the same underlying multi-factor authentication concept — SCA applies exclusively to payment services and imposes stricter obligations. The EUDI Wallet bridges the gap between SUA and SCA through dedicated SCA Attestations, specified in Technical Specification 12 (TS12), which are issued by Payment Service Providers into Wallet Units and enable Dynamic Linking via transactional data signing.",
           "documentId": null,
           "documentTitle": "Internal",
           "documentCategory": "internal",
@@ -15815,10 +16040,10 @@
       "primaryLinkTarget": "article-synthesized from PSD2 Article 4(30), RTS 2018/389, and TS12",
       "definitionGroups": [
         {
-          "definition": "Authentication based on the use of two or more elements categorised as knowledge (something only the user knows), possession (something only the user possesses), and inherence (something the user is) that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SCA. This is the PSD2-specific term for strong authentication in payment services, defined in PSD2 Article 4(30) and elaborated in the RTS on SCA (Commission Delegated Regulation (EU) 2018/389). SCA goes beyond basic two-factor authentication by additionally requiring Dynamic Linking (binding the authentication to a specific transaction amount and payee), authentication code generation, and transaction monitoring, as mandated by PSD2 Article 97 and the RTS. While functionally equivalent to Strong User Authentication (SUA) in its core two-factor requirement, SCA applies exclusively to payment services and imposes stricter obligations. The EUDI Wallet bridges the gap between SUA and SCA through dedicated SCA Attestations, specified in Technical Specification 12 (TS12), which are issued by Payment Service Providers into Wallet Units and enable Dynamic Linking via transactional data signing.",
+          "definition": "Authentication based on the use of two or more elements categorised as knowledge (something only the user knows), possession (something only the user possesses), and inherence (something the user is) that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SCA. This is the PSD2-specific term for strong authentication in payment services, defined in PSD2 Article 4(30) and elaborated in the RTS on SCA (Commission Delegated Regulation (EU) 2018/389). SCA goes beyond basic two-factor authentication by additionally requiring Dynamic Linking (binding the authentication to a specific transaction amount and payee), authentication code generation, and transaction monitoring, as mandated by PSD2 Article 97 and the RTS. While functionally equivalent to Strong User Authentication (SUA) in its core two-factor requirement — the European Commission explicitly considers SCA and SUA as synonyms, both referring to the same underlying multi-factor authentication concept — SCA applies exclusively to payment services and imposes stricter obligations. The EUDI Wallet bridges the gap between SUA and SCA through dedicated SCA Attestations, specified in Technical Specification 12 (TS12), which are issued by Payment Service Providers into Wallet Units and enable Dynamic Linking via transactional data signing.",
           "sources": [
             {
-              "definition": "Authentication based on the use of two or more elements categorised as knowledge (something only the user knows), possession (something only the user possesses), and inherence (something the user is) that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SCA. This is the PSD2-specific term for strong authentication in payment services, defined in PSD2 Article 4(30) and elaborated in the RTS on SCA (Commission Delegated Regulation (EU) 2018/389). SCA goes beyond basic two-factor authentication by additionally requiring Dynamic Linking (binding the authentication to a specific transaction amount and payee), authentication code generation, and transaction monitoring, as mandated by PSD2 Article 97 and the RTS. While functionally equivalent to Strong User Authentication (SUA) in its core two-factor requirement, SCA applies exclusively to payment services and imposes stricter obligations. The EUDI Wallet bridges the gap between SUA and SCA through dedicated SCA Attestations, specified in Technical Specification 12 (TS12), which are issued by Payment Service Providers into Wallet Units and enable Dynamic Linking via transactional data signing.",
+              "definition": "Authentication based on the use of two or more elements categorised as knowledge (something only the user knows), possession (something only the user possesses), and inherence (something the user is) that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SCA. This is the PSD2-specific term for strong authentication in payment services, defined in PSD2 Article 4(30) and elaborated in the RTS on SCA (Commission Delegated Regulation (EU) 2018/389). SCA goes beyond basic two-factor authentication by additionally requiring Dynamic Linking (binding the authentication to a specific transaction amount and payee), authentication code generation, and transaction monitoring, as mandated by PSD2 Article 97 and the RTS. While functionally equivalent to Strong User Authentication (SUA) in its core two-factor requirement — the European Commission explicitly considers SCA and SUA as synonyms, both referring to the same underlying multi-factor authentication concept — SCA applies exclusively to payment services and imposes stricter obligations. The EUDI Wallet bridges the gap between SUA and SCA through dedicated SCA Attestations, specified in Technical Specification 12 (TS12), which are issued by Payment Service Providers into Wallet Units and enable Dynamic Linking via transactional data signing.",
               "documentId": null,
               "documentTitle": "Internal",
               "documentCategory": "internal",
@@ -15854,7 +16079,7 @@
           "displayOrder": 1
         },
         {
-          "definition": "Authentication based on the use of at least two authentication factors from different categories of either knowledge (something only the user knows), possession (something only the user possesses), or inherence (something the user is), that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SUA. Defined in eIDAS 2.0 Article 3(51), this is the generic cross-sector term for strong authentication in the European Digital Identity Framework. Article 5f(2) mandates that private relying parties in regulated sectors (banking, transport, energy, health, telecommunications, etc.) must accept the EUDI Wallet where strong user authentication for online identification is required by EU or national law or by contractual obligation. The EUDI Wallet natively satisfies SUA requirements through its LoA High assurance level. For the payment services sector specifically, the PSD2-specific variant Strong Customer Authentication (SCA) applies, which imposes additional requirements such as Dynamic Linking and authentication codes beyond the base SUA two-factor model.",
+          "definition": "Authentication based on the use of at least two authentication factors from different categories of either knowledge (something only the user knows), possession (something only the user possesses), or inherence (something the user is), that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SUA. Defined in eIDAS 2.0 Article 3(51), this is the generic cross-sector term for strong authentication in the European Digital Identity Framework. Article 5f(2) mandates that private relying parties in regulated sectors (banking, transport, energy, health, telecommunications, etc.) must accept the EUDI Wallet where strong user authentication for online identification is required by EU or national law or by contractual obligation. The EUDI Wallet natively satisfies SUA requirements through its LoA High assurance level. The European Commission considers SUA and the PSD2-specific SCA to be synonyms, both referring to the same underlying multi-factor authentication concept. For the payment services sector specifically, SCA applies with additional requirements such as Dynamic Linking and authentication codes beyond the base SUA two-factor model.",
           "documentId": null,
           "documentTitle": "Internal",
           "documentCategory": "internal",
@@ -15886,10 +16111,10 @@
           "isVariant": false
         },
         {
-          "definition": "Authentication based on the use of at least two authentication factors from different categories of either knowledge (something only the user knows), possession (something only the user possesses), or inherence (something the user is), that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SUA. Defined in eIDAS 2.0 Article 3(51), this is the generic cross-sector term for strong authentication in the European Digital Identity Framework. Article 5f(2) mandates that private relying parties in regulated sectors (banking, transport, energy, health, telecommunications, etc.) must accept the EUDI Wallet where strong user authentication for online identification is required by EU or national law or by contractual obligation. The EUDI Wallet natively satisfies SUA requirements through its LoA High assurance level. For the payment services sector specifically, the PSD2-specific variant Strong Customer Authentication (SCA) applies, which imposes additional requirements such as Dynamic Linking and authentication codes beyond the base SUA two-factor model.",
+          "definition": "Authentication based on the use of at least two authentication factors from different categories of either knowledge (something only the user knows), possession (something only the user possesses), or inherence (something the user is), that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SUA. Defined in eIDAS 2.0 Article 3(51), this is the generic cross-sector term for strong authentication in the European Digital Identity Framework. Article 5f(2) mandates that private relying parties in regulated sectors (banking, transport, energy, health, telecommunications, etc.) must accept the EUDI Wallet where strong user authentication for online identification is required by EU or national law or by contractual obligation. The EUDI Wallet natively satisfies SUA requirements through its LoA High assurance level. The European Commission considers SUA and the PSD2-specific SCA to be synonyms, both referring to the same underlying multi-factor authentication concept. For the payment services sector specifically, SCA applies with additional requirements such as Dynamic Linking and authentication codes beyond the base SUA two-factor model.",
           "sources": [
             {
-              "definition": "Authentication based on the use of at least two authentication factors from different categories of either knowledge (something only the user knows), possession (something only the user possesses), or inherence (something the user is), that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SUA. Defined in eIDAS 2.0 Article 3(51), this is the generic cross-sector term for strong authentication in the European Digital Identity Framework. Article 5f(2) mandates that private relying parties in regulated sectors (banking, transport, energy, health, telecommunications, etc.) must accept the EUDI Wallet where strong user authentication for online identification is required by EU or national law or by contractual obligation. The EUDI Wallet natively satisfies SUA requirements through its LoA High assurance level. For the payment services sector specifically, the PSD2-specific variant Strong Customer Authentication (SCA) applies, which imposes additional requirements such as Dynamic Linking and authentication codes beyond the base SUA two-factor model.",
+              "definition": "Authentication based on the use of at least two authentication factors from different categories of either knowledge (something only the user knows), possession (something only the user possesses), or inherence (something the user is), that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SUA. Defined in eIDAS 2.0 Article 3(51), this is the generic cross-sector term for strong authentication in the European Digital Identity Framework. Article 5f(2) mandates that private relying parties in regulated sectors (banking, transport, energy, health, telecommunications, etc.) must accept the EUDI Wallet where strong user authentication for online identification is required by EU or national law or by contractual obligation. The EUDI Wallet natively satisfies SUA requirements through its LoA High assurance level. The European Commission considers SUA and the PSD2-specific SCA to be synonyms, both referring to the same underlying multi-factor authentication concept. For the payment services sector specifically, SCA applies with additional requirements such as Dynamic Linking and authentication codes beyond the base SUA two-factor model.",
               "documentId": null,
               "documentTitle": "Internal",
               "documentCategory": "internal",
@@ -17686,6 +17911,49 @@
       "domains": []
     },
     {
+      "id": "very-large-online-platform",
+      "term": "Very Large Online Platform",
+      "sources": [
+        {
+          "definition": "An online platform that reaches at least 45 million average monthly active recipients of the service in the Union, as designated under Article 33 of the Digital Services Act (Regulation (EU) 2022/2065). Under Article 5f(3) of the eIDAS Regulation, providers of VLOPs that require user authentication for accessing their online services must facilitate and accept the use of EU Digital Identity Wallets. Whenever VLOPs require user authentication — such as logging in, account creation, or identity verification — they shall enable users upon request to voluntarily use EU Digital Identity Wallets for such purposes. To support user privacy, the wallets support the WebAuthn standard, acting as passkey providers to enable secure, passwordless authentication and the use of relying party-specific pseudonyms when interacting with VLOPs.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EUDIW FAQ; eIDAS Art. 5f(3); DSA (Regulation 2022/2065) Art. 33",
+          "articleNumber": "EUDIW FAQ; eIDAS Art. 5f(3); DSA (Regulation 2022/2065) Art. 33",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EUDIW FAQ; eIDAS Art. 5f(3); DSA (Regulation 2022/2065) Art. 33",
+      "definitionGroups": [
+        {
+          "definition": "An online platform that reaches at least 45 million average monthly active recipients of the service in the Union, as designated under Article 33 of the Digital Services Act (Regulation (EU) 2022/2065). Under Article 5f(3) of the eIDAS Regulation, providers of VLOPs that require user authentication for accessing their online services must facilitate and accept the use of EU Digital Identity Wallets. Whenever VLOPs require user authentication — such as logging in, account creation, or identity verification — they shall enable users upon request to voluntarily use EU Digital Identity Wallets for such purposes. To support user privacy, the wallets support the WebAuthn standard, acting as passkey providers to enable secure, passwordless authentication and the use of relying party-specific pseudonyms when interacting with VLOPs.",
+          "sources": [
+            {
+              "definition": "An online platform that reaches at least 45 million average monthly active recipients of the service in the Union, as designated under Article 33 of the Digital Services Act (Regulation (EU) 2022/2065). Under Article 5f(3) of the eIDAS Regulation, providers of VLOPs that require user authentication for accessing their online services must facilitate and accept the use of EU Digital Identity Wallets. Whenever VLOPs require user authentication — such as logging in, account creation, or identity verification — they shall enable users upon request to voluntarily use EU Digital Identity Wallets for such purposes. To support user privacy, the wallets support the WebAuthn standard, acting as passkey providers to enable secure, passwordless authentication and the use of relying party-specific pseudonyms when interacting with VLOPs.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EUDIW FAQ; eIDAS Art. 5f(3); DSA (Regulation 2022/2065) Art. 33",
+              "articleNumber": "EUDIW FAQ; eIDAS Art. 5f(3); DSA (Regulation 2022/2065) Art. 33",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": [],
+      "aliases": [
+        "VLOP"
+      ]
+    },
+    {
       "id": "vulnerability",
       "term": "vulnerability",
       "sources": [
@@ -17748,6 +18016,46 @@
             }
           ],
           "isVariant": true
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "wallet-certification",
+      "term": "wallet certification",
+      "sources": [
+        {
+          "definition": "The formal process by which EU Digital Identity Wallets are evaluated to ensure they meet functional and cybersecurity standards. Wallets are certified by accredited conformity assessment bodies operating under national certification schemes designated by Member States. These bodies evaluate wallet solutions against functional and cybersecurity requirements, conduct testing and assessments, and issue certificates of conformity. They operate under the oversight of national certification scheme owners and ensure alignment with EU standards. This process ensures that the security, reliability and interoperability of the wallets are assessed in order to foster trust among users and service providers.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EUDIW FAQ; CIR 2024/2981; CIR 2025/849",
+          "articleNumber": "EUDIW FAQ; CIR 2024/2981; CIR 2025/849",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EUDIW FAQ; CIR 2024/2981; CIR 2025/849",
+      "definitionGroups": [
+        {
+          "definition": "The formal process by which EU Digital Identity Wallets are evaluated to ensure they meet functional and cybersecurity standards. Wallets are certified by accredited conformity assessment bodies operating under national certification schemes designated by Member States. These bodies evaluate wallet solutions against functional and cybersecurity requirements, conduct testing and assessments, and issue certificates of conformity. They operate under the oversight of national certification scheme owners and ensure alignment with EU standards. This process ensures that the security, reliability and interoperability of the wallets are assessed in order to foster trust among users and service providers.",
+          "sources": [
+            {
+              "definition": "The formal process by which EU Digital Identity Wallets are evaluated to ensure they meet functional and cybersecurity standards. Wallets are certified by accredited conformity assessment bodies operating under national certification schemes designated by Member States. These bodies evaluate wallet solutions against functional and cybersecurity requirements, conduct testing and assessments, and issue certificates of conformity. They operate under the oversight of national certification scheme owners and ensure alignment with EU standards. This process ensures that the security, reliability and interoperability of the wallets are assessed in order to foster trust among users and service providers.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EUDIW FAQ; CIR 2024/2981; CIR 2025/849",
+              "articleNumber": "EUDIW FAQ; CIR 2024/2981; CIR 2025/849",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
         }
       ],
       "roles": [],
@@ -18907,6 +19215,17 @@
           "articleId": "article-2-para-7",
           "articleNumber": "2(7)",
           "displayOrder": 2
+        },
+        {
+          "definition": "A combination of software, hardware, services, settings, and configurations — including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices — provided by a wallet provider. In simple terms, the wallet solution is the master template from which individual wallet units are created for each user. Wallet solutions must be certified under national certification schemes before deployment (CIR 2024/2981), and the wallet provider bears end-to-end responsibility for all wallet units derived from a given wallet solution.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from CIR 2024/2979 Art. 2(11); EUDIW FAQ",
+          "articleNumber": "Synthesized from CIR 2024/2979 Art. 2(11); EUDIW FAQ",
+          "displayOrder": 5
         }
       ],
       "hasMultipleSources": true,
@@ -19016,6 +19335,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "A combination of software, hardware, services, settings, and configurations — including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices — provided by a wallet provider. In simple terms, the wallet solution is the master template from which individual wallet units are created for each user. Wallet solutions must be certified under national certification schemes before deployment (CIR 2024/2981), and the wallet provider bears end-to-end responsibility for all wallet units derived from a given wallet solution.",
+          "sources": [
+            {
+              "definition": "A combination of software, hardware, services, settings, and configurations — including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices — provided by a wallet provider. In simple terms, the wallet solution is the master template from which individual wallet units are created for each user. Wallet solutions must be certified under national certification schemes before deployment (CIR 2024/2981), and the wallet provider bears end-to-end responsibility for all wallet units derived from a given wallet solution.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from CIR 2024/2979 Art. 2(11); EUDIW FAQ",
+              "articleNumber": "Synthesized from CIR 2024/2979 Art. 2(11); EUDIW FAQ",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [
@@ -19127,6 +19463,17 @@
           "articleId": "article-2-para-1",
           "articleNumber": "2(1)",
           "displayOrder": 2
+        },
+        {
+          "definition": "A unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user. In simple terms, the wallet unit is the individual version of the wallet solution customised for each user. Each wallet unit receives its own wallet unit attestation (WUA) from the wallet provider, and must contain at least one valid PID before it can be used for other operations such as receiving attestations or presenting attributes to relying parties.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from CIR 2024/2979 Art. 2(2); EUDIW FAQ",
+          "articleNumber": "Synthesized from CIR 2024/2979 Art. 2(2); EUDIW FAQ",
+          "displayOrder": 5
         }
       ],
       "hasMultipleSources": true,
@@ -19236,6 +19583,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "A unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user. In simple terms, the wallet unit is the individual version of the wallet solution customised for each user. Each wallet unit receives its own wallet unit attestation (WUA) from the wallet provider, and must contain at least one valid PID before it can be used for other operations such as receiving attestations or presenting attributes to relying parties.",
+          "sources": [
+            {
+              "definition": "A unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user. In simple terms, the wallet unit is the individual version of the wallet solution customised for each user. Each wallet unit receives its own wallet unit attestation (WUA) from the wallet provider, and must contain at least one valid PID before it can be used for other operations such as receiving attestations or presenting attributes to relying parties.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from CIR 2024/2979 Art. 2(2); EUDIW FAQ",
+              "articleNumber": "Synthesized from CIR 2024/2979 Art. 2(2); EUDIW FAQ",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [

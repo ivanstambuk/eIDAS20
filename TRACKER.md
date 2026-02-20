@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-02-20 08:57 CET |
-| **Version** | V4.1.2 |
-| **Portal Stats** | 45 docs, 397K words, 363 terms, 2,397 article links, 487 RCA reqs, 153 VCQ reqs (1,323 clarification Qs), 510 ARF HLRs (v2.8.0, 20 topics) |
+| **Last Updated** | 2026-02-20 09:35 CET |
+| **Version** | V4.1.3 |
+| **Portal Stats** | 45 docs, 397K words, 380 terms, 2,397 article links, 487 RCA reqs, 153 VCQ reqs (1,323 clarification Qs), 510 ARF HLRs (v2.8.0, 20 topics) |
 | **Next Action** | *(No active plan — ready for next task)* |
 
 
@@ -38,6 +38,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-02-20 09:35 | **Feat: EUDIW FAQ Terminology Enrichment + Enter-Key Search** — Cross-referenced EUDIW FAQ with terminology database. Added 6 new terms (wallet certification, SCA Attestation, Large Scale Pilot, digital document, digital asset, Very Large Online Platform) with aliases (LSP, VLOP). Enhanced 10 existing definitions (selective disclosure, pseudonym, EAA, SCA/SUA synonym, LoA + 4 enriched multi-source entries: Wallet Solution, Wallet Unit, PID Provider, EUDIW). Terms: 374→380. Aliases: 13→18 inline. Search UX: Enter key now opens first result in search dropdown (was promised in UI hints but not wired). Retro: alias location code comment. |
 | 2026-02-20 08:57 | **Refactor: AGENTS.md Restructuring + Version Badge Feature** — Reduced AGENTS.md from 1708→783 lines (-54%), extracted 7 reference docs to `.agent/docs/` (portal-gotchas, arf-data-model, vcq-architecture, rca-reference, link-builder, conversion-guidelines, browser-testing, build-reference). Added `sidebarOrder: 1` to eSignature FAQ. Fixed EUDIW FAQ source_version 3→73, eSignature FAQ 1→12 (verified via Confluence page history). Version badge (v73/v12) now clickable link to Confluence page history. Added `history_url` field to documents.yaml schema + updated `/import-regulation` workflow with Confluence version verification step. 4 commits. |
 | 2026-02-20 08:15 | **Feat: EUDIW FAQ Internal Linking + External Links UX (DEC-292, DEC-293)** — Replaced 17 EUR-Lex links in FAQ with internal `#/regulation/{slug}` portal routes (3 URL variants: eur-lex.europa.eu/eli/, eur-lex.europa.eu/legal-content/, data.europa.eu/eli/). PSD2 (2015/2366) kept external per DEC-253. Added `useEffect` in `RegulationViewer.jsx` to set `target="_blank"` on all external links in regulation content (applies globally, not just FAQ). Added collapsible FAQ TOC grouping via `extractSectionsFromFAQ()` in `CollapsibleTOC.jsx`. Snapshot provenance badge (📸 Snapshot date + version). Added AGENTS.md Rule 2: Session Length Guard (Step 250 alert to trigger /retro before context truncation). 5 commits. |
 | 2026-02-11 00:00 | **UI: Home Page Compliance Tools Redesign** — Replaced oversized full-width "Open RCA Tool" button with twin side-by-side ToolCard components for RCA (487 reqs, cyan shield icon) and VCQ (153 reqs, green clipboard icon). Cards use left-accent border, icon containers with `color-mix()` backgrounds, requirement count pill badges, and arrow indicators. New `ToolCard` component with `card-glow` hover effect. Added VCQ data fetching (`vcq-data.json`). Matches existing Quick Links card design language. Section renamed "Compliance Assessment" → "Compliance Tools". |

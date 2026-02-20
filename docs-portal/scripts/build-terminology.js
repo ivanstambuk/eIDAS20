@@ -1187,6 +1187,9 @@ function build() {
     }
 
     // Assign abbreviations as aliases to their target terms
+    // ⚠️ Aliases are stored at the TOP LEVEL of each term object (term.aliases[]),
+    //    NOT inside definitionGroups or sources. In the output JSON, each term with
+    //    aliases will have: { id, term, aliases: ["VLOP", ...], sources: [...] }
     for (const [abbrev, termId] of abbreviations) {
         const term = termIdMap.get(termId);
         if (term) {

@@ -249,6 +249,7 @@ function SearchModeToggle({ mode, onModeChange, semanticReady, semanticStatus })
  */
 export function SearchModal({ isOpen, onClose }) {
     const inputRef = useRef(null);
+    const resultsRef = useRef(null);
     const [searchMode, setSearchMode] = useState('keyword');
 
     // Keyword search
@@ -370,6 +371,24 @@ export function SearchModal({ isOpen, onClose }) {
         }
     }, [search]);
 
+    // Handle Enter key — open the first result
+    const handleInputKeyDown = useCallback((e) => {
+        if (e.key === 'Enter' && resultsRef.current) {
+            // Find the first clickable result link in the results container
+            // Priority: Quick Jump > Citation Jump > Regular results
+            const firstLink = resultsRef.current.querySelector(
+                '.quick-jump-item, .citation-jump-item, .search-result'
+            );
+            if (firstLink) {
+                e.preventDefault();
+                if (query.trim()) {
+                    addToHistory(query);
+                }
+                firstLink.click();
+            }
+        }
+    }, [query, addToHistory]);
+
     // Handle backdrop click
     const handleBackdropClick = (e) => {
         if (e.target === e.currentTarget) {
@@ -424,6 +443,7 @@ export function SearchModal({ isOpen, onClose }) {
                             autoComplete="off"
                             autoCapitalize="off"
                             spellCheck="false"
+                            onKeyDown={handleInputKeyDown}
                         />
                         {query && (
                             <button
@@ -468,7 +488,7 @@ export function SearchModal({ isOpen, onClose }) {
                 </div>
 
                 {/* Search results / suggestions */}
-                <div className="search-modal-body">
+                <div className="search-modal-body" ref={resultsRef}>
                     {isLoading && (
                         <div className="search-status">
                             <div className="search-spinner" />
