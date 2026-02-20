@@ -110,6 +110,7 @@ documents:
     title: EC EU Digital Identity Wallet FAQ
     shortTitle: EUDIW FAQ
     sidebarTitle: EUDIW FAQ
+    sidebarOrder: 0 # Show first in supplementary section
     legalType: faq
     category: supplementary
     source: manual # One-time import from EC Digital Building Blocks (DEC-092)

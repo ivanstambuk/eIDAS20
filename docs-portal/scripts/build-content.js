@@ -451,23 +451,29 @@ function getDocumentTypingFromConfig(dirName) {
 }
 
 /**
- * Get document order from documents.yaml position.
+ * Get document order from documents.yaml.
  * 
- * Returns the 0-based index of the document in documents.yaml,
- * used for sidebar ordering to respect the YAML-defined sequence.
+ * Checks for explicit `sidebarOrder` first (allows overriding position),
+ * then falls back to the 0-based index in documents.yaml.
  * 
  * @param {string} dirName - Directory name
- * @returns {number} - Position in documents.yaml, or 999 if not found
+ * @returns {number} - Sidebar order value, or 999 if not found
  */
 function getConfigOrder(dirName) {
     const config = loadDocumentsConfig();
     if (!config?.documents) return 999;
 
-    const idx = config.documents.findIndex(d =>
+    const doc = config.documents.find(d =>
         (d.output_dir && d.output_dir.endsWith(dirName)) ||
         (d.id && (d.id === dirName || dirName.includes(d.id.replace(/-/g, '_'))))
     );
 
+    if (!doc) return 999;
+
+    // Explicit sidebarOrder takes priority over position index
+    if (doc.sidebarOrder !== undefined) return doc.sidebarOrder;
+
+    const idx = config.documents.indexOf(doc);
     return idx >= 0 ? idx : 999;
 }
 
