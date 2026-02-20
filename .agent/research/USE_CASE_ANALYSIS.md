@@ -17,9 +17,9 @@
 | **Phase 3** | Add PDF Manual URLs (new field `pdfManualUrl`) | 3 | ✅ Complete |
 | **Phase 4** | Rebuild & Verify | 3 | ✅ Complete |
 | **Phase 5** | VCQ Technical Standard Enrichment | 7 | ✅ Complete |
-| **Phase 6** | Manual Content Analysis & Data Quality Uplift | 6 | 🔶 In progress (4/6 done) |
+| **Phase 6** | Manual Content Analysis & Data Quality Uplift | 6 | 🔶 In progress (5/6 done) |
 
-**Total steps:** 26 | **Completed:** 24/26
+**Total steps:** 26 | **Completed:** 25/26
 
 ---
 
@@ -689,7 +689,7 @@ use case manuals were analyzed. They may be:
 - Every question must be evaluated for use case scope, even if the conclusion is "applies to all"
 - ⛔ NO automated keyword/pattern-matching scripts — manual semantic analysis ONLY
 
-### Step 6.5 — RCA Requirement Description Enrichment & Use Case Scoping ⬜ NOT STARTED
+### Step 6.5 — RCA Requirement Use Case Scoping ✅ COMPLETE
 
 > **Effort:** ~2-3 hours  
 > **Risk:** Medium — modifying requirement `explanation` fields and `useCases` values  
@@ -697,14 +697,24 @@ use case manuals were analyzed. They may be:
 
 **Two primary objectives:**
 
-1. **Description enrichment** — Enhance `explanation` fields with practical context from the manuals
-2. **Use case scoping** — Re-evaluate the `useCases` field on every requirement: should it stay `all`, or be scoped to specific use case IDs?
+1. ~~**Description enrichment**~~ — Deferred to future session (open design decision on target field)
+2. **Use case scoping** ✅ — Re-evaluated `useCases` field on all 487 requirements across 7 role files
 
-**Why use case scoping matters:** Currently 423 of 487 requirements have `useCases: all` and 64
-have no value. The RCA UI already supports use case filtering — but with everything tagged `all`,
-the filter is meaningless. The EC manuals make it clear that many requirements are particularly
-relevant to (or only meaningful for) specific use cases. Proper scoping would make the existing
-RCA filter actually useful.
+**Results (completed 2026-02-20):**
+- **74 of 487 requirements (15.2%)** scoped to specific use cases
+- **413 (84.8%)** correctly retain `useCases: all` (foundational infrastructure)
+- **relying-party.yaml**: 52 scoped (payment-auth, esignature, proximity-id, age-verification, pseudonym, etc.)
+- **wallet-provider.yaml**: 12 scoped (esignature, pseudonym, age-verification)
+- **trust-service-provider.yaml**: 10 scoped (esignature — QES/QSCD/remote QSCD requirements)
+- **issuer.yaml**: 0 scoped (all generic EAA lifecycle, differentiated by profileFilter)
+- **pid-provider.yaml**: 0 scoped (PID is foundational for all use cases)
+- **supervisory-body.yaml**: 0 scoped (meta-level oversight)
+- **conformity-assessment-body.yaml**: 0 scoped (audit infrastructure)
+
+**Why the high `all` count is correct:** Most eIDAS requirements describe obligations for _roles_
+(TSP, RP, wallet provider) that apply uniformly across all use cases. Use case scoping is most
+meaningful for requirements referencing specific trust service types (QES, QWACs) or specific
+wallet capabilities (pseudonyms, age verification, signatures).
 
 **Problem (descriptions):** Our 487 RCA requirement `explanation` fields are regulation-derived
 and often terse. The EC manuals provide rich practical context — user journeys, implementation
@@ -769,7 +779,7 @@ data covers, with prioritised recommendations.
 | **6.2** | Import terminology into `custom-dictionary.yaml` | Done | ✅ Complete |
 | **6.3** | Populate `technicalSpecs` arrays on all use cases | ~30 min | ✅ Complete |
 | **6.4** | VCQ clarification question audit & use case tagging (5 files, 53 sharpened, 2 removed) | ~3-4 hrs | ✅ Complete |
-| **6.5** | RCA requirement description enrichment & use case scoping | ~2-3 hrs | ⬜ Not started |
+| **6.5** | RCA requirement use case scoping (74/487 scoped, enrichment deferred) | ~2 hrs | ✅ Complete |
 | **6.6** | Cross-validation gap report | ~1-2 hrs | ⬜ Not started |
 
 ---
