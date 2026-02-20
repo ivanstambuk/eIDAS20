@@ -662,13 +662,34 @@ const RegulationViewer = () => {
                         {regulation.description || regulation.title}
                     </p>
                 )}
-                <div className="flex gap-4 text-sm text-muted" style={{ marginTop: 'var(--space-3)' }}>
-                    {regulation.date && <span>📅 {regulation.date}</span>}
+                <div className="flex gap-4 text-sm text-muted" style={{ marginTop: 'var(--space-3)', flexWrap: 'wrap' }}>
+                    {regulation.date && !regulation.snapshotDate && <span>📅 {regulation.date}</span>}
                     <span>📖 {regulation.wordCount?.toLocaleString()} words</span>
                     {regulation.wordCount && (
                         <span>⏱️ {calculateReadingTime(regulation.wordCount)}</span>
                     )}
-                    {regulation.source && (
+                    {/* Snapshot provenance badge for living documents (FAQs, guidance) */}
+                    {regulation.snapshotDate && (
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                            📸 Snapshot: {new Date(regulation.snapshotDate + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+                            {regulation.sourceVersion && (
+                                <span className="badge badge-info" style={{ fontSize: '0.7em', padding: '1px 5px', marginLeft: '2px' }}>
+                                    v{regulation.sourceVersion}
+                                </span>
+                            )}
+                        </span>
+                    )}
+                    {/* For snapshot documents: link to live source. For others: View on EUR-Lex */}
+                    {regulation.snapshotDate && regulation.externalUrl ? (
+                        <a
+                            href={regulation.externalUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ color: 'var(--accent-primary)' }}
+                        >
+                            🔗 View Live Source ↗
+                        </a>
+                    ) : regulation.source && (
                         <a
                             href={regulation.source}
                             target="_blank"

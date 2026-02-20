@@ -478,6 +478,32 @@ function getConfigOrder(dirName) {
 }
 
 /**
+ * Get snapshot metadata from documents.yaml for living documents.
+ * 
+ * Living documents (source: manual) like FAQs are imported from external
+ * Confluence pages that may be updated. This returns provenance data
+ * so the portal can display when the content was captured.
+ * 
+ * @param {string} dirName - Directory name
+ * @returns {{snapshotDate: string|null, sourceVersion: string|null, externalUrl: string|null}}
+ */
+function getSnapshotMetadata(dirName) {
+    const config = loadDocumentsConfig();
+    if (!config?.documents) return { snapshotDate: null, sourceVersion: null, externalUrl: null };
+
+    const doc = config.documents.find(d =>
+        (d.output_dir && d.output_dir.endsWith(dirName)) ||
+        (d.id && (d.id === dirName || dirName.includes(d.id.replace(/-/g, '_'))))
+    );
+
+    return {
+        snapshotDate: doc?.snapshot_date || null,
+        sourceVersion: doc?.source_version || null,
+        externalUrl: doc?.external_url || null
+    };
+}
+
+/**
  * Preamble Injection Configuration
  * 
  * The consolidated eIDAS regulation (910/2014) from EUR-Lex doesn't include a preamble.
@@ -1188,7 +1214,9 @@ function processMarkdownFile(filePath, dirName, type) {
         // Track preamble injection for debugging
         preambleInjected,
         // Position in documents.yaml for sidebar ordering
-        configOrder: getConfigOrder(dirName)
+        configOrder: getConfigOrder(dirName),
+        // Snapshot provenance for living documents (FAQs, guidance)
+        ...getSnapshotMetadata(dirName)
     };
 
     return regulationData;
