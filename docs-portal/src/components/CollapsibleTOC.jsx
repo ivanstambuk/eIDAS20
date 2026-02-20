@@ -1,7 +1,8 @@
 /**
- * CollapsibleTOC - Table of Contents with expandable chapters
+ * CollapsibleTOC - Table of Contents with expandable chapters/sections
  * 
  * For main regulations (eIDAS 910/2014): Groups articles into official chapters
+ * For FAQ documents: Groups questions into thematic sections
  * For implementing acts: Shows flat list (they're typically short)
  * 
  * Uses fast 150ms scroll animation with header offset.
@@ -183,6 +184,44 @@ function extractChaptersFromTOC(toc) {
 }
 
 /**
+ * Extract section structure from FAQ-style documents.
+ * 
+ * FAQ documents use ## for thematic sections (e.g., "General",
+ * "European Digital Identity Wallets") and ### for individual questions.
+ * This groups the L3 questions under their parent L2 section headers.
+ * 
+ * @param {Array} toc - Array of {id, title, level} objects
+ * @returns {Array|null} - Array of section objects or null if not FAQ-shaped
+ */
+function extractSectionsFromFAQ(toc) {
+    const sections = [];
+    let currentSection = null;
+
+    for (const item of toc) {
+        if (item.level === 2) {
+            // Save previous section
+            if (currentSection && currentSection.articles.length > 0) {
+                sections.push(currentSection);
+            }
+            currentSection = {
+                id: item.id,
+                title: item.title,
+                articles: []
+            };
+        } else if (item.level === 3 && currentSection) {
+            currentSection.articles.push(item.id);
+        }
+    }
+
+    // Don't forget the last section
+    if (currentSection && currentSection.articles.length > 0) {
+        sections.push(currentSection);
+    }
+
+    return sections.length >= 1 ? sections : null;
+}
+
+/**
  * Fast smooth scroll with header offset (150ms)
  * Also updates URL with ?section= query param for deep linking
  */
@@ -335,10 +374,12 @@ function ChapterGroup({ chapter, articles, defaultExpanded = false }) {
 /**
  * Main CollapsibleTOC component
  */
-export default function CollapsibleTOC({ toc, slug, type }) {
-    // Try dynamic chapter extraction first (works for any regulation with proper headings)
-    // Fall back to hardcoded EIDAS_CHAPTERS for backward compatibility
-    const chapters = extractChaptersFromTOC(toc) || EIDAS_CHAPTERS[slug];
+export default function CollapsibleTOC({ toc, slug, type, legalType }) {
+    // For FAQ documents: use section-based grouping (L2 sections → L3 questions)
+    // For regulations: try dynamic chapter extraction, fall back to hardcoded
+    const chapters = legalType === 'faq'
+        ? extractSectionsFromFAQ(toc)
+        : (extractChaptersFromTOC(toc) || EIDAS_CHAPTERS[slug]);
 
     // Create a map of article IDs to TOC items for quick lookup
     const tocMap = {};

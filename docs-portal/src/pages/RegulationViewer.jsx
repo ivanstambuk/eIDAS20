@@ -744,6 +744,7 @@ const RegulationViewer = () => {
                             toc={regulation.toc || []}
                             slug={regulation.slug}
                             type={regulation.type}
+                            legalType={regulation.legalType}
                         />
                     </div>
 
