@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-02-20 13:20 CET |
+| **Last Updated** | 2026-02-20 13:30 CET |
 | **Version** | V4.1.5 |
 | **Portal Stats** | 45 docs, 399K words, 380 terms, 2,460 article links, 487 RCA reqs, 153 VCQ reqs (1,350 clarification Qs), 510 ARF HLRs (v2.8.0, 20 topics) |
 | **Next Action** | — (backlog review) |
