@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-02-20 12:51 CET |
-| **Version** | V4.1.4 |
-| **Portal Stats** | 45 docs, 399K words, 380 terms, 2,459 article links, 487 RCA reqs, 153 VCQ reqs (1,350 clarification Qs), 510 ARF HLRs (v2.8.0, 20 topics) |
-| **Next Action** | Audit other consolidated regulations for missing annexes (GDPR, NIS2, Cybersecurity Act, ePrivacy, Accreditation Regulation) |
+| **Last Updated** | 2026-02-20 13:20 CET |
+| **Version** | V4.1.5 |
+| **Portal Stats** | 45 docs, 399K words, 380 terms, 2,460 article links, 487 RCA reqs, 153 VCQ reqs (1,350 clarification Qs), 510 ARF HLRs (v2.8.0, 20 topics) |
+| **Next Action** | — (backlog review) |
 
 
 ---
@@ -38,6 +38,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-02-20 13:20 | **Audit: Missing Annexes + EUR-Lex WAF Bypass** — Audited all 7 regulations + 1 decision for missing annexes. Results: GDPR (no own annexes ✅), ePrivacy (no own annexes ✅), NIS2 (3 annexes present ✅), Cybersecurity Act (1 annex present ✅), Accreditation Reg (2 annexes present ✅), Standardisation Reg (4 annexes added last session ✅), DORA (no own annexes — amendment-only references to other regs' annexes ✅), Digital Decade (1 annex MISSING → FIXED). Created `fetch-eurlex.sh` script: EUR-Lex now uses AWS WAF Bot Control (JS challenge, HTTP 202 + `x-amzn-waf-action: challenge`), blocking all programmatic access. Bypass: Cellar REST API on `publications.europa.eu` (different domain, no WAF). Pattern: CELEX → RDF metadata → English expression → manifestation URL (xhtml/fmx4/pdf). Script handles full resolution chain. |
 | 2026-02-20 12:51 | **Fix: Merged /handover into /retro + Regulation 1025/2012 Annexes** — (1) Workflow consolidation: embedded /handover logic as Step 7 in /retro, deleted standalone handover.md, updated AGENTS.md Rule 2 and workflow table, updated init.md. Prevents stale TRACKER/pending-task from forgotten handover. (2) Regulation 1025/2012: identified missing Annexes I–IV in consolidated version (same pattern as eIDAS 2.0). Sourced from legislation.gov.uk, appended to regulation.md (Annex I: CEN/Cenelec/ETSI, Annex II: ICT spec requirements, Annex III: stakeholder org criteria, Annex IV: 3-table correlation). Fixed incomplete Annex IV. (3) Chrome restart script: rewritten for native Linux + WSL auto-detect, WebSocket health check fallback. (4) Retro: documented EUR-Lex 202 fallback strategy and content rebuild requirement in portal-gotchas.md, added Step 3.5 (Merge Annexes) to /import-regulation workflow. 4 commits: `a97e1627`, `c11db9af`, `1e7f2579`, `b337ca7e`. |
 | 2026-02-20 11:46 | **Complete: VCQ Quality Audit (Step 6.4)** — Audited all 1,352 VCQ clarification questions across 5 files against 11 EC use case manuals. 53 questions sharpened with EC manual terminology, regulatory precision (specific article numbers, implementing regulation citations, ARF references), and standard references (IETF drafts, NIST FIPS, EN/ISO standards). 2 redundant questions removed from intermediary.yaml (VEND-INT-011 Q12/Q13 merged into Q4/Q6). 1 corrupted header fixed in issuer.yaml. British English consistency enforced. Step 6.4 now fully complete (both tagging + quality audit). USE_CASE_ANALYSIS.md updated: 24/26 steps complete. Phase 6 progress: 4/6 done. Next: Step 6.5 (RCA use case scoping). 6 commits: `f676d176`, `65934ade`, `3cf7b2e2`, `5f38b62c`, `2ee82258`, `23c2315a`. |
 | 2026-02-20 10:35 | **Refactor: Use Case Analysis Phase 6 Expansion + Convention Alignment** — Expanded Phase 6 from 2 to 6 sub-steps (6.1-6.6). Steps 6.3 (technicalSpecs), 6.4 (VCQ audit + use case tagging), 6.5 (RCA enrichment + use case scoping), 6.6 (gap report) planned with detailed scope and effort estimates. Aligned use case scoping convention across RCA (`useCases`) and VCQ (`useCaseRef`): VCQ build script now normalises `useCaseRef` to array in output (Schema v2). Added use case tagging stats to build output. Current: 24/1,352 questions tagged, 64/487 requirements scoped. AGENTS.md: added step completion verification rule + reinforced jq-over-python3 guidance. Retro: 3 items implemented. 1 commit: `86cae86b`. |

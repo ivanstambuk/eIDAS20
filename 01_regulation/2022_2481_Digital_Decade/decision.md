@@ -1,5 +1,5 @@
-> **CELEX:** 32022D2481 | **Type:** Decision
-> **Source:** [EUR-Lex](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022D2481)
+> **CELEX:** 32022D2481 | **Type:** Decision  
+> **Source:** [EUR-Lex](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022D2481)  
 > **Imported:** 2026-01-24 (manual) — DO NOT REGENERATE
 
 # Decision (EU) 2022/2481: Digital Decade Policy Programme 2030
@@ -315,3 +315,35 @@ R. METSOLA
 For the Council  
 The President  
 M. BEK
+
+---
+
+## ANNEX
+
+**AREAS OF ACTIVITY**
+
+Non-exhaustive areas of activity:
+
+- (a) European common data infrastructure and services;
+
+- (b) endowing the Union with the next generation of low-power trusted processors;
+
+- (c) developing the pan-European deployment of 5G corridors;
+
+- (d) acquiring supercomputers and quantum computers, connected with the European high performance computing (EuroHPC);
+
+- (e) developing and deploying an ultra-secure quantum and space-based communication infrastructures;
+
+- (f) deploying a network of security operations centres;
+
+- (g) connected public administration;
+
+- (h) European blockchain services infrastructure;
+
+- (i) European digital innovation hubs (EDIHs);
+
+- (j) high-tech partnerships for digital skills through the 'Pact for Skills' initiative, launched by the Commission communication of 1 July 2020 entitled the 'European Skills Agenda for sustainable competitiveness, social fairness and resilience';
+
+- (k) skills and training in cybersecurity;
+
+- (l) other projects which meet all the requirements set out in Article 11 and which become necessary to the achievement of the general objectives of the Digital Decade Policy Programme 2030 over time due to emerging social, economic or environmental developments.

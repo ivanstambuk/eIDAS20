@@ -113,20 +113,35 @@ After deploying to GitHub Pages, changes may not appear immediately due to CDN c
 
 ---
 
-## EUR-Lex 202 "Please Wait" Responses
+## EUR-Lex AWS WAF Bot Control (HTTP 202 + JS Challenge)
 
-EUR-Lex returns HTTP 202 when a document page hasn't been pre-rendered. This happens for HTML, XML, and TXT formats. Retrying doesn't help — the page needs a browser visit with JavaScript to trigger generation.
+As of Feb 2026, EUR-Lex (`eur-lex.europa.eu`) uses **AWS WAF Bot Control** with a JavaScript challenge. All programmatic HTTP requests (curl, wget, `read_url_content`) receive:
+- HTTP 202 status code
+- Header: `x-amzn-waf-action: challenge`
+- A 2KB HTML page with `AwsWafIntegration.getToken()` that requires JS execution
 
-**Fallback strategy:**
-1. **legislation.gov.uk** — UK-retained EU law, identical text to the original EU version. Works reliably with `read_url_content`. Use URLs like:
+**Retrying does NOT help** — the 202 is a WAF challenge, not a "please wait" response.
+
+**Primary bypass — Cellar REST API (`scripts/fetch-eurlex.sh`):**
+```bash
+# Downloads via publications.europa.eu (no WAF)
+./scripts/fetch-eurlex.sh 32022D2481          # XHTML
+./scripts/fetch-eurlex.sh 32022R2554 fmx4     # Formex XML  
+./scripts/fetch-eurlex.sh 32014R0910 pdf       # PDF
+```
+
+The script resolves: CELEX → RDF metadata → English expression → manifestation URL (xhtml/fmx4/pdf). Works for **original** (OJ) texts. For **consolidated** texts (CELEX starting with `0`), the XHTML manifestation may not exist — try `fmx4`.
+
+**Fallback strategies (if Cellar doesn't have the content):**
+1. **legislation.gov.uk** — UK-retained EU law, identical to original EU text:
    ```
    https://www.legislation.gov.uk/eur/YYYY/NNNN/annex/I
    https://www.legislation.gov.uk/eur/YYYY/NNNN/contents
    ```
-2. **Web search** — Search for the regulation title + article number, often finds full text on national government sites.
-3. **Browser subagent** — Navigate EUR-Lex in a real browser to trigger page generation, then extract text.
+2. **Web search** — Search for regulation title + article number
+3. **Browser subagent** — Navigate EUR-Lex in a real browser to solve the JS challenge
 
-**Don't waste time:** If EUR-Lex returns 202 on the first attempt, go straight to legislation.gov.uk.
+**Don't waste time:** If EUR-Lex returns 202, go straight to `fetch-eurlex.sh`.
 
 ---
 
