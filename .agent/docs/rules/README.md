@@ -10,7 +10,6 @@ Quick reference for all rules and extracted reference documentation in the eIDAS
 |---|------|---------|
 | 1 | Infinite Time Principle | ABSOLUTE — never downscope due to time/token/context |
 | 2 | Session Length Guard | Alert user when Step Id ≥ 250 |
-| 3 | Notification + Context Report | Run `agent-done.sh` at END of every response |
 | 4 | Auto-commit Protocol | Commit IMMEDIATELY after each logical increment |
 | 5 | Clean Chrome Tabs | Run `cleanup-chrome-tabs.sh` BEFORE browser_subagent |
 | 6 | UI/UX Proposals | Generate visual mockups BEFORE proposing options |

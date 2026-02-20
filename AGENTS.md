@@ -64,7 +64,7 @@ This is NON-NEGOTIABLE. Violations of this rule are UNACCEPTABLE.
 
 **When the current Step Id reaches or exceeds 250, you MUST alert the user immediately.**
 
-At the END of your response (before the agent-done notification), include this warning:
+At the END of your response, include this warning:
 
 ```
 ⚠️ SESSION LENGTH WARNING: We have passed Step 250 (currently at Step {N}).
@@ -82,31 +82,6 @@ Context summarization/truncation is imminent. To preserve session learnings:
 - ❌ Continuing past step 250 without alerting the user
 - ❌ Mentioning it casually instead of prominently
 - ❌ Waiting until truncation has already occurred
-
----
-
-### 3. Notification + Context Report (EXECUTE — Not Display)
-
-At the END of every response, **EXECUTE this script using `run_command`**:
-
-```
-~/dev/eIDAS20/scripts/agent-done.sh <ctx_remaining> "[Gemini] Brief summary"
-```
-
-**⚠️ You must INVOKE `run_command` to execute this script. Do NOT just display this in a markdown code block.**
-
-**Parameters:**
-- `<ctx_remaining>` = the number from the MOST RECENT `<ctx_window>X tokens left</ctx_window>` system feedback
-- Example: `<ctx_window>89133 tokens left</ctx_window>` → use `89133`
-- ⚠️ **NEVER hardcode or reuse a previous value** — always read fresh from the last XML response
-
-**After execution, the script outputs:**
-- `📊 Context: XX% consumed` — include this in your response
-- At 75%+: `⚠️ Context at XX% consumed — recommend /retro then /handover`
-
-**Why 75%:** Research shows LLM quality degrades around 60-70% due to "lost in the middle" problem. 75% is a safe handoff point.
-
-**No other text or tool calls after the notification.**
 
 ---
 
@@ -659,8 +634,7 @@ Documents in the sidebar are sorted by their position in `documents.yaml` (`conf
 │   ├── test_formex_converter.py        # Unit tests for converter
 │   ├── documents.yaml                  # Document registry (SSOT)
 │   ├── restart-chrome.sh               # Start Chrome with CDP (WSL → Windows)
-│   ├── cleanup-chrome-tabs.sh          # Clean stale browser tabs
-│   └── agent-done.sh                   # End-of-response notification + context
+│   └── cleanup-chrome-tabs.sh          # Clean stale browser tabs
 ├── .legacy/                            # ARCHIVED: Do not use for existing docs
 │   └── formex_to_md_v3.py              # ⚠️ ARCHIVED Formex converter (see DEC-095)
 ├── .agent/                             # Agent configuration
