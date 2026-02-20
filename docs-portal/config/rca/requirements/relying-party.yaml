@@ -52,7 +52,7 @@ requirements:
       For payment services, this implements "Strong Customer Authentication" (SCA) under
       PSD2 Article 97 and the RTS (Commission Delegated Regulation (EU) 2018/389). The 
       upcoming Payment Services Regulation (PSR) will replace PSD2 and continues the SCA 
-      mandate. The EC payment-auth manual describes how wallets issue SCA attestations 
+      mandate. The EC Payment Authentication manual describes how wallets issue SCA attestations 
       that payment service providers can verify.
     legalBasis:
       regulation: 2014/910
@@ -503,7 +503,7 @@ requirements:
       pseudonymous authentication. Users cannot be forced to reveal their real identity 
       when pseudonymous access is sufficient. For age verification, relying parties 
       should accept age threshold proofs (e.g., "over 18") without requiring full 
-      identity disclosure. The EC age-verification manual identifies zero-knowledge 
+      identity disclosure. The EC Age Verification manual identifies zero-knowledge 
       proofs (ZKP) as an upcoming technique enabling this.
     legalBasis:
       regulation: 2014/910

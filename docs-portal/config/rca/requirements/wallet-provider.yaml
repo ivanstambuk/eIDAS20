@@ -1218,7 +1218,7 @@ requirements:
       The wallet must enable privacy-preserving techniques ensuring unlinkability 
       where the attestation does not require user identification. This is central 
       to age verification use cases, where the wallet proves an age threshold 
-      without revealing birth date or identity. The EC age-verification manual 
+      without revealing birth date or identity. The EC Age Verification manual 
       identifies zero-knowledge proofs (ZKP) as an upcoming technique for this.
     legalBasis:
       regulation: 2014/910

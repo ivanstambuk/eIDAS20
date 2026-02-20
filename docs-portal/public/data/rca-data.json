@@ -5580,7 +5580,7 @@
       "id": "RP-GOV-003",
       "category": "governance",
       "requirement": "Private sector: Accept EUDI Wallet where strong user authentication is mandated",
-      "explanation": "Private relying parties (except micro/small enterprises) must accept EUDI Wallets \nwhen strong user authentication (SUA) is required by law or contract in specified sectors.\nFor payment services, this implements \"Strong Customer Authentication\" (SCA) under\nPSD2 Article 97 and the RTS (Commission Delegated Regulation (EU) 2018/389). The \nupcoming Payment Services Regulation (PSR) will replace PSD2 and continues the SCA \nmandate. The EC payment-auth manual describes how wallets issue SCA attestations \nthat payment service providers can verify.",
+      "explanation": "Private relying parties (except micro/small enterprises) must accept EUDI Wallets \nwhen strong user authentication (SUA) is required by law or contract in specified sectors.\nFor payment services, this implements \"Strong Customer Authentication\" (SCA) under\nPSD2 Article 97 and the RTS (Commission Delegated Regulation (EU) 2018/389). The \nupcoming Payment Services Regulation (PSR) will replace PSD2 and continues the SCA \nmandate. The EC Payment Authentication manual describes how wallets issue SCA attestations \nthat payment service providers can verify.",
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5f",
@@ -6361,7 +6361,7 @@
       "id": "RP-REG-006",
       "category": "registration",
       "requirement": "Accept pseudonymous authentication where legal identity is not required",
-      "explanation": "When a user's legal identity is not required by law, relying parties must accept \npseudonymous authentication. Users cannot be forced to reveal their real identity \nwhen pseudonymous access is sufficient. For age verification, relying parties \nshould accept age threshold proofs (e.g., \"over 18\") without requiring full \nidentity disclosure. The EC age-verification manual identifies zero-knowledge \nproofs (ZKP) as an upcoming technique enabling this.",
+      "explanation": "When a user's legal identity is not required by law, relying parties must accept \npseudonymous authentication. Users cannot be forced to reveal their real identity \nwhen pseudonymous access is sufficient. For age verification, relying parties \nshould accept age threshold proofs (e.g., \"over 18\") without requiring full \nidentity disclosure. The EC Age Verification manual identifies zero-knowledge \nproofs (ZKP) as an upcoming technique enabling this.",
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -17801,7 +17801,7 @@
       "id": "WP-PRV-006",
       "category": "privacy",
       "requirement": "Enable privacy-preserving techniques for unlinkability",
-      "explanation": "The wallet must enable privacy-preserving techniques ensuring unlinkability \nwhere the attestation does not require user identification. This is central \nto age verification use cases, where the wallet proves an age threshold \nwithout revealing birth date or identity. The EC age-verification manual \nidentifies zero-knowledge proofs (ZKP) as an upcoming technique for this.",
+      "explanation": "The wallet must enable privacy-preserving techniques ensuring unlinkability \nwhere the attestation does not require user identification. This is central \nto age verification use cases, where the wallet proves an age threshold \nwithout revealing birth date or identity. The EC Age Verification manual \nidentifies zero-knowledge proofs (ZKP) as an upcoming technique for this.",
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5a",
@@ -29069,8 +29069,8 @@
     }
   },
   "_meta": {
-    "contentHash": "9a4c9044",
-    "buildCommit": "da2a86f1",
+    "contentHash": "d1e43741",
+    "buildCommit": "e4c96583",
     "buildDate": "2026-02-20",
     "schemaVersion": 1
   }
