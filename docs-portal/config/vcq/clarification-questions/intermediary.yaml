@@ -162,7 +162,7 @@ requirements:
         text: "Do you support remote presentation via OpenID4VP as specified in ISO/IEC TS 18013-7? Which OID4VP draft version is implemented?"
         dimension: capability
       - id: Q2
-        text: "Do you support proximity presentation via BLE/NFC as specified in ISO/IEC 18013-5? Is BLE mandatory and NFC optional, or are both fully supported?"
+        text: "Do you support proximity presentation via BLE and/or NFC as specified in ISO/IEC 18013-5? BLE is the mandatory baseline transport per ISO 18013-5:2021 — is NFC supported as an additional option? Do you support both 'supervised' proximity flows (attended kiosk/counter) and 'unsupervised' flows (unattended terminal) per the EC proximity-ID manual?"
         dimension: capability
       - id: Q3
         text: "Which wallet implementations have you tested protocol compatibility with (EUDI reference wallet, Apple, Google, third-party)? What interoperability issues were encountered?"
@@ -373,13 +373,13 @@ requirements:
         text: "How do you handle revocation checking when status endpoints are unavailable — fail-closed (reject presentation), fail-open (accept with warning), or use a cached (potentially stale) list? Is this policy configurable per RP?"
         dimension: operational
       - id: Q4
-        text: "What is the latency impact of revocation checking on verification time? Do you pre-fetch and cache status lists proactively, or is each check a synchronous remote call? How does this interact with the overall SLA for end-to-end presentation processing?"
+        text: "What is the end-to-end latency impact of revocation checking on overall transaction time? Do you pre-fetch and cache status lists proactively, or is each check a synchronous remote call? How does performance differ between Attestation Status Lists (bitstring lookup) and Attestation Revocation Lists (identifier search)?"
         dimension: sla
       - id: Q5
         text: "Can the organisation configure whether revocation checking is mandatory or optional per RP relationship or per attestation type? Given AS-AP-07-020 is a SHOULD, is there an opt-out mechanism? How does this interact with the AS-RP-51-012 agreement scope?"
         dimension: flexibility
       - id: Q6
-        text: "What caching strategies do you employ for Status Lists to minimise latency while ensuring freshness? How frequently do you refresh status lists from PID/EAA Providers — time-based, event-based, or configurable per attestation type? What is the maximum age of a cached status list before re-fetch?"
+        text: "What caching strategies do you employ for Status Lists to minimise latency while ensuring freshness? How frequently do you refresh status lists from PID/EAA Providers — time-based (e.g., every N minutes), event-based (on each request), or configurable per attestation type? What is the maximum age of a cached status list before mandatory re-fetch?"
         dimension: technical_implementation
       - id: Q7
         text: "How does revocation checking interact with the no-storage mandate? Do you log individual attestation status identifiers during checking, or is the check performed without persistent state?"
@@ -396,12 +396,6 @@ requirements:
       - id: Q11
         text: "If revocation verification fails (attestation is found to be revoked), do you correctly block attribute forwarding to the RP per AS-RP-51-011? What error information is returned to the wallet?"
         dimension: compliance_completeness
-      - id: Q12
-        text: "How frequently do you refresh status lists from PID/EAA Providers? Is the refresh strategy time-based (e.g., every N minutes), event-based (on each request), or configurable per attestation type?"
-        dimension: sla
-      - id: Q13
-        text: "What is the performance impact of revocation checking on overall transaction latency? How does the performance differ between Attestation Status Lists (bitstring lookup) and Attestation Revocation Lists (identifier search)?"
-        dimension: performance
 
   # ============================================================================
   # VEND-INT-012: Device Binding Verification
@@ -763,7 +757,7 @@ requirements:
         text: "Which wallet implementations have you tested format compatibility with (EUDI reference wallet, Apple, Google, third-party)? Have you participated in EUDI Wallet plugfest or interoperability testing events?"
         dimension: interoperability
       - id: Q5
-        text: "For proximity presentations, which transport protocols do you support — BLE, NFC, or both? Do you support ISO 18013-7 for additional proximity modes?"
+        text: "For proximity presentations, which transport protocols do you support — BLE (mandatory baseline per ISO 18013-5), NFC, or Wi-Fi Aware? Do you support ISO 18013-7 for reader authentication enhancements?"
         dimension: technical_implementation
       - id: Q6
         text: "For SD-JWT-VC, do you support verification of individual disclosures (claims) independent of the full payload? How do you handle the `_sd` claim array and disclosure hashing?"
@@ -887,7 +881,7 @@ requirements:
   VEND-INT-027:
     questions:
       - id: Q1
-        text: "Do you support WebAuthn-based pseudonymous authentication from wallet units? Which WebAuthn specification version do you implement (Level 2, Level 3)?"
+        text: "Do you support WebAuthn-based pseudonymous authentication from wallet units? Which WebAuthn specification version do you implement (Level 2, Level 3)? This supports the TS12 pseudonym attestation use case from the EC PID-online manual, where users authenticate without revealing their real identity."
         dimension: capability
       - id: Q2
         text: "Which WebAuthn attestation and assertion modes do you support? Do you support `direct` attestation for initial registration and `assertion` for subsequent authentications?"
@@ -1117,5 +1111,3 @@ requirements:
       - id: Q9
         text: "Do you maintain an internal registry of all registered intermediary-RP relationships with their registration status? Is this synchronised with the Registrar in real time or on a polling basis?"
         dimension: technical_implementation
-
-  # ============================================================================

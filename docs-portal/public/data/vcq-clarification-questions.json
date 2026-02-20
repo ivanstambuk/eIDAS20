@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-02-20T10:30:57.364Z",
+  "generatedAt": "2026-02-20T10:33:02.136Z",
   "schemaVersion": 2,
   "stats": {
     "totalRequirements": 151,
-    "totalQuestions": 1352,
+    "totalQuestions": 1350,
     "useCaseTaggedQuestions": 51,
     "byDimension": {
       "architecture": 77,
@@ -28,7 +28,7 @@
       "technical_implementation": 161,
       "risk_management": 1,
       "physical_security": 1,
-      "sla": 52,
+      "sla": 51,
       "documentation": 20,
       "regulatory_support": 4,
       "user_experience": 21,
@@ -46,7 +46,7 @@
       "regulatory_status": 1,
       "compliance_history": 7,
       "readiness": 1,
-      "performance": 2,
+      "performance": 1,
       "scalability": 2
     },
     "byUseCaseRef": {
@@ -3175,7 +3175,7 @@
       },
       {
         "id": "Q2",
-        "text": "Do you support proximity presentation via BLE/NFC as specified in ISO/IEC 18013-5? Is BLE mandatory and NFC optional, or are both fully supported?",
+        "text": "Do you support proximity presentation via BLE and/or NFC as specified in ISO/IEC 18013-5? BLE is the mandatory baseline transport per ISO 18013-5:2021 — is NFC supported as an additional option? Do you support both 'supervised' proximity flows (attended kiosk/counter) and 'unsupervised' flows (unattended terminal) per the EC proximity-ID manual?",
         "dimension": "capability"
       },
       {
@@ -3467,7 +3467,7 @@
       },
       {
         "id": "Q4",
-        "text": "What is the latency impact of revocation checking on verification time? Do you pre-fetch and cache status lists proactively, or is each check a synchronous remote call? How does this interact with the overall SLA for end-to-end presentation processing?",
+        "text": "What is the end-to-end latency impact of revocation checking on overall transaction time? Do you pre-fetch and cache status lists proactively, or is each check a synchronous remote call? How does performance differ between Attestation Status Lists (bitstring lookup) and Attestation Revocation Lists (identifier search)?",
         "dimension": "sla"
       },
       {
@@ -3477,7 +3477,7 @@
       },
       {
         "id": "Q6",
-        "text": "What caching strategies do you employ for Status Lists to minimise latency while ensuring freshness? How frequently do you refresh status lists from PID/EAA Providers — time-based, event-based, or configurable per attestation type? What is the maximum age of a cached status list before re-fetch?",
+        "text": "What caching strategies do you employ for Status Lists to minimise latency while ensuring freshness? How frequently do you refresh status lists from PID/EAA Providers — time-based (e.g., every N minutes), event-based (on each request), or configurable per attestation type? What is the maximum age of a cached status list before mandatory re-fetch?",
         "dimension": "technical_implementation"
       },
       {
@@ -3504,16 +3504,6 @@
         "id": "Q11",
         "text": "If revocation verification fails (attestation is found to be revoked), do you correctly block attribute forwarding to the RP per AS-RP-51-011? What error information is returned to the wallet?",
         "dimension": "compliance_completeness"
-      },
-      {
-        "id": "Q12",
-        "text": "How frequently do you refresh status lists from PID/EAA Providers? Is the refresh strategy time-based (e.g., every N minutes), event-based (on each request), or configurable per attestation type?",
-        "dimension": "sla"
-      },
-      {
-        "id": "Q13",
-        "text": "What is the performance impact of revocation checking on overall transaction latency? How does the performance differ between Attestation Status Lists (bitstring lookup) and Attestation Revocation Lists (identifier search)?",
-        "dimension": "performance"
       }
     ],
     "VEND-INT-012": [
@@ -4009,7 +3999,7 @@
       },
       {
         "id": "Q5",
-        "text": "For proximity presentations, which transport protocols do you support — BLE, NFC, or both? Do you support ISO 18013-7 for additional proximity modes?",
+        "text": "For proximity presentations, which transport protocols do you support — BLE (mandatory baseline per ISO 18013-5), NFC, or Wi-Fi Aware? Do you support ISO 18013-7 for reader authentication enhancements?",
         "dimension": "technical_implementation"
       },
       {
@@ -4177,7 +4167,7 @@
     "VEND-INT-027": [
       {
         "id": "Q1",
-        "text": "Do you support WebAuthn-based pseudonymous authentication from wallet units? Which WebAuthn specification version do you implement (Level 2, Level 3)?",
+        "text": "Do you support WebAuthn-based pseudonymous authentication from wallet units? Which WebAuthn specification version do you implement (Level 2, Level 3)? This supports the TS12 pseudonym attestation use case from the EC PID-online manual, where users authenticate without revealing their real identity.",
         "dimension": "capability"
       },
       {
