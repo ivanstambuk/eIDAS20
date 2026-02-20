@@ -17,9 +17,9 @@
 | **Phase 3** | Add PDF Manual URLs (new field `pdfManualUrl`) | 3 | ✅ Complete |
 | **Phase 4** | Rebuild & Verify | 3 | ✅ Complete |
 | **Phase 5** | VCQ Technical Standard Enrichment | 7 | ✅ Complete |
-| **Phase 6** | Manual Content Analysis & Data Quality Uplift | 6 | 🔶 In progress (5/6 done) |
+| **Phase 6** | Manual Content Analysis & Data Quality Uplift | 6 | ✅ Complete |
 
-**Total steps:** 26 | **Completed:** 25/26
+**Total steps:** 26 | **Completed:** 26/26 ✅
 
 ---
 
@@ -748,11 +748,21 @@ patterns, stakeholder responsibilities — that could make explanations more use
 questions should also carry `useCaseRef: [esignature]`. Consider doing 6.5 before 6.4, or at least
 coordinating the scoping decisions.
 
-### Step 6.6 — Cross-Validation Gap Report ⬜ NOT STARTED
+### Step 6.6 — Cross-Validation Gap Report ✅ COMPLETE
 
-> **Effort:** ~1-2 hours  
+> **Completed:** 2026-02-20T12:10+01:00  
+> **Effort:** ~1 hour  
 > **Risk:** Low — read-only analysis, produces a report  
 > **Output:** `.agent/research/MANUAL_CROSS_VALIDATION_REPORT.md`
+
+**Results:** Systematic comparison of 11 EC use case manuals (~270K chars) against
+487 RCA requirements and 1,350 VCQ questions. Key findings:
+- **RCA coverage is structurally sound** — all legal obligations captured
+- **No missing requirements** — gaps are in "practical context" enrichment, not legal coverage
+- **ZKP/zero-knowledge proofs** — mentioned in age-verification manual as upcoming, 0 RCA reqs (expected: not yet mandated)
+- **Health sector specifics** (NCPeH, MyHealth@EU) — outside eIDAS scope, correctly absent
+- **ICAO/DTC specifics** — aviation authority domain, not eIDAS vendor requirements
+- **8 actionable recommendations** ranked high/medium/low, all feeding into deferred description enrichment
 
 **Purpose:** Produce a structured report documenting what the manuals cover vs. what our RCA/VCQ
 data covers, with prioritised recommendations.
@@ -780,7 +790,7 @@ data covers, with prioritised recommendations.
 | **6.3** | Populate `technicalSpecs` arrays on all use cases | ~30 min | ✅ Complete |
 | **6.4** | VCQ clarification question audit & use case tagging (5 files, 53 sharpened, 2 removed) | ~3-4 hrs | ✅ Complete |
 | **6.5** | RCA requirement use case scoping (74/487 scoped, enrichment deferred) | ~2 hrs | ✅ Complete |
-| **6.6** | Cross-validation gap report | ~1-2 hrs | ⬜ Not started |
+| **6.6** | Cross-validation gap report (8 recommendations, no missing reqs) | ~1 hr | ✅ Complete |
 
 ---
 
