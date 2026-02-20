@@ -439,6 +439,22 @@ const RegulationViewer = () => {
     }, [loading, regulation, searchParams, shouldRestoreScroll]);
 
 
+    // External links: open in new tab (DEC-092: FAQ links to EUR-Lex, EC sites)
+    useEffect(() => {
+        if (!regulation || loading) return;
+
+        const contentEl = document.querySelector('.regulation-content');
+        if (!contentEl) return;
+
+        contentEl.querySelectorAll('a[href]').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && (href.startsWith('http://') || href.startsWith('https://'))) {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            }
+        });
+    }, [regulation, loading]);
+
     // Copy Reference Gutter Icons: Hydrate headings with copy buttons (DEC-011)
     useEffect(() => {
         if (!regulation || loading) return;
