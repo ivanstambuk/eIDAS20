@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-02-20 10:35 CET |
+| **Last Updated** | 2026-02-20 11:46 CET |
 | **Version** | V4.1.3 |
-| **Portal Stats** | 45 docs, 397K words, 380 terms, 2,397 article links, 487 RCA reqs, 153 VCQ reqs (1,352 clarification Qs), 510 ARF HLRs (v2.8.0, 20 topics) |
-| **Next Action** | Execute Step 6.4 (VCQ clarification question audit & use case tagging) from USE_CASE_ANALYSIS.md |
+| **Portal Stats** | 45 docs, 397K words, 380 terms, 2,397 article links, 487 RCA reqs, 153 VCQ reqs (1,350 clarification Qs), 510 ARF HLRs (v2.8.0, 20 topics) |
+| **Next Action** | Execute Step 6.5 (RCA requirement use case scoping) from USE_CASE_ANALYSIS.md |
 
 
 ---
@@ -38,6 +38,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-02-20 11:46 | **Complete: VCQ Quality Audit (Step 6.4)** — Audited all 1,352 VCQ clarification questions across 5 files against 11 EC use case manuals. 53 questions sharpened with EC manual terminology, regulatory precision (specific article numbers, implementing regulation citations, ARF references), and standard references (IETF drafts, NIST FIPS, EN/ISO standards). 2 redundant questions removed from intermediary.yaml (VEND-INT-011 Q12/Q13 merged into Q4/Q6). 1 corrupted header fixed in issuer.yaml. British English consistency enforced. Step 6.4 now fully complete (both tagging + quality audit). USE_CASE_ANALYSIS.md updated: 24/26 steps complete. Phase 6 progress: 4/6 done. Next: Step 6.5 (RCA use case scoping). 6 commits: `f676d176`, `65934ade`, `3cf7b2e2`, `5f38b62c`, `2ee82258`, `23c2315a`. |
 | 2026-02-20 10:35 | **Refactor: Use Case Analysis Phase 6 Expansion + Convention Alignment** — Expanded Phase 6 from 2 to 6 sub-steps (6.1-6.6). Steps 6.3 (technicalSpecs), 6.4 (VCQ audit + use case tagging), 6.5 (RCA enrichment + use case scoping), 6.6 (gap report) planned with detailed scope and effort estimates. Aligned use case scoping convention across RCA (`useCases`) and VCQ (`useCaseRef`): VCQ build script now normalises `useCaseRef` to array in output (Schema v2). Added use case tagging stats to build output. Current: 24/1,352 questions tagged, 64/487 requirements scoped. AGENTS.md: added step completion verification rule + reinforced jq-over-python3 guidance. Retro: 3 items implemented. 1 commit: `86cae86b`. |
 | 2026-02-20 09:35 | **Feat: EUDIW FAQ Terminology Enrichment + Enter-Key Search** — Cross-referenced EUDIW FAQ with terminology database. Added 6 new terms (wallet certification, SCA Attestation, Large Scale Pilot, digital document, digital asset, Very Large Online Platform) with aliases (LSP, VLOP). Enhanced 10 existing definitions (selective disclosure, pseudonym, EAA, SCA/SUA synonym, LoA + 4 enriched multi-source entries: Wallet Solution, Wallet Unit, PID Provider, EUDIW). Terms: 374→380. Aliases: 13→18 inline. Search UX: Enter key now opens first result in search dropdown (was promised in UI hints but not wired). Retro: alias location code comment. |
 | 2026-02-20 08:57 | **Refactor: AGENTS.md Restructuring + Version Badge Feature** — Reduced AGENTS.md from 1708→783 lines (-54%), extracted 7 reference docs to `.agent/docs/` (portal-gotchas, arf-data-model, vcq-architecture, rca-reference, link-builder, conversion-guidelines, browser-testing, build-reference). Added `sidebarOrder: 1` to eSignature FAQ. Fixed EUDIW FAQ source_version 3→73, eSignature FAQ 1→12 (verified via Confluence page history). Version badge (v73/v12) now clickable link to Confluence page history. Added `history_url` field to documents.yaml schema + updated `/import-regulation` workflow with Confluence version verification step. 4 commits. |
