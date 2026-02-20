@@ -17,9 +17,9 @@
 | **Phase 3** | Add PDF Manual URLs (new field `pdfManualUrl`) | 3 | ✅ Complete |
 | **Phase 4** | Rebuild & Verify | 3 | ✅ Complete |
 | **Phase 5** | VCQ Technical Standard Enrichment | 7 | ✅ Complete |
-| **Phase 6** | Manual Content Analysis & Terminology Import | 2 | ✅ Complete |
+| **Phase 6** | Manual Content Analysis & Data Quality Uplift | 6 | 🔶 In progress (2/6 done) |
 
-**Total steps:** 22 | **Completed:** 22/22
+**Total steps:** 26 | **Completed:** 22/26
 
 ---
 
@@ -505,30 +505,65 @@ Our YAML groups by category (different ordering), which is fine — we sort by `
 
 ---
 
-## Phase 6: Manual Content Analysis & Recommendations
+## Phase 6: Manual Content Analysis & Data Quality Uplift
 
-> **Target:** Analyze `.agent/research/use-case-manuals/txt/` content and produce recommendations  
-> **Estimated effort:** ~2-3 hours  
-> **Risk:** Low — read-only analysis, no code changes  
-> **Prerequisites:** Phases 1-4 complete (data corrections applied first)  
-> **Archive:** 11 PDFs downloaded and text-extracted to `.agent/research/use-case-manuals/`
+> **Target:** Cross-validate EC use case manual content against our existing RCA/VCQ data; enrich and sharpen where gaps exist  
+> **Estimated effort:** ~8-10 hours total (across multiple sessions)  
+> **Risk:** Medium — involves modifying existing VCQ questions and RCA data  
+> **Prerequisites:** Phases 1-5 complete  
+> **Scope:** All 11 published use cases with manuals
 
-⚠️ **Note:** The PDFs contain images, diagrams, and formatted layouts that don't fully convert to text.
-The text extractions are useful for keyword search and content analysis, but may be incomplete.
-Total extracted: ~2,285 lines / 269 KB across 11 files.
+### Source Materials Inventory
 
-### Step 6.1 — Deep content analysis of all 11 manuals
+**Primary sources (for cross-validation):**
 
-- [x] **Analyzed** each of the 11 text-extracted manuals for:
-  - Requirements or compliance obligations not yet captured in our RCA requirements YAML
-  - Technical standards, protocols, or data formats not yet in our `legal-sources.yaml` or `technicalSpecs`
-  - User journey details that could inform VCQ clarification questions
-  - Cross-references to legislation, implementing acts, or delegated regulations we don't track
-  - Governance structures (trust lists, notification procedures, certification bodies)
-  - Stakeholder-specific guidance (for issuers, verifiers, wallet providers, Member States)
-  - Interoperability requirements and cross-border considerations
+| # | Use Case | TXT File (from PDF) | EC Manual Page (live fetch via `read_url_content`) |
+|---|----------|--------------------|----------------------------------------------------||
+| 01 | Mobile Driving Licence | `txt/01-mdl.txt` | `ecManualUrl` in `use-cases.yaml` |
+| 02 | Age Verification | `txt/02-age-verification.txt` | `ecManualUrl` in `use-cases.yaml` |
+| 03 | European Parking Card | `txt/03-epc.txt` | `ecManualUrl` in `use-cases.yaml` |
+| 04 | PID-based Identification | `txt/04-pid-online.txt` | `ecManualUrl` in `use-cases.yaml` |
+| 05 | Proximity Identification | `txt/05-proximity-id.txt` | `ecManualUrl` in `use-cases.yaml` |
+| 06 | Digital Travel Credential | `txt/06-dtc.txt` | `ecManualUrl` in `use-cases.yaml` |
+| 07 | eSignature | `txt/07-esignature.txt` | `ecManualUrl` in `use-cases.yaml` |
+| 08 | European Disability Card | `txt/08-disability-card.txt` | `ecManualUrl` in `use-cases.yaml` |
+| 09 | ePrescription | `txt/09-eprescription.txt` | `ecManualUrl` in `use-cases.yaml` |
+| 10 | European Health Insurance Card | `txt/10-ehic.txt` | `ecManualUrl` in `use-cases.yaml` |
+| 11 | Payment Authentication | `txt/11-payment-auth.txt` | `ecManualUrl` in `use-cases.yaml` |
 
-### Step 6.2 — Import extracted terminology into `custom-dictionary.yaml`
+**Usage notes:**
+- TXT files are in `.agent/research/use-case-manuals/txt/` — use these as the primary content source
+- EC manual HTML pages should be fetched at runtime via `read_url_content` for each sub-step, to capture any updates since the PDFs were downloaded
+- Full EC manual URLs are stored in `docs-portal/config/rca/use-cases.yaml` (field: `ecManualUrl`)
+- PDFs (`.agent/research/use-case-manuals/pdf/`) are the canonical record but not directly machine-readable — use TXT instead
+
+**Data assets to cross-validate against:**
+
+| Asset | Path | Item Count |
+|-------|------|------------|
+| RCA Requirements | `docs-portal/config/rca/requirements/*.yaml` (7 role files) | 487 requirements |
+| VCQ Clarification Questions | `docs-portal/config/vcq/clarification-questions/*.yaml` (5 category files) | 1,352 questions |
+| Technical Specifications | `docs-portal/config/rca/use-cases.yaml` (`technicalSpecs` field) | Currently only `payment-auth` has TS refs |
+| Custom Dictionary | `docs-portal/scripts/custom-dictionary.yaml` | 137 terms |
+| Legal Sources | `docs-portal/config/legal-sources.yaml` | — |
+
+**Current data profile:**
+- 423 of 487 requirements have `useCases: all` — none are mapped to specific use case IDs
+- 24 of 1,352 VCQ questions have `useCaseRef` — all from Phase 5 (core.yaml only)
+- 0 of 1,352 VCQ questions in ict/intermediary/issuer/trust_services have any use case cross-reference
+
+---
+
+### Step 6.1 — Read and extract content from all manuals ✅ DONE
+
+- [x] Read all 11 TXT-extracted manuals in full
+- [x] Identified technical standards, protocols, legislation references, and terminology
+- [ ] ~~Systematic cross-validation against RCA/VCQ data~~ → Moved to Steps 6.3–6.6
+
+**Honest status:** The reading was done thoroughly. The cross-validation analysis claimed in the
+original checklist was NOT performed — it is now properly scoped in Steps 6.3–6.6 below.
+
+### Step 6.2 — Import extracted terminology into `custom-dictionary.yaml` ✅ DONE
 
 - [x] **Added 19 new terms** to `docs-portal/scripts/custom-dictionary.yaml`:
   - **5 published use cases:** Age Verification, PID-based Identification, Identification in Proximity Scenarios, eSignature (use case), Payment Authentication
@@ -537,6 +572,189 @@ Total extracted: ~2,285 lines / 269 KB across 11 files.
 - [x] **Rebuilt** terminology index (399 terms) and search index
 - [x] All 19 use cases defined by the EC are now represented in the dictionary
 - [x] All aliases (OID4VP, OID4VCI, ESSPASS) confirmed present in JSON output
+- [x] Committed `6a561968`
+
+### Step 6.3 — Technical Specifications Alignment ⬜ NOT STARTED
+
+> **Effort:** ~30-45 minutes  
+> **Risk:** Low — data entry into existing YAML field  
+> **Target file:** `docs-portal/config/rca/use-cases.yaml`
+
+**Problem:** Only `payment-auth` has `technicalSpecs: [TS12]`. The other 10 published use cases
+have no technical specification references, despite the Technical Standards Inventory (Part A,
+Section A3) already documenting which standards each use case relies on.
+
+**Plan:**
+- [ ] For each of the 11 published use cases, populate the `technicalSpecs` array from the A3 inventory
+- [ ] Cross-reference against `legal-sources.yaml` to ensure all referenced specs are tracked
+- [ ] Identify any standards from the manuals not yet in `legal-sources.yaml` and flag for addition
+- [ ] Rebuild and verify
+
+**Expected `technicalSpecs` values per use case (from A3):**
+
+| Use Case | technicalSpecs (proposed) |
+|----------|---------------------------|
+| `pid-online` | OID4VCI, OID4VP, ISO 18013-5/7 |
+| `esignature` | ETSI TS 119 102-2, IR 2025/1567 |
+| `mdl` | ISO 18013-5, ISO 18013-7, OID4VCI |
+| `proximity-id` | ISO 18013-5, OID4VP |
+| `payment-auth` | TS12 *(already set)* |
+| `age-verification` | ISO 18013-5, ISO 23220-2, OID4VP, W3C DC API |
+| `dtc` | ICAO 9303, ISO 23220-2 |
+| `epc` | TBD (implementing acts pending) |
+| `disability-card` | TBD (implementing acts pending) |
+| `eprescription` | ISO 18013-5, ISO 18013-7, OID4VCI, MyHealth@EU |
+| `ehic` | SD-JWT-VC, W3C VC Data Model 2.0, OID4VCI |
+
+⚠️ **Decision needed:** The `technicalSpecs` field currently holds TS-number references (e.g. `TS12`).
+The standards above are a mix of ISO standards, IETF specs, and protocol names. Need to decide:
+(a) use ARF TS-number mapping where it exists, (b) use protocol/spec names directly, or (c) both.
+
+### Step 6.4 — VCQ Clarification Question Audit & Use Case Tagging ⬜ NOT STARTED
+
+> **Effort:** ~3-4 hours (largest sub-step; consider splitting across sessions)  
+> **Risk:** Medium — modifying existing VCQ questions  
+> **Target files:** `docs-portal/config/vcq/clarification-questions/*.yaml` (5 files)
+
+**Two primary objectives:**
+
+1. **Quality audit** — Sharpen questions using context from the EC use case manuals
+2. **Use case scoping** — Systematically tag every question with `useCaseRef` where it applies to specific use cases (not just "all")
+
+**Why use case tagging matters:** Future intent is to introduce use case filtering in the VCQ UI,
+mirroring the pattern already used in RCA. When a vendor selects a target use case (e.g. "Payment
+Authentication"), the VCQ should be able to surface only the questions relevant to that use case.
+This requires systematic `useCaseRef` tagging now, even though the UI filter is not yet built.
+
+**Current state:** Only 24 of 1,352 questions have `useCaseRef` (all in core.yaml, from Phase 5).
+The remaining 1,328 questions have no use case association.
+
+**Problem (quality):** The 1,352 existing VCQ clarification questions were authored before the EC
+use case manuals were analyzed. They may be:
+- **Vague** where the manual provides specific protocol/format details
+- **Incomplete** where the manual reveals scenarios not covered
+- **Redundant** where different requirements' questions ask overlapping things
+- **Using outdated terminology** (e.g. "advanced signatures" vs. "qualified signatures")
+
+**Scope:** Audit ALL questions across all 5 VCQ files, evaluating both quality and use case scope.
+
+**Plan — for each of the 11 use cases:**
+1. [ ] **Read** the TXT manual file + fetch the EC manual HTML page at runtime via `read_url_content`
+2. [ ] **Identify** which VCQ requirements and questions are relevant to this use case:
+   - Requirements already tagged with `useCaseRef` (currently 24 questions in core.yaml)
+   - Requirements likely relevant based on their `id`, description, or the parent requirement's scope
+3. [ ] **Cross-validate** each question against the manual content:
+   - Does the question use the correct technical terminology?
+   - Does the question reference the right protocols/formats?
+   - Is the question specific enough given what the manual reveals?
+   - Could the question be sharpened with concrete details from the manual?
+4. [ ] **Classify** each question as: `keep` | `sharpen` | `split` | `merge` | `add follow-up`
+5. [ ] **Tag use case scope** for each question:
+   - `useCaseRef: [specific-use-case-id]` — question is specific to one or more use cases
+   - No `useCaseRef` — question applies generically to all use cases
+   - A question may reference multiple use cases: `useCaseRef: [esignature, payment-auth]`
+6. [ ] **Apply** changes (wording + `useCaseRef` tags)
+7. [ ] **Rebuild** VCQ JSON after each batch
+
+**Execution order (by VCQ file):**
+
+| VCQ File | Questions | Use Cases Covered | Priority |
+|----------|-----------|-------------------|----------|
+| `core.yaml` | 421 | All 11 (foundational wallet-provider requirements) | 🔴 High — most use-case-relevant |
+| `issuer.yaml` | 360 | mDL, DTC, EHIC, ePrescription, disability card (issuance-heavy) | 🟡 Medium |
+| `intermediary.yaml` | 292 | Payment auth, PID online (intermediation scenarios) | 🟡 Medium |
+| `trust_services.yaml` | 171 | eSignature (QES, QTSP, QSCD) | 🟡 Medium |
+| `ict.yaml` | 108 | Cross-cutting (infrastructure & security) | 🟢 Lower — less use-case-specific |
+
+**Constraints:**
+- Do NOT rewrite questions from scratch — sharpen existing wording with specific details
+- Do NOT remove questions — only merge if truly duplicative
+- All changes must be backward-compatible (no ID changes)
+- Preserve the existing `dimension` classification
+- Every question must be evaluated for use case scope, even if the conclusion is "applies to all"
+
+### Step 6.5 — RCA Requirement Description Enrichment & Use Case Scoping ⬜ NOT STARTED
+
+> **Effort:** ~2-3 hours  
+> **Risk:** Medium — modifying requirement `explanation` fields and `useCases` values  
+> **Target files:** `docs-portal/config/rca/requirements/*.yaml` (7 role files)
+
+**Two primary objectives:**
+
+1. **Description enrichment** — Enhance `explanation` fields with practical context from the manuals
+2. **Use case scoping** — Re-evaluate the `useCases` field on every requirement: should it stay `all`, or be scoped to specific use case IDs?
+
+**Why use case scoping matters:** Currently 423 of 487 requirements have `useCases: all` and 64
+have no value. The RCA UI already supports use case filtering — but with everything tagged `all`,
+the filter is meaningless. The EC manuals make it clear that many requirements are particularly
+relevant to (or only meaningful for) specific use cases. Proper scoping would make the existing
+RCA filter actually useful.
+
+**Problem (descriptions):** Our 487 RCA requirement `explanation` fields are regulation-derived
+and often terse. The EC manuals provide rich practical context — user journeys, implementation
+patterns, stakeholder responsibilities — that could make explanations more useful to vendors.
+
+**Plan:**
+1. [ ] **Use case scoping pass** — For each requirement, evaluate against the 11 published manuals:
+   - Does this requirement apply equally to all 19 use cases? → Keep `useCases: all`
+   - Does this requirement only matter for specific use cases? → Set `useCases: [esignature, payment-auth, ...]`
+   - Is this requirement foundational infrastructure? → Keep `useCases: all`
+   - Categories likely to need specific scoping:
+     - Signature-related requirements → `esignature`
+     - Payment/SCA-related → `payment-auth`
+     - Proximity-specific → `proximity-id`, `mdl`
+     - Health-sector-specific → `eprescription`, `ehic`
+     - Travel-specific → `dtc`, `mdl`
+2. [ ] **Description enrichment** — For requirements where manual content adds significant value:
+   - Enrich the `explanation` field — NOT by replacing regulation text, but by appending practical context
+   - What does this requirement mean in practice?
+   - Which use cases does it most affect?
+   - Which technical standards implement this requirement?
+3. [ ] **Rebuild** RCA JSON and verify filtering still works
+
+**Key design decision needed:** Should manual-enriched context go into:
+- `explanation` (the main visible field) — risk: dilutes regulatory precision
+- `note` (the secondary field) — safer but less visible
+- A new field like `practicalContext` or `useCaseContext` — cleanest semantics but requires schema/build changes
+
+**Interaction with Step 6.4:** The use case scoping of requirements (this step) and questions
+(Step 6.4) should be aligned. If a requirement is scoped to `[esignature]`, then its clarification
+questions should also carry `useCaseRef: [esignature]`. Consider doing 6.5 before 6.4, or at least
+coordinating the scoping decisions.
+
+### Step 6.6 — Cross-Validation Gap Report ⬜ NOT STARTED
+
+> **Effort:** ~1-2 hours  
+> **Risk:** Low — read-only analysis, produces a report  
+> **Output:** `.agent/research/MANUAL_CROSS_VALIDATION_REPORT.md`
+
+**Purpose:** Produce a structured report documenting what the manuals cover vs. what our RCA/VCQ
+data covers, with prioritised recommendations.
+
+**Plan:**
+1. [ ] **Per-manual coverage matrix:**
+   - Topics in manual → matching RCA requirement(s) → matching VCQ question(s)
+   - Flag gaps where manual mentions something we don't cover
+2. [ ] **Actionable recommendations** grouped by type:
+   - VCQ questions to add (with draft text)
+   - RCA requirement explanations to enrich
+   - Technical specifications to track
+   - Legislation cross-references to consider
+3. [ ] **Priority ranking:** high / medium / low impact for each recommendation
+4. [ ] Present to user for review before any implementation
+
+---
+
+### Phase 6 Progress Summary
+
+| Sub-step | Description | Effort | Status |
+|----------|-------------|--------|--------|
+| **6.1** | Read & extract content from all 11 manuals | Done | ✅ Complete |
+| **6.2** | Import terminology into `custom-dictionary.yaml` | Done | ✅ Complete |
+| **6.3** | Populate `technicalSpecs` arrays on all use cases | ~30 min | ⬜ Not started |
+| **6.4** | VCQ clarification question audit & use case tagging (11 use cases × 5 files) | ~3-4 hrs | ⬜ Not started |
+| **6.5** | RCA requirement description enrichment & use case scoping | ~2-3 hrs | ⬜ Not started |
+| **6.6** | Cross-validation gap report | ~1-2 hrs | ⬜ Not started |
 
 ---
 
@@ -771,28 +989,43 @@ The following fields were **audited and confirmed to already match** EC data —
 
 **EC manual source:** Proximity ID manual (supervised/unsupervised, verifier authentication, offline durability)
 
-## G4. Build Pipeline Change
+## G4. Build Pipeline Changes
 
-The `build-vcq-clarifications.js` script was updated to pass through the `useCaseRef` field:
+**Schema v1 (2026-02-19):** Added `useCaseRef` passthrough — string values passed as-is:
 
 ```javascript
-// Before:
-clarificationsByReqId[reqId] = reqData.questions.map(q => ({
-    id: q.id,
-    text: q.text,
-    dimension: q.dimension
-}));
-
-// After:
-clarificationsByReqId[reqId] = reqData.questions.map(q => ({
-    id: q.id,
-    text: q.text,
-    dimension: q.dimension,
-    ...(q.useCaseRef && { useCaseRef: q.useCaseRef })
-}));
+...(q.useCaseRef && { useCaseRef: q.useCaseRef })
 ```
 
-This change is backward-compatible: questions without `useCaseRef` are unaffected.
+**Schema v2 (2026-02-20):** Normalised `useCaseRef` to always output as an array, accepting
+both string and array input from YAML. Added use case tagging stats to output JSON.
+
+```javascript
+// Normalise useCaseRef to array (accepts string or array input)
+// Absent useCaseRef = applies to all use cases (implicit)
+if (q.useCaseRef) {
+    question.useCaseRef = Array.isArray(q.useCaseRef)
+        ? q.useCaseRef
+        : [q.useCaseRef];
+}
+```
+
+### Use Case Scoping Convention (aligned across RCA and VCQ)
+
+| Aspect | RCA Requirements (`useCases`) | VCQ Questions (`useCaseRef`) | Aligned? |
+|--------|-------------------------------|------------------------------|----------|
+| "Applies to all" | `useCases: all` (explicit) | Field absent (implicit) | ✅ Intentionally different — most questions are generic |
+| "Specific use cases" | `useCases: [esignature, ...]` (array) | `useCaseRef: [esignature, ...]` (array) | ✅ Both arrays |
+| "Single use case" | `useCases: [esignature]` (array) | `useCaseRef: esignature` (string, normalised to array) | ✅ Both work |
+| "Multiple use cases" | Array supported | Array supported | ✅ Both arrays |
+
+**Key rules:**
+1. In YAML source: both string (`useCaseRef: esignature`) and array (`useCaseRef: [esignature, payment-auth]`) are accepted
+2. In JSON output: always normalised to array (`"useCaseRef": ["esignature"]`)
+3. Absent field = applies to all use cases (no need to tag generic questions with "all")
+4. Use case IDs must match the keys in `docs-portal/config/rca/use-cases.yaml`
+
+This convention is backward-compatible. Existing YAML with string `useCaseRef` values continues to work unchanged.
 
 ## G5. Technical Standards Referenced
 
@@ -822,6 +1055,7 @@ This change is backward-compatible: questions without `useCaseRef` are unaffecte
 | 2026-02-19 | **Skip Step 1.5 (pid-online desc)** | Audit revealed description is already an exact match with EC listing page. No change needed. |
 | 2026-02-19 | **Minimize Step 1.3 (payment-auth desc)** | Audit revealed EC listing description matches ours verbatim. Only verb alignment needed (authorised→authenticated) to match renamed title. |
 | 2026-02-19 | **Additive-only VCQ enrichment** | No existing questions modified or removed. All 24 new questions strictly appended to existing requirement blocks. New `useCaseRef` field is optional and backward-compatible. |
+| 2026-02-20 | **Use case scoping convention alignment** | `useCaseRef` on VCQ questions normalised to array format in output JSON (Schema v2), aligning with the array-based `useCases` field on RCA requirements. Absent `useCaseRef` = applies to all use cases (implicit). YAML source accepts both string and array input for convenience. Future: VCQ UI will support use case filtering mirroring the existing RCA filter. |
 
 ---
 
@@ -836,3 +1070,4 @@ This change is backward-compatible: questions without `useCaseRef` are unaffecte
 | 2026-02-19 | **Downloaded all 11 manual PDFs** + text extraction. Added Phase 6 (manual content analysis & recommendations). Found missing Payment Auth (#11) and EHIC (#10) PDFs via browser. Total: 22 steps. |
 | 2026-02-19 | **Phase 5 VCQ enrichment complete** — 24 use-case-specific clarification questions added across 8 requirements, covering 7 use cases. Build script updated for `useCaseRef` passthrough. Commit `40be9a02`. |
 | 2026-02-20 | **Phase 6 terminology import complete** — 19 new terms added to `custom-dictionary.yaml`: 5 published use cases, 7 coming-soon use cases, 7 domain/protocol terms (OID4VP, OID4VCI, SD-JWT VC, mdoc, ESSPASS, Digital Credentials API, EMV 3-D Secure). Total dictionary terms: 137. Total terminology index: 399 terms. |
+| 2026-02-20 | **Use case scoping convention aligned** — `useCaseRef` normalised to array in VCQ build output (Schema v2). Build script updated with use case tagging stats. Convention documented in G4. Decision logged in Part C. |
