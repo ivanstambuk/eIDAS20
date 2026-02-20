@@ -1,9 +1,9 @@
 {
   "version": "2.0",
-  "generated": "2026-02-20T08:16:00.609Z",
+  "generated": "2026-02-20T09:12:42.417Z",
   "statistics": {
-    "totalTerms": 380,
-    "totalDefinitions": 546,
+    "totalTerms": 399,
+    "totalDefinitions": 565,
     "sources": {
       "regulations": 252,
       "implementingActs": 143,
@@ -151,6 +151,7 @@
       "advanced-digital-skills",
       "advanced-electronic-seal",
       "advanced-electronic-signature",
+      "age-verification",
       "ancillary-insurance-intermediary",
       "anonymous-credentials",
       "asic",
@@ -227,6 +228,7 @@
       "data-reporting-service-provider",
       "device-binding",
       "digital-asset",
+      "digital-credentials-api",
       "digital-document",
       "digital-intensity",
       "digital-operational-resilience",
@@ -245,6 +247,7 @@
     "E": [
       "e-prescription",
       "edge-nodes",
+      "educational-credentials",
       "electronic-archiving",
       "electronic-attestation-of-attributes",
       "electronic-attestation-of-attributes-issued-by-or-on-behalf-of-a-public-sector-body-responsible-for-an-authentic-source",
@@ -266,9 +269,11 @@
       "electronic-signature-creation-device",
       "electronic-time-stamp",
       "embedded-disclosure-policy",
+      "emv-3-d-secure",
       "enterprise",
       "entity",
       "entity-providing-domain-name-registration-services",
+      "esignature",
       "eu-digital-identity-wallet-trust-mark",
       "european-cybersecurity-certificate",
       "european-cybersecurity-certification-scheme",
@@ -278,9 +283,11 @@
       "european-health-data-space",
       "european-health-insurance-card",
       "european-parking-card",
+      "european-social-security-pass",
       "european-standard",
       "european-standardisation-deliverable",
       "european-standardisation-organisation",
+      "european-student-card",
       "ex-ante",
       "ex-post"
     ],
@@ -317,6 +324,7 @@
       "ict-third-party-service-provider",
       "ict-third-party-service-provider-established-in-a-third-country",
       "ict-related-incident",
+      "identification-in-proximity-scenarios",
       "identity-matching",
       "incident",
       "incident-handling",
@@ -368,6 +376,7 @@
       "manager-of-alternative-investment-funds",
       "manufacturer",
       "mdl-rulebook",
+      "mdoc",
       "medium-sized-enterprise",
       "member-state",
       "microenterprise",
@@ -387,6 +396,7 @@
       "national-standardisation-body",
       "national-strategy-on-the-security-of-network-and-information-systems",
       "natural-or-legal-person",
+      "natural-or-legal-person-representation",
       "natural-person",
       "near-miss",
       "network-and-information-system",
@@ -400,6 +410,9 @@
       "offline-mode",
       "online-marketplace",
       "online-search-engine",
+      "open-bank-account",
+      "openid-for-verifiable-credential-issuance",
+      "openid-for-verifiable-presentations",
       "operational-or-security-payment-related-incident",
       "operator-of-essential-services",
       "owner-of-a-scheme-for-the-attestation-of-attributes"
@@ -407,6 +420,7 @@
     "P": [
       "pades",
       "parent-undertaking",
+      "payment-authentication",
       "payment-institution",
       "payment-institution-exempted-pursuant-to-directive-eu-2015-2366",
       "payment-service-provider",
@@ -416,6 +430,7 @@
       "personal-data",
       "personal-data-breach",
       "pid-rulebook",
+      "pid-based-identification",
       "presentation-request",
       "processing",
       "processor",
@@ -435,6 +450,7 @@
       "public-key-infrastructure",
       "public-or-private",
       "public-sector-body",
+      "public-warnings",
       "pursuant-to"
     ],
     "Q": [
@@ -484,6 +500,7 @@
       "sca-attestation",
       "scheme-for-the-attestation-of-attributes",
       "scheme-owner",
+      "sd-jwt-vc",
       "secure-element",
       "securitisation-repository",
       "security-of-network-and-information-systems",
@@ -516,6 +533,7 @@
       "third-party",
       "threat-intelligence",
       "threat-led-penetration-testing-tlpt-",
+      "ticket-or-pass",
       "trade-repository",
       "trading-venue",
       "traffic-data",
@@ -532,6 +550,7 @@
       "union-law",
       "union-or-national-law",
       "unlinkability",
+      "use-of-a-pseudonym-in-online-services",
       "user"
     ],
     "V": [
@@ -1069,6 +1088,46 @@
       "domains": [
         "cryptography"
       ]
+    },
+    {
+      "id": "age-verification",
+      "term": "Age Verification",
+      "sources": [
+        {
+          "definition": "An EUDI Wallet use case enabling users to prove they are above a specific age threshold (e.g. over 16, 18, or 21) without revealing their exact date of birth or other personal details. Age verification uses ISO mdoc format (ISO/IEC 18013-5 + 23220-2) with boolean age_over claims derived from PID attributes. Verification is supported via the W3C Digital Credentials API and OpenID4VP. The EC has flagged Zero-Knowledge Proof (ZKP) support as an upcoming capability, which would enable cryptographic proof of age without disclosing any additional PID data. Age attestation providers are verified against a Commission-maintained trusted list.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EC Use Case Manual #02",
+          "articleNumber": "EC Use Case Manual #02",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EC Use Case Manual #02",
+      "definitionGroups": [
+        {
+          "definition": "An EUDI Wallet use case enabling users to prove they are above a specific age threshold (e.g. over 16, 18, or 21) without revealing their exact date of birth or other personal details. Age verification uses ISO mdoc format (ISO/IEC 18013-5 + 23220-2) with boolean age_over claims derived from PID attributes. Verification is supported via the W3C Digital Credentials API and OpenID4VP. The EC has flagged Zero-Knowledge Proof (ZKP) support as an upcoming capability, which would enable cryptographic proof of age without disclosing any additional PID data. Age attestation providers are verified against a Commission-maintained trusted list.",
+          "sources": [
+            {
+              "definition": "An EUDI Wallet use case enabling users to prove they are above a specific age threshold (e.g. over 16, 18, or 21) without revealing their exact date of birth or other personal details. Age verification uses ISO mdoc format (ISO/IEC 18013-5 + 23220-2) with boolean age_over claims derived from PID attributes. Verification is supported via the W3C Digital Credentials API and OpenID4VP. The EC has flagged Zero-Knowledge Proof (ZKP) support as an upcoming capability, which would enable cryptographic proof of age without disclosing any additional PID data. Age attestation providers are verified against a Commission-maintained trusted list.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EC Use Case Manual #02",
+              "articleNumber": "EC Use Case Manual #02",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "ancillary-insurance-intermediary",
@@ -4411,6 +4470,46 @@
       "domains": []
     },
     {
+      "id": "digital-credentials-api",
+      "term": "Digital Credentials API",
+      "sources": [
+        {
+          "definition": "A W3C web platform API enabling web browsers to mediate the presentation of verifiable credentials between relying party websites and digital wallets. In the EUDI Wallet ecosystem, the Digital Credentials API is specifically referenced in the Age Verification use case as the browser-side mechanism for requesting age attestation presentation via OpenID4VP. The API provides a standardised interface for credential requests, allowing websites to invoke wallet-based credential presentation without requiring custom protocol integration. It complements QR code and deep-link based invocation methods.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EC Age Verification Manual; W3C Digital Credentials API specification",
+          "articleNumber": "EC Age Verification Manual; W3C Digital Credentials API specification",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EC Age Verification Manual; W3C Digital Credentials API specification",
+      "definitionGroups": [
+        {
+          "definition": "A W3C web platform API enabling web browsers to mediate the presentation of verifiable credentials between relying party websites and digital wallets. In the EUDI Wallet ecosystem, the Digital Credentials API is specifically referenced in the Age Verification use case as the browser-side mechanism for requesting age attestation presentation via OpenID4VP. The API provides a standardised interface for credential requests, allowing websites to invoke wallet-based credential presentation without requiring custom protocol integration. It complements QR code and deep-link based invocation methods.",
+          "sources": [
+            {
+              "definition": "A W3C web platform API enabling web browsers to mediate the presentation of verifiable credentials between relying party websites and digital wallets. In the EUDI Wallet ecosystem, the Digital Credentials API is specifically referenced in the Age Verification use case as the browser-side mechanism for requesting age attestation presentation via OpenID4VP. The API provides a standardised interface for credential requests, allowing websites to invoke wallet-based credential presentation without requiring custom protocol integration. It complements QR code and deep-link based invocation methods.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EC Age Verification Manual; W3C Digital Credentials API specification",
+              "articleNumber": "EC Age Verification Manual; W3C Digital Credentials API specification",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "digital-document",
       "term": "digital document",
       "sources": [
@@ -5050,6 +5149,46 @@
               "articleId": "article-N/A-para-6",
               "articleNumber": "N/A(6)",
               "displayOrder": 4
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "educational-credentials",
+      "term": "Educational Credentials",
+      "sources": [
+        {
+          "definition": "An EUDI Wallet use case (coming soon) enabling users to store, manage, and present digitally verifiable education-related credentials such as university diplomas, professional qualifications, and training certificates.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EC EUDIW Use Case Portal",
+          "articleNumber": "EC EUDIW Use Case Portal",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EC EUDIW Use Case Portal",
+      "definitionGroups": [
+        {
+          "definition": "An EUDI Wallet use case (coming soon) enabling users to store, manage, and present digitally verifiable education-related credentials such as university diplomas, professional qualifications, and training certificates.",
+          "sources": [
+            {
+              "definition": "An EUDI Wallet use case (coming soon) enabling users to store, manage, and present digitally verifiable education-related credentials such as university diplomas, professional qualifications, and training certificates.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EC EUDIW Use Case Portal",
+              "articleNumber": "EC EUDIW Use Case Portal",
+              "displayOrder": 5
             }
           ],
           "isVariant": false
@@ -6226,6 +6365,46 @@
       ]
     },
     {
+      "id": "emv-3-d-secure",
+      "term": "EMV 3-D Secure",
+      "sources": [
+        {
+          "definition": "An industry security protocol for authenticating online card payments, managed by EMVCo. In the EUDI Wallet ecosystem, the Payment Authentication use case is designed for compatibility with EMV 3-D Secure flows for online card transactions. This enables EUDI Wallet-based Strong Customer Authentication to be integrated into existing card payment infrastructure without disrupting established merchant checkout processes. The wallet's SCA Attestation can serve as the authentication token within the 3-D Secure message flow.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EC Payment Authentication Manual; EMVCo specifications",
+          "articleNumber": "EC Payment Authentication Manual; EMVCo specifications",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EC Payment Authentication Manual; EMVCo specifications",
+      "definitionGroups": [
+        {
+          "definition": "An industry security protocol for authenticating online card payments, managed by EMVCo. In the EUDI Wallet ecosystem, the Payment Authentication use case is designed for compatibility with EMV 3-D Secure flows for online card transactions. This enables EUDI Wallet-based Strong Customer Authentication to be integrated into existing card payment infrastructure without disrupting established merchant checkout processes. The wallet's SCA Attestation can serve as the authentication token within the 3-D Secure message flow.",
+          "sources": [
+            {
+              "definition": "An industry security protocol for authenticating online card payments, managed by EMVCo. In the EUDI Wallet ecosystem, the Payment Authentication use case is designed for compatibility with EMV 3-D Secure flows for online card transactions. This enables EUDI Wallet-based Strong Customer Authentication to be integrated into existing card payment infrastructure without disrupting established merchant checkout processes. The wallet's SCA Attestation can serve as the authentication token within the 3-D Secure message flow.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EC Payment Authentication Manual; EMVCo specifications",
+              "articleNumber": "EC Payment Authentication Manual; EMVCo specifications",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "enterprise",
       "term": "enterprise",
       "sources": [
@@ -6337,6 +6516,46 @@
               "articleId": "article-6-para-22",
               "articleNumber": "6(22)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "esignature",
+      "term": "eSignature",
+      "sources": [
+        {
+          "definition": "An EUDI Wallet use case enabling users to create qualified electronic signatures (QES) with the same legal validity as handwritten signatures. The wallet supports two creation paths: (1) wallet-driven, where the wallet interfaces directly with a local or embedded QSCD; and (2) QTSP-driven, where the wallet connects to a remote QSCD managed by a qualified trust service provider (rQSCD, governed by IR 2025/1567). The use case supports ETSI signature profiles (PAdES, XAdES, CAdES) and the ASiC container format for long-term archival validation. Verification follows EU Trusted Lists and ETSI TS 119 102-2 validation protocols. Wallet users who are natural persons have free-of-charge access to qualified signature creation for non-professional purposes.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EC Use Case Manual #07",
+          "articleNumber": "EC Use Case Manual #07",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EC Use Case Manual #07",
+      "definitionGroups": [
+        {
+          "definition": "An EUDI Wallet use case enabling users to create qualified electronic signatures (QES) with the same legal validity as handwritten signatures. The wallet supports two creation paths: (1) wallet-driven, where the wallet interfaces directly with a local or embedded QSCD; and (2) QTSP-driven, where the wallet connects to a remote QSCD managed by a qualified trust service provider (rQSCD, governed by IR 2025/1567). The use case supports ETSI signature profiles (PAdES, XAdES, CAdES) and the ASiC container format for long-term archival validation. Verification follows EU Trusted Lists and ETSI TS 119 102-2 validation protocols. Wallet users who are natural persons have free-of-charge access to qualified signature creation for non-professional purposes.",
+          "sources": [
+            {
+              "definition": "An EUDI Wallet use case enabling users to create qualified electronic signatures (QES) with the same legal validity as handwritten signatures. The wallet supports two creation paths: (1) wallet-driven, where the wallet interfaces directly with a local or embedded QSCD; and (2) QTSP-driven, where the wallet connects to a remote QSCD managed by a qualified trust service provider (rQSCD, governed by IR 2025/1567). The use case supports ETSI signature profiles (PAdES, XAdES, CAdES) and the ASiC container format for long-term archival validation. Verification follows EU Trusted Lists and ETSI TS 119 102-2 validation protocols. Wallet users who are natural persons have free-of-charge access to qualified signature creation for non-professional purposes.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EC Use Case Manual #07",
+              "articleNumber": "EC Use Case Manual #07",
+              "displayOrder": 5
             }
           ],
           "isVariant": false
@@ -6766,6 +6985,49 @@
       ]
     },
     {
+      "id": "european-social-security-pass",
+      "term": "European Social Security Pass",
+      "sources": [
+        {
+          "definition": "A legislative initiative (ESSPASS) included in the European Commission's 2026 Work Programme, scheduled for Q3 2026, that aims to digitise social security coordination attestations and facilitate the exercise of social security rights for people working or moving within the EU. ESSPASS is part of a broader \"Fair labour mobility package\" and builds upon the digital EHIC piloted under the DC4EU project. It would provide a legal basis for issuing social security documents — including the EHIC, the Portable Document A1, and other coordination forms — as digital attestations in EUDI Wallets.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EC EHIC Manual; European Commission 2026 Work Programme",
+          "articleNumber": "EC EHIC Manual; European Commission 2026 Work Programme",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EC EHIC Manual; European Commission 2026 Work Programme",
+      "definitionGroups": [
+        {
+          "definition": "A legislative initiative (ESSPASS) included in the European Commission's 2026 Work Programme, scheduled for Q3 2026, that aims to digitise social security coordination attestations and facilitate the exercise of social security rights for people working or moving within the EU. ESSPASS is part of a broader \"Fair labour mobility package\" and builds upon the digital EHIC piloted under the DC4EU project. It would provide a legal basis for issuing social security documents — including the EHIC, the Portable Document A1, and other coordination forms — as digital attestations in EUDI Wallets.",
+          "sources": [
+            {
+              "definition": "A legislative initiative (ESSPASS) included in the European Commission's 2026 Work Programme, scheduled for Q3 2026, that aims to digitise social security coordination attestations and facilitate the exercise of social security rights for people working or moving within the EU. ESSPASS is part of a broader \"Fair labour mobility package\" and builds upon the digital EHIC piloted under the DC4EU project. It would provide a legal basis for issuing social security documents — including the EHIC, the Portable Document A1, and other coordination forms — as digital attestations in EUDI Wallets.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EC EHIC Manual; European Commission 2026 Work Programme",
+              "articleNumber": "EC EHIC Manual; European Commission 2026 Work Programme",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": [],
+      "aliases": [
+        "ESSPASS"
+      ]
+    },
+    {
       "id": "european-standard",
       "term": "European Standard",
       "sources": [
@@ -6877,6 +7139,46 @@
               "articleId": "article-2-para-8",
               "articleNumber": "2(8)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "european-student-card",
+      "term": "European Student Card",
+      "sources": [
+        {
+          "definition": "An EUDI Wallet use case (coming soon) enabling students to store and present their student status digitally, facilitating cross-border academic mobility and access to student services across Member States.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EC EUDIW Use Case Portal",
+          "articleNumber": "EC EUDIW Use Case Portal",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EC EUDIW Use Case Portal",
+      "definitionGroups": [
+        {
+          "definition": "An EUDI Wallet use case (coming soon) enabling students to store and present their student status digitally, facilitating cross-border academic mobility and access to student services across Member States.",
+          "sources": [
+            {
+              "definition": "An EUDI Wallet use case (coming soon) enabling students to store and present their student status digitally, facilitating cross-border academic mobility and access to student services across Member States.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EC EUDIW Use Case Portal",
+              "articleNumber": "EC EUDIW Use Case Portal",
+              "displayOrder": 5
             }
           ],
           "isVariant": false
@@ -8121,6 +8423,46 @@
               "articleId": "article-3-para-8",
               "articleNumber": "3(8)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "identification-in-proximity-scenarios",
+      "term": "Identification in Proximity Scenarios",
+      "sources": [
+        {
+          "definition": "An EUDI Wallet use case enabling relying parties to identify users in physical, face-to-face scenarios using short-range communication technologies (NFC, BLE, QR code). Use cases include allowing access to premises, law enforcement identity checks, and any situation requiring strong assurance of identity in person. Proximity identification uses PID attributes in ISO mdoc format, with verification via ISO 18013-5. The manual distinguishes supervised flows (e.g. border control, police checks with human oversight) from unsupervised flows (e.g. kiosks, turnstiles with automated verification). Offline verification — without internet connectivity for the data exchange itself — is a key design requirement.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EC Use Case Manual #05",
+          "articleNumber": "EC Use Case Manual #05",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EC Use Case Manual #05",
+      "definitionGroups": [
+        {
+          "definition": "An EUDI Wallet use case enabling relying parties to identify users in physical, face-to-face scenarios using short-range communication technologies (NFC, BLE, QR code). Use cases include allowing access to premises, law enforcement identity checks, and any situation requiring strong assurance of identity in person. Proximity identification uses PID attributes in ISO mdoc format, with verification via ISO 18013-5. The manual distinguishes supervised flows (e.g. border control, police checks with human oversight) from unsupervised flows (e.g. kiosks, turnstiles with automated verification). Offline verification — without internet connectivity for the data exchange itself — is a key design requirement.",
+          "sources": [
+            {
+              "definition": "An EUDI Wallet use case enabling relying parties to identify users in physical, face-to-face scenarios using short-range communication technologies (NFC, BLE, QR code). Use cases include allowing access to premises, law enforcement identity checks, and any situation requiring strong assurance of identity in person. Proximity identification uses PID attributes in ISO mdoc format, with verification via ISO 18013-5. The manual distinguishes supervised flows (e.g. border control, police checks with human oversight) from unsupervised flows (e.g. kiosks, turnstiles with automated verification). Offline verification — without internet connectivity for the data exchange itself — is a key design requirement.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EC Use Case Manual #05",
+              "articleNumber": "EC Use Case Manual #05",
+              "displayOrder": 5
             }
           ],
           "isVariant": false
@@ -9969,6 +10311,46 @@
       "domains": []
     },
     {
+      "id": "mdoc",
+      "term": "mdoc",
+      "sources": [
+        {
+          "definition": "Mobile Document — an ISO-standard credential format defined by ISO/IEC 18013-5 for proximity presentation and ISO 18013-7 for remote presentation. In the EUDI Wallet ecosystem, mdoc is one of the two primary credential formats (alongside SD-JWT VC). It uses CBOR encoding (Concise Binary Object Representation) and is the native format for mobile Driving Licences, PIDs, Health ID attestations (ePrescription), and age verification credentials. Mdoc supports selective disclosure through the IssuerAuth mechanism, where individual data elements within namespaces can be selectively included in device responses. Device authentication uses DeviceAuth signatures bound to the WSCD. The ARF specifies support for both mdoc and SD-JWT VC formats.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from ISO/IEC 18013-5; ARF Annex 3; EC mDL, Age Verification, ePrescription Manuals",
+          "articleNumber": "Synthesized from ISO/IEC 18013-5; ARF Annex 3; EC mDL, Age Verification, ePrescription Manuals",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-Synthesized from ISO/IEC 18013-5; ARF Annex 3; EC mDL, Age Verification, ePrescription Manuals",
+      "definitionGroups": [
+        {
+          "definition": "Mobile Document — an ISO-standard credential format defined by ISO/IEC 18013-5 for proximity presentation and ISO 18013-7 for remote presentation. In the EUDI Wallet ecosystem, mdoc is one of the two primary credential formats (alongside SD-JWT VC). It uses CBOR encoding (Concise Binary Object Representation) and is the native format for mobile Driving Licences, PIDs, Health ID attestations (ePrescription), and age verification credentials. Mdoc supports selective disclosure through the IssuerAuth mechanism, where individual data elements within namespaces can be selectively included in device responses. Device authentication uses DeviceAuth signatures bound to the WSCD. The ARF specifies support for both mdoc and SD-JWT VC formats.",
+          "sources": [
+            {
+              "definition": "Mobile Document — an ISO-standard credential format defined by ISO/IEC 18013-5 for proximity presentation and ISO 18013-7 for remote presentation. In the EUDI Wallet ecosystem, mdoc is one of the two primary credential formats (alongside SD-JWT VC). It uses CBOR encoding (Concise Binary Object Representation) and is the native format for mobile Driving Licences, PIDs, Health ID attestations (ePrescription), and age verification credentials. Mdoc supports selective disclosure through the IssuerAuth mechanism, where individual data elements within namespaces can be selectively included in device responses. Device authentication uses DeviceAuth signatures bound to the WSCD. The ARF specifies support for both mdoc and SD-JWT VC formats.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from ISO/IEC 18013-5; ARF Annex 3; EC mDL, Age Verification, ePrescription Manuals",
+              "articleNumber": "Synthesized from ISO/IEC 18013-5; ARF Annex 3; EC mDL, Age Verification, ePrescription Manuals",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "medium-sized-enterprise",
       "term": "medium-sized enterprise",
       "sources": [
@@ -10722,6 +11104,46 @@
       "domains": []
     },
     {
+      "id": "natural-or-legal-person-representation",
+      "term": "Natural or Legal Person Representation",
+      "sources": [
+        {
+          "definition": "An EUDI Wallet use case (coming soon) enabling users to act on behalf of another individual or an organisation using mandates or powers of representation stored in the wallet. This use case ensures legal certainty in delegated transactions.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EC EUDIW Use Case Portal",
+          "articleNumber": "EC EUDIW Use Case Portal",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EC EUDIW Use Case Portal",
+      "definitionGroups": [
+        {
+          "definition": "An EUDI Wallet use case (coming soon) enabling users to act on behalf of another individual or an organisation using mandates or powers of representation stored in the wallet. This use case ensures legal certainty in delegated transactions.",
+          "sources": [
+            {
+              "definition": "An EUDI Wallet use case (coming soon) enabling users to act on behalf of another individual or an organisation using mandates or powers of representation stored in the wallet. This use case ensures legal certainty in delegated transactions.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EC EUDIW Use Case Portal",
+              "articleNumber": "EC EUDIW Use Case Portal",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "natural-person",
       "term": "natural person",
       "sources": [
@@ -11199,6 +11621,132 @@
       "domains": []
     },
     {
+      "id": "open-bank-account",
+      "term": "Open Bank Account",
+      "sources": [
+        {
+          "definition": "An EUDI Wallet use case (coming soon) enabling individuals to open a bank account online using their EUDI Wallet for identity verification and Know Your Customer (KYC) procedures, streamlining the onboarding process for financial services.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EC EUDIW Use Case Portal",
+          "articleNumber": "EC EUDIW Use Case Portal",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EC EUDIW Use Case Portal",
+      "definitionGroups": [
+        {
+          "definition": "An EUDI Wallet use case (coming soon) enabling individuals to open a bank account online using their EUDI Wallet for identity verification and Know Your Customer (KYC) procedures, streamlining the onboarding process for financial services.",
+          "sources": [
+            {
+              "definition": "An EUDI Wallet use case (coming soon) enabling individuals to open a bank account online using their EUDI Wallet for identity verification and Know Your Customer (KYC) procedures, streamlining the onboarding process for financial services.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EC EUDIW Use Case Portal",
+              "articleNumber": "EC EUDIW Use Case Portal",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "openid-for-verifiable-credential-issuance",
+      "term": "OpenID for Verifiable Credential Issuance",
+      "sources": [
+        {
+          "definition": "An OpenID-based protocol enabling PID providers and attestation providers to issue verifiable credentials into wallet units. OID4VCI defines the issuance flow: the wallet unit presents its Wallet Unit Attestation (WUA), the provider verifies it, and then issues the credential cryptographically bound to the wallet's key material. OID4VCI is the standard issuance protocol for the EUDI Wallet ecosystem, used for PIDs, mDLs, health attestations, SCA Attestations, and other credential types. It operates via standard HTTPS endpoints with OAuth 2.0-based authorisation.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from ARF Annex 4; CIR 2024/2982 Art. 3-4; EC Use Case Manuals (all)",
+          "articleNumber": "Synthesized from ARF Annex 4; CIR 2024/2982 Art. 3-4; EC Use Case Manuals (all)",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-Synthesized from ARF Annex 4; CIR 2024/2982 Art. 3-4; EC Use Case Manuals (all)",
+      "definitionGroups": [
+        {
+          "definition": "An OpenID-based protocol enabling PID providers and attestation providers to issue verifiable credentials into wallet units. OID4VCI defines the issuance flow: the wallet unit presents its Wallet Unit Attestation (WUA), the provider verifies it, and then issues the credential cryptographically bound to the wallet's key material. OID4VCI is the standard issuance protocol for the EUDI Wallet ecosystem, used for PIDs, mDLs, health attestations, SCA Attestations, and other credential types. It operates via standard HTTPS endpoints with OAuth 2.0-based authorisation.",
+          "sources": [
+            {
+              "definition": "An OpenID-based protocol enabling PID providers and attestation providers to issue verifiable credentials into wallet units. OID4VCI defines the issuance flow: the wallet unit presents its Wallet Unit Attestation (WUA), the provider verifies it, and then issues the credential cryptographically bound to the wallet's key material. OID4VCI is the standard issuance protocol for the EUDI Wallet ecosystem, used for PIDs, mDLs, health attestations, SCA Attestations, and other credential types. It operates via standard HTTPS endpoints with OAuth 2.0-based authorisation.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from ARF Annex 4; CIR 2024/2982 Art. 3-4; EC Use Case Manuals (all)",
+              "articleNumber": "Synthesized from ARF Annex 4; CIR 2024/2982 Art. 3-4; EC Use Case Manuals (all)",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": [],
+      "aliases": [
+        "OID4VCI"
+      ]
+    },
+    {
+      "id": "openid-for-verifiable-presentations",
+      "term": "OpenID for Verifiable Presentations",
+      "sources": [
+        {
+          "definition": "An OpenID-based protocol enabling wallet units to present verifiable credentials and attestations to relying parties over the internet. OID4VP is the primary presentation protocol for remote flows in the EUDI Wallet ecosystem — all wallet units must support it as the baseline presentation mechanism. It defines how relying parties construct presentation requests, how wallet units respond with VP Tokens containing disclosed attributes, and how selective disclosure is achieved. OID4VP works in conjunction with OID4VCI (for issuance) and can be combined with ISO 18013-5 for proximity scenarios. The protocol is specified in CIR 2024/2982 Art. 5 and referenced in every published EC Use Case Manual.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from ARF Topic 6; CIR 2024/2982 Art. 5; EC Use Case Manuals (all)",
+          "articleNumber": "Synthesized from ARF Topic 6; CIR 2024/2982 Art. 5; EC Use Case Manuals (all)",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-Synthesized from ARF Topic 6; CIR 2024/2982 Art. 5; EC Use Case Manuals (all)",
+      "definitionGroups": [
+        {
+          "definition": "An OpenID-based protocol enabling wallet units to present verifiable credentials and attestations to relying parties over the internet. OID4VP is the primary presentation protocol for remote flows in the EUDI Wallet ecosystem — all wallet units must support it as the baseline presentation mechanism. It defines how relying parties construct presentation requests, how wallet units respond with VP Tokens containing disclosed attributes, and how selective disclosure is achieved. OID4VP works in conjunction with OID4VCI (for issuance) and can be combined with ISO 18013-5 for proximity scenarios. The protocol is specified in CIR 2024/2982 Art. 5 and referenced in every published EC Use Case Manual.",
+          "sources": [
+            {
+              "definition": "An OpenID-based protocol enabling wallet units to present verifiable credentials and attestations to relying parties over the internet. OID4VP is the primary presentation protocol for remote flows in the EUDI Wallet ecosystem — all wallet units must support it as the baseline presentation mechanism. It defines how relying parties construct presentation requests, how wallet units respond with VP Tokens containing disclosed attributes, and how selective disclosure is achieved. OID4VP works in conjunction with OID4VCI (for issuance) and can be combined with ISO 18013-5 for proximity scenarios. The protocol is specified in CIR 2024/2982 Art. 5 and referenced in every published EC Use Case Manual.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from ARF Topic 6; CIR 2024/2982 Art. 5; EC Use Case Manuals (all)",
+              "articleNumber": "Synthesized from ARF Topic 6; CIR 2024/2982 Art. 5; EC Use Case Manuals (all)",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": [],
+      "aliases": [
+        "OID4VP"
+      ]
+    },
+    {
       "id": "operational-or-security-payment-related-incident",
       "term": "operational or security payment-related incident",
       "sources": [
@@ -11398,6 +11946,46 @@
               "articleId": "article-3-para-27",
               "articleNumber": "3(27)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "payment-authentication",
+      "term": "Payment Authentication",
+      "sources": [
+        {
+          "definition": "An EUDI Wallet use case enabling the authentication of payment requests through EUDI Wallets for both online and in-store transactions. The use case leverages existing payment infrastructures such as SEPA Credit Transfer (SCT), including instant and traditional account-to-account payments, and card payments. The wallet enables Strong Customer Authentication (SCA) as required by PSD2 Article 97 via dedicated SCA Attestations issued by Payment Service Providers. Online transactions support enriched checkouts where identity attributes (e.g. age) or attestations (e.g. driving licence) can be shared alongside payment authentication. The use case operates in VC mode using OID4VCI for issuance and OID4VP for presentation, with proximity (\"contactless\") scenarios via ISO/IEC 18013-5 planned for the future. Compatibility with EMV 3-D Secure for online card transactions and SEPA Instant Credit Transfer flows for bank transfers is maintained.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EC Use Case Manual #11",
+          "articleNumber": "EC Use Case Manual #11",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EC Use Case Manual #11",
+      "definitionGroups": [
+        {
+          "definition": "An EUDI Wallet use case enabling the authentication of payment requests through EUDI Wallets for both online and in-store transactions. The use case leverages existing payment infrastructures such as SEPA Credit Transfer (SCT), including instant and traditional account-to-account payments, and card payments. The wallet enables Strong Customer Authentication (SCA) as required by PSD2 Article 97 via dedicated SCA Attestations issued by Payment Service Providers. Online transactions support enriched checkouts where identity attributes (e.g. age) or attestations (e.g. driving licence) can be shared alongside payment authentication. The use case operates in VC mode using OID4VCI for issuance and OID4VP for presentation, with proximity (\"contactless\") scenarios via ISO/IEC 18013-5 planned for the future. Compatibility with EMV 3-D Secure for online card transactions and SEPA Instant Credit Transfer flows for bank transfers is maintained.",
+          "sources": [
+            {
+              "definition": "An EUDI Wallet use case enabling the authentication of payment requests through EUDI Wallets for both online and in-store transactions. The use case leverages existing payment infrastructures such as SEPA Credit Transfer (SCT), including instant and traditional account-to-account payments, and card payments. The wallet enables Strong Customer Authentication (SCA) as required by PSD2 Article 97 via dedicated SCA Attestations issued by Payment Service Providers. Online transactions support enriched checkouts where identity attributes (e.g. age) or attestations (e.g. driving licence) can be shared alongside payment authentication. The use case operates in VC mode using OID4VCI for issuance and OID4VP for presentation, with proximity (\"contactless\") scenarios via ISO/IEC 18013-5 planned for the future. Compatibility with EMV 3-D Secure for online card transactions and SEPA Instant Credit Transfer flows for bank transfers is maintained.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EC Use Case Manual #11",
+              "articleNumber": "EC Use Case Manual #11",
+              "displayOrder": 5
             }
           ],
           "isVariant": false
@@ -11860,6 +12448,46 @@
               "celex": null,
               "articleId": "article-ARF Annex 3.1, Topic 3",
               "articleNumber": "ARF Annex 3.1, Topic 3",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "pid-based-identification",
+      "term": "PID-based Identification",
+      "sources": [
+        {
+          "definition": "An EUDI Wallet use case enabling users to securely identify themselves to online services using the Person Identification Data (PID) stored in their wallet. The relying party verifies the user's PID to grant access to the service. PID-based identification supports both W3C Verifiable Credentials and ISO 18013-5/7 mdoc (dual mode), with issuance via OpenID4VCI and presentation via OpenID4VP. This is the foundational identification use case for the EUDI Wallet — every wallet unit must contain at least one valid PID before it can be used for any other operations.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EC Use Case Manual #04",
+          "articleNumber": "EC Use Case Manual #04",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EC Use Case Manual #04",
+      "definitionGroups": [
+        {
+          "definition": "An EUDI Wallet use case enabling users to securely identify themselves to online services using the Person Identification Data (PID) stored in their wallet. The relying party verifies the user's PID to grant access to the service. PID-based identification supports both W3C Verifiable Credentials and ISO 18013-5/7 mdoc (dual mode), with issuance via OpenID4VCI and presentation via OpenID4VP. This is the foundational identification use case for the EUDI Wallet — every wallet unit must contain at least one valid PID before it can be used for any other operations.",
+          "sources": [
+            {
+              "definition": "An EUDI Wallet use case enabling users to securely identify themselves to online services using the Person Identification Data (PID) stored in their wallet. The relying party verifies the user's PID to grant access to the service. PID-based identification supports both W3C Verifiable Credentials and ISO 18013-5/7 mdoc (dual mode), with issuance via OpenID4VCI and presentation via OpenID4VP. This is the foundational identification use case for the EUDI Wallet — every wallet unit must contain at least one valid PID before it can be used for any other operations.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EC Use Case Manual #04",
+              "articleNumber": "EC Use Case Manual #04",
               "displayOrder": 5
             }
           ],
@@ -12919,6 +13547,46 @@
       "domains": [
         "governance"
       ]
+    },
+    {
+      "id": "public-warnings",
+      "term": "Public Warnings",
+      "sources": [
+        {
+          "definition": "An EUDI Wallet use case (coming soon) enabling trusted public authorities to send critical alerts and public safety warnings directly to citizens through their EUDI Wallets.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EC EUDIW Use Case Portal",
+          "articleNumber": "EC EUDIW Use Case Portal",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EC EUDIW Use Case Portal",
+      "definitionGroups": [
+        {
+          "definition": "An EUDI Wallet use case (coming soon) enabling trusted public authorities to send critical alerts and public safety warnings directly to citizens through their EUDI Wallets.",
+          "sources": [
+            {
+              "definition": "An EUDI Wallet use case (coming soon) enabling trusted public authorities to send critical alerts and public safety warnings directly to citizens through their EUDI Wallets.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EC EUDIW Use Case Portal",
+              "articleNumber": "EC EUDIW Use Case Portal",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "pursuant-to",
@@ -15249,6 +15917,46 @@
       ]
     },
     {
+      "id": "sd-jwt-vc",
+      "term": "SD-JWT VC",
+      "sources": [
+        {
+          "definition": "Selective Disclosure JSON Web Token for Verifiable Credentials — a credential format specified by the IETF that combines the compact, widely deployed JWT format with built-in selective disclosure capabilities. In the EUDI Wallet ecosystem, SD-JWT VC is one of the two primary credential formats (alongside mdoc). It is used for the EHIC (per DC4EU pilot), SCA Attestations (per TS12), and is supported for PIDs. Each attribute in the credential can be individually disclosed or withheld during presentation, enabling data minimisation without requiring advanced cryptographic techniques. Proof of possession is achieved via Key Binding JWT (KB-JWT). The ARF specifies support for both SD-JWT VC and mdoc formats.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from IETF SD-JWT specification; ARF Annex 2; EC EHIC Manual; EC Payment Auth Manual",
+          "articleNumber": "Synthesized from IETF SD-JWT specification; ARF Annex 2; EC EHIC Manual; EC Payment Auth Manual",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-Synthesized from IETF SD-JWT specification; ARF Annex 2; EC EHIC Manual; EC Payment Auth Manual",
+      "definitionGroups": [
+        {
+          "definition": "Selective Disclosure JSON Web Token for Verifiable Credentials — a credential format specified by the IETF that combines the compact, widely deployed JWT format with built-in selective disclosure capabilities. In the EUDI Wallet ecosystem, SD-JWT VC is one of the two primary credential formats (alongside mdoc). It is used for the EHIC (per DC4EU pilot), SCA Attestations (per TS12), and is supported for PIDs. Each attribute in the credential can be individually disclosed or withheld during presentation, enabling data minimisation without requiring advanced cryptographic techniques. Proof of possession is achieved via Key Binding JWT (KB-JWT). The ARF specifies support for both SD-JWT VC and mdoc formats.",
+          "sources": [
+            {
+              "definition": "Selective Disclosure JSON Web Token for Verifiable Credentials — a credential format specified by the IETF that combines the compact, widely deployed JWT format with built-in selective disclosure capabilities. In the EUDI Wallet ecosystem, SD-JWT VC is one of the two primary credential formats (alongside mdoc). It is used for the EHIC (per DC4EU pilot), SCA Attestations (per TS12), and is supported for PIDs. Each attribute in the credential can be individually disclosed or withheld during presentation, enabling data minimisation without requiring advanced cryptographic techniques. Proof of possession is achieved via Key Binding JWT (KB-JWT). The ARF specifies support for both SD-JWT VC and mdoc formats.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from IETF SD-JWT specification; ARF Annex 2; EC EHIC Manual; EC Payment Auth Manual",
+              "articleNumber": "Synthesized from IETF SD-JWT specification; ARF Annex 2; EC EHIC Manual; EC Payment Auth Manual",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "secure-element",
       "term": "secure element",
       "sources": [
@@ -16709,6 +17417,46 @@
       "domains": []
     },
     {
+      "id": "ticket-or-pass",
+      "term": "Ticket or Pass",
+      "sources": [
+        {
+          "definition": "An EUDI Wallet use case (coming soon) enabling users to store, manage, and present digital tickets or passes for events, transport, or other services directly from their wallet.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EC EUDIW Use Case Portal",
+          "articleNumber": "EC EUDIW Use Case Portal",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EC EUDIW Use Case Portal",
+      "definitionGroups": [
+        {
+          "definition": "An EUDI Wallet use case (coming soon) enabling users to store, manage, and present digital tickets or passes for events, transport, or other services directly from their wallet.",
+          "sources": [
+            {
+              "definition": "An EUDI Wallet use case (coming soon) enabling users to store, manage, and present digital tickets or passes for events, transport, or other services directly from their wallet.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EC EUDIW Use Case Portal",
+              "articleNumber": "EC EUDIW Use Case Portal",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "trade-repository",
       "term": "Trade Repository",
       "sources": [
@@ -17465,6 +18213,46 @@
               "celex": null,
               "articleId": "article-Privacy research (Pfitzmann/Hansen terminology); EDPS TechDispatch #3/2025; eIDAS Article 5a(16)(b)",
               "articleNumber": "Privacy research (Pfitzmann/Hansen terminology); EDPS TechDispatch #3/2025; eIDAS Article 5a(16)(b)",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "use-of-a-pseudonym-in-online-services",
+      "term": "Use of a Pseudonym in Online Services",
+      "sources": [
+        {
+          "definition": "An EUDI Wallet use case (coming soon) enabling users to interact with digital platforms without revealing their full identity, using wallet-generated pseudonyms. Pseudonyms follow the WebAuthn standard and are relying party-specific, preventing cross-service tracking while enabling secure, passwordless authentication.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EC EUDIW Use Case Portal",
+          "articleNumber": "EC EUDIW Use Case Portal",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EC EUDIW Use Case Portal",
+      "definitionGroups": [
+        {
+          "definition": "An EUDI Wallet use case (coming soon) enabling users to interact with digital platforms without revealing their full identity, using wallet-generated pseudonyms. Pseudonyms follow the WebAuthn standard and are relying party-specific, preventing cross-service tracking while enabling secure, passwordless authentication.",
+          "sources": [
+            {
+              "definition": "An EUDI Wallet use case (coming soon) enabling users to interact with digital platforms without revealing their full identity, using wallet-generated pseudonyms. Pseudonyms follow the WebAuthn standard and are relying party-specific, preventing cross-service tracking while enabling secure, passwordless authentication.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EC EUDIW Use Case Portal",
+              "articleNumber": "EC EUDIW Use Case Portal",
               "displayOrder": 5
             }
           ],

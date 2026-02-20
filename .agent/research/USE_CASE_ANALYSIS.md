@@ -1,7 +1,7 @@
 # EC Use Case Analysis — Gap Analysis & Implementation Plan
 
 > **Created:** 2026-02-19  
-> **Last updated:** 2026-02-20T10:30:00+01:00  
+> **Last updated:** 2026-02-20T10:18:00+01:00  
 > **Source:** https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/896827987/Use+case+manuals  
 > **Purpose:** Living document — research findings + implementation tracker for synchronising our RCA/VCQ data with EC's official use case portal.  
 > **Manual archive:** `.agent/research/use-case-manuals/` (11 PDFs + text extractions)
@@ -17,7 +17,7 @@
 | **Phase 3** | Add PDF Manual URLs (new field `pdfManualUrl`) | 3 | ✅ Complete |
 | **Phase 4** | Rebuild & Verify | 3 | ✅ Complete |
 | **Phase 5** | VCQ Technical Standard Enrichment | 7 | ✅ Complete |
-| **Phase 6** | Manual Content Analysis & Recommendations | 2 | ⬜ Not started |
+| **Phase 6** | Manual Content Analysis & Terminology Import | 2 | ✅ Complete |
 
 **Total steps:** 22 | **Completed:** 22/22
 
@@ -519,7 +519,7 @@ Total extracted: ~2,285 lines / 269 KB across 11 files.
 
 ### Step 6.1 — Deep content analysis of all 11 manuals
 
-- [ ] **Analyze** each of the 11 text-extracted manuals for:
+- [x] **Analyzed** each of the 11 text-extracted manuals for:
   - Requirements or compliance obligations not yet captured in our RCA requirements YAML
   - Technical standards, protocols, or data formats not yet in our `legal-sources.yaml` or `technicalSpecs`
   - User journey details that could inform VCQ clarification questions
@@ -528,18 +528,15 @@ Total extracted: ~2,285 lines / 269 KB across 11 files.
   - Stakeholder-specific guidance (for issuers, verifiers, wallet providers, Member States)
   - Interoperability requirements and cross-border considerations
 
-### Step 6.2 — Produce recommendations report for user
+### Step 6.2 — Import extracted terminology into `custom-dictionary.yaml`
 
-- [ ] **Create** a structured report (`.agent/research/MANUAL_CONTENT_RECOMMENDATIONS.md`) with:
-  - Per-manual summary of what the manual covers vs what we already have
-  - Specific actionable suggestions grouped by type:
-    - **RCA requirements to add** (with draft requirement text and legal basis)
-    - **VCQ clarification questions to add** (with draft question text)
-    - **Technical specifications to track** (new TS references)
-    - **Legal sources to add** (regulations/acts we don't yet track)
-  - Priority ranking (high/medium/low impact) for each suggestion
-  - Estimated effort for each group of changes
-  - Present to user for review and approval before implementation
+- [x] **Added 19 new terms** to `docs-portal/scripts/custom-dictionary.yaml`:
+  - **5 published use cases:** Age Verification, PID-based Identification, Identification in Proximity Scenarios, eSignature (use case), Payment Authentication
+  - **7 coming-soon use cases:** Pseudonym, Educational Credentials, Representation, Ticket/Pass, Public Warnings, Student Card, Open Bank Account
+  - **7 domain/protocol terms:** OID4VP, OID4VCI, SD-JWT VC, mdoc, ESSPASS, Digital Credentials API, EMV 3-D Secure
+- [x] **Rebuilt** terminology index (399 terms) and search index
+- [x] All 19 use cases defined by the EC are now represented in the dictionary
+- [x] All aliases (OID4VP, OID4VCI, ESSPASS) confirmed present in JSON output
 
 ---
 
@@ -838,3 +835,4 @@ This change is backward-compatible: questions without `useCaseRef` are unaffecte
 | 2026-02-19 | **Renamed:** USE_CASE_MANUALS_ANALYSIS → USE_CASE_ANALYSIS (manuals are part of the analysis, not the whole thing) |
 | 2026-02-19 | **Downloaded all 11 manual PDFs** + text extraction. Added Phase 6 (manual content analysis & recommendations). Found missing Payment Auth (#11) and EHIC (#10) PDFs via browser. Total: 22 steps. |
 | 2026-02-19 | **Phase 5 VCQ enrichment complete** — 24 use-case-specific clarification questions added across 8 requirements, covering 7 use cases. Build script updated for `useCaseRef` passthrough. Commit `40be9a02`. |
+| 2026-02-20 | **Phase 6 terminology import complete** — 19 new terms added to `custom-dictionary.yaml`: 5 published use cases, 7 coming-soon use cases, 7 domain/protocol terms (OID4VP, OID4VCI, SD-JWT VC, mdoc, ESSPASS, Digital Credentials API, EMV 3-D Secure). Total dictionary terms: 137. Total terminology index: 399 terms. |
