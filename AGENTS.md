@@ -497,19 +497,22 @@ If a task requires an action to be complete (restart a server, run a build, fix 
 - ✅ Run the build command, verify it succeeds
 - ✅ Run the lint fixer, re-stage the file, commit
 
-**Dev server restart pattern (two separate commands to avoid self-kill):**
+**Dev server restart pattern (two separate commands, pinned to port 5173):**
 ```bash
-# Step 1: Kill existing server (use [v]ite regex trick so pkill doesn't match itself)
-timeout 5 pkill -f "[v]ite" 2>/dev/null; echo "killed"
+# Step 1: Kill existing server + clear Tailscale port binding
+timeout 5 pkill -f "[v]ite" 2>/dev/null; sleep 1
+sudo tailscale serve --https=5173 off 2>/dev/null
+sleep 1; echo "cleared"
 
-# Step 2: Start new server (separate command)
-cd ~/dev/eIDAS20/docs-portal && nohup npx vite --host > /tmp/vite-eidas.log 2>&1 &
+# Step 2: Start new server (MUST use --strictPort to prevent port drift)
+cd ~/dev/eIDAS20/docs-portal && nohup npx vite --host --port 5173 --strictPort > /tmp/vite-eidas.log 2>&1 &
 sleep 3; grep -m1 "Local:" /tmp/vite-eidas.log
+
+# Step 3: Re-enable Tailscale proxy
+sudo tailscale serve --bg --https 5173 http://localhost:5173
 ```
 
-**⚠️ `pkill -f "vite"` kills itself** — the `-f` flag matches the full command line, so if the same command contains "vite" later (e.g., `npx vite`), pkill matches its own shell process. Always use `[v]ite` bracket trick.
-
-**⚠️ Use `timeout` for commands that could hang** — wrap `pkill`, `curl`, and similar network/process commands in `timeout N` to prevent indefinite blocking.
+**⚠️ Port drift root cause:** Tailscale `serve --https 5173` binds to port 5173 even after Vite exits. When Vite restarts, it sees 5173 occupied and auto-increments to 5174. Always clear Tailscale serve before restarting.
 
 **Why this matters:** Telling the user to perform steps defeats the purpose of an AI agent. If the task isn't complete until a server is restarted, the task isn't complete until YOU restart the server.
 
