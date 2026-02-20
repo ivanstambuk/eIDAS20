@@ -615,14 +615,52 @@ It shall apply from 1 January 2013.
 
 **CORRELATION TABLE**
 
-| Decision 87/95/EEC | Decision No 1673/2006/EC | This Regulation |
-|---------------------|--------------------------|-----------------|
-| Article 1(1) | — | Article 1 |
-| Article 1(2) | — | Article 2 |
-| — | Article 2 | Article 15 |
-| — | Article 3 | Article 16 |
-| — | Article 4 | Article 17 |
-| — | Article 5 | Article 18 |
-| — | Article 6 | Article 19 |
-| Article 7 | Article 8 | Article 22 |
-| — | Article 7 | Article 24(3) |
+*Directive 98/34/EC — This Regulation*
+
+| Directive 98/34/EC | This Regulation |
+|--------------------|-----------------|
+| Article 1, first paragraph, point (6) | Article 2(1) |
+| Article 1, first paragraph, point (7) | — |
+| Article 1, first paragraph, point (8) | Article 2(3) |
+| Article 1, first paragraph, point (9) | Article 2(8) |
+| Article 1, first paragraph, point (10) | Article 2(10) |
+| Article 2(1) | Article 3(1) |
+| Article 2(2) | Article 3(2) |
+| Article 2(3) | Article 3(3) and (4) |
+| Article 2(4) | Article 27 |
+| Article 2(5) | Article 20(a) |
+| Article 3 | Article 4(1) |
+| Article 4(1) | Article 3(3) and (5) and Article 4(4) |
+| Article 4(2) | — |
+| Article 6(3), first indent | — |
+| Article 6(4)(a) | Article 20(a) |
+| Article 6(4)(b) | — |
+| Article 6(4)(e) | Article 10(2) |
+| Annex I | Annex I |
+| Annex II | Article 27 |
+
+*Decision No 1673/2006/EC — This Regulation*
+
+| Decision No 1673/2006/EC | This Regulation |
+|--------------------------|-----------------|
+| Article 1 | Article 1 |
+| Articles 2 and 3 | Article 15 |
+| Article 4 | — |
+| Article 5 | Article 17 |
+| Article 6(1) | Article 18 |
+| Article 6(2) | Article 24(3) |
+| Article 7 | Article 19 |
+
+*Decision 87/95/EEC — This Regulation*
+
+| Decision 87/95/EEC | This Regulation |
+|---------------------|-----------------|
+| Article 1 | Article 2 |
+| Article 2 | Article 3 |
+| Article 3 | Article 13 |
+| Article 4 | Article 8 |
+| Article 5 | Article 14 |
+| Article 6 | — |
+| Article 7 | — |
+| Article 8 | Article 24(3) |
+| Article 9 | — |
