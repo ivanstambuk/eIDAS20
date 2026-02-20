@@ -1,10 +1,10 @@
-> **CELEX:** 02012R1025-20241213 | **Document:** Directive (EC) No 1025/2012
+> **CELEX:** 02012R1025-20241213 | **Document:** Directive (EC) No 1025/2012  
 > 
-> **Source:** [EUR-Lex](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02012R1025-20241213)
-> **Official Journal:** (OJ L 316 14.11.2012, p. 12)
-> **ELI:** http://data.europa.eu/eli/dir/2012/1025/oj
-> **Consolidated:** This is a consolidated text incorporating all amendments
-> **Note:** Enacting terms from consolidated version (02012R1025-20241213). Preamble merged from base version (32012R1025).
+> **Source:** [EUR-Lex](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02012R1025-20241213)  
+> **Official Journal:** (OJ L 316 14.11.2012, p. 12)  
+> **ELI:** http://data.europa.eu/eli/dir/2012/1025/oj  
+> **Consolidated:** This is a consolidated text incorporating all amendments  
+> **Note:** Enacting terms from consolidated version (02012R1025-20241213). Preamble merged from base version (32012R1025). Annexes I–IV merged from original (32012R1025).
 
 # Regulation (EU) No 1025/2012 of the European Parliament and of the Council of 25 October 2012 on European standardisation, amending Council Directives 89/686/EEC and 93/15/EEC and Directives 94/9/EC, 94/25/EC, 95/16/EC, 97/23/EC, 98/34/EC, 2004/22/EC, 2007/23/EC, 2009/23/EC and 2009/105/EC of the European Parliament and of the Council and repealing Council Decision 87/95/EEC and Decision No 1673/2006/EC of the European Parliament and of the Council
 
@@ -524,3 +524,105 @@ This Regulation shall enter into force on the twentieth day following that of it
 
 It shall apply from 1 January 2013.
 
+---
+
+## ANNEX I
+
+**EUROPEAN STANDARDISATION ORGANISATIONS**
+
+— European Committee for Standardisation (CEN)
+
+— European Committee for Electrotechnical Standardisation (Cenelec)
+
+— European Telecommunications Standards Institute (ETSI)
+
+---
+
+## ANNEX II
+
+**REQUIREMENTS FOR THE IDENTIFICATION OF ICT TECHNICAL SPECIFICATIONS**
+
+1. The technical specifications have market acceptance and their implementations do not hamper interoperability with the implementations of existing European or international standards. Market acceptance can be demonstrated by operational examples of compliant implementations from different vendors.
+
+2. The technical specifications are coherent — they are not in conflict with European standards, and are developed in order to aid the operation of the internal market for information and communication technologies and should preferentially support the integration with, or migration to, new standards.
+
+3. The technical specifications were developed by a non-profit making organisation which is a professional society, industry or trade association or any other membership organisation that within its area of expertise develops ICT technical specifications and which is not a European standardisation organisation, national or international standardisation body, through processes which fulfil the following criteria:
+
+    - *openness*: the technical specifications were developed on the basis of open decision-making accessible to all interested parties in the market or markets affected by those technical specifications;
+
+    - *consensus*: the decision-making process was collaborative and consensus based and did not favour any particular stakeholder. Consensus means a general agreement, characterised by the absence of sustained opposition to substantial issues by any important part of the concerned interests and by a process that involves seeking to take into account the views of all parties concerned and to reconcile any conflicting arguments. Consensus does not imply unanimity;
+
+    - *transparency*:
+        - all information concerning technical discussions and decision making was archived and identified;
+        - information on new standardisation activities was publicly and widely announced through suitable and accessible means;
+        - participation of all relevant categories of interested parties was sought with a view to achieving balance;
+        - consideration and response were given to comments by interested parties.
+
+4. The technical specifications meet the following requirements:
+
+    - *maintenance*: ongoing support and maintenance of published specifications are guaranteed over a long period;
+
+    - *availability*: specifications are publicly available for implementation and use on reasonable terms (including for a reasonable fee or free of charge);
+
+    - *intellectual property rights* essential to the implementation of specifications are licensed to applicants on a (fair) reasonable and non-discriminatory basis ((F)RAND), which includes, at the discretion of the intellectual property right-holder, licensing essential intellectual property without compensation;
+
+    - *relevance*:
+        - the specifications are effective and relevant;
+        - specifications need to respond to market needs and regulatory requirements;
+
+    - *neutrality and stability*:
+        - specifications whenever possible are performance oriented rather than based on design or descriptive characteristics;
+        - specifications do not distort the market or limit the possibilities for implementers to develop competition and innovation based upon them;
+        - specifications are based on advanced scientific and technological developments;
+
+    - *quality*:
+        - the quality and level of detail are sufficient to permit the development of a variety of competing implementations of interoperable products and services;
+        - standardised interfaces are not hidden or controlled by anyone other than the organisations that adopted the technical specifications.
+
+---
+
+## ANNEX III
+
+**EUROPEAN STAKEHOLDER ORGANISATIONS ELIGIBLE FOR UNION FINANCING**
+
+1. A European organisation representing SMEs in European standardisation activities which:
+
+    - (a) is non-governmental and non-profit-making;
+    - (b) has as its statutory objectives and activities to represent the interests of SMEs in the standardisation process at European level, to raise their awareness for standardisation and to motivate them to become involved in the standardisation process;
+    - (c) has been mandated by non-profit organisations representing SMEs in at least two thirds of the Member States, to represent the interests of SMEs in the standardisation process at European level.
+
+2. A European organisation representing consumers in European standardisation activities which:
+
+    - (a) is non-governmental, non-profit-making, and independent of industry, commercial and business or other conflicting interests;
+    - (b) has as its statutory objectives and activities to represent consumer interests in the standardisation process at European level;
+    - (c) has been mandated by national non-profit consumer organisations in at least two thirds of the Member States, to represent the interests of consumers in the standardisation process at European level.
+
+3. A European organisation representing environmental interests in European standardisation activities which:
+
+    - (a) is non-governmental, non-profit-making, and independent of industry, commercial and business or other conflicting interests;
+    - (b) has as its statutory objectives and activities to represent environmental interests in the standardisation process at European level;
+    - (c) has been mandated by national non-profit environmental organisations in at least two thirds of the Member States, to represent environmental interests in the standardisation process at European level.
+
+4. A European organisation representing social interests in European standardisation activities which:
+
+    - (a) is non-governmental, non-profit-making, and independent of industry, commercial and business or other conflicting interests;
+    - (b) has as its statutory objectives and activities to represent social interests in the standardisation process at European level;
+    - (c) has been mandated by national non-profit social organisations in at least two thirds of the Member States, to represent social interests in the standardisation process at European level.
+
+---
+
+## ANNEX IV
+
+**CORRELATION TABLE**
+
+| Decision 87/95/EEC | Decision No 1673/2006/EC | This Regulation |
+|---------------------|--------------------------|-----------------|
+| Article 1(1) | — | Article 1 |
+| Article 1(2) | — | Article 2 |
+| — | Article 2 | Article 15 |
+| — | Article 3 | Article 16 |
+| — | Article 4 | Article 17 |
+| — | Article 5 | Article 18 |
+| — | Article 6 | Article 19 |
+| Article 7 | Article 8 | Article 22 |
+| — | Article 7 | Article 24(3) |
