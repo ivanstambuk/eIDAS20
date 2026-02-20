@@ -27,7 +27,7 @@ if ! curl -s --max-time 2 "$CDP_URL/json/version" > /dev/null 2>&1; then
 fi
 
 # Get list of all pages
-PAGES=$(curl -s "$CDP_URL/json/list" 2>/dev/null)
+PAGES=$(curl -s --max-time 3 "$CDP_URL/json/list" 2>/dev/null)
 PAGE_COUNT=$(echo "$PAGES" | grep -c '"type": "page"' || echo 0)
 
 if [ "$PAGE_COUNT" -le 1 ]; then
@@ -39,7 +39,7 @@ echo "🧹 Cleaning up $PAGE_COUNT Chrome tabs..."
 
 # Create a fresh about:blank tab first (so we always have at least one)
 # Note: Chrome requires PUT method for /json/new
-NEW_TAB=$(curl -s -X PUT "$CDP_URL/json/new?about:blank" 2>/dev/null)
+NEW_TAB=$(curl -s --max-time 3 -X PUT "$CDP_URL/json/new?about:blank" 2>/dev/null)
 NEW_TAB_ID=$(echo "$NEW_TAB" | grep -o '"id": "[^"]*"' | head -1 | cut -d'"' -f4)
 
 if [ -z "$NEW_TAB_ID" ]; then
@@ -54,7 +54,7 @@ CLOSED=0
 echo "$PAGES" | grep '"id":' | while read -r line; do
     PAGE_ID=$(echo "$line" | grep -o '"id": "[^"]*"' | cut -d'"' -f4)
     if [ -n "$PAGE_ID" ] && [ "$PAGE_ID" != "$NEW_TAB_ID" ]; then
-        if curl -s "$CDP_URL/json/close/$PAGE_ID" > /dev/null 2>&1; then
+        if curl -s --max-time 3 "$CDP_URL/json/close/$PAGE_ID" > /dev/null 2>&1; then
             echo "   Closed: $PAGE_ID"
             CLOSED=$((CLOSED + 1))
         fi
@@ -63,5 +63,5 @@ done
 
 # Verify cleanup
 sleep 0.5
-REMAINING=$(curl -s "$CDP_URL/json/list" 2>/dev/null | grep -c '"type": "page"' || echo 0)
+REMAINING=$(curl -s --max-time 3 "$CDP_URL/json/list" 2>/dev/null | grep -c '"type": "page"' || echo 0)
 echo "✅ Chrome tabs: $PAGE_COUNT → $REMAINING"

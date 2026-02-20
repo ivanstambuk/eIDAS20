@@ -516,6 +516,70 @@ sudo tailscale serve --bg --https 5173 http://localhost:5173
 
 **Why this matters:** Telling the user to perform steps defeats the purpose of an AI agent. If the task isn't complete until a server is restarted, the task isn't complete until YOU restart the server.
 
+**Preferred shortcut:** Use `./scripts/restart-dev-server.sh` instead of manual steps.
+
+---
+
+### 21. Command Safety (MANDATORY — Preventing Hangs)
+
+**Every command that touches the network, processes, or external services MUST have a timeout.**
+
+**Rules:**
+1. **`timeout N`** — Wrap `pkill`, `curl`, `lsof`, and process-management commands in `timeout`
+2. **`[v]ite` bracket trick** — When using `pkill -f`, use bracket syntax (e.g., `pkill -f "[v]ite"`) to prevent the command from matching its own shell process
+3. **`jq` over `python3 -c`** — For JSON inspection, always use `jq` instead of inline Python. Inline Python with nested quotes creates unescapable shell issues
+4. **Split compound commands** — Never combine `pkill` + `start` in a single command. The kill may terminate the shell before the start executes
+5. **`--max-time`** — All `curl` calls MUST include `--max-time N` (3s for health checks, 10s for data)
+
+**Anti-patterns:**
+- ❌ `pkill -f "vite"; sleep 2; npx vite` — pkill kills itself
+- ❌ `curl -s http://localhost:5173/...` — hangs forever if server is down
+- ❌ `python3 -c "import json; ..."` — quote escaping nightmare
+- ❌ `cleanup-chrome-tabs.sh` without Chrome running — hangs on CDP connection
+
+**Correct patterns:**
+- ✅ `timeout 5 pkill -f "[v]ite" 2>/dev/null || true`
+- ✅ `timeout 5 curl -s --max-time 3 http://localhost:5173/...`
+- ✅ `jq '.[] | .slug' regulations-index.json`
+
+---
+
+### 22. Root-Cause-First Debugging (MANDATORY — Before Fixing)
+
+**Before applying any fix, diagnose the actual root cause.** Do not fix symptoms.
+
+**Required diagnostic steps:**
+1. **Reproduce** — Confirm the failure
+2. **Diagnose** — Identify WHY it fails, not just WHAT fails
+3. **Fix** — Address the root cause
+4. **Verify** — Confirm the fix resolves the issue
+
+**Anti-pattern (symptom chasing):**
+```
+Port 5174 instead of 5173 → Fix: add --port 5173
+Still 5174 → Fix: add --strictPort  
+Still 5174 → Fix: found Tailscale holding port (ROOT CAUSE)
+Result: 3 commits for 1 fix
+```
+
+**Correct approach:**
+```
+Port 5174 instead of 5173 → Diagnose: sudo lsof -i:5173 → Tailscale holding port
+Fix: clear Tailscale serve, then start with --strictPort
+Result: 1 commit
+```
+
+---
+
+### `documents.yaml` — `sidebarOrder` Field
+
+Documents in the sidebar are sorted by their position in `documents.yaml` (`configOrder`). To override the position of a specific document, add `sidebarOrder: N` (lower = higher in list):
+
+```yaml
+- id: ec-eudiw-faq
+  sidebarOrder: 0  # Show first in supplementary section
+```
+
 ---
 
 ## Project Structure

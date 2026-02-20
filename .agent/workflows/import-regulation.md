@@ -42,6 +42,7 @@ Search for corrigenda (corrections):
   title: <full_title>
   shortTitle: <short_name> (Consolidated)
   sidebarTitle: <short_name>
+  sidebarOrder: <N>                    # Optional: override sidebar position (lower = higher)
   legalType: regulation | directive
   category: referenced | primary | implementing_act
   source: formex                        # Will change to manual after import
@@ -115,6 +116,8 @@ Add note to markdown header:
 cd ~/dev/eIDAS20/docs-portal
 npm run build:documents
 npm run build:all-content
+# Restart dev server to pick up new static files
+./scripts/restart-dev-server.sh
 ```
 
 ### Step 4.4: Browser Verify
