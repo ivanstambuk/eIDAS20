@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-20T10:33:02.136Z",
+  "generatedAt": "2026-02-20T10:34:49.080Z",
   "schemaVersion": 2,
   "stats": {
     "totalRequirements": 151,
@@ -6517,7 +6517,7 @@
     "VEND-TSP-004": [
       {
         "id": "Q1",
-        "text": "What QSCDs do you use for qualified signature and seal creation — specific make/model, certification level (Common Criteria EAL4+ with AVA_VAN.5)?",
+        "text": "What QSCDs do you use for qualified signature and seal creation — specific make/model, certification level (Common Criteria EAL4+ with AVA_VAN.5 per IR 2025/1567 Art 3)? Are they listed in the EU compilation of certified QSCDs?",
         "dimension": "technical_implementation"
       },
       {
@@ -6710,7 +6710,7 @@
       },
       {
         "id": "Q2",
-        "text": "How do you implement the remote signature creation protocols specified in TS8 — Signature Activation Protocol (SAP), server-side QSCD management, transport encryption?",
+        "text": "How do you implement the remote signature creation protocols specified in TS8 — Signature Activation Protocol (SAP), server-side QSCD management, transport encryption? Per the EC eSignature manual, do you support both 'wallet-driven' (user initiates in wallet) and 'RP-driven' (service portal initiates) signature flows?",
         "dimension": "technical_implementation"
       },
       {
@@ -6725,12 +6725,12 @@
       },
       {
         "id": "Q5",
-        "text": "Is your remote signing implementation certified by a conformity assessment body? Is the specific implementation explicitly named in the Conformity Assessment Report?",
+        "text": "Is your remote signing implementation certified by a conformity assessment body? Does the certification scope explicitly cover EUDI Wallet-initiated signing (not only traditional web-portal-initiated signing)?",
         "dimension": "compliance_evidence"
       },
       {
         "id": "Q6",
-        "text": "Is your specific implementation of 'Sole Control' (e.g., mobile app binding) explicitly named in your Conformity Assessment Report?",
+        "text": "Is your specific implementation of 'Sole Control' (e.g., mobile app binding, WSCD-backed SAP per EN 419 241-2) explicitly named in your Conformity Assessment Report? Can you provide the relevant extract?",
         "dimension": "compliance_evidence"
       },
       {
@@ -6876,7 +6876,7 @@
       },
       {
         "id": "Q7",
-        "text": "What signing algorithm do you use for timestamps — RSA-PSS, ECDSA, EdDSA? Is PQC on your roadmap for timestamp signing?",
+        "text": "What signing algorithm do you use for timestamps — RSA-PSS, ECDSA P-256/P-384, EdDSA Ed25519? Is PQC on your roadmap for timestamp signing (e.g., ML-DSA per NIST FIPS 204, SLH-DSA per NIST FIPS 205)?",
         "dimension": "technical_implementation"
       },
       {
@@ -6928,7 +6928,7 @@
       },
       {
         "id": "Q8",
-        "text": "What happens if an authentic source returns a negative or partial verification — issuance refusal, partial attestation, user notification?",
+        "text": "What happens if an authentic source returns a negative or partial verification — does the platform refuse issuance entirely, issue a partial attestation containing only verified attributes, or issue with a 'person-provided' quality designation? How is the user informed of which attributes could not be verified?",
         "dimension": "operational"
       },
       {
@@ -6950,7 +6950,7 @@
       },
       {
         "id": "Q3",
-        "text": "Is Post-Quantum Cryptography (PQC) on your roadmap for QEAA signing algorithms — hybrid signatures (classical + PQC), migration timeline?",
+        "text": "Is Post-Quantum Cryptography (PQC) on your roadmap for QEAA signing algorithms — ML-DSA (NIST FIPS 204) for primary PQC signatures, hybrid signatures (classical + PQC) during the transition period? What is your migration timeline?",
         "dimension": "roadmap"
       },
       {

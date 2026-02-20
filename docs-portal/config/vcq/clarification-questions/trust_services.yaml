@@ -125,7 +125,7 @@ requirements:
   VEND-TSP-004:
     questions:
       - id: Q1
-        text: "What QSCDs do you use for qualified signature and seal creation — specific make/model, certification level (Common Criteria EAL4+ with AVA_VAN.5)?"
+        text: "What QSCDs do you use for qualified signature and seal creation — specific make/model, certification level (Common Criteria EAL4+ with AVA_VAN.5 per IR 2025/1567 Art 3)? Are they listed in the EU compilation of certified QSCDs?"
         dimension: technical_implementation
       - id: Q2
         text: "Are your QSCDs certified per Annex II of eIDAS? By which certification body, and for which product version and configuration?"
@@ -264,7 +264,7 @@ requirements:
         text: "Do you offer remote qualified electronic signature services? If so, what is the volume of remote signatures processed monthly?"
         dimension: capability
       - id: Q2
-        text: "How do you implement the remote signature creation protocols specified in TS8 — Signature Activation Protocol (SAP), server-side QSCD management, transport encryption?"
+        text: "How do you implement the remote signature creation protocols specified in TS8 — Signature Activation Protocol (SAP), server-side QSCD management, transport encryption? Per the EC eSignature manual, do you support both 'wallet-driven' (user initiates in wallet) and 'RP-driven' (service portal initiates) signature flows?"
         dimension: technical_implementation
       - id: Q3
         text: "How is signature creation data (private keys) securely managed on behalf of signatories — HSM partition per signatory, shared HSM with logical separation, key lifecycle?"
@@ -273,10 +273,10 @@ requirements:
         text: "What authentication mechanisms are used to authorise remote signature creation — multi-factor (knowledge + possession + inherence), mobile app binding, OTP tokens?"
         dimension: security
       - id: Q5
-        text: "Is your remote signing implementation certified by a conformity assessment body? Is the specific implementation explicitly named in the Conformity Assessment Report?"
+        text: "Is your remote signing implementation certified by a conformity assessment body? Does the certification scope explicitly cover EUDI Wallet-initiated signing (not only traditional web-portal-initiated signing)?"
         dimension: compliance_evidence
       - id: Q6
-        text: "Is your specific implementation of 'Sole Control' (e.g., mobile app binding) explicitly named in your Conformity Assessment Report?"
+        text: "Is your specific implementation of 'Sole Control' (e.g., mobile app binding, WSCD-backed SAP per EN 419 241-2) explicitly named in your Conformity Assessment Report? Can you provide the relevant extract?"
         dimension: compliance_evidence
       - id: Q7
         text: "What session security measures are in place — session binding, timeout policies, re-authentication triggers, replay attack prevention?"
@@ -381,7 +381,7 @@ requirements:
         text: "Do you support long-term validation (LTV) — archival timestamp chains, re-timestamping services for signatures approaching algorithm deprecation?"
         dimension: lifecycle
       - id: Q7
-        text: "What signing algorithm do you use for timestamps — RSA-PSS, ECDSA, EdDSA? Is PQC on your roadmap for timestamp signing?"
+        text: "What signing algorithm do you use for timestamps — RSA-PSS, ECDSA P-256/P-384, EdDSA Ed25519? Is PQC on your roadmap for timestamp signing (e.g., ML-DSA per NIST FIPS 204, SLH-DSA per NIST FIPS 205)?"
         dimension: technical_implementation
       - id: Q8
         text: "How do you handle clock drift detection and correction — automatic drift monitoring, alarm thresholds, service suspension on drift?"
@@ -418,7 +418,7 @@ requirements:
         text: "How do you implement data minimisation when querying authentic sources — request only needed attributes, avoid unnecessary data collection?"
         dimension: privacy
       - id: Q8
-        text: "What happens if an authentic source returns a negative or partial verification — issuance refusal, partial attestation, user notification?"
+        text: "What happens if an authentic source returns a negative or partial verification — does the platform refuse issuance entirely, issue a partial attestation containing only verified attributes, or issue with a 'person-provided' quality designation? How is the user informed of which attributes could not be verified?"
         dimension: operational
       - id: Q9
         text: "Do you support cross-border authentic source access — sources in other Member States, language handling, data format translation?"
@@ -437,7 +437,7 @@ requirements:
         text: "What signing algorithm and key length do you use for QEAA signatures — ECDSA P-256/P-384, EdDSA Ed25519, RSA-PSS ≥3072-bit?"
         dimension: technical_implementation
       - id: Q3
-        text: "Is Post-Quantum Cryptography (PQC) on your roadmap for QEAA signing algorithms — hybrid signatures (classical + PQC), migration timeline?"
+        text: "Is Post-Quantum Cryptography (PQC) on your roadmap for QEAA signing algorithms — ML-DSA (NIST FIPS 204) for primary PQC signatures, hybrid signatures (classical + PQC) during the transition period? What is your migration timeline?"
         dimension: roadmap
       - id: Q4
         text: "Is your QEAA signing certificate included in Member State Trusted Lists — can RPs verify the certificate via the LOTL chain?"
