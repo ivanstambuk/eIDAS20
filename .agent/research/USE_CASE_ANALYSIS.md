@@ -17,9 +17,9 @@
 | **Phase 3** | Add PDF Manual URLs (new field `pdfManualUrl`) | 3 | ✅ Complete |
 | **Phase 4** | Rebuild & Verify | 3 | ✅ Complete |
 | **Phase 5** | VCQ Technical Standard Enrichment | 7 | ✅ Complete |
-| **Phase 6** | Manual Content Analysis & Data Quality Uplift | 6 | 🔶 In progress (2/6 done) |
+| **Phase 6** | Manual Content Analysis & Data Quality Uplift | 6 | 🔶 In progress (4/6 done) |
 
-**Total steps:** 26 | **Completed:** 22/26
+**Total steps:** 26 | **Completed:** 24/26
 
 ---
 
@@ -605,7 +605,7 @@ original checklist was NOT performed — it is now properly scoped in Steps 6.3�
 
 **15 unique specs** referenced across all use cases: 4 ARF TS + 11 external standards.
 
-### Step 6.4 — VCQ Clarification Question Audit & Use Case Tagging 🟡 PARTIALLY COMPLETE
+### Step 6.4 — VCQ Clarification Question Audit & Use Case Tagging ✅ COMPLETE
 
 > **Effort:** ~3-4 hours (largest sub-step; split across sub-steps per file)  
 > **Risk:** Medium — modifying question wording and adding `useCaseRef` fields  
@@ -621,9 +621,10 @@ mirroring the pattern already used in RCA. When a vendor selects a target use ca
 Authentication"), the VCQ should be able to surface only the questions relevant to that use case.
 This requires systematic `useCaseRef` tagging now, even though the UI filter is not yet built.
 
-**Current state (updated 2026-02-20):**
+**Current state (updated 2026-02-20T11:44+01:00):**
 - ✅ **Use case tagging COMPLETE** — 51 questions tagged across 7 use cases (all in core.yaml)
-- ❌ **Quality audit NOT DONE** — No questions were reworded, no redundancies identified, no enrichment from EC manual context
+- ✅ **Quality audit COMPLETE** — 53 questions sharpened, 2 redundant questions removed across 5 files
+- Commits: `f676d176` (core), `65934ade` (issuer), `3cf7b2e2` (intermediary), `5f38b62c` (trust_services), `2ee82258` (ict)
 - See tracker: `.agent/session/vcq-quality-audit-tracker.md`
 
 **Problem (quality):** The 1,352 existing VCQ clarification questions were authored before the EC
@@ -674,11 +675,11 @@ use case manuals were analyzed. They may be:
 
 | Sub-step | VCQ File | Reqs | Qs | Priority | Tagging | Quality Audit |
 |----------|----------|------|----|----------|---------|---------------|
-| 6.4.1 | `core.yaml` | 48 | 421 | 🔴 High | ✅ Done (51 tagged) | ⬜ Not started |
-| 6.4.2 | `issuer.yaml` | 40 | 360 | 🟡 Medium | ✅ Done (0 needed) | ⬜ Not started |
-| 6.4.3 | `intermediary.yaml` | 32 | 292 | 🟡 Medium | ✅ Done (0 needed) | ⬜ Not started |
-| 6.4.4 | `trust_services.yaml` | 19 | 171 | 🟡 Medium | ✅ Done (0 needed) | ⬜ Not started |
-| 6.4.5 | `ict.yaml` | 12 | 108 | 🟢 Lower | ✅ Done (0 needed) | ⬜ Not started |
+| 6.4.1 | `core.yaml` | 48 | 421 | 🔴 High | ✅ Done (51 tagged) | ✅ Done (20 sharpened) |
+| 6.4.2 | `issuer.yaml` | 40 | 360 | 🟡 Medium | ✅ Done (0 needed) | ✅ Done (15 sharpened) |
+| 6.4.3 | `intermediary.yaml` | 32 | 290 | 🟡 Medium | ✅ Done (0 needed) | ✅ Done (6 sharpened, 2 removed) |
+| 6.4.4 | `trust_services.yaml` | 19 | 171 | 🟡 Medium | ✅ Done (0 needed) | ✅ Done (8 sharpened) |
+| 6.4.5 | `ict.yaml` | 12 | 108 | 🟢 Lower | ✅ Done (0 needed) | ✅ Done (4 sharpened) |
 
 **Constraints:**
 - Do NOT rewrite questions from scratch — sharpen existing wording with specific details
@@ -767,7 +768,7 @@ data covers, with prioritised recommendations.
 | **6.1** | Read & extract content from all 11 manuals | Done | ✅ Complete |
 | **6.2** | Import terminology into `custom-dictionary.yaml` | Done | ✅ Complete |
 | **6.3** | Populate `technicalSpecs` arrays on all use cases | ~30 min | ✅ Complete |
-| **6.4** | VCQ clarification question audit & use case tagging (11 use cases × 5 files) | ~3-4 hrs | ⬜ Not started |
+| **6.4** | VCQ clarification question audit & use case tagging (5 files, 53 sharpened, 2 removed) | ~3-4 hrs | ✅ Complete |
 | **6.5** | RCA requirement description enrichment & use case scoping | ~2-3 hrs | ⬜ Not started |
 | **6.6** | Cross-validation gap report | ~1-2 hrs | ⬜ Not started |
 
