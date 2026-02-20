@@ -43,7 +43,7 @@ requirements:
         text: "Does your internal governance follow the 'three lines of defence' model (operations, risk management, internal audit) as expected by DORA?"
         dimension: governance
       - id: Q7
-        text: "How do you handle the dual regulatory regime — contracts that must satisfy both eIDAS intermediary requirements and DORA ICT provisions simultaneously?"
+        text: "How do you handle the dual regulatory regime — contracts that must satisfy both eIDAS intermediary requirements (including Article 45h functional separation obligations) and DORA Article 30 ICT provisions simultaneously? Is there a unified compliance mapping?"
         dimension: compliance_completeness
       - id: Q8
         text: "What is your contract amendment process when DORA regulatory technical standards (RTS) are updated — proactive customer notification, mandatory re-negotiation?"
@@ -229,7 +229,7 @@ requirements:
   VEND-ICT-007:
     questions:
       - id: Q1
-        text: "What is your incident notification timeline — how quickly after detection do you notify affected financial entity customers? Is it within the 4-hour window for major incidents?"
+        text: "What is your incident notification timeline — how quickly after detection do you notify affected financial entity customers? Is it within the 4-hour window for major incidents per the DORA RTS on ICT incident classification (Commission Delegated Regulation 2024/1772)?"
         dimension: sla
       - id: Q2
         text: "What channels are used for incident notification — email, phone, ticketing system, status page, API webhook?"
@@ -284,7 +284,7 @@ requirements:
         text: "Do you support 'pooled TLPT' per Article 26(4) where multiple financial entities coordinate a single test to reduce operational burden?"
         dimension: efficiency
       - id: Q8
-        text: "Are you familiar with the TIBER-EU framework that underpins DORA's TLPT requirements — have you participated in TIBER tests before?"
+        text: "Are you familiar with the TIBER-EU framework that informed DORA's TLPT requirements under Article 26? Have you participated in TIBER tests before, and are you aligning your testing procedures to the DORA TLPT technical standards?"
         dimension: experience
       - id: Q9
         text: "How do you ensure TLPT does not disrupt live services — production safeguards, rollback procedures, incident response standby?"
@@ -383,7 +383,7 @@ requirements:
         text: "How substitutable is your service — are there alternative providers, what is the estimated switching effort/time, open standard compatibility?"
         dimension: flexibility
       - id: Q7
-        text: "Do you anticipate being designated as a Critical ICT TPP under Article 31 — based on market share, systemic importance, financial entity dependency?"
+        text: "Do you anticipate being designated as a Critical ICT TPP under Article 31 — based on the designation criteria in Article 31(2): systemic character, degree of substitutability, number of financial entities served, and cross-border nature of services?"
         dimension: roadmap
       - id: Q8
         text: "How do you mitigate concentration risk within your own supply chain — multi-cloud strategy, redundant DNS, diverse network providers?"

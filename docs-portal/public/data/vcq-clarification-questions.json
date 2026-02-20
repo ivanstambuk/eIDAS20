@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-20T10:34:49.080Z",
+  "generatedAt": "2026-02-20T10:36:15.732Z",
   "schemaVersion": 2,
   "stats": {
     "totalRequirements": 151,
@@ -2448,7 +2448,7 @@
       },
       {
         "id": "Q7",
-        "text": "How do you handle the dual regulatory regime — contracts that must satisfy both eIDAS intermediary requirements and DORA ICT provisions simultaneously?",
+        "text": "How do you handle the dual regulatory regime — contracts that must satisfy both eIDAS intermediary requirements (including Article 45h functional separation obligations) and DORA Article 30 ICT provisions simultaneously? Is there a unified compliance mapping?",
         "dimension": "compliance_completeness"
       },
       {
@@ -2700,7 +2700,7 @@
     "VEND-ICT-007": [
       {
         "id": "Q1",
-        "text": "What is your incident notification timeline — how quickly after detection do you notify affected financial entity customers? Is it within the 4-hour window for major incidents?",
+        "text": "What is your incident notification timeline — how quickly after detection do you notify affected financial entity customers? Is it within the 4-hour window for major incidents per the DORA RTS on ICT incident classification (Commission Delegated Regulation 2024/1772)?",
         "dimension": "sla"
       },
       {
@@ -2782,7 +2782,7 @@
       },
       {
         "id": "Q8",
-        "text": "Are you familiar with the TIBER-EU framework that underpins DORA's TLPT requirements — have you participated in TIBER tests before?",
+        "text": "Are you familiar with the TIBER-EU framework that informed DORA's TLPT requirements under Article 26? Have you participated in TIBER tests before, and are you aligning your testing procedures to the DORA TLPT technical standards?",
         "dimension": "experience"
       },
       {
@@ -2918,7 +2918,7 @@
       },
       {
         "id": "Q7",
-        "text": "Do you anticipate being designated as a Critical ICT TPP under Article 31 — based on market share, systemic importance, financial entity dependency?",
+        "text": "Do you anticipate being designated as a Critical ICT TPP under Article 31 — based on the designation criteria in Article 31(2): systemic character, degree of substitutability, number of financial entities served, and cross-border nature of services?",
         "dimension": "roadmap"
       },
       {
