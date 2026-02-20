@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-20T10:11:49.504Z",
+  "generatedAt": "2026-02-20T10:27:26.303Z",
   "schemaVersion": 2,
   "stats": {
     "totalRequirements": 151,
@@ -63,7 +63,7 @@
     "VEND-CORE-001": [
       {
         "id": "Q1",
-        "text": "How does your platform technically enforce the no-storage mandate for wallet transaction data — what architectural controls prevent any persistence of PIDs, attestations, or user attributes beyond the forwarding operation?",
+        "text": "How does your platform technically enforce the Art 5b(10) no-storage mandate for wallet transaction data — what architectural controls prevent any persistence of PIDs, attestations, or user attributes beyond the forward-only operation (per ARF AS-RP-51-011)?",
         "dimension": "architecture"
       },
       {
@@ -83,7 +83,7 @@
       },
       {
         "id": "Q5",
-        "text": "If your service uses sub-processors or cloud infrastructure, how do you ensure they also comply with the no-storage mandate? What contractual and technical controls are in place?",
+        "text": "If your service relies on sub-processors or cloud infrastructure (IaaS, PaaS), how do you contractually and technically ensure they also comply with the no-storage mandate per Art 5b(10)? Do sub-processor agreements explicitly prohibit persistence of PID attributes and attestation content, and are these obligations verified through audits or technical attestation?",
         "dimension": "supply_chain"
       },
       {
@@ -98,14 +98,14 @@
       },
       {
         "id": "Q8",
-        "text": "Does the product prevent combining data from multiple transactions or across different intermediated RPs (ARF AS-RP-51-012)? What data isolation architecture enforces this?",
+        "text": "Does the product prevent combining or correlating data from multiple transactions or across different intermediated RPs (per ARF AS-RP-51-012 data isolation requirement)? What data isolation architecture (tenant separation, ephemeral processing contexts, memory partitioning) enforces this?",
         "dimension": "architecture"
       }
     ],
     "VEND-CORE-002": [
       {
         "id": "Q1",
-        "text": "Do you provide a standard Data Processing Agreement (DPA) that meets GDPR Article 28 requirements, or do you negotiate custom DPAs per customer? Can the organization review a template DPA before contract signing?",
+        "text": "Do you provide a standard Data Processing Agreement (DPA) that meets GDPR Article 28 requirements, or do you negotiate custom DPAs per customer? Can the organisation review a template DPA before contract signing, and is a DPA available for the specific EUDI Wallet intermediation service (not just a generic cloud services DPA)?",
         "dimension": "capability"
       },
       {
@@ -184,12 +184,12 @@
     "VEND-CORE-004": [
       {
         "id": "Q1",
-        "text": "Does the product provide an automated Registration Management Interface to support the organization in completing, updating, and maintaining its registration as a Relying Party across all relevant Member States (via the TS5 REST API or equivalent)?",
+        "text": "Does the product provide an automated Registration Management Interface to support the organisation in completing, updating, and maintaining its registration as a Relying Party across all relevant Member States (via the TS5 REST API per IR 2025/848)?",
         "dimension": "capability"
       },
       {
         "id": "Q2",
-        "text": "Does the product support the full RP registration lifecycle per IR 2025/848: initial onboarding, updates to intended uses, modification of requested data elements, certificate retrieval, and deregistration?",
+        "text": "Does the product support the full RP registration lifecycle per IR 2025/848 Articles 5–9: initial onboarding (Art 5), updates to intended uses (Art 5(3)), modification of requested data elements, registration certificate retrieval (Art 8), and deregistration?",
         "dimension": "lifecycle"
       },
       {
@@ -256,7 +256,7 @@
       },
       {
         "id": "Q7",
-        "text": "Does the product include the access certificate in each presentation request by value (not by reference) as required by ARF AS-RP-06-001, ensuring atomic self-contained transactions?",
+        "text": "Does the product include the RP access certificate in each presentation request by value (not by reference) as required by ARF AS-RP-06-001, ensuring atomic self-contained transactions that support offline wallet verification?",
         "dimension": "compliance_completeness"
       },
       {
@@ -503,7 +503,7 @@
     "VEND-CORE-011": [
       {
         "id": "Q1",
-        "text": "How does your platform implement the dual-identity display required by Art 5b(8) and ARF AS-RP-51-006/AS-RP-51-008? Do you include both your own access certificate and the intermediated RP's EW-DM-44-018 extension data in every presentation request?",
+        "text": "How does your platform implement the dual-identity display required by Art 5b(8) and ARF AS-RP-51-006/AS-RP-51-008? Do you include both the intermediary's own access certificate and the intermediated RP's EW-DM-44-018 extension data (name, unique identifier, intended use description, Registrar URL, intended use identifier) in every presentation request?",
         "dimension": "architecture"
       },
       {
@@ -639,7 +639,7 @@
     "VEND-CORE-014": [
       {
         "id": "Q1",
-        "text": "Given the no-storage mandate (Art 5b(10), VEND-CORE-001), what categories of personal data might you hold at contract termination — e.g., configuration data, audit logs, registration data, certificate records, DPA documentation? Provide a comprehensive inventory.",
+        "text": "Given the no-storage mandate (Art 5b(10), VEND-CORE-001), what categories of personal data might you hold at contract termination — e.g., RP configuration data, transaction audit logs, Registrar registration data, access certificate records, registration certificate records, DPA documentation? Provide a comprehensive inventory per data category.",
         "dimension": "data_handling"
       },
       {
@@ -844,7 +844,7 @@
     "VEND-CORE-019": [
       {
         "id": "Q1",
-        "text": "Do you implement the EUDI Wallet-based Strong Customer Authentication flow as specified in ARF Technical Specification 12 (TS12)? If not yet implemented, what is your roadmap?",
+        "text": "Do you implement the EUDI Wallet-based Strong Customer Authentication flow as specified in ARF Technical Specification 12 (TS12)? Which of the two TS12 flows do you support: the 'issuer-requested' flow (PSP-initiated, where the user's bank requests authentication directly) and/or the 'third-party-requested' flow (merchant/PISP-initiated)? If either is not yet implemented, what is your roadmap?",
         "dimension": "capability",
         "useCaseRef": [
           "payment-auth"
@@ -860,7 +860,7 @@
       },
       {
         "id": "Q3",
-        "text": "How do you achieve dynamic linking of the authentication to a specific transaction amount and payee (PSD2 RTS Art 5)? Is the transaction detail included in the signed wallet presentation, or is a separate binding mechanism used?",
+        "text": "How do you achieve dynamic linking of the authentication to a specific transaction amount and payee (PSD2 RTS Art 5)? Per TS12, the transaction details must be cryptographically bound to the wallet's signed presentation. Is the transaction detail signed as part of the SD-JWT VP Token, or is a separate binding mechanism used?",
         "dimension": "technical_implementation",
         "useCaseRef": [
           "payment-auth"
@@ -892,7 +892,7 @@
       },
       {
         "id": "Q7",
-        "text": "What integration is required with the organization's existing payment infrastructure (PSP acquirer, card scheme, payment gateway)? Do you support the standard TS5 (OpenID4VP) flow extended for payment context, or a separate protocol?",
+        "text": "What integration is required with the organisation's existing payment infrastructure (PSP acquirer, card scheme, payment gateway)? Per the EC Payment Authentication manual, the solution must support both card-based (EMV 3-D Secure) and account-to-account (SEPA Instant Credit Transfer) payment rails. Which rails are supported?",
         "dimension": "interoperability",
         "useCaseRef": [
           "payment-auth"
@@ -1177,7 +1177,7 @@
       },
       {
         "id": "Q7",
-        "text": "Article 5a(23) eIDAS requires open standards specifically to prevent vendor lock-in. How do you demonstrate that your implementation achieves this — can an organisation migrate from your product to a competitor's without data loss or service interruption?",
+        "text": "Article 5a(23) eIDAS requires open standards specifically to prevent vendor lock-in. How do you demonstrate that your implementation achieves this — can an organisation migrate from your product to a competitor's without data loss or service interruption? Do you publish migration guides or export tools for RP configuration, registered intended uses, and deployment metadata?",
         "dimension": "architecture"
       },
       {
@@ -1417,7 +1417,7 @@
       },
       {
         "id": "Q4",
-        "text": "Article 5b(9) prohibits RPs from refusing pseudonyms where identification is not required by law. How does your system enforce this — can the RP be technically prevented from demanding real identity when pseudonymous presentation is sufficient?",
+        "text": "Article 5b(9) prohibits RPs from refusing pseudonymous attestations where identification is not required by Union or national law. How does your system enforce this — can the RP be technically prevented from demanding real identity when pseudonymous presentation is sufficient for the registered intended use?",
         "dimension": "compliance_completeness"
       },
       {
@@ -1904,7 +1904,7 @@
       },
       {
         "id": "Q2",
-        "text": "Per EW-PIO-24-002, RP Instances supporting proximity flows SHALL support device retrieval as specified in ISO/IEC 18013-5. Which specific transports do you implement — BLE (mandatory), NFC (optional), or both? Which device engagement methods are supported (QR code, NFC tap)?",
+        "text": "Per EW-PIO-24-002, RP Instances supporting proximity flows SHALL support device retrieval as specified in ISO/IEC 18013-5. Which specific transports do you implement — BLE (mandatory per the ARF), NFC (optional), or both? Which device engagement methods are supported (QR code, NFC tap)? Which version of ISO/IEC 18013-5 have you implemented?",
         "dimension": "technical_implementation",
         "useCaseRef": [
           "proximity-id"
@@ -1936,7 +1936,7 @@
       },
       {
         "id": "Q6",
-        "text": "How is security maintained in the proximity flow? Do you implement the full ISO/IEC 18013-5 security model (HKDF key derivation, AES-256-GCM encryption, ECDSA device authentication)? How do you prevent relay attacks where an attacker forwards the BLE signal?",
+        "text": "How is security maintained in the proximity flow? Do you implement the full ISO/IEC 18013-5 security model (HKDF key derivation, AES-256-GCM encryption, ECDSA device authentication)? How do you prevent relay attacks where an attacker forwards the BLE/NFC signal from a remote location?",
         "dimension": "security",
         "useCaseRef": [
           "proximity-id"
@@ -1999,7 +1999,7 @@
       },
       {
         "id": "Q2",
-        "text": "What is the process for certificate renewal before expiration? Do you monitor certificate notBefore/notAfter dates proactively, and how far in advance of expiry do you initiate renewal?",
+        "text": "What is your committed response time for certificate renewal before expiration? Do you monitor certificate notBefore/notAfter dates proactively, and how far in advance of expiry do you initiate renewal? Is the renewal process automated or does it require manual intervention from the organisation?",
         "dimension": "lifecycle"
       },
       {
@@ -2088,7 +2088,7 @@
     "VEND-CORE-043": [
       {
         "id": "Q1",
-        "text": "Which credential formats were tested against the OIDF OID4VP conformance suite — SD-JWT VC, ISO mDoc, or both? Were both the HAIP (High Assurance Interoperability Profile) and standard OID4VP profiles tested?",
+        "text": "Which credential formats were tested against the OIDF OID4VP conformance suite — SD-JWT VC, ISO mDoc, or both? Were both the HAIP (High Assurance Interoperability Profile) and standard OID4VP profiles tested? Provide the conformance test report or certificate ID.",
         "dimension": "interoperability"
       },
       {
@@ -2182,7 +2182,7 @@
     "VEND-CORE-045": [
       {
         "id": "Q1",
-        "text": "Does the product implement the full TS5 OpenAPI v3 specification, or a subset? Which endpoints are supported? List any TS5 endpoints that are NOT implemented and explain why.",
+        "text": "Does the product implement the full TS5 OpenAPI v3 specification for RP registration per IR 2025/848, or a subset? Which endpoints are supported (registration creation, update, retrieval, deregistration)? List any TS5 endpoints that are NOT implemented and explain why.",
         "dimension": "technical_implementation"
       },
       {
@@ -2296,7 +2296,7 @@
       },
       {
         "id": "Q3",
-        "text": "What session timeout mechanism does the product implement for cases where the wallet never responds (user abandonment)? Is the timeout value configurable per distribution channel or per use case? What is the default timeout, and what is the recommended range for different channels (web same-device, mobile deep link, cross-device QR, unattended terminal, staffed location, contact centre)?",
+        "text": "What session timeout mechanism does the product implement for cases where the wallet never responds (user abandonment)? Is the timeout value configurable per distribution channel or per use case? What is the default timeout, and what is the recommended range for different channels (web same-device, mobile deep link, cross-device QR, unattended terminal, staffed location, contact centre, proximity/BLE)?",
         "dimension": "operational"
       },
       {
