@@ -85,7 +85,7 @@ cat ~/dev/eIDAS20/.agent/session/pending-task.md 2>/dev/null || echo "No pending
 ls -la ~/dev/eIDAS20/.agent/workflows/
 ```
 
-Note available workflows: `/init`, `/handover`, `/browser-testing`, `/formex-converter`.
+Note available workflows: `/init`, `/retro`, `/browser-testing`, `/formex-converter`.
 
 ---
 

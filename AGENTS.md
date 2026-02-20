@@ -69,9 +69,8 @@ At the END of your response, include this warning:
 ```
 ⚠️ SESSION LENGTH WARNING: We have passed Step 250 (currently at Step {N}).
 Context summarization/truncation is imminent. To preserve session learnings:
-1. Run /retro workflow to capture decisions, learnings, and progress
-2. Run /handover to generate a handover summary
-3. Start a fresh session to continue work
+1. Run /retro workflow (captures decisions, learnings, progress, AND updates session state)
+2. Start a fresh session to continue work
 ```
 
 **This takes priority over all other work.** Even if you are mid-task, include this warning. The user wants to avoid the automatic context truncation that discards earlier conversation history.
@@ -743,8 +742,7 @@ This runs `build:terminology` → `build:search` in sequence.
 | Workflow | Trigger | Description |
 |----------|---------|-------------|
 | `/init` | Start of session | Prime agent with project context |
-| `/handover` | End of session | Generate handover summary |
-| `/retro` | After milestones | Run structured retrospective |
+| `/retro` | End of session / milestones | Run retrospective + update session state (TRACKER, pending-task) |
 | `/rca-audit` | RCA work | Audit legal docs for role-specific requirements |
 | `/vcq-audit` | VCQ content work | Systematic quality audit of VCQ requirements |
 

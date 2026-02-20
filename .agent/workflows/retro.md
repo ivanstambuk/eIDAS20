@@ -243,7 +243,87 @@ git add -A && git status
 git commit -m "fix: [main fix description]
 
 Retro improvements:
-- [list improvements implemented]"
+- [list improvements implemented]" && git push
+```
+
+---
+
+## Step 7: Session State Update (MANDATORY)
+
+**This step replaces the old `/handover` workflow.** Session state MUST be updated as part of every retro — never separately.
+
+### 7a. Update TRACKER.md
+
+Update these fields:
+- **Last Updated** timestamp
+- **Next Action** — what the next session should do
+- Add a session summary to the **Recent Sessions** table
+
+Bundle the TRACKER update in the same commit as the retro improvements when possible (Rule 4).
+
+### 7b. Handle pending-task.md
+
+**File**: `.agent/session/pending-task.md`
+
+**If the current task is COMPLETE:**
+- **Delete** `pending-task.md` — the `/init` workflow will read TRACKER.md to find the next task
+```bash
+rm -f .agent/session/pending-task.md
+```
+
+**If work is INCOMPLETE** (stopping mid-task):
+- **Create or update** `pending-task.md` with current state
+- ⚠️ HARD CAP: 100 LINES MAXIMUM
+
+**Template for incomplete work:**
+```markdown
+# Session Context
+<!-- MAX 100 LINES -->
+
+## Current State
+
+- **Focus**: [1-2 sentences: what we're working on]
+- **Next**: [the ONE thing to do when resuming]
+- **Status**: [In Progress / Blocked / Ready]
+- **Phase**: [Phase N, Task N.X]
+
+## Key Files
+
+- `path/to/file1.jsx` — [why relevant]
+- `path/to/file2.css` — [why relevant]
+(max 7 files)
+
+## Context Notes
+
+Things git commits don't capture:
+- [Decision made and why]
+- [Gotcha discovered]
+- [Thing tried that didn't work]
+
+## Quick Start
+
+\```bash
+cd ~/dev/eIDAS20/docs-portal && npm run dev
+# Then: [what to test]
+\```
+```
+
+### 7c. Commit session state
+
+```bash
+git add -A && git commit -m "docs: update session state" && git push
+```
+
+### 7d. Confirm to user
+
+Output:
+
+```
+✅ Session closed.
+- TRACKER.md updated
+- Pending task: [deleted / updated at .agent/session/pending-task.md]
+
+Next session: Run /init to resume.
 ```
 
 ---
