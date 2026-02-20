@@ -485,11 +485,11 @@ function getConfigOrder(dirName) {
  * so the portal can display when the content was captured.
  * 
  * @param {string} dirName - Directory name
- * @returns {{snapshotDate: string|null, sourceVersion: string|null, externalUrl: string|null}}
+ * @returns {{snapshotDate: string|null, sourceVersion: string|null, externalUrl: string|null, historyUrl: string|null}}
  */
 function getSnapshotMetadata(dirName) {
     const config = loadDocumentsConfig();
-    if (!config?.documents) return { snapshotDate: null, sourceVersion: null, externalUrl: null };
+    if (!config?.documents) return { snapshotDate: null, sourceVersion: null, externalUrl: null, historyUrl: null };
 
     const doc = config.documents.find(d =>
         (d.output_dir && d.output_dir.endsWith(dirName)) ||
@@ -499,7 +499,8 @@ function getSnapshotMetadata(dirName) {
     return {
         snapshotDate: doc?.snapshot_date || null,
         sourceVersion: doc?.source_version || null,
-        externalUrl: doc?.external_url || null
+        externalUrl: doc?.external_url || null,
+        historyUrl: doc?.history_url || null
     };
 }
 

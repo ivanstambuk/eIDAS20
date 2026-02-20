@@ -689,9 +689,22 @@ const RegulationViewer = () => {
                         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
                             📸 Snapshot: {new Date(regulation.snapshotDate + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
                             {regulation.sourceVersion && (
-                                <span className="badge badge-info" style={{ fontSize: '0.7em', padding: '1px 5px', marginLeft: '2px' }}>
-                                    v{regulation.sourceVersion}
-                                </span>
+                                regulation.historyUrl ? (
+                                    <a
+                                        href={regulation.historyUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="badge badge-info"
+                                        style={{ fontSize: '0.7em', padding: '1px 5px', marginLeft: '2px', textDecoration: 'none', cursor: 'pointer' }}
+                                        title="View page version history"
+                                    >
+                                        v{regulation.sourceVersion}
+                                    </a>
+                                ) : (
+                                    <span className="badge badge-info" style={{ fontSize: '0.7em', padding: '1px 5px', marginLeft: '2px' }}>
+                                        v{regulation.sourceVersion}
+                                    </span>
+                                )
                             )}
                         </span>
                     )}

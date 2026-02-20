@@ -115,8 +115,9 @@ documents:
     category: supplementary
     source: manual # One-time import from EC Digital Building Blocks (DEC-092)
     external_url: https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/713526976/FAQ
+    history_url: https://ec.europa.eu/digital-building-blocks/sites/pages/viewpreviousversions.action?pageId=713526976
     snapshot_date: "2026-02-16" # Date the source content was captured
-    source_version: "3" # Confluence page version at time of snapshot
+    source_version: "73" # Confluence page version at time of snapshot
     output_dir: 01_regulation/ec_eudiw_faq
   - id: ec-esignature-faq
     title: EC eSignature FAQ
@@ -127,6 +128,7 @@ documents:
     category: supplementary
     source: manual # One-time import from EC Digital Building Blocks (DEC-092)
     external_url: https://ec.europa.eu/digital-building-blocks/sites/spaces/DIGITAL/pages/880312429/eSignature+FAQ
+    history_url: https://ec.europa.eu/digital-building-blocks/sites/pages/viewpreviousversions.action?pageId=880312429
     snapshot_date: "2026-01-15" # Date the source content was captured
     source_version: "1" # Confluence page version at time of snapshot
     output_dir: 01_regulation/ec_esignature_faq
