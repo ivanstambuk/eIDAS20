@@ -122,6 +122,7 @@ documents:
     title: EC eSignature FAQ
     shortTitle: eSignature FAQ
     sidebarTitle: eSignature FAQ
+    sidebarOrder: 1 # Show second in supplementary section, after EUDIW FAQ
     legalType: faq
     category: supplementary
     source: manual # One-time import from EC Digital Building Blocks (DEC-092)
