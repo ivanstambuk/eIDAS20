@@ -68,7 +68,7 @@ Both a wallet solution and a wallet unit are provided by a wallet provider and c
 cryptographic devices.
 
 
-The definitions are laid down in Article 2(11) and 2(2) of the [Commission Implementing Regulation (EU) 2024/2979.](https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj)
+The definitions are laid down in Article 2(11) and 2(2) of the [Commission Implementing Regulation (EU) 2024/2979.](#/regulation/2024-2979)
 
 A **‘wallet solution’** means a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices.
 
@@ -82,26 +82,26 @@ In simple terms, the wallet solution is the master template, and the wallet unit
 
 The technical requirements for the EU Digital Identity Wallets can be found in the adopted implementing acts:
 
-- [Commission Implementing Regulation (EU) 2024/2979](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202402979&qid=1733300667869) as regards the integrity and core functionalities of European Digital Identity Wallets
+- [Commission Implementing Regulation (EU) 2024/2979](#/regulation/2024-2979) as regards the integrity and core functionalities of European Digital Identity Wallets
 
-- [Commission Implementing Regulation (EU) 2024/2982](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202402982&qid=1733300667869) as regards protocols and interfaces to be supported by the European Digital Identity Framework
+- [Commission Implementing Regulation (EU) 2024/2982](#/regulation/2024-2982) as regards protocols and interfaces to be supported by the European Digital Identity Framework
 
-- [Commission Implementing Regulation (EU) 2024/2977](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202402977&qid=1733300667869) as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets
+- [Commission Implementing Regulation (EU) 2024/2977](#/regulation/2024-2977) as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets
 
-- [Commission Implementing Regulation (EU) 2024/2980](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202402980&qid=1733300667869) as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem
+- [Commission Implementing Regulation (EU) 2024/2980](#/regulation/2024-2980) as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem
 
-- [Commission Implementing Regulation (EU) 2024/2981](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202402981&qid=1733300667869) as regards the certification of European Digital Identity Wallets
+- [Commission Implementing Regulation (EU) 2024/2981](#/regulation/2024-2981) as regards the certification of European Digital Identity Wallets
 
-- [Commission Implementing Regulation (EU) 2025/847](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500847) as regards reactions to security breaches of European Digital Identity Wallets
+- [Commission Implementing Regulation (EU) 2025/847](#/regulation/2025-0847) as regards reactions to security breaches of European Digital Identity Wallets
 
-- [Commission Implementing Regulation (EU) 2025/849](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500849) as regards the submission of information to the Commission and to the Cooperation Group for the list of certified European Digital Identity Wallets
+- [Commission Implementing Regulation (EU) 2025/849](#/regulation/2025-0849) as regards the submission of information to the Commission and to the Cooperation Group for the list of certified European Digital Identity Wallets
 
-- [Commission Implementing Regulation (EU) 2025/846](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500846) as regards cross-border identity matching of natural persons
+- [Commission Implementing Regulation (EU) 2025/846](#/regulation/2025-0846) as regards cross-border identity matching of natural persons
 
-- [Commission Implementing Regulation (EU) 2025/848](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500848) as regards the registration of wallet-relying parties
+- [Commission Implementing Regulation (EU) 2025/848](#/regulation/2025-0848) as regards the registration of wallet-relying parties
 
-- [Commission Implementing Regulation (EU) 2025/1569](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202501569) as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source
-Further, the common technical architecture of the EU Digital Identity Wallets ecosystem is defined in the Architecture and Reference Framework (ARF) document. The ARF has been set-up pursuant to [Commission Recommendation (EU) 2021/946](https://eur-lex.europa.eu/eli/reco/2021/946/oj/eng) and sets out a set of common standards, and technical specifications for components, protocols, interfaces and data formats governing information exchange between issuers, wallets, and service providers.
+- [Commission Implementing Regulation (EU) 2025/1569](#/regulation/2025-1569) as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source
+Further, the common technical architecture of the EU Digital Identity Wallets ecosystem is defined in the Architecture and Reference Framework (ARF) document. The ARF has been set-up pursuant to [Commission Recommendation (EU) 2021/946](#/regulation/2021-946) and sets out a set of common standards, and technical specifications for components, protocols, interfaces and data formats governing information exchange between issuers, wallets, and service providers.
 
 The ARF is published [here.](https://digital-strategy.ec.europa.eu/en/library/implementing-regulation-european-digital-identity-wallets?utm_source=chatgpt.com)
 
@@ -161,7 +161,7 @@ The wallet user will have access to a signature creation application which may e
 ### What is a provider of person identification data?
 
 The definition is laid down in Article 2(4) of the
-[Commission Implementing Regulation (EU) 2024/2977.](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202402977&qid=1733300667869)
+[Commission Implementing Regulation (EU) 2024/2977.](#/regulation/2024-2977)
 
 
 
@@ -256,7 +256,7 @@ transparency.
 
 
 
-Please refer to [Commission Implementing Regulation (EU) 2025/848](http://data.europa.eu/eli/reg_impl/2025/848/oj) for further details and updates on the requirements
+Please refer to [Commission Implementing Regulation (EU) 2025/848](#/regulation/2025-0848) for further details and updates on the requirements
 above.
 
 ---
@@ -269,7 +269,7 @@ help preventing user tracking across services while enabling seamless authentica
 
 
 In accordance with the state of the art, pseudonym generation follows WebAuthn standards and is designed to limit data exposure during transactions. Please refer to Article 14 of
-[Commission Implementing Regulation (EU) 2024/2979](http://data.europa.eu/eli/reg_impl/2024/2979/oj) for further details.
+[Commission Implementing Regulation (EU) 2024/2979](#/regulation/2024-2979) for further details.
 
 ---
 
@@ -283,13 +283,13 @@ Wallets are certified by accredited conformity assessment bodies operating under
 
 These bodies are responsible for evaluating wallet solutions against functional and cybersecurity requirements, conducting testing and assessments, and issuing certificates of conformity. They operate under the oversight of national certification scheme owners and ensure alignment with EU standards.
 
-For further details, please refer to [Commission Implementing Regulation (EU) 2024/2981](https://eur-lex.europa.eu/eli/reg_impl/2024/2981/oj/eng), and [Commission Implementing Regulation (EU) 2025/849.](http://data.europa.eu/eli/reg_impl/2025/849/oj)
+For further details, please refer to [Commission Implementing Regulation (EU) 2024/2981](#/regulation/2024-2981), and [Commission Implementing Regulation (EU) 2025/849.](#/regulation/2025-0849)
 
 ---
 
 ### How will security breaches—whether affecting wallets, authentication mechanisms, or electronic identification (eID) schemes— be addressed?
 
-A severe breach or compromise will result in the immediate withdrawal of all affected wallets, authentication mechanisms or electronic identification (eID) schemes.  For further details please refer to [Commission Implementing Regulation (EU) 2025/847.](http://data.europa.eu/eli/reg_impl/2025/847/oj)
+A severe breach or compromise will result in the immediate withdrawal of all affected wallets, authentication mechanisms or electronic identification (eID) schemes.  For further details please refer to [Commission Implementing Regulation (EU) 2025/847.](#/regulation/2025-0847)
 
 ---
 
