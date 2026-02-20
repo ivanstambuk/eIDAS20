@@ -69,12 +69,12 @@ useCases:
   # === Banking & payment ===
   payment-auth:
     name: "Payment authentication"
-    description: "Enables online payments to be authenticated via an EUDI Wallet."
+    description: "Enables online payments to be authenticated via an EUDI Wallet. Operates at the intersection of eIDAS and PSD2/PSR — the wallet provides SCA attestations that satisfy Strong Customer Authentication requirements under the Payment Services Regulation."
     category: banking
     status: published
     ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/935397429/Payment+Authentication"
     pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/935397429/11_Use%20Case_Manual_Payment%20Authentication.pdf"
-    # Links to TS12 for PSD2 SCA requirements
+    # Links to TS12 for PSD2/PSR SCA attestation requirements
     technicalSpecs:
       - TS12
 
@@ -102,12 +102,12 @@ useCases:
 
   dtc:
     name: "Digital Travel Credential (DTC)"
-    description: "A digital representation of the user's identity document such as an identity card, passport or another travel document."
+    description: "A digital representation of the user's identity document such as an identity card, passport or another travel document. Based on ICAO 9303 standards for machine-readable travel documents (MRTD), with Type 1 (virtual) and Type 2 (derived from physical document chip) variants."
     category: travel
     status: published
     ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451772/Travel+Credentials"
     pdfManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930451772/06_Use%20Case_Manual_Digital%20Travel%20Credential.pdf"
-    # ICAO 9303 for DTC data structures, ISO 23220-2 for mobile credential interface
+    # ICAO 9303 for DTC data structures (MRTD), ISO 23220-2 for mobile credential interface, Reg 2024/670-671
     technicalSpecs:
       - ICAO 9303
       - ISO 23220-2

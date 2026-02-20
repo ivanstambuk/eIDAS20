@@ -50,7 +50,10 @@ requirements:
       Private relying parties (except micro/small enterprises) must accept EUDI Wallets 
       when strong user authentication (SUA) is required by law or contract in specified sectors.
       For payment services, this implements "Strong Customer Authentication" (SCA) under
-      PSD2 Article 97 and the RTS (Commission Delegated Regulation (EU) 2018/389).
+      PSD2 Article 97 and the RTS (Commission Delegated Regulation (EU) 2018/389). The 
+      upcoming Payment Services Regulation (PSR) will replace PSD2 and continues the SCA 
+      mandate. The EC payment-auth manual describes how wallets issue SCA attestations 
+      that payment service providers can verify.
     legalBasis:
       regulation: 2014/910
       article: Article 5f
@@ -253,7 +256,10 @@ requirements:
     requirement: Enable privacy preserving unlinkability for non-identified attestations
     explanation: |
       When attestations don't require user identification, privacy-preserving techniques 
-      must ensure unlinkability across different relying parties.
+      must ensure unlinkability across different relying parties. This is particularly 
+      relevant for age verification, where zero-knowledge proofs (ZKP) are emerging 
+      as a technique to prove age thresholds without revealing the actual date of 
+      birth or any other identifying attributes.
     legalBasis:
       regulation: 2024/2982
       article: Article 3
@@ -274,7 +280,9 @@ requirements:
     requirement: Allow pseudonyms where legal identity is not required
     explanation: |
       Users cannot be prohibited from using pseudonyms when there is no legal requirement 
-      for identity verification.
+      for identity verification. In age verification scenarios, this means relying parties 
+      must accept proof-of-age attestations without requiring the user's full identity — 
+      the age threshold result is sufficient.
     legalBasis:
       regulation: 2014/910
       article: Article 5
@@ -493,7 +501,10 @@ requirements:
     explanation: |
       When a user's legal identity is not required by law, relying parties must accept 
       pseudonymous authentication. Users cannot be forced to reveal their real identity 
-      when pseudonymous access is sufficient.
+      when pseudonymous access is sufficient. For age verification, relying parties 
+      should accept age threshold proofs (e.g., "over 18") without requiring full 
+      identity disclosure. The EC age-verification manual identifies zero-knowledge 
+      proofs (ZKP) as an upcoming technique enabling this.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
@@ -1313,7 +1324,9 @@ requirements:
     requirement: Recognize legal effect of qualified EAA and public sector EAA
     explanation: |
       Qualified EAA and attestations issued by public sector bodies responsible for 
-      authentic sources have the same legal effect as paper attestations.
+      authentic sources have the same legal effect as paper attestations. This applies 
+      to health sector attestations (e.g., digital EHIC, ePrescription) which must be 
+      accepted with equivalence to their physical counterparts.
     legalBasis:
       regulation: 2014/910
       article: Article 45b
@@ -1331,7 +1344,10 @@ requirements:
     requirement: Recognize public sector EAA from all Member States
     explanation: |
       Cross-border recognition is mandatory. EAA issued by a public sector body in 
-      one Member State must be recognized in all other Member States.
+      one Member State must be recognized in all other Member States. This is 
+      particularly significant for health attestations (EHIC, ePrescription) and 
+      disability/parking cards, where cross-border portability is a primary use case. 
+      The MyHealth@EU / NCPeH infrastructure supports cross-border health data exchange.
     legalBasis:
       regulation: 2014/910
       article: Article 45b

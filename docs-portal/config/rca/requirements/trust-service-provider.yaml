@@ -73,7 +73,11 @@ requirements:
     explanation: |
       When using automated identity proofing, CABs assessing the process must
       be accredited per Article 3(18) of 910/2014, with formal certification
-      based on security evaluation per eID LoA or EUDI Wallet standards.
+      based on security evaluation per eID LoA or EUDI Wallet standards. The 
+      EC use case manuals describe biometric verification scenarios including 
+      facial matching and liveness detection for remote identity proofing 
+      (eSignature, payment authentication) and supervised verification 
+      (proximity identification).
     legalBasis:
       regulation: 2025/1566
       article: Annex

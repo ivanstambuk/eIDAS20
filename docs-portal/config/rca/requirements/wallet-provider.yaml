@@ -973,7 +973,10 @@ requirements:
     requirement: Request attestations in all available formats
     explanation: |
       When providers enable issuance in multiple formats, wallet units must 
-      request PID/EAA in all formats per Article 8 of 2024/2979.
+      request PID/EAA in all formats per Article 8 of 2024/2979. In practice, 
+      this means batch issuance of the same attestation in both ISO mdoc and 
+      W3C VC formats. Deferred issuance may also apply when the provider 
+      needs additional time to prepare all format variants.
     legalBasis:
       regulation: 2024/2982
       article: Article 4
@@ -1213,7 +1216,10 @@ requirements:
     requirement: Enable privacy-preserving techniques for unlinkability
     explanation: |
       The wallet must enable privacy-preserving techniques ensuring unlinkability 
-      where the attestation does not require user identification.
+      where the attestation does not require user identification. This is central 
+      to age verification use cases, where the wallet proves an age threshold 
+      without revealing birth date or identity. The EC age-verification manual 
+      identifies zero-knowledge proofs (ZKP) as an upcoming technique for this.
     legalBasis:
       regulation: 2014/910
       article: Article 5a
@@ -1452,7 +1458,9 @@ requirements:
     explanation: |
       Wallet units must not perform any Article 5a(4) functionality except 
       user authentication to access the wallet until the user has been 
-      successfully authenticated.
+      successfully authenticated. Authentication methods include PIN, 
+      biometric verification (fingerprint, facial recognition), or a 
+      combination per assurance level high requirements.
     legalBasis:
       regulation: 2024/2979
       article: Article 3
@@ -1563,7 +1571,11 @@ requirements:
     requirement: WSCA must authenticate users per assurance level high requirements
     explanation: |
       When performing eID at assurance level high, WSCA must authenticate 
-      users in accordance with Implementing Regulation 2015/1502.
+      users in accordance with Implementing Regulation 2015/1502. In 
+      practice, this typically involves biometric verification (fingerprint 
+      or facial recognition) combined with a knowledge factor (PIN), as 
+      described in the EC use case manuals for eSignature and proximity 
+      identification scenarios.
     legalBasis:
       regulation: 2024/2979
       article: Article 5

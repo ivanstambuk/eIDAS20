@@ -97,7 +97,7 @@
     "payment-auth": {
       "id": "payment-auth",
       "name": "Payment authentication",
-      "description": "Enables online payments to be authenticated via an EUDI Wallet.",
+      "description": "Enables online payments to be authenticated via an EUDI Wallet. Operates at the intersection of eIDAS and PSD2/PSR — the wallet provides SCA attestations that satisfy Strong Customer Authentication requirements under the Payment Services Regulation.",
       "category": "banking",
       "status": "published",
       "ecManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/935397429/Payment+Authentication",
@@ -138,7 +138,7 @@
     "dtc": {
       "id": "dtc",
       "name": "Digital Travel Credential (DTC)",
-      "description": "A digital representation of the user's identity document such as an identity card, passport or another travel document.",
+      "description": "A digital representation of the user's identity document such as an identity card, passport or another travel document. Based on ICAO 9303 standards for machine-readable travel documents (MRTD), with Type 1 (virtual) and Type 2 (derived from physical document chip) variants.",
       "category": "travel",
       "status": "published",
       "ecManualUrl": "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930451772/Travel+Credentials",
@@ -2143,7 +2143,7 @@
       "id": "EAA-CRT-001",
       "category": "certification",
       "requirement": "Use qualified certificate with authentic source indication",
-      "explanation": "The qualified certificate supporting the electronic signature or seal must\ncontain specific certified attributes indicating the issuing body is established\nunder Union or national law as responsible for the authentic source, provide\ndata representing the authentic source, and identify the relevant law.",
+      "explanation": "The qualified certificate supporting the electronic signature or seal must\ncontain specific certified attributes indicating the issuing body is established\nunder Union or national law as responsible for the authentic source, provide\ndata representing the authentic source, and identify the relevant law. In the \nhealth sector, authentic sources include national health insurance bodies (EHIC) \nand prescription registries (ePrescription), which operate within the \nMyHealth@EU / NCPeH cross-border health infrastructure alongside eIDAS.",
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 45f",
@@ -3905,7 +3905,7 @@
       "id": "EAA-VER-002",
       "category": "verification",
       "requirement": "Verify identity of authentic source used",
-      "explanation": "When applicable, attestation providers must verify the identity of the\nauthentic source used as a source for the attributes included in the\nattestation.",
+      "explanation": "When applicable, attestation providers must verify the identity of the\nauthentic source used as a source for the attributes included in the\nattestation. For health sector attestations (ePrescription, EHIC), the \nauthentic source is typically a national health authority or social \nsecurity institution, connected via MyHealth@EU / NCPeH infrastructure.",
       "legalBasis": {
         "regulation": "2025/1569",
         "article": "Article 3",
@@ -5580,7 +5580,7 @@
       "id": "RP-GOV-003",
       "category": "governance",
       "requirement": "Private sector: Accept EUDI Wallet where strong user authentication is mandated",
-      "explanation": "Private relying parties (except micro/small enterprises) must accept EUDI Wallets \nwhen strong user authentication (SUA) is required by law or contract in specified sectors.\nFor payment services, this implements \"Strong Customer Authentication\" (SCA) under\nPSD2 Article 97 and the RTS (Commission Delegated Regulation (EU) 2018/389).",
+      "explanation": "Private relying parties (except micro/small enterprises) must accept EUDI Wallets \nwhen strong user authentication (SUA) is required by law or contract in specified sectors.\nFor payment services, this implements \"Strong Customer Authentication\" (SCA) under\nPSD2 Article 97 and the RTS (Commission Delegated Regulation (EU) 2018/389). The \nupcoming Payment Services Regulation (PSR) will replace PSD2 and continues the SCA \nmandate. The EC payment-auth manual describes how wallets issue SCA attestations \nthat payment service providers can verify.",
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5f",
@@ -5905,7 +5905,7 @@
       "id": "RP-PRV-004",
       "category": "privacy",
       "requirement": "Enable privacy preserving unlinkability for non-identified attestations",
-      "explanation": "When attestations don't require user identification, privacy-preserving techniques \nmust ensure unlinkability across different relying parties.",
+      "explanation": "When attestations don't require user identification, privacy-preserving techniques \nmust ensure unlinkability across different relying parties. This is particularly \nrelevant for age verification, where zero-knowledge proofs (ZKP) are emerging \nas a technique to prove age thresholds without revealing the actual date of \nbirth or any other identifying attributes.",
       "legalBasis": {
         "regulation": "2024/2982",
         "article": "Article 3",
@@ -5929,7 +5929,7 @@
       "id": "RP-PRV-005",
       "category": "privacy",
       "requirement": "Allow pseudonyms where legal identity is not required",
-      "explanation": "Users cannot be prohibited from using pseudonyms when there is no legal requirement \nfor identity verification.",
+      "explanation": "Users cannot be prohibited from using pseudonyms when there is no legal requirement \nfor identity verification. In age verification scenarios, this means relying parties \nmust accept proof-of-age attestations without requiring the user's full identity — \nthe age threshold result is sufficient.",
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5",
@@ -6361,7 +6361,7 @@
       "id": "RP-REG-006",
       "category": "registration",
       "requirement": "Accept pseudonymous authentication where legal identity is not required",
-      "explanation": "When a user's legal identity is not required by law, relying parties must accept \npseudonymous authentication. Users cannot be forced to reveal their real identity \nwhen pseudonymous access is sufficient.",
+      "explanation": "When a user's legal identity is not required by law, relying parties must accept \npseudonymous authentication. Users cannot be forced to reveal their real identity \nwhen pseudonymous access is sufficient. For age verification, relying parties \nshould accept age threshold proofs (e.g., \"over 18\") without requiring full \nidentity disclosure. The EC age-verification manual identifies zero-knowledge \nproofs (ZKP) as an upcoming technique enabling this.",
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -7634,7 +7634,7 @@
       "id": "RP-TEC-030",
       "category": "technical",
       "requirement": "Recognize legal effect of qualified EAA and public sector EAA",
-      "explanation": "Qualified EAA and attestations issued by public sector bodies responsible for \nauthentic sources have the same legal effect as paper attestations.",
+      "explanation": "Qualified EAA and attestations issued by public sector bodies responsible for \nauthentic sources have the same legal effect as paper attestations. This applies \nto health sector attestations (e.g., digital EHIC, ePrescription) which must be \naccepted with equivalence to their physical counterparts.",
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 45b",
@@ -7675,7 +7675,7 @@
       "id": "RP-TEC-031",
       "category": "technical",
       "requirement": "Recognize public sector EAA from all Member States",
-      "explanation": "Cross-border recognition is mandatory. EAA issued by a public sector body in \none Member State must be recognized in all other Member States.",
+      "explanation": "Cross-border recognition is mandatory. EAA issued by a public sector body in \none Member State must be recognized in all other Member States. This is \nparticularly significant for health attestations (EHIC, ePrescription) and \ndisability/parking cards, where cross-border portability is a primary use case. \nThe MyHealth@EU / NCPeH infrastructure supports cross-border health data exchange.",
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 45b",
@@ -10903,7 +10903,7 @@
       "id": "TSP-CRT-004",
       "category": "certification",
       "requirement": "Use accredited CABs for biometric verification assessment",
-      "explanation": "When using automated identity proofing, CABs assessing the process must\nbe accredited per Article 3(18) of 910/2014, with formal certification\nbased on security evaluation per eID LoA or EUDI Wallet standards.",
+      "explanation": "When using automated identity proofing, CABs assessing the process must\nbe accredited per Article 3(18) of 910/2014, with formal certification\nbased on security evaluation per eID LoA or EUDI Wallet standards. The \nEC use case manuals describe biometric verification scenarios including \nfacial matching and liveness detection for remote identity proofing \n(eSignature, payment authentication) and supervised verification \n(proximity identification).",
       "legalBasis": {
         "regulation": "2025/1566",
         "article": "Annex",
@@ -17311,7 +17311,7 @@
       "id": "WP-IOP-021",
       "category": "interoperability",
       "requirement": "Request attestations in all available formats",
-      "explanation": "When providers enable issuance in multiple formats, wallet units must \nrequest PID/EAA in all formats per Article 8 of 2024/2979.",
+      "explanation": "When providers enable issuance in multiple formats, wallet units must \nrequest PID/EAA in all formats per Article 8 of 2024/2979. In practice, \nthis means batch issuance of the same attestation in both ISO mdoc and \nW3C VC formats. Deferred issuance may also apply when the provider \nneeds additional time to prepare all format variants.",
       "legalBasis": {
         "regulation": "2024/2982",
         "article": "Article 4",
@@ -17801,7 +17801,7 @@
       "id": "WP-PRV-006",
       "category": "privacy",
       "requirement": "Enable privacy-preserving techniques for unlinkability",
-      "explanation": "The wallet must enable privacy-preserving techniques ensuring unlinkability \nwhere the attestation does not require user identification.",
+      "explanation": "The wallet must enable privacy-preserving techniques ensuring unlinkability \nwhere the attestation does not require user identification. This is central \nto age verification use cases, where the wallet proves an age threshold \nwithout revealing birth date or identity. The EC age-verification manual \nidentifies zero-knowledge proofs (ZKP) as an upcoming technique for this.",
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5a",
@@ -18322,7 +18322,7 @@
       "id": "WP-SEC-005",
       "category": "security",
       "requirement": "Require user authentication before wallet functionality access",
-      "explanation": "Wallet units must not perform any Article 5a(4) functionality except \nuser authentication to access the wallet until the user has been \nsuccessfully authenticated.",
+      "explanation": "Wallet units must not perform any Article 5a(4) functionality except \nuser authentication to access the wallet until the user has been \nsuccessfully authenticated. Authentication methods include PIN, \nbiometric verification (fingerprint, facial recognition), or a \ncombination per assurance level high requirements.",
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 3",
@@ -18634,7 +18634,7 @@
       "id": "WP-SEC-011",
       "category": "security",
       "requirement": "WSCA must authenticate users per assurance level high requirements",
-      "explanation": "When performing eID at assurance level high, WSCA must authenticate \nusers in accordance with Implementing Regulation 2015/1502.",
+      "explanation": "When performing eID at assurance level high, WSCA must authenticate \nusers in accordance with Implementing Regulation 2015/1502. In \npractice, this typically involves biometric verification (fingerprint \nor facial recognition) combined with a knowledge factor (PIN), as \ndescribed in the EC use case manuals for eSignature and proximity \nidentification scenarios.",
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 5",
@@ -29069,8 +29069,8 @@
     }
   },
   "_meta": {
-    "contentHash": "66c03293",
-    "buildCommit": "b5829539",
+    "contentHash": "9a4c9044",
+    "buildCommit": "da2a86f1",
     "buildDate": "2026-02-20",
     "schemaVersion": 1
   }

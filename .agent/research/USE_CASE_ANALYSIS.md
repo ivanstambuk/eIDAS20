@@ -18,8 +18,9 @@
 | **Phase 4** | Rebuild & Verify | 3 | ✅ Complete |
 | **Phase 5** | VCQ Technical Standard Enrichment | 7 | ✅ Complete |
 | **Phase 6** | Manual Content Analysis & Data Quality Uplift | 6 | ✅ Complete |
+| **Phase 7** | Gap Report Recommendations — RCA Enrichment | 7 | ✅ Complete |
 
-**Total steps:** 26 | **Completed:** 26/26 ✅
+**Total steps:** 33 | **Completed:** 33/33 ✅
 
 ---
 
@@ -793,6 +794,73 @@ data covers, with prioritised recommendations.
 | **6.6** | Cross-validation gap report (8 recommendations, no missing reqs) | ~1 hr | ✅ Complete |
 
 ---
+
+## Phase 7 — Gap Report Recommendations — RCA Enrichment
+
+> **Source:** `.agent/research/MANUAL_CROSS_VALIDATION_REPORT.md` Section 4  
+> **Purpose:** Execute all actionable recommendations from the Step 6.6 cross-validation.  
+> **Design decision:** Enrichments go into the `explanation` field, appending practical context below the existing regulatory text.
+
+### Step 7.1 — Add ZKP forward note to age-verification requirements ✅ COMPLETE
+
+> **Priority:** HIGH | **Effort:** ~15 min  
+> **Target:** 5 age-verification scoped requirements (RP-PRV-004, RP-PRV-005, RP-REG-006, RP-VER-008, WP-PRV-006)
+
+Append a note about zero-knowledge proofs as an upcoming privacy-preserving technique for age verification, per the EC age-verification manual.
+
+### Step 7.2 — Add health sector context to relevant EAA requirements ✅ COMPLETE
+
+> **Priority:** MEDIUM | **Effort:** ~30 min  
+> **Target:** Requirements touching authentic sources / public sector body attestations (EAA-CRT-001, EAA-VER-002, RP-TEC-030, RP-TEC-031)
+
+Append context noting that health sector attestations (ePrescription, EHIC) operate within MyHealth@EU / NCPeH infrastructure alongside eIDAS.
+
+### Step 7.3 — Add ICAO 9303 reference to DTC context ✅ COMPLETE
+
+> **Priority:** MEDIUM | **Effort:** ~15 min  
+> **Target:** No DTC-scoped RCA requirements exist (DTC is a use case but not a use-case-filter driver). Enrich DTC use case description in `use-cases.yaml` instead.
+
+Add ICAO 9303 reference to the DTC use case metadata as a technical standard note.
+
+### Step 7.4 — Document SCA/PSD2-PSR regulatory interplay ✅ COMPLETE
+
+> **Priority:** MEDIUM | **Effort:** ~30 min  
+> **Target:** RP-GOV-003 (payment-auth scoped) and SCA-related wallet requirements
+
+Enrich explanations to note the PSD2/PSR regulatory intersection with eIDAS for payment authentication SCA attestations.
+
+### Step 7.5 — Add biometric verification context ✅ COMPLETE
+
+> **Priority:** LOW | **Effort:** ~15 min  
+> **Target:** TSP-CRT-004 (biometric verification assessment), WP-SEC-005 (user authentication), WP-SEC-010/011 (WSCA authentication)
+
+Append context about biometric verification methods mentioned in the EC manuals (facial matching, liveness detection).
+
+### Step 7.6 — Add batch/deferred issuance context ✅ COMPLETE
+
+> **Priority:** LOW | **Effort:** ~10 min  
+> **Target:** WP-IOP-021 (request attestations in all formats)
+
+Enrich explanation to note batch/deferred issuance as an operational pattern when multi-format issuance is required.
+
+### Step 7.7 — Rebuild & validate ✅ COMPLETE
+
+> **Priority:** Required | **Effort:** ~5 min  
+> **Target:** Run `validate-rca.js` + `build-rca.js` to confirm all changes are valid
+
+### Phase 7 Progress Summary
+
+| Sub-step | Description | Priority | Status |
+|----------|-------------|----------|--------|
+| **7.1** | ZKP forward note on age-verification requirements (4 reqs enriched) | HIGH | ✅ |
+| **7.2** | Health sector context on EAA/RP requirements (4 reqs enriched) | MEDIUM | ✅ |
+| **7.3** | ICAO 9303 reference on DTC use case description | MEDIUM | ✅ |
+| **7.4** | SCA/PSD2-PSR interplay on payment-auth (RP-GOV-003 + use case desc) | MEDIUM | ✅ |
+| **7.5** | Biometric verification context on WP/TSP requirements (3 reqs enriched) | LOW | ✅ |
+| **7.6** | Batch/deferred issuance context on WP-IOP-021 | LOW | ✅ |
+| **7.7** | Rebuild & validate (both pass) | Required | ✅ |
+
+> **Note:** Original recommendation #1 (enrich 50+ explanations with full manual context) is deferred — it requires a separate design session to determine scope and approach. Original recommendation #8 (monitor unpublished use cases) is an ongoing tracking item, not a discrete task.
 
 # PART F — Applied Changes (commit `7c07b306`)
 

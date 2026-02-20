@@ -7,7 +7,10 @@ requirements:
       The qualified certificate supporting the electronic signature or seal must
       contain specific certified attributes indicating the issuing body is established
       under Union or national law as responsible for the authentic source, provide
-      data representing the authentic source, and identify the relevant law.
+      data representing the authentic source, and identify the relevant law. In the 
+      health sector, authentic sources include national health insurance bodies (EHIC) 
+      and prescription registries (ePrescription), which operate within the 
+      MyHealth@EU / NCPeH cross-border health infrastructure alongside eIDAS.
     legalBasis:
       regulation: "2014/910"
       article: Article 45f
@@ -913,7 +916,9 @@ requirements:
     explanation: |
       When applicable, attestation providers must verify the identity of the
       authentic source used as a source for the attributes included in the
-      attestation.
+      attestation. For health sector attestations (ePrescription, EHIC), the 
+      authentic source is typically a national health authority or social 
+      security institution, connected via MyHealth@EU / NCPeH infrastructure.
     legalBasis:
       regulation: 2025/1569
       article: Article 3
