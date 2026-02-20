@@ -7,6 +7,11 @@ last_updated: "2026-01-20"
 #              - formex: Formex XML from EUR-Lex cellar (preferred for 2020+ documents)
 #              - html:   EUR-Lex HTML parser (fallback for older documents without Formex)
 #              - manual: Manually created/merged (special cases like consolidated versions)
+#   Snapshot provenance (for living documents imported from external sources):
+#     snapshot_date:    Date content was captured (YYYY-MM-DD)
+#     source_version:   Version of the upstream page at snapshot time (verify via history_url)
+#     external_url:     URL of the live source page
+#     history_url:      URL of the source page version history (for version badge link)
 #
 # ⚠️ FOLDER NAMING WARNING:
 #   Some output_dir folder names don't match the actual document content.
@@ -130,7 +135,7 @@ documents:
     external_url: https://ec.europa.eu/digital-building-blocks/sites/spaces/DIGITAL/pages/880312429/eSignature+FAQ
     history_url: https://ec.europa.eu/digital-building-blocks/sites/pages/viewpreviousversions.action?pageId=880312429
     snapshot_date: "2026-01-15" # Date the source content was captured
-    source_version: "1" # Confluence page version at time of snapshot
+    source_version: "12" # Confluence page version at time of snapshot
     output_dir: 01_regulation/ec_esignature_faq
   - celex: 52020DC0067
     title: "Communication: Shaping Europe's Digital Future"

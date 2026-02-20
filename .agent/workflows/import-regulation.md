@@ -37,6 +37,8 @@ Search for corrigenda (corrections):
 ## Phase 2: Document Configuration
 
 ### Step 2.1: Add to documents.yaml
+
+**For EUR-Lex regulation imports:**
 ```yaml
 - celex: <consolidated_celex>          # For EUR-Lex link display
   title: <full_title>
@@ -50,12 +52,39 @@ Search for corrigenda (corrections):
   output_dir: 01_regulation/<year>_<number>_<name>
 ```
 
-### Step 2.2: Get Cellar ID
+**For Confluence/FAQ imports (source: manual):**
+```yaml
+- id: <slug-id>
+  title: <full_title>
+  shortTitle: <short_name>
+  sidebarTitle: <sidebar_name>
+  sidebarOrder: <N>
+  legalType: faq
+  category: supplementary
+  source: manual
+  external_url: <confluence_page_url>
+  history_url: <confluence_history_url>  # viewpreviousversions.action?pageId=<ID>
+  snapshot_date: "<YYYY-MM-DD>"          # Date content was captured
+  source_version: "<N>"                  # ⚠️ MUST be verified — see Step 2.3
+  output_dir: 01_regulation/<id_with_underscores>
+```
+
+### Step 2.2: Get Cellar ID (EUR-Lex only)
 ```bash
 # The cellar_id is in the Formex ZIP download URL:
 # http://publications.europa.eu/resource/cellar/<CELLAR_ID>
 # Extract from EUR-Lex Formex download link
 ```
+
+### Step 2.3: Verify source_version (Confluence imports only)
+
+**⚠️ CRITICAL:** Do NOT guess the version number. Navigate to the page history URL in a browser:
+```
+https://ec.europa.eu/digital-building-blocks/sites/pages/viewpreviousversions.action?pageId=<PAGE_ID>
+```
+
+The table shows `CURRENT (v. N)` at the top. Record this exact number as `source_version`. If the snapshot was taken on a previous date, find the version row whose `Published` date is **at or before** the snapshot date.
+
 
 ---
 
