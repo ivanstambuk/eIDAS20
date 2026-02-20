@@ -23,7 +23,7 @@ They should provide clarity on the legal and technical requirements required for
 
 EU Digital Identity Wallets are personal digital wallets, in the form of apps allowing citizens to digitally prove who they are, as well as store and manage identity data and official documents in digital form. These may include a driving licence, or educational qualifications.
 
-    Many citizens are already using digital wallets on their mobile phones to store their boarding passes and show them when they travel or to keep their virtual bank cards to proceed with convenient payments. These wallets, often offered by online platforms, allow their users to log in to various online services from shopping to reading news but these logins are not necessarily giving users full control over what data they share to identify themselves while accessing online services. These “social logins” can rarely can be used to access digital government services. With the EU Digital Identity Wallets, all European citizens will be able to prove, across the EU, their identity where necessary to access public and private digital services, to share digital documents, or simply to prove a specific personal attribute, such as age, without revealing their full identity or other personal details. Citizens will at all times have full control of the data they share and with whom.
+Many citizens are already using digital wallets on their mobile phones to store their boarding passes and show them when they travel or to keep their virtual bank cards to proceed with convenient payments. These wallets, often offered by online platforms, allow their users to log in to various online services from shopping to reading news but these logins are not necessarily giving users full control over what data they share to identify themselves while accessing online services. These “social logins” can rarely can be used to access digital government services. With the EU Digital Identity Wallets, all European citizens will be able to prove, across the EU, their identity where necessary to access public and private digital services, to share digital documents, or simply to prove a specific personal attribute, such as age, without revealing their full identity or other personal details. Citizens will at all times have full control of the data they share and with whom.
 
 ---
 
@@ -82,29 +82,25 @@ In simple terms, the wallet solution is the master template, and the wallet unit
 
 The technical requirements for the EU Digital Identity Wallets can be found in the adopted implementing acts:
 
+- [Commission Implementing Regulation (EU) 2024/2979](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202402979&qid=1733300667869) as regards the integrity and core functionalities of European Digital Identity Wallets
 
-            
-        - [Commission Implementing Regulation (EU) 2024/2979](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202402979&qid=1733300667869) as regards the integrity and core functionalities of European Digital Identity Wallets
+- [Commission Implementing Regulation (EU) 2024/2982](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202402982&qid=1733300667869) as regards protocols and interfaces to be supported by the European Digital Identity Framework
 
-        - [Commission Implementing Regulation (EU) 2024/2982](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202402982&qid=1733300667869) as regards protocols and interfaces to be supported by the European Digital Identity Framework
+- [Commission Implementing Regulation (EU) 2024/2977](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202402977&qid=1733300667869) as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets
 
-        - [Commission Implementing Regulation (EU) 2024/2977](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202402977&qid=1733300667869) as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets
+- [Commission Implementing Regulation (EU) 2024/2980](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202402980&qid=1733300667869) as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem
 
-        - [Commission Implementing Regulation (EU) 2024/2980](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202402980&qid=1733300667869) as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem
+- [Commission Implementing Regulation (EU) 2024/2981](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202402981&qid=1733300667869) as regards the certification of European Digital Identity Wallets
 
-        - [Commission Implementing Regulation (EU) 2024/2981](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202402981&qid=1733300667869) as regards the certification of European Digital Identity Wallets
+- [Commission Implementing Regulation (EU) 2025/847](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500847) as regards reactions to security breaches of European Digital Identity Wallets
 
-        - [Commission Implementing Regulation (EU) 2025/847](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500847) as regards reactions to security breaches of European Digital Identity Wallets
+- [Commission Implementing Regulation (EU) 2025/849](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500849) as regards the submission of information to the Commission and to the Cooperation Group for the list of certified European Digital Identity Wallets
 
-        - [Commission Implementing Regulation (EU) 2025/849](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500849) as regards the submission of information to the Commission and to the Cooperation Group for the list of certified European Digital Identity Wallets
+- [Commission Implementing Regulation (EU) 2025/846](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500846) as regards cross-border identity matching of natural persons
 
-        - [Commission Implementing Regulation (EU) 2025/846](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500846) as regards cross-border identity matching of natural persons
+- [Commission Implementing Regulation (EU) 2025/848](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500848) as regards the registration of wallet-relying parties
 
-        - [Commission Implementing Regulation (EU) 2025/848](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500848) as regards the registration of wallet-relying parties
-
-        - [Commission Implementing Regulation (EU) 2025/1569](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202501569) as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source
-        
-    
+- [Commission Implementing Regulation (EU) 2025/1569](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202501569) as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source
 Further, the common technical architecture of the EU Digital Identity Wallets ecosystem is defined in the Architecture and Reference Framework (ARF) document. The ARF has been set-up pursuant to [Commission Recommendation (EU) 2021/946](https://eur-lex.europa.eu/eli/reco/2021/946/oj/eng) and sets out a set of common standards, and technical specifications for components, protocols, interfaces and data formats governing information exchange between issuers, wallets, and service providers.
 
 The ARF is published [here.](https://digital-strategy.ec.europa.eu/en/library/implementing-regulation-european-digital-identity-wallets?utm_source=chatgpt.com)
@@ -321,21 +317,19 @@ In this model, the payment service provider acts as both the issuer of the SCA a
 
 The following detailed process has been developed by large-scale pilots in this context:
 
-        
-            - Before the SCA attestation is issued to the user’s wallets, the user completes a registration process under the control of the payment service provider. This process begins when the user requests their wallets to be registered for a specific payment account and payment instrument. 
+- Before the SCA attestation is issued to the user’s wallets, the user completes a registration process under the control of the payment service provider. This process begins when the user requests their wallets to be registered for a specific payment account and payment instrument.
 
-            - The payment service provider authenticates the user through an existing PSD2-compliant method. 
+- The payment service provider authenticates the user through an existing PSD2-compliant method.
 
-            - The wallets generate a cryptographic key pair: the private key is securely stored and used to sign messages, while the corresponding public key is shared with the payment service provider for verification purposes. 
+- The wallets generate a cryptographic key pair: the private key is securely stored and used to sign messages, while the corresponding public key is shared with the payment service provider for verification purposes.
 
-            - The payment service provider issues an individual SCA attestation into the user’s wallets. This attestation is device-bound, ensuring usage is linked to the user’s keys on that device, and requires multi-factor authentication to activate the signing key. The resulting cryptographic signatures can then be verified by the payment service provider to securely authenticate transactions.
+- The payment service provider issues an individual SCA attestation into the user’s wallets. This attestation is device-bound, ensuring usage is linked to the user’s keys on that device, and requires multi-factor authentication to activate the signing key. The resulting cryptographic signatures can then be verified by the payment service provider to securely authenticate transactions.
 
-            - Following this registration, the wallets can be used to present the SCA attestation when SCA is required, together with transaction-specific details for the user to confirm. The confirmation is cryptographically bound to the transaction and allows for dynamic linking, ensuring that authentication is directly tied to the transaction details, such as the specific amount and a specific payee, and that these details are protected from tampering. 
+- Following this registration, the wallets can be used to present the SCA attestation when SCA is required, together with transaction-specific details for the user to confirm. The confirmation is cryptographically bound to the transaction and allows for dynamic linking, ensuring that authentication is directly tied to the transaction details, such as the specific amount and a specific payee, and that these details are protected from tampering.
 
-            - The SCA attestation and the transaction data can be shared with the payer’s payment service provider, supporting various use cases and allowing additional attributes, such as age verification, to be combined with the payment data.
+- The SCA attestation and the transaction data can be shared with the payer’s payment service provider, supporting various use cases and allowing additional attributes, such as age verification, to be combined with the payment data.
 
-        
-    A description of this process can be retrieved at the following link: [Directive - 2015/2366 - EN - Payment Services Directive - EUR-Lex.](https://eur-lex.europa.eu/eli/dir/2015/2366/oj)
+A description of this process can be retrieved at the following link: [Directive - 2015/2366 - EN - Payment Services Directive - EUR-Lex.](https://eur-lex.europa.eu/eli/dir/2015/2366/oj)
 
 ---
 
