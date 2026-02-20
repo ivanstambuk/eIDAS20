@@ -124,6 +124,25 @@ Manually edit markdown for each corrigendum:
    > **Note:** Enacting terms from consolidated version (0xxxxx). Preamble merged from base version (3xxxxx).
    ```
 
+### Step 3.5: Merge Annexes (if consolidated lacks them)
+
+**EUR-Lex consolidated versions often omit annexes.** This is the same pattern as the preamble gap.
+
+1. **Check if annexes exist** — search the consolidated markdown for `Annex` references in the enacting terms:
+   ```bash
+   grep -i "annex" 01_regulation/<dir>/regulation.md
+   ```
+2. If articles reference annexes but no `## ANNEX` headings exist → annexes are missing
+3. **Source the original annexes** from:
+   - **legislation.gov.uk** (preferred — reliable, no 202 issues):
+     ```
+     https://www.legislation.gov.uk/eur/YYYY/NNNN/annex/I
+     https://www.legislation.gov.uk/eur/YYYY/NNNN/annex/II
+     ```
+   - **EUR-Lex original** (CELEX `3YYYYRNNNN`) if available
+4. **Append each annex** after the last article as `## ANNEX I`, `## ANNEX II`, etc.
+5. **Update metadata note:** Add `Annexes I–N merged from original (3xxxxx).`
+
 ---
 
 ## Phase 4: Finalize Configuration
@@ -221,6 +240,7 @@ If amendments not applied:
 - [ ] Added to documents.yaml with correct metadata
 - [ ] Imported via Formex pipeline
 - [ ] Applied any corrigenda manually
+- [ ] **Verified annexes present** (merged from original if missing)
 - [ ] Set source to `manual`
 - [ ] Updated markdown metadata with note
 - [ ] Built and verified in browser

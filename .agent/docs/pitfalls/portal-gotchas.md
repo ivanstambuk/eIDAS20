@@ -110,3 +110,40 @@ After deploying to GitHub Pages, changes may not appear immediately due to CDN c
 2. **Incognito window**: Test in private/incognito mode
 3. **Cache-busting URL**: Add `?v=2` to the URL
 4. **Wait**: CDN propagation can take 1-5 minutes
+
+---
+
+## EUR-Lex 202 "Please Wait" Responses
+
+EUR-Lex returns HTTP 202 when a document page hasn't been pre-rendered. This happens for HTML, XML, and TXT formats. Retrying doesn't help — the page needs a browser visit with JavaScript to trigger generation.
+
+**Fallback strategy:**
+1. **legislation.gov.uk** — UK-retained EU law, identical text to the original EU version. Works reliably with `read_url_content`. Use URLs like:
+   ```
+   https://www.legislation.gov.uk/eur/YYYY/NNNN/annex/I
+   https://www.legislation.gov.uk/eur/YYYY/NNNN/contents
+   ```
+2. **Web search** — Search for the regulation title + article number, often finds full text on national government sites.
+3. **Browser subagent** — Navigate EUR-Lex in a real browser to trigger page generation, then extract text.
+
+**Don't waste time:** If EUR-Lex returns 202 on the first attempt, go straight to legislation.gov.uk.
+
+---
+
+## Content Rebuild After Regulation Markdown Edits
+
+**⚠️ After editing any `01_regulation/**/*.md` file, the portal will NOT show changes until you rebuild:**
+
+```bash
+cd ~/dev/eIDAS20/docs-portal && node scripts/build-content.js
+```
+
+The dev server serves pre-built JSON from `public/data/regulations/`, NOT the raw markdown. Forgetting this step makes it look like your changes didn't work.
+
+**Full rebuild checklist** (if terminology or search is also affected):
+```bash
+node scripts/build-content.js      # Markdown → JSON
+node scripts/build-terminology.js   # Extract definitions
+node scripts/build-search-index.js  # Update search
+```
+
