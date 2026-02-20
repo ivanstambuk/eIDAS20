@@ -605,7 +605,7 @@ original checklist was NOT performed — it is now properly scoped in Steps 6.3�
 
 **15 unique specs** referenced across all use cases: 4 ARF TS + 11 external standards.
 
-### Step 6.4 — VCQ Clarification Question Audit & Use Case Tagging ⬜ NOT STARTED
+### Step 6.4 — VCQ Clarification Question Audit & Use Case Tagging 🟡 PARTIALLY COMPLETE
 
 > **Effort:** ~3-4 hours (largest sub-step; split across sub-steps per file)  
 > **Risk:** Medium — modifying question wording and adding `useCaseRef` fields  
@@ -621,8 +621,10 @@ mirroring the pattern already used in RCA. When a vendor selects a target use ca
 Authentication"), the VCQ should be able to surface only the questions relevant to that use case.
 This requires systematic `useCaseRef` tagging now, even though the UI filter is not yet built.
 
-**Current state:** Only 24 of 1,352 questions have `useCaseRef` (all in core.yaml, from Phase 5).
-The remaining 1,328 questions have no use case association.
+**Current state (updated 2026-02-20):**
+- ✅ **Use case tagging COMPLETE** — 51 questions tagged across 7 use cases (all in core.yaml)
+- ❌ **Quality audit NOT DONE** — No questions were reworded, no redundancies identified, no enrichment from EC manual context
+- See tracker: `.agent/session/vcq-quality-audit-tracker.md`
 
 **Problem (quality):** The 1,352 existing VCQ clarification questions were authored before the EC
 use case manuals were analyzed. They may be:
@@ -670,13 +672,13 @@ use case manuals were analyzed. They may be:
 
 **Execution order (by VCQ file, each is a separate sub-step):**
 
-| Sub-step | VCQ File | Reqs | Qs | Priority | Status |
-|----------|----------|------|----|----------|--------|
-| 6.4.1 | `core.yaml` | 48 | 421 | 🔴 High | ⬜ Not started |
-| 6.4.2 | `issuer.yaml` | 40 | 360 | 🟡 Medium | ⬜ Not started |
-| 6.4.3 | `intermediary.yaml` | 32 | 292 | 🟡 Medium | ⬜ Not started |
-| 6.4.4 | `trust_services.yaml` | 19 | 171 | 🟡 Medium | ⬜ Not started |
-| 6.4.5 | `ict.yaml` | 12 | 108 | 🟢 Lower | ⬜ Not started |
+| Sub-step | VCQ File | Reqs | Qs | Priority | Tagging | Quality Audit |
+|----------|----------|------|----|----------|---------|---------------|
+| 6.4.1 | `core.yaml` | 48 | 421 | 🔴 High | ✅ Done (51 tagged) | ⬜ Not started |
+| 6.4.2 | `issuer.yaml` | 40 | 360 | 🟡 Medium | ✅ Done (0 needed) | ⬜ Not started |
+| 6.4.3 | `intermediary.yaml` | 32 | 292 | 🟡 Medium | ✅ Done (0 needed) | ⬜ Not started |
+| 6.4.4 | `trust_services.yaml` | 19 | 171 | 🟡 Medium | ✅ Done (0 needed) | ⬜ Not started |
+| 6.4.5 | `ict.yaml` | 12 | 108 | 🟢 Lower | ✅ Done (0 needed) | ⬜ Not started |
 
 **Constraints:**
 - Do NOT rewrite questions from scratch — sharpen existing wording with specific details

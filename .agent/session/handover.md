@@ -1,30 +1,33 @@
-# Session Handover: VCQ Clarification Questions - Gemini Review Complete
+# Session Handover: VCQ useCaseRef Tagging & Use Case Analysis
 
 ## Summary
-The Gemini Pro review pass (Phase 6) for Vendor Clarification Questions (VCQ-CQ) has been successfully completed. All five domain requirement files were reviewed, and deeper, more capability-focused probing questions were added. The `modelPasses.gemini` flag has been set to `true` across all files.
+Completed the `useCaseRef` tagging audit across all 5 VCQ clarification question files (Step 6.4 tagging objective). Semantic analysis of 155 requirements / 1,352 questions determined that only `core.yaml` contains use-case-specific questions (51 tagged). The remaining 4 files cover generic role-based infrastructure requiring no tags.
 
 ## Accomplishments
-- **Completed Review of 5/5 Files**:
-  - `core.yaml`: Added questions on memory scrubbing, key rotation, SD, delegated auth.
-  - `issuer.yaml`: Added questions on SE vs TEE binding, batch issuance endpoints, throughput metrics, hardware agnostic signing, test suite integration.
-  - `intermediary.yaml`: Added questions on OID4VP flows (same/cross-device), response_uri, Status List caching, session binding, SD-JWT attribute verification.
-  - `ict.yaml`: Added questions on 'three lines of defense', Major Incident classification, pooled TLPT support.
-  - `trust_services.yaml`: Added questions on Supervisory Body standing cadence, termination plan archivists, Sole Control certification, pre-hashing.
-- **Plan Updated**: Phase 6 marked as complete in `VCQ_CLARIFICATION_QUESTIONS_PLAN.md`.
-- **Code Committed**: Changes pushed to master.
+- **useCaseRef tagging complete** across all 5 VCQ files:
+  - `core.yaml`: 51 questions tagged (payment-auth: 13, esignature: 14, proximity-id: 12, age-verification: 4, dtc: 3, ehic: 3, eprescription: 3)
+  - `issuer.yaml`: 0 tags needed (generic attestation issuance)
+  - `intermediary.yaml`: 0 tags needed (generic connector/relay)
+  - `trust_services.yaml`: 0 tags needed (generic QTSP operations)
+  - `ict.yaml`: 0 tags needed (generic DORA compliance)
+- **VCQ JSON rebuilt** with verified statistics
+- **Status table updated** in `USE_CASE_ANALYSIS.md` — Step 6.4 split into tagging (done) and quality audit (pending)
+- **Quality audit tracker created** at `.agent/session/vcq-quality-audit-tracker.md`
 
 ## Current State
-- **VCQ Clarification Questions**: Full coverage (~800 questions), dual-pass review (Opus + Gemini) complete.
-- **Documentation**: Implementation plan up to date.
+- **Step 6.4 tagging**: ✅ COMPLETE (commit `b987a2dd`)
+- **Step 6.4 quality audit**: ⬜ NOT STARTED — tracker created
+- **Step 6.5 (RCA enrichment)**: ⬜ NOT STARTED — no tracker yet
+- **Step 6.6 (Cross-validation gap report)**: ⬜ NOT STARTED — no tracker yet
 
-## Next Steps (Project Level)
-1. **Frontend Integration (Phase 7)**:
-   - Integrate these YAML questions into the VCQ UI.
-   - Add scoring/evaluation inputs.
-   - Update Excel export to include clarification questions (partially discussed in Phase 7 logic).
-2. **Scoring Logic**: Define how the answers to these new questions impact the overall compliance score (Core vs Advanced dimensions).
+## Pending Tasks (Next Session)
+1. **VCQ Quality Audit** (Step 6.4 quality half) — Sharpen question wording, identify redundancies, enrich from EC manual context. Tracker: `.agent/session/vcq-quality-audit-tracker.md`
+2. **RCA Requirement Enrichment** (Step 6.5) — Re-evaluate `useCases` field on 487 requirements, enrich `explanation` fields. Design decision needed on where enriched context goes.
+3. **Cross-Validation Gap Report** (Step 6.6) — Read-only analysis comparing manual coverage vs RCA/VCQ coverage.
 
-## Context for Next Agent
-- All `clarification-questions/*.yaml` files are now authoritative and final for the current release.
-- No further generation or AI review passes are pending for this content.
-- Focus should shift to **utilization** of this data in the application.
+## Key Files
+- Plan: `.agent/research/USE_CASE_ANALYSIS.md` (Steps 6.4–6.6)
+- Quality audit tracker: `.agent/session/vcq-quality-audit-tracker.md`
+- VCQ source: `docs-portal/config/vcq/clarification-questions/*.yaml`
+- RCA source: `docs-portal/config/rca/requirements/*.yaml`
+- Build script: `docs-portal/scripts/build-vcq-clarifications.js`

@@ -28,7 +28,7 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
 
 ---
 
-## ⚠️ Critical Rules (1-23) — Always Enforce
+## ⚠️ Critical Rules (1-24) — Always Enforce
 
 These rules are session-critical and must remain in the main AGENTS.md file.
 
@@ -600,6 +600,29 @@ Port 5174 instead of 5173 → Diagnose: sudo lsof -i:5173 → Tailscale holding 
 Fix: clear Tailscale serve, then start with --strictPort
 Result: 1 commit
 ```
+
+---
+
+### 24. Split-Objective Tracking (MANDATORY — Multi-Goal Steps)
+
+**When a plan step has 2+ distinct objectives, each objective MUST have independent completion status.**
+
+Do NOT mark a step as "done" when only one of its objectives is complete.
+
+**Required behavior:**
+1. When you complete one objective of a multi-objective step, **explicitly state which objective is done and which is not**
+2. Create a **dedicated tracker file** for outstanding objectives (`.agent/session/<tracker-name>.md`)
+3. Update the plan's status to **🟡 PARTIALLY COMPLETE** (not ✅ or ⬜)
+
+**Why this matters:** Step 6.4 had two objectives (tagging + quality audit). Tagging was completed and the step was nearly marked as done, but the quality audit — the larger, harder objective — was never performed. Without split tracking, future sessions would have assumed the step was fully complete.
+
+**Anti-patterns:**
+- ❌ "Step 6.4 done" (when only tagging half completed)
+- ❌ Marking a step complete because the tractable objective was finished
+- ❌ Relying on the plan document alone without a separate tracker for outstanding work
+
+**Correct pattern:**
+- ✅ "Step 6.4: tagging ✅ DONE, quality audit ⬜ NOT STARTED — tracker created at `.agent/session/vcq-quality-audit-tracker.md`"
 
 ---
 
