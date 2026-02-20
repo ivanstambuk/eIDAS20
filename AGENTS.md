@@ -20,7 +20,7 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
 
 ---
 
-## ⚠️ Critical Rules (1-11) — Always Enforce
+## ⚠️ Critical Rules (1-23) — Always Enforce
 
 These rules are session-critical and must remain in the main AGENTS.md file.
 
@@ -52,7 +52,32 @@ This is NON-NEGOTIABLE. Violations of this rule are UNACCEPTABLE.
 
 ---
 
-### 2. Notification + Context Report (EXECUTE — Not Display)
+### 2. Session Length Guard (MANDATORY — Step 250 Alert)
+
+**When the current Step Id reaches or exceeds 250, you MUST alert the user immediately.**
+
+At the END of your response (before the agent-done notification), include this warning:
+
+```
+⚠️ SESSION LENGTH WARNING: We have passed Step 250 (currently at Step {N}).
+Context summarization/truncation is imminent. To preserve session learnings:
+1. Run /retro workflow to capture decisions, learnings, and progress
+2. Run /handover to generate a handover summary
+3. Start a fresh session to continue work
+```
+
+**This takes priority over all other work.** Even if you are mid-task, include this warning. The user wants to avoid the automatic context truncation that discards earlier conversation history.
+
+**Why this matters:** After ~280 steps the platform truncates earlier conversation turns into a lossy summary ("Checkpoint N"). This destroys detailed context about what was done and why. The /retro workflow captures this systematically before it's lost.
+
+**Anti-patterns:**
+- ❌ Continuing past step 250 without alerting the user
+- ❌ Mentioning it casually instead of prominently
+- ❌ Waiting until truncation has already occurred
+
+---
+
+### 3. Notification + Context Report (EXECUTE — Not Display)
 
 At the END of every response, **EXECUTE this script using `run_command`**:
 
@@ -77,7 +102,7 @@ At the END of every response, **EXECUTE this script using `run_command`**:
 
 ---
 
-### 3. Auto-commit Protocol (MANDATORY)
+### 4. Auto-commit Protocol (MANDATORY)
 
 - **Auto-commit IMMEDIATELY** after each logical increment that is tested and working
 - **Do NOT batch commits** — each completed feature/fix gets its own commit
@@ -96,7 +121,7 @@ At the END of every response, **EXECUTE this script using `run_command`**:
 
 ---
 
-### 4. Clean Chrome Tabs Before browser_subagent (MANDATORY)
+### 5. Clean Chrome Tabs Before browser_subagent (MANDATORY)
 
 **BEFORE calling `browser_subagent`**, clean up accumulated tabs:
 ```bash
@@ -110,7 +135,7 @@ At the END of every response, **EXECUTE this script using `run_command`**:
 
 ---
 
-### 5. UI/UX Proposals (MANDATORY — Visual Mockups FIRST)
+### 6. UI/UX Proposals (MANDATORY — Visual Mockups FIRST)
 
 **🚨 TRIGGER CONDITION: Whenever you present 2+ options for ANY visual/UI change, you MUST generate a mockup BEFORE the text explanation.**
 
@@ -149,7 +174,7 @@ At the END of every response, **EXECUTE this script using `run_command`**:
 
 ---
 
-### 6. Proactive Prevention Protocol (MANDATORY — After Any Bug Fix)
+### 7. Proactive Prevention Protocol (MANDATORY — After Any Bug Fix)
 
 After fixing ANY bug or issue, you MUST:
 
@@ -189,7 +214,7 @@ When the bug involves a **build pipeline**:
 
 ---
 
-### 7. Route Path Verification (When Generating URLs)
+### 8. Route Path Verification (When Generating URLs)
 
 Before generating any portal URL (deep links, navigation, etc.):
 
@@ -205,7 +230,7 @@ Before generating any portal URL (deep links, navigation, etc.):
 
 ---
 
-### 8. Systematic Solutions Only (MANDATORY — No Workarounds)
+### 9. Systematic Solutions Only (MANDATORY — No Workarounds)
 
 When fixing any issue, follow this hierarchy:
 
@@ -238,7 +263,7 @@ When fixing any issue, follow this hierarchy:
 
 
 
-### 9. AGENTS.md Requires Explicit Approval (MANDATORY)
+### 10. AGENTS.md Requires Explicit Approval (MANDATORY)
 
 **Never modify AGENTS.md without the user's explicit consent.**
 
@@ -255,7 +280,7 @@ When fixing any issue, follow this hierarchy:
 
 ---
 
-### 10. Clarify Before Acting (MANDATORY — When User Asks Questions)
+### 11. Clarify Before Acting (MANDATORY — When User Asks Questions)
 
 **When the user asks for your OPINION or asks a QUESTION about something, ANSWER first before taking any action.**
 
@@ -278,7 +303,7 @@ When fixing any issue, follow this hierarchy:
 
 ---
 
-### 11. Recommendations Required (MANDATORY — When Asking Clarifying Questions)
+### 12. Recommendations Required (MANDATORY — When Asking Clarifying Questions)
 
 **When asking the user clarifying questions, you MUST include your recommended answer with justification.**
 
@@ -302,7 +327,7 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 
 ---
 
-### 12. Plans to Files, Not Chat (MANDATORY)
+### 13. Plans to Files, Not Chat (MANDATORY)
 
 **NEVER write detailed implementation plans directly in chat. Always write them to a file.**
 
@@ -326,7 +351,7 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 
 ---
 
-### 13. Confirm Feature UX Before Building (MANDATORY)
+### 14. Confirm Feature UX Before Building (MANDATORY)
 
 **Before implementing any significant new UI feature, confirm the desired behavior with the user.**
 
@@ -358,7 +383,7 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 
 ---
 
-### 14. Verify Terminology Before Creating (MANDATORY — Before New Terms)
+### 15. Verify Terminology Before Creating (MANDATORY — Before New Terms)
 
 **Before creating ANY new role, entity type, or acronym for use in documentation or code, verify it exists in official sources.**
 
@@ -387,7 +412,7 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 
 ---
 
-### 15. Terminology Source Citation (MANDATORY — When Adding to TERMINOLOGY.md)
+### 16. Terminology Source Citation (MANDATORY — When Adding to TERMINOLOGY.md)
 
 **Every term added to TERMINOLOGY.md MUST include its source OR be explicitly marked as a portal convention.**
 
@@ -409,7 +434,7 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 
 ---
 
-### 16. Custom Dictionary Quality Checklist (MANDATORY — When Updating custom-dictionary.yaml)
+### 17. Custom Dictionary Quality Checklist (MANDATORY — When Updating custom-dictionary.yaml)
 
 **Before committing any definition change, verify:**
 
@@ -435,7 +460,7 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 
 ---
 
-### 17. WUA Source Authority (Reference)
+### 18. WUA Source Authority (Reference)
 
 **For Wallet Unit Attestation topics:**
 - **TS3** (Technical Specification 3) is the definitive technical source
@@ -450,7 +475,7 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 
 ---
 
-### 18. Terminal Hygiene (Awareness)
+### 19. Terminal Hygiene (Awareness)
 
 **When git commands return no output or hang indefinitely:**
 1. Check for stale terminal sessions from previous operations
@@ -461,7 +486,7 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 
 ---
 
-### 19. Codebase-First Plan Review (MANDATORY — When Reviewing Plans)
+### 20. Codebase-First Plan Review (MANDATORY — When Reviewing Plans)
 
 **When reviewing any plan that references scripts, configs, or data flows, you MUST inspect the actual source code BEFORE proposing changes.**
 
@@ -480,7 +505,7 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 
 ---
 
-### 20. Do It, Don't Suggest It (MANDATORY — Proactive Execution)
+### 21. Do It, Don't Suggest It (MANDATORY — Proactive Execution)
 
 **NEVER tell the user to perform an operational task. Do it yourself.**
 
@@ -520,7 +545,7 @@ sudo tailscale serve --bg --https 5173 http://localhost:5173
 
 ---
 
-### 21. Command Safety (MANDATORY — Preventing Hangs)
+### 22. Command Safety (MANDATORY — Preventing Hangs)
 
 **Every command that touches the network, processes, or external services MUST have a timeout.**
 
@@ -544,7 +569,7 @@ sudo tailscale serve --bg --https 5173 http://localhost:5173
 
 ---
 
-### 22. Root-Cause-First Debugging (MANDATORY — Before Fixing)
+### 23. Root-Cause-First Debugging (MANDATORY — Before Fixing)
 
 **Before applying any fix, diagnose the actual root cause.** Do not fix symptoms.
 
