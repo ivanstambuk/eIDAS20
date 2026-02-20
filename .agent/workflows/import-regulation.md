@@ -133,13 +133,19 @@ Manually edit markdown for each corrigendum:
    grep -i "annex" 01_regulation/<dir>/regulation.md
    ```
 2. If articles reference annexes but no `## ANNEX` headings exist → annexes are missing
-3. **Source the original annexes** from:
-   - **legislation.gov.uk** (preferred — reliable, no 202 issues):
+3. **Source the original annexes** from (in priority order):
+   - **Cellar REST API** (preferred — bypasses EUR-Lex AWS WAF):
+     ```bash
+     ./scripts/fetch-eurlex.sh <base_celex>          # Downloads XHTML
+     ./scripts/fetch-eurlex.sh <base_celex> fmx4      # Or Formex XML
+     # Extract annex content from /tmp/eurlex_<celex>.xhtml
+     ```
+   - **legislation.gov.uk** (fallback — reliable, no WAF):
      ```
      https://www.legislation.gov.uk/eur/YYYY/NNNN/annex/I
      https://www.legislation.gov.uk/eur/YYYY/NNNN/annex/II
      ```
-   - **EUR-Lex original** (CELEX `3YYYYRNNNN`) if available
+   - **EUR-Lex original** (CELEX `3YYYYRNNNN`) via browser if above fail
 4. **Append each annex** after the last article as `## ANNEX I`, `## ANNEX II`, etc.
 5. **Update metadata note:** Add `Annexes I–N merged from original (3xxxxx).`
 

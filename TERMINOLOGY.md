@@ -188,6 +188,14 @@ Different legal act types use different ELI path segments:
 | **ALINEA** | A Formex XML element representing the content block within an article paragraph. Contains the actual text, lists, and inline elements (e.g., `<DATE>`, `<QUOT.START>`). Plural: ALINEA (same). Processed by `process_alinea_nested()` in the converter. |
 | **Markdown Source of Truth** | The project decision (DEC-095) that markdown files in `/01_regulation/` are the authoritative editable source. Converters (Formex, HTML) are import-only tools; re-importing overwrites manual corrections. Fixes should be applied directly to markdown, never by re-running converters on existing documents. |
 
+### EU Document Infrastructure
+
+| Term | Description |
+|------|-------------|
+| **Cellar** | The Common Repository powering EUR-Lex, accessed via `publications.europa.eu`. Stores all EU legal documents as RDF-linked resources following the FRBR model (Work → Expression → Manifestation). Unlike EUR-Lex (which has AWS WAF), Cellar has no bot protection — use `scripts/fetch-eurlex.sh` for programmatic access. |
+| **Manifestation** | A specific format+language rendering of an EU document expression in the FRBR model. Example: `32022D2481.ENG.xhtml` is the English XHTML manifestation of Decision 2022/2481. Available formats: `xhtml` (HTML), `fmx4` (Formex XML), `pdfa2a` (PDF). Resolved via RDF content negotiation on the Cellar API. |
+| **AWS WAF Bot Control** | Web Application Firewall service by AWS that blocks non-browser HTTP clients via JavaScript challenges. EUR-Lex deployed this as of Feb 2026. Signature: HTTP 202 + header `x-amzn-waf-action: challenge` + 2KB HTML page with `AwsWafIntegration.getToken()`. Bypass: use Cellar API on `publications.europa.eu` instead. |
+
 ---
 
 ## Build Pipeline

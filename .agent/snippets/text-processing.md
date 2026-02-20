@@ -63,3 +63,43 @@ Used in:
 | `/\n\s*\n/g` → `'\n\n'` | Normalize paragraph breaks (2+ newlines with optional whitespace) |
 | `/(?<!\n)\n(?!\n)/g` → `' '` | Match single `\n` NOT preceded/followed by another `\n` (uses lookbehind/lookahead) |
 | `/  +/g` → `' '` | Collapse any resulting double spaces |
+
+---
+
+## Extract Clean Text from Single-Line XML/HTML
+
+EUR-Lex XHTML files from the Cellar API are often a **single giant line**, making `grep` output unreadable. Use Python to strip tags and extract readable text.
+
+### Find All Occurrences of a Pattern
+
+```bash
+python3 -c "
+import re
+with open('/tmp/eurlex_CELEX.xhtml', 'r') as f:
+    content = f.read()
+for m in re.finditer(r'ANNEX', content, re.IGNORECASE):
+    pos = m.start()
+    start = max(0, pos - 50)
+    end = min(len(content), pos + 300)
+    snippet = content[start:end]
+    clean = re.sub(r'<[^>]+>', ' ', snippet)
+    clean = re.sub(r'\s+', ' ', clean).strip()
+    print(f'Position {pos}: {clean[:200]}')
+    print()
+"
+```
+
+### Extract a Section to Clean Text
+
+```bash
+python3 -c "
+import re
+with open('/tmp/eurlex_CELEX.xhtml', 'r') as f:
+    content = f.read()
+idx = content.upper().find('ANNEX')
+section = content[idx:]
+clean = re.sub(r'<[^>]+>', '\n', section)
+lines = [l.strip() for l in clean.split('\n') if l.strip()]
+print('\n'.join(lines))
+"
+```
