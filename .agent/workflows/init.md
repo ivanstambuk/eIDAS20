@@ -60,6 +60,22 @@ If there's WIP from a previous session, note it and ask user if they want to con
 
 ---
 
+## 3.1. Check GitHub Actions Status
+
+// turbo
+```bash
+cd ~/dev/eIDAS20 && gh run list --limit 1 --json status,conclusion,name,headBranch,event,createdAt,databaseId,displayTitle 2>/dev/null || echo "❌ gh CLI not available"
+```
+
+**If the last run has `conclusion: failure`:**
+1. Alert the user immediately: `⚠️ GitHub Actions deployment is BROKEN`
+2. Show the failed run details: `gh run view <id> --log-failed | tail -20`
+3. This should be treated as a **priority fix** before other work
+
+**If `conclusion: success`:** Note it in the summary as ✅
+
+---
+
 ## 4. Check for Pending Tasks
 
 // turbo
@@ -160,6 +176,7 @@ Provide a brief summary:
 - **AGENTS.md**: Read (project structure understood)
 - **TRACKER.md**: [Current phase and progress %]
 - **Git status**: [clean / uncommitted changes]
+- **GitHub Actions**: [✅ last deploy succeeded / ⚠️ BROKEN — last deploy failed]
 - **Pending task**: [task from previous session / none]
 - **Portal (local)**: [running on http://localhost:5173/eIDAS20/ / not running]
 - **Portal (tailscale)**: [https://hostname:5173/eIDAS20/ / not served / tailscale unavailable]
