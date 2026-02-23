@@ -106,14 +106,14 @@ function validate() {
 
             // Validate ID format (VEND-TYPE-NNN)
             // DEC-257: Added ISS, TSP, SCA for issuer, trust services, payments
-            const idPattern = /^VEND-(CORE|INT|ICT|GDP|ISS|TSP|SCA|PIF|VIF)-\d{3}$/;
+            const idPattern = /^VEND-(CORE|INT|ICT|GDP|ISS|TSP|SCA|PIF|VIF|MULTI)-\d{3}$/;
             if (!idPattern.test(reqId)) {
                 errors.push({
                     file,
                     reqId,
                     field: 'id',
                     value: reqId,
-                    message: `Invalid ID format. Expected: VEND-{CORE|INT|ICT|ISS|TSP|SCA}-NNN`
+                    message: `Invalid ID format. Expected: VEND-{CORE|INT|ICT|ISS|TSP|SCA|MULTI}-NNN`
                 });
             }
 

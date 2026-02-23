@@ -1803,11 +1803,11 @@ requirements:
     obligation: MUST
 
   # ============================================================================
-  # VEND-MULTI-01: Multi-Relying-Party Support
+  # VEND-MULTI-001: Multi-Relying-Party Support
   # Cross-cutting requirement for platforms serving multiple legal entities
   # Source: corporate-group-rp-registration.md §6.2
   # ============================================================================
-  - id: VEND-MULTI-01
+  - id: VEND-MULTI-001
     deploymentArchitectures:
       - intermediary
       - direct_saas

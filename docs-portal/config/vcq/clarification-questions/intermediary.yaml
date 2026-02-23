@@ -1113,11 +1113,11 @@ requirements:
         dimension: technical_implementation
 
   # ============================================================================
-  # VEND-MULTI-01: Multi-Relying-Party Support
+  # VEND-MULTI-001: Multi-Relying-Party Support
   # Requirement: Support multi-relying-party deployments with per-entity isolation
   # Source: corporate-group-rp-registration.md §6.2
   # ============================================================================
-  VEND-MULTI-01:
+  VEND-MULTI-001:
     questions:
       - id: Q1
         text: "How does the platform manage multiple RPACs and RPRCs simultaneously? Are private keys for each entity stored in isolated key containers (separate HSM partitions, separate key vaults), or do they share a key management infrastructure with logical separation only?"

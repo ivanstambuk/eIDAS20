@@ -378,11 +378,11 @@ The RCA (Regulatory Compliance Assessment) covers obligations that fall on the *
 
 The VCQ should add a **cross-cutting requirement** for multi-RP platform deployments. This applies to any vendor product deployed in configurations where a single platform instance serves multiple distinct legal entities as separate Relying Parties — whether via the intermediary pattern (Art. 5b(10)) or direct SaaS multi-tenancy.
 
-#### VEND-MULTI-01: Support multi-relying-party deployments with per-entity isolation
+#### VEND-MULTI-001: Support multi-relying-party deployments with per-entity isolation
 
 | Field | Value |
 |-------|-------|
-| **ID** | VEND-MULTI-01 |
+| **ID** | VEND-MULTI-001 |
 | **Category** | Registration & Notification (cross-cutting) |
 | **Obligation** | MUST |
 | **Deployment architectures** | `intermediary`, `direct_saas` (conditionally `direct_onprem` when shared) |
@@ -431,7 +431,7 @@ The product must support deployments where a single platform instance serves mul
 
 ```yaml
 # === Requirement (add to requirements/intermediary.yaml or requirements/multi.yaml) ===
-- id: VEND-MULTI-01
+- id: VEND-MULTI-001
   deploymentArchitectures:
     - intermediary
     - direct_saas
@@ -528,7 +528,7 @@ The product must support deployments where a single platform instance serves mul
     data deletion) by adding entity-level isolation guarantees.
 
 # === Clarification Questions (add to clarification-questions/intermediary.yaml or multi.yaml) ===
-VEND-MULTI-01:
+VEND-MULTI-001:
   questions:
     - id: Q1
       text: >
@@ -613,7 +613,7 @@ For a vendor providing an EUDI Wallet integration platform to a corporate group,
 - Security architecture
 - Integration with Trust Framework (Trusted Lists, revocation checking)
 - Technical interoperability
-- **Multi-RP support capabilities (VEND-MULTI-01)**
+- **Multi-RP support capabilities (VEND-MULTI-001)**
 
 **Entity-Level Assessment (per subsidiary):**
 - Verification that its RP registration is complete and valid

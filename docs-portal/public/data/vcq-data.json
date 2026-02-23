@@ -4349,7 +4349,7 @@
       "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-MULTI-01",
+      "id": "VEND-MULTI-001",
       "category": "registration",
       "categoryLabel": "Registration",
       "categoryIcon": "📋",
@@ -7185,7 +7185,7 @@
       "VEND-INT-031",
       "VEND-INT-032",
       "VEND-INT-033",
-      "VEND-MULTI-01"
+      "VEND-MULTI-001"
     ],
     "issuer": [
       "VEND-CORE-019",
@@ -7350,7 +7350,7 @@
       "VEND-INT-031",
       "VEND-INT-032",
       "VEND-INT-033",
-      "VEND-MULTI-01"
+      "VEND-MULTI-001"
     ],
     "issuance_platform": [
       "VEND-CORE-019",
@@ -7531,7 +7531,7 @@
       "VEND-INT-031",
       "VEND-INT-032",
       "VEND-INT-033",
-      "VEND-MULTI-01",
+      "VEND-MULTI-001",
       "VEND-ISS-001",
       "VEND-ISS-004",
       "VEND-ISS-005",
@@ -7671,7 +7671,7 @@
       "VEND-INT-030",
       "VEND-INT-032",
       "VEND-INT-033",
-      "VEND-MULTI-01",
+      "VEND-MULTI-001",
       "VEND-ISS-001",
       "VEND-ISS-002",
       "VEND-ISS-003",
@@ -7753,9 +7753,9 @@
     }
   },
   "_meta": {
-    "contentHash": "478f7ae7",
-    "buildCommit": "4ac73370",
-    "buildDate": "2026-02-20",
+    "contentHash": "ea9a524a",
+    "buildCommit": "f7036b27",
+    "buildDate": "2026-02-23",
     "schemaVersion": 2
   }
 }
