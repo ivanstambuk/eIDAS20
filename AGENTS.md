@@ -792,3 +792,15 @@ merge conflicts during rebase that are extremely painful to resolve manually.
 ---
 
 *Last updated: 2026-02-20*
+
+---
+
+## Chrome CDP (browser_subagent)
+
+Chrome runs as a persistent systemd service — **always available** without manual intervention:
+
+```bash
+systemctl --user status chrome-cdp.service   # check
+systemctl --user restart chrome-cdp.service  # restart if subagent gets stuck
+bash scripts/restart-chrome.sh              # same, but script form
+```
