@@ -1874,7 +1874,6 @@ requirements:
         - AS-RP-51-001
         - AS-RP-51-003
         - AS-RP-51-006
-        - AS-RP-51-007
     legalBasis:
       - regulation: 2014/910
         article: Article 5b
