@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-03-05T02:58:23.976Z",
+  "generatedAt": "2026-03-05T03:07:48.021Z",
   "schemaVersion": 2,
   "stats": {
     "totalRequirements": 154,
     "totalQuestions": 1377,
     "useCaseTaggedQuestions": 51,
     "byDimension": {
-      "architecture": 80,
+      "architecture": 79,
       "data_handling": 16,
       "auditability": 54,
       "supply_chain": 11,
@@ -14,15 +14,15 @@
       "operational": 132,
       "capability": 111,
       "compliance_completeness": 109,
-      "lifecycle": 89,
+      "lifecycle": 90,
       "contract_terms": 6,
       "compliance_evidence": 62,
       "commercial": 14,
       "regulatory_access": 5,
       "compliance_monitoring": 25,
-      "geographic_scope": 21,
+      "geographic_scope": 20,
       "automation": 18,
-      "interoperability": 87,
+      "interoperability": 88,
       "incident_response": 48,
       "flexibility": 34,
       "technical_implementation": 163,
@@ -6423,94 +6423,94 @@
     "VEND-ISS-042": [
       {
         "id": "Q1",
-        "text": "Which ETSI issuance policy does your platform currently comply with — NCP+ (ETSI EN 319 411-1) for PID/PuB-EAA Providers, or QCP-l+ (ETSI EN 319 411-2) for QEAA Providers? Can you provide the certificate of conformity or latest audit report?",
+        "text": "Which ETSI issuance policy does your platform currently comply with — NCP+ (ETSI EN 319 411-1) for PID/PuB-EAA Providers, or QCP-n-qscd / QCP-l-qscd (ETSI EN 319 411-2) for QEAA Providers? Per AS-AP-10-095, the QEAA policy must comply with 'QCP-n-qscd' (natural person on QSCD) or 'QCP-l-qscd' (legal person on QSCD). Can you provide the certificate of conformity or latest audit report demonstrating compliance with the applicable policy?",
         "dimension": "compliance_evidence"
       },
       {
         "id": "Q2",
-        "text": "Per AS-AP-10-093, how does your issuance policy cover all aspects of PID issuance and management — identity proofing, key generation, certificate lifecycle, revocation procedures, and archival? Is the policy document publicly available?",
+        "text": "Per AS-AP-10-093 and AS-AP-10-098, both PID Providers and PuB-EAA Providers must comply with NCP+ (ETSI EN 319 411-1). How does your issuance policy cover all aspects of issuance and management — identity proofing, key generation, certificate lifecycle, revocation procedures, and archival — 'insofar applicable for PIDs/PuB-EAAs rather than public key certificates'? Is the policy document publicly available?",
         "dimension": "documentation"
       },
       {
         "id": "Q3",
-        "text": "How do you handle the 'insofar applicable for PIDs/QEAAs' qualification — which NCP+/QCP-l+ requirements have you determined are not applicable to attestation issuance (vs traditional certificate issuance), and how is that determination documented?",
+        "text": "How do you handle the 'insofar applicable' qualification in AS-AP-10-093/095/098 — which NCP+ or QCP-n-qscd/QCP-l-qscd requirements have you determined are not applicable to attestation issuance (vs traditional X.509 certificate issuance), and how is that determination documented? Has the applicability analysis been reviewed by a conformity assessment body?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q4",
-        "text": "What conformity assessment body (CAB) audits your ETSI policy compliance? How frequently are audits conducted, and what is the scope of each audit cycle?",
+        "text": "What conformity assessment body (CAB) audits your ETSI policy compliance? How frequently are audits conducted, and does the audit scope explicitly cover the attestation issuance use case (as distinct from traditional certificate issuance)?",
         "dimension": "compliance_evidence"
       },
       {
         "id": "Q5",
-        "text": "How does your ETSI policy compliance interact with national supervisory body requirements — do some Member States impose additional requirements beyond the ETSI baseline?",
-        "dimension": "geographic_scope"
-      },
-      {
-        "id": "Q6",
-        "text": "Per AS-AP-10-098, if you serve PuB-EAA Providers, do you comply with the NCP+ policy requirements? How do you distinguish PuB-EAA policy obligations from PID Provider obligations?",
+        "text": "Non-qualified EAA Providers are NOT subject to an ETSI issuance policy requirement (no ARF HLR mandates NCP+ or QCP for them — only the signing certificate requirement in VEND-ISS-043 applies). If your platform serves non-qualified EAA Providers alongside PID/QEAA Providers, how do you communicate this asymmetry to organisations? Do you recommend voluntary NCP+ compliance for non-qualified providers?",
         "dimension": "operational"
       },
       {
+        "id": "Q6",
+        "text": "The ARF notes (AS-AP-10-095) that 'a common dedicated policy for issuing QEAAs may be developed in the future'. How do you monitor for this potential change? If a dedicated QEAA policy replaces the current QCP-n-qscd/QCP-l-qscd baseline, what is your process for transitioning to the new policy framework?",
+        "dimension": "lifecycle"
+      },
+      {
         "id": "Q7",
-        "text": "What operational practices does ETSI NCP+/QCP-l+ mandate that affect issuance platform design — physical security requirements, personnel vetting procedures, incident response procedures, business continuity planning?",
-        "dimension": "architecture"
+        "text": "What operational practices does ETSI NCP+ (EN 319 411-1) or QCP-n-qscd/QCP-l-qscd (EN 319 411-2) mandate that directly affect your platform design — physical security of issuance infrastructure, personnel vetting and role separation, incident response procedures, business continuity requirements, record retention periods?",
+        "dimension": "operational"
       },
       {
         "id": "Q8",
-        "text": "How do you handle ETSI policy version updates — when ETSI publishes a new version of EN 319 411-1 or EN 319 411-2, what is your process to assess impact and update compliance?",
+        "text": "How do you handle ETSI standard version updates — CIR 2025/1943 pins specific versions (e.g., EN 319 411-1 V1.5.1, EN 319 411-2 V2.6.1) for qualified certificate standards. When ETSI publishes a new version, what is your process to assess impact, update compliance, and re-certify with your CAB?",
         "dimension": "lifecycle"
       },
       {
         "id": "Q9",
-        "text": "Can organisations using your platform inherit your ETSI policy compliance, or must they independently demonstrate their own compliance? What evidence and documentation do you provide to support their conformity assessment?",
+        "text": "Can organisations using your platform inherit your ETSI policy compliance, or must they independently demonstrate their own compliance to their national supervisory body? What evidence and documentation do you provide to support their conformity assessment — shared audit reports, compliance attestation letters, or dedicated per-client audit scoping?",
         "dimension": "compliance_evidence"
       }
     ],
     "VEND-ISS-043": [
       {
         "id": "Q1",
-        "text": "Which clause of ETSI TS 119 412-6 do your signing certificates comply with — Clause 4 (PID Provider per AS-AP-10-094), Clause 6 (non-qualified EAA per AS-AP-10-097), Clause 7 (QEAA per AS-AP-10-096), or Clause 8 (PuB-EAA per AS-AP-10-099)? Can you provide certificate samples demonstrating compliance?",
+        "text": "Which clause of ETSI TS 119 412-6 do your signing certificates comply with — Clause 4 (PID Provider per AS-AP-10-094), Clause 6 (non-qualified EAA per AS-AP-10-097), Clause 7 (QEAA per AS-AP-10-096), or Clause 8 (PuB-EAA per AS-AP-10-099)? Can you provide certificate samples or ASN.1 dumps demonstrating compliance with the applicable clause?",
         "dimension": "compliance_evidence"
       },
       {
         "id": "Q2",
-        "text": "How do you ensure signing certificate extensions, key usage flags, and subject fields conform to the applicable ETSI TS 119 412-6 clause — is validation automated in your certificate provisioning pipeline?",
+        "text": "How do you ensure signing certificate extensions, key usage flags, subject fields, and policy OIDs conform to the applicable ETSI TS 119 412-6 clause — is validation automated in your certificate provisioning pipeline, or does it rely on manual review by the issuing CA?",
         "dimension": "technical_implementation"
       },
       {
         "id": "Q3",
-        "text": "What Certificate Authority (CA) issues your attestation signing certificates? Is the CA itself certified under ETSI EN 319 411-1/2 and listed in a Member State's Trusted List?",
+        "text": "What Certificate Authority (CA) issues your attestation signing certificates? Is the CA itself certified under ETSI EN 319 411-1/2 and listed in the issuing Member State's national Trusted List? How does the signing certificate chain resolve through the Trusted List for cross-border verification by Relying Parties?",
         "dimension": "compliance_evidence"
       },
       {
         "id": "Q4",
-        "text": "How do you handle the different clause requirements for different provider types — if your platform serves both PID Providers (Clause 4) and QEAA Providers (Clause 7), do you provision different certificate profiles per provider type?",
+        "text": "How do you handle the different clause requirements for different provider types — if your platform serves both PID Providers (Clause 4) and QEAA Providers (Clause 7), do you provision separate certificate profiles per provider type? How do you prevent accidental cross-use of certificates between provider categories?",
         "dimension": "architecture"
       },
       {
         "id": "Q5",
-        "text": "What validity period do your signing certificates use? How does certificate validity interact with attestation validity — can an attestation remain valid after its signing certificate expires?",
+        "text": "What validity period do your signing certificates use? How does certificate validity interact with attestation validity — can an attestation remain valid and verifiable after its signing certificate expires? If so, how do Relying Parties resolve the expired signing certificate (via Trusted List historical records, certificate archival services, or other mechanism)?",
         "dimension": "lifecycle"
       },
       {
         "id": "Q6",
-        "text": "How do you manage signing certificate lifecycle — automated renewal, key rollover, revocation procedures? Is the certificate lifecycle management integrated with your HSM infrastructure?",
-        "dimension": "operational"
+        "text": "How does your ETSI TS 119 412-6 certificate lifecycle integrate with your Trusted List publication — is the new signing certificate published to the national Trusted List before it is used for signing attestations, and is the old certificate retained in the Trusted List for the duration of attestations signed under it? (Note: generic key rotation procedures are covered by VEND-ISS-019; this question focuses on the ETSI certificate profile and trust anchor publication aspects.)",
+        "dimension": "interoperability"
       },
       {
         "id": "Q7",
-        "text": "Per AS-AP-10-097, how do Providers of non-qualified EAAs differentiate their Clause 6 certificates from qualified provider certificates? Is there a risk of mis-categorisation during certificate issuance?",
+        "text": "Clause 6 (non-qualified EAA) has different requirements from Clause 7 (QEAA) — for example, Clause 7 mandates QSCD-resident keys and stricter subject field requirements. If your platform serves both qualified and non-qualified issuers, how do you ensure each issuer's certificates meet the correct clause? Is there a risk of non-qualified EAA certificates being mistaken for qualified ones by Relying Parties?",
         "dimension": "security"
       },
       {
         "id": "Q8",
-        "text": "How do you handle ETSI TS 119 412-6 version updates — what is your process for assessing whether a new version introduces breaking changes to your certificate profiles?",
+        "text": "How do you handle ETSI TS 119 412-6 version updates — what is your process for assessing whether a new version introduces breaking changes to your certificate profiles? Do you maintain backward compatibility with certificates issued under previous versions of the standard?",
         "dimension": "lifecycle"
       },
       {
         "id": "Q9",
-        "text": "Do you validate certificate compliance against ETSI TS 119 412-6 programmatically — is there an automated test suite that checks certificate structure, extensions, and policy OIDs against the applicable clause requirements?",
+        "text": "Do you validate certificate compliance against ETSI TS 119 412-6 programmatically — is there an automated test suite that checks certificate structure, extensions, key usage flags, and policy OIDs against the applicable clause requirements? Can this validation be run as part of CI/CD before a new certificate profile is deployed to production?",
         "dimension": "automation"
       }
     ],
