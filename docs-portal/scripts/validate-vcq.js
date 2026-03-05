@@ -398,6 +398,59 @@ function validate() {
     }
 
 
+    // ====================
+    // Validate clarification questions coverage
+    // ====================
+    // Every requirement MUST have clarification questions in the corresponding
+    // clarification-questions/*.yaml file. This prevents the VEND-MULTI-001
+    // issue where a requirement existed without questions in the built output.
+
+    const CLARIFICATIONS_DIR = join(CONFIG_DIR, 'clarification-questions');
+    let clarificationValidation = { checked: false, covered: 0, missing: [] };
+
+    if (existsSync(CLARIFICATIONS_DIR)) {
+        const clarificationFiles = readdirSync(CLARIFICATIONS_DIR)
+            .filter(f => f.endsWith('.yaml'));
+
+        // Build a set of all requirement IDs that have clarification questions
+        const reqIdsWithQuestions = new Set();
+
+        for (const file of clarificationFiles) {
+            const filePath = join(CLARIFICATIONS_DIR, file);
+            const data = loadYaml(filePath);
+
+            if (!data.requirements) continue;
+
+            for (const [reqId, reqData] of Object.entries(data.requirements)) {
+                if (reqData.questions && Array.isArray(reqData.questions) && reqData.questions.length > 0) {
+                    reqIdsWithQuestions.add(reqId);
+                }
+            }
+        }
+
+        clarificationValidation.checked = true;
+        console.log(`   ❓ Validating clarification questions coverage (${reqIdsWithQuestions.size} requirements have questions)`);
+
+        // Check every requirement has questions
+        for (const reqId of allRequirementIds) {
+            if (reqIdsWithQuestions.has(reqId)) {
+                clarificationValidation.covered++;
+            } else {
+                clarificationValidation.missing.push(reqId);
+                errors.push({
+                    file: 'clarification-questions/',
+                    reqId,
+                    field: 'questions',
+                    value: 'MISSING',
+                    message: `Requirement "${reqId}" has no clarification questions. Add questions to the corresponding clarification-questions/*.yaml file.`
+                });
+            }
+        }
+
+        console.log(`   ✓ Clarification questions: ${clarificationValidation.covered}/${allRequirementIds.size} covered, ${clarificationValidation.missing.length} missing`);
+    } else {
+        console.log('\n   ⚠️  Skipping clarification questions validation (directory not found)');
+    }
 
     // ====================
     // Report results

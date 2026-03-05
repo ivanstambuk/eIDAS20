@@ -1,35 +1,35 @@
 {
-  "generatedAt": "2026-02-20T15:52:51.483Z",
+  "generatedAt": "2026-03-05T02:58:23.976Z",
   "schemaVersion": 2,
   "stats": {
-    "totalRequirements": 152,
-    "totalQuestions": 1359,
+    "totalRequirements": 154,
+    "totalQuestions": 1377,
     "useCaseTaggedQuestions": 51,
     "byDimension": {
-      "architecture": 78,
+      "architecture": 80,
       "data_handling": 16,
       "auditability": 54,
       "supply_chain": 11,
-      "security": 120,
-      "operational": 130,
+      "security": 121,
+      "operational": 132,
       "capability": 111,
-      "compliance_completeness": 108,
-      "lifecycle": 86,
+      "compliance_completeness": 109,
+      "lifecycle": 89,
       "contract_terms": 6,
-      "compliance_evidence": 57,
+      "compliance_evidence": 62,
       "commercial": 14,
       "regulatory_access": 5,
       "compliance_monitoring": 25,
-      "geographic_scope": 20,
-      "automation": 17,
+      "geographic_scope": 21,
+      "automation": 18,
       "interoperability": 87,
       "incident_response": 48,
       "flexibility": 34,
-      "technical_implementation": 162,
+      "technical_implementation": 163,
       "risk_management": 1,
       "physical_security": 1,
       "sla": 51,
-      "documentation": 20,
+      "documentation": 21,
       "regulatory_support": 4,
       "user_experience": 21,
       "limitations": 3,
@@ -4493,7 +4493,7 @@
         "dimension": "technical_implementation"
       }
     ],
-    "VEND-MULTI-01": [
+    "VEND-MULTI-001": [
       {
         "id": "Q1",
         "text": "How does the platform manage multiple RPACs and RPRCs simultaneously? Are private keys for each entity stored in isolated key containers (separate HSM partitions, separate key vaults), or do they share a key management infrastructure with logical separation only?",
@@ -6418,6 +6418,100 @@
         "id": "Q9",
         "text": "Do you log cascading revocation events with full traceability — the WUA revocation event that triggered the cascade, all affected credentials, revocation timestamps, and the policy basis (AS-WP-38-018 for PIDs, AS-WP-38-019 policy for EAAs)?",
         "dimension": "auditability"
+      }
+    ],
+    "VEND-ISS-042": [
+      {
+        "id": "Q1",
+        "text": "Which ETSI issuance policy does your platform currently comply with — NCP+ (ETSI EN 319 411-1) for PID/PuB-EAA Providers, or QCP-l+ (ETSI EN 319 411-2) for QEAA Providers? Can you provide the certificate of conformity or latest audit report?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q2",
+        "text": "Per AS-AP-10-093, how does your issuance policy cover all aspects of PID issuance and management — identity proofing, key generation, certificate lifecycle, revocation procedures, and archival? Is the policy document publicly available?",
+        "dimension": "documentation"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle the 'insofar applicable for PIDs/QEAAs' qualification — which NCP+/QCP-l+ requirements have you determined are not applicable to attestation issuance (vs traditional certificate issuance), and how is that determination documented?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q4",
+        "text": "What conformity assessment body (CAB) audits your ETSI policy compliance? How frequently are audits conducted, and what is the scope of each audit cycle?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q5",
+        "text": "How does your ETSI policy compliance interact with national supervisory body requirements — do some Member States impose additional requirements beyond the ETSI baseline?",
+        "dimension": "geographic_scope"
+      },
+      {
+        "id": "Q6",
+        "text": "Per AS-AP-10-098, if you serve PuB-EAA Providers, do you comply with the NCP+ policy requirements? How do you distinguish PuB-EAA policy obligations from PID Provider obligations?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q7",
+        "text": "What operational practices does ETSI NCP+/QCP-l+ mandate that affect issuance platform design — physical security requirements, personnel vetting procedures, incident response procedures, business continuity planning?",
+        "dimension": "architecture"
+      },
+      {
+        "id": "Q8",
+        "text": "How do you handle ETSI policy version updates — when ETSI publishes a new version of EN 319 411-1 or EN 319 411-2, what is your process to assess impact and update compliance?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q9",
+        "text": "Can organisations using your platform inherit your ETSI policy compliance, or must they independently demonstrate their own compliance? What evidence and documentation do you provide to support their conformity assessment?",
+        "dimension": "compliance_evidence"
+      }
+    ],
+    "VEND-ISS-043": [
+      {
+        "id": "Q1",
+        "text": "Which clause of ETSI TS 119 412-6 do your signing certificates comply with — Clause 4 (PID Provider per AS-AP-10-094), Clause 6 (non-qualified EAA per AS-AP-10-097), Clause 7 (QEAA per AS-AP-10-096), or Clause 8 (PuB-EAA per AS-AP-10-099)? Can you provide certificate samples demonstrating compliance?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you ensure signing certificate extensions, key usage flags, and subject fields conform to the applicable ETSI TS 119 412-6 clause — is validation automated in your certificate provisioning pipeline?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "What Certificate Authority (CA) issues your attestation signing certificates? Is the CA itself certified under ETSI EN 319 411-1/2 and listed in a Member State's Trusted List?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you handle the different clause requirements for different provider types — if your platform serves both PID Providers (Clause 4) and QEAA Providers (Clause 7), do you provision different certificate profiles per provider type?",
+        "dimension": "architecture"
+      },
+      {
+        "id": "Q5",
+        "text": "What validity period do your signing certificates use? How does certificate validity interact with attestation validity — can an attestation remain valid after its signing certificate expires?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q6",
+        "text": "How do you manage signing certificate lifecycle — automated renewal, key rollover, revocation procedures? Is the certificate lifecycle management integrated with your HSM infrastructure?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q7",
+        "text": "Per AS-AP-10-097, how do Providers of non-qualified EAAs differentiate their Clause 6 certificates from qualified provider certificates? Is there a risk of mis-categorisation during certificate issuance?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q8",
+        "text": "How do you handle ETSI TS 119 412-6 version updates — what is your process for assessing whether a new version introduces breaking changes to your certificate profiles?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q9",
+        "text": "Do you validate certificate compliance against ETSI TS 119 412-6 programmatically — is there an automated test suite that checks certificate structure, extensions, and policy OIDs against the applicable clause requirements?",
+        "dimension": "automation"
       }
     ],
     "VEND-TSP-001": [
